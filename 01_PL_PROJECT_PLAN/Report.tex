@@ -21,6 +21,8 @@
 \usepackage[table]{xcolor}
 \usepackage{expl3}
 
+\usepackage{lscape}
+\usepackage{rotating}
 
 % PAGESTYLE
 \pagestyle{plain}
@@ -45,8 +47,7 @@
 % Table of contents
 \newpage
 \tableofcontents
-\addtocontents{toc}{\protect\contentsline {section}{Summary}{ii}{}}
-\addtocontents{toc}{\protect\contentsline {section}{List of Symbols}{iv}{}}
+\addtocontents{toc}{\protect\contentsline {section}{Summary}{i}{}}
 
 % Chapters
 \newpage
@@ -55,8 +56,8 @@
 \include{./Chapter/Introduction}
 \newpage
 \include{./Chapter/OBS}
-\newpage
-\include{./Chapter/WBS}
+%\newpage
+\include{./Chapter/Work_definition}
 \newpage
 \include{./Chapter/Project_planning}
 \newpage
