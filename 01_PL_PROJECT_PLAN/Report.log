@@ -1,30 +1,4 @@
-<<<<<<< HEAD
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.4.4)  21 APR 2015 11:16
-=======
-<<<<<<< HEAD
-This is LuaTeX, Version beta-0.76.0-2013062821 (rev 4627)  (format=lualatex 2014.3.20)  21 APR 2015 11:14
-**Report.tex
-
-("C:/Users/dawud/Dropbox/Aerospace/Third year/DSE/git/01_PL_PROJECT_PLAN/Report
-.tex"
-LaTeX2e <2011/06/27>
-Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ara
-bic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, cr
-oatian, czech, danish, dutch, esperanto, estonian, farsi, finnish, french, galic
-ian, german, german-x-2013-05-26, greek, gujarati, hindi, hungarian, icelandic, 
-indonesian, interlingua, irish, italian, kannada, kurmanji, latin, latvian, lith
-uanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerman, ngerman
--x-2013-05-26, nynorsk, oriya, panjabi, pinyin, polish, portuguese, romanian, ru
-ssian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swissgerman, tami
-l, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usenglishmax, w
-elsh, loaded.
-("C:/Program Files/MiKTeX 2.9/tex/latex/base/article.cls"
-Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
-("C:/Program Files/MiKTeX 2.9/tex/latex/base/size12.clo"
-=======
-<<<<<<< HEAD
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (MiKTeX 2.9) (preloaded format=pdflatex 2013.9.23)  21 APR 2015 09:27
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2013.4.4)  21 APR 2015 11:27
 entering extended mode
 **Report.tex
 ("C:\Users\Lucas\Dropbox\DSE personal\gitHub\01_PL_PROJECT_PLAN\Report.tex"
@@ -42,11 +16,6 @@ senglishmax, welsh, loaded.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\article.cls"
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\size12.clo"
-<<<<<<< HEAD
-=======
->>>>>>> 2cb372c9d4d69a5629b6227748a240f341dee9d9
->>>>>>> 8c27430bf5ec56fe7193a2f9daa91b5cc2bc9d21
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
 File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
@@ -61,55 +30,22 @@ File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-("C:/Program Files/MiKTeX 2.9/tex/latex/geometry/geometry.sty"
-=======
-<<<<<<< HEAD
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\geometry\geometry.sty"
-Package: geometry 2010/09/12 v5.6 Page Geometry
-
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
-Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
-\KV@toks@=\toks14
-)
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
-Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
-Package ifpdf Info: pdfTeX in PDF mode is detected.
-)
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.sty"
-Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
-Package ifvtex Info: VTeX not detected.
-)
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
-=======
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
 ("C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.sty"
->>>>>>> 8c27430bf5ec56fe7193a2f9daa91b5cc2bc9d21
 Package: geometry 2010/09/12 v5.6 Page Geometry
 
-("C:/Program Files/MiKTeX 2.9/tex/latex/graphics/keyval.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
 Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks14
 )
-("C:/Program Files/MiKTeX 2.9/tex/generic/oberdiek/ifpdf.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
 Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
 Package ifpdf Info: pdfTeX in PDF mode is detected.
 )
-("C:/Program Files/MiKTeX 2.9/tex/generic/oberdiek/ifvtex.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.sty"
 Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
 Package ifvtex Info: VTeX not detected.
 )
-<<<<<<< HEAD
-("C:/Program Files/MiKTeX 2.9/tex/generic/ifxetex/ifxetex.sty"
-=======
 ("C:\Program Files\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
-<<<<<<< HEAD
-=======
->>>>>>> 2cb372c9d4d69a5629b6227748a240f341dee9d9
->>>>>>> 8c27430bf5ec56fe7193a2f9daa91b5cc2bc9d21
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
 \Gm@cnth=\count87
@@ -125,27 +61,10 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@layoutvoffset=\dimen110
 \Gm@dimlist=\toks15
 
-<<<<<<< HEAD
 ("C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.cfg"))
 ("C:\Program Files\MiKTeX 2.9\tex\latex\tocloft\tocloft.sty"
 Package: tocloft 2010/10/13 v2.3e parameterised ToC, etc., typesetting
 Package tocloft Info: The document has section divisions on input line 43.
-=======
-<<<<<<< HEAD
-("C:/Program Files/MiKTeX 2.9/tex/latex/geometry/geometry.cfg"))
-(C:/Users/dawud/AppData/Roaming/MiKTeX/2.9/tex/latex/tocloft/tocloft.sty
-=======
-<<<<<<< HEAD
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\geometry\geometry.cfg"))
-(C:\Users\Twan\AppData\Roaming\MiKTeX\2.9\tex\latex\tocloft\tocloft.sty
-=======
-("C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.cfg"))
-("C:\Program Files\MiKTeX 2.9\tex\latex\tocloft\tocloft.sty"
->>>>>>> 2cb372c9d4d69a5629b6227748a240f341dee9d9
->>>>>>> 8c27430bf5ec56fe7193a2f9daa91b5cc2bc9d21
-Package: tocloft 2013/05/02 v2.3f parameterised ToC, etc., typesetting
-Package tocloft Info: The document has section divisions on input line 44.
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
 \cftparskip=\skip43
 \cftbeforetoctitleskip=\skip44
 \cftaftertoctitleskip=\skip45
@@ -180,115 +99,33 @@ Package tocloft Info: The document has section divisions on input line 44.
 \cfttabindent=\skip72
 \cfttabnumwidth=\skip73
 )
-<<<<<<< HEAD
 ("C:\Users\Lucas\Dropbox\DSE personal\gitHub\01_PL_PROJECT_PLAN\mcode.sty"
-=======
-<<<<<<< HEAD
-("C:/Users/dawud/Dropbox/Aerospace/Third year/DSE/git/01_PL_PROJECT_PLAN/mcode.
-sty"
-=======
-<<<<<<< HEAD
-(C:\Users\Twan\Documents\DSE-AEROSHELL02\01_PL_PROJECT_PLAN\mcode.sty
 Package: `mcode' 1.2 <2005/11/17>
 Package: mcode 2005/11/17 1.2
 mcode: settings optimized for display!
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\color.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\color.sty"
 Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\color.cfg"
-=======
-("C:\Users\Suthes\University\Courses Year 3\AE3200 - Design Synthesis Exercise\
-GitHub\01_PL_PROJECT_PLAN\mcode.sty"
->>>>>>> 8c27430bf5ec56fe7193a2f9daa91b5cc2bc9d21
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
-Package: `mcode' 1.2 <2005/11/17>
-Package: mcode 2005/11/17 1.2
-mcode: settings optimized for display!
-("C:/Program Files/MiKTeX 2.9/tex/latex/graphics/color.sty"
-Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
-
-<<<<<<< HEAD
-("C:/Program Files/MiKTeX 2.9/tex/latex/00miktex/color.cfg"
-=======
 ("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\color.cfg"
-<<<<<<< HEAD
-=======
->>>>>>> 2cb372c9d4d69a5629b6227748a240f341dee9d9
->>>>>>> 8c27430bf5ec56fe7193a2f9daa91b5cc2bc9d21
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
 File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package color Info: Driver file: pdftex.def on input line 130.
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-("C:/Program Files/MiKTeX 2.9/tex/latex/pdftex-def/pdftex.def"
-=======
-<<<<<<< HEAD
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
-File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
-
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
-Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
-)
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
-=======
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
 ("C:\Program Files\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
->>>>>>> 8c27430bf5ec56fe7193a2f9daa91b5cc2bc9d21
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
 
-("C:/Program Files/MiKTeX 2.9/tex/generic/oberdiek/infwarerr.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
 Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 )
-<<<<<<< HEAD
-("C:/Program Files/MiKTeX 2.9/tex/generic/oberdiek/ltxcmds.sty"
-=======
 ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
-<<<<<<< HEAD
-=======
->>>>>>> 2cb372c9d4d69a5629b6227748a240f341dee9d9
->>>>>>> 8c27430bf5ec56fe7193a2f9daa91b5cc2bc9d21
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
 Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
-)
-("C:/Program Files/MiKTeX 2.9/tex/generic/oberdiek/pdftexcmds.sty"
-Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO)
-
-
-("C:/Program Files/MiKTeX 2.9/tex/generic/oberdiek/ifluatex.sty"
-Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
-Package ifluatex Info: LuaTeX detected.
-)
-Package pdftexcmds Info: \pdf@primitive is available.
-Package pdftexcmds Info: \pdf@ifprimitive is available.
-Package pdftexcmds Info: \pdfdraftmode found.
-
-("C:/Program Files/MiKTeX 2.9/tex/generic/oberdiek/luatex-loader.sty"
-Package: luatex-loader 2010/03/09 v0.4 Lua module loader (HO)
-
-(C:/Program Files/MiKTeX 2.9/scripts/oberdiek/oberdiek.luatex.lua))
-\pdftexcmds@toks=\toks16
 )
 \Gread@gobject=\count92
 ))
-<<<<<<< HEAD
 ("C:\Program Files\MiKTeX 2.9\tex\latex\listings\listings.sty"
-=======
-<<<<<<< HEAD
-(C:/Users/dawud/AppData/Roaming/MiKTeX/2.9/tex/latex/listings/listings.sty
-=======
-<<<<<<< HEAD
-(C:\Users\Twan\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\listings.sty
-=======
-("C:\Program Files\MiKTeX 2.9\tex\latex\listings\listings.sty"
->>>>>>> 2cb372c9d4d69a5629b6227748a240f341dee9d9
->>>>>>> 8c27430bf5ec56fe7193a2f9daa91b5cc2bc9d21
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
 \lst@mode=\count93
 \lst@gtempboxa=\box26
-\lst@token=\toks17
+\lst@token=\toks16
 \lst@length=\count94
 \lst@currlwidth=\dimen111
 \lst@column=\count95
@@ -299,51 +136,18 @@ Package: luatex-loader 2010/03/09 v0.4 Lua module loader (HO)
 \lst@lineno=\count98
 \lst@maxwidth=\dimen114
 
-<<<<<<< HEAD
 ("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstmisc.sty"
 File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
-=======
-<<<<<<< HEAD
-(C:/Users/dawud/AppData/Roaming/MiKTeX/2.9/tex/latex/listings/lstmisc.sty
-File: lstmisc.sty 2014/03/04 1.5c (Carsten Heinz)
-=======
-<<<<<<< HEAD
-(C:\Users\Twan\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\lstmisc.sty
-=======
-("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstmisc.sty"
->>>>>>> 2cb372c9d4d69a5629b6227748a240f341dee9d9
-File: lstmisc.sty 2014/09/06 1.5e (Carsten Heinz)
->>>>>>> 8c27430bf5ec56fe7193a2f9daa91b5cc2bc9d21
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
 \c@lstnumber=\count99
 \lst@skipnumbers=\count100
 \lst@framebox=\box27
 )
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-(C:/Users/dawud/AppData/Roaming/MiKTeX/2.9/tex/latex/listings/listings.cfg
-File: listings.cfg 2014/03/04 1.5c listings configuration
-))
-Package: listings 2014/03/04 1.5c (Carsten Heinz)
-
-("C:/Program Files/MiKTeX 2.9/tex/latex/base/textcomp.sty"
-=======
-<<<<<<< HEAD
-(C:\Users\Twan\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\listings.cfg
-=======
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
 ("C:\Program Files\MiKTeX 2.9\tex\latex\listings\listings.cfg"
 File: listings.cfg 2007/02/22 1.4 listings configuration
 ))
 Package: listings 2007/02/22 1.4 (Carsten Heinz)
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\textcomp.sty"
-<<<<<<< HEAD
-=======
->>>>>>> 2cb372c9d4d69a5629b6227748a240f341dee9d9
->>>>>>> 8c27430bf5ec56fe7193a2f9daa91b5cc2bc9d21
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
 Package: textcomp 2005/09/27 v1.99g Standard LaTeX package
 Package textcomp Info: Sub-encoding information:
 (textcomp)               5 = only ISO-Adobe without \textcurrency
@@ -358,19 +162,7 @@ Package textcomp Info: Sub-encoding information:
 (textcomp)             See the documentation for details.
 Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 71.
 
-<<<<<<< HEAD
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\ts1enc.def"
-=======
-<<<<<<< HEAD
-("C:/Program Files/MiKTeX 2.9/tex/latex/base/ts1enc.def"
-=======
-<<<<<<< HEAD
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ts1enc.def"
-=======
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\ts1enc.def"
->>>>>>> 2cb372c9d4d69a5629b6227748a240f341dee9d9
->>>>>>> 8c27430bf5ec56fe7193a2f9daa91b5cc2bc9d21
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
 File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
 )
 LaTeX Info: Redefining \oldstylenums on input line 266.
@@ -398,6 +190,7 @@ Package textcomp Info: Setting ul9 sub-encoding to TS1/4 on input line 301.
 Package textcomp Info: Setting augie sub-encoding to TS1/5 on input line 302.
 Package textcomp Info: Setting dayrom sub-encoding to TS1/3 on input line 303.
 Package textcomp Info: Setting dayroms sub-encoding to TS1/3 on input line 304.
+
 Package textcomp Info: Setting pxr sub-encoding to TS1/0 on input line 305.
 Package textcomp Info: Setting pxss sub-encoding to TS1/0 on input line 306.
 Package textcomp Info: Setting pxtt sub-encoding to TS1/0 on input line 307.
@@ -435,68 +228,42 @@ Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 338.
 Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 339.
 Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 340.
 ))
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-("C:/Program Files/MiKTeX 2.9/tex/latex/ltxmisc/parskip.sty"
-Package: parskip 2001/04/09 non-zero parskip adjustments
-)
-("C:/Program Files/MiKTeX 2.9/tex/latex/hyperref/hyperref.sty"
-=======
-<<<<<<< HEAD
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ltxmisc\parskip.sty"
-Package: parskip 2001/04/09 non-zero parskip adjustments
-)
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty"
-Package: hyperref 2012/11/06 v6.83m Hypertext links for LaTeX
-
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\hobsub-hyperref.sty"
-Package: hobsub-hyperref 2012/04/25 v1.12 Bundle oberdiek, subset hyperref (HO)
-
-
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\hobsub-generic.sty"
-=======
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
 ("C:\Program Files\MiKTeX 2.9\tex\latex\ltxmisc\parskip.sty"
 Package: parskip 2001/04/09 non-zero parskip adjustments
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty"
-<<<<<<< HEAD
 Package: hyperref 2012/05/13 v6.82q Hypertext links for LaTeX
-=======
->>>>>>> 8c27430bf5ec56fe7193a2f9daa91b5cc2bc9d21
-Package: hyperref 2012/11/06 v6.83m Hypertext links for LaTeX
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
 
-("C:/Program Files/MiKTeX 2.9/tex/generic/oberdiek/hobsub-hyperref.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\hobsub-hyperref.sty"
 Package: hobsub-hyperref 2012/04/25 v1.12 Bundle oberdiek, subset hyperref (HO)
 
-<<<<<<< HEAD
-("C:/Program Files/MiKTeX 2.9/tex/generic/oberdiek/hobsub-generic.sty"
-=======
 
 ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\hobsub-generic.sty"
-<<<<<<< HEAD
-=======
->>>>>>> 2cb372c9d4d69a5629b6227748a240f341dee9d9
->>>>>>> 8c27430bf5ec56fe7193a2f9daa91b5cc2bc9d21
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
 Package: hobsub-generic 2012/04/25 v1.12 Bundle oberdiek, subset generic (HO)
 Package: hobsub 2012/04/25 v1.12 Construct package bundles (HO)
 Package hobsub Info: Skipping package `infwarerr' (already loaded).
 Package hobsub Info: Skipping package `ltxcmds' (already loaded).
-Package hobsub Info: Skipping package `ifluatex' (already loaded).
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
 Package hobsub Info: Skipping package `ifvtex' (already loaded).
 Package: intcalc 2007/09/27 v1.1 Expandable calculations with integers (HO)
 Package hobsub Info: Skipping package `ifpdf' (already loaded).
 Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
 Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
 Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
-Package hobsub Info: Skipping package `luatex-loader' (already loaded).
-Package hobsub Info: Skipping package `pdftexcmds' (already loaded).
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
 Package: pdfescape 2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
-Package: bigintcalc 2012/04/08 v1.3 Expandable calculations on big integers (HO)
-
+Package: bigintcalc 2012/04/08 v1.3 Expandable calculations on big integers (HO
+)
 Package: bitset 2011/01/30 v1.1 Handle bit-vector datatype (HO)
 Package: uniquecounter 2011/01/30 v1.2 Provide unlimited unique counter (HO)
 )
@@ -510,65 +277,19 @@ Package: atbegshi 2011/10/05 v1.16 At begin shipout hook (HO)
 Package: refcount 2011/10/16 v3.4 Data extraction from label references (HO)
 Package: hycolor 2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
 )
-<<<<<<< HEAD
 ("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty"
-=======
-<<<<<<< HEAD
-("C:/Program Files/MiKTeX 2.9/tex/latex/oberdiek/auxhook.sty"
-Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
-)
-("C:/Program Files/MiKTeX 2.9/tex/latex/oberdiek/kvoptions.sty"
-=======
-<<<<<<< HEAD
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\auxhook.sty"
-Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
-)
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty"
-=======
-("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\auxhook.sty"
-Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
-)
-("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty"
->>>>>>> 2cb372c9d4d69a5629b6227748a240f341dee9d9
->>>>>>> 8c27430bf5ec56fe7193a2f9daa91b5cc2bc9d21
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
 Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
 )
 \@linkdim=\dimen115
 \Hy@linkcounter=\count101
 \Hy@pagecounter=\count102
 
-<<<<<<< HEAD
 ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\pd1enc.def"
 File: pd1enc.def 2012/05/13 v6.82q Hyperref: PDFDocEncoding definition (HO)
 )
 \Hy@SavedSpaceFactor=\count103
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\hyperref.cfg"
-=======
-<<<<<<< HEAD
-("C:/Program Files/MiKTeX 2.9/tex/latex/hyperref/pd1enc.def"
-=======
-<<<<<<< HEAD
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\pd1enc.def"
-=======
-("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\pd1enc.def"
->>>>>>> 2cb372c9d4d69a5629b6227748a240f341dee9d9
->>>>>>> 8c27430bf5ec56fe7193a2f9daa91b5cc2bc9d21
-File: pd1enc.def 2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
-)
-\Hy@SavedSpaceFactor=\count103
-
-<<<<<<< HEAD
-("C:/Program Files/MiKTeX 2.9/tex/latex/00miktex/hyperref.cfg"
-=======
-<<<<<<< HEAD
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\hyperref.cfg"
-=======
-("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\hyperref.cfg"
->>>>>>> 2cb372c9d4d69a5629b6227748a240f341dee9d9
->>>>>>> 8c27430bf5ec56fe7193a2f9daa91b5cc2bc9d21
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
 )
 Package hyperref Info: Hyper figures OFF on input line 4062.
@@ -580,21 +301,9 @@ Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4300.
 \c@Hy@tempcnt=\count104
 
-<<<<<<< HEAD
 ("C:\Program Files\MiKTeX 2.9\tex\latex\ltxmisc\url.sty"
-=======
-<<<<<<< HEAD
-(C:/Users/dawud/AppData/Roaming/MiKTeX/2.9/tex/latex/url/url.sty
-=======
-<<<<<<< HEAD
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ltxmisc\url.sty"
-=======
-("C:\Program Files\MiKTeX 2.9\tex\latex\ltxmisc\url.sty"
->>>>>>> 2cb372c9d4d69a5629b6227748a240f341dee9d9
->>>>>>> 8c27430bf5ec56fe7193a2f9daa91b5cc2bc9d21
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
 \Urlmuskip=\muskip10
-Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 4653.
 \Fld@menulength=\count105
@@ -616,56 +325,19 @@ LaTeX Info: Redefining \pageref on input line 5847.
 
 Package hyperref Message: Driver (autodetected): hpdftex.
 
-<<<<<<< HEAD
 ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hpdftex.def"
 File: hpdftex.def 2012/05/13 v6.82q Hyperref driver for pdfTeX
 \Fld@listcount=\count109
 \c@bookmark@seq@number=\count110
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\rerunfilecheck.sty"
-=======
-<<<<<<< HEAD
-("C:/Program Files/MiKTeX 2.9/tex/latex/hyperref/hpdftex.def"
-=======
-<<<<<<< HEAD
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\hpdftex.def"
-=======
-("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\hpdftex.def"
->>>>>>> 2cb372c9d4d69a5629b6227748a240f341dee9d9
->>>>>>> 8c27430bf5ec56fe7193a2f9daa91b5cc2bc9d21
-File: hpdftex.def 2012/11/06 v6.83m Hyperref driver for pdfTeX
-\Fld@listcount=\count109
-\c@bookmark@seq@number=\count110
-
-<<<<<<< HEAD
-("C:/Program Files/MiKTeX 2.9/tex/latex/oberdiek/rerunfilecheck.sty"
-=======
-<<<<<<< HEAD
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\rerunfilecheck.sty"
-=======
-("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\rerunfilecheck.sty"
->>>>>>> 2cb372c9d4d69a5629b6227748a240f341dee9d9
->>>>>>> 8c27430bf5ec56fe7193a2f9daa91b5cc2bc9d21
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
 Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
-Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 28
-2.
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+82.
 )
 \Hy@SectionHShift=\skip74
 )
-<<<<<<< HEAD
 ("C:\Program Files\MiKTeX 2.9\tex\latex\fancyhdr\fancyhdr.sty"
-=======
-<<<<<<< HEAD
-(C:/Users/dawud/AppData/Roaming/MiKTeX/2.9/tex/latex/fancyhdr/fancyhdr.sty
-=======
-<<<<<<< HEAD
-(C:\Users\Twan\AppData\Roaming\MiKTeX\2.9\tex\latex\fancyhdr\fancyhdr.sty
-=======
-("C:\Program Files\MiKTeX 2.9\tex\latex\fancyhdr\fancyhdr.sty"
->>>>>>> 2cb372c9d4d69a5629b6227748a240f341dee9d9
->>>>>>> 8c27430bf5ec56fe7193a2f9daa91b5cc2bc9d21
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
 \fancy@headwidth=\skip75
 \f@ncyO@elh=\skip76
 \f@ncyO@erh=\skip77
@@ -676,43 +348,16 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 28
 \f@ncyO@olf=\skip82
 \f@ncyO@orf=\skip83
 )
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-("C:/Program Files/MiKTeX 2.9/tex/latex/graphics/graphicx.sty"
-=======
-<<<<<<< HEAD
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
-Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
-
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
-Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
-
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\trig.sty"
-Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
-)
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
-=======
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
 ("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
->>>>>>> 8c27430bf5ec56fe7193a2f9daa91b5cc2bc9d21
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
-("C:/Program Files/MiKTeX 2.9/tex/latex/graphics/graphics.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
 Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
-("C:/Program Files/MiKTeX 2.9/tex/latex/graphics/trig.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-<<<<<<< HEAD
-("C:/Program Files/MiKTeX 2.9/tex/latex/00miktex/graphics.cfg"
-=======
 ("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
-<<<<<<< HEAD
-=======
->>>>>>> 2cb372c9d4d69a5629b6227748a240f341dee9d9
->>>>>>> 8c27430bf5ec56fe7193a2f9daa91b5cc2bc9d21
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
 File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
 )
 Package graphics Info: Driver file: pdftex.def on input line 91.
@@ -720,102 +365,34 @@ Package graphics Info: Driver file: pdftex.def on input line 91.
 \Gin@req@height=\dimen118
 \Gin@req@width=\dimen119
 )
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-("C:/Program Files/MiKTeX 2.9/tex/latex/oberdiek/epstopdf.sty"
-=======
-<<<<<<< HEAD
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\epstopdf.sty"
-Package: epstopdf 2010/02/09 v2.5 Conversion with epstopdf on the fly (HO)
-
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-base.sty"
-Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
-
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\grfext.sty"
-=======
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
 ("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\epstopdf.sty"
->>>>>>> 8c27430bf5ec56fe7193a2f9daa91b5cc2bc9d21
 Package: epstopdf 2010/02/09 v2.5 Conversion with epstopdf on the fly (HO)
 
-("C:/Program Files/MiKTeX 2.9/tex/latex/oberdiek/epstopdf-base.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-base.sty"
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 
-<<<<<<< HEAD
-("C:/Program Files/MiKTeX 2.9/tex/latex/oberdiek/grfext.sty"
-=======
 ("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\grfext.sty"
-<<<<<<< HEAD
-=======
->>>>>>> 2cb372c9d4d69a5629b6227748a240f341dee9d9
->>>>>>> 8c27430bf5ec56fe7193a2f9daa91b5cc2bc9d21
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
 Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
 )
-
-Package epstopdf Warning: Shell escape feature is not enabled.
-
 Package grfext Info: Graphics extension search list:
-(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPEG
-,.JBIG2,.JB2,.eps]
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 452.
-<<<<<<< HEAD
-)) ("C:/Program Files/MiKTeX 2.9/tex/latex/float/float.sty"
-=======
 ))
 ("C:\Program Files\MiKTeX 2.9\tex\latex\float\float.sty"
-<<<<<<< HEAD
-=======
->>>>>>> 2cb372c9d4d69a5629b6227748a240f341dee9d9
->>>>>>> 8c27430bf5ec56fe7193a2f9daa91b5cc2bc9d21
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count111
-\float@exts=\toks18
+\float@exts=\toks17
 \float@box=\box28
-\@float@everytoks=\toks19
+\@float@everytoks=\toks18
 \@floatcapt=\box29
 )
-<<<<<<< HEAD
 ("C:\Program Files\MiKTeX 2.9\tex\latex\ams\math\amsmath.sty"
 Package: amsmath 2000/07/18 v2.13 AMS math features
 \@mathmargin=\skip84
 
 For additional information on amsmath, use the `?' option.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\ams\math\amstext.sty"
-=======
-<<<<<<< HEAD
-("C:/Program Files/MiKTeX 2.9/tex/latex/amsmath/amsmath.sty"
-=======
-<<<<<<< HEAD
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
-=======
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
->>>>>>> 2cb372c9d4d69a5629b6227748a240f341dee9d9
->>>>>>> 8c27430bf5ec56fe7193a2f9daa91b5cc2bc9d21
-Package: amsmath 2013/01/14 v2.14 AMS math features
-\@mathmargin=\skip84
-
-For additional information on amsmath, use the `?' option.
-<<<<<<< HEAD
-("C:/Program Files/MiKTeX 2.9/tex/latex/amsmath/amstext.sty"
-Package: amstext 2000/06/29 v2.01
-
-("C:/Program Files/MiKTeX 2.9/tex/latex/amsmath/amsgen.sty"
-File: amsgen.sty 1999/11/30 v2.0
-\@emptytoks=\toks20
-\ex@=\dimen121
-))
-("C:/Program Files/MiKTeX 2.9/tex/latex/amsmath/amsbsy.sty"
-Package: amsbsy 1999/11/29 v1.2d
-\pmbraise@=\dimen122
-)
-("C:/Program Files/MiKTeX 2.9/tex/latex/amsmath/amsopn.sty"
-=======
-<<<<<<< HEAD
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amstext.sty"
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
 Package: amstext 2000/06/29 v2.01
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\ams\math\amsgen.sty"
@@ -827,19 +404,7 @@ File: amsgen.sty 1999/11/30 v2.0
 Package: amsbsy 1999/11/29 v1.2d
 \pmbraise@=\dimen121
 )
-<<<<<<< HEAD
 ("C:\Program Files\MiKTeX 2.9\tex\latex\ams\math\amsopn.sty"
-=======
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty"
-=======
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty"
-Package: amsbsy 1999/11/29 v1.2d
-\pmbraise@=\dimen122
-)
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty"
->>>>>>> 2cb372c9d4d69a5629b6227748a240f341dee9d9
->>>>>>> 8c27430bf5ec56fe7193a2f9daa91b5cc2bc9d21
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
 Package: amsopn 1999/12/14 v2.01 operator names
 )
 \inf@bad=\count112
@@ -862,43 +427,17 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
 \dotsspace@=\muskip11
 \c@parentequation=\count119
 \dspbrk@lvl=\count120
-\tag@help=\toks21
+\tag@help=\toks20
 \row@=\count121
 \column@=\count122
 \maxfields@=\count123
-<<<<<<< HEAD
-\andhelp@=\toks22
-=======
 \andhelp@=\toks21
-<<<<<<< HEAD
 \eqnshift@=\dimen123
 \alignsep@=\dimen124
 \tagshift@=\dimen125
 \tagwidth@=\dimen126
 \totwidth@=\dimen127
 \lineht@=\dimen128
-=======
->>>>>>> 8c27430bf5ec56fe7193a2f9daa91b5cc2bc9d21
-\eqnshift@=\dimen124
-\alignsep@=\dimen125
-\tagshift@=\dimen126
-\tagwidth@=\dimen127
-\totwidth@=\dimen128
-\lineht@=\dimen129
-<<<<<<< HEAD
-\@envbody=\toks23
-\multlinegap=\skip85
-\multlinetaggap=\skip86
-\mathdisplay@stack=\toks24
-LaTeX Info: Redefining \[ on input line 2665.
-LaTeX Info: Redefining \] on input line 2666.
-)
-("C:/Program Files/MiKTeX 2.9/tex/latex/amsfonts/amssymb.sty"
-Package: amssymb 2013/01/14 v3.01 AMS font symbols
-
-("C:/Program Files/MiKTeX 2.9/tex/latex/amsfonts/amsfonts.sty"
-=======
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
 \@envbody=\toks22
 \multlinegap=\skip85
 \multlinetaggap=\skip86
@@ -910,95 +449,38 @@ LaTeX Info: Redefining \] on input line 2667.
 Package: amssymb 2009/06/22 v3.00
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
-<<<<<<< HEAD
 Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
-=======
->>>>>>> 2cb372c9d4d69a5629b6227748a240f341dee9d9
->>>>>>> 8c27430bf5ec56fe7193a2f9daa91b5cc2bc9d21
-Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
 ))
-<<<<<<< HEAD
 ("C:\Program Files\MiKTeX 2.9\tex\latex\ams\classes\amsthm.sty"
-=======
-<<<<<<< HEAD
-("C:/Program Files/MiKTeX 2.9/tex/latex/amscls/amsthm.sty"
-=======
-<<<<<<< HEAD
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amscls\amsthm.sty"
-=======
-("C:\Program Files\MiKTeX 2.9\tex\latex\amscls\amsthm.sty"
->>>>>>> 2cb372c9d4d69a5629b6227748a240f341dee9d9
->>>>>>> 8c27430bf5ec56fe7193a2f9daa91b5cc2bc9d21
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
 Package: amsthm 2004/08/06 v2.20
-\thm@style=\toks25
-\thm@bodyfont=\toks26
-\thm@headfont=\toks27
-\thm@notefont=\toks28
-\thm@headpunct=\toks29
+\thm@style=\toks24
+\thm@bodyfont=\toks25
+\thm@headfont=\toks26
+\thm@notefont=\toks27
+\thm@headpunct=\toks28
 \thm@preskip=\skip87
 \thm@postskip=\skip88
 \thm@headsep=\skip89
-\dth@everypar=\toks30
+\dth@everypar=\toks29
 )
-<<<<<<< HEAD
 ("C:\Program Files\MiKTeX 2.9\tex\latex\multirow\multirow.sty"
 \bigstrutjot=\dimen129
-=======
-<<<<<<< HEAD
-("C:/Program Files/MiKTeX 2.9/tex/latex/multirow/multirow.sty"
-=======
-<<<<<<< HEAD
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\multirow\multirow.sty"
-\bigstrutjot=\dimen130
 )
-(C:\Users\Twan\AppData\Roaming\MiKTeX\2.9\tex\latex\algorithms\algorithm.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\algorithms\algorithm.sty"
 Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
 nment
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ifthen.sty"
-=======
-("C:\Program Files\MiKTeX 2.9\tex\latex\multirow\multirow.sty"
->>>>>>> 8c27430bf5ec56fe7193a2f9daa91b5cc2bc9d21
-\bigstrutjot=\dimen130
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
-)
-(C:/Users/dawud/AppData/Roaming/MiKTeX/2.9/tex/latex/algorithms/algorithm.sty
-Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating environ
-ment
-
-<<<<<<< HEAD
-("C:/Program Files/MiKTeX 2.9/tex/latex/base/ifthen.sty"
-=======
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\ifthen.sty"
-<<<<<<< HEAD
-=======
->>>>>>> 2cb372c9d4d69a5629b6227748a240f341dee9d9
->>>>>>> 8c27430bf5ec56fe7193a2f9daa91b5cc2bc9d21
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
 Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
 )
-\@float@every@algorithm=\toks31
+\@float@every@algorithm=\toks30
 \c@algorithm=\count124
 )
-<<<<<<< HEAD
 ("C:\Program Files\MiKTeX 2.9\tex\latex\algorithms\algorithmic.sty"
-=======
-<<<<<<< HEAD
-(C:/Users/dawud/AppData/Roaming/MiKTeX/2.9/tex/latex/algorithms/algorithmic.sty
-=======
-<<<<<<< HEAD
-(C:\Users\Twan\AppData\Roaming\MiKTeX\2.9\tex\latex\algorithms\algorithmic.sty
-=======
-("C:\Program Files\MiKTeX 2.9\tex\latex\algorithms\algorithmic.sty"
->>>>>>> 2cb372c9d4d69a5629b6227748a240f341dee9d9
->>>>>>> 8c27430bf5ec56fe7193a2f9daa91b5cc2bc9d21
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
 Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
 \c@ALC@unique=\count125
 \c@ALC@line=\count126
@@ -1006,79 +488,27 @@ Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
 \c@ALC@depth=\count128
 \ALC@tlm=\skip90
 \algorithmicindent=\skip91
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-) (C:/Users/dawud/AppData/Roaming/MiKTeX/2.9/tex/latex/was/gensymb.sty
-Package: gensymb 2003/07/02 v1.0 (WaS)
-)
-(C:/Users/dawud/AppData/Roaming/MiKTeX/2.9/tex/latex/natbib/natbib.sty
-=======
-<<<<<<< HEAD
-) (C:\Users\Twan\AppData\Roaming\MiKTeX\2.9\tex\latex\was\gensymb.sty
-Package: gensymb 2003/07/02 v1.0 (WaS)
-)
-(C:\Users\Twan\AppData\Roaming\MiKTeX\2.9\tex\latex\natbib\natbib.sty
-=======
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\was\gensymb.sty"
 Package: gensymb 2003/07/02 v1.0 (WaS)
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\natbib\natbib.sty"
-<<<<<<< HEAD
-=======
->>>>>>> 2cb372c9d4d69a5629b6227748a240f341dee9d9
->>>>>>> 8c27430bf5ec56fe7193a2f9daa91b5cc2bc9d21
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
 Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibhang=\skip92
 \bibsep=\skip93
 LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count129
 )
-<<<<<<< HEAD
 ("C:\Program Files\MiKTeX 2.9\tex\latex\appendix\appendix.sty"
-=======
-<<<<<<< HEAD
-(C:/Users/dawud/AppData/Roaming/MiKTeX/2.9/tex/latex/appendix/appendix.sty
-=======
-<<<<<<< HEAD
-(C:\Users\Twan\AppData\Roaming\MiKTeX\2.9\tex\latex\appendix\appendix.sty
-=======
-("C:\Program Files\MiKTeX 2.9\tex\latex\appendix\appendix.sty"
->>>>>>> 2cb372c9d4d69a5629b6227748a240f341dee9d9
->>>>>>> 8c27430bf5ec56fe7193a2f9daa91b5cc2bc9d21
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
 Package: appendix 2009/09/02 v1.2b extra appendix facilities
 \c@@pps=\count130
 \c@@ppsavesec=\count131
 \c@@ppsaveapp=\count132
 )
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-(C:/Users/dawud/AppData/Roaming/MiKTeX/2.9/tex/latex/pdfpages/pdfpages.sty
-Package: pdfpages 2013/08/25 v0.4v Insert pages of external PDF documents (AM)
-
-("C:/Program Files/MiKTeX 2.9/tex/latex/tools/calc.sty"
-=======
-<<<<<<< HEAD
-(C:\Users\Twan\AppData\Roaming\MiKTeX\2.9\tex\latex\pdfpages\pdfpages.sty
-Package: pdfpages 2013/08/25 v0.4v Insert pages of external PDF documents (AM)
-
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\calc.sty"
-=======
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
 ("C:\Program Files\MiKTeX 2.9\tex\latex\pdfpages\pdfpages.sty"
 Package: pdfpages 2012/04/03 v0.4s Insert pages of external PDF documents (AM)
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\tools\calc.sty"
-<<<<<<< HEAD
-=======
->>>>>>> 2cb372c9d4d69a5629b6227748a240f341dee9d9
->>>>>>> 8c27430bf5ec56fe7193a2f9daa91b5cc2bc9d21
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
 Package: calc 2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
 \calc@Acount=\count133
 \calc@Bcount=\count134
@@ -1091,132 +521,40 @@ LaTeX Info: Redefining \addtolength on input line 77.
 \calc@Ccount=\count135
 \calc@Cskip=\skip96
 )
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-(C:/Users/dawud/AppData/Roaming/MiKTeX/2.9/tex/latex/eso-pic/eso-pic.sty
-Package: eso-pic 2013/10/06 v2.0d eso-pic (RN)
-)
-(C:/Users/dawud/AppData/Roaming/MiKTeX/2.9/tex/latex/pdfpages/pppdftex.def
-=======
-<<<<<<< HEAD
-(C:\Users\Twan\AppData\Roaming\MiKTeX\2.9\tex\latex\eso-pic\eso-pic.sty
-Package: eso-pic 2010/10/06 v2.0c eso-pic (RN)
-)
-(C:\Users\Twan\AppData\Roaming\MiKTeX\2.9\tex\latex\pdfpages\pppdftex.def
-=======
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
 ("C:\Program Files\MiKTeX 2.9\tex\latex\eso-pic\eso-pic.sty"
 Package: eso-pic 2010/10/06 v2.0c eso-pic (RN)
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\pdfpages\pppdftex.def"
-<<<<<<< HEAD
 File: pppdftex.def 2012/04/03 v0.4s Pdfpages driver for pdfTeX (AM)
-=======
->>>>>>> 2cb372c9d4d69a5629b6227748a240f341dee9d9
->>>>>>> 8c27430bf5ec56fe7193a2f9daa91b5cc2bc9d21
-File: pppdftex.def 2013/08/25 v0.4v Pdfpages driver for pdfTeX (AM)
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
 )
 \AM@pagebox=\box32
-\AM@toc@title=\toks32
+\AM@toc@title=\toks31
 \c@AM@survey=\count136
 \AM@templatesizebox=\box33
 )
-<<<<<<< HEAD
 ("C:\Program Files\MiKTeX 2.9\tex\latex\tools\afterpage.sty"
-=======
-<<<<<<< HEAD
-("C:/Program Files/MiKTeX 2.9/tex/latex/tools/afterpage.sty"
-=======
-<<<<<<< HEAD
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\afterpage.sty"
-=======
-("C:\Program Files\MiKTeX 2.9\tex\latex\tools\afterpage.sty"
->>>>>>> 2cb372c9d4d69a5629b6227748a240f341dee9d9
->>>>>>> 8c27430bf5ec56fe7193a2f9daa91b5cc2bc9d21
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
 Package: afterpage 1995/10/27 v1.08 After-Page Package (DPC)
-\AP@output=\toks33
+\AP@output=\toks32
 \AP@partial=\box34
 \AP@footins=\box35
 )
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-(C:/Users/dawud/AppData/Roaming/MiKTeX/2.9/tex/latex/mdwtools/mdwlist.sty
-Package: mdwlist 1996/05/02 1.1 Various list-related things
-)
-("C:/Program Files/MiKTeX 2.9/tex/latex/base/fixltx2e.sty"
-=======
-<<<<<<< HEAD
-(C:\Users\Twan\AppData\Roaming\MiKTeX\2.9\tex\latex\mdwtools\mdwlist.sty
-Package: mdwlist 1996/05/02 1.1 Various list-related things
-)
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\fixltx2e.sty"
-=======
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
 ("C:\Program Files\MiKTeX 2.9\tex\latex\mdwtools\mdwlist.sty"
 Package: mdwlist 1996/05/02 1.1 Various list-related things
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\fixltx2e.sty"
-<<<<<<< HEAD
-=======
->>>>>>> 2cb372c9d4d69a5629b6227748a240f341dee9d9
->>>>>>> 8c27430bf5ec56fe7193a2f9daa91b5cc2bc9d21
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
 Package: fixltx2e 2006/09/13 v1.1m fixes to LaTeX
 LaTeX Info: Redefining \em on input line 420.
 LaTeX Info: The control sequence `\[' is already robust on input line 471.
 LaTeX Info: The control sequence `\]' is already robust on input line 472.
 )
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-(C:/Users/dawud/AppData/Roaming/MiKTeX/2.9/tex/latex/xcolor/xcolor.sty
-Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
-
-("C:/Program Files/MiKTeX 2.9/tex/latex/00miktex/color.cfg"
-=======
-<<<<<<< HEAD
-(C:\Users\Twan\AppData\Roaming\MiKTeX\2.9\tex\latex\xcolor\xcolor.sty
-Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
-
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\color.cfg"
-=======
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
 ("C:\Program Files\MiKTeX 2.9\tex\latex\xcolor\xcolor.sty"
 Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\color.cfg"
-<<<<<<< HEAD
-=======
->>>>>>> 2cb372c9d4d69a5629b6227748a240f341dee9d9
->>>>>>> 8c27430bf5ec56fe7193a2f9daa91b5cc2bc9d21
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
 File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package xcolor Info: Driver file: pdftex.def on input line 225.
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-(C:/Users/dawud/AppData/Roaming/MiKTeX/2.9/tex/latex/colortbl/colortbl.sty
-Package: colortbl 2012/02/13 v1.0a Color table columns (DPC)
-
-("C:/Program Files/MiKTeX 2.9/tex/latex/tools/array.sty"
-Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
-\col@sep=\dimen133
-\extrarowheight=\dimen134
-\NC@list=\toks34
-=======
-<<<<<<< HEAD
-(C:\Users\Twan\AppData\Roaming\MiKTeX\2.9\tex\latex\colortbl\colortbl.sty
-Package: colortbl 2012/02/13 v1.0a Color table columns (DPC)
-
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\array.sty"
-=======
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
 ("C:\Program Files\MiKTeX 2.9\tex\latex\colortbl\colortbl.sty"
 Package: colortbl 2001/02/13 v0.1j Color table columns (DPC)
 
@@ -1225,11 +563,10 @@ Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
 \col@sep=\dimen132
 \extrarowheight=\dimen133
 \NC@list=\toks33
->>>>>>> 8c27430bf5ec56fe7193a2f9daa91b5cc2bc9d21
 \extratabsurround=\skip97
 \backup@length=\skip98
 )
-\everycr=\toks35
+\everycr=\toks34
 \minrowclearance=\skip99
 )
 LaTeX Info: Redefining \color on input line 702.
@@ -1244,101 +581,6 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
 )
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-(C:/Users/dawud/AppData/Roaming/MiKTeX/2.9/tex/latex/l3kernel/expl3.sty
-(C:/Users/dawud/AppData/Roaming/MiKTeX/2.9/tex/latex/l3kernel/l3names.sty
-(C:/Users/dawud/AppData/Roaming/MiKTeX/2.9/tex/latex/l3kernel/l3bootstrap.sty
-Package: l3bootstrap 2014/01/04 v4640 L3 Experimental bootstrap code
-
-("C:/Program Files/MiKTeX 2.9/tex/generic/oberdiek/luatex.sty"
-Package: luatex 2010/03/09 v0.4 LuaTeX basic definition package (HO)
-
-("C:/Program Files/MiKTeX 2.9/tex/latex/misc/etex.sty"
-Package: etex 1998/03/26 v2.0 eTeX basic definition package (PEB)
-\et@xins=\count138
-)
-\LuT@AllocAttribute=\count277
-\LuT@AllocCatcodeTable=\count278
-\CatcodeTableStack=\count279
-\CatcodeTableIniTeX=\catcodetable1
-\CatcodeTableString=\catcodetable3
-\CatcodeTableOther=\catcodetable5
-\CatcodeTableLaTeX=\catcodetable7
-))
-Package: l3names 2014/01/04 v4640 L3 Namespace for primitives
-)
-Package: expl3 2014/01/07 v4646 L3 Experimental code bundle wrapper
-
-(C:/Users/dawud/AppData/Roaming/MiKTeX/2.9/tex/latex/l3kernel/l3basics.sty
-Package: l3basics 2014/01/04 v4642 L3 Basic definitions
-)
-(C:/Users/dawud/AppData/Roaming/MiKTeX/2.9/tex/latex/l3kernel/l3expan.sty
-Package: l3expan 2014/01/04 v4642 L3 Argument expansion
-)
-(C:/Users/dawud/AppData/Roaming/MiKTeX/2.9/tex/latex/l3kernel/l3tl.sty
-Package: l3tl 2013/12/27 v4625 L3 Token lists
-)
-(C:/Users/dawud/AppData/Roaming/MiKTeX/2.9/tex/latex/l3kernel/l3seq.sty
-Package: l3seq 2013/12/14 v4623 L3 Sequences and stacks
-)
-(C:/Users/dawud/AppData/Roaming/MiKTeX/2.9/tex/latex/l3kernel/l3int.sty
-Package: l3int 2013/08/02 v4583 L3 Integers
-\c_max_int=\count280
-\l_tmpa_int=\count281
-\l_tmpb_int=\count282
-\g_tmpa_int=\count283
-\g_tmpb_int=\count284
-)
-(C:/Users/dawud/AppData/Roaming/MiKTeX/2.9/tex/latex/l3kernel/l3quark.sty
-Package: l3quark 2013/12/14 v4623 L3 Quarks
-)
-(C:/Users/dawud/AppData/Roaming/MiKTeX/2.9/tex/latex/l3kernel/l3prg.sty
-Package: l3prg 2014/01/04 v4642 L3 Control structures
-\g__prg_map_int=\count285
-)
-(C:/Users/dawud/AppData/Roaming/MiKTeX/2.9/tex/latex/l3kernel/l3clist.sty
-Package: l3clist 2013/07/28 v4581 L3 Comma separated lists
-)
-(C:/Users/dawud/AppData/Roaming/MiKTeX/2.9/tex/latex/l3kernel/l3token.sty
-Package: l3token 2013/08/25 v4587 L3 Experimental token manipulation
-)
-(C:/Users/dawud/AppData/Roaming/MiKTeX/2.9/tex/latex/l3kernel/l3prop.sty
-Package: l3prop 2013/12/14 v4623 L3 Property lists
-)
-(C:/Users/dawud/AppData/Roaming/MiKTeX/2.9/tex/latex/l3kernel/l3msg.sty
-Package: l3msg 2013/07/28 v4581 L3 Messages
-)
-(C:/Users/dawud/AppData/Roaming/MiKTeX/2.9/tex/latex/l3kernel/l3file.sty
-Package: l3file 2013/10/13 v4596 L3 File and I/O operations
-\l_iow_line_count_int=\count286
-\l__iow_target_count_int=\count287
-\l__iow_current_line_int=\count288
-\l__iow_current_word_int=\count289
-\l__iow_current_indentation_int=\count290
-)
-(C:/Users/dawud/AppData/Roaming/MiKTeX/2.9/tex/latex/l3kernel/l3skip.sty
-Package: l3skip 2013/07/28 v4581 L3 Dimensions and skips
-\c_zero_dim=\dimen256
-\c_max_dim=\dimen257
-\l_tmpa_dim=\dimen258
-\l_tmpb_dim=\dimen259
-\g_tmpa_dim=\dimen260
-\g_tmpb_dim=\dimen261
-\c_zero_skip=\skip256
-\c_max_skip=\skip257
-\l_tmpa_skip=\skip258
-\l_tmpb_skip=\skip259
-\g_tmpa_skip=\skip260
-\g_tmpb_skip=\skip261
-=======
-<<<<<<< HEAD
-(C:\Users\Twan\AppData\Roaming\MiKTeX\2.9\tex\latex\l3kernel\expl3.sty
-(C:\Users\Twan\AppData\Roaming\MiKTeX\2.9\tex\latex\l3kernel\l3names.sty
-(C:\Users\Twan\AppData\Roaming\MiKTeX\2.9\tex\latex\l3kernel\l3bootstrap.sty
-=======
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
 ("C:\Program Files\MiKTeX 2.9\tex\latex\l3kernel\expl3.sty"
 ("C:\Program Files\MiKTeX 2.9\tex\latex\l3kernel\l3names.sty"
 ("C:\Program Files\MiKTeX 2.9\tex\latex\l3kernel\l3bootstrap.sty"
@@ -1402,7 +644,6 @@ Package: l3file 2012/03/09 v3520 L3 Experimental file and I/O operations
 \l_iow_current_indentation_int=\count151
 )
 ("C:\Program Files\MiKTeX 2.9\tex\latex\l3kernel\l3skip.sty"
-<<<<<<< HEAD
 Package: l3skip 2012/03/05 v3499 L3 Experimental dimensions and skips
 \l_tmpa_dim=\dimen134
 \l_tmpb_dim=\dimen135
@@ -1415,128 +656,6 @@ Package: l3skip 2012/03/05 v3499 L3 Experimental dimensions and skips
 \g_tmpa_skip=\skip103
 \g_tmpb_skip=\skip104
 )
-=======
->>>>>>> 2cb372c9d4d69a5629b6227748a240f341dee9d9
-Package: l3skip 2013/07/28 v4581 L3 Dimensions and skips
-\c_zero_dim=\dimen135
-\c_max_dim=\dimen136
-\l_tmpa_dim=\dimen137
-\l_tmpb_dim=\dimen138
-\g_tmpa_dim=\dimen139
-\g_tmpb_dim=\dimen140
-\c_zero_skip=\skip100
-\c_max_skip=\skip101
-\l_tmpa_skip=\skip102
-\l_tmpb_skip=\skip103
-\g_tmpa_skip=\skip104
-\g_tmpb_skip=\skip105
->>>>>>> 8c27430bf5ec56fe7193a2f9daa91b5cc2bc9d21
-\c_zero_muskip=\muskip12
-\c_max_muskip=\muskip13
-\l_tmpa_muskip=\muskip14
-\l_tmpb_muskip=\muskip15
-\g_tmpa_muskip=\muskip16
-\g_tmpb_muskip=\muskip17
-)
-<<<<<<< HEAD
-(C:/Users/dawud/AppData/Roaming/MiKTeX/2.9/tex/latex/l3kernel/l3keys.sty
-Package: l3keys 2013/12/08 v4614 L3 Experimental key-value interfaces
-\g__keyval_level_int=\count291
-\l_keys_choice_int=\count292
-)
-(C:/Users/dawud/AppData/Roaming/MiKTeX/2.9/tex/latex/l3kernel/l3fp.sty
-Package: l3fp 2014/01/04 v4642 L3 Floating points
-\c__fp_leading_shift_int=\count293
-\c__fp_middle_shift_int=\count294
-\c__fp_trailing_shift_int=\count295
-\c__fp_big_leading_shift_int=\count296
-\c__fp_big_middle_shift_int=\count297
-\c__fp_big_trailing_shift_int=\count298
-\c__fp_Bigg_leading_shift_int=\count299
-\c__fp_Bigg_middle_shift_int=\count300
-\c__fp_Bigg_trailing_shift_int=\count301
-)
-(C:/Users/dawud/AppData/Roaming/MiKTeX/2.9/tex/latex/l3kernel/l3box.sty
-Package: l3box 2013/07/28 v4581 L3 Experimental boxes
-\c_empty_box=\box256
-\l_tmpa_box=\box257
-\l_tmpb_box=\box258
-\g_tmpa_box=\box259
-\g_tmpb_box=\box260
-)
-(C:/Users/dawud/AppData/Roaming/MiKTeX/2.9/tex/latex/l3kernel/l3coffins.sty
-Package: l3coffins 2013/12/14 v4624 L3 Coffin code layer
-\l__coffin_internal_box=\box261
-\l__coffin_internal_dim=\dimen262
-\l__coffin_offset_x_dim=\dimen263
-\l__coffin_offset_y_dim=\dimen264
-\l__coffin_x_dim=\dimen265
-\l__coffin_y_dim=\dimen266
-\l__coffin_x_prime_dim=\dimen267
-\l__coffin_y_prime_dim=\dimen268
-\c_empty_coffin=\box262
-\l__coffin_aligned_coffin=\box263
-\l__coffin_aligned_internal_coffin=\box264
-\l_tmpa_coffin=\box265
-\l_tmpb_coffin=\box266
-\l__coffin_display_coffin=\box267
-\l__coffin_display_coord_coffin=\box268
-\l__coffin_display_pole_coffin=\box269
-\l__coffin_display_offset_dim=\dimen269
-\l__coffin_display_x_dim=\dimen270
-\l__coffin_display_y_dim=\dimen271
-)
-(C:/Users/dawud/AppData/Roaming/MiKTeX/2.9/tex/latex/l3kernel/l3color.sty
-Package: l3color 2012/08/29 v4156 L3 Experimental color support
-)
-(C:/Users/dawud/AppData/Roaming/MiKTeX/2.9/tex/latex/l3kernel/l3luatex.sty
-Package: l3luatex 2013/07/28 v4581 L3 Experimental LuaTeX-specific functions
-\g__cctab_allocate_int=\count302
-\g__cctab_stack_int=\count303
-\c_code_cctab=\catcodetable9
-)
-(C:/Users/dawud/AppData/Roaming/MiKTeX/2.9/tex/latex/l3kernel/l3candidates.sty
-Package: l3candidates 2014/01/06 v4643 L3 Experimental additions to l3kernel
-\l__box_top_dim=\dimen272
-\l__box_bottom_dim=\dimen273
-\l__box_left_dim=\dimen274
-\l__box_right_dim=\dimen275
-\l__box_top_new_dim=\dimen276
-\l__box_bottom_new_dim=\dimen277
-\l__box_left_new_dim=\dimen278
-\l__box_right_new_dim=\dimen279
-\l__box_internal_box=\box270
-\l__coffin_bounding_shift_dim=\dimen280
-\l__coffin_left_corner_dim=\dimen281
-\l__coffin_right_corner_dim=\dimen282
-\l__coffin_bottom_corner_dim=\dimen283
-\l__coffin_top_corner_dim=\dimen284
-\l__coffin_scaled_total_height_dim=\dimen285
-\l__coffin_scaled_width_dim=\dimen286
-))
-("C:/Users/dawud/Dropbox/Aerospace/Third year/DSE/git/01_PL_PROJECT_PLAN/Report
-.aux"
-("C:/Users/dawud/Dropbox/Aerospace/Third year/DSE/git/01_PL_PROJECT_PLAN/Titlep
-age/Titlepage.aux")
-("C:/Users/dawud/Dropbox/Aerospace/Third year/DSE/git/01_PL_PROJECT_PLAN/Summar
-y.aux")
-("C:/Users/dawud/Dropbox/Aerospace/Third year/DSE/git/01_PL_PROJECT_PLAN/Chapte
-r/OBS.aux")
-("C:/Users/dawud/Dropbox/Aerospace/Third year/DSE/git/01_PL_PROJECT_PLAN/Chapte
-r/WBS.aux")
-("C:/Users/dawud/Dropbox/Aerospace/Third year/DSE/git/01_PL_PROJECT_PLAN/Chapte
-r/Project_planning.aux")
-("C:/Users/dawud/Dropbox/Aerospace/Third year/DSE/git/01_PL_PROJECT_PLAN/Chapte
-r/Project_logic_diagram.aux")
-("C:/Users/dawud/Dropbox/Aerospace/Third year/DSE/git/01_PL_PROJECT_PLAN/Chapte
-r/Conclusion.aux")
-("C:/Users/dawud/Dropbox/Aerospace/Third year/DSE/git/01_PL_PROJECT_PLAN/Append
-ix.aux"))
-=======
-<<<<<<< HEAD
-(C:\Users\Twan\AppData\Roaming\MiKTeX\2.9\tex\latex\l3kernel\l3keys.sty
-=======
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
 ("C:\Program Files\MiKTeX 2.9\tex\latex\l3kernel\l3keys.sty"
 Package: l3keys 2012/03/03 v3487 L3 Experimental key-value interfaces
 \g_keyval_level_int=\count152
@@ -1652,35 +771,23 @@ Package: l3luatex 2012/02/09 v3355 L3 Experimental LuaTeX-specific functions
 \g_cctab_allocate_int=\count281
 \g_cctab_stack_int=\count282
 ))
-<<<<<<< HEAD
-("C:\Users\Lucas\Dropbox\DSE personal\gitHub\01_PL_PROJECT_PLAN\Report.aux")
-=======
-<<<<<<< HEAD
-No file Report.aux.
-=======
-("C:\Users\Suthes\University\Courses Year 3\AE3200 - Design Synthesis Exercise\
-GitHub\01_PL_PROJECT_PLAN\Report.aux"
-("C:\Users\Suthes\University\Courses Year 3\AE3200 - Design Synthesis Exercise\
-GitHub\01_PL_PROJECT_PLAN\Titlepage\Titlepage.aux")
-("C:\Users\Suthes\University\Courses Year 3\AE3200 - Design Synthesis Exercise\
-GitHub\01_PL_PROJECT_PLAN\Summary.aux")
-("C:\Users\Suthes\University\Courses Year 3\AE3200 - Design Synthesis Exercise\
-GitHub\01_PL_PROJECT_PLAN\Chapter\OBS.aux")
-("C:\Users\Suthes\University\Courses Year 3\AE3200 - Design Synthesis Exercise\
-GitHub\01_PL_PROJECT_PLAN\Chapter\WBS.aux")
-("C:\Users\Suthes\University\Courses Year 3\AE3200 - Design Synthesis Exercise\
-GitHub\01_PL_PROJECT_PLAN\Chapter\Project_planning.aux")
-("C:\Users\Suthes\University\Courses Year 3\AE3200 - Design Synthesis Exercise\
-GitHub\01_PL_PROJECT_PLAN\Chapter\Project_logic_diagram.aux")
-("C:\Users\Suthes\University\Courses Year 3\AE3200 - Design Synthesis Exercise\
-GitHub\01_PL_PROJECT_PLAN\Chapter\Sustain.aux")
-("C:\Users\Suthes\University\Courses Year 3\AE3200 - Design Synthesis Exercise\
-GitHub\01_PL_PROJECT_PLAN\Chapter\Conclusion.aux")
-("C:\Users\Suthes\University\Courses Year 3\AE3200 - Design Synthesis Exercise\
-GitHub\01_PL_PROJECT_PLAN\Appendix.aux"))
->>>>>>> 2cb372c9d4d69a5629b6227748a240f341dee9d9
->>>>>>> 8c27430bf5ec56fe7193a2f9daa91b5cc2bc9d21
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
+("C:\Users\Lucas\Dropbox\DSE personal\gitHub\01_PL_PROJECT_PLAN\Report.aux"
+("C:\Users\Lucas\Dropbox\DSE personal\gitHub\01_PL_PROJECT_PLAN\Titlepage\Title
+page.aux")
+("C:\Users\Lucas\Dropbox\DSE personal\gitHub\01_PL_PROJECT_PLAN\Summary.aux")
+("C:\Users\Lucas\Dropbox\DSE personal\gitHub\01_PL_PROJECT_PLAN\Chapter\OBS.aux
+")
+("C:\Users\Lucas\Dropbox\DSE personal\gitHub\01_PL_PROJECT_PLAN\Chapter\WBS.aux
+")
+("C:\Users\Lucas\Dropbox\DSE personal\gitHub\01_PL_PROJECT_PLAN\Chapter\Project
+_planning.aux")
+("C:\Users\Lucas\Dropbox\DSE personal\gitHub\01_PL_PROJECT_PLAN\Chapter\Project
+_logic_diagram.aux")
+("C:\Users\Lucas\Dropbox\DSE personal\gitHub\01_PL_PROJECT_PLAN\Chapter\Sustain
+.aux")
+("C:\Users\Lucas\Dropbox\DSE personal\gitHub\01_PL_PROJECT_PLAN\Chapter\Conclus
+ion.aux")
+("C:\Users\Lucas\Dropbox\DSE personal\gitHub\01_PL_PROJECT_PLAN\Appendix.aux"))
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 38.
 LaTeX Font Info:    ... okay on input line 38.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 38.
@@ -1695,21 +802,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 38.
 LaTeX Font Info:    ... okay on input line 38.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 38.
 LaTeX Font Info:    Try loading font information for TS1+cmr on input line 38.
-<<<<<<< HEAD
-
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
-=======
-<<<<<<< HEAD
- ("C:/Program Files/MiKTeX 2.9/tex/latex/base/ts1cmr.fd"
-=======
-<<<<<<< HEAD
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
-=======
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
->>>>>>> 2cb372c9d4d69a5629b6227748a240f341dee9d9
->>>>>>> 8c27430bf5ec56fe7193a2f9daa91b5cc2bc9d21
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 38.
@@ -1750,32 +843,6 @@ LaTeX Font Info:    ... okay on input line 38.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-(C:/Users/dawud/AppData/Roaming/MiKTeX/2.9/tex/context/base/supp-pdf.mkii
-[Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count304
-\scratchdimen=\dimen287
-\scratchbox=\box271
-\nofMPsegments=\count305
-\nofMParguments=\count306
-\everyMPshowfont=\toks36
-\MPscratchCnt=\count307
-\MPscratchDim=\dimen288
-\MPnumerator=\count308
-\makeMPintoPDFobject=\count309
-\everyMPtoPDFconversion=\toks37
-)
-\c@lstlisting=\count310
-\AtBeginShipoutBox=\box272
-Package hyperref Info: Link coloring OFF on input line 38.
- ("C:/Program Files/MiKTeX 2.9/tex/latex/hyperref/nameref.sty"
-=======
-<<<<<<< HEAD
-(C:\Users\Twan\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
-=======
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
 ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count283
@@ -1794,46 +861,19 @@ Package hyperref Info: Link coloring OFF on input line 38.
 \AtBeginShipoutBox=\box46
 Package hyperref Info: Link coloring OFF on input line 38.
  ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
-<<<<<<< HEAD
 Package: nameref 2010/04/30 v2.40 Cross-referencing by name of section
-=======
->>>>>>> 8c27430bf5ec56fe7193a2f9daa91b5cc2bc9d21
-Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
 
-("C:/Program Files/MiKTeX 2.9/tex/generic/oberdiek/gettitlestring.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-<<<<<<< HEAD
 \c@section@level=\count290
-=======
-<<<<<<< HEAD
-\c@section@level=\count311
-=======
-\c@section@level=\count170
->>>>>>> 8c27430bf5ec56fe7193a2f9daa91b5cc2bc9d21
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
 )
 LaTeX Info: Redefining \ref on input line 38.
 LaTeX Info: Redefining \pageref on input line 38.
 LaTeX Info: Redefining \nameref on input line 38.
 
-<<<<<<< HEAD
 ("C:\Users\Lucas\Dropbox\DSE personal\gitHub\01_PL_PROJECT_PLAN\Report.out")
 ("C:\Users\Lucas\Dropbox\DSE personal\gitHub\01_PL_PROJECT_PLAN\Report.out")
-=======
-<<<<<<< HEAD
-("C:/Users/dawud/Dropbox/Aerospace/Third year/DSE/git/01_PL_PROJECT_PLAN/Report
-.out")
-("C:/Users/dawud/Dropbox/Aerospace/Third year/DSE/git/01_PL_PROJECT_PLAN/Report
-.out")
-=======
-("C:\Users\Suthes\University\Courses Year 3\AE3200 - Design Synthesis Exercise\
-GitHub\01_PL_PROJECT_PLAN\Report.out")
-("C:\Users\Suthes\University\Courses Year 3\AE3200 - Design Synthesis Exercise\
-GitHub\01_PL_PROJECT_PLAN\Report.out")
->>>>>>> 8c27430bf5ec56fe7193a2f9daa91b5cc2bc9d21
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
 \@outlinefile=\write3
 \symgns@font=\mathgroup6
 LaTeX Font Info:    Overwriting symbol font `gns@font' in version `bold'
@@ -1841,232 +881,71 @@ LaTeX Font Info:    Overwriting symbol font `gns@font' in version `bold'
 Package gensymb Info: Math companion symbols declared on input line 38.
 LaTeX Info: Redefining \degree on input line 38.
 LaTeX Info: Redefining \celsius on input line 38.
-Package gensymb Info: Using text companion symbols for \degree, \celsius and \pe
-rthousand on input line 38.
+Package gensymb Info: Using text companion symbols for \degree, \celsius and \p
+erthousand on input line 38.
 LaTeX Info: Redefining \ohm on input line 38.
 Package gensymb Info: Using \textohm for \ohm on input line 38.
 Package gensymb Info: Using \textmu for \micro on input line 38.
 
-<<<<<<< HEAD
-[1
-
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
 ("C:\Users\Lucas\Dropbox\DSE personal\gitHub\01_PL_PROJECT_PLAN\Titlepage\Title
-page.tex" <./Titlepage/coverpicture.jpg, id=61, 843.15pt x 474.3321pt>
-=======
-<<<<<<< HEAD
-("C:/Users/dawud/Dropbox/Aerospace/Third year/DSE/git/01_PL_PROJECT_PLAN/Titlep
-age/Titlepage.tex"
-<./Titlepage/coverpicture.jpg, id=51, 843.15pt x 474.3321pt>
-=======
-("C:\Users\Suthes\University\Courses Year 3\AE3200 - Design Synthesis Exercise\
-GitHub\01_PL_PROJECT_PLAN\Titlepage\Titlepage.tex"
-<./Titlepage/coverpicture.jpg, id=55, 843.15pt x 474.3321pt>
->>>>>>> 8c27430bf5ec56fe7193a2f9daa91b5cc2bc9d21
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
+page.tex" <./Titlepage/coverpicture.jpg, id=63, 843.15pt x 474.3321pt>
 File: ./Titlepage/coverpicture.jpg Graphic file (type jpg)
 
 <use ./Titlepage/coverpicture.jpg>
 Package pdftex.def Info: ./Titlepage/coverpicture.jpg used on input line 15.
 (pdftex.def)             Requested size: 337.25401pt x 189.72948pt.
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.37 \end{titlepage}
-                     [1
+ [1
 
-<<<<<<< HEAD
- <C:/Users/Lucas/Dropbox/DSE personal/gitHub/01_PL_PROJECT_PLAN/Titlepage/cover
-picture.jpg>])
+
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Users/Lucas/Dropbox/DS
+E personal/gitHub/01_PL_PROJECT_PLAN/Titlepage/coverpicture.jpg>])
 ("C:\Users\Lucas\Dropbox\DSE personal\gitHub\01_PL_PROJECT_PLAN\Summary.tex")
 [1
-=======
-<<<<<<< HEAD
-{C:/Users/dawud/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Users/daw
-ud/Dropbox/Aerospace/Third year/DSE/git/01_PL_PROJECT_PLAN/Titlepage/coverpictur
-e.jpg>])
-("C:/Users/dawud/Dropbox/Aerospace/Third year/DSE/git/01_PL_PROJECT_PLAN/Summar
-y.tex") [1
 
 
-]
-("C:/Users/dawud/Dropbox/Aerospace/Third year/DSE/git/01_PL_PROJECT_PLAN/Report
-.toc"
+] ("C:\Users\Lucas\Dropbox\DSE personal\gitHub\01_PL_PROJECT_PLAN\Report.toc"
 LaTeX Font Info:    Try loading font information for U+msa on input line 1.
- ("C:/Program Files/MiKTeX 2.9/tex/latex/amsfonts/umsa.fd"
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
+File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 1.
 
-("C:/Program Files/MiKTeX 2.9/tex/latex/amsfonts/umsb.fd"
-=======
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Users/Suthes/Universit
-y/Courses Year 3/AE3200 - Design Synthesis Exercise/GitHub/01_PL_PROJECT_PLAN/T
-itlepage/coverpicture.jpg>])
-("C:\Users\Suthes\University\Courses Year 3\AE3200 - Design Synthesis Exercise\
-GitHub\01_PL_PROJECT_PLAN\Summary.tex") [1
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
-
-
-]
-
-Package hyperref Warning: old toc file detected, not used; run LaTeX again.
-
-<<<<<<< HEAD
-=======
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
->>>>>>> 8c27430bf5ec56fe7193a2f9daa91b5cc2bc9d21
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 ))
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
 \tf@toc=\write4
-[2
+ [2
 
 ]
-<<<<<<< HEAD
 ("C:\Users\Lucas\Dropbox\DSE personal\gitHub\01_PL_PROJECT_PLAN\Chapter\OBS.tex
-"
+" <./Figure/OBS.pdf, id=97, 342.07799pt x 313.17pt>
+File: ./Figure/OBS.pdf Graphic file (type pdf)
+ <use ./Figure/OBS.pdf>
+Package pdftex.def Info: ./Figure/OBS.pdf used on input line 4.
+(pdftex.def)             Requested size: 342.07713pt x 313.16922pt.
+
 ("C:\Users\Lucas\Dropbox\DSE personal\gitHub\01_PL_PROJECT_PLAN\Chapter\OBS\Cha
-irman.tex")
+irman.tex")pdfTeX warning (ext4): destination with the same identifier (name{pa
+ge.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.8 
+     [1
+
+ <C:/Users/Lucas/Dropbox/DSE personal/gitHub/01_PL_PROJECT_PLAN/Figure/OBS.pdf>
+]
 ("C:\Users\Lucas\Dropbox\DSE personal\gitHub\01_PL_PROJECT_PLAN\Chapter\OBS\Sec
 retary.tex")
 ("C:\Users\Lucas\Dropbox\DSE personal\gitHub\01_PL_PROJECT_PLAN\Chapter\OBS\D_a
 nd_A.tex")
 ("C:\Users\Lucas\Dropbox\DSE personal\gitHub\01_PL_PROJECT_PLAN\Chapter\OBS\Pla
-nner.tex"pdfTeX warning (ext4): destination with the same identifier (name{page
-.1}) has been already used, duplicate ignored
-=======
-<<<<<<< HEAD
-("C:/Users/dawud/Dropbox/Aerospace/Third year/DSE/git/01_PL_PROJECT_PLAN/Chapte
-r/OBS.tex" <./Figure/OBS.pdf, id=83, 844.95674pt x 597.432pt>
-File: ./Figure/OBS.pdf Graphic file (type pdf)
-
-<use ./Figure/OBS.pdf>
-Package pdftex.def Info: ./Figure/OBS.pdf used on input line 4.
-(pdftex.def)             Requested size: 844.95468pt x 597.43054pt.
-
-Overfull \hbox (372.92345pt too wide) in paragraph at lines 4--5
-[][][] 
- []
-
-
-("C:/Users/dawud/Dropbox/Aerospace/Third year/DSE/git/01_PL_PROJECT_PLAN/Chapte
-r/OBS/Chairman.tex")
-("C:/Users/dawud/Dropbox/Aerospace/Third year/DSE/git/01_PL_PROJECT_PLAN/Chapte
-r/OBS/Secretary.tex")
-("C:/Users/dawud/Dropbox/Aerospace/Third year/DSE/git/01_PL_PROJECT_PLAN/Chapte
-r/OBS/D_and_A.tex")
-("C:/Users/dawud/Dropbox/Aerospace/Third year/DSE/git/01_PL_PROJECT_PLAN/Chapte
-r/OBS/Planner.tex"LuaTeX warning (ext4): destination with the same identifier (n
-ame{page.1}) has been already used, duplicate ignored
-=======
-("C:\Users\Suthes\University\Courses Year 3\AE3200 - Design Synthesis Exercise\
-GitHub\01_PL_PROJECT_PLAN\Chapter\OBS.tex"
-("C:\Users\Suthes\University\Courses Year 3\AE3200 - Design Synthesis Exercise\
-GitHub\01_PL_PROJECT_PLAN\Chapter\OBS\Chairman.tex")
-("C:\Users\Suthes\University\Courses Year 3\AE3200 - Design Synthesis Exercise\
-GitHub\01_PL_PROJECT_PLAN\Chapter\OBS\Secretary.tex")
-("C:\Users\Suthes\University\Courses Year 3\AE3200 - Design Synthesis Exercise\
-GitHub\01_PL_PROJECT_PLAN\Chapter\OBS\D_and_A.tex")
-("C:\Users\Suthes\University\Courses Year 3\AE3200 - Design Synthesis Exercise\
-GitHub\01_PL_PROJECT_PLAN\Chapter\OBS\Planner.tex"pdfTeX warning (ext4): destin
-ation with the same identifier (name{page.1}) has been already used, duplicate 
-ignored
->>>>>>> 8c27430bf5ec56fe7193a2f9daa91b5cc2bc9d21
->>>>>>> f6bb5636444714861c99187c31b2928480ebdd8f
-<to be read again> 
-\relax 
-l.2 
-   [1
-
-<<<<<<< HEAD
-] [2 <C:/Users/dawud/Dropbox/Aerospace/Third year/DSE/git/01_PL_PROJECT_PLAN/Fig
-ure/OBS.pdf>])
-("C:/Users/dawud/Dropbox/Aerospace/Third year/DSE/git/01_PL_PROJECT_PLAN/Chapte
-r/OBS/SE.tex")
-("C:/Users/dawud/Dropbox/Aerospace/Third year/DSE/git/01_PL_PROJECT_PLAN/Chapte
-r/OBS/RiskEng.tex")
-("C:/Users/dawud/Dropbox/Aerospace/Third year/DSE/git/01_PL_PROJECT_PLAN/Chapte
-r/OBS/QA.tex" [3])) [4]
-("C:/Users/dawud/Dropbox/Aerospace/Third year/DSE/git/01_PL_PROJECT_PLAN/Chapte
-r/WBS.tex") [5
-
-
-]
-("C:/Users/dawud/Dropbox/Aerospace/Third year/DSE/git/01_PL_PROJECT_PLAN/Chapte
-r/Project_planning.tex") [6
-
-
-]
-("C:/Users/dawud/Dropbox/Aerospace/Third year/DSE/git/01_PL_PROJECT_PLAN/Chapte
-r/Project_logic_diagram.tex") [7
-
-
-]
-("C:/Users/dawud/Dropbox/Aerospace/Third year/DSE/git/01_PL_PROJECT_PLAN/Chapte
-r/Conclusion.tex") [8
-
-
-]
-No file Report.bbl.
-
-("C:/Users/dawud/Dropbox/Aerospace/Third year/DSE/git/01_PL_PROJECT_PLAN/Append
-ix.tex")
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 74.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 74.
-
-("C:/Users/dawud/Dropbox/Aerospace/Third year/DSE/git/01_PL_PROJECT_PLAN/Report
-.aux"
-("C:/Users/dawud/Dropbox/Aerospace/Third year/DSE/git/01_PL_PROJECT_PLAN/Titlep
-age/Titlepage.aux")
-("C:/Users/dawud/Dropbox/Aerospace/Third year/DSE/git/01_PL_PROJECT_PLAN/Summar
-y.aux")
-("C:/Users/dawud/Dropbox/Aerospace/Third year/DSE/git/01_PL_PROJECT_PLAN/Chapte
-r/OBS.aux")
-("C:/Users/dawud/Dropbox/Aerospace/Third year/DSE/git/01_PL_PROJECT_PLAN/Chapte
-r/WBS.aux")
-("C:/Users/dawud/Dropbox/Aerospace/Third year/DSE/git/01_PL_PROJECT_PLAN/Chapte
-r/Project_planning.aux")
-("C:/Users/dawud/Dropbox/Aerospace/Third year/DSE/git/01_PL_PROJECT_PLAN/Chapte
-r/Project_logic_diagram.aux")
-("C:/Users/dawud/Dropbox/Aerospace/Third year/DSE/git/01_PL_PROJECT_PLAN/Chapte
-r/Conclusion.aux")
-("C:/Users/dawud/Dropbox/Aerospace/Third year/DSE/git/01_PL_PROJECT_PLAN/Append
-ix.aux"))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 74.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 74.
-Package rerunfilecheck Info: File `Report.out' has not changed.
-(rerunfilecheck)             Checksum: AEE998B7EC392F7EBBAC7BE8DE5773D5;729.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 74.
- )
-
-Here is how much of LuaTeX's memory you used:
- 16667 strings out of 494074
- 100000,552014 words of node,token memory allocated
- 481 words of node memory still in use:
-    nodes
-   avail lists: 2:26,3:95,4:810,5:198,6:3201,7:298,8:15,9:133,10:280
- 19309 multiletter control sequences out of 65536+200000
- 45 fonts using 1780235 bytes
- 42i,6n,43p,933b,347s stack positions out of 5000i,500n,10000p,200000b,50000s
- <C:\Users\dawud\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\tcr
-m1200.pk><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
-<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Prog
-ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb>
-Output written on Report.pdf (11 pages, 967052 bytes).
-
-PDF statistics: 145 PDF objects out of 1000 (max. 8388607)
- 28 named destinations out of 1000 (max. 131072)
- 97 words of extra memory for PDF output out of 10000 (max. 10000000)
-=======
-])
+nner.tex")
 ("C:\Users\Lucas\Dropbox\DSE personal\gitHub\01_PL_PROJECT_PLAN\Chapter\OBS\SE.
 tex")
 ("C:\Users\Lucas\Dropbox\DSE personal\gitHub\01_PL_PROJECT_PLAN\Chapter\OBS\Ris
-kEng.tex")
+kEng.tex") [2]
 ("C:\Users\Lucas\Dropbox\DSE personal\gitHub\01_PL_PROJECT_PLAN\Chapter\OBS\QA.
-tex" [2])) [3]
+tex")) [3]
 ("C:\Users\Lucas\Dropbox\DSE personal\gitHub\01_PL_PROJECT_PLAN\Chapter\WBS.tex
 ") [4
 
@@ -2093,10 +972,21 @@ Overfull \hbox (7.92253pt too wide) in paragraph at lines 1--1
 
 ]
 ("C:\Users\Lucas\Dropbox\DSE personal\gitHub\01_PL_PROJECT_PLAN\Chapter\Conclus
-ion.tex") [8
+ion.tex"
+Overfull \hbox (207.82028pt too wide) in paragraph at lines 8--21
+[][]
+ []
+
+) [8
 
 
-]
+pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has
+ been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.65 \include{./Chapter/Conclusion}
+                                   ]
 ("C:\Users\Lucas\Dropbox\DSE personal\gitHub\01_PL_PROJECT_PLAN\Report.bbl"
 
 Package natbib Warning: Empty `thebibliography' environment on input line 3.
@@ -2127,36 +1017,26 @@ ion.aux")
 ("C:\Users\Lucas\Dropbox\DSE personal\gitHub\01_PL_PROJECT_PLAN\Appendix.aux"))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 76.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 76.
-
-Package rerunfilecheck Warning: File `Report.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `Report.out':
-(rerunfilecheck)             Before: EFF878FB5633393A610C0970F0D65448;887
-(rerunfilecheck)             After:  472C3354419E1B24896C7CB580003B59;814.
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
+Package rerunfilecheck Info: File `Report.out' has not changed.
+(rerunfilecheck)             Checksum: F0D144E7826B6B5CE6A8F4535821A9EE;946.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 76.
  ) 
 Here is how much of TeX's memory you used:
- 14893 strings out of 494045
- 231594 string characters out of 3148388
- 315764 words of memory out of 3000000
- 17855 multiletter control sequences out of 15000+200000
- 7302 words of font info for 26 fonts, out of 3000000 for 9000
+ 14983 strings out of 494045
+ 234263 string characters out of 3148388
+ 320610 words of memory out of 3000000
+ 17900 multiletter control sequences out of 15000+200000
+ 12326 words of font info for 45 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
- 41i,6n,43p,935b,342s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 41i,9n,43p,935b,342s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<C:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Fi
 les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Program Files/MiK
 TeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/f
 onts/type1/public/cm-super/sfrm1200.pfb>
-Output written on Report.pdf (13 pages, 878207 bytes).
+Output written on Report.pdf (12 pages, 979403 bytes).
 PDF statistics:
- 143 PDF objects out of 1000 (max. 8388607)
- 31 named destinations out of 1000 (max. 500000)
- 110 words of extra memory for PDF output out of 10000 (max. 10000000)
->>>>>>> 8c27430bf5ec56fe7193a2f9daa91b5cc2bc9d21
+ 173 PDF objects out of 1000 (max. 8388607)
+ 34 named destinations out of 1000 (max. 500000)
+ 131 words of extra memory for PDF output out of 10000 (max. 10000000)
 
