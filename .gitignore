@@ -46,14 +46,11 @@ Temporary Items
 # =========================
 # LaTeX auxillary files
 # =========================
-.log
-.aux
-.toc
-.out
-.gz
-Report.pdf
-Report.log
+*.log
 *.aux
 *.toc
 *.out
 *.gz
+Report.pdf
+Report.log
+
