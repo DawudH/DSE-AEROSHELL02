@@ -50,3 +50,6 @@ Temporary Items
 .aux
 .toc
 .out
+.gz
+Report.pdf
+Report.log
