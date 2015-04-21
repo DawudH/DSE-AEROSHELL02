@@ -1,0 +1,11 @@
+% LAYOUT FOR THE TABLES!!
+\begin{table}[H]
+	\caption{CAPTION HERE}% CAPTION HERE !
+		\begin{tabular}{|p{0.18\textwidth}|p{0.77\textwidth}|} % MAKE SURE THAT THE TOTAL WIDTH IS 0.95\textwidth!! (that way its exactly the textwidth.... haha) 
+			\hline
+			%FIRST COLUMN NAME HERE     & 	%SECOND COLUMN NAME HERE	\\ \hline \hline
+			%ROW1COL1  					&   %ROW1COL2         			\\ \hline
+			%ROW2COL1  					&   %ROW2COL2          			\\ \hline
+		\end{tabular}
+    \label{tab:label_here}% LABEL HERE
+\end{table}
