@@ -53,3 +53,7 @@ Temporary Items
 .gz
 Report.pdf
 Report.log
+*.aux
+*.toc
+*.out
+*.gz
