@@ -14,4 +14,5 @@
 \contentsline {section}{\numberline {2}Work Breakdown Structure}{4}{section.2}
 \contentsline {section}{\numberline {3}Project planning}{5}{section.3}
 \contentsline {section}{\numberline {4}Project logic diagram}{6}{section.4}
-\contentsline {section}{\numberline {5}Conclusion}{7}{section.5}
+\contentsline {section}{\numberline {5}Approach with respect to sustainable development}{7}{section.5}
+\contentsline {section}{\numberline {6}Conclusion}{8}{section.6}
