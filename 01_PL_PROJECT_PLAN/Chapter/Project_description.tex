@@ -3,22 +3,24 @@ This chapter provides an overview of the project. In Subsection \ref{subsec:miss
 
 \subsection{Mission framework} 
 \label{subsec:missionframework}
-Ever since successful manned missions to the moon, then next step is a manned mission to mars. Entry in the atmosphere of mars induces great aerodynamic loads which lead to high thermal and structural loads on the structure. Where a spacecraft structure can be designed for very high loads, the human body is limited in the loads it can endure. This creates the need for a system that can perform an entry on mars while keeping loads within the limits of what the human body can endure. A very promising design to perform such an entry is an inflatable guidable entry vehicle using a hypersonic inflatable aerodynamic decelerator (HIAD).
+Ever since successful manned missions to the moon, the next interest has lain in a manned mission to extraterrestrial locations. Entry in the atmosphere of, for example Mars, induces great aerodynamic loads which lead to high thermal and structural loads on the structure. Where a spacecraft structure can be designed for very high loads, the human body is limited in the loads it can endure. 
 
-Previous missions comparable to the present mission have been performed by NASA, demonstrating the controllability of an inflatable aeroshell, as early as the 1960's. Multiple concepts were developed: a chute that is held under tension with a pressurized toroid that was attached to the structure in one case and trailed the spacecraft using a tow in the other case. These concepts were developed to allow re-entry on Earth and Mars, but were discontinued when problems arised during deployment and contemporary parachute technology proved sufficient for the design goals back then. \citep{hiadhistory}
-A pressurized cone containing multiple toroids is another option, one that receives considerable attention from NASA, in the form of three missions performed in the last six years. A fourth mission is planned in 2016. \cite{irve2,irve3,thor} Every next mission shows another aspect with respect to feasibility, controllability and ability to control the maximum deceleration achieved during re-entry. A comparison of key design parameters of these missions can be found in Table \ref{tab:hiadcomparison}.
-These tests are now in the spotlight since interplanetary missions involving humans are on the program, with the NASA planning to have humans on Mars by 2030.\footnote{http://www.space.com/24268-manned-mars-mission-nasa-feasibility.html} Since transporting humans puts constraints on maximum deceleration, the present project may provide means to decelerate the interplanetary spacecraft with lower accelerations while still being a light-weight solution.
+The mission need statement may thus be formulated as: perform an entry on Mars while keeping loads within the limits of what the human body can endure while adhering to launch constraints in the form of launcher fairing and entry mass. Since Mars is the most challenging case for such a mission, it is used as mission case for the project at hand.
+
+A very promising design to perform such an entry is an inflatable guidable entry vehicle using a hypersonic inflatable aerodynamic decelerator (HIAD), since it allows a decrease in aircraft mass and respects fairing dimensions in stowed condition. Previous missions comparable to the to-be-developed mission have been performed by NASA, demonstrating the controllability of an inflatable aeroshell, as early as in the 1960s. Multiple concepts were developed: a chute that is held under tension with a pressurized toroid that was attached to the structure in one case and trailed the spacecraft using a tow in the other case. These concepts were developed to allow re-entry on Earth and Mars, but were discontinued when problems arose during deployment and contemporary parachute technology proved sufficient for the design goals back then. \citep{hiadhistory}
+A pressurized cone containing multiple toroids is another option that receives considerable attention from NASA in the form of three missions performed in the last six years. A fourth mission is planned in 2016 \cite{irve2,irve3,thor}. Every next mission shows another aspect with respect to feasibility, controllability and ability to control the maximum deceleration achieved during re-entry. A comparison of key design parameters of these missions can be found in Table \ref{tab:hiadcomparison}.
+These tests are now in the spotlight since interplanetary missions involving humans are on the program, with the NASA planning to have humans on Mars by 2030.\footnote{URL: http://www.space.com/24268-manned-mars-mission-nasa-feasibility.html. Accessed: 22 April 2015} Since transporting humans puts constraints on maximum deceleration, the present project may provide means to decelerate the interplanetary spacecraft with lower accelerations while still being a light-weight solution.
 
 % Three designs have been made and tested on earth by NASA and the next will be launched in 2016. \cite{irve,irve2,irve3,thor} These designs show the feasibility of using this method to do a re-entry. 
-The objective of this project is thus to design a controllable inflatable (re-)entry vehicle for hypersonic guided Mars entry of human class spacecraft using available launchers with nine persons in ten weeks time.
-
+The objective of this project is thus: design a controllable inflatable (re-)entry vehicle for hypersonic guided Mars entry of human class spacecraft using available launchers with nine persons in ten weeks time.
 
 \begin{table}[ht!]
+\vspace{-20mm}
 	\caption{Comparison of recent HIAD missions}% CAPTION HERE !
 		\begin{tabular}{|p{0.28\textwidth}|p{0.12\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|p{0.25\textwidth}|} % MAKE SURE THAT THE TOTAL WIDTH IS 0.95\textwidth!! (that way its exactly the textwidth.... haha) 
 			\hline
 
-           &       unit &     IRVE-2 \cite{irve2} &     IRVE-3 \citep{irve3,thor} & THOR (predicted) \citep{thor} \\
+       Mission parameter   &       Unit &     IRVE-2 \cite{irve2} &     IRVE-3 \citep{irve3,thor} & THOR (predicted) \citep{thor} \\
 			\hline
 
 Launch date &          - & 17-08-2009 & 23-07-2012 &       2016 \\
@@ -30,22 +32,22 @@ Launch date &          - & 17-08-2009 & 23-07-2012 &       2016 \\
 Shell diameter &          m &       2.93 &       2.93 &        3.7 \\
 			\hline
 
-Shell angle &     degree &         60 &         60 &         70 \\
+Shell angle &     deg &         60 &         60 &         70 \\
 			\hline
 
     Apogee &         km &        218 &        469 &    200-250 \\
 			\hline
 
-Peak dynamic pressure &         Pa &       1180 &            &            \\
+Peak dynamic pressure &         Pa &       1180 &   Unknown         &   Unknown         \\
 			\hline
 
-Peak stagnation heating &      W/cm2 &        2.2 &       14.4 &         65 \\
+Peak stagnation heating &     $ \frac{W}{cm^{2}}$ &        2.2 &       14.4 &         65 \\
 			\hline
 
 Peak temperature &          C &        100 &        378 &            \\
 			\hline
 
-Peak Mach Number &          - &        6.2 &            &            \\
+Peak Mach Number &          Unknown &        6.2 &  Unknown          &   Unknown         \\
 			\hline
 
 Maximum deceleration &          g &        8.5 &       20.2 &       8-10 \\
@@ -58,37 +60,36 @@ Maximum deceleration &          g &        8.5 &       20.2 &       8-10 \\
 
 \subsection{Requirements} \label{subsec:systemrequirements}
 In this section the top-level requirements are stated. They can be found in table \ref{tab:requirements}. and the decomposition of the requirements description code is shown in table \ref{tab:description}. This code is developed to be able to identify all requirements throughout the project.
-
+\vspace{-4mm}
 \begin{table}[H]
-	\caption{Requirement}
-	\begin{tabular}{|p{0.18\textwidth}|p{0.77\textwidth}|}
+	\caption{Overview of mission top-level requirements}
+	\begin{tabular}{|p{0.18\textwidth}|p{0.8\textwidth}|}
     \hline
     Requirement ID          & Description                                                                                                      \\ \hline \hline
     CIA-Sys-A01 & The re-entry vehicle shall be able to cope with an entry velocity of seven kilometers per second.                \\ \hline
     CIA-Sys-A02 & The inflated aeroshell shall have a maximum diameter of 12 meters.                                               \\ \hline
-    CIA-Sys-A03 & The diameter of the launcher fairing shall be 5 meters.                                                          \\ \hline
+    CIA-Sys-A03 & The system shall have a diameter not exceeding 5 meters in stowed condition                                                          \\ \hline
     CIA-Sys-A04 & The maximum entry mass of the re-entry vehicle shall be 10,000 kilograms.                                         \\ \hline
     CIA-Sys-A05 & The hypersonic deceleration system mass shall not be heavier than ten percent of the total re-entry vehicle mass. \\ \hline
     CIA-Sys-A06 & The control system shall have a maximum failure probability of 5.0e-4.                                           \\ \hline
-    CIA-Sys-A07 & The maximum allowable loads on the re-entry vehicle shall be 3 Earth g's in each axis                            \\ \hline
+    CIA-Sys-A07 & The maximum allowable loads on the re-entry vehicle shall be 3 Earth g's in each axis.                            \\ \hline
     CIA-Sys-A08 & The re-entry vehicle shall have a maximal aerobraking duration of ten days.                                      \\ \hline
     \end{tabular}
     \label{tab:requirements}
 \end{table}
 
 \begin{table}[H]
-    \caption {Decomposition of requirement discription code}
-    \begin{tabular}{|p{0.1\textwidth}|p{0.25\textwidth}|p{0.55\textwidth}|}
+\vspace{-4mm}
+    \caption {Decomposition of requirement discription code for requirement I-II-III-IV-V}
+    \begin{tabular}{|p{0.1\textwidth}|p{0.2\textwidth}|p{0.7\textwidth}|}
     \hline
-    index number & optional index names    & description                                                                                                                                  \\ \hline \hline
-    1            & CIA                     & Name of the project                                                                                                                           \\ \hline
-    2            & Sys                     & System requirement                                                                                                                           \\ \hline
-    2            & Con#                    & System requirement for a particular concept.
+    Index & Index notation   & Index description                                                                                                                                  \\ \hline \hline
+    I            & CIA                     & Name of the project                                                                                                                           \\ \hline
+    II           & Sys                     & System requirement                                                                                                                           \\ \hline
+    III            & A\#,B\#,C\#                & Indicates in one view the level of the requirement. 'A' stands for system, 'B' for subsystem  and further levels for lower level requirements. The number behind the letter describes the number of the (corresponding) system requirement
 \\ \hline
-    3            & A#,B#,C#                & Idicates in one view the level of the requirement. 'A' stands for system, 'B' for subsystem  and further levels for lower level requirements. The number behind the letter describes the number of the (corresponding) system requirement
-\\ \hline
-    4            & Item                    & The name of the subsytem, e.g. Aeroshell                                                                                                     \\ \hline
-    5            & #			           & The number of the subsystem requirement                                                                                                      \\ \hline
+    IV            & Item                    & The name of the subsystem, e.g. Thermal Protection System (TPS)                                                                                                 \\ \hline
+    V            & \#			           & The number of the subsystem requirement                                                                                                      \\ \hline
     \end{tabular}
     \label{tab:description}
 \end{table}

@@ -32,7 +32,7 @@
 \renewcommand{\abstractname}{{\Large Summary}}
 \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
 \setlength{\parskip}{12pt plus8pt minus6pt}
-
+\setcounter{tocdepth}{2}
 % ENVIRONMENTS
 \newenvironment{drawing}
 
@@ -50,21 +50,13 @@
 \addtocontents{toc}{\protect\contentsline {section}{Summary}{i}{}}
 
 % Chapters
-\newpage
 \pagenumbering{arabic}
-\newpage
 \include{./Chapter/Introduction}
-\newpage
 \include{./Chapter/Project_description}
-\newpage
 \include{./Chapter/OBS}
-\newpage
 \include{./Chapter/Work_definition}
-\newpage
 \include{./Chapter/Project_planning}
-\newpage
 \include{./Chapter/Sustain}
-\newpage
 \include{./Chapter/Conclusion}
 
 
@@ -74,6 +66,8 @@
 \bibliographystyle{ieeetr}
 % Appendix
 \newpage
-\appendix
-\include{./Appendix}
+\begin{appendices}
+\input{./Appendix}
+\end{appendices}
+
 \end{document}
