@@ -13,7 +13,7 @@
 \usepackage{amsmath,amssymb,amsthm,multirow,algorithm,algorithmic,amsfonts}
 \usepackage{gensymb}
 \usepackage[square,numbers,comma,sort&compress]{natbib}
-\usepackage[titletoc]{appendix}
+\usepackage[toc,page]{appendix}
 \usepackage[final]{pdfpages}
 \usepackage{afterpage}
 \usepackage{mdwlist} % Compact lists (itemize*)
@@ -52,19 +52,12 @@
 % Chapters
 \newpage
 \pagenumbering{arabic}
-\newpage
 \include{./Chapter/Introduction}
-\newpage
 \include{./Chapter/Project_description}
-\newpage
 \include{./Chapter/OBS}
-\newpage
 \include{./Chapter/Work_definition}
-\newpage
 \include{./Chapter/Project_planning}
-\newpage
 \include{./Chapter/Sustain}
-\newpage
 \include{./Chapter/Conclusion}
 
 
@@ -74,6 +67,7 @@
 \bibliographystyle{ieeetr}
 % Appendix
 \newpage
-\appendix
-\include{./Appendix}
+\begin{appendices}
+\input{./Appendix}
+\end{appendices}
 \end{document}
