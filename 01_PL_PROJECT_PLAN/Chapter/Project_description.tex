@@ -1,8 +1,8 @@
 \section{Project description}\label{cha:project_description}%Notes: Stand alone, consise and do not explain anything.
-This section details the present project, stating in Subsection \ref{subsec:systemdescription} a brief introduction into the mission and a historical perspective, while the top-level system requirements are stated in Subsection \ref{subsec:systemrequirements}.
+This chapter provides an overview of the project. In Subsection \ref{subsec:missionframework}, an introduction to the mission and a historical perspective is given, while the top-level system requirements are stated in Subsection \ref{subsec:systemrequirements}.
 
-\subsection{System description} 
-\label{subsec:systemdescription}
+\subsection{Mission framework} 
+\label{subsec:missionframework}
 Ever since successful manned missions to the moon, then next step is a manned mission to mars. Entry in the atmosphere of mars induces great aerodynamic loads which lead to high thermal and structural loads on the structure. Where a spacecraft structure can be designed for very high loads, the human body is limited in the loads it can endure. This creates the need for a system that can perform an entry on mars while keeping loads within the limits of what the human body can endure. A very promising design to perform such an entry is an inflatable guidable entry vehicle using a hypersonic inflatable aerodynamic decelerator (HIAD).
 
 Previous missions comparable to the present mission have been performed by NASA, demonstrating the controllability of an inflatable aeroshell, as early as the 1960's. Multiple concepts were developed: a chute that is held under tension with a pressurized toroid that was attached to the structure in one case and trailed the spacecraft using a tow in the other case. These concepts were developed to allow re-entry on Earth and Mars, but were discontinued when problems arised during deployment and contemporary parachute technology proved sufficient for the design goals back then. \citep{hiadhistory}
@@ -55,40 +55,40 @@ Maximum deceleration &          g &        8.5 &       20.2 &       8-10 \\
     \label{tab:hiadcomparison}% LABEL HERE
 \end{table}
 
+
 \subsection{Requirements} \label{subsec:systemrequirements}
-In this section the top-level requirements are stated. They can be found in table \ref{tab:requirements}. and the decomposition of the requirements description code is shown in table
+In this section the top-level requirements are stated. They can be found in table \ref{tab:requirements}. and the decomposition of the requirements description code is shown in table \ref{tab:description}. This code is developed to be able to identify all requirements throughout the project.
 
 \begin{table}[H]
 	\caption{Requirement}
 	\begin{tabular}{|p{0.18\textwidth}|p{0.77\textwidth}|}
     \hline
     Requirement ID          & Description                                                                                                      \\ \hline \hline
-    CIA-Sys-A01-1 & The re-entry vehicle shall be able to cope with an entry velocity of seven kilometers per second.                \\ \hline
-    CIA-Sys-A01-2 & The inflated aeroshell shall have a maximum diameter of 12 meters.                                               \\ \hline
-    CIA-Sys-A01-3 & The diameter of the launcher fairing shall be 5 meters.                                                          \\ \hline
-    CIA-Sys-A01-4 & The maximum entry mass of the re-entry vehicle shall be 10,000 kilograms.                                         \\ \hline
-    CIA-Sys-A01-5 & The hypersonic deceleration system mass shall not be heavier than ten percent of the total re-entry vehicle mass. \\ \hline
-    CIA-Sys-A01-6 & The control system shall have a maximum failure probability of 5.0e-4.                                           \\ \hline
-    CIA-Sys-A01-7 & The maximum allowable loads on the re-entry vehicle shall be 3 Earth g's in each axis                            \\ \hline
-    CIA-Sys-A01-8 & The re-entry vehicle shall have a maximal aerobraking duration of ten days.                                      \\ \hline
+    CIA-Sys-A01 & The re-entry vehicle shall be able to cope with an entry velocity of seven kilometers per second.                \\ \hline
+    CIA-Sys-A02 & The inflated aeroshell shall have a maximum diameter of 12 meters.                                               \\ \hline
+    CIA-Sys-A03 & The diameter of the launcher fairing shall be 5 meters.                                                          \\ \hline
+    CIA-Sys-A04 & The maximum entry mass of the re-entry vehicle shall be 10,000 kilograms.                                         \\ \hline
+    CIA-Sys-A05 & The hypersonic deceleration system mass shall not be heavier than ten percent of the total re-entry vehicle mass. \\ \hline
+    CIA-Sys-A06 & The control system shall have a maximum failure probability of 5.0e-4.                                           \\ \hline
+    CIA-Sys-A07 & The maximum allowable loads on the re-entry vehicle shall be 3 Earth g's in each axis                            \\ \hline
+    CIA-Sys-A08 & The re-entry vehicle shall have a maximal aerobraking duration of ten days.                                      \\ \hline
     \end{tabular}
     \label{tab:requirements}
 \end{table}
 
 \begin{table}[H]
     \caption {Decomposition of requirement discription code}
-    \begin{tabular}{|p{0.1\textwidth}|p{0.3\textwidth}|p{0.5\textwidth}|}
+    \begin{tabular}{|p{0.1\textwidth}|p{0.25\textwidth}|p{0.55\textwidth}|}
     \hline
-    index number & optional index names & description                                                                                                                                  \\ \hline \hline
-    1            & CIA                  & Name of the project                                                                                                                          \\ \hline
-    2            & St                   & Stakeholder requirement                                                                                                                      \\
-    ~            & Sys                  & System requirement                                                                                                                           \\ \hline
-    3            & 0                    & applicable to all possible concepts                                                                                                          \\
-    ~            & 1,2,3,4, etc.        & only applicable to the concept of the corresponding number                                                                                   \\ \hline
-    4            & A,B,C, etc.          & Idicates in one view the level of the requirement. 'A' stands for system, 'B' for subsystem  and further levels for lower level requirements \\ \hline
-    5            & 1,2,3,4, etc.        & the number of the (corresponding) system requirement                                                                                         \\ \hline
-    6            & Item                 & The name of the subsytem, e.g. Aeroshell                                                                                                     \\ \hline
-    7            & 1,2,3,4, etc.        & The number of the subsystem requirement                                                                                                      \\ \hline
+    index number & optional index names    & description                                                                                                                                  \\ \hline \hline
+    1            & CIA                     & Name of the project                                                                                                                           \\ \hline
+    2            & Sys                     & System requirement                                                                                                                           \\ \hline
+    2            & Con\#                    & System requirement for a particular concept.
+\\ \hline
+    3            & A\# , B\# , C\#                & Idicates in one view the level of the requirement. 'A' stands for system, 'B' for subsystem  and further levels for lower level requirements. The number behind the letter describes the number of the (corresponding) system requirement
+\\ \hline
+    4            & Item                    & The name of the subsytem, e.g. Aeroshell                                                                                                     \\ \hline
+    5            & \#			           & The number of the subsystem requirement                                                                                                      \\ \hline
     \end{tabular}
     \label{tab:description}
 \end{table}
