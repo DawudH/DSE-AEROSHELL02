@@ -56,3 +56,9 @@ Report.log
 
 *.bbl
 *.blg
+
+
+# =========================
+# MATLAB unwanted files
+# =========================
+*.asv
