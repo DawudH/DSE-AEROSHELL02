@@ -1,10 +1,62 @@
 \section{Project description}\label{cha:project_description}%Notes: Stand alone, consise and do not explain anything.
-This chapter provides an overview of the project. As such, it presents mission framework, top-level requirements and a system description in subsequent sections.
+This chapter provides an overview of the project. In Subsection \ref{subsec:missionframework}, an introduction to the mission and a historical perspective is given, while the top-level system requirements are stated in Subsection \ref{subsec:systemrequirements}.
 
-\subsection{Mission framework}
-Ever since successful manned missions to the moon, the next step is a manned mission to mars. Entry in the atmosphere of Mars induces great aerodynamic loads which lead to high thermal and structural loads on the structure. Whereas a spacecraft structure can be designed for very high loads, the human body is limited in the loads it can endure. This creates the need for a system that can perform an entry on mars while keeping loads within the limits of what the human body can endure. A very promising design to perform such an entry is an inflatable guidable entry vehicle using a hypersonic inflatable aerodynamic decelerator (HIAD). Three designs have been made and tested on earth by NASA and the next will be launched in 2016. \cite{irve,irve2,irve3,thor} These designs show the feaseblility of using this method to do a re-entry. The objective of this project is to demonstrate the feasibility of a controllable inflatable re-entry vehicle for hypersonic guided Mars entry of human class spacecraft using available launchers with nine persons in ten weeks time.
+\subsection{Mission framework} 
+\label{subsec:missionframework}
+Ever since successful manned missions to the moon, then next step is a manned mission to mars. Entry in the atmosphere of mars induces great aerodynamic loads which lead to high thermal and structural loads on the structure. Where a spacecraft structure can be designed for very high loads, the human body is limited in the loads it can endure. This creates the need for a system that can perform an entry on mars while keeping loads within the limits of what the human body can endure. A very promising design to perform such an entry is an inflatable guidable entry vehicle using a hypersonic inflatable aerodynamic decelerator (HIAD).
 
-\subsection{Requirements}
+Previous missions comparable to the present mission have been performed by NASA, demonstrating the controllability of an inflatable aeroshell, as early as the 1960's. Multiple concepts were developed: a chute that is held under tension with a pressurized toroid that was attached to the structure in one case and trailed the spacecraft using a tow in the other case. These concepts were developed to allow re-entry on Earth and Mars, but were discontinued when problems arised during deployment and contemporary parachute technology proved sufficient for the design goals back then. \citep{hiadhistory}
+A pressurized cone containing multiple toroids is another option, one that receives considerable attention from NASA, in the form of three missions performed in the last six years. A fourth mission is planned in 2016. Every next mission shows another aspect with respect to feasibility, controllability and ability to control the maximum deceleration achieved during re-entry. A comparison of key design parameters of these missions can be found in Table \ref{tab:hiadcomparison}.
+These tests are now in the spotlight since interplanetary missions involving humans are on the program, with the NASA planning to have humans on Mars by 2030. Since transporting humans puts constraints on maximum deceleration, the present project may provide means to decelerate the interplanetary spacecraft with lower accelerations while still being a light-weight solution.
+
+% Three designs have been made and tested on earth by NASA and the next will be launched in 2016. \cite{irve,irve2,irve3,thor} These designs show the feasibility of using this method to do a re-entry. 
+The objective of this project is thus to demonstrate the feasibility of a controllable inflatable re-entry vehicle for hypersonic guided Mars entry of human class spacecraft using available launchers with nine persons in ten weeks time.
+
+
+\begin{table}[ht!]
+	\caption{Comparison of recent HIAD missions}% CAPTION HERE !
+		\begin{tabular}{|p{0.28\textwidth}|p{0.12\textwidth}|p{0.15\textwidth}|p{0.15\textwidth}|p{0.25\textwidth}|} % MAKE SURE THAT THE TOTAL WIDTH IS 0.95\textwidth!! (that way its exactly the textwidth.... haha) 
+			\hline
+
+           &       unit &     IRVE-2 \cite{irve2} &     IRVE-3 \citep{irve3} & THOR (predicted) \citep{thor} \\
+			\hline
+
+Launch date &          - & 17-08-2009 & 23-07-2012 &       2016 \\
+			\hline
+
+      Mass &         kg &    124.6kg &        280 &        315 \\
+			\hline
+
+Shell diameter &          m &       2.93 &       2.93 &        3.7 \\
+			\hline
+
+Shell angle &     degree &         60 &         60 &         70 \\
+			\hline
+
+    Apogee &         km &        218 &        469 &    200-250 \\
+			\hline
+
+Peak dynamic pressure &         Pa &       1180 &            &            \\
+			\hline
+
+Peak stagnation heating &      W/cm2 &        2.2 &       14.4 &         65 \\
+			\hline
+
+Peak temperature &          C &        100 &        378 &            \\
+			\hline
+
+Peak Mach Number &          - &        6.2 &            &            \\
+			\hline
+
+Maximum deceleration &          g &        8.5 &       20.2 &       8-10 \\
+			\hline
+
+		\end{tabular}
+    \label{tab:hiadcomparison}% LABEL HERE
+\end{table}
+
+
+\subsection{Requirements} \label{subsec:systemrequirements}
 In this section the top-level requirements are stated. They can be found in table \ref{tab:requirements}. and the decomposition of the requirements description code is shown in table \ref{tab:description}. This code is developed to be able to identify all requirements throughout the project.
 
 \begin{table}[H]
@@ -31,18 +83,13 @@ In this section the top-level requirements are stated. They can be found in tabl
     index number & optional index names    & description                                                                                                                                  \\ \hline \hline
     1            & CIA                     & Name of the project                                                                                                                           \\ \hline
     2            & Sys                     & System requirement                                                                                                                           \\ \hline
-    2            & Con\#                    & System requirement for a particular concept.
+    2            & Con#                    & System requirement for a particular concept.
 \\ \hline
-    3            & A\# , B\# , C\#                & Idicates in one view the level of the requirement. 'A' stands for system, 'B' for subsystem  and further levels for lower level requirements. The number behind the letter describes the number of the (corresponding) system requirement
+    3            & A#,B#,C#                & Idicates in one view the level of the requirement. 'A' stands for system, 'B' for subsystem  and further levels for lower level requirements. The number behind the letter describes the number of the (corresponding) system requirement
 \\ \hline
     4            & Item                    & The name of the subsytem, e.g. Aeroshell                                                                                                     \\ \hline
-    5            & \#			           & The number of the subsystem requirement                                                                                                      \\ \hline
+    5            & #			           & The number of the subsystem requirement                                                                                                      \\ \hline
     \end{tabular}
     \label{tab:description}
 \end{table}
-
-\subsection{System description}
-Previous missions comparable to the present mission have been performed by NASA, demonstrating the controllability of an inflatable aeroshell, as early as the 1960's. Multiple concepts were developed: a chute that is held under tension with a pressurized toroid that was attached to the structure in one case and trailed the spacecraft using a tow in the other case. These concepts were developed to allow re-entry on Earth and Mars, but were discontinued when problems arised during deployment, and finally contemporary parachute technology proved sufficient for the design goals back then.
-A pressurized cone containing multiple toroids is another option, one that receives considerable attention from NASA, in the form of three missions performed in the last ten years. A fourth mission is planned in 2016. Every next mission shows another aspect with respect to feasibility, controllability and ability to control the maximum deceleration achieved during re-entry.
-These tests are now in the spotlight since interplanetary missions involving humans are on the program, with the NASA planning to have humans on Mars by 2030. Since transporting humans puts constraints on maximum deceleration, the present project may provide means to decelerate the interplanetary spacecraft with lower accelerations while still being a light-weight solution.
 
