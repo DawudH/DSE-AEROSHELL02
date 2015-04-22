@@ -5,7 +5,7 @@
 Ever since successful manned missions to the moon, then next step is a manned mission to mars. Re-entry in the atmosphere of mars induces great aerodynamic loads which lead to high thermal and structural loads on the structure. Where a spacecraft structure can be designed for very high loads, the human body is very limited in the loads it can endure. This creates the need for a system that can perform a re-entry on mars while keeping loads within the limits of what the human body can endure. A very promising design to perform such a re-entry is an inflatable guidable re-entry vehicle. Three designs have been made and tested by NASA and the next will be launched in 2016. \cite{irve2}(add 2 more ref. NASA) 
 
 \subsection{Requirements}
-In this section the top-level requirements are stated. They can be found in table \ref{tab:requirements}.
+In this section the top-level requirements are stated. They can be found in table \ref{tab:requirements}. and the decomposition of the requirements description code is shown in table
 
 \begin{table}[H]
 	\caption{Requirement}
@@ -22,6 +22,24 @@ In this section the top-level requirements are stated. They can be found in tabl
     CIA-Sys-A01-8 & The re-entry vehicle shall have a maximal aerobraking duration of ten days.                                      \\ \hline
     \end{tabular}
     \label{tab:requirements}
+\end{table}
+
+\begin{table}[H]
+    \caption {Decomposition of requirement discription code}
+    \begin{tabular}{|p{0.1\textwidth}|p{0.3\textwidth}|p{0.5\textwidth}|}
+    \hline
+    index number & optional index names & description                                                                                                                                  \\ \hline \hline
+    1            & CIA                  & Name of the project                                                                                                                          \\ \hline
+    2            & St                   & Stakeholder requirement                                                                                                                      \\
+    ~            & Sys                  & System requirement                                                                                                                           \\ \hline
+    3            & 0                    & applicable to all possible concepts                                                                                                          \\
+    ~            & 1,2,3,4, etc.        & only applicable to the concept of the corresponding number                                                                                   \\ \hline
+    4            & A,B,C, etc.          & Idicates in one view the level of the requirement. 'A' stands for system, 'B' for subsystem  and further levels for lower level requirements \\ \hline
+    5            & 1,2,3,4, etc.        & the number of the (corresponding) system requirement                                                                                         \\ \hline
+    6            & Item                 & The name of the subsytem, e.g. Aeroshell                                                                                                     \\ \hline
+    7            & 1,2,3,4, etc.        & The number of the subsystem requirement                                                                                                      \\ \hline
+    \end{tabular}
+    \label{tab:description}
 \end{table}
 
 \subsection{System description}
