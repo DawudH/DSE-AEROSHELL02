@@ -22,7 +22,7 @@
 \usepackage{expl3}
 \usepackage[nogroupskip,acronyms,symbols]{glossaries}
 \usepackage{glossary-longragged}
-\usepackage{glossary-super}
+
 
 \usepackage{lscape}
 \usepackage{rotating}
@@ -31,10 +31,29 @@
 \pagestyle{plain}
 
 % Generate the glossary
+	% create a new glossary style for the list of symbols
+	% copied from http://www.latex-community.org/forum/viewtopic.php?f=5&t=20797
+	\newglossarystyle{listos}{%
+	  \glossarystyle{long4col}
+	  % allow line wrap in the description column
+	  \renewenvironment{theglossary}%
+	    {\begin{longtable}{llp{\glsdescwidth}p{\glspagelistwidth}}}%
+	    {\end{longtable}}%
+	  \renewcommand{\glsgroupskip}{}% make nothing happen between groups
+	  % swap second and third columns
+	  \renewcommand*{\glossaryentryfield}[5]{%
+	    \glsentryitem{##1}\glstarget{##1}{##2} & ##4 & ##3 & ##5\\}
+	  % sub-entries
+	  \renewcommand*{\glossarysubentryfield}[6]{%
+	     \glssubentryitem{##2}%
+	     \glstarget{##2}{##3} & ##5 & ##4 & ##6\\}%
+	}
 \newglossary*{symbol}{List of symbols}
 \makenoidxglossaries
 \setacronymstyle{long-short}
 \loadglsentries{./Acronyms}
+\newglossaryentry{romanletter}{type=symbol,name={},description={\nopostdesc},sort=a}
+\newglossaryentry{greekletter}{type=symbol,name={},description={\nopostdesc},sort=b}
 \loadglsentries{./Symbols}
 
 
@@ -59,7 +78,7 @@
 \include{./Summary}
 \newpage
 \printnoidxglossary[type=\acronymtype,nonumberlist]
-\printnoidxglossary[type=symbol,style=altsuper4col]
+\printnoidxglossary[type=symbol,style=listos]
 \newpage
 \listoffigures
 \listoftables
