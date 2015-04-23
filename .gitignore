@@ -56,9 +56,16 @@ Report.log
 
 *.bbl
 *.blg
+# list of figures and list of tables
+*.lot
+*.lof
 
 
 # =========================
 # MATLAB unwanted files
 # =========================
 *.asv
+*.acn
+*.ist
+*.glsdefs
+EMPTY_REPORT/mcode.sty
