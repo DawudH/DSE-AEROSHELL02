@@ -1,8 +1,36 @@
 % list of symbols entries
+% To use the symbols in equations and to get a proper reference to the list of symbols \gls{sym:a} needs to be used for instance so as an example (makes no sence at all):
+%
+% \begin{equation} (or align instead of equation)
+% 	\gls{sym:a} = \gls{sym:e} + \gls{sym:gamma}
+% \end{equation}
+
 \newglossaryentry{sym:a}
 {
 type=symbol, % entry should be in the list of symbols!
-name={a}, % The name of the entry (as it will appear in the glossary) (this will also be the first ).
+name={\ensuremath{a}}, % Put the symbol here in dollar signs
 description={Semi-major axis}, % A brief description of this entry (to appear in the glossary).
-symbol={$a$}
+symbol={$\left[m\right]$}, % put the unit here.... kind of weird, i know 
+sort=a, % for correct sorting type the full name of the symbol here
+parent=romanletter % for sorting purposes, use romanletter or greekletter
+}
+
+\newglossaryentry{sym:e}
+{
+type=symbol, % entry should be in the list of symbols!
+name={\ensuremath{e}}, % Put the symbol here in dollar signs
+description={Orbital eccentricity}, % A brief description of this entry (to appear in the glossary).
+symbol={$\left[-\right]$}, % put the unit here.... kind of weird, i know 
+sort=eccentricity, % for correct sorting type the full name of the symbol here
+parent=romanletter % for sorting purposes, use romanletter or greekletter
+}
+
+\newglossaryentry{sym:gamma}
+{
+type=symbol, % entry should be in the list of symbols!
+name={\ensuremath{\gamma}}, % Put the symbol here in dollar signs
+description={Ratio of specific heat}, % A brief description of this entry (to appear in the glossary).
+symbol={$\left[-\right]$}, % put the unit here.... kind of weird, i know 
+sort=gamma, % for correct sorting type the full name of the symbol here
+parent=greekletter % for sorting purposes, use romanletter or greekletter
 }
