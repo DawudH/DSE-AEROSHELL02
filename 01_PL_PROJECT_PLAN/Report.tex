@@ -20,7 +20,7 @@
 \usepackage{fixltx2e}
 \usepackage[table]{xcolor}
 \usepackage{expl3}
-\usepackage[nogroupskip]{glossaries}
+\usepackage[nogroupskip,nonumberlist]{glossaries}
 
 \usepackage{lscape}
 \usepackage{rotating}
@@ -59,9 +59,13 @@
 % Table of contents
 \newpage
 \tableofcontents
-\addtocontents{toc}{\protect\contentsline {section}{Summary}{i}{}}
-\addtocontents{toc}{\protect\contentsline {section}{Acronyms}{ii}{}}
+\addtocontents{toc}{\protect\contentsline {section}{Preface}{i}{}}
+\addtocontents{toc}{\protect\contentsline {section}{Summary}{ii}{}}
+\addtocontents{toc}{\protect\contentsline {section}{Acronyms}{iii}{}}
+\addtocontents{toc}{\protect\contentsline {section}{List of Figures}{iv}{}}
+\addtocontents{toc}{\protect\contentsline {section}{List of Tables}{iv}{}}
 % Chapters
+\newpage
 \pagenumbering{arabic}
 \include{./Chapter/Introduction}
 \include{./Chapter/Project_description}
