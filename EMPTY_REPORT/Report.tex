@@ -32,9 +32,11 @@
 
 % Generate the glossary
 	% create a new glossary style for the list of symbols
-	% copied from http://www.latex-community.org/forum/viewtopic.php?f=5&t=20797
+	% copied (but eddited) from http://www.latex-community.org/forum/viewtopic.php?f=5&t=20797
 	\newglossarystyle{listos}{%
-	  \glossarystyle{long4col}
+	  \glossarystyle{altlongragged4col}
+	  \setlength{\glsdescwidth}{0.8\textwidth}
+	  \setlength{\glspagelistwidth}{0.1\textwidth}
 	  % allow line wrap in the description column
 	  \renewenvironment{theglossary}%
 	    {\begin{longtable}{llp{\glsdescwidth}p{\glspagelistwidth}}}%
