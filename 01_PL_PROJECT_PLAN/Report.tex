@@ -50,17 +50,18 @@
 % Summary
 \newpage
 \include{./Summary}
-
+\newpage
+\printnoidxglossary[title=Acronyms,nogroupskip=true]
+\listoffigures
+\listoftables
 % Table of contents
 \newpage
 \tableofcontents
 \addtocontents{toc}{\protect\contentsline {section}{Summary}{i}{}}
-
+\addtocontents{toc}{\protect\contentsline {section}{Acronyms}{ii}{}}
 % Chapters
 \pagenumbering{arabic}
 \include{./Chapter/Introduction}
-\newpage
-\printnoidxglossary[title=Acronyms,nogroupskip=true]
 \include{./Chapter/Project_description}
 \include{./Chapter/OBS}
 \include{./Chapter/Work_definition}
