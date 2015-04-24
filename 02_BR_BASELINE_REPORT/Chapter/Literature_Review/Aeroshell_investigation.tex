@@ -1,6 +1,43 @@
-\section{Literature Review}\label{cha:litreview}
-This chapter provides an overview of findings of literature research on the topic of (re-)entry vehicles. Firstly, past solutions and their development have been investigated for the dual purpose of reference material to be used for preliminary sizing and design and the acquisition of knowledge on mission level. Secondly, each of the primary disciplines involved in the design of a re-entry mission is investigated, namely structural design, \gls{tps}, aerodynamical design, orbital mechanics, atmospheric modelling and control. These disciplines are investigated in terms of their application and new technologies (e.g. the materials typically used for thermal protection) as well as for methods used in their respective analysis and design (e.g. the use of \gls{fem} for structural analysis).
+\subsection{Review of inflatable aeroshell technology}\label{sec:aeroshells}
+This section gives an overview of inflatable aeroshell technology. This serves to provide an overview of the current state-of-the-art of inflatable aeroshell technology and applications, its potential advantages over traditional rigid aeroshells and a collection of literature to use for further investigation.
 
-This chapter is structured as follows. The first section gives an overview of past re-entry vehicles; the second section gives an overview of past and ongoing investigations in the use of inflatable aeroshells; subsequent sections focus on the primary distinguishable disciplines involved.
+\subsubsection{Advantages of inflatable aeroshells}
+Inflatable aeroshell systems provide the following advantages with respect to traditional rigid aeroshells: \cite{cassapakis, IRVEoverview} 
+\begin{enumerate}
+\item A lower weight is typically achieved, as investigated by Ref.\cite{Cruz} and to some extent Ref.\cite{EDLASphase1};
+\item An unconstrained inflatable diameter, by the launch vehicle fairing, allows use of larger aerodynamic decelerators. As a result a lower \gls{bc} is achievable;
+\item A smaller aeroshell volume fraction is required by a lack of need to use a backshell to protect the payload from aft side heating (in contrast to rigid aeroshells);
+\item Effective cocooning of the payload by a rigid aeroshell diminishes accessibility. Adding access ports requires the use of additional verification and validation of thermal control design \cite{johnsonstardust}.
+\item Heat is trapped by a rigid aeroshell cocooning the payload, causing potential interference with on-board payload thermal requirements.
+\end{enumerate}
+Of these reasons, the first two prevail for the current mission in view of constraints by the launch vehicle, limiting entry vehicle mass and diameter. A way of handling the diameter constraints, one in the launcher fairing shroud and a more relaxed one after decoupling of launcher and entry vehicle, is utilizing deployment mechanisms. These may be either mechanical or inflatable. Comparison of these two concepts yields the following characteristics in favour of inflatable structures \cite{cassapakis}:
+\begin{enumerate}
+\item Inflatables have a high reliability of deployment due to a self-correcting system;
+\item Use of thin materials obtaining strength from inflation gas pressure reduces the weight required for inflatable systems compared to mechanical structures;
+\item Packaging efficiency is higher for inflatable structures than for mechanical erectable structures;
+\item Loads are absorbed over a large surface area for inflatable structures, as opposed to typical load concentrations in mechanical systems. Load concentrations require local addition of weight, typically resulting in a heavier structure;
+\item Inflatables have a typically lower production cost;
+\item Easily adapted to concave shapes with symmetric and curved surfaces;
+\item Favorable dynamics due to the nearly constant inflation pressure induced force restoring encountered surface distortions;
+\item A favorable thermal response by radiation exchange over a large area.
+\end{enumerate}
+
+\subsubsection{Investigation of inflatable aeroshell technology}
+The aforementioned reasons, primarily lower weight and high packaging efficiency, have been key drivers in past and ongoing research in the use of inflatable structures for use in aerodynamic deceleration during (re-)entry. Primary contributor is \gls{nasa}, specifically NASA Langley Research Center, responsible for a series of tests on the feasibility and use of \gls{hiad} concepts for entry and re-entry \cite{irve1, irve2, irve3, thor}. A brief discussion on these tests follows. Little information on IRVE-I \cite{irve1} is present, hence it is not included in the following discussion. 
+
+\gls{irve} II, launched in 2009, successfully met its objectives, namely: "to demonstrate inflation and re-entry survivability, assess the thermal and drag performance of the re-entry vehicle and to collect flight data for comparison with analysis and design techniques used in vehicle development" \cite[p.1]{flightperfirve2}. IRVE-II consisted of a rigid, cylindrical centerbody with a deployable, conical inflatable aeroshell of a so-called stacked toroid configuration \cite{histoverviewtech,vehicleflexibilityirve2}.
+
+IRVE-III, launched in 2012, proceeded with its primary aim to demonstrate the offset of the vehicle center of gravity on the lift-to-drag ratio of the vehicle and demonstrate survability with flight-relevant heating \cite{ACSperformanceirve3}, while the configuration was similar to IRVE-II and subsystems were altered predominantly in the following  manners \cite{ACSperformanceirve3}:
+\begin{itemize}
+\item Support straps were added to inter- and intraconnect toroids and centerbody;
+\item The \gls{tps} was upgraded by use of a multi-layer system, consisting of two laywers of Nextel fabric, Pyrogel insulation and a Kapton/Kevlar thin film gas barrier, in place of the Nextel fabric used in IRVE-II \cite{flightperfirve3}; 
+\item A heater was addded to the pressure tank system used to inflate the stracked toroid structure;
+\item The addition of a \gls{cg} offset mechanism to alter the lifting behavior of the vehicle and thereby steer it.
+\end{itemize}
+IRVE-III succeeded in its goals, demonstrating the feasibility of a \gls{cg} offset for vehicle steering \cite{flightperfirve3}.
+
+\gls{thor}, planned for launch in 2016, features a less blunt aeroshell with a half-cone angle of 70 instead of 60 degrees, to analyze stability and drag differences with previous \cite{irve1, irve2, irve3} configurations \cite{thorplannedflight}. In addition, it features Zylon \cite{zylon} instead of IRVE-III's Kevlar fibres, allowing a thinner \gls{tps} layup of a different composition. In terms of \gls{tps}, silicon carbide fabric over carbon felt insulation is used instead of Nextel fabric over Pyrogel insulation \cite{thorplannedflight}.
+
+In addition to these flight tests, ground tests has been pursued in parallel to further technology developments for \gls{hiad} application \cite{hiadtechoverview}.
 
 
