@@ -1,0 +1,10 @@
+m = 10000; %[kg]
+C_D = 1.5; %[-] (guess)
+C_L = 0.5; %[-] (guess)
+LD = C_L/C_D; %[-]
+gamma = 0; %[rad] (guess)
+phi =  0; %[rad] (guess)
+chi = 0; %[rad] (guess)
+R_m = 3390000;  %[m] 
+h = 150000; %[m] (guess)
+r = R_m + h; %[m]
