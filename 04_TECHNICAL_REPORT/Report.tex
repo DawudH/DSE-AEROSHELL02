@@ -1,0 +1,112 @@
+\documentclass[12pt]{article}
+
+% USEPACKAGES
+\usepackage[margin=2.5cm]{geometry} % Change border margins.
+\usepackage[titles]{tocloft} % Table of Contents, manual add.
+\usepackage{mcode} % Load matlab code into LaTeX.
+\usepackage[parfill]{parskip} % Removes indents
+\usepackage[hidelinks]{hyperref} % Clickable links in PDF.
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{float}
+\usepackage{amsmath,amssymb,amsthm,multirow,algorithm,algorithmic,amsfonts}
+\usepackage{gensymb}
+\usepackage[square,numbers,comma,sort&compress]{natbib}
+\usepackage[titletoc]{appendix}
+\usepackage[final]{pdfpages}
+\usepackage{afterpage}
+\usepackage{mdwlist} % Compact lists (itemize*)
+\usepackage{fixltx2e}
+\usepackage[table]{xcolor}
+\usepackage{expl3}
+\usepackage[nogroupskip,acronyms,symbols]{glossaries}
+\usepackage{glossary-longragged}
+
+
+\usepackage{lscape}
+\usepackage{rotating}
+
+% PAGESTYLE
+\pagestyle{plain}
+
+% Generate the glossary
+	% create a new glossary style for the list of symbols
+	% copied (but eddited) from http://www.latex-community.org/forum/viewtopic.php?f=5&t=20797
+	\newglossarystyle{listos}{%
+	  \glossarystyle{altlongragged4col}
+	  \setlength{\glsdescwidth}{0.8\textwidth}
+	  \setlength{\glspagelistwidth}{0.1\textwidth}
+	  % allow line wrap in the description column
+	  \renewenvironment{theglossary}%
+	    {\begin{longtable}{llp{\glsdescwidth}p{\glspagelistwidth}}}%
+	    {\end{longtable}}%
+	  \renewcommand{\glsgroupskip}{}% make nothing happen between groups
+	  % swap second and third columns
+	  \renewcommand*{\glossaryentryfield}[5]{%
+	    \glsentryitem{##1}\glstarget{##1}{##2} & ##4 & ##3 & ##5\\}
+	  % sub-entries
+	  \renewcommand*{\glossarysubentryfield}[6]{%
+	     \glssubentryitem{##2}%
+	     \glstarget{##2}{##3} & ##5 & ##4 & ##6\\}%
+	}
+\newglossary*{symbol}{List of symbols}
+\makenoidxglossaries
+\setacronymstyle{long-short}
+\loadglsentries{./Acronyms}
+\newglossaryentry{romanletter}{type=symbol,name={},description={\nopostdesc},sort=a}
+\newglossaryentry{greekletter}{type=symbol,name={},description={\nopostdesc},sort=b}
+\loadglsentries{./Symbols}
+
+
+
+% COMMANDS
+\newcommand{\HRule}{\rule{\linewidth}{0.04cm}}
+\renewcommand{\abstractname}{{\Large Summary}}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\setlength{\parskip}{5pt plus4pt minus2pt}
+\setcounter{tocdepth}{2}
+% ENVIRONMENTS
+\newenvironment{drawing}
+
+
+\begin{document}
+% Titlepage
+\include{./Titlepage/Titlepage}
+\pagenumbering{roman}
+% Summary
+\newpage
+\include{./Preface}
+\include{./Summary}
+\newpage
+\printnoidxglossary[type=\acronymtype,nonumberlist]
+\printnoidxglossary[type=symbol,style=listos]
+\newpage
+\listoffigures
+\listoftables
+% Table of contents
+\newpage
+\tableofcontents
+\addtocontents{toc}{\protect\contentsline {section}{Preface}{i}{}}
+\addtocontents{toc}{\protect\contentsline {section}{Summary}{ii}{}}
+\addtocontents{toc}{\protect\contentsline {section}{Acronyms}{iii}{}}
+\addtocontents{toc}{\protect\contentsline {section}{List of Figures}{iv}{}}
+\addtocontents{toc}{\protect\contentsline {section}{List of Tables}{iv}{}}
+% Chapters
+\newpage
+\pagenumbering{arabic}
+\include{./Chapter/Introduction}
+\include{./Chapter/Chapter}
+\include{./Chapter/Conclusion}
+
+
+% Bibliography
+\newpage
+\bibliography{./Bibliography/Bibliography}
+\bibliographystyle{ieeetr}
+% Appendix
+\newpage
+\appendix
+\include{./AppendixA}
+
+\end{document}
