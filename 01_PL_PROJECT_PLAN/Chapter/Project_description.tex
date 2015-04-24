@@ -59,37 +59,37 @@ Maximum deceleration &          g &        8.5 &       20.2 &       8-10 \\
 
 
 \subsection{Requirements} \label{subsec:systemrequirements}
-In this section the top-level requirements are stated. They can be found in Table \ref{tab:requirements}. The decomposition of the requirements description code is shown in Table \ref{tab:description}. This code is developed to be able to identify all requirements throughout the project.
+In this section the top-level requirements are stated. They can be found in Table \ref{tab:requirements}. The decomposition of the requirements description code is shown in Table \ref{tab:description}. This code is developed to be able to identify all requirements throughout the project, both for the customer and the design team. The first ID indicates the project name such that the client can easily see that this requirement belongs to one out of many he or she might be interested in. The second ID indicates the system requirement number. The third ID Describes the name of the subsystem. Lastly, the fourth ID indicates the number of the subsystem requirement.
 \vspace{-4mm}
 \begin{table}[H]
 	\caption{Overview of mission top-level requirements}
-	\begin{tabular}{|p{0.18\textwidth}|p{0.8\textwidth}|}
+	\begin{tabular}{|p{0.10\textwidth}|p{0.85\textwidth}|}
     \hline
-    Requirement ID          & Description                                                                                                      \\ \hline \hline
-    CIA-Sys-A01 & The re-entry vehicle shall be able to cope with an entry velocity of seven kilometers per second.                \\ \hline
-    CIA-Sys-A02 & The inflated aeroshell shall have a maximum diameter of 12 meters.                                               \\ \hline
-    CIA-Sys-A03 & The system shall have a diameter not exceeding 5 meters in stowed condition                                                          \\ \hline
-    CIA-Sys-A04 & The maximum entry mass of the re-entry vehicle shall be 10,000 kilograms.                                         \\ \hline
-    CIA-Sys-A05 & The hypersonic deceleration system mass shall not be heavier than ten percent of the total re-entry vehicle mass. \\ \hline
-    CIA-Sys-A06 & The control system shall have a maximum failure probability of 5.0e-4.                                           \\ \hline
-    CIA-Sys-A07 & The maximum allowable loads on the re-entry vehicle shall be 3 Earth g's in each axis.                            \\ \hline
-    CIA-Sys-A08 & The re-entry vehicle shall have a maximal aerobraking duration of ten days.                                      \\ \hline
+    ID          & Description                                                                                                      \\ \hline \hline
+    CIA-A01 & The re-entry vehicle shall be able to cope with an entry velocity of seven kilometers per second.                \\ \hline
+    CIA-A02 & The inflated aeroshell shall have a maximum diameter of 12 meters.                                               \\ \hline
+    CIA-A03 & The system shall have a diameter not exceeding 5 meters in stowed condition                                                          \\ \hline
+    CIA-A04 & The maximum entry mass of the re-entry vehicle shall be 10,000 kilograms at the start of the mission.
+\\ \hline
+    CIA-A05 & The hypersonic deceleration system mass shall not be heavier than ten percent of the total re-entry vehicle mass. \\ \hline
+    CIA-A06 & The control system shall have a maximum failure probability of 5.0e-4.                                           \\ \hline
+    CIA-A07 & The maximum allowable loads on the re-entry vehicle shall be 3 Earth g's in each axis.                            \\ \hline
+    CIA-A08 & The re-entry vehicle shall have a maximal aerobraking duration of ten days.                                      \\ \hline
     \end{tabular}
     \label{tab:requirements}
 \end{table}
 
 \begin{table}[H]
 \vspace{-4mm}
-    \caption {Decomposition of requirement discription code for requirement I-II-III-IV-V}
+    \caption {Decomposition of requirement discription code for requirement I-II-III-IV}
     \begin{tabular}{|p{0.08\textwidth}|p{0.175\textwidth}|p{0.7\textwidth}|}
     \hline
     Index & Index notation   & Index description                                                                                                                                  \\ \hline \hline
-    I            & CIA                     & Name of the project                                                                                                                           \\ \hline
-    II           & Sys                     & System requirement                                                                                                                           \\ \hline
-    III            & A\#,B\#,C\#                & Indicates in one view the level of the requirement. `A' stands for system, `B' for subsystem  and further levels for lower level requirements. The number behind the letter describes the number of the (corresponding) system requirement
+    I            & CIA                     & Name of the project                                                                                                                            \\ \hline
+    II           & A\#,B\#,C\#                & Indicates in one view the level of the requirement. `A' stands for system, `B' for subsystem  and further levels for lower level requirements. The number behind the letter describes the number of the (corresponding) system requirement
 \\ \hline
-    IV            & Item                    & The name of the subsystem, e.g. Thermal Protection System (TPS)                                                                                                 \\ \hline
-    V            & \#			           & The number of the subsystem requirement                                                                                                      \\ \hline
+    III            & Item                    & The name of the subsystem, e.g. Thermal Protection System (TPS)                                                                                                 \\ \hline
+    IV            & \#			           & The number of the subsystem requirement                                                                                                      \\ \hline
     \end{tabular}
     \label{tab:description}
 \end{table}
