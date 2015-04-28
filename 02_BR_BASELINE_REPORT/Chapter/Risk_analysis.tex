@@ -4,23 +4,44 @@ This section will cover the initial risk assessment that was carried out during 
 
 \subsection{Risk map}
 \label{sec:riskmap}
- A risk map has been constructed in order to identify which mission and design elements pose the biggest risk. From the risk map it can be seen which elements require the most attention in order to mitigate the risks they pose. The risk map is shown in table \ref{tab:riskmap}.
+ A risk map has been constructed in order to identify which mission and design elements pose the biggest risk. From the risk map it can be seen which elements require the most attention in order to mitigate the risks they pose. The risk map is shown in table \ref{tab:riskmap}. The colors correspond to the amount of risk each table cell represents. The numbers in table \ref{tab:riskmap} correspond to the elements shown in table \ref{tab:riskelements}.
 
-\begin{table}[h!]
+\begin{table}[h]
 \centering
-\caption{U denkt nu waarschijnlijk "Huh WTF waar komt al dit vandaan, dit is toch niet normaal joh"! Dat klopt.}
+\caption{Risk map}
 \label{tab:riskmap}
-    \begin{tabular}{|c || >{\centering}m{40mm} | >{\centering}m{32mm} | >{\centering}m{16mm} | c |}
+    \begin{tabular}{|c|c|c|c|c|}
     \hline
-    \bf{Type} & \bf{Mass} (5) & \bf{Power} (4) & \bf{Accur.} (2) & \bf{Total} \\ \hline \hline
-    \bf{Gyroscope} & \cellcolor{yellow!25}0.9kg - 2 & \cellcolor{red!25}8W - 1 & \cellcolor{yellow!25}0.5$^\circ$ - 2 & \cellcolor{red!25}18 \\ \hline
-    \bf{Fine sun sensor} & \cellcolor{yellow!25}1kg - 2 & \cellcolor{yellow!25}1W - 2 & \cellcolor{green!25}0.1$^\circ$ - 5 & \cellcolor{yellow!25}28\\ \hline
-    \bf{Coarse sun sensor} & \cellcolor{green!25} 35g - 5 & \cellcolor{green!25}0.04W - 5 & \cellcolor{yellow!25}0.5$^\circ$ - 2 & \cellcolor{yellow!25}49\\ \hline
-    \bf{Magnetometer} & \cellcolor{blue!25} 0.3kg - 3 & \cellcolor{blue!25}0.3W - 3  & \cellcolor{blue!25}0.3$^\circ$ - 3 & \cellcolor{blue!25}33\\ \hline
-     \bf{Horizon sensor} & \cellcolor{red!25}2kg - 1 & \cellcolor{red!25}5W - 1 & \cellcolor{blue!25}0.25$^\circ$ - 3 & \cellcolor{red!25}15\\ \hline 
-     \bf{Static earth} & \cellcolor{green!25}35g - 5 & \cellcolor{blue!25}0.3W - 3 & \cellcolor{red!25}1$^\circ$ - 1 & \cellcolor{red!25}39\\ \hline
+    \textbf{Feasible in theory} & & & & \\
+    \textbf{Working laboratory model} & & & & \\
+    \textbf{Used in-flight on Earth} & & & & \\
+    \textbf{Derived from used technology on Mars} & & & & \\
+    \textbf{Feasible in theory} & & & & \\
+     & \textbf{Negligible} & \textbf{Marginal} & \textbf{Critical} & \textbf{Catastrophic} \\ \hline
+%     \bf{Static earth} & \cellcolor{green!25}35g - 5 & \cellcolor{blue!25}0.3W - 3 & \cellcolor{red!25}1$^\circ$ - 1 & \cellcolor{red!25}39\\ \hline
     \end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{Risk map elements}
+\label{tab:riskelements}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Number} & \textbf{Element} \\
+\hline
+1 & Control system \\
+2 & \\
+3 & \\
+4 & \\
+5 & \\
+6 & \\
+7 & \\
+8 & Long space exposure \\
+\hline
+\end{tabular}
 \end{table}
 
 \subsection{Technical contingency allocation}
 \label{sec:tca}
+From the risk map of the preceding section one can see that there are many
