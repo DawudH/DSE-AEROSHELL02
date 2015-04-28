@@ -2,6 +2,7 @@ function [ g, p, T, rho, a ] = mars_atmosphere(h)
 %[ g, p, T, rho, a ] = mars_atmosphere(h)
 %   Generate atmosphere variables based on height and standard atmosphere
 %   parameters as given in mars_atmosphere.m. Height can be a vector.
+%   everything in SI units (m, s, kg, K)
 
 
 % Load standard parameters
@@ -20,8 +21,8 @@ rho = interp1(h_base, rho_base, h, 'pchip', 'extrap');
 %Heights outside the data region are given the value of the largest known
 %height. Extrapolation yields dissatisfactory results.
 T(h>h_base(end)) = T_base(end);
-p(h>h_base(end)) = p_base(end);
-rho(h>h_base(end)) = rho_base(end);
+p(h>h_base(end)) = 0;
+rho(h>h_base(end)) = 0;
 T(h<h_base(1)) = T_base(1);
 p(h<h_base(1)) = p_base(1);
 rho(h<h_base(1)) = rho_base(1);
