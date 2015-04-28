@@ -1,5 +1,6 @@
 clear all
 clc
+close all
 comment = false;
 
 M_mars = 6.419*10^23; %[kg]
@@ -45,6 +46,8 @@ if comment
     figure;
     plot(x,y,x_m,y_m,x_a,y_a);
 end
+
+
 h = 2000000;
 r = R_m + h;
 theta = 40/180*pi;
@@ -54,33 +57,41 @@ m = 10000; %[kg]
 CD = 1; %[-]
 r_v = [-r*sin(theta) r*cos(theta) 0];
 r_v_n = r_v;
+r_v_m = [abs(r_v)]
 v_v = [0 -v 0];
-dt = 1/10;
+dt = 1;
 orbit = true;
 t=0;
+tend = 1*3600;
 while orbit == true
-    if (abs(r)-R_m)<150000
+    if (norm(r_v)-R_m)<150000
         rho = 1;
     else
         rho = 0;
     end
     a_v = -(G*M_mars/r^3)*r_v_n - CD*0.5*rho*v_v.^2*S/m;
     r_v_n = r_v_n + v_v * dt + a_v *dt^2;
-    r_v = [r_v r_v_n];
+    r_v = [r_v; r_v_n];
+    r_v_m = [r_v_m norm(r_v_n)];
     v_v = v_v + a_v * dt;
     t = t+dt;
-    if (abs(r_v)<R_m) | (abs(r_v) > 2*R_m)
+    if (norm(r_v)<R_m) | (t>tend)%| (abs(r_v) > 100*R_m)
         orbit = false;
     end
 end
-x = r_v(1 : 3 : end);
-y = r_v(2 : 3 : end);
-z = r_v(3 : 3 : end);
-[x_m, y_m, z_m] = sphere;
-x_m = R_m * x_m;
-y_m = R_m * y_m;
-z_m = R_m * z_m;
+x = r_v(:,1);
+y = r_v(:,2);
+z = r_v(:,3);
+%[x_m, y_m, z_m] = sphere;
+%x_m = R_m * x_m;
+%y_m = R_m * y_m;
+%z_m = R_m * z_m;
 figure;
 hold on
-surf(x_m,y_m,z_m);
-scatter3(x,y,z);
+axis equal
+viscircles([0,0],R_m)
+%surf(x_m,y_m,z_m);
+plot(x,y);
+
+figure('name','radius')
+plot(0:dt:tend,r_v_m)
