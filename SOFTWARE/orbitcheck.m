@@ -37,7 +37,7 @@ for k = 1:length(CD)
     for i=1:length(rx)
         [out, R, V, A] = orbitmodel_new(rx(i),ry,R_m,m,CD(k),S,v,dt,h_atmos,M_mars,G);
         if write_to_file
-            fprintf(fid,'%11.1f %4.2f %d %d %d %5.3f \n',rx(i),CD(k),out.inatmos,out.crash,out.inorbit,out.maxaccel);
+            fprintf(fid,'%11.1f %4.2f %d %d %d %f \n',rx(i),CD(k),out.inatmos,out.crash,out.inorbit,out.maxaccel);
         end
         
         
@@ -50,10 +50,10 @@ for k = 1:length(CD)
         if (out.crash == false) && (out.inorbit == false)
            
             rx_refine = linspace(rx_crashed,rx(i),refinement_steps+2);
-            for m = 2:(length(rx_refine)-1)
-                [out, R, V, A] = orbitmodel_new(rx_refine(m),ry,R_m,m,CD(k),S,v,dt,h_atmos,M_mars,G);
+            for j = 2:(length(rx_refine)-1)
+                [out, R, V, A] = orbitmodel_new(rx_refine(j),ry,R_m,m,CD(k),S,v,dt,h_atmos,M_mars,G);
                 if write_to_file
-                    fprintf(fid,'%11.1f %4.2f %d %d %d %5.3f \n',rx_refine(m),CD(k),out.inatmos,out.crash,out.inorbit,out.maxaccel);
+                    fprintf(fid,'%11.1f %4.2f %d %d %d %f \n',rx_refine(j),CD(k),out.inatmos,out.crash,out.inorbit,out.maxaccel);
                 end
                 
 %                 %beun code
