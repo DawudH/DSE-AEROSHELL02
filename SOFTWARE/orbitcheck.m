@@ -16,11 +16,12 @@ dt = 1;
 h_atmos = 104 *10^3; % [m]
 M_mars = 6.419*10^23; %[kg]
 G = 6.673*10^-11; %[N*(m/kg)^2]
-refinement_steps = 20;
+CLCD = 0.3; %[-]
+refinement_steps = 10;
 % changing variables
 
-rx = -4.1e6:-1e3:-4.2e6;
-CD = 1.05:0.05:1.5;
+rx = -4.16e6:-2e3:-4.17e6;
+CD = .8:0.4:1.2;
 
 cc = parula(length(CD)+3);
 if do_plot
@@ -28,18 +29,17 @@ if do_plot
 end
 
 if write_to_file
-    fid = fopen('orbit_true_or_false.txt','a');
+    fid = fopen('orbit_true_or_false_L.txt','a');
 end
 for k = 1:length(CD)
     
     % store first value of crashed..
     rx_crashed = rx(1);
     for i=1:length(rx)
-        [out, R, V, A] = orbitmodel_new(rx(i),ry,R_m,m,CD(k),S,v,dt,h_atmos,M_mars,G);
+        [out, R, V, A] = orbitmodel_new(rx(i),ry,R_m,m,CD(k),S,v,dt,h_atmos,M_mars,G,CLCD);
         if write_to_file
             fprintf(fid,'%11.1f %4.2f %d %d %d %f \n',rx(i),CD(k),out.inatmos,out.crash,out.inorbit,out.maxaccel);
         end
-        
         
         % store last rx value if crashed
         if (out.crash)
@@ -51,15 +51,15 @@ for k = 1:length(CD)
            
             rx_refine = linspace(rx_crashed,rx(i),refinement_steps+2);
             for j = 2:(length(rx_refine)-1)
-                [out, R, V, A] = orbitmodel_new(rx_refine(j),ry,R_m,m,CD(k),S,v,dt,h_atmos,M_mars,G);
+                [out, R, V, A] = orbitmodel_new(rx_refine(j),ry,R_m,m,CD(k),S,v,dt,h_atmos,M_mars,G,CLCD);
                 if write_to_file
                     fprintf(fid,'%11.1f %4.2f %d %d %d %f \n',rx_refine(j),CD(k),out.inatmos,out.crash,out.inorbit,out.maxaccel);
                 end
                 
-%                 %beun code
-%                 if (out.crash == false)
-%                     
-%                     % circle plot:
+                %beun code
+%                  if (out.crash == false)
+%                      
+%                     %circle plot:
 %                     theta_plot = 0:0.01:2*pi;
 %                     radius_mars = ones(1,length(theta_plot)) * R_m;
 %                     radius_mars_atmos = ones(1,length(theta_plot)) * (R_m + 104000);
@@ -70,8 +70,8 @@ for k = 1:length(CD)
 %                     plot(R(:,1),R(:,2))
 %                     polar(theta_plot,radius_mars,'r');
 %                     polar(theta_plot,radius_mars_atmos,'g')
-%                     
-%                 end
+%                      
+%                  end
                 
                 if do_plot && (out.crash == false)
                     t = 0:dt:(length(R)*dt-dt);
