@@ -23,13 +23,14 @@ refinement_steps = 40;
 rx = -4.15e6:-2e3:-4.2e6;
 CD = 1.05:0.05:1.5;
 
+
 cc = parula(length(CD)+3);
 if do_plot
     figure('name','orbits')
 end
 
 if write_to_file
-    fid = fopen('orbit_true_or_false_L.txt','a');
+    fid = fopen('orbit_true_or_false_L_t.txt','a');
 end
 for k = 1:length(CD)
     
