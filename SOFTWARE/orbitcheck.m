@@ -16,11 +16,11 @@ dt = 1;
 h_atmos = 104 *10^3; % [m]
 M_mars = 6.419*10^23; %[kg]
 G = 6.673*10^-11; %[N*(m/kg)^2]
-refinement_steps = 40;
+refinement_steps = 20;
 % changing variables
 
-rx = -4.10e6:-1.1e4:-4.31e6;
-CD = 0.7:0.1:1.3;
+rx = -4.1e6:-1e3:-4.2e6;
+CD = 1.05:0.05:1.5;
 
 cc = parula(length(CD)+3);
 if do_plot
