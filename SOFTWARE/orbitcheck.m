@@ -21,7 +21,8 @@ refinement_steps = 40;
 % changing variables
 
 rx = -4.15e6:-2e3:-4.2e6;
-CD = .5:0.05:1.0;
+CD = 1.05:0.05:1.5;
+
 
 cc = parula(length(CD)+3);
 if do_plot
