@@ -19,8 +19,8 @@ G = 6.673*10^-11; %[N*(m/kg)^2]
 refinement_steps = 20;
 % changing variables
 
-rx = -4.1e6:-1e3:-4.2e6;
-CD = 1.05:0.05:1.5;
+rx = -4.1e6:-1e4:-4.2e6;
+CD = 0.5:0.05:1.0;
 
 cc = parula(length(CD)+3);
 if do_plot
@@ -28,7 +28,7 @@ if do_plot
 end
 
 if write_to_file
-    fid = fopen('orbit_true_or_false.txt','a');
+    fid = fopen('orbit_true_or_false_t.txt','a');
 end
 for k = 1:length(CD)
     
@@ -37,7 +37,7 @@ for k = 1:length(CD)
     for i=1:length(rx)
         [out, R, V, A] = orbitmodel_new(rx(i),ry,R_m,m,CD(k),S,v,dt,h_atmos,M_mars,G);
         if write_to_file
-            fprintf(fid,'%11.1f %4.2f %d %d %d %f \n',rx(i),CD(k),out.inatmos,out.crash,out.inorbit,out.maxaccel);
+            fprintf(fid,'%11.1f %4.2f %d %d %d %f %f \n',rx(i),CD(k),out.inatmos,out.crash,out.inorbit,out.maxaccel,out.deltav);
         end
         
         
@@ -47,13 +47,13 @@ for k = 1:length(CD)
         end
         
         % check if not crashed and not in orbit
-        if (out.crash == false) && (out.inorbit == false)
+        if out.maxaccel < 3%(out.crash == false) && (out.inorbit == false)
            
             rx_refine = linspace(rx_crashed,rx(i),refinement_steps+2);
             for j = 2:(length(rx_refine)-1)
                 [out, R, V, A] = orbitmodel_new(rx_refine(j),ry,R_m,m,CD(k),S,v,dt,h_atmos,M_mars,G);
                 if write_to_file
-                    fprintf(fid,'%11.1f %4.2f %d %d %d %f \n',rx_refine(j),CD(k),out.inatmos,out.crash,out.inorbit,out.maxaccel);
+                    fprintf(fid,'%11.1f %4.2f %d %d %d %f %f \n',rx_refine(j),CD(k),out.inatmos,out.crash,out.inorbit,out.maxaccel,out.deltav);
                 end
                 
 %                 %beun code
@@ -96,7 +96,6 @@ for k = 1:length(CD)
         
     end
 end
-
 
 if write_to_file
     fclose(fid);
