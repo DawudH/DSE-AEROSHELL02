@@ -26,6 +26,9 @@ while true
     R(i+1,:) = R(i,:) + V(i,:)*dt+a(i,:)*dt^2;
     V(i+1,:) = V(i,:) + a(i,:)*dt;
     
+    admag = sqrt(ad(:,1).^2 + ad(:,2).^2 + ad(:,3).^2);
+    out.maxaccel = max(admag)/9.81;
+        
     % if the s/c has ever been in the atmosphere in_atmus => true
     if (norm(R(i,:)) < (R_m + h_atmos)) 
         out.inatmos = true;
@@ -36,8 +39,7 @@ while true
     % and check velocity and max deceleration...
     if out.inatmos && ((norm(R(i,:)) > (R_m + h_atmos))) 
 
-        admag = sqrt(ad(:,1).^2 + ad(:,2).^2 + ad(:,3).^2);
-        out.maxaccel = max(admag)/9.81;
+        
         %disp(['Vesc = ' num2str(V_esc) ' [m/s], Vend = ' num2str(norm(V(end,:))) ' [m/s]'])
         if (norm(V(end,:)) < V_esc)
             if (out.maxaccel < 3)
@@ -51,8 +53,8 @@ while true
         
     end
     
-    % check if crashed..
-    if out.inatmos && (norm(R(i,:)) < R_m) 
+    % check if crashed.. % crashed = R_m + 5 km..
+    if out.inatmos && (norm(R(i,:)) < R_m + 5000) 
         out.crash = true;
         break;
     end
@@ -71,4 +73,6 @@ while true
      i = i+1;
 end
 
+
+disp(['rx = ' num2str(rx) ' [m], CD = ' num2str(CD) ' [-], in atmosphere: ' num2str(out.inatmos) ', crashed: ' num2str(out.crash) ', in orbit: ' num2str(out.inorbit) ', acceleration: ' num2str(out.maxaccel) ])
 end
