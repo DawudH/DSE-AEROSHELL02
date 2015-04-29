@@ -17,11 +17,11 @@ h_atmos = 104 *10^3; % [m]
 M_mars = 6.419*10^23; %[kg]
 G = 6.673*10^-11; %[N*(m/kg)^2]
 CLCD = 0.3; %[-]
-refinement_steps = 10;
+refinement_steps = 40;
 % changing variables
 
-rx = -4.16e6:-2e3:-4.17e6;
-CD = .8:0.4:1.2;
+rx = -4.15e6:-2e3:-4.2e6;
+CD = .5:0.05:1.0;
 
 cc = parula(length(CD)+3);
 if do_plot
@@ -29,7 +29,7 @@ if do_plot
 end
 
 if write_to_file
-    fid = fopen('orbit_true_or_false_L.txt','a');
+    fid = fopen('orbit_true_or_false_L_t.txt','a');
 end
 for k = 1:length(CD)
     
