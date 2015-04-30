@@ -18,10 +18,11 @@ refinement_steps = 40;
 
 
 % changing variables
-
-rx = -4.14e6:-2e3:-4.2e6;
-CD = 0.8:0.05:1.5;
-
+% 
+% rx = -4.14e6:-2e3:-4.2e6;
+% CD = 0.8:0.05:1.5;
+CD = 1.3;
+rx = -4.162e6;
 
 cc = parula(length(CD)+3);
 if do_plot
@@ -49,13 +50,18 @@ for k = 1:length(CD)
         
         % check if not crashed and not in orbit
         if (out.crash == false) && (out.inorbit == false)
-           
+            previous_inorbit = false;
             rx_refine = linspace(rx_crashed,rx(i),refinement_steps+2);
             for j = 2:(length(rx_refine)-1)
                 [out] = orbit_selection(rx_refine(j),ry,CD(k),v,dt,CL,R_m,Omega_m,S,m,G,M_mars,h_atm,crash_margin,g_earth);
                 if write_to_file
                     fprintf(fid,'%11.1f %4.2f %d %d %d %f \n',rx_refine(j),CD(k),out.inatmos,out.crash,out.inorbit,out.maxaccel);
                 end
+                
+                if previous_inorbit && (out.inorbit == 0)
+                    break;
+                end
+                
                 
                 if do_plot && (out.crash == false)
                     t = 0:dt:(length(out.R)*dt-dt);
