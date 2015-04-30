@@ -1,9 +1,7 @@
-function [orbit] = orbit(R,V,a,CD,CL,dt)
-% load the constnts
-constants
+function [orbit] = orbit(R,V,a,CD,CL,dt,R_m,Omega_m,S,m)
 
 %Mars atmosphere
-[ g, p, T, rho, asound ] = mars_atmosphere(norm(R(1,:)) - R_m);
+[ g, p, T, rho, asound ] = mars_atmosphere(norm(R) - R_m);
 %gravitational accaleration (vector)
 orbit.ag = -g * R/norm(R);
 %if in atmosphere there is drag and lift
@@ -21,7 +19,7 @@ else
     orbit.al = 0;
 end
 %calculate total accaleration
-orbit.a = ag + ad + al;
+orbit.a = orbit.ag + orbit.ad + orbit.al;
 %calculate new velocity and location
 orbit.V = V + a*dt;
 orbit.R = R + V*dt + a*dt^2;
