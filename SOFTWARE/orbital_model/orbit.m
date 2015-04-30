@@ -15,7 +15,7 @@ if rho>0
     %calculate Lift and Drag
 
     orbit.ad = - vel_unit * CD * 0.5* rho * norm(V - Vatm)^2 * S / m;
-    orbit.al = - cross(vel_unit,[0,0,1]) * CL * 0.5 * rho * norm(V - Vatm)^2 * S / m;
+    orbit.al = cross(vel_unit,[0,0,1]) * CL * 0.5 * rho * norm(V - Vatm)^2 * S / m;
 else
     %no lift and drag outside the atmosphere
     orbit.ad = 0;
@@ -25,5 +25,5 @@ end
 orbit.a = orbit.ag + orbit.ad + orbit.al;
 %calculate new velocity and location
 orbit.V = V + a*dt;
-orbit.R = R + V*dt + a*dt^2;
+orbit.R = R + V*dt + 0.5*a*dt^2;
 end
