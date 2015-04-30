@@ -1,13 +1,12 @@
 function [out, R, V, a] = orbitmodel_new(rx,ry,R_m,m,CD,S,v,dt,h_atmos,M_mars,G,CLCD)
 
 
-omega_m = 24.6229622 * 3600 * 2*pi; %[rad/sec]
+omega_m = 2*pi / (24.6229622 * 3600 ); %[rad/sec]
 Omega_m = [0,0,1]*omega_m;
 
 % define output 
 out.inorbit = false;
 out.inatmos = false;
-out.rightaccel = false;
 out.maxaccel = 0;
 out.crash = false;
 
@@ -22,6 +21,7 @@ al(1,:) = - cross(vel_unit(1,:),[0 0 1]) * CLCD*CD * 0.5* rho * norm(V(1,:))^2 *
 a(1,:) = ag(1,:) + ad(1,:) + al(1,:);
 i = 1;
 V_esc = sqrt(G*M_mars * 2 / (h_atmos + R_m)); % escape velocity at the border of the atmosphere
+
 while true
     
     [ g, p, T, rho, asound ] = mars_atmosphere(norm(R(i,:)) - R_m);
@@ -48,11 +48,6 @@ while true
         
         %disp(['Vesc = ' num2str(V_esc) ' [m/s], Vend = ' num2str(norm(V(end,:))) ' [m/s]'])
         if (norm(V(end,:)) < V_esc)
-            if (out.maxaccel < 3)
-               
-                out.rightaccel = true;
-                
-            end
             out.inorbit = true; 
         end
         break;
@@ -80,10 +75,5 @@ while true
 end
 admag = sqrt((ad(:,1)+al(:,1)).^2 + (ad(:,2)+al(:,2)).^2 + (ad(:,3)+al(:,3)).^2);
 out.maxaccel = max(admag)/9.81;
-t = 0:dt:(length(R)*dt-dt);
-figure
-plot(t,sqrt(Vatm(:,1).^2 + Vatm(:,2).^2 + Vatm(:,3).^2))
-grid on
-
 disp(['rx = ' num2str(rx) ' [m], CD = ' num2str(CD) ' [-], CL/CD = ' num2str(CLCD) ' [-], in atmosphere: ' num2str(out.inatmos) ', crashed: ' num2str(out.crash) ', in orbit: ' num2str(out.inorbit) ', acceleration: ' num2str(out.maxaccel) ])
 end
