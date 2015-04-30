@@ -1,3 +1,6 @@
+#Short author list. --> alternative replace for mid term report
+
+
 n=open("library.bib", "r")
 bib=n.readlines()
 n.close()

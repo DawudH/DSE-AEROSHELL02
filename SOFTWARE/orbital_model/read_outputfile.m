@@ -3,12 +3,12 @@ clc
 clear all
 close all
 
-fid = fopen('orbit_true_or_false_L.txt','r');
+fid = fopen('orbit_true_or_false.txt','r');
 C = textscan(fid,'%11.1f %4.2f %d %d %d %f');
 fclose(fid);
 
 
-fig = figure('name','results')
+fig = figure('name','results');
 hold on
 grid on
 inorbit = C{5};
