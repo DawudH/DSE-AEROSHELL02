@@ -1,36 +1,47 @@
 \section{Requirement analysis} \label{ch:req}
-<<<<<<< HEAD
-This section will analyze the requirements of the re-entry mission. It will start by providing a requirement discovery tree, which visualizes the way the different requirements on the re-entry vehicle flow down from the top level mission requirements and constraints. This will be followed by an analysis of the subsystem requirements. This analysis will follow from the flown down presented in the requirements discovery tree. Finally, the requirements will be precisely defined and documented. The output of this final step will be the requirements used during the product design. %Guido: Dit moet nog beter geformuleerd worden, maar kon even niets beters bedenken
-
-\subsection{Requirement Discovery Tree}
-The overarching mission requires the system to perform a manned re-entry on Mars. Several performance requirements and mission constraints are imposed on the system. These overall requirements and constraints were detailed in the project plan \cite{Balasooriyan2015}. From these overall requirements and constraints, subsystem requirements can be derived. Figure \ref{fig:RBS} graphically displays this requirement breakdown, and provides a sample parameter which has a requirement imposed on it due to the top level requirements. Each of the subsystems' requirements will be elaborated and expanded upon in the remainder op this section. 
-=======
 This section will analyze the requirements of the re-entry mission. It will start by providing a requirements discovery tree, which visualizes the way the different requirements on the re-entry vehicle flow down from the top level mission requirements and constraints. This will be followed by an analysis of the subsystem requirements. This analysis will follow from the flown down presented in the \gls{rdt}. Finally, the requirements will be as precisely defined and documented as possible at this stage. For the unknown values the acronym \gls{tbd} will be used. The output of this final step will be the requirements used during the product design. %Guido: Dit moet nog beter geformuleerd worden, maar kon even niets beters bedenken
 
 \subsection{Requirements Discovery Tree}
 The overarching mission requires the system to perform a manned re-entry on Mars. Several performance requirements and mission constraints are imposed on the system. These overall requirements and constraints were detailed in the project plan \cite{Balasooriyan2015}. From these overall requirements and constraints, subsystem requirements can be derived. Figure \ref{fig:RBS} graphically displays this requirements discovery, and provides a sample parameter which has a requirement imposed on it due to the top level requirements. Each of the subsystems' requirements will be elaborated and expanded upon in the remainder op this section. 
->>>>>>> dc852b87c5155804b96c99c47664bc99c14531b2
+
 
 \vspace{-5mm}
 \begin{figure}[H]
 \centering
-<<<<<<< HEAD
-\includegraphics[width=0.95\textwidth]{Figure/RBS.pdf}
-\caption{Requirements Discovery Treee} \label{fig:RBS}
-=======
-\hspace{-10mm}  
 \includegraphics[width=1.00\textwidth]{Figure/RBS.pdf}
 \vspace{-5mm}
 \caption{Requirements Discovery Tree} 
 \label{fig:RBS}
->>>>>>> dc852b87c5155804b96c99c47664bc99c14531b2
 \end{figure}
+
+
+\subsection{Top-level requirements}
+To provide a full overview of the requirements the top level requirements as stated in the \acrfull{pp} are restated in table \ref{tab:toplevelreq}. These top level requirements are appended with an additional requirement CIA-A09 concerning the support of human payload. A full overview of all the requirements mentioned of this chapter, including the top-level requirements, is given in appendix \ref{app:req}.
+
+\begin{table}[H]
+	\caption{Overview of mission top-level requirements}
+	\begin{tabular}{|p{0.10\textwidth}|p{0.85\textwidth}|}
+    \hline
+    ID          & Description                                                                                                      \\ \hline \hline
+    CIA-A01 & The re-entry vehicle shall be able to cope with an entry velocity of seven kilometers per second.                \\ \hline
+    CIA-A02 & The inflated aeroshell shall have a maximum diameter of 12 meters.                                               \\ \hline
+    CIA-A03 & The system shall have a diameter not exceeding 5 meters in stowed condition                                       \\ \hline
+    CIA-A04 & The maximum entry mass of the re-entry vehicle shall be 10,000 kilograms at the start of the mission.				\\ \hline
+    CIA-A05 & The hypersonic deceleration system mass shall not be heavier than ten percent of the total re-entry vehicle mass. \\ \hline
+    CIA-A06 & The control system shall have a maximum failure probability of 5.0e-4.                                           \\ \hline
+    CIA-A07 & The maximum allowable loads on the re-entry vehicle shall be 3 Earth g's in each axis.                            \\ \hline
+    CIA-A08 & The re-entry vehicle shall have a maximal aerobraking duration of ten Earth days.                                      \\ \hline
+    CIA-A09 & The re-entry vehicle shall accommodate \gls{tbd} humans as payload.                         				            \\ \hline
+    \end{tabular}
+    \label{tab:toplevelreq}
+\end{table}
+
 
 \input{./Chapter/Requirements/Aero.tex}
 \input{./Chapter/Requirements/Struct.tex}
 \input{./Chapter/Requirements/Therm.tex}
 \input{./Chapter/Requirements/Control.tex}
-\input{./Chapter/Requirements/ReqList.tex}
+
 
 
 
