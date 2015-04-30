@@ -1,4 +1,4 @@
-function [out, R, V, a] = orbit_selection(rx,ry,CD,v,dt,CL)
+function [out] = orbit_selection(rx,ry,CD,v,dt,CL)
 % load constants
 constants
 
@@ -24,7 +24,7 @@ i = 1;
 while true
     
     % get orbital parameters at next node
-    orbit_new = orbit(R(i,:),V(i,:),a(i,:),CD,CL,dt);
+    orbit_new = orbit(out.R(i,:),out.V(i,:),out.a(i,:),CD,CL,dt);
     out.R(i+1,:) = orbit_new.R;
     out.V(i+1,:) = orbit_new.V;
     out.a(i+1,:) = orbit_new.a;
