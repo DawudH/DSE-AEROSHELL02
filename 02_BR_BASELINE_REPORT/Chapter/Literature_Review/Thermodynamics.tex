@@ -10,9 +10,9 @@ Energy transfer by heat, or simply heat transfer has three modes: conduction, co
 \subsubsection{Thermal protection system}
 The thermodynamic principles can be used to design a heatshield. The design of such a heatshield, also called a \acrfull{tps} depends on several parameters. In general it all comes down to the trajectory the re-entry vehicle will follow. The steeper the re-entry trajectory, the larges the deceleration and the more g-loads will be subjected to the (human) payload. The re-entry vehicle will have a nominal trajectory with deviations. An overshoot results in a longer descend and can result in skipping off the planet, whereas an undershoot will result in a fast descend rate. The larger the overshoot angle, the longer the re-entry vehicle will be in atmosphere an thus creating a higher heat loading on the structure. On the other hand, for a larger undershoot angle, the heat development over time will be faster inducing a larger heat flux on the system. Also, the undershoot angle determines the trajectory with the highest dynamic pressure, which is important for structural sizing. 
 
-Not only the trajectory is important for the design, but also the shape with its bluntness. The bigger the heatshield and the larger the bluntness, the more the  thermal loads can be distributed over the capsule. This will result in a thinner \gls{tps} such that less mass is needed. However, the capsule needs aerodynamic stability. A blunt body has a forward aerodynamic center [REFERENCE NEEDED], causing the vehicle to be more unstable. Therefore, there is a constraint on the bluntness of the vehicle.
+Not only the trajectory is important for the design, but also the shape with its bluntness. The bigger the heatshield and the larger the bluntness, the more the  thermal loads can be distributed over the capsule. This will result in a thinner \gls{tps} such that less mass is needed. However this can cause aerodynamic instability \cite{Smoot}.
 
-The temperature development throughout the structure can be determined when the heat loading and heat flux is known. This can be done with the heat equation combined with a finite element method, either in a 1D setting or a 3D setting depending on the wanted complexity.
+The temperature development throughout the structure trough multiple layers of material can be determined when the heat loading and heat flux is known. An example of a method to determine the heat developement is given by \cite{Daryabeigi2002}.
 
 \paragraph{Heatshield for non-inflatable structures}
 Throughout the last century several re-entry attempts have been performed with different \gls{tps}s. This paragraph and the next paragraph focus on several concepts. This paragraph focuses on non-inflatble solutions and the next on inflatables. 
@@ -20,9 +20,18 @@ Throughout the last century several re-entry attempts have been performed with d
 
 
 \paragraph{Heatshield for inflatable structures}
-The usage of  an inflatable structure is more advantageous over a non-inflatable structure for several reasons. An inflatable heat shell is not directly limited to the size of the launcher. Therefore a much larger diameter of the \gls{tps} can be obtained. This is an advantage because the heat loads on the structure can be distributed resulting in a lower front shell mass. Furthermore, the heat at the back side of the vehicle will be severely lower, such that there is no need for a back shell \ref{Hughes2005}. Therefore, less mass is needed and less effort needs to be done to verify and validate the thermal loads on payload closely located to the back shell. Although the system is very promising in terms of mass, the system does add a lot of complexity.
+The usage of  an inflatable structure is more advantageous over a non-inflatable structure for several reasons. An inflatable heat shell is not directly limited to the size of the launcher. Therefore a much larger diameter of the \gls{tps} can be obtained. This is an advantage because the heat loads on the structure can be distributed resulting in a lower front shell mass. Furthermore, the heat at the back side of the vehicle will be severely lower, such that there is no need for a back shell \cite{Hughes2005}. Therefore, less mass is needed and less effort needs to be done to verify and validate the thermal loads on payload closely located to the back shell. Although the system is very promising in terms of mass, the system does add a lot of complexity. 
 
-There has not yet been an actual entry on Mars with an inflatable shield, but \gls{nasa} has demonstrated a well tested concept \ref{Dillman2010} and \ref{Dillman2012}.
+The thermal protection system of the IRVE vehicles consists of several layers \cite{Litton} which are shown in Figure \ref{fig:tpslayup}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width = 0.55\textwidth]{Figure/IRVE4TPS.jpg}
+\caption{Example of the tps lay-up for the IRVE-4 re-entry vehicle\cite[p.6]{Litton}.}
+\label{fig:tpslayup}
+\end{figure}
+
+There has not yet been an actual entry on Mars with an inflatable shield, but \gls{nasa} has demonstrated a well verified and validated concept \ref{Dillman2010} \cite{Dillman2012}. Another non-verified concept is the use of ballutes \cite{Hall2001}. Which can be appplied in case of high mass transportantion. Due to its large size the thermal loads on the structure are small. However, the capsule, located in front of the ballute is exposed to a the free flow and needs additional thermal protection.
 
 \subsubsection{Thermal control system}
 For the \gls{tcs} of the crewcapsule the book on Thermal Control by R. Karam is leading. \cite{Karam1998} Karam explains that heat fluxes due to conduction and radiation can be related to temperature using certain proportionality factors that depend on physical constants, material properties, surface conditions, geometry and temperature. The purpose of thermal control is to change the proportionality factors such that the desired temperature range is reached and retained. The changing of the proportionality factors is done by proper selection of materials and configurations.
