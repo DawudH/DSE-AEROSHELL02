@@ -7,7 +7,6 @@ d = 12; % [m] diameter heatshield
 S = 12^2*pi/4; %[m^2]
 R_m = 6794000/2; %[m]
 h_atm = 104e3; %[m]
-z = [0 0 1]; %[-]
 g_earth = 9.81; %[m/s^2]
 crash_margin = 5000; %[m]
 M_mars = 6.419*10^23; %[kg]
