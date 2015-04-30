@@ -20,7 +20,7 @@ refinement_steps = 40;
 % changing variables
 
 rx = -4.14e6:-2e3:-4.2e6;
-CD = 1.05:0.05:1.5;
+CD = 0.8:0.05:1.5;
 
 
 cc = parula(length(CD)+3);

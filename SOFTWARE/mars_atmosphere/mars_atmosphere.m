@@ -33,7 +33,7 @@ rho(h<h_base(1)) = rho_base(1);
 % rho = p./(Rm_mars*T);
 
 
-g = GM_mars./(h+r_mars).^2;
+g = G*M_mars./(h+r_mars).^2;
 a = sqrt(gamma_mars*Rm_mars.*T);
 
 end
