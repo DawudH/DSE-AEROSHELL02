@@ -1,15 +1,7 @@
 \subsection{Aerodynamic Requirements Discovery} 
 \label{sec:aero}
-%A number of aerodynamical requirements can be seen in figure \ref{fig:RBS}. These will all be discussed here, together with their origins and impacts.
+A number of aerodynamical requirements can be seen in figure \ref{fig:RBS}. These will all be discussed here and have been summarized in table \ref{tab:aeroreqs}. 
 
-%\textbf{Decelerate within 10 days}\\
-%From the limited amount of time available for the deceleration a minimum 
-
-%\textbf{Decelerate without excessive heating}\\
-%In order to guarantee the safety of the astronauts onboard the spacecraft the spacecraft cannot be heated excessively. Since this heat is caused by the drag exerted on the spacecraft this imposes a constraint on the maximum allowable heat flux produced by said drag. 
-
-%\textbf{Decelerate in a controlled manner}\\
-%To make sure that the spacecraft is controllable during the deceleration procedure 
 
 \begin{table}[h]
 	\caption{Overview of functional requirements on aerodynamical characteristics}
@@ -18,12 +10,16 @@
 		\hline
 		ID & Description \\
 		\hline \hline
-		CIA-B01-Aero-01 & The system shall produce a maximum heat flux of no more \\ \hline
-%TBD $\frac{W}{cm^{2}}$ \\ \hline
+		CIA-B01-Aero-01 & The system shall produce a maximum heat flux of no more than TBD $\frac{W}{cm^{2}}$ \\ \hline
 		CIA-B01-Aero-02 & The system shall have stability coefficients such that it is stable in flight \\ \hline
 		CIA-C01-Aero-02-01 & The system shall have longitudinal stability coefficient X of TBD \\ \hline
 		CIA-B07-Aero-01 & The system shall produce a drag force of no more than 3g \\ \hline
-%subsubrequirement:
+%subsubrequirement?:
 		CIA-B08-Aero-01 & The system shall produce a drag force of at least TBD $N$ \\ \hline
 	\end{tabular}
 \end{table}
+
+Requirement CIA-B01-Aero-01 follows from the entry velocity of 7 $\frac{km}{s}$. Since the heat flux subjected upon a body is proportional to $V^{3}$ \cite{Tauber1986} the highest values for the heat flux will be found during the first orbit around Mars. 
+Because the system needs to be controllable requirement CIA-B01-Aero-02 will need to be fulfilled. An uncontrollable system may encounter loads that are higher than acceptable and that may endanger the system integrity and the lives of the crew.
+Requirement CIA-B07-Aero-01 is caused by the need for a limitation of the maximum allowable decelerations that occur. This can have a significant impact on the mission and mission duration, since this limits the maximum allowable drag force that can be achieved.
+Lastly the source of requirement CIA-B08-Aero-01 is the limitation of the deceleration duration. If the deceleration takes too long the well-being of the astronauts is affected negatively.
