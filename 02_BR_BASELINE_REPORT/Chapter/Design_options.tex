@@ -1,10 +1,31 @@
 \section{Design Option Structuring} \label{ch:design}
 This chapter gives an overview of initial design concept selection, focusing on the different missions aspects of XXX. This concept generation is done systematically by means of a \gls{dot} for each of the aspects. Combination of the different trees then yields a number of final concepts. The next phase is eliminating clearly unfeasible or undevelopable concepts. The chapter commences with a \gls{dot} for each of the mission aspects in subsequent sections, including eliminating unfeasible concepts.
 
+<<<<<<< HEAD
 \subsection{Design Options}
 The configuration of the aerodynamic deceleration mechanism, given in figure \ref{fig:dotconfig}, can at a first level be divided into inflatable and non-inflatable systems. For non-inflatable systems an \textit{AND} subdivision can be made. A blunt or pointed body can be considered and at the same time this structure may be deployable or undeployable. Pointed bodies will not be considered since the attached shock will cause excessive aerodynamic heating \cite{AndersonJr.2007} making this concept unfeasible. The blunt body may further be subdivided into lifting and non-lifting bodies. Lifting bodies may follow directly from the shape of the entry vehicle such as for example seen in the SpaceShuttle. Geometrically symmetric bodies may also feature a lifting component by featuring a \gls{cg} located away from the symmetry axis. This \gls{cg} offset is sometimes actively used for control purposes \cite{Dillman2012} as also explained in section \ref{sec:DOTcontrol}. 
 
 The second separation is  the division between deployable and non-deployable structures. Whereas for inflatable structures deployment is inherent to the design non-inflatable structure may feature no deployment mechanism. The deployable configurations feature a change in geometry specifically for the reentry which can for example be controlled by actuators.
+=======
+%\subsection{Deceleration mechanism}
+%Deceleration can be performed by purely aerodynamic forces exerted by the local atmosphere, as used in the \gls{irve} missions (see Table \ref{tab:hiadcomparison}), primarily by a propulsive force (retro-propulsion) or a hybrid configuration featuring both, as used in for example the Apollo entry vehicles. Aerodynamic deceleration reduces the $\Delta V$ required by propulsion and is hence preferable to propulsive deceleration, i.e. retro-propulsion, through a decrease of the required entry mass by limiting required propellant to be taken on board. A feasibility study of \gls{nasa} indicates that pure propulsion is unfeasible by the large amounts of propellant mass required \cite{Cianciolo2010}. Moreover, by means of Tsiolkovsky's rocket equation it can be shown that a velocity increment of 7 $[km/s]$ is unattainable while keeping deceleration mechanism mass below 10 percent of initial mass for conventional effective exhaust velocities \cite{Wertz2011}. Figure \ref{fig:dotdelmech} gives the \gls{dot} for the deceleration mechanism.
+%
+%Other options are un(der)developed: studies on their application for (re-)entry have not been found nor have these been considered in feasibility studies by \gls{nasa}, predominantly the extensive studies of Cianciolo et al \cite{Cianciolo2010}. As such, while these options may be worth revisiting in the future, their current state of development does not allow for implementation in a (re-)entry vehicle.
+%
+%\begin{figure}[H]
+%\centering
+%\includegraphics[width = 0.85\textwidth]{Figure/DOT_decelerationmechanism.pdf}
+%\caption{Design Option Tree for entry vehicle deceleration mechanism}
+%\label{fig:dotdelmech}
+%\end{figure}
+
+\subsection{Configuration of aerodynamic deceleration}
+The configuration of the aerodynamic deceleration mechanism, given in figure \ref{fig:dotconfig}, can be at a first level be subdivided into inflatable and non-inflatable systems. For non-inflatable systems an \textit{AND} subdivision can be made. A blunt or pointed body can be considered and at the same time this structure may be deployable or undependable. Pointed bodies will not be considered since the attached shock will cause excessive aerodynamic heating \cite{AndersonJr.2007} making this concept unfeasible. The blunt body may further be subdivided into lifting and non-lifting bodies. Lifting bodies may follow directly from the shape of the entry vehicle such as for example seen in the SpaceShuttle. Geometrically symmetric bodies may also feature a lifting component by featuring a \gls{cg} located away from the symmetry axis. This \gls{cg} offset is sometimes also actively used for control purposes\cite{Dillman2012} as is also explained in section \ref{sec:DOTcontrol}. 
+
+The second separation is  the subdivision between deployable and non-deployable structures. Where as for inflatable structures deployment is inherent to the design non-inflatable structure may feature no deployment mechanism. The deployable configurations feature a change in geometry specifically for the reentry which can for example be controlled by actuators. The deployable systems are already cut off due to the more complicated (thus less reliable) deployment combined with the inherent higher weight of non-inflatable structures\cite{Cianciolo2010} compared to deployable inflatables.
+
+The inflatable structures on the right hand side of figure \ref{fig:dotconfig} can be subdivided in fore or aft placed inflatables or a combination thereof. This can be further broken down to an Isotensoid, tension cone and stacked configuration. Variations here off are also examined by \gls{nasa}\cite{Smith2010}. A Isotensoid configuration consists of a single inflatable covering the whole frontal surface area. In a tension cone structural rigidity is provided by only a single inflatable outer ring, which is filled in between with fabric. Finally a stacked configuration features simply multiple inflatables which are stacked to form the desired configuration.
+>>>>>>> bc65bdd8f2e6e2a2e3cfa8a5bd89e419d11bdd71
 
 The inflatable structures on the right hand side of figure \ref{fig:dotconfig} can be subdivided in fore or aft placed inflatables or a combination thereof. Attached inflatables can be further broken down to an isotensoid, tension cone and stacked configuration. An isotensoid configuration consists of a single inflatable covering the whole frontal surface area. In a tension cone structural rigidity is provided by only a single inflatable outer ring, which is filled in between with fabric. Finally a stacked configuration features multiple inflatables which are stacked to form the desired configuration. \cite{Smith2011, Yamada2009, Hughes2005} Trailing inflatables are derivatives of the Disk-Gap-Band parachute concept and, as their name suggets, trail the payload capsule \cite{Smith2010}.
 
@@ -16,6 +37,7 @@ The inflatable structures on the right hand side of figure \ref{fig:dotconfig} c
 \label{fig:dotconfig}
 \end{figure}
 
+<<<<<<< HEAD
 %\subsection{Design Considerations}
 %\subsubsection{Deceleration mechanism}
 %Deceleration can be performed by purely aerodynamic forces exerted by the local atmosphere, as used in the \gls{irve} missions (see Table \ref{tab:hiadcomparison}), primarily by a propulsive force (retro-propulsion) or a hybrid configuration featuring both, as used in for example the Apollo entry vehicles. Aerodynamic deceleration reduces the $\Delta V$ required by propulsion and is hence preferable to propulsive deceleration, i.e. retro-propulsion, through a decrease of the required entry mass by limiting required propellant to be taken on board. A feasibility study of \gls{nasa} indicates that pure propulsion is unfeasible by the large amounts of propellant mass required \cite{Cianciolo2010}. Moreover, by means of Tsiolkovsky's rocket equation it can be shown that a velocity increment of 7 $[km/s]$ is unattainable while keeping deceleration mechanism mass below 10 percent of initial mass for conventional effective exhaust velocities \cite{Wertz2011}. Figure \ref{fig:dotdelmech} gives the \gls{dot} for the deceleration mechanism.
@@ -31,6 +53,10 @@ The inflatable structures on the right hand side of figure \ref{fig:dotconfig} c
 
 \subsection{Trajectory control} \label{sec:DOTcontrol}
 
+=======
+\subsection{Trajectory control} \label{sec:DOTtrajectory}
+>>>>>>> bc65bdd8f2e6e2a2e3cfa8a5bd89e419d11bdd71
 
+\subsection{Control} \label{sec:DOTcontrol}
 %\subsection{Inflation system}
 %As mentioned in Chapter \ref{cha:litreview}, inflation can be performed either with (ram-air) or without use of the atmosphere. A third option is the use of both (hybrid), thereby featuring ram-air inlets as well as internal gas storage and feed systems. In terms of the medium used for inflation, conventionally nitrogen gas is used. An alternative would be hydrazine gas, as explained in Chapter \ref{cha:litreview}.
