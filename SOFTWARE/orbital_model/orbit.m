@@ -1,7 +1,7 @@
 function [orbit] = orbit(R,V,a,CD,CL,dt,R_m,Omega_m,S,m)
 
 %Mars atmosphere
-[ g, p, T, rho, asound ] = mars_atmosphere(norm(R(1,:)) - R_m);
+[ g, p, T, rho, asound ] = mars_atmosphere(norm(R) - R_m);
 %gravitational accaleration (vector)
 orbit.ag = -g * R/norm(R);
 %if in atmosphere there is drag and lift
