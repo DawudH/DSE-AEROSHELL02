@@ -1,7 +1,9 @@
-function [orbit] = orbit(R,V,a,CD,CL,dt,R_m,Omega_m,S,m)
+function [orbit] = orbit(R,V,a,CD,CL,dt,atm,R_m,Omega_m,S,m)
 
-%Mars atmosphere
-[ g, p, T, rho, asound ] = mars_atmosphere(norm(R) - R_m);
+%Mars atmosphere, get density and g
+rho = atm.getDensity(0,0,norm(R)-R_m);
+g = atm.getg(norm(R)-R_m);
+
 %gravitational accaleration (vector)
 orbit.ag = -g * R/norm(R);
 %if in atmosphere there is drag and lift

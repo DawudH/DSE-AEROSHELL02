@@ -14,6 +14,8 @@ out.ag(1,:) = [0, 0, 0];
 out.ad(1,:) = [0, 0, 0];
 out.al(1,:) = [0, 0, 0];
 
+% create atmosphere object
+atm = marsatmosphere();
 
 % escape velocity at the border of the atmosphere
 V_esc = sqrt(G*M_mars * 2 / (h_atm + R_m)); 
@@ -23,7 +25,7 @@ i = 1;
 while true
     
     % get orbital parameters at next node
-    orbit_new = orbit(out.R(i,:),out.V(i,:),out.a(i,:),CD,CL,dt,R_m,Omega_m,S,m);
+    orbit_new = orbit(out.R(i,:),out.V(i,:),out.a(i,:),CD,CL,dt,atm,R_m,Omega_m,S,m);
     out.R(i+1,:) = orbit_new.R;
     out.V(i+1,:) = orbit_new.V;
     out.a(i+1,:) = orbit_new.a;
