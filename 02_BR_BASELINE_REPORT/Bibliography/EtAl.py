@@ -12,9 +12,7 @@ for i in range(len(bib)):
             l=''
             for j in range(nr):
                 l= l +authors[j] +' and '
-                print l
             l=l +'{ Others}} \n,'
-            print l
             bib[i]=l
             
 
