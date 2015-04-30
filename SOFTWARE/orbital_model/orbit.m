@@ -11,8 +11,9 @@ if rho>0
     %calculate the direction of the velocity of the s/c wrt the atmosphere
     vel_unit = (V - Vatm) / norm(V - Vatm);
     %calculate Lift and Drag
+
     orbit.ad = - vel_unit * CD * 0.5* rho * norm(V - Vatm)^2 * S / m;
-    orbit.al = - cross(vel_unit,[0 0 1]) * CL * 0.5 * rho * norm(V - Vatm)^2 * S / m;
+    orbit.al = - cross(vel_unit,[0,0,1]) * CL * 0.5 * rho * norm(V - Vatm)^2 * S / m;
 else
     %no lift and drag outside the atmosphere
     orbit.ad = 0;
