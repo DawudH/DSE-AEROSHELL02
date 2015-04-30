@@ -1,6 +1,4 @@
-function [orbit] = orbit(R,V,a,CD,CL,dt)
-% load the constants
-constants
+function [orbit] = orbit(R,V,a,CD,CL,dt,R_m,Omega_m,S,m)
 
 %Mars atmosphere
 [ g, p, T, rho, asound ] = mars_atmosphere(norm(R) - R_m);
