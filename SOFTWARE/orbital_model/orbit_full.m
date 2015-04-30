@@ -55,13 +55,13 @@ while true
     end
     
     % check if crashed.. % crashed = R_m + crash margin (due to to big timesteps) 
-     if (out.inatmos) && (out.R(i+1,:) < (R_m + crash_margin) )
+     if (out.inatmos) && (norm(out.R(i+1,:)) < (R_m + crash_margin) )
         out.crash = true;
         break;
     end
 
     % if passed the planet without getting into the atmosphere..
-    if (out.inatmos == false) && (out.R(i+1,2) < -(R_m + h_atm))
+    if (out.inatmos == false) && (norm(out.R(i+1,2)) < -(R_m + h_atm))
         % escape velocity at the inital point
         V_esc_0 = sqrt(G*M_mars * 2 / norm(out.R(1,:))); 
         % check if initial velocity is sufficient to get into orbit
