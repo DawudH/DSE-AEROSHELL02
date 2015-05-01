@@ -16,20 +16,20 @@ The motion of a spacecraft can be broken down in some dominant contributors. The
 To be able to fully describe the contributors, two reference frames need to be defined. The non rotating inertial frame is defined with its origin in the centre of mass of Mars (if it would be perfectly spherical), this is the \gls{mci}. 
 Another reference frame is the \gls{mcmf}, in our first model the origin and the z-axis of both reference frames is equal (so no axis tilt is taken into account). The difference between the two is that the \gls{mcmf} is rotating around the z-axis with rotational velocity \gls{con:omegamars} compared to the \gls{mci}.
 
-The gravitational pull is described by Newtons law of gravitation, together with Newton's second law, it can be written as an acceleration as in equation \ref{eq:nG}.
+The gravitational pull is described by Newtons law of gravitation, together with Newton's second law, it can be written as an acceleration as in equation \ref{eq:nG} \cite{Weiland2004}. The direction of this acceleration is towards the center of mass of Mars as shown in figure \ref{fig:orb}.
 
 \begin{equation} \label{eq:nG}
 \gls{sym:g} = -\frac{\gls{con:G}\gls{con:Mmars}}
 					{\gls{sym:R}^3}\gls{sym:Rv}
 \end{equation}
 
-The aerodynamic forces are described by the lift and the drag, these forces are acting in the direction and orthogonal to the velocity of the spacecraft with respect to the atmosphere, this is the velocity of the spacecraft in the \gls{mcmf}. This velocity needs to be converted to \gls{mci} to be able to express the aerodynamic forces in the \gls{mci}, as in equation \ref{eq:Vsc_mcmf_mci}.
+The aerodynamic forces are described by the lift and the drag, these forces are acting in the negative direction and orthogonal to the velocity of the spacecraft with respect to the atmosphere as shown in figure \ref{fig:orb}, this is the velocity of the spacecraft in the \gls{mcmf}. This velocity needs to be converted to \gls{mci} to be able to express the aerodynamic forces in the \gls{mci}, as in equation \ref{eq:Vsc_mcmf_mci}.
 
 \begin{equation} \label{eq:Vsc_mcmf_mci}
 \left.\gls{sym:Vvsc}\right|_{MCMF}^{MCI} = \gls{sym:Vvsc}_{,a} = \left.\gls{sym:Vvsc}\right|_{MCI} - \left(\gls{con:Omegamars} \times \gls{sym:Rv} \right)
 \end{equation}
 
-The aerodynamic accelerations due to the lift and the drag are described by equations \ref{eq:aL} and \ref{eq:aD} respectively.
+The aerodynamic accelerations due to the lift and the drag are described by equations \ref{eq:aL} and \ref{eq:aD} respectively \cite{AndersonJr.2007}.
 
 \begin{equation} \label{eq:aL}
 \gls{sym:aL} = \frac{\gls{sym:CL}\gls{sym:rho}\gls{sym:A}}{2 \gls{sym:m}} 
@@ -61,6 +61,15 @@ If the acceleration is assumed to be constant for small time steps, then the new
 
 \begin{equation} \label{eq:Ri}
 \gls{sym:Rv}_{i+1} = \gls{sym:Rv}_i + \gls{sym:Vv}_i \gls{sym:Dt} + \gls{sym:acc}_i \gls{sym:Dt}^2
+\end{equation}
+
+These equations can be solved numerically as will be described in section \ref{sec:prog_struct}. Results of this computation will give provide the orbital parameters as shown in figure \ref{fig:orb}.
+
+The spacecraft needs to be decelerated enough to enter an orbit around Mars. One way of determining if the spacecraft is actually in orbit is to calculate the escape velocity, given by equation \ref{eq:Ve} \cite{Wertz2011}. One of the drawbacks of using this equation is that it is only valid when there are no disturbance forces, also the lift and drag, acting on the spacecraft. Therefore this value can only be computed accurately outside of the influence of the atmosphere of Mars.
+
+\begin{equation} \label{eq:Ve}
+\gls{sym:Ve} = \sqrt{\frac{\gls{con:G}\gls{con:Mmars}}
+					{\gls{sym:R}}}
 \end{equation}
 
 \subsection{Program structure}\label{sec:prog_struct}
