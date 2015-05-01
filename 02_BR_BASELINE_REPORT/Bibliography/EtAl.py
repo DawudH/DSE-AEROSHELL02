@@ -1,7 +1,7 @@
 #Short author list. --> alternative replace for mid term report
 
 
-n=open("library.bib", "r")
+n=open("DSE controllable inflatable aeroshell.bib", "r")
 bib=n.readlines()
 n.close()
 
