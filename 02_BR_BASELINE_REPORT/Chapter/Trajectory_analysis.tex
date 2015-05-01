@@ -126,7 +126,7 @@ The flowchart below shows the decision making structure used in \textit{orbit\_f
 \end{figure}
 
 \subsection{Verification and validation}
-The orbit determination software was verified by simulating a simple object falling towards the planet with no initial velocity and drag. The simulation results followed the exact solution prescribed by simply integrating the acceleration two times. This is a first order verification and higher order verification efforts have to be pursued in order to fully verify the model. One method to do this is to compare the result of the module with \gls{rho}=0 to a Kepler orbit.
+The orbit determination software was verified by simulating a simple object falling towards the planet with no initial velocity and drag. The simulation results followed the exact solution prescribed by simply integrating the acceleration two times. This is a first order verification and higher order verification efforts have to be pursued in order to fully verify the model. One method to do this is to compare the result of the module with \gls{sym:rho}=0 to a Kepler orbit.
 
 Validation is a complex thing to do for an orbital mechanics simulation tool, since the mission data of past spacecraft is hard to obtain. Furthermore, a simulation would probably contain a large uncertainty on the amount of control force, which does have a large influence on the final trajectory. Due to this, the tool has not yet been validated.
 
