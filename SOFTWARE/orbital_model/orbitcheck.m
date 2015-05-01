@@ -1,7 +1,7 @@
 clc
 clear all 
 close all
-
+tic
 % load constants
 constants
 
@@ -13,34 +13,34 @@ ry = 10* R_m; %[m]
 v = 7000; %[m/s]
 dt = 1;
 
-CLCD = 0.3; %[-]
+CLCD = 0.2; %[-]
 refinement_steps = 40;
 
 
 % changing variables
 % 
-rx = -4.05e6:-2e3:-4.2e6;
-CD = 0.8:0.05:1.5;
+rx = -4.05e6:-1e3:-4.2e6;
+CD = 0.8:0.1:1.1;
 % CD = 1.3;
 % rx = -4.162e6;
 
 cc = parula(length(CD)+3);
 if do_plot
-    figure('name','orbits')
+    figure('name','orbits');
 end
 
-if write_to_file
-    fid = fopen('orbit_true_or_false.txt','a');
-end
-for k = 1:length(CD)
+rx_first = rx(1);
+% file string
+filestr = cell(length(CD),1);
+parfor k = 1:length(CD)
     CL = CLCD * CD(k);
     % store first value of crashed..
-    rx_crashed = rx(1);
+    rx_crashed = rx_first;
     for i=1:length(rx)
         [out] = orbit_selection(rx(i),ry,CD(k),v,dt,CL,R_m,Omega_m,S,m,G,M_mars,h_atm,crash_margin,g_earth);
                             
         if write_to_file
-            fprintf(fid,'%11.1f %4.2f %d %d %d %f \n',rx(i),CD(k),out.inatmos,out.crash,out.inorbit,out.maxaccel);
+            filestr{k} = [filestr{k}  sprintf(' %11.1f %4.2f %d %d %d %f \n',rx(i),CD(k),out.inatmos,out.crash,out.inorbit,out.maxaccel)];
         end
         
         % store last rx value if crashed
@@ -55,7 +55,7 @@ for k = 1:length(CD)
             for j = 2:(length(rx_refine)-1)
                 [out] = orbit_selection(rx_refine(j),ry,CD(k),v,dt,CL,R_m,Omega_m,S,m,G,M_mars,h_atm,crash_margin,g_earth);
                 if write_to_file
-                    fprintf(fid,'%11.1f %4.2f %d %d %d %f \n',rx_refine(j),CD(k),out.inatmos,out.crash,out.inorbit,out.maxaccel);
+                    filestr{k} = [filestr{k}  sprintf(' %11.1f %4.2f %d %d %d %f \n',rx(i),CD(k),out.inatmos,out.crash,out.inorbit,out.maxaccel)];
                 end
                 
                 if previous_inorbit && (out.inorbit == 0)
@@ -88,14 +88,15 @@ for k = 1:length(CD)
     end
 end
 
-
 if write_to_file
+    fid = fopen('orbit_selection.txt','a');
+    for k = 1:length(CD)
+        fprintf(fid,'%s',filestr{k});
+    end
     fclose(fid);
 end
 
-
-
-
+toc
 
 
 
