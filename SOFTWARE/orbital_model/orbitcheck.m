@@ -32,7 +32,7 @@ end
 rx_first = rx(1);
 % file string
 filestr = cell(length(CD),1);
-for k = 1:length(CD)
+parfor k = 1:length(CD)
     CL = CLCD * CD(k);
     % store first value of crashed..
     rx_crashed = rx_first;
