@@ -22,25 +22,37 @@ The \gls{rdt} is used to formulate the high level mission requirements. These re
 	\begin{tabular}{|p{0.20\textwidth}|p{0.7\textwidth}|}
     \hline
     ID          & Description                                                                                                      \\ \hline \hline
-    CIA-A01 & The re-entry vehicle shall decelerate from a velocity of $7 [\frac{km}{s}]$ \\ \hline
-    CIA-A02 & The re-entry vehicle shall operate within mission constraints                                               \\ \hline
-    CIA-A01-01 & The re-entry vehicle shall decelerate to a velocity of \gls{tbd}     \\ \hline
-    CIA-A01-02 & The re-entry vehicle shall not exert an acceleration greater than $29.4 [\frac{m}{s^2}]$ on any crew member for the duration of the mission			\\ \hline
-    CIA-A01-03 & The re-entry vehicle shall not be heated excessively  \\ \hline
-    CIA-A01-04 & The re-entry vehicle shall be in a controlled state for the duration of the mission                            \\ \hline
-    CIA-A02-01 & The re-entry vehicle shall meet all geometric constraints imposed by the mission                           \\ \hline
-    CIA-A02-02 & The re-entry vehicle shall meet all mass constraints imposed by the mission                                      \\ \hline
-	CIA-A02-03 & The re-entry vehicle shall meet all payload constraints imposed by the mission \\ \hline
-	CIA-A01-01-01 & The re-entry vehicle shall reach its final velocity at an altitude of \gls{tbd} [m] \\ \hline
-	CIA-A01-01-02 & The re-entry vehicle shall reach its final velocity within 10 days of mission start \\ \hline
+    CIA-Func & The re-entry vehicle shall decelerate from a velocity of 7 $[\frac{km}{s}]$ to a velocity of \gls{tbd} $[\frac{km}{s}]$  \\ \hline
+    CIA-Op & The re-entry vehicle shall operate within mission constraints                                               \\ \hline
+& \\ \hline
+    CIA-Func-A01 & The re-entry vehicle shall decelerate to a velocity of \gls{tbd}     \\ \hline
+    CIA-Func-A02 & The re-entry vehicle shall not exert an acceleration greater than $29.4 [\frac{m}{s^2}]$ on any crew member for the duration of the mission			\\ \hline
+    CIA-Func-A03 & The re-entry vehicle shall not be heated excessively  \\ \hline
+    CIA-Func-A04 & The re-entry vehicle shall be in a controlled state for the duration of the mission                            \\ \hline
+& \\ \hline
+    CIA-Op-A01 & The re-entry vehicle shall meet all geometric constraints imposed by the mission                           \\ \hline
+    CIA-Op-A02 & The re-entry vehicle shall meet all mass constraints imposed by the mission                                      \\ \hline
+	CIA-Op-A03 & The re-entry vehicle shall meet all payload constraints imposed by the mission \\ \hline
+	CIA-Op-A04 & The re-entry vehicle shall attain its final velocity at an altitude of \gls{tbd} [m] \\ \hline
+	CIA-Op-A05 & The re-entry vehicle shall attain its final velocity within 10 days of mission start \\ \hline
+& \\ \hline
+	CIA-Op-A01-01 & The reentry vehicle shall have an undeployed diameter smaller than 5 [m]                         				            \\ \hline
+	CIA-Op-A01-02 & The reentry vehicle shall have a deployed diameter smaller than 12 [m]                         				            \\ \hline
+	CIA-Op-A01-03 & The reentry vehicle shall have a volume capable of accommodating 6 crew members                        				            \\ \hline
+	CIA-Op-A02-01 & The reentry vehicle shall have a mass of 10000 [kg] at the start of the re-entry                       				            \\ \hline
+	CIA-Op-A02-02 & The hypersonic decelerator shall have a mass fraction of no greater than 10\% of the vehicle mass  \\ \hline
+	CIA-Op-A02-03 & The crew module shall have a mass fraction of no greater than 90\% of the vehicle mass \\ \hline
+	CIA-Op-A03-01 & The reentry vehicle shall carry sufficient provisions for the crew for the duration of the mission \\ \hline
+	CIA-Op-A03-02 & The reentry vehicle shall be able to carry the mission payload								\\ \hline	
     \end{tabular}
 \end{table}
+
 
 \input{./Chapter/Requirements/Aero.tex}
 \input{./Chapter/Requirements/Struct.tex}
 \input{./Chapter/Requirements/Therm.tex}
 \input{./Chapter/Requirements/Control.tex}
-\input{./Chapter/Requirements/Mission.tex}
+
 
 
 
