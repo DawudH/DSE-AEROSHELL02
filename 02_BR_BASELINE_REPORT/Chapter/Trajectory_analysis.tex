@@ -18,17 +18,25 @@ The gravitational pull is described by Newtons law of gravitation
 
 \subsection{Program structure}\label{sec:prog_struct}
 
-In order to use the equations of motion to produce usefull results
+In order to use the governing equations (equation \ref{eq:final}**!!need label!!**) to produce usefull results they have to be implemented in a simulation which calculates the trajectory. From this calculated trajectory the program has to extract usefull data and conclusions. Three different modules are discribed in subsection \ref{subsec:modules}. In subsection \ref{subsec:flow} a flowchart of the program is presented.
 
-**Modules
-****Orbit
-****Full orbit
-****orbit selection
+\subsection{Modules} \label{subsec:modules}
+
+The program first implements the governing equations on each timestep. Secondly two modules were created, one to find feasible orbits and another to calculate the full orbit of the orbits which are found to be feasible. These three modules are described below.
+
+\paragraph{Implementation of governing equations}
+
+\paragraph{Orbit selection}
+
+\paragraph{Full orbit simulation}
+
+\subsection{Flowchart} \label{subsec:flow}
 **flowchart
+
 \begin{figure}[H]
-%\centering
+\centering
 \hspace{-23mm}
-\includegraphics[width = 0.8\textwidth]{Figure/astro_tool.png}
+\includegraphics[width = 0.8\textwidth]{Figure/astro_tool.pdf}
 \vspace{-5mm}
 \caption{Flowchart of the working principle of the trajectory analysis program}
 \label{fig:traj_flow}
