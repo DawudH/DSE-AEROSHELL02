@@ -21,7 +21,7 @@ The gravitational pull is described by Newtons law of gravitation
 
 \subsection{Program structure}\label{sec:prog_struct}
 
-In order to use the governing equations (equation \ref{eq:final}**!!need label!!**) to produce usefull results they have to be implemented in a simulation which calculates the trajectory. From this calculated trajectory the program has to extract usefull data and conclusions. To model aerodynamic forces on the s/c an atmosphere model is needed. The atmosphere model used is presented in subsection \label{subsec:atmos}. The three different modules comprising the program are discribed in subsection \ref{subsec:modules}. In subsection \ref{subsec:flow} a flowchart of the program is presented.
+In order to use the governing equations (equation \ref{eq:final}**!!need label!!**) to produce usefull results they have to be implemented in a simulation which calculates the trajectory. From this calculated trajectory the program has to extract usefull data and conclusions. To model aerodynamic forces on the spacecraft an atmosphere model is needed. The atmosphere model used is presented in subsection \label{subsec:atmos}. The three different modules comprising the program are discribed in subsection \ref{subsec:modules}. In subsection \ref{subsec:flow} a flowchart of the program is presented.
 
 \subsubsection{Atmosphere model}\ref{subsec:atmos}
 **inputs
@@ -30,13 +30,28 @@ In order to use the governing equations (equation \ref{eq:final}**!!need label!!
 **implementation in program
 \subsubsection{Modules} \label{subsec:modules}
 
-The program first implements the governing equations on each timestep. Secondly two modules were created, one to find feasible orbits and another to calculate the full orbit of the orbits which are found to be feasible. These three modules are described below.
+The program first implements the governing equations on each time step. Secondly two modules were created, one to find feasible orbits and another to calculate the full orbit of the orbits which are found to be feasible. These three modules are described below.
 
-\paragraph{Implementation of governing equations}
+\paragraph{Implementation of governing equations}\textit{orbit.m}
 
-\paragraph{Orbit selection}
+The module implementing the governing equations has a lot of input data of which most are constants and vehicle parameters. One of the inputs is the dataset created by the atmospheric model described in subsection \ref{subsec:atmos}. The density and gravitational acceleration taken from this dataset is different for each cycle of the program and dependent on the height, longitude and latitude of the spacecraft. Also the previous location, velocity and acceleration (in vector form) are constantly changing inputs.
 
-\paragraph{Full orbit simulation}
+The input variables are directly filled in into equation \ref{eq:final}. This creates output values for the location, velocity and acceleration. Both the total acceleration and the separate accelerations due to the drag, lift and gravitation are outputted.
+\paragraph{Orbit selection} \textit{orbit\_selection.m}
+
+**input
+
+In the module for orbit selection first the initial conditions are created. One of the initial conditions is that the entry velocity is $7 \frac{km}{s}$. After this initialization \textit{orbit.m} is called for each time step. After each time step the data is analyzed and three conditions are filled in. The condition \textit{inatmos} is true when the spacecraft has ever been inside the atmosphere of mars. The condition \textit{crash} is true when the spacecraft touches the surface of mars in the first entry into the atmosphere. Finally the condition \textit{inorbit} is true when the spacecraft either leaves the atmosphere with a velocity smaller than the escape velocity at that point or when the spacecraft did never enter the atmosphere and the velocity at the point the simulation is terminated is smaller than the escape velocity at that point. The values of these conditions is used in \textit{orbitcheck.m} to determine the feasible initial conditions.
+
+**output
+
+\paragraph{Full orbit simulation} \textit{orbit\_full.m}
+
+**
+
+\paragraph{Run orbit selection} \textit{orbitcheck.m}
+
+**
 
 \subsubsection{Flowchart} \label{subsec:flow}
 **flowchart
