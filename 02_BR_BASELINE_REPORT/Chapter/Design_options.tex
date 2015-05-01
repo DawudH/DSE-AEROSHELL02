@@ -12,8 +12,9 @@ This chapter gives an overview of initial design concept selection, focusing on 
 %\caption{Design Option Tree for entry vehicle deceleration mechanism}
 %\label{fig:dotdelmech}
 %\end{figure}
-
-\subsection{Configuration of aerodynamic deceleration}
+\subsection{Design Option Trees}
+This section presents the \gls{dot}s for the three aspects of vehicle configuration, mission profile and control mechanisms. These are combined in the next step of concept generation to yield a number of concepts for further selection and analysis, as described in the next section.
+\subsubsection{Configuration of aerodynamic deceleration}
 The configuration of the aerodynamic deceleration mechanism, given in figure \ref{fig:dotconfig}, can be at a first level be subdivided into inflatable and non-inflatable systems. For non-inflatable systems an \textit{AND} subdivision can be made. A blunt or pointed body can be considered and at the same time this structure may be deployable or undependable. Pointed bodies will not be considered since the attached shock will cause excessive aerodynamic heating \cite{AndersonJr.2007} making this concept unfeasible. The blunt body may further be subdivided into lifting and non-lifting bodies. Lifting bodies are deemed high lift-to-drag ratio bodies. Geometrically symmetric bodies, with a corresponding lower lift-to-drag ratio, may also feature a lifting component by featuring a \gls{cg} located away from the symmetry axis. This \gls{cg} offset is sometimes also actively used for control purposes\cite{Dillman2012} as is also explained in section \ref{sec:DOTcontrol}. 
 
 The second separation is  the subdivision between deployable and non-deployable structures. Where as for inflatable structures deployment is inherent to the design non-inflatable structure may feature no deployment mechanism. The deployable configurations feature a change in geometry specifically for the reentry which can for example be controlled by actuators. The deployable systems are already cut off due to the more complicated (thus less reliable) deployment combined with the inherent higher weight of non-inflatable structures \cite{Cianciolo2010} compared to deployable inflatables.
@@ -44,7 +45,7 @@ The inflatable structures on the right hand side of Figure \ref{fig:dotconfig} c
 %\label{fig:dotdelmech}
 %\end{figure}
 
-\subsection{Mission profile} \label{sec:DOTprofile}
+\subsubsection{Mission profile} \label{sec:DOTprofile}
 In terms of mission profile, freedom exists in the rate at which kinetic energy is dissipated. On one hand a short mission duration can be used, in the order of minutes or hours, featuring a steep descent; on the other hand a longer mission duration can be used, in the order of days or weeks (or longer), featuring a shallow descent. The rate at which kinetic energy, conforming to a velocity of 7 km/s, is dissipated places a lower bound on the mission duration. Entry in the order of minutes becomes prohibitive for the thermal and mechanical loads, which will most likely be in excess of the 3g limit imposed (requirement CIA-A07).  An upper bound is placed by the requirement (CIA-A08) that aerobraking duration shall be less than ten (Earth) days. In a first estimation one can therefore distinguish mission profiles in the order of hours on one hand and days on the other hand. 
 \begin{figure}[H]
 \centering
@@ -54,6 +55,9 @@ In terms of mission profile, freedom exists in the rate at which kinetic energy 
 \label{fig:dotconfig}
 \end{figure}
 
-\subsection{Control} \label{sec:DOTcontrol}
+\subsubsection{Control} \label{sec:DOTcontrol}
 %\subsection{Inflation system}
 %As mentioned in Chapter \ref{cha:litreview}, inflation can be performed either with (ram-air) or without use of the atmosphere. A third option is the use of both (hybrid), thereby featuring ram-air inlets as well as internal gas storage and feed systems. In terms of the medium used for inflation, conventionally nitrogen gas is used. An alternative would be hydrazine gas, as explained in Chapter \ref{cha:litreview}.
+
+\subsection{Concept generation}
+This section presents a proposed strategy for the generation and selection of concepts based on the \gls{dot}s given in the previous section. The \gls{dot}s presented previously form the basis for concept selection: the feasible end-nodes of the trees are combined to yield a number of concepts. For example one of these combinations would be a rigid lifting body with long mission duration and control via aerodynamic shape alteration. From this number of concepts the unfeasible combinations are firstly eliminated. This is followed upon by eliminating the weakest concepts. The remaining concepts are then used for further analysis, to yield a select number of concepts deemed most viable to fulfill the mission need statement, as stated in Ref.\cite{Balasooriyan2015}. After formulation of a set of trade-off criteria, the concepts are then analyzed for their performance in terms of these criteria. A review of this process takes place in the \gls{mtr}. A trade-off then yields the concept selected for further analysis and design, with the \gls{fr} as final activity.
