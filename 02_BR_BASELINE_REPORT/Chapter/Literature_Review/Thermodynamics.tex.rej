@@ -1,9 +1,0 @@
-diff a/02_BR_BASELINE_REPORT/Chapter/Literature_Review/Thermodynamics.tex b/02_BR_BASELINE_REPORT/Chapter/Literature_Review/Thermodynamics.tex	(rejected hunks)
-@@ -10,6 +10,7 @@
- \subsubsection{Thermal protection system}
- The thermodynamic principles can be used to design a heatshield. The design of such a heatshield, also called a \acrfull{tps} depends on several parameters. In general it all comes down to the trajectory the re-entry vehicle will follow. The steeper the re-entry trajectory, the larges the deceleration and the more g-loads will be subjected to the (human) payload. The re-entry vehicle will have a nominal trajectory with deviations. An overshoot results in a longer descend and can result in skipping off the planet, whereas an undershoot will result in a fast descend rate. The larger the overshoot angle, the longer the re-entry vehicle will be in atmosphere an thus creating a higher heat loading on the structure. On the other hand, for a larger undershoot angle, the heat development over time will be faster inducing a larger heat flux on the system. Also, the undershoot angle determines the trajectory with the highest dynamic pressure, which is important for structural sizing. 
- 
-+Not only the trajectory is important for the design, but also the shape with its bluntness. The bigger the heatshield and the larger the bluntness, the more the  thermal loads can be distributed over the capsule. This will result in a thinner \gls{tps} such that less mass is needed. However this can cause aerodynamic instability \cite{Smoot}.
- 
- The temperature development throughout the structure trough multiple layers of material can be determined when the heat loading and heat flux is known. An example of a method to determine the heat developement is given by \cite{Daryabeigi2002}.
- 
