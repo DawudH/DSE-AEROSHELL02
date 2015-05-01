@@ -5,7 +5,7 @@ n=open("library.bib", "r")
 bib=n.readlines()
 n.close()
 
-nr=3
+nr=4
 
 for i in range(len(bib)):
     if  bib[i].find('author =')==0:
@@ -13,7 +13,7 @@ for i in range(len(bib)):
         authors=l.split('and')
         if len(authors)>nr:
             l=''
-            for j in range(nr):
+            for j in range(nr-1):
                 l= l +authors[j] +' and '
             l=l +'{ Others}} \n,'
             bib[i]=l
