@@ -109,3 +109,7 @@ The function outputs the location, velocity and acceleration (total and partial)
 \end{figure}
 
 \subsection{Verification and validation}
+The orbit determination software was verified by simulating a simple object falling towards the planet with no initial velocity and drag. The simulation results followed the exact solution prescribed by simply integrating the acceleration two times.
+
+Validation is a complex thing to do for an orbital mechanics simulation tool, since the mission data of past spacecraft is hard to obtain. Furthermore, a simulation would probably contain a large uncertainty on the amount of control force, which does have a large influence on the final trajectory. Due to this, the tool has not yet been validated.
+
