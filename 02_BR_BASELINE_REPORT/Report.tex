@@ -31,33 +31,7 @@
 % PAGESTYLE
 \pagestyle{plain}
 
-% Generate the glossary
-	% create a new glossary style for the list of symbols
-	% copied (but eddited) from http://www.latex-community.org/forum/viewtopic.php?f=5&t=20797
-	\newglossarystyle{listos}{%
-	  \glossarystyle{altlongragged4col}
-	  \setlength{\glsdescwidth}{0.8\textwidth}
-	  \setlength{\glspagelistwidth}{0.1\textwidth}
-	  % allow line wrap in the description column
-	  \renewenvironment{theglossary}%
-	    {\begin{longtable}{llp{\glsdescwidth}p{\glspagelistwidth}}}%
-	    {\end{longtable}}%
-	  \renewcommand{\glsgroupskip}{}% make nothing happen between groups
-	  % swap second and third columns
-	  \renewcommand*{\glossaryentryfield}[5]{%
-	    \glsentryitem{##1}\glstarget{##1}{##2} & ##4 & ##3 & ##5\\}
-	  % sub-entries
-	  \renewcommand*{\glossarysubentryfield}[6]{%
-	     \glssubentryitem{##2}%
-	     \glstarget{##2}{##3} & ##5 & ##4 & ##6\\}%
-	}
-\newglossary*{symbol}{List of symbols}
-\makenoidxglossaries
-\setacronymstyle{long-short}
-\loadglsentries{./Acronyms}
-\newglossaryentry{romanletter}{type=symbol,name={},description={\nopostdesc},sort=a}
-\newglossaryentry{greekletter}{type=symbol,name={},description={\nopostdesc},sort=b}
-\loadglsentries{./Symbols}
+\input{glspreamble}
 
 
 
@@ -93,6 +67,7 @@
 \printnoidxglossary[type=\acronymtype,nonumberlist]
 \newpage
 \printnoidxglossary[type=symbol,nonumberlist,style=listos]
+\printnoidxglossary[type=constants,style=listoc]
 \newpage
 \listoffigures
 \newpage

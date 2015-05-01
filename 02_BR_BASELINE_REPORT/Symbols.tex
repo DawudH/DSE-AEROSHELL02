@@ -109,9 +109,19 @@ parent=romanletter % for sorting purposes, use romanletter or greekletter
 {
 type=symbol, % entry should be in the list of symbols!
 name={\ensuremath{V}}, % Put the symbol here in dollar signs
-description={Velocity}, % A brief description of this entry (to appear in the glossary).
+description={Velocity magnitude}, % A brief description of this entry (to appear in the glossary).
 symbol={$\left[\frac{m}{s}\right]$}, % put the unit here.... kind of weird, i know 
-sort=V, % for correct sorting type the full name of the symbol here
+sort=Vm, % for correct sorting type the full name of the symbol here
+parent=romanletter % for sorting purposes, use romanletter or greekletter
+}
+
+\newglossaryentry{sym:Vv}
+{
+type=symbol, % entry should be in the list of symbols!
+name={\ensuremath{\mathbf{V}}}, % Put the symbol here in dollar signs
+description={Velocity vector}, % A brief description of this entry (to appear in the glossary).
+symbol={$\left[\frac{m}{s}\right]$}, % put the unit here.... kind of weird, i know 
+sort=Vv, % for correct sorting type the full name of the symbol here
 parent=romanletter % for sorting purposes, use romanletter or greekletter
 }
 
@@ -134,5 +144,17 @@ symbol={$\left[m^2\right]$}, % put the unit here.... kind of weird, i know
 sort=A, % for correct sorting type the full name of the symbol here
 parent=romanletter % for sorting purposes, use romanletter or greekletter
 }
+
+\newglossaryentry{sym:F}
+{
+type=symbol, % entry should be in the list of symbols!
+name={\ensuremath{\mathbf{F}}}, % Put the symbol here in dollar signs
+description={Force}, % A brief description of this entry (to appear in the glossary).
+symbol={$\left[N\right]$}, % put the unit here.... kind of weird, i know 
+sort=F, % for correct sorting type the full name of the symbol here
+parent=romanletter % for sorting purposes, use romanletter or greekletter
+}
+
+
 
 
