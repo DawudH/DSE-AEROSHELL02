@@ -45,17 +45,29 @@ The aerodynamic accelerations due to the lift and the drag are described by equa
 
 \subsection{Program structure}\label{sec:prog_struct}
 
-In order to use the equations of motion to produce usefull results
+In order to use the governing equations (equation \ref{eq:final}**!!need label!!**) to produce usefull results they have to be implemented in a simulation which calculates the trajectory. From this calculated trajectory the program has to extract usefull data and conclusions. To model aerodynamic forces on the s/c an atmosphere model is needed. The atmosphere model used is presented in subsection \label{subsec:atmos}. The three different modules comprising the program are discribed in subsection \ref{subsec:modules}. In subsection \ref{subsec:flow} a flowchart of the program is presented.
 
-**Modules
-****Orbit
-****Full orbit
-****orbit selection
+\subsubsection{Atmosphere model}\label{subsec:atmos}
+As stated in Section \ref{sec:control}, for the atmospheric model the NASA software \gls{marsgram} is used. The atmospheric properties are queried at equally spaced points: at all latitudes and longitudes at an interval of $10 [degrees]$, and heights from $0$ to $400 [km]$ at an interval of $5 [km]$. The software generates data based on equations for atmosphere properties and incorporates the high amount of dust on Mars, which has a big effect on the absorbed radiation heat from the sun. The output of the program is, among others, the density, temperature and gas composition at that query point, along with other less important parameters. \cite{Justus2001}
+This data is then saved for processing during trajectory simulation. In the trajectory simulation software, the atmospheric properties at certain points in the atmosphere are required. The discrete atmosphere data is thus interpolated to obtain an estimate of there properties. 
+
+\subsubsection{Modules} \label{subsec:modules}
+
+The program first implements the governing equations on each timestep. Secondly two modules were created, one to find feasible orbits and another to calculate the full orbit of the orbits which are found to be feasible. These three modules are described below.
+
+\paragraph{Implementation of governing equations}
+
+\paragraph{Orbit selection}
+
+\paragraph{Full orbit simulation}
+
+\subsubsection{Flowchart} \label{subsec:flow}
 **flowchart
+
 \begin{figure}[H]
-%\centering
+\centering
 \hspace{-23mm}
-\includegraphics[width = 0.8\textwidth]{Figure/astro_tool.png}
+\includegraphics[width = 0.8\textwidth]{Figure/astro_tool.pdf}
 \vspace{-5mm}
 \caption{Flowchart of the working principle of the trajectory analysis program}
 \label{fig:traj_flow}
