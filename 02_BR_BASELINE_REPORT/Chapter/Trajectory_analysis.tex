@@ -21,9 +21,14 @@ The gravitational pull is described by Newtons law of gravitation
 
 \subsection{Program structure}\label{sec:prog_struct}
 
-In order to use the governing equations (equation \ref{eq:final}**!!need label!!**) to produce usefull results they have to be implemented in a simulation which calculates the trajectory. From this calculated trajectory the program has to extract usefull data and conclusions. Three different modules are discribed in subsection \ref{subsec:modules}. In subsection \ref{subsec:flow} a flowchart of the program is presented.
+In order to use the governing equations (equation \ref{eq:final}**!!need label!!**) to produce usefull results they have to be implemented in a simulation which calculates the trajectory. From this calculated trajectory the program has to extract usefull data and conclusions. To model aerodynamic forces on the s/c an atmosphere model is needed. The atmosphere model used is presented in subsection \label{subsec:atmos}. The three different modules comprising the program are discribed in subsection \ref{subsec:modules}. In subsection \ref{subsec:flow} a flowchart of the program is presented.
 
-\subsection{Modules} \label{subsec:modules}
+\subsubsection{Atmosphere model}\ref{subsec:atmos}
+**inputs
+**basic working principle
+**outputs
+**implementation in program
+\subsubsection{Modules} \label{subsec:modules}
 
 The program first implements the governing equations on each timestep. Secondly two modules were created, one to find feasible orbits and another to calculate the full orbit of the orbits which are found to be feasible. These three modules are described below.
 
@@ -33,7 +38,7 @@ The program first implements the governing equations on each timestep. Secondly 
 
 \paragraph{Full orbit simulation}
 
-\subsection{Flowchart} \label{subsec:flow}
+\subsubsection{Flowchart} \label{subsec:flow}
 **flowchart
 
 \begin{figure}[H]
