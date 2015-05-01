@@ -19,10 +19,10 @@ refinement_steps = 40;
 
 % changing variables
 % 
-% rx = -4.14e6:-2e3:-4.2e6;
-% CD = 0.8:0.05:1.5;
-CD = 1.3;
-rx = -4.162e6;
+rx = -4.05e6:-2e3:-4.2e6;
+CD = 0.8:0.05:1.5;
+% CD = 1.3;
+% rx = -4.162e6;
 
 cc = parula(length(CD)+3);
 if do_plot
@@ -44,7 +44,7 @@ for k = 1:length(CD)
         end
         
         % store last rx value if crashed
-        if (out.crash)
+        if (out.crash) || (out.inorbit)
             rx_crashed = rx(i);
         end
         
@@ -62,6 +62,7 @@ for k = 1:length(CD)
                     break;
                 end
                 
+                previous_inorbit = out.inorbit;
                 
                 if do_plot && (out.crash == false)
                     t = 0:dt:(length(out.R)*dt-dt);
