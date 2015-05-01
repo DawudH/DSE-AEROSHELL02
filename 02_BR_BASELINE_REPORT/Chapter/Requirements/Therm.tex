@@ -3,7 +3,7 @@ The requirements for the thermal subsystem flow down from the \gls{rdt} and are 
 
 
 \begin{table}[H]
-	\caption{Overview of thermal requirements}
+	\caption{Overview of thermal requirements}	\label{tab:thermalreq}
 	\begin{tabular}{|p{0.2\textwidth}|p{0.70\textwidth}|}
     \hline
     ID          & Description                                                                                                      \\ \hline \hline
@@ -17,9 +17,8 @@ The requirements for the thermal subsystem flow down from the \gls{rdt} and are 
 \\ \hline
     CIA-Func-B03-TCS-03-structure & The TCS shall keep the structure module within a temperature range of \gls{tbd} and \gls{tbd} $ \left[^{\circ}C\right] $                                        
 \\ \hline
-	CIA-Op-B03-Therm-01 	&	The thermal system shall have a mass not exceeding 500 [kg]  							\\ \hline
-    \end{tabular}
-    \label{tab:thermalreq}
+	CIA-Op-B02-Therm-01 	&	The thermal system shall have a mass not exceeding 500 [kg]  							\\ \hline
+    \end{tabular} 
 \end{table}
 
 Requirement IA-Func-B03-TPS-01 follows from the trajectory the re-entry vehicle is following and is bounded by the shortest trajectory, the maximum undershoot trajectory, the vehicle can follow. During this trajectory the vehicle will see the fastest heat development. Not only the fastest heat development is important, but also the duration of deceleration. For the longest trajectory, the maximum overshoot trajectory, energy will be dissipated into the shell. The \gls{tps} should be able to cope with this heat development over time. This need is covered by requirement  CIA-Func-B03-TPS-02. The payload and subsystems are only able to withstand a certain temperature range. To keep the payload and subsystems within this range the \gls{tcs} follows requirement CIA-Func-B03-TCS-01. For now the structure and crew module have been explicitly listed, however it is expected that more subsystems will be added to the requirements further on in the design process.
