@@ -10,7 +10,7 @@ nr=4
 for i in range(len(bib)):
     if  bib[i].find('author =')==0:
         l=bib[i]
-        authors=l.split('and')
+        authors=l.split(' and')
         if len(authors)>nr:
             l=''
             for j in range(nr-1):
