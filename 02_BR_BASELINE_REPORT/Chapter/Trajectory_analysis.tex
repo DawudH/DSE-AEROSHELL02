@@ -16,14 +16,14 @@ The motion of a spacecraft can be broken down in some dominant contributors. The
 To be able to fully describe the contributors, two reference frames need to be defined. The non-rotating inertial frame is defined with its origin in the centre of mass of Mars (if it would be perfectly spherical), this is the \gls{mci}. 
 Another reference frame is the \gls{mcmf}, in our first model the origin and the z-axis of both reference frames are equal (so no axis tilt is taken into account). The difference between the two is that the \gls{mcmf} is rotating around the z-axis with rotational velocity \gls{con:omegamars} compared to the \gls{mci}.
 
-The gravitational pull is described by Newton's law of gravitation, together with Newton's second law, it can be written as an acceleration as in equation \ref{eq:nG} \cite{Weiland2004}. The direction of this acceleration is towards the center of mass of Mars as shown in figure \ref{fig:orb}.
+The gravitational pull is described by Newton's law of gravitation, together with Newton's second law, it can be written as an acceleration as in equation \ref{eq:nG} \cite{Weiland2004}. The direction of this acceleration is towards the center of mass of Mars as shown in Figure \ref{fig:orb}.
 
 \begin{equation} \label{eq:nG}
 \gls{sym:g} = -\frac{\gls{con:G}\gls{con:Mmars}}
 					{\gls{sym:R}^3}\gls{sym:Rv}
 \end{equation}
 
-The aerodynamic forces are described by the lift and the drag, these forces are acting in the negative direction and orthogonal to the velocity of the spacecraft with respect to the atmosphere as shown in figure \ref{fig:orb}, this is the velocity of the spacecraft in the \gls{mcmf}. This velocity needs to be converted to \gls{mci} to be able to express the aerodynamic forces in the \gls{mci}, as in equation \ref{eq:Vsc_mcmf_mci}.
+The aerodynamic forces are described by the lift and the drag, these forces are acting in the negative direction and orthogonal to the velocity of the spacecraft with respect to the atmosphere as shown in Figure \ref{fig:orb}, this is the velocity of the spacecraft in the \gls{mcmf}. This velocity needs to be converted to \gls{mci} to be able to express the aerodynamic forces in the \gls{mci}, as in equation \ref{eq:Vsc_mcmf_mci}.
 
 \begin{equation} \label{eq:Vsc_mcmf_mci}
 \left.\gls{sym:Vvsc}\right|_{MCMF}^{MCI} = \gls{sym:Vvsc}_{,a} = \left.\gls{sym:Vvsc}\right|_{MCI} - \left(\gls{con:Omegamars} \times \gls{sym:Rv} \right)
@@ -63,14 +63,16 @@ If the acceleration is assumed to be constant for small time steps, then the new
 \gls{sym:Rv}_{i+1} = \gls{sym:Rv}_i + \gls{sym:Vv}_i \gls{sym:Dt} + \gls{sym:acc}_i \gls{sym:Dt}^2
 \end{equation}
 
-These equations can be solved numerically as will be described in section \ref{sec:prog_struct}. Results of this computation will give provide the orbital parameters as shown in figure \ref{fig:orb}.
+These equations can be solved numerically as will be described in section \ref{sec:prog_struct}. Results of this computation will give provide the orbital parameters as shown in Figure \ref{fig:orb}.
 
-The spacecraft needs to be decelerated enough to enter an orbit around Mars. One way of determining if the spacecraft is actually in orbit is to calculate the escape velocity, given by equation \ref{eq:Ve} \cite{Wertz2011}. One of the drawbacks of using this equation is that it is only valid when there are no disturbance forces, also the lift and drag, acting on the spacecraft. Therefore this value can only be computed accurately outside of the influence of the atmosphere of Mars.
+The spacecraft needs to be decelerated enough to enter an orbit around Mars. One way of determining if the spacecraft is actually in orbit is to calculate the escape velocity, given by equation \ref{eq:Ve} \cite{Wertz2011}.
 
 \begin{equation} \label{eq:Ve}
 \gls{sym:Ve} = \sqrt{\frac{2\gls{con:G}\gls{con:Mmars}}
 					{\gls{sym:R}}}
 \end{equation}
+
+One of the drawbacks of using this equation is that it is only valid when there are no disturbance forces, also the lift and drag, acting on the spacecraft. Therefore this value can only be computed accurately outside of the influence of the atmosphere of Mars.
 
 \subsection{Program structure}\label{sec:prog_struct}
 
@@ -92,7 +94,7 @@ The input variables are directly filled in into equations \ref{eq:ai}, \ref{eq:V
 
 \paragraph{Orbit selection} \textit{orbit\_selection.m}
 
-The module has a lot of constants, initial conditions and design parameters as input variables. One of the input variables is the starting distance in y-direction (using the reference frame from figure \ref{fig:orb}) from the center of mars. This value is currently taken to be ten times the mars radius. At this distance the gravitational acceleration is assumed to be negligible. 
+The module has a lot of constants, initial conditions and design parameters as input variables. One of the input variables is the starting distance in y-direction (using the reference frame from Figure \ref{fig:orb}) from the center of mars. This value is currently taken to be ten times the mars radius. At this distance the gravitational acceleration is assumed to be negligible. 
 
 In the module for orbit selection first the initial conditions are created. One of the initial conditions is that the entry velocity is $7$ $[\frac{km}{s}]$. After this initialization \textit{orbit.m} is called for each time step. After each time step the data is analyzed and three conditions are filled in. The condition \textit{inatmos} is true when the spacecraft has ever been inside the atmosphere of mars. The condition \textit{crash} is true when the spacecraft touches the surface of mars in the first entry into the atmosphere. Finally the condition \textit{inorbit} is true when the spacecraft either leaves the atmosphere with a velocity smaller than the escape velocity (equation \ref{eq:Ve}) at that point or when the spacecraft did never enter the atmosphere and the velocity at the point the simulation is terminated is smaller than the escape velocity at that point. When the value of \textit{inorbit} has been determined the simulation is stopped. The values of these conditions are used in \textit{orbitcheck.m} to determine the feasible design parameters.
 
@@ -108,13 +110,13 @@ The output variables are the same as for \textit{orbit\_selection.m}.
 
 \paragraph{Run orbit selection} \textit{orbitcheck.m}
 
-The module runs the \textit{orbit\_selection.m} module for different combinations of begin position (in x-direction as in figure \ref{fig:orb}) and \gls{sym:CD}. It writes the begin position, \gls{sym:CD}, the conditions (\textit{inatmos}, \textit{crash} and \textit{inorbit}) and the maximum acceleration to a file. Consequently this data can be analyzed to find feasible design points.
+The module runs the \textit{orbit\_selection.m} module for different combinations of begin position (in x-direction as in Figure \ref{fig:orb}) and \gls{sym:CD}. It writes the begin position, \gls{sym:CD}, the conditions (\textit{inatmos}, \textit{crash} and \textit{inorbit}) and the maximum acceleration to a file. Consequently this data can be analyzed to find feasible design points.
 
 In the future \gls{sym:CL} (and other design parameters) should be varied as well to get more feasible design points.
 
 \subsubsection{Flowchart} \label{subsec:flow}
 
-The flowchart below shows the decision making structure used in \textit{orbit\_full.m} and \textit{orbit\_selection.m}.
+The flowchart in Figure \ref{fig:traj_flow} shows the decision making structure used in \textit{orbit\_full.m} and \textit{orbit\_selection.m}.
 
 \begin{figure}[H]
 \centering
