@@ -11,12 +11,12 @@ In this chapter the trajectory analysis tool is described. In section \ref{sec:g
 		\label{fig:orb}
 \end{wrapfigure}
 
-The motion of a spacecraft can be broken down in some dominant contributors. These are the gravitational pull and the aerodynamic forces. Disturbances like solar radiation or gravitational pull from other bodies is neglected in the model.
+The motion of a spacecraft can be broken down in some dominant contributors. These are the gravitational pull and the aerodynamic forces. Disturbances like solar radiation or gravitational pull from other bodies are neglected in the model.
 
-To be able to fully describe the contributors, two reference frames need to be defined. The non rotating inertial frame is defined with its origin in the centre of mass of Mars (if it would be perfectly spherical), this is the \gls{mci}. 
-Another reference frame is the \gls{mcmf}, in our first model the origin and the z-axis of both reference frames is equal (so no axis tilt is taken into account). The difference between the two is that the \gls{mcmf} is rotating around the z-axis with rotational velocity \gls{con:omegamars} compared to the \gls{mci}.
+To be able to fully describe the contributors, two reference frames need to be defined. The non-rotating inertial frame is defined with its origin in the centre of mass of Mars (if it would be perfectly spherical), this is the \gls{mci}. 
+Another reference frame is the \gls{mcmf}, in our first model the origin and the z-axis of both reference frames are equal (so no axis tilt is taken into account). The difference between the two is that the \gls{mcmf} is rotating around the z-axis with rotational velocity \gls{con:omegamars} compared to the \gls{mci}.
 
-The gravitational pull is described by Newtons law of gravitation, together with Newton's second law, it can be written as an acceleration as in equation \ref{eq:nG} \cite{Weiland2004}. The direction of this acceleration is towards the center of mass of Mars as shown in figure \ref{fig:orb}.
+The gravitational pull is described by Newton's law of gravitation, together with Newton's second law, it can be written as an acceleration as in equation \ref{eq:nG} \cite{Weiland2004}. The direction of this acceleration is towards the center of mass of Mars as shown in figure \ref{fig:orb}.
 
 \begin{equation} \label{eq:nG}
 \gls{sym:g} = -\frac{\gls{con:G}\gls{con:Mmars}}
@@ -49,7 +49,7 @@ The total acceleration is now the summation of the gravitational, lift and drag 
 \gls{sym:acc} = \gls{sym:g} + \gls{sym:aL} + \gls{sym:aD}
 \end{equation}
 
-If the acceleration is assumed to be constant for small time steps, then the new position and velocity can be determined by discretizing the dynamic equations of motion resulting in equations \ref{eq:ai} till \ref{eq:Ri}.
+If the acceleration is assumed to be constant for small time steps, then the new position and velocity can be determined by discretizing the dynamic equations of motion resulting in equations \ref{eq:ai}, \ref{eq:Vi} and \ref{eq:Ri}.
 
 \begin{equation} \label{eq:ai}
 \gls{sym:acc}_i = \gls{sym:g}_i + \gls{sym:aL}_i + \gls{sym:aD}_i
