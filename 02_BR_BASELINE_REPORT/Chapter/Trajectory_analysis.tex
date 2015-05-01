@@ -68,7 +68,7 @@ If the acceleration is assumed to be constant for small time steps, then the new
 In order to use the governing equations (equations \ref{eq:ai}, \ref{eq:Vi} and \ref{eq:Ri}) to produce usefull results they have to be implemented in a simulation which calculates the trajectory. From this calculated trajectory the program has to extract usefull data and conclusions. To model aerodynamic forces on the spacecraft an atmosphere model is needed. The atmosphere model used is presented in subsection \label{subsec:atmos}. The three different modules comprising the program are discribed in subsection \ref{subsec:modules}. In subsection \ref{subsec:flow} a flowchart of the program is presented.
 
 \subsubsection{Atmosphere model}\label{subsec:atmos}
-As stated in Section \ref{sec:control}, for the atmospheric model the NASA software \gls{marsgram} is used. The atmospheric properties are queried at equally spaced points: at all latitudes and longitudes at an interval of $10 [^\circ]$, and heights from $0$ to $400 [km]$ at an interval of $5 [km]$. The software generates data based on equations for atmosphere properties and incorporates the high amount of dust on Mars, which has a big effect on the absorbed radiation heat from the sun. The output of the program is, among others, the density, temperature and gas composition at that query point, along with other less important parameters. \cite{Justus2001}
+As stated in Section \ref{sec:control}, for the atmospheric model the NASA software \gls{marsgram} is used. The atmospheric properties are queried at equally spaced points: at all latitudes and longitudes at an interval of $10$ $[^\circ]$, and heights from $0$ to $400$ $[km]$ at an interval of $5$ $[km]$. The software generates data based on equations for atmosphere properties and incorporates the high amount of dust on Mars, which has a big effect on the absorbed radiation heat from the sun. The output of the program is, among others, the density, temperature and gas composition at that query point, along with other less important parameters. \cite{Justus2001}
 This data is then saved for processing during trajectory simulation. In the trajectory simulation software, the atmospheric properties at certain points in the atmosphere are required. The discrete atmosphere data is thus interpolated to obtain an estimate of there properties. 
 
 \subsubsection{Modules} \label{subsec:modules}
@@ -85,7 +85,7 @@ The input variables are directly filled in into equations \ref{eq:ai}, \ref{eq:V
 
 The module has a lot of constants, initial conditions and design parameters as input variables. One of the input variables is the starting distance in y-direction (using the reference frame from figure \ref{fig:orb}) from the center of mars. This value is currently taken to be ten times the mars radius. At this distance the gravitational acceleration is assumed to be negligible. 
 
-In the module for orbit selection first the initial conditions are created. One of the initial conditions is that the entry velocity is $7 [\frac{km}{s}]$. After this initialization \textit{orbit.m} is called for each time step. After each time step the data is analyzed and three conditions are filled in. The condition \textit{inatmos} is true when the spacecraft has ever been inside the atmosphere of mars. The condition \textit{crash} is true when the spacecraft touches the surface of mars in the first entry into the atmosphere. Finally the condition \textit{inorbit} is true when the spacecraft either leaves the atmosphere with a velocity smaller than the escape velocity at that point or when the spacecraft did never enter the atmosphere and the velocity at the point the simulation is terminated is smaller than the escape velocity at that point. When the value of \textit{inorbit} has been determined the simulation is stopped. The values of these conditions are used in \textit{orbitcheck.m} to determine the feasible design parameters.
+In the module for orbit selection first the initial conditions are created. One of the initial conditions is that the entry velocity is $7$ $[\frac{km}{s}]$. After this initialization \textit{orbit.m} is called for each time step. After each time step the data is analyzed and three conditions are filled in. The condition \textit{inatmos} is true when the spacecraft has ever been inside the atmosphere of mars. The condition \textit{crash} is true when the spacecraft touches the surface of mars in the first entry into the atmosphere. Finally the condition \textit{inorbit} is true when the spacecraft either leaves the atmosphere with a velocity smaller than the escape velocity at that point or when the spacecraft did never enter the atmosphere and the velocity at the point the simulation is terminated is smaller than the escape velocity at that point. When the value of \textit{inorbit} has been determined the simulation is stopped. The values of these conditions are used in \textit{orbitcheck.m} to determine the feasible design parameters.
 
 The function outputs the location, velocity and acceleration (total and partial) over the entire calculated orbit. It also outputs the conditions for orbit (\textit{inatmos}, \textit{crash} and \textit{inorbit}) and the maximum acceleration felt by the payload (acceleration due to gravitation is not felt by the payload).
 
@@ -93,23 +93,26 @@ The function outputs the location, velocity and acceleration (total and partial)
 
 The module has the same input variable as \textit{orbit\_selection.m}. Furthermore a time is specified at which the simulation has to end.
 
-The working principle of the module is equivalent to \textit{orbit\_selection.m}, the simulation is however only terminated when the value of \textit{inorbit} has been determined to be \textit{false}. If \textit{inorbit}=\textit{true} the orbit is calculated until either\textit{crash} becomes \textit{true} or the specified time has passed.
+The working principle of the module is equivalent to \textit{orbit\_selection.m}, the simulation is however only terminated when the value of \textit{inorbit} has been determined to be \textit{false}. If \textit{inorbit}=\textit{true} the orbit is calculated until either\textit{crash} becomes \textit{true} or the specified time has passed. Plots are made depicting the entire history of the magnitude of position, velocity and acceleration. Also a plot of the trajectory is generated.
 
-The output variables are the same as for 
+The output variables are the same as for \textit{orbit\_selection.m}.
 
 \paragraph{Run orbit selection} \textit{orbitcheck.m}
 
-**
+The module runs the \textit{orbit\_selection.m} module for different combinations of begin position (in x-direction as in figure \ref{fig:orb}) and \gls{CD}. It writes the begin position, \gls{CD}, the conditions (\textit{inatmos}, \textit{crash} and \textit{inorbit}) and the maximum acceleration to a file. Consequently this data can be analyzed to find feasible design points.
+
+In the future \gls{CL} (and other design parameters) should be varied as well to get more feasible design points.
 
 \subsubsection{Flowchart} \label{subsec:flow}
-**flowchart
+
+The flowchart below shows the decision making structure used in \textit{orbit\_full.m} and \textit{orbit\_selection.m}.
 
 \begin{figure}[H]
 \centering
 \hspace{-23mm}
 \includegraphics[width = 0.8\textwidth]{Figure/astro_tool.pdf}
 \vspace{-5mm}
-\caption{Flowchart of the working principle of the trajectory analysis program}
+\caption{Flowchart of the decision making structure of the trajectory analysis program}
 \label{fig:traj_flow}
 \end{figure}
 
