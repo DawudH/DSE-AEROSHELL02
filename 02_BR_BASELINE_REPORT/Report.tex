@@ -1,6 +1,7 @@
 \documentclass[12pt]{article}
 
 % USEPACKAGES
+\usepackage[table]{xcolor}
 \usepackage[margin=2.5cm]{geometry} % Change border margins.
 \usepackage[titles]{tocloft} % Table of Contents, manual add.
 \usepackage{mcode} % Load matlab code into LaTeX.
@@ -18,11 +19,11 @@
 \usepackage{afterpage}
 \usepackage{mdwlist} % Compact lists (itemize*)
 \usepackage{fixltx2e}
-\usepackage[table]{xcolor}
 \usepackage{expl3}
 \usepackage[nogroupskip,acronyms,symbols]{glossaries}
 \usepackage{glossary-longragged}
-
+\usepackage{wrapfig}
+\usepackage{caption}
 
 \usepackage{lscape}
 \usepackage{rotating}
@@ -74,26 +75,29 @@
 % Titlepage
 \include{./Titlepage/Titlepage}
 \pagenumbering{roman}
+
 % Summary
 \newpage
 \include{./Preface}
 \include{./Summary}
-\newpage
-\printnoidxglossary[type=\acronymtype,nonumberlist]
-\newpage
-\printnoidxglossary[type=symbol,style=listos]
+
 % Table of contents
 \newpage
 \tableofcontents
+\addtocontents{toc}{\protect\contentsline {section}{Acronyms}{v}{}}
+\addtocontents{toc}{\protect\contentsline {section}{List of symbols}{vi}{}}
+\addtocontents{toc}{\protect\contentsline {section}{List of Figures}{vii}{}}
+\addtocontents{toc}{\protect\contentsline {section}{List of Tables}{viii}{}}
+
+\newpage
+\printnoidxglossary[type=\acronymtype,nonumberlist]
+\newpage
+\printnoidxglossary[type=symbol,nonumberlist,style=listos]
 \newpage
 \listoffigures
 \newpage
 \listoftables
-\addtocontents{toc}{\protect\contentsline {section}{Preface}{i}{}}
-\addtocontents{toc}{\protect\contentsline {section}{Summary}{ii}{}}
-\addtocontents{toc}{\protect\contentsline {section}{Acronyms}{iii}{}}
-\addtocontents{toc}{\protect\contentsline {section}{List of Figures}{iv}{}}
-\addtocontents{toc}{\protect\contentsline {section}{List of Tables}{iv}{}}
+
 % Chapters
 \newpage
 \pagenumbering{arabic}
