@@ -82,24 +82,29 @@ This data is then saved for processing during trajectory simulation. In the traj
 
 \subsubsection{Modules} \label{subsec:modules}
 
-The program first implements the governing equations on each time step. Secondly two modules were created, one to find feasible orbits and another to calculate the full orbit of the orbits which are found to be feasible. These three modules are described below.
+The program first implements the governing equations on each time step. Secondly three modules were created, two to find feasible orbits and another to calculate the full orbit of the orbits which are found to be feasible. These four modules are described below.
 
 \paragraph{Implementation of governing equations}\textit{orbit.m}
 
 The module implementing the governing equations has a lot of input data of which most are constants and design parameters. One of the inputs is the dataset created by the atmospheric model described in subsection \ref{subsec:atmos}. The density and gravitational acceleration taken from this dataset is different for each cycle of the program and dependent on the height, longitude and latitude of the spacecraft. Also the previous location, velocity and acceleration (in vector form) are constantly changing inputs.
 
 The input variables are directly filled in into equations \ref{eq:ai}, \ref{eq:Vi} and \ref{eq:Ri}. This creates output values for the location, velocity and acceleration. Both the total acceleration and the separate accelerations due to the drag, lift and gravitation are outputted.
+
 \paragraph{Orbit selection} \textit{orbit\_selection.m}
 
 The module has a lot of constants, initial conditions and design parameters as input variables. One of the input variables is the starting distance in y-direction (using the reference frame from figure \ref{fig:orb}) from the center of mars. This value is currently taken to be ten times the mars radius. At this distance the gravitational acceleration is assumed to be negligible. 
 
-In the module for orbit selection first the initial conditions are created. One of the initial conditions is that the entry velocity is $7 [\frac{km}{s}]$. After this initialization \textit{orbit.m} is called for each time step. After each time step the data is analyzed and three conditions are filled in. The condition \textit{inatmos} is true when the spacecraft has ever been inside the atmosphere of mars. The condition \textit{crash} is true when the spacecraft touches the surface of mars in the first entry into the atmosphere. Finally the condition \textit{inorbit} is true when the spacecraft either leaves the atmosphere with a velocity smaller than the escape velocity at that point or when the spacecraft did never enter the atmosphere and the velocity at the point the simulation is terminated is smaller than the escape velocity at that point. The values of these conditions is used in \textit{orbitcheck.m} to determine the feasible design parameters.
+In the module for orbit selection first the initial conditions are created. One of the initial conditions is that the entry velocity is $7 [\frac{km}{s}]$. After this initialization \textit{orbit.m} is called for each time step. After each time step the data is analyzed and three conditions are filled in. The condition \textit{inatmos} is true when the spacecraft has ever been inside the atmosphere of mars. The condition \textit{crash} is true when the spacecraft touches the surface of mars in the first entry into the atmosphere. Finally the condition \textit{inorbit} is true when the spacecraft either leaves the atmosphere with a velocity smaller than the escape velocity at that point or when the spacecraft did never enter the atmosphere and the velocity at the point the simulation is terminated is smaller than the escape velocity at that point. When the value of \textit{inorbit} has been determined the simulation is stopped. The values of these conditions are used in \textit{orbitcheck.m} to determine the feasible design parameters.
 
 The function outputs the location, velocity and acceleration (total and partial) over the entire calculated orbit. It also outputs the conditions for orbit (\textit{inatmos}, \textit{crash} and \textit{inorbit}) and the maximum acceleration felt by the payload (acceleration due to gravitation is not felt by the payload).
 
 \paragraph{Full orbit simulation} \textit{orbit\_full.m}
 
-**
+The module has the same input variable as \textit{orbit\_selection.m}. Furthermore a time is specified at which the simulation has to end.
+
+The working principle of the module is equivalent to \textit{orbit\_selection.m}, the simulation is however only terminated when the value of \textit{inorbit} has been determined to be \textit{false}. If \textit{inorbit}=\textit{true} the orbit is calculated until either\textit{crash} becomes \textit{true} or the specified time has passed.
+
+The output variables are the same as for 
 
 \paragraph{Run orbit selection} \textit{orbitcheck.m}
 
