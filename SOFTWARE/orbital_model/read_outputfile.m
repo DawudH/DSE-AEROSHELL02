@@ -3,7 +3,7 @@ clc
 clear all
 close all
 
-fid = fopen('orbit_true_or_false.txt','r');
+fid = fopen('orbit_selection.txt','r');
 C = textscan(fid,'%11.1f %4.2f %d %d %d %f');
 fclose(fid);
 
