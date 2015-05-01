@@ -1,21 +1,21 @@
 \subsection{Control Requirements Discovery} \label{sec:req-control}
-Using the requirements discovery tree, requirements for the control system were found, relating to stability and controllability. These requirements can be found in Table \ref{tab:controlreq}.
+Using the \gls{rdt}, requirements for the control system were found, relating to stability and controllability. These requirements can be found in Table \ref{tab:controlreq}.
 
 \begin{table}[H]
-	\caption{Overview of Control requirements}
+	\caption{Overview of control requirements}
 	\begin{tabular}{|p{0.2\textwidth}|p{0.70\textwidth}|}
 		\hline
 		ID         					&	Description																							\\ \hline \hline
-		CIA-B01-01-04-Contr-01		&	The control system shall have a reliability of $5e-4$            									\\ \hline
-		CIA-B01-01-04-Contr-02 		&	The control system shall keep the spacecraft within a distance to the trajectory of [\gls{tbd} m]	\\ \hline	
-		CIA-B01-01-04-Contr-02-01 	&	The control system shall provide (augmented) dynamic stability       								\\ \hline
-		CIA-B01-01-04-Contr-02-02 	&	The control system shall provide attitude control over three axes         							\\ \hline	
+		CIA-B01-04-Contr-01		&	The control system shall have a reliability of $5 \cdot 10^{-4}$            									\\ \hline
+		CIA-B01-04-Contr-02 		&	The control system shall keep the spacecraft within a distance to the trajectory of [\gls{tbd} m]	\\ \hline	
+		CIA-B01-04-Contr-02-01 	&	The control system shall provide (augmented) dynamic stability       								\\ \hline
+		CIA-B01-04-Contr-02-02 	&	The control system shall provide attitude control over three axes         							\\ \hline	
 	\end{tabular}
 	\label{tab:controlreq}
 \end{table}
 
-All control requirements follow from requirement CIA-A01-01-04, which defines the requirement of a controlled state throughout the mission. 
-This can be further specified as following the prescribed trajectory within a certain control window, as given in requirement CIA-B01-01-04-Contr-02. 
-In order to stay in this control window, the control system is required to augment the aerodynamic stability with artificial stability enabling the system to cope with different disturbances, as given in requirement CIA-B01-01-04-Contr-02-01. 
-To be able to maintain and change positioning within the control window, providing attitude control is required as given in requirement CIA-B01-01-04-Contr-02-02. 
-Finally, the control system has a certain reliability criterion as given in requirement CIA-B01-01-04-Contr-01.
+All control requirements follow from requirement CIA-A01-04, which defines the requirement of a controlled state throughout the mission. 
+This can be further specified as following the prescribed trajectory within a certain control window, as given in requirement CIA-B01-04-Contr-02. 
+In order to stay in this control window, the control system is required to augment the aerodynamic stability with artificial stability enabling the system to cope with different disturbances, as given in requirement CIA-B01-04-Contr-02-01. 
+To be able to maintain and change positioning within the control window, providing attitude control is required as given in requirement CIA-B01-04-Contr-02-02. 
+Finally, the control system has a certain reliability criterion as given in requirement CIA-B01-04-Contr-01.
