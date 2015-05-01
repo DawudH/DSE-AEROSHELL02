@@ -20,7 +20,7 @@ refinement_steps = 40;
 % changing variables
 % 
 rx = -4.05e6:-1e3:-4.2e6;
-CD = 0.8:0.1:1.1;
+CD = 0.4:0.1:0.7;
 % CD = 1.3;
 % rx = -4.162e6;
 
@@ -32,7 +32,7 @@ end
 rx_first = rx(1);
 % file string
 filestr = cell(length(CD),1);
-parfor k = 1:length(CD)
+for k = 1:length(CD)
     CL = CLCD * CD(k);
     % store first value of crashed..
     rx_crashed = rx_first;
