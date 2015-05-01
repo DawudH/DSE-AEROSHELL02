@@ -50,7 +50,7 @@ while true
         
     end
     
-    % check if crashed.. % crashed = R_m + crash margin (due to to big timesteps) 
+    % check if crashed.. % crashed = R_m + crash margin (due to too big timesteps) 
      if (out.inatmos) && (norm(out.R(i+1,:)) < (R_m + crash_margin) ) 
         out.crash = true;
         break;
