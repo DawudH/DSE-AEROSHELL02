@@ -1,0 +1,96 @@
+\documentclass[12pt]{article}
+
+% USEPACKAGES
+\usepackage[table]{xcolor}
+\usepackage[margin=2.5cm]{geometry} % Change border margins.
+\usepackage[titles]{tocloft} % Table of Contents, manual add.
+\usepackage{mcode} % Load matlab code into LaTeX.
+\usepackage[parfill]{parskip} % Removes indents
+\usepackage[hidelinks]{hyperref} % Clickable links in PDF.
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{float}
+\usepackage{amsmath,amssymb,amsthm,multirow,algorithm,algorithmic,amsfonts}
+\usepackage{gensymb}
+\usepackage[square,numbers,comma,sort&compress]{natbib}
+\usepackage[titletoc]{appendix}
+\usepackage[final]{pdfpages}
+\usepackage{afterpage}
+\usepackage{mdwlist} % Compact lists (itemize*)
+\usepackage{fixltx2e}
+\usepackage{expl3}
+\usepackage[nogroupskip,acronyms,symbols]{glossaries}
+\usepackage{glossary-longragged}
+\usepackage{wrapfig}
+\usepackage{caption}
+
+\usepackage{lscape}
+\usepackage{rotating}
+
+% PAGESTYLE
+\pagestyle{plain}
+
+\input{glspreamble}
+
+
+
+% COMMANDS
+\newcommand{\HRule}{\rule{\linewidth}{0.04cm}}
+\renewcommand{\abstractname}{{\Large Summary}}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\setlength{\parskip}{5pt plus4pt minus2pt}
+\setcounter{tocdepth}{2}
+% ENVIRONMENTS
+\newenvironment{drawing}
+
+
+\begin{document}
+% Titlepage
+\include{./Titlepage/Titlepage}
+\pagenumbering{roman}
+
+% Summary
+\newpage
+\include{./Preface}
+\include{./Summary}
+
+% Table of contents
+\newpage
+\tableofcontents
+\addtocontents{toc}{\protect\contentsline {section}{Acronyms}{v}{}}
+\addtocontents{toc}{\protect\contentsline {section}{List of symbols}{vi}{}}
+\addtocontents{toc}{\protect\contentsline {section}{List of Figures}{vii}{}}
+\addtocontents{toc}{\protect\contentsline {section}{List of Tables}{viii}{}}
+
+\newpage
+\printnoidxglossary[type=\acronymtype,nonumberlist]
+\newpage
+\printnoidxglossary[type=symbol,nonumberlist,style=listos]
+\printnoidxglossary[type=constants,style=listoc]
+\newpage
+\listoffigures
+\newpage
+\listoftables
+
+% Chapters
+\newpage
+\pagenumbering{arabic}
+
+\include{./Chapter/Introduction}
+
+
+
+\include{./Chapter/Conclusion}
+
+
+% Bibliography
+\newpage
+\bibliography{./Bibliography/Bibliography}
+\bibliographystyle{ieeetr}
+% Appendix
+\newpage
+\appendix
+\include{./AppendixA}
+
+\end{document}
