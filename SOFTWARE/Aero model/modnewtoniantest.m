@@ -10,7 +10,7 @@ center = zeros(3,1);
 
 % mod = modnewtonian( coords, tri, gamma, a, center);
 mod = modnewtonian( TriGeom.Points', TriGeom.ConnectivityList, gamma, a, center);
-mod = mod.calcAeroangle(70000000,deg2rad(45),0);
+mod = mod.calcAeroangle(7e3,deg2rad(45),0);
 mod.Cpdist_array;
 
 trisurf(Tri,xvector,yvector, zvector, mod.Cpdist_array);

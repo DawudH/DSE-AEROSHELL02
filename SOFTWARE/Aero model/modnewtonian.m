@@ -44,7 +44,7 @@ classdef modnewtonian
             obj.gamma = gamma;
             obj.a = a;
             obj.center = center;
-            obj.normals = obj.calcsurfacenormals();
+            [obj.normals, obj.areas] = obj.calcsurfacenormals();
             obj.cellcenters = obj.calccellcenters();
         end        
         
@@ -54,8 +54,9 @@ classdef modnewtonian
             obj.Cpmax_array = [obj.Cpmax_array, calcCp_max(obj.M_array(end), obj.gamma)];
             obj.V_array = [obj.V_array, V];
             obj.Cpdist_array = [obj.Cpdist_array, obj.calcCpdist()];
-            obj.CR_array = [obj.CR_array, obj.calcForceCoeffs()];
-            CR = obj.CR_array(end)
+%             obj.CR_array = [obj.CR_array, obj.calcForceCoeffs()];
+%             CR = obj.CR_array(end)
+            CR = [0,0,0];
             CM = [0,0,0];
         end
         
@@ -80,13 +81,15 @@ classdef modnewtonian
         end
         
         
-        function SN = calcsurfacenormals(obj)
+        function [SN, areas] = calcsurfacenormals(obj)
             %Calculate the surface normals of the given geometry.
             SN = zeros(size(obj.tri'));
+            areas = zeros(size(obj.tri,1));
             for i = 1:size(obj.tri,1)
                 vec_a = obj.coords(:,obj.tri(i,2)) - obj.coords(:,obj.tri(i,1));
                 vec_b = obj.coords(:,obj.tri(i,3)) - obj.coords(:,obj.tri(i,1));
                 SN(:,i) = -cross(vec_a, vec_b)/norm(cross(vec_a, vec_b));
+                areas(i) = norm(cross(vec_a, vec_b));
             end
         end
         
