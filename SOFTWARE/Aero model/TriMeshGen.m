@@ -2,10 +2,10 @@ clear all
 close all
 
 %% Define geometry in Polar Coordinates
-q = 100;                                 %Number of discrete points used along phi and theta
+q = 10;                                 %Number of discrete points used along phi and theta
 R    = 3;                               
 r    = 3;
-theta= linspace(0,pi,q);              
+theta = linspace(0,pi,q);              
 phi  = linspace(0,2*pi,q);
 [theta,phi]=meshgrid(theta,phi);
 
@@ -29,10 +29,14 @@ end
 %% For loop to create the triangulation matrix. Tri stores Triangulation matrix entries
 p = length(xvector);
 Tri = [0 0 0];
-for j = 1:(p-(q+1))
-    Tri(2*j-1,:) = [j j+1 q+j+1];
-    Tri(2*j,:) = [j q+j+1 q+j];
+for i = 0:q-2
+    for j = 1:q-1
+        Tri(2*(i*q+j)-1,:) = [i*q+j i*q+j+1 q+i*q+j+1];
+        Tri(2*(i*q+j),:) = [i*q+j q+i*q+j+1 q+i*q+j];
+    end
 end
+Tri0 = Tri(:,1) == 0;
+Tri(Tri0,:) = [];
 
 %% FaceNormal Calculation
 TriGeom = triangulation(Tri, xvector', yvector', zvector');
