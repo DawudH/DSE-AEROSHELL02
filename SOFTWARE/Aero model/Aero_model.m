@@ -13,3 +13,19 @@ kleurtjes = z;
 surface=surf(x,y,z, kleurtjes);
 
 axis equal
+xvector = [];
+yvector = [];
+zvector = [];
+
+for n = 1:length(x(1,:))
+    for m = 1:length(x(:,1))
+        xvector = [xvector,x(m,n)];
+        yvector = [yvector,y(m,n)];
+        zvector = [zvector,z(m,n)];
+    end
+end
+
+dt = DelaunayTri(xvector', yvector', zvector');
+[tri,Xb] = freeBoundary(dt);
+figure;
+trisurf(tri,Xb(:,1),Xb(:,2),Xb(:,3), 'FaceColor', 'cyan', 'faceAlpha', 0.8);
