@@ -39,6 +39,7 @@ while true
         [orbit_new,t_kep] = orbit_kepler(kepler_param,orbit_new);
         to_kepler = false;
         out.inorbit = false;
+        disp(t_kep)
         
     else
         % get orbital parameters at next node

@@ -5,24 +5,26 @@ tic
 % load constants
 constants
 
+format long
+
 do_plot = false;
 write_to_file = true;
-file_name = 'orbit_selection_range.txt';
+file_name = 'orbit_beun.txt';
 
 
 ry = 10* R_m; %[m]
-v = 7000; %[m/s]
+v = 5000; %[m/s]
 dt = 1;
-refinement_steps = 100;
+refinement_steps = 15;
 
 
 % changing variables
 % 
-rx = -4161499:-5e2:-4.8e6;
+rx = -4640000.0:-5e3:-4714000.0;
 CD = 1.25;
 %CLCD = [-0.25:0.1:0 0:0.05:0.3]; %[-]
 CLCD = 0.25;
-CL = -0.4;
+CL = 0.63;
 
 cc = parula(length(CD)+3);
 if do_plot
@@ -32,7 +34,7 @@ end
 rx_first = rx(1);
 % file string
 filestr = cell(length(v),1);
-parfor u = 1:length(v)
+for u = 1:length(v)
     for l = 1:length(CL)
     for k = 1:length(CD)
 
@@ -57,7 +59,7 @@ parfor u = 1:length(v)
                 for j = 2:(length(rx_refine)-1)
                     [out] = orbit_selection(rx_refine(j),ry,CD(k),v(u),dt,CL(l),R_m,Omega_m,S,m,G,M_mars,h_atm,crash_margin,g_earth);
                     if write_to_file
-                        filestr{u} = [filestr{u} sprintf(' %f %f %f %f %d %d %d %f \n',rx(j),CD(k),CL(l),v(u),out.inatmos,out.crash,out.inorbit,out.maxaccel)];
+                        filestr{u} = [filestr{u} sprintf(' %f %f %f %f %d %d %d %f \n',rx_refine(j),CD(k),CL(l),v(u),out.inatmos,out.crash,out.inorbit,out.maxaccel)];
                     end
 
                     if previous_inorbit && (out.inorbit == 0)
