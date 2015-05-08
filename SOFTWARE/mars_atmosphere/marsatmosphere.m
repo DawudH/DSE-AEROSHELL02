@@ -10,6 +10,7 @@ classdef marsatmosphere
         GM_mars;
         hmax;
         r_mars;
+        CO2_base;
     end
     
     methods
@@ -32,7 +33,7 @@ classdef marsatmosphere
             lon_base = A{4};
             rho_base = A{5};
             T_base = A{6};
-            CO2_base = A{13};
+            obj.CO2_base = A{13};
             N2_base = A{14};
             Ar_base = A{15};
             O2_base = A{16};
@@ -41,6 +42,7 @@ classdef marsatmosphere
             H2_base = A{19};
             H_base = A{20};
             H2O_base = A{21};
+            
             obj.hmax = max(h_base);
             
             latnom = length(unique(lat_base));

@@ -1,7 +1,7 @@
 \subsection{Structural Requirements Discovery} \label{sec:struct}
-The vehicle structure faces a number of requirements, functional and operational. The functional requirements are stated in Table \ref{tab:strucfuncrequirements}, the operational requirements in Table \ref{tab:strucoprequirements}. These requirements are briefly discussed hereafter.
+The vehicle structure faces a number of requirements, functional and operational. The functional and operational requirements are stated in Table \ref{tab:strucfuncrequirements}. These requirements are briefly discussed hereafter.
 \begin{table}[H]
-	\caption{Overview of structural requirements}
+	\caption{Overview of structural requirements}	 
 	\begin{tabular}{|p{0.20\textwidth}|p{0.70\textwidth}|}
     \hline
     ID          & Description                                                                                                      \\ \hline \hline
@@ -13,7 +13,7 @@ The vehicle structure faces a number of requirements, functional and operational
     CIA-Op-B01-02-Struc-06 & The structure shall have a maximum diameter not exceeding 12 [m] in deployed configuration     \\ \hline
     CIA-Op-B02-Struc-07 & The structure shall have a mass not exceeding 350 [kg]\\ \hline
     \end{tabular}
-    \label{tab:strucfuncrequirements}
+\label{tab:strucfuncrequirements}
 \end{table}
 %Requirement CIA-B02-Struc-01 follows from the aerodynamic heating as a consequence of the dissipation of kinetic energy corresponding to a velocity of 7 [km/s], as stated in requirement CIA-A01. The \gls{tps} reduces the temperature to within acceptable limits, which are translated to a range of temperature in which the structures subsystem should operate. These temperatures therefore follow from the \gls{tps}. This requirement is essential because temperature can have a substantial effect on the mechanical properties of materials as well as thermal expansion \cite{Callister2007}.
 The functional requirements are as follows. Firstly, requirement CIA-Func-B02-Struc-02 states that the structure shall handle the structural loads induced during aerocapture and (re-)entry without failure. These have been limited on a higher level by requirement CIA-Func-A02. Secondly, if a deployment functionality  (for example an inflation system) is a concept feature, deployment should be performed by the subsystem; in case such a functionality is not present, there is no deployment, hence nothing to support and the requirement is logically satisfied. This is stated in requirement CIA-Func-B01-Struc-01. Thirdly, payload and deceleration mechanism should be connected to prevent separation during re-entry and satisfy the payload constraint. This is stated in requirement CIA-Func-B04-Struc-03. The last functional requirement, CIA-Func-B04-Struc-04, states that the structure shall not deform, so that the functionality of primarily control subsystem and the aerodynamic shape and thereby behaviour of the entry vehicle are not impaired. Since this deformation is specific to a concept, no limits can be set as of yet on this deformation. Moreover, this requirement flows down to specific deformations on each of the structural components.
