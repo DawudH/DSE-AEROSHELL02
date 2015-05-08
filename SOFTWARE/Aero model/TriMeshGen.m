@@ -2,13 +2,20 @@ clear all
 close all
 
 %% Define geometry in Polar Coordinates
-q = 10;                                 %Number of discrete points used along phi and theta
-R    = 3;                               
+q = 20;                                 %Number of discrete points used along phi and theta
+R    = 12;                               
 r    = 3;
-theta = linspace(0,pi,q);              
+theta = linspace(0,2*pi,q);              
 phi  = linspace(0,2*pi,q);
 [theta,phi]=meshgrid(theta,phi);
 
+
+% TORUS
+% x=(R+r*cos(theta)).*cos(phi);
+% y=(R+r*cos(theta)).*sin(phi);
+% z=r.*sin(theta);
+
+% SPHERE
 x=(r*sin(theta)).*cos(phi);           %x,y,z definitions of a donut in polar. Should be replaced by function??
 y=(R*sin(theta)).*sin(phi);
 z=r.*cos(theta);
