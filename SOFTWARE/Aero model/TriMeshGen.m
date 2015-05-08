@@ -1,4 +1,4 @@
-function [TriGeom] = TriMeshGen(q,R,r,type)
+function [TriGeom,xvector,yvector,zvector] = TriMeshGen(q,R,r,type)
 
 %% Sphere
 if type == 's'
@@ -26,6 +26,7 @@ p = length(xvector);
 Tri = [0 0 0];
 for i = 0:q-2
     for j = 1:q-1
+              
         Tri(2*(i*q+j)-1,:) = [i*q+j i*q+j+1 q+i*q+j+1];
         Tri(2*(i*q+j),:) = [i*q+j q+i*q+j+1 q+i*q+j];
     end
@@ -33,6 +34,7 @@ end
 Tri0 = Tri(:,1) == 0;
 Tri(Tri0,:) = [];
 TriGeom = triangulation(Tri, xvector', yvector', zvector');
+
 
 %% Torus
 elseif type == 't' 
