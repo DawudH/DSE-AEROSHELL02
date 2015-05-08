@@ -15,6 +15,8 @@ out.ag(1,:) = [0, 0, 0];
 out.ad(1,:) = [0, 0, 0];
 out.al(1,:) = [0, 0, 0];
 out.q(1) = 0;
+out.speed_sound(1) = 0;
+out.M(1) = 0;
 
 % create atmosphere object
 atm = marsatmosphere();
@@ -33,6 +35,7 @@ to_kepler = false;
 % define time step
 dt = dt_init;
 time_pased = 0;
+t(1) = 0;
 while true
     
     if to_kepler
@@ -41,10 +44,12 @@ while true
         to_kepler = false;
         out.inorbit = false;
         time_pased = time_pased + t_kep;
+        t(i+1) = t(i) + dt;
     else
         % get orbital parameters at next node
         orbit_new = orbit(out.R(i,:),out.V(i,:),out.a(i,:),CD,CL,dt,atm,R_m,Omega_m,S,m);
         time_pased = time_pased + dt;
+        t(i+1) = t(i) + dt;
     end
     
     out.R(i+1,:) = orbit_new.R;
@@ -54,6 +59,8 @@ while true
     out.al(i+1,:) = orbit_new.al;
     out.ag(i+1,:) = orbit_new.ag;
     out.q(i+1) = orbit_new.q;
+    out.M(i+1) = orbit_new.M;
+    out.speed_sound(i+1) = orbit_new.speed_sound;
 
     if out.inorbit && (to_kepler == false)
         
@@ -155,21 +162,26 @@ if exist('kepler_param','var')
 end
 
 
-t = 0:dt:(length(out.R)*dt - dt);
+%t = 0:dt:(length(out.R)*dt - dt);
 figure('name','parameters over time')
-subplot(4,1,1)
+subplot(5,1,1)
 Rm = sqrt(out.R(:,1).^2 + out.R(:,3).^2 + out.R(:,2).^2);
 plot(t,Rm)
 grid on
-subplot(4,1,2)
+subplot(5,1,2)
 Vm = sqrt(out.V(:,1).^2 + out.V(:,3).^2 + out.V(:,2).^2);
 plot(t,Vm)
 grid on
-subplot(4,1,3)
-am = sqrt(out.a(:,1).^2 + out.a(:,3).^2 + out.a(:,2).^2);
+subplot(5,1,3)
+am = sqrt((out.a(:,1) - out.ag(:,1)).^2 + (out.a(:,2) - out.ag(:,2)).^2 + (out.a(:,3) - out.ag(:,3)).^2) / g_earth;
 plot(t,am)
 grid on
-subplot(4,1,4)
+subplot(5,1,4)
 plot(t,out.q)
+grid on
+subplot(5,1,5)
+hold on
+plot(t,out.M)
+plot(xlim,[5,5],'-.','color','r');
 grid on
 end

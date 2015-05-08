@@ -29,4 +29,12 @@ orbit.a = orbit.ag + orbit.ad + orbit.al;
 %calculate new velocity and location
 orbit.V = V + a*dt;
 orbit.R = R + V*dt + 0.5*a*dt^2;
+
+if (norm(R)-R_m < 100000)
+    orbit.speed_sound = atm.getSpeedofsound(0,0, norm(R)-R_m);
+    orbit.M = norm(orbit.V) / orbit.speed_sound;
+else
+    orbit.speed_sound = 0;
+    orbit.M = 0;
+end
 end
