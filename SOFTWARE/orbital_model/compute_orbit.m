@@ -1,12 +1,18 @@
+clc
+clear all
+close all
+
 % load constants
 constants
 
 ry = 10* R_m; %[m]
-v = 7000; %[m/s]
-dt = 1;
-CD = 0.8;
-rx = -4133000;
-CL = 0.2*CD;
-tend = 3600 * 24 * 10;
+v = 5000; %[m/s]
+dt_init = 1;
+dt_atmos = 1;
+dt_kep_init = 1e-8;
+CD = 1.25;
+rx = -4682000.0;
+CL = 0.56;
+tend = 3600 * 3;
 
-[out] = orbit_full(rx,ry,CD,v,dt,CL,tend);
+[out] = orbit_full(rx,ry,CD,v,dt_init,dt_atmos,dt_kep_init,CL,tend);

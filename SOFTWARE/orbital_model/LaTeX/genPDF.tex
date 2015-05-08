@@ -1,0 +1,40 @@
+\documentclass[12pt]{article}
+
+\usepackage{pgfplots}
+\usepackage{caption}
+\usepackage{amsmath,amssymb,amsthm,multirow,algorithm,algorithmic,amsfonts}
+
+
+
+\newlength\figureheight 
+\newlength\figurewidth
+
+\begin{document}
+\thispagestyle{empty}
+\begin{figure}
+	\centering
+	\setlength\figureheight{5cm} 
+	\setlength\figurewidth{13cm}
+	\input{n_CL.tikz}
+	\caption*{The minimal load for entering an orbit around Mars with no active control, a constant $C_D$ ($1.25$) and variable $C_L$ at different initial velocities.}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\setlength\figureheight{5cm} 
+	\setlength\figurewidth{12.5cm}
+	\input{n_CD.tikz}
+	\caption*{The minimal load for entering an orbit around Mars with no active control, a constant $C_L$ ($0.2$) and variable $C_D$ at different initial velocities.}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\setlength\figureheight{5cm} 
+	\setlength\figurewidth{10cm}
+	\input{range_plot.tikz}
+	\caption*{The range of $R_x$ for entering an orbit around Mars with no active control, a constant $C_D$ ($1.25$) and $C_L$ ($-0.4$) at an initial velocity of $7000$ $\left[\frac{m}{s}\right]$.}
+\end{figure}
+
+
+
+\end{document}
