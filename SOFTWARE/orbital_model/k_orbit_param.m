@@ -9,7 +9,6 @@ r2 = norm(R2);
 
 % calculate the semi major axis with visviva
 a = r*mu / (2*mu - r * v^2);
-disp(['visviva a: ' num2str(a)]);
 
 % determine e with areal velocity
 dA = 1/2 * r * r2 * sin(dtheta);

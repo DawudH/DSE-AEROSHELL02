@@ -104,6 +104,27 @@ classdef modnewtonian
             Cp_max = 2./(gamma*M.^2).*((((gamma+1)^2*M.^2)/(4*gamma*M.^2-2*(gamma-1)))^(gamma/(gamma-1))*((1-gamma+2*gamma*M.^2)/(gamma+1))-1);
         end
         
+        function obj = plot(obj, plotfaces, plotnormals)
+            figure;
+            hold on;
+            if plotfaces
+                trisurf(obj.tri,obj.coords(1,:),obj.coords(2,:),obj.coords(3,:), obj.Cpdist_array(:,end));
+            end
+            caxis([0,2]); %Cp goes from 0 to 2
+            axis equal;
+            colorbar;
+            xlabel('x')
+            ylabel('y')
+            zlabel('z')
+            if plotnormals
+                quiver3(obj.cellcenters(1,:), obj.cellcenters(2,:), obj.cellcenters(3,:), obj.normals(1,:), obj.normals(2,:), obj.normals(3,:))
+            end
+            xlength = max(obj.coords(1,:))-min(obj.coords(1,:));
+            quiverV = - xlength * 0.5 * obj.V_array(:,end) / norm(obj.V_array(:,end));
+            quiverx = xlength*0.5 - quiverV(1);
+            quiver3(quiverx,mean(obj.coords(2,:))-quiverV(2),mean(obj.coords(3,:))-quiverV(2),quiverV(1), quiverV(2), quiverV(3));
+        end
+        
 
     end
     
