@@ -1,20 +1,11 @@
 function [kepler_param] = k_orbit_param(R1,R2,V,dt,dtheta,G,M)
 
-format long
-R1
-R2
-V
-dt
-dtheta
-G 
-M
-
 %% Determine kepler orbit parameters
 mu = G*M;
 % get magintudes
-r = norm(R1)
+r = norm(R1);
 v = norm(V);
-r2 = norm(R2)
+r2 = norm(R2);
 
 % calculate the semi major axis with visviva
 a = r*mu / (2*mu - r * v^2);
@@ -49,6 +40,7 @@ kepler_param.a = a; %
 kepler_param.b = b; %
 kepler_param.theta = theta; %
 kepler_param.thetap = thetap; %
+kepler_param.theta0 = theta0; %
 kepler_param.rp = rp; %
 kepler_param.ra = ra; %
 kepler_param.T = T; %
