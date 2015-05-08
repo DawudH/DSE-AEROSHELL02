@@ -21,8 +21,8 @@ classdef modnewtonian
         areas;
         Cpmax_array;
         Cpdist_array;
-        CR_array;
-        CM_array;
+        CRA_array;
+        CMA_array;
     end
     
     methods
@@ -51,13 +51,10 @@ classdef modnewtonian
         function obj = calcAero(obj, V)
             % Calculate aerodynamic properties for the geometry for given V
             obj.M_array = [obj.M_array, sqrt(sum(V.^2))/obj.a];
-            obj.Cpmax_array = [obj.Cpmax_array, calcCp_max(obj.M_array(end), obj.gamma)];
+            obj.Cpmax_array = [obj.Cpmax_array, obj.calcCp_max(obj.M_array(end), obj.gamma)];
             obj.V_array = [obj.V_array, V];
             obj.Cpdist_array = [obj.Cpdist_array, obj.calcCpdist()];
-%             obj.CR_array = [obj.CR_array, obj.calcForceCoeffs()];
-%             CR = obj.CR_array(end)
-            CR = [0,0,0];
-            CM = [0,0,0];
+            obj.CRA_array = [obj.CRA_array, obj.calcForceCoeffs()];
         end
         
         function obj = calcAeroangle(obj, Vinf, alpha, beta)
@@ -66,9 +63,9 @@ classdef modnewtonian
             obj = obj.calcAero(V);
         end
         
-        function CR = calcForceCoeffs(obj)
+        function CRA = calcForceCoeffs(obj)
             % Calculate aerodynamic force coefficients on the body
-            CR = - obj.normals * (obj.Cpdist_array(:,end) .* obj.areas);
+            CRA = - obj.normals * (obj.Cpdist_array(:,end) .* obj.areas);
         end
         
         function Cpdist = calcCpdist(obj)
@@ -84,11 +81,11 @@ classdef modnewtonian
         function [SN, areas] = calcsurfacenormals(obj)
             %Calculate the surface normals of the given geometry.
             SN = zeros(size(obj.tri'));
-            areas = zeros(size(obj.tri,1));
+            areas = zeros(size(obj.tri,1),1);
             for i = 1:size(obj.tri,1)
                 vec_a = obj.coords(:,obj.tri(i,2)) - obj.coords(:,obj.tri(i,1));
                 vec_b = obj.coords(:,obj.tri(i,3)) - obj.coords(:,obj.tri(i,1));
-                SN(:,i) = -cross(vec_a, vec_b)/norm(cross(vec_a, vec_b));
+                SN(:,i) = cross(vec_a, vec_b)/norm(cross(vec_a, vec_b));
                 areas(i) = norm(cross(vec_a, vec_b));
             end
         end
@@ -101,6 +98,12 @@ classdef modnewtonian
                 centers(:,i) = mean(vectors,2);
             end
         end
+        
+        function Cp_max = calcCp_max(~, M, gamma)
+            % Get the Cp_max as needed for modified newtonian theory
+            Cp_max = 2./(gamma*M.^2).*((((gamma+1)^2*M.^2)/(4*gamma*M.^2-2*(gamma-1)))^(gamma/(gamma-1))*((1-gamma+2*gamma*M.^2)/(gamma+1))-1);
+        end
+        
 
     end
     
@@ -118,8 +121,3 @@ function T = transformation(alpha, beta)
     T = Tz*Ty;
 end
 
-function Cp_max = calcCp_max(M, gamma)
-    % Get the Cp_max as needed for modified newtonian theory
-    Cp_max = 2./(gamma*M.^2).*((((gamma+1)^2*M.^2)/(4*gamma*M.^2-2*(gamma-1)))^(gamma/(gamma-1))*((1-gamma+2*gamma*M.^2)/(gamma+1))-1);
-end
-        
