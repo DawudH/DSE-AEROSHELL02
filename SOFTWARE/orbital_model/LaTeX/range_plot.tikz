@@ -1,0 +1,51 @@
+% This file was created by matlab2tikz.
+% Minimal pgfplots version: 1.3
+%
+\definecolor{mycolor1}{rgb}{0.07947,0.51590,0.83283}%
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=0.95092\figurewidth,
+height=\figureheight,
+at={(0\figurewidth,0\figureheight)},
+scale only axis,
+every outer x axis line/.append style={black},
+every x tick label/.append style={font=\color{black}},
+xmin=-4173999,
+xmax=-4161999,
+xlabel={$R_x \left[-\right]$},
+xmajorgrids,
+every outer y axis line/.append style={black},
+every y tick label/.append style={font=\color{black}},
+ymin=0,
+ymax=58.86,
+ylabel={$a \left[\frac{m}{s^2}\right]$},
+ymajorgrids,
+axis x line*=bottom,
+axis y line*=left
+]
+\node[right, align=left, inner sep=0mm, text=black]
+at (axis cs:-4170999,31.392,0) {$\leftarrow$};
+\node[left, align=right, inner sep=0mm, text=black]
+at (axis cs:-4164999,31.392,0) {$\rightarrow$};
+\node[align=center, inner sep=0mm, text=black]
+at (axis cs:-4167999,31.392,0) { $6000\, \left[m\right]$};
+\addplot [color=mycolor1,solid,mark=o,mark options={solid},forget plot]
+  table[row sep=crcr]{%
+-4164999	28.90769598\\
+-4165499	28.87376319\\
+-4165999	28.83987945\\
+-4166499	28.80605457\\
+-4166999	28.77226893\\
+-4167499	28.73854215\\
+-4167999	28.70530587\\
+-4168499	28.67253066\\
+-4168999	28.6398045\\
+-4169499	28.60712739\\
+-4169999	28.57448952\\
+-4170499	28.5419007\\
+-4170999	28.50936093\\
+};
+\end{axis}
+\end{tikzpicture}%

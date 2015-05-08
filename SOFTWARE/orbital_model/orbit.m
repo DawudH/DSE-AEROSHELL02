@@ -18,8 +18,8 @@ if rho>0
     orbit.al = cross(vel_unit,[0,0,1]) * CL * 0.5 * rho * norm(V - Vatm)^2 * S / m;
 else
     %no lift and drag outside the atmosphere
-    orbit.ad = 0;
-    orbit.al = 0;
+    orbit.ad = [0,0,0];
+    orbit.al = [0,0,0];
 end
 %calculate total accaleration
 orbit.a = orbit.ag + orbit.ad + orbit.al;
