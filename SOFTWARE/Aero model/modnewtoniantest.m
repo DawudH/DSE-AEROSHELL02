@@ -25,10 +25,4 @@ tri = TriGeom.ConnectivityList;
 mod = modnewtonian( TriGeom.Points', tri, gamma, a, center);
 mod = mod.calcAeroangle(7e3,deg2rad(10),0);
 mod.CRA_array
-
-s = trisurf(tri,xvector,yvector,zvector, mod.Cpdist_array);
-axis equal;
-colorbar;
-xlabel('x')
-ylabel('y')
-zlabel('z')
+mod.plot(true, true)
