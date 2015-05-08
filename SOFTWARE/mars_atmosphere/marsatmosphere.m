@@ -11,6 +11,8 @@ classdef marsatmosphere
         hmax;
         r_mars;
         CO2_base;
+        gamma_mars;
+        Rm_mars;
     end
     
     methods
@@ -53,6 +55,9 @@ classdef marsatmosphere
             obj.rhomesh = reshape(rho_base,[lonnom, latnom, hnom]);
 
             [obj.latmesh,obj.lonmesh,obj.hmesh] = meshgrid(unique(lat_base), unique(lon_base), unique(h_base));
+            
+            obj.gamma_mars = 1.29;
+            obj.Rm_mars = 191.8;
         end
         
         function rho = getDensity(obj, latq, lonq, hq) %only for scalars
@@ -82,6 +87,11 @@ classdef marsatmosphere
                 hq = obj.hmax;
             end
             T = interp3(obj.latmesh, obj.lonmesh, obj.hmesh, obj.Tmesh, latq,lonq,hq,'cubic');
+        end
+        
+        function a = getSpeedofsound(obj, latq, lonq, hq)
+            T = obj.getTemperature(latq, lonq, hq);
+            a = sqrt(obj.gamma_mars*obj.Rm_mars*T);
         end
         
         function g = getg(obj, hq)
