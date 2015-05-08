@@ -152,13 +152,13 @@ polar(theta_plot,radius_mars,'r');
 polar(theta_plot,radius_mars_atmos,'g')
 % plot kepler orbit
 if exist('kepler_param','var')
-   
+    theta_plot = kepler_param.theta:0.01:2*pi-kepler_param.theta;
     rk = kepler_param.a * (1- kepler_param.e^2) ./ (1 + kepler_param.e .* cos(theta_plot));
     polar(theta_plot+kepler_param.thetap,rk,'k');
     plot(kepler_param.rp*cos(kepler_param.thetap),kepler_param.rp*sin(kepler_param.thetap),'*')
     plot(-kepler_param.ra*cos(kepler_param.thetap),-kepler_param.ra*sin(kepler_param.thetap),'d')
-    plot((R_m + h_atm)*cos(kepler_param.thetap+kepler_param.theta),(R_m + h_atm)*sin(kepler_param.thetap+kepler_param.theta),'p')
-    plot((R_m + h_atm)*cos(kepler_param.thetap-kepler_param.theta),(R_m + h_atm)*sin(kepler_param.thetap-kepler_param.theta),'p')
+    %plot((R_m + h_atm)*cos(kepler_param.thetap+kepler_param.theta),(R_m + h_atm)*sin(kepler_param.thetap+kepler_param.theta),'p')
+    %plot((R_m + h_atm)*cos(kepler_param.thetap-kepler_param.theta),(R_m + h_atm)*sin(kepler_param.thetap-kepler_param.theta),'p')
 end
 
 
