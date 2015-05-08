@@ -3,8 +3,8 @@ function [TriGeom,xvector,yvector,zvector] = TriMeshGen(q,R,r,t,type)
 %% Sphere
 if type == 's'
 %% Define Polar Coordinates
-theta = linspace(0,pi,q);              
-phi  = linspace(0,2*pi,q);
+theta = linspace(pi,0,q);              
+phi  = linspace(2*pi,0,q);
 [theta,phi]=meshgrid(theta,phi);
 %% Shape definition Sphere
 x=(r*sin(theta)).*cos(phi);           %x,y,z definitions of a donut in polar. Should be replaced by function??
@@ -28,13 +28,13 @@ for i = 0:q-2
     for j = 1:q-1
         if i == 0      
             Tri(2*(i*q+j)-1,:) = [0 0 0];
-            Tri(2*(i*q+j),:) = [i*q+j q+i*q+j+1 q+i*q+j];
+            Tri(2*(i*q+j),:) = [i*q+j (1+i)*q+j (1+i)*q+j+1];
         elseif i == q-2
-            Tri(2*(i*q+j)-1,:) = [i*q+j i*q+j+1 q+i*q+j+1];
+            Tri(2*(i*q+j)-1,:) = [i*q+j (1+i)*q+j+1 i*q+j+1];
             Tri(2*(i*q+j),:) = [0 0 0];
         else
-            Tri(2*(i*q+j)-1,:) = [i*q+j i*q+j+1 q+i*q+j+1];
-            Tri(2*(i*q+j),:) = [i*q+j q+i*q+j+1 q+i*q+j];
+            Tri(2*(i*q+j)-1,:) = [i*q+j (1+i)*q+j+1 i*q+j+1];
+            Tri(2*(i*q+j),:) = [i*q+j (1+i)*q+j (1+i)*q+j+1];
         end
     end
 end
@@ -69,8 +69,8 @@ p = length(xvector);
 Tri = [0 0 0];
 for i = 0:q-2
     for j = 1:q-1
-        Tri(2*(i*q+j)-1,:) = [i*q+j i*q+j+1 q+i*q+j+1];
-        Tri(2*(i*q+j),:) = [i*q+j q+i*q+j+1 q+i*q+j];
+        Tri(2*(i*q+j)-1,:) = [i*q+j i*q+j+1 (1+i)*q+j+1];
+        Tri(2*(i*q+j),:) = [i*q+j (1+i)*q+j+1 (1+i)*q+j];
     end
 end
 Tri0 = Tri(:,1) == 0;
