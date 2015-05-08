@@ -86,7 +86,7 @@ classdef modnewtonian
                 vec_a = obj.coords(:,obj.tri(i,2)) - obj.coords(:,obj.tri(i,1));
                 vec_b = obj.coords(:,obj.tri(i,3)) - obj.coords(:,obj.tri(i,1));
                 SN(:,i) = cross(vec_a, vec_b)/norm(cross(vec_a, vec_b));
-                areas(i) = norm(cross(vec_a, vec_b));
+                areas(i) = 0.5*norm(cross(vec_a, vec_b));
             end
         end
         
