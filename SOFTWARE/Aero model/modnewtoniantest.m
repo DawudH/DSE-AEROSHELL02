@@ -15,9 +15,10 @@ center = zeros(3,1);
 q = 5;
 r = 3;
 R = 10;
+t = 3;
 type = 't'; %sphere
 
-[TriGeom, xvector, yvector, zvector] = TriMeshGen(q, R, r, type);
+[TriGeom, xvector, yvector, zvector] = TriMeshGen(q, R, r, t, type);
 tri = TriGeom.ConnectivityList;
 
 mod = modnewtonian( TriGeom.Points', tri, gamma, a, center);
