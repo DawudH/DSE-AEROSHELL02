@@ -13,8 +13,8 @@ center = zeros(3,1);
 mod = modnewtonian( coords, tri, gamma, a, center);
 
 
-q = 5;
-r = 3;
+q = 25;
+r = 1;
 R = 10;
 t = 3;
 type = 's'; %sphere
@@ -23,6 +23,6 @@ type = 's'; %sphere
 tri = TriGeom.ConnectivityList;
 
 mod = modnewtonian( TriGeom.Points', tri, gamma, a, center);
-mod = mod.calcAeroangle(7e3,deg2rad(10),0);
+mod = mod.calcAeroangle(7e3,deg2rad(25),0);
 mod.CRA_array
 mod.plot(true, true)
