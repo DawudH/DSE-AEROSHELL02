@@ -1,4 +1,4 @@
-function [TriGeom,xvector,yvector,zvector] = TriMeshGen(q,R,r,type)
+function [TriGeom,xvector,yvector,zvector] = TriMeshGen(q,R,r,t,type)
 
 %% Sphere
 if type == 's'
@@ -8,7 +8,7 @@ phi  = linspace(0,2*pi,q);
 [theta,phi]=meshgrid(theta,phi);
 %% Shape definition Sphere
 x=(r*sin(theta)).*cos(phi);           %x,y,z definitions of a donut in polar. Should be replaced by function??
-y=(R*sin(theta)).*sin(phi);
+y=(t*sin(theta)).*sin(phi);
 z=r.*cos(theta);
 %% Vector setup
 xvector = [];
@@ -50,9 +50,9 @@ theta = linspace(0,2*pi,q);
 phi  = linspace(0,2*pi,q);
 [theta,phi]=meshgrid(theta,phi);
 %% Shape definition Torus
-x=(R+r*cos(theta)).*cos(phi);
-y=(R+r*cos(theta)).*sin(phi);
-z=r.*sin(theta);
+x=r.*cos(theta);
+y=(R+t*sin(theta)).*sin(phi);
+z=(R+r*sin(theta)).*cos(phi);
 %% Vector Setup
 xvector = [];
 yvector = [];
