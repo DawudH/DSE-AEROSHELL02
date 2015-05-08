@@ -5,7 +5,7 @@ close all
 constants
 addpath('..\matlab2tikz')
 
-fid = fopen('orbit_selection_const_CD_new.txt','r');
+fid = fopen('orbits.txt','r');
 C = textscan(fid,'%f %f %f %f %d %d %d %f');
 fclose(fid);
 
@@ -57,4 +57,4 @@ end
 plot(xlim,[3,3]*g_earth,'-.','color','r');
 legend_str{end} = '29.43 m/s^2 (3g)';
 legend(legend_str,'location','southeast');
-matlab2tikz('.\LaTeX\n_CL.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
+%matlab2tikz('.\LaTeX\n_CL.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
