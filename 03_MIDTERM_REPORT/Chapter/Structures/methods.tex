@@ -9,7 +9,7 @@ Andersons model is provided in two forms: First of a basic model requiring as in
 
  It must be noted that this simple model implicitly includes as set value for the drag coefficient (\gls{sym:CD}). The full model requires a complete set of parameters which is provided by \cite{Anderson1969} and allows control of the drag coefficient as well which can be considered useful for a sensitivity analysis. More detailed analysis of other parameters are not considered at this in the design. A more detailed estimation is not desired as it requires a detailed configuration of the concept
 %tot hier
-\subsubsection{Stacked toroid, tension cone and trailing IAD mass estimation}
+\subsubsection{Stacked toroid, tension cone and trailing ballute mass estimation}
 Mass estimation for stacked toroid, tension cone and trailing \gls{iad} configurations is performed by the method outlined in Ref.\cite{Samareh2011}. Similar to the model by Anderson, it introduces a figure of merit by defining a dimensionless mass efficiency parameter \gls{sym:mbar}, defined as:
 \begin{equation}
 \gls{sym:mbar} = \frac{\gls{sym:m}}{\gls{sym:mfactor}}
@@ -18,7 +18,38 @@ Mass estimation for stacked toroid, tension cone and trailing \gls{iad} configur
 where \gls{sym:mfactor} is defined by the following equation
 \begin{equation}
 \gls{sym:mfactor} = \frac{\gls{sym:A_iad} \gls{sym:CD} \gls{sym:q}}{\gls{sym:ge}}
-\label{eq:dimmass}
+\label{eq:mfactor}
 \end{equation}
+A concept having a high dimensionless mass efficiency parameter may be interpreted as a concept having a high IAD areal density scaled by dynamic pressure. It is desirable to have this parameter as small as possible, to effect a larger area capable of withstanding greater dynamic pressure with the lowest possible mass.
+
+As inputs, the mass estimation requires \cite{Samareh2011}:
+\begin{itemize}
+\item Decelerator configuration (stacked toroid/tension cone/trailing ballute);
+\item The material properties used corresponding to the material used for the inflatable structure; 
+\item A specification of the material used for the wall lay-up. Options are solely a film, thus one material that does not require an additional coating and gas barrier, a film complemented by a coating but does require a gas barrier and a fiber reinforced fabric requiring both coating and a gas barrier;
+\item The centerbody and deployed diameter;
+\item The half-cone angle \gls{sym:theta} (depicted in Figure 2 of \cite[p.7]{Samareh2011});
+\item The number of toroids for a stacked toroid configuration;
+\item The reigning static and dynamic pressure and vehicle drag coefficient;
+\item The diameter of tori;
+\item Inflation gas temperature and molecular weight;
+\item The number of radial straps;
+\item Vehicle (characteristic) length;
+\item Margins and knockdown factors accounting for seams and stress concentrations. These are taken as defined in tabular form on page 16 of Ref.\cite{Samareh2011}.
+\end{itemize}
+
+Based on these inputs, the mass estimation procedure yields the following outputs \cite{Samareh2011}:
+\begin{itemize}
+\item Mass of reinforcing elements (radial and axial straps);
+\item Mass of flexible bladder material;
+\item Mass of inflation gas;
+\item Inflation gas pressure;
+\item Mass of inflation system;
+\item Total mass.
+\end{itemize}
+All outputs can be given either in dimensionless or dimensional forms, with conversion from one to the other performed through Eq.\ref{eq:dimmass}. A \texttt{MATLAB} tool has been constructed that allows varying these inputs and provides a parametric estimation of the decelerator mass for each of these three inflatable concepts. This allows the investigation of the effect of changing input parameters on the various output parameters. Key output parameter at this stage is the total mass, for the purpose of concept comparison in terms of mass performance. Moreover, inflation gas pressure and inflation gas mass provide a benchmark for investigating the effect of using different inflation gases.
+
+
+
 
 \subsubsection{Rigid structure mass estimation}

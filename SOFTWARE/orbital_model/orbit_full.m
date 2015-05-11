@@ -45,6 +45,7 @@ while true
     if to_kepler
         
         [orbit_new,t_kep] = orbit_kepler(kepler_param,orbit_new);
+        orbit_new
         to_kepler = false;
         out.inorbit = false;
         time_pased = time_pased + t_kep;
@@ -78,11 +79,9 @@ while true
     out.M(i+1) = orbit_new.M;
     out.speed_sound(i+1) = orbit_new.speed_sound;
 
-    if (out.inorbit && (to_kepler == false)) %|| ((i == 1)&& (to_kepler == false))
-        
+    if (out.inorbit && (to_kepler == false))% || ((i == 1)&& (to_kepler == false))
         orbit_new = orbit(out.R(i,:),out.V(i,:),out.a(i,:),CD,CL,dt_kep_init,atm,R_m,Omega_m,S,m);
-        dtheta = atan2(orbit_new.R(2),orbit_new.R(1)) - atan2(out.R(i,2),out.R(i,1));
-        kepler_param = k_orbit_param(out.R(i,:),orbit_new.R,out.V(i,:),dt_kep_init,dtheta,G,M_mars);
+        kepler_param = k_orbit_param(out.R(i,:),orbit_new.R,out.V(i,:),dt_kep_init,G,M_mars);
         to_kepler = true;
         out.inatmos = false;
     end
