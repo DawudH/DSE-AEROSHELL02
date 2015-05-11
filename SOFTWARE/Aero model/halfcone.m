@@ -20,18 +20,18 @@ theta = theta';
 
 %% Cylindrical transformation
 R = t*(R.^2)/2;
-x=r.*cos(theta);           
+z=r.*cos(theta);           
 y=r.*sin(theta);
-z=R;
+x=-R;
 x = x;
 y = y;
 z = z;
 
 %% Coordinate calculation of upper ring(after linear section)
-xmax = rmax.*cos(theta);
+zmax = rmax.*cos(theta);
 ymax = rmax.*sin(theta);
-zmax = max((t/rgrad)+(rmax-max(r))*(t/rgrad));
-zmax = ones(q)*zmax;
+xmax = -max((t/rgrad)+(rmax-max(r))*(t/rgrad));
+xmax = ones(q)*xmax;
 x = [x,xmax(:,1)];
 y = [y,ymax(:,1)];
 z = [z,zmax(:,1)];
