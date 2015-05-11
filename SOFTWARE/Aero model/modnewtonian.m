@@ -78,7 +78,7 @@ classdef modnewtonian
         end
         
         function CRAaero = calcForceCoeffsAero(obj)
-            CRAaero = obj.Tab(obj.alpha_array(end), obj.beta_array(end))*obj.CRA_body_array(:,end);
+            CRAaero = diag([-1 1 -1])*(obj.Tab(obj.alpha_array(end), obj.beta_array(end))*obj.CRA_body_array(:,end));
         end
         
         function CMAbody = calcMomentCoeffsBody(obj)
@@ -112,9 +112,12 @@ classdef modnewtonian
         end
         
         function obj = alphasweep(obj, Vinf, beta, alpha_start, alpha_end, dalpha)
+            h = waitbar(0, 'Calculating...');
             for alpha = alpha_start:dalpha:alpha_end
+                waitbar((alpha-alpha_start)/(alpha_end-alpha_start));
                 obj = obj.calcAeroangle(Vinf, alpha, beta);
             end
+            close(h);
         end
         
         function obj = betasweep(obj, Vinf, alpha, beta_start, beta_end, dbeta)
@@ -151,6 +154,8 @@ classdef modnewtonian
         
         function obj = plotCp(obj, plotfaces, plotnormals)
             figure;
+            h1 = axes;
+            set(h1, 'Zdir', 'reverse');            
             hold on;
             if plotfaces
                 trisurf(obj.tri,obj.coords(1,:),obj.coords(2,:),obj.coords(3,:), obj.Cpdist_array(:,end));
@@ -168,6 +173,7 @@ classdef modnewtonian
             quiverV = - xlength * 0.5 * obj.V_array(:,end) / norm(obj.V_array(:,end));
             quiverx = xlength*0.5 - quiverV(1);
             quiver3(quiverx,mean(obj.coords(2,:))-quiverV(2),mean(obj.coords(3,:))-quiverV(2),quiverV(1), quiverV(2), quiverV(3));
+
         end
         
         function T = Tab(~, alpha, beta)
@@ -224,6 +230,11 @@ classdef modnewtonian
                     case 'clcd'
                         figure;
                         plot(xarray, obj.CLCD_array);
+                        ylabel(j);
+                        xlabel(xlabeltxt);
+                    case 'cmy'
+                        figure;
+                        plot(xarray, obj.CMA_aero_array(2,:));
                         ylabel(j);
                         xlabel(xlabeltxt);
                     otherwise
