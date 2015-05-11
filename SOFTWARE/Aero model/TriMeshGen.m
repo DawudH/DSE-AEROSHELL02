@@ -99,7 +99,7 @@ theta = theta';
 X = t*(X.^2)/2;
 z=r.*cos(theta);           
 y=r.*sin(theta);
-x=X;
+x=-X;
 x = x;
 y = y;
 z = z;
@@ -107,7 +107,7 @@ z = z;
 %% Coordinate calculation of upper ring(after linear section)
 zmax = R.*cos(theta);
 ymax = R.*sin(theta);
-xmax = max((t/rgrad)+(R-max(r))*(t/rgrad));
+xmax = -max((t/rgrad)+(R-max(r))*(t/rgrad));
 xmax = ones(q)*xmax;
 x = [x,xmax(:,1)];
 y = [y,ymax(:,1)];
@@ -134,10 +134,10 @@ for i = 0:q-1
     for j = 1:q-1
         if i == 0      
             Tri(2*(i*q+j)-1,:) = [0 0 0];
-            Tri(2*(i*q+j),:) = [i*q+j (1+i)*q+j (1+i)*q+j+1];
+            Tri(2*(i*q+j),:) = [i*q+j (1+i)*q+j+1 (1+i)*q+j];
         else
-            Tri(2*(i*q+j)-1,:) = [i*q+j (1+i)*q+j+1 i*q+j+1];
-            Tri(2*(i*q+j),:) = [i*q+j (1+i)*q+j (1+i)*q+j+1];
+            Tri(2*(i*q+j)-1,:) = [i*q+j 1*q+j+1 (i+1)*q+j+1];
+            Tri(2*(i*q+j),:) = [i*q+j (1+i)*q+j+1 (1+i)*q+j];
         end
     end
 end

@@ -5,8 +5,8 @@ close all
 % load constants
 constants
 
-ry = 10* R_m; %[m]
-v = 6000; %[m/s]
+ry = SOI; %[m]
+v = 7000; %[m/s]
 dt_init = 1;
 dt_atmos = 0.5;
 dt_kep_init = 1e-8;
