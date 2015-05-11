@@ -99,7 +99,7 @@ theta = theta';
 X = t*(X.^2)/2;
 z=r.*cos(theta);           
 y=r.*sin(theta);
-x=X;
+x=-X;
 x = x;
 y = y;
 z = z;
@@ -107,7 +107,7 @@ z = z;
 %% Coordinate calculation of upper ring(after linear section)
 zmax = R.*cos(theta);
 ymax = R.*sin(theta);
-xmax = max((t/rgrad)+(R-max(r))*(t/rgrad));
+xmax = -max((t/rgrad)+(R-max(r))*(t/rgrad));
 xmax = ones(q)*xmax;
 x = [x,xmax(:,1)];
 y = [y,ymax(:,1)];
