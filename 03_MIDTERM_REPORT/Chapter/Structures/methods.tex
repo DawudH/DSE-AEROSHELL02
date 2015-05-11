@@ -1,0 +1,24 @@
+The structural mass estimation is done using two separate methods: mass estimates based on reference missions and mass estimates based on structural models. The latter will be used for the analysis of the structural mass for the four inflatable concepts: the stacked toroid, isotensoid, tension cone and trailing configurations. For these concepts few reference missions are available for an adequate mass estimation and the availability of parametric mass modeling \cite{Anderson1969, Samareh2011} make structures-based models the preferred option. Historically, rigid re-entry vehicles have been applied numerous times and a mass estimation can be done on the base of reference missions. These mass estimation methods are presented hereafter.
+
+\subsubsection{Isotensoid mass estimation}
+%los maar op
+For the mass estimation based on the structural models two different methods are employed. First off, for the isotensoid and trailing concepts Anderson \cite{Anderson1969} hsa developed a structural merit model. Modern implementations, as presented by for example Miller \cite{Miller2014}, use this mass estimation for current investigations in the feasibility of aerodynamic decelerators. The mass estimation presented by Anderson for the isotensoid concept considers a model inflated by ram-air, an inflation method commonly considered for isotensoid structures \cite{Smith2011}. For the trailing ballute configuration Anderson considers a ram-air inflated structure as well, similar to the isotensoid configuration. For the trailing configuration different models may be considered and a ballute in the from of a "donut" is also commonly analysed. 
+Andersons model provide the structural mass estimation as a single variable for the whole isotensoid or ballute configuration. The mass estimation is presented in the from of the \gls{bc} of the structure. This value can consequently be used for a mass estimation of the isotensoid or ballute configurations.
+
+Andersons model is provided in two forms: First of a basic model requiring as input the peak dynamic pressure (\gls{sym:q}) and the frontal surface area (\gls{sym:A}) which can also be implicitly considered using the outer diameter. Moreover decelerator material properties are considered using the materials aerial density (\gls{sym:df}). Andersons model assumes the use of a single material for the whole decelerator design. For the computation of the aerial density a minimum gage thickness is considered.
+
+ It must be noted that this simple model implicitly includes as set value for the drag coefficient (\gls{sym:CD}). The full model requires a complete set of parameters which is provided by \cite{Anderson1969} and allows control of the drag coefficient as well which can be considered useful for a sensitivity analysis. More detailed analysis of other parameters are not considered at this in the design. A more detailed estimation is not desired as it requires a detailed configuration of the concept
+%tot hier
+\subsubsection{Stacked toroid, tension cone and trailing IAD mass estimation}
+Mass estimation for stacked toroid, tension cone and trailing \gls{iad} configurations is performed by the method outlined in Ref.\cite{Samareh2011}. Similar to the model by Anderson, it introduces a figure of merit by defining a dimensionless mass efficiency parameter \gls{sym:mbar}, defined as:
+\begin{equation}
+\gls{sym:mbar} = \frac{\gls{sym:m}}{\gls{sym:mfactor}}
+\label{eq:dimmass}
+\end{equation}
+where \gls{sym:mfactor} is defined by the following equation
+\begin{equation}
+\gls{sym:mfactor} = \frac{\gls{sym:A_iad} \gls{sym:CD} \gls{sym:q}}{\gls{sym:ge}}
+\label{eq:dimmass}
+\end{equation}
+
+\subsubsection{Rigid structure mass estimation}
