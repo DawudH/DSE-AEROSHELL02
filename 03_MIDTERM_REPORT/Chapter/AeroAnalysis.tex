@@ -29,7 +29,32 @@ C_{p_{max}}=\frac{2}{\gamma M_{\infty}^{2}}\left(\frac{p_{O_{2}}}{p_{\infty}}-1\
 \label{eq:cpmaxfinal}
 \end{equation}
 
-By dividing the surface of the body to be analysed into many elements the pressure coefficient distribution of said body can be determined numerically. A velocity magnitude is given as input, together with the angle of attack $\alpha$ and sideslip angle $\beta$. Following this the surface normal vector is computed in Cartesian coordinates for every element, after which the inclination angle $\theta$ is determined by taking
+By dividing the surface of the body to be analysed into many elements the pressure coefficient distribution of said body can be determined numerically. A velocity magnitude is given as input, together with the angle of attack $\alpha$ and sideslip angle $\beta$. Following this the outward surface normal vector is computed in Cartesian coordinates for every element, after which the inclination angle $\theta$ is determined by taking [TBD, add in future] 
+
+Using $C_{p_{max}}$ and $\theta$ the $C_{p}$ for every surface element is calculated, after which it is multiplied with the element area and the element surface normal vector. This results in an elemental pressure force in three dimensions from which the lift and drag forces(, as well as the aerodynamic moments (how?)) can be determined. 
+
+In addition to determining the aerodynamic forces and moments acting on the body, the heat flux in the stagnation point is also computed. A generalized equation to predict the heat flux on a body can be found in \cite{AndersonJr.2006}. This equation is shown in \ref{eq:heatflux}.
+\begin{equation}
+q_{w}=\rho_{\infty}^{N}V_{\infty}^{M}C
+\label{eq:heatflux}
+\end{equation}
+
+In the stagnation point it is furthermore known that: 
+\begin{multicols}{2}
+\begin{equation}
+\label{eq:stagdens}
+N=0.5
+\end{equation} \break
+\begin{equation}
+\label{eq:stagspeed}
+M=3.0
+\end{equation}
+\end{multicols}
+\begin{equation}
+\label{eq:stagcoefficient}
+C=1.83 \times 10^{-8} R^{-\frac{1}{2}}\left(1-\frac{h_{w}}{h_{0}}\right)
+\end{equation}
+Where in equation \ref{eq:stagcoefficient} $R$ denotes the local body radius in the stagnation point.
 
 \subsection{Application of analysis tool on system concepts}
 \label{subsec:appaeroanal}

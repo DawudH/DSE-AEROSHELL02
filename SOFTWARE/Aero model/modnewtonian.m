@@ -33,16 +33,6 @@ classdef modnewtonian
     end
     
     methods
-%         function obj = modnewtonian(TriGeom, gamma, a, center)
-%             % Constructor: Set the geometry and gamma on Mars
-%             obj.coords = TriGeom.Points';
-%             obj.tri = TriGeom.ConnectivityList;
-%             obj.gamma = gamma;
-%             obj.a_inf = a;
-%             obj.center = center;
-%             obj.normals = obj.calcsurfacenormals();
-%             obj.cellcenters = obj.calccellcenters();
-%         end
         
         function obj = modnewtonian(coords, tri, gamma, a, center, rho, T)
             % Constructor: Set the geometry and gamma on Mars

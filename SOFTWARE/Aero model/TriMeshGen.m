@@ -97,18 +97,18 @@ theta = theta';
 
 %% Cylindrical transformation
 X = t*(X.^2)/2;
-x=r.*cos(theta);           
+z=r.*cos(theta);           
 y=r.*sin(theta);
-z=X;
+x=-X;
 x = x;
 y = y;
 z = z;
 
 %% Coordinate calculation of upper ring(after linear section)
-xmax = R.*cos(theta);
+zmax = R.*cos(theta);
 ymax = R.*sin(theta);
-zmax = max((t/rgrad)+(R-max(r))*(t/rgrad));
-zmax = ones(q)*zmax;
+xmax = -max((t/rgrad)+(R-max(r))*(t/rgrad));
+xmax = ones(q)*xmax;
 x = [x,xmax(:,1)];
 y = [y,ymax(:,1)];
 z = [z,zmax(:,1)];
@@ -134,10 +134,10 @@ for i = 0:q-1
     for j = 1:q-1
         if i == 0      
             Tri(2*(i*q+j)-1,:) = [0 0 0];
-            Tri(2*(i*q+j),:) = [i*q+j (1+i)*q+j (1+i)*q+j+1];
+            Tri(2*(i*q+j),:) = [i*q+j (1+i)*q+j+1 (1+i)*q+j];
         else
-            Tri(2*(i*q+j)-1,:) = [i*q+j (1+i)*q+j+1 i*q+j+1];
-            Tri(2*(i*q+j),:) = [i*q+j (1+i)*q+j (1+i)*q+j+1];
+            Tri(2*(i*q+j)-1,:) = [i*q+j 1*q+j+1 (i+1)*q+j+1];
+            Tri(2*(i*q+j),:) = [i*q+j (1+i)*q+j+1 (1+i)*q+j];
         end
     end
 end
