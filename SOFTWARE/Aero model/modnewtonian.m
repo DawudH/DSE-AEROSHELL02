@@ -3,11 +3,13 @@ classdef modnewtonian
     
     properties
         % Given at init
-        a;
+        a_inf;
         gamma;
         tri;
         coords;
         center;
+        rho_inf;
+        T_inf;
         
         % Given for calculation
         V_array;
@@ -26,34 +28,29 @@ classdef modnewtonian
         CMA_body_array;
         CMA_aero_array;
         CLCD_array;
+        Tmax_array;
+        qmax_array;
     end
     
     methods
-%         function obj = modnewtonian(TriGeom, gamma, a, center)
-%             % Constructor: Set the geometry and gamma on Mars
-%             obj.coords = TriGeom.Points';
-%             obj.tri = TriGeom.ConnectivityList;
-%             obj.gamma = gamma;
-%             obj.a = a;
-%             obj.center = center;
-%             obj.normals = obj.calcsurfacenormals();
-%             obj.cellcenters = obj.calccellcenters();
-%         end
         
-        function obj = modnewtonian(coords, tri, gamma, a, center)
+        function obj = modnewtonian(coords, tri, gamma, a, center, rho, T)
             % Constructor: Set the geometry and gamma on Mars
             obj.coords = coords;
             obj.tri = tri;
             obj.gamma = gamma;
-            obj.a = a;
+            obj.a_inf = a;
             obj.center = center;
             [obj.normals, obj.areas] = obj.calcsurfacenormals();
             obj.cellcenters = obj.calccellcenters();
-        end        
+            obj.rho_inf = rho;
+            obj.T_inf = T;
+            
+        end
         
         function obj = calcAero(obj, V)
             % Calculate aerodynamic properties for the geometry for given V
-            obj.M_array = [obj.M_array, sqrt(sum(V.^2))/obj.a];
+            obj.M_array = [obj.M_array, sqrt(sum(V.^2))/obj.a_inf];
             obj.Cpmax_array = [obj.Cpmax_array, obj.calcCp_max(obj.M_array(end), obj.gamma)];
             obj.V_array = [obj.V_array, V];
             obj.Cpdist_array = [obj.Cpdist_array, obj.calcCpdist()];
@@ -62,6 +59,9 @@ classdef modnewtonian
             obj.CMA_body_array = [obj.CMA_body_array, obj.calcMomentCoeffsBody()];
             obj.CMA_aero_array = [obj.CMA_aero_array, obj.calcMomentCoeffsAero()];
             obj.CLCD_array = obj.CRA_aero_array(3,:)./obj.CRA_aero_array(1,:);
+            [T,q] = obj.calcHeatFlux();
+            obj.Tmax_array = [obj.Tmax_array, T];
+            obj.qmax_array = [obj.qmax_array, q];
         end
         
         function obj = calcAeroangle(obj, Vinf, alpha, beta)
@@ -98,7 +98,51 @@ classdef modnewtonian
             Cpdist = obj.Cpmax_array(end)*sinthetas.^2;
         end
         
+        function r = radiusOfCurvature(obj, n1, n2, n3)
+            A = obj.coords(:,n1);
+            B = obj.coords(:,n2);
+            C = obj.coords(:,n3);
+            a = A-C;
+            b = B-C;
+            r = (norm(a)*norm(b)*norm(a-b))/(2*norm(cross(a,b)));
+        end
         
+        function [Tmax, qmax] = calcHeatFlux(obj)
+            % Get the stagnation heat flux and temperature
+            M = 3;
+            N = 0.5;
+            Vinf = obj.a_inf*obj.M_array(end);
+            Tmax = obj.T_inf*(1+obj.gamma)/2*obj.M_array(end)^2;
+            
+            [cp, stagN] = max(obj.Cpdist_array(:,end));
+            maxtri = max(max(obj.tri));
+            
+            points = perms(obj.tri(stagN,:));
+            combis = points(:,1:2);
+            nextpoints = 2*combis(:,2)-combis(:,1);
+            nextpoints = nextpoints + maxtri;
+            nextpoints = mod(nextpoints, maxtri);
+            radii = zeros(size(nextpoints));
+            for i = 1:length(nextpoints)
+                radius = obj.radiusOfCurvature(combis(i,1), combis(i,2), nextpoints(i));
+                radii(i) = radius;
+            end
+            qmax = obj.rho_inf^0.5*Vinf^3*1.83e-8*max(radii)^(-0.5);
+        end
+        
+        function ind = getTriangle(obj, n1, n2, n3)
+            % This function is not used as of now
+            v = [n1; n2; n3];
+            p = perms(v);
+            ind = 0;
+            for i = 1:size(p,1)
+                equalrows = sum(obj.tri == ones(size(obj.tri)) * diag(p(i,:)), 2);
+                if length(find(equalrows==3)) == 1
+                    ind = find(equalrows==3);
+                end
+            end
+        end
+
         function [SN, areas] = calcsurfacenormals(obj)
             %Calculate the surface normals of the given geometry.
             SN = zeros(size(obj.tri'));
@@ -128,7 +172,7 @@ classdef modnewtonian
         
         function obj = Msweep(obj, alpha, beta, M_start, M_end, dM)
             for M = M_start:M_end:dM
-                obj = obj.calcAeroangle(obj.a*M, alpha, beta);
+                obj = obj.calcAeroangle(obj.a_inf*M, alpha, beta);
             end
         end
         
@@ -235,6 +279,16 @@ classdef modnewtonian
                     case 'cmy'
                         figure;
                         plot(xarray, obj.CMA_aero_array(2,:));
+                        ylabel(j);
+                        xlabel(xlabeltxt);
+                    case 'q'
+                        figure;
+                        plot(xarray, obj.qmax_array);
+                        ylabel(j);
+                        xlabel(xlabeltxt);
+                    case 'T'
+                        figure;
+                        plot(xarray, obj.Tmax_array);
                         ylabel(j);
                         xlabel(xlabeltxt);
                     otherwise
