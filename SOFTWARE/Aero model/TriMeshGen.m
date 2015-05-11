@@ -96,18 +96,18 @@ theta = meshgrid(theta);
 theta = theta';
 
 %% Cylindrical transformation
-R = t*(R.^2)/2;
+X = t*(X.^2)/2;
 z=r.*cos(theta);           
 y=r.*sin(theta);
-x=-R;
+x=X;
 x = x;
 y = y;
 z = z;
 
 %% Coordinate calculation of upper ring(after linear section)
-zmax = rmax.*cos(theta);
-ymax = rmax.*sin(theta);
-xmax = -max((t/rgrad)+(rmax-max(r))*(t/rgrad));
+zmax = R.*cos(theta);
+ymax = R.*sin(theta);
+xmax = max((t/rgrad)+(R-max(r))*(t/rgrad));
 xmax = ones(q)*xmax;
 x = [x,xmax(:,1)];
 y = [y,ymax(:,1)];
