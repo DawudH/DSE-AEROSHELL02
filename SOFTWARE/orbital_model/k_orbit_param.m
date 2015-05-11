@@ -1,4 +1,4 @@
-function [kepler_param] = k_orbit_param(R1,R2,V,dt,dtheta,G,M)
+function [kepler_param] = k_orbit_param(R1,R2,V,dt,G,M)
 
 %% Determine kepler orbit parameters
 mu = G*M;
@@ -11,18 +11,26 @@ r2 = norm(R2);
 a = r*mu / (2*mu - r * v^2);
 
 % determine e with areal velocity
-dA = 1/2 * r * r2 * sin(dtheta);
+dtheta = atan2(R2(2),R2(1)) - atan2(R1(2),R1(1))
+dA = 1/2 * r * r2 * sin(dtheta)
 e = sqrt( 1 - 4 * (dA / dt)^2 / (a * mu) );
 
 % calculate theta
 theta = acos( (a*(1-e^2)-r) / (e*r) );
 
-% calculate the orbital period
-T = 2*pi * sqrt(a^3 / mu);
+if a>0
+    % calculate the orbital period
+    T = 2*pi * sqrt(a^3 / mu);
 
-% semi-minor axis: b
-b = a*sqrt(1-e^2);
+    % semi-minor axis: b
+    b = a*sqrt(1-e^2);
+else
+    % calculate the orbital period
+    T = Inf;
 
+    % semi-minor axis: b
+    b = a*sqrt(e^2-1);
+end
 % perifocal distance
 rp  = a*(1-e);
 
@@ -32,7 +40,7 @@ ra = 2*a - rp;
 % 
 theta0 = atan2(R1(2),R1(1));
 thetap = theta0 - theta;
-
+    
 % output
 kepler_param.e = e; %
 kepler_param.a = a; % 
