@@ -62,7 +62,7 @@ while true
     out.M(i+1) = orbit_new.M;
     out.speed_sound(i+1) = orbit_new.speed_sound;
 
-    if out.inorbit && (to_kepler == false)
+    if (out.inorbit && (to_kepler == false)) %|| ((i == 1)&& (to_kepler == false))
         
         orbit_new = orbit(out.R(i,:),out.V(i,:),out.a(i,:),CD,CL,dt_kep_init,atm,R_m,Omega_m,S,m);
         dtheta = atan2(orbit_new.R(2),orbit_new.R(1)) - atan2(out.R(i,2),out.R(i,1));
