@@ -19,9 +19,9 @@ mod = modnewtonian( coords, tri, gamma, a, center, rho, T);
 q = 100;
 r = 3;
 R = 12;
-t = 1;
+t = 12;
 
-type = 'c'; %sphere
+type = 's'; %sphere
 
 [TriGeom, xvector, yvector, zvector] = TriMeshGen(q, R, r, t, type);
 tri = TriGeom.ConnectivityList;
