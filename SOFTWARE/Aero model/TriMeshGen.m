@@ -9,7 +9,7 @@ phi  = linspace(2*pi,0,q);
 %% Shape definition Sphere
 x=(r*sin(theta)).*cos(phi);           %x,y,z definitions of a donut in polar. Should be replaced by function??
 y=(t*sin(theta)).*sin(phi);
-z=r.*cos(theta);
+z=R.*cos(theta);
 %% Vector setup
 xvector = [];
 yvector = [];
