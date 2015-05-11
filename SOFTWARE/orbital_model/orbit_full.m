@@ -1,6 +1,10 @@
-function [out] = orbit_full(rx,ry,CD,v,dt_init,dt_atmos,dt_kep_init,CL,tend);
+function [out] = orbit_full(rx,ry,v,dt_init,dt_atmos,dt_kep_init,tend,control)
 % load constants
 constants
+
+% initial CL and CD
+CL = control.CL_init;
+CD = control.CL_init / control.CLCD;
 
 % define output 
 out.inorbit = false;
@@ -46,7 +50,19 @@ while true
         time_pased = time_pased + t_kep;
         t(i+1) = t(i) + dt;
     else
-        % get orbital parameters at next node
+             % determine new cl and cd param when in atmos
+             if out.inatmos
+                 state.CL = CL;
+                 state.CD = CD;
+                 state.a = norm(out.a(i,:) - out.ag(i,:));
+                 % start controlling once the accel is above 1.5g
+                 if state.a > 1.5*g_earth
+                         [aero_param] = aero_conrol(state,control);
+                         CL = aero_param.CL;
+                         CD = aero_param.CD;
+                 end
+             end
+                % get orbital parameters at next node
         orbit_new = orbit(out.R(i,:),out.V(i,:),out.a(i,:),CD,CL,dt,atm,R_m,Omega_m,S,m);
         time_pased = time_pased + dt;
         t(i+1) = t(i) + dt;

@@ -1,2 +1,35 @@
 \section{Aerodynamic concept analysis}
 \label{ch:aero_analysis}
+In order to analyse the aerodynamic characteristics of the proposed concepts a software tool was developed. This chapter will deal with the development and implementation of this program. First section \ref{subsec:aerotool} will discuss the tool development process. Secondly section \ref{subsec:appaeroanal} 
+
+\subsection{Development of aerodynamic analysis tool}
+\label{subsec:aerotool}
+For analysing the aerodynamic characteristics of each concept the modified Newtonian method will be used. This method relates the inclination angle $\theta$ of a flat plate with respect to an incoming flow to the magnitude of its coefficient of pressure, as shown in equation \ref{eq:modnewtonian} \cite{AndersonJr.2006}.
+\begin{multicols}{2}
+\begin{equation}
+C_{p}=C_{p_{max}}sin^{2}(\theta)
+\label{eq:modnewtonian}
+\end{equation} \break
+\begin{equation}
+C_{p_{max}}=\frac{p_{O_{2}}-p_{\infty}}{\frac{1}{2}\rho_{\infty}V_{\infty}^{2}}
+\label{eq:cpmax}
+\end{equation}
+\end{multicols}
+In equation \ref{eq:modnewtonian} $C_{p_{max}}$ is the value of $C_{p}$ in the stagnation point of an arbitrary body. Since the stagnation point is per definition located behind a normal shock its value can be found from the normal shock relations. The result of doing this is shown in equation \ref{eq:cpmax}. Here $p_{O_{2}}$ denotes the total pressure in the stagnation point and can be found using equation \ref{eq:po2} \cite{AndersonJr.2007}.
+
+\begin{equation}
+\frac{p_{O_{2}}}{p_{\infty}}=\left(\frac{(\gamma+1)^{2}M_{\infty}^{2}}{4\gamma M_{\infty}^{2}-2(\gamma-1)}\right)^{\frac{\gamma}{\gamma-1}}\left(\frac{1-\gamma+2\gamma M_{\infty}^{2}}{\gamma+1}\right)
+\label{eq:po2}
+\end{equation}
+
+Furthermore it can be noted that $\frac{1}{2}\rho_{\infty}V_{\infty}^{2}=\frac{\gamma}{2}p_{\infty}M_{\infty}^{2}$ \cite{AndersonJr.2007}. Combining this with equation \ref{eq:cpmax} produces equation \ref{eq:cpmaxfinal}, where the ratio $\frac{p_{O_{2}}}{p_{\infty}}$ can be calculated using equation \ref{eq:po2}.
+
+\begin{equation}
+C_{p_{max}}=\frac{2}{\gamma M_{\infty}^{2}}\left(\frac{p_{O_{2}}}{p_{\infty}}-1\right)
+\label{eq:cpmaxfinal}
+\end{equation}
+
+By dividing the surface of the body to be analysed into many elements the pressure coefficient distribution of said body can be determined numerically. A velocity magnitude is given as input, together with the angle of attack $\alpha$ and sideslip angle $\beta$. Following this the surface normal vector is computed in Cartesian coordinates for every element, after which the inclination angle $\theta$ is determined by taking
+
+\subsection{Application of analysis tool on system concepts}
+\label{subsec:appaeroanal}
