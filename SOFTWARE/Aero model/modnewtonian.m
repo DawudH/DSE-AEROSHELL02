@@ -55,17 +55,25 @@ classdef modnewtonian
             obj.V_array = [obj.V_array, V];
             obj.Cpdist_array = [obj.Cpdist_array, obj.calcCpdist()];
             obj.CRA_array = [obj.CRA_array, obj.calcForceCoeffs()];
+            obj.CMA_array = [obj.CMA_array, obj.calcMomentCoeffs()];
         end
         
         function obj = calcAeroangle(obj, Vinf, alpha, beta)
             % Calculate aerodynamic properties with aoa and sideslip and V
             V = transformation(alpha, beta)*[Vinf;0;0];
+            obj.alpha_array = [obj.alpha_array, alpha];
+            obj.beta_array = [obj.beta_array, beta];
             obj = obj.calcAero(V);
         end
         
         function CRA = calcForceCoeffs(obj)
             % Calculate aerodynamic force coefficients on the body
             CRA = - obj.normals * (obj.Cpdist_array(:,end) .* obj.areas);
+        end
+        
+        function CMA = calcMomentCoeffs(obj)
+            % Calculate aerodynamic moment coefficients on the body
+            CMA = cross(obj.cellcenters, -obj.normals * diag(obj.Cpdist_array(:,end) .* obj.areas),1);
         end
         
         function Cpdist = calcCpdist(obj)

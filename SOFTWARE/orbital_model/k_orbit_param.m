@@ -44,4 +44,5 @@ kepler_param.rp = rp; %
 kepler_param.ra = ra; %
 kepler_param.T = T; %
 
+kepler_param
 end
