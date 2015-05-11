@@ -20,7 +20,7 @@ function [out] = aero_conrol(state,control)
              CL = min(control.CL_range);
          end
          
-    elseif state.a = control.a
+    elseif state.a == control.a
     % If state.a = control.a, keep the same CL
         CL = state.CL;
     
@@ -33,10 +33,11 @@ function [out] = aero_conrol(state,control)
          end
     end
     
-    CD = abs(CL) * control.CLCD;
+    CD = abs(CL) / control.CLCD;
     
     
     % generate output
     out.CL = CL;
     out.CD = CD;
+    
 end
