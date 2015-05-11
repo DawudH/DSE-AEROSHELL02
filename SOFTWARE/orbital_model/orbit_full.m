@@ -117,7 +117,7 @@ while true
     end
 
     % if passed the planet without getting into the atmosphere..
-    if (out.inatmos == false) && (norm(out.R(i+1,2)) < -(R_m + h_atm))
+    if (out.inatmos == false) && (out.R(i+1,2) < -(R_m + h_atm))
         % escape velocity at the inital point
         V_esc_0 = sqrt(G*M_mars * 2 / norm(out.R(1,:))); 
         % check if initial velocity is sufficient to get into orbit
