@@ -1,6 +1,5 @@
 function [out] = orbit_selection(rx,ry,CD,v,dt,CL,R_m,Omega_m,S,m,G,M_mars,h_atm,crash_margin,g_earth)
 
-
 % define output 
 out.inorbit = false;
 out.inatmos = false;
@@ -50,7 +49,7 @@ while true
         
     end
     
-    % check if crashed.. % crashed = R_m + crash margin (due to too big timesteps) 
+    % check if crashed.. % crashed = R_m + crash margin (at height of end of mission 10km) 
      if (out.inatmos) && (norm(out.R(i+1,:)) < (R_m + crash_margin) ) 
         out.crash = true;
         break;
