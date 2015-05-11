@@ -12,7 +12,7 @@ center = zeros(3,1);
 rho = 1e-3;
 T = 150;
 
-mod = modnewtonian( coords, tri, gamma, a, center);
+mod = modnewtonian( coords, tri, gamma, a, center, rho, T);
 
 
 q = 100;
