@@ -28,13 +28,13 @@ for i = 0:q-2
     for j = 1:q-1
         if i == 0      
             Tri(2*(i*q+j)-1,:) = [0 0 0];
-            Tri(2*(i*q+j),:) = [i*q+j q+i*q+j q+i*q+j+1];
+            Tri(2*(i*q+j),:) = [i*q+j (1+i)*q+j (1+i)*q+j+1];
         elseif i == q-2
-            Tri(2*(i*q+j)-1,:) = [i*q+j q+i*q+j+1 i*q+j+1];
+            Tri(2*(i*q+j)-1,:) = [i*q+j (1+i)*q+j+1 i*q+j+1];
             Tri(2*(i*q+j),:) = [0 0 0];
         else
-            Tri(2*(i*q+j)-1,:) = [i*q+j q+i*q+j+1 i*q+j+1];
-            Tri(2*(i*q+j),:) = [i*q+j q+i*q+j q+i*q+j+1];
+            Tri(2*(i*q+j)-1,:) = [i*q+j (1+i)*q+j+1 i*q+j+1];
+            Tri(2*(i*q+j),:) = [i*q+j (1+i)*q+j (1+i)*q+j+1];
         end
     end
 end
@@ -69,8 +69,8 @@ p = length(xvector);
 Tri = [0 0 0];
 for i = 0:q-2
     for j = 1:q-1
-        Tri(2*(i*q+j)-1,:) = [i*q+j i*q+j+1 q+i*q+j+1];
-        Tri(2*(i*q+j),:) = [i*q+j q+i*q+j+1 q+i*q+j];
+        Tri(2*(i*q+j)-1,:) = [i*q+j i*q+j+1 (1+i)*q+j+1];
+        Tri(2*(i*q+j),:) = [i*q+j (1+i)*q+j+1 (1+i)*q+j];
     end
 end
 Tri0 = Tri(:,1) == 0;
