@@ -45,6 +45,7 @@ while true
     if to_kepler
         
         [orbit_new,t_kep] = orbit_kepler(kepler_param,orbit_new);
+        orbit_new
         to_kepler = false;
         out.inorbit = false;
         time_pased = time_pased + t_kep;
@@ -78,11 +79,9 @@ while true
     out.M(i+1) = orbit_new.M;
     out.speed_sound(i+1) = orbit_new.speed_sound;
 
-    if (out.inorbit && (to_kepler == false)) %|| ((i == 1)&& (to_kepler == false))
-        
+    if (out.inorbit && (to_kepler == false))% || ((i == 1)&& (to_kepler == false))
         orbit_new = orbit(out.R(i,:),out.V(i,:),out.a(i,:),CD,CL,dt_kep_init,atm,R_m,Omega_m,S,m);
-        dtheta = atan2(orbit_new.R(2),orbit_new.R(1)) - atan2(out.R(i,2),out.R(i,1));
-        kepler_param = k_orbit_param(out.R(i,:),orbit_new.R,out.V(i,:),dt_kep_init,dtheta,G,M_mars);
+        kepler_param = k_orbit_param(out.R(i,:),orbit_new.R,out.V(i,:),dt_kep_init,G,M_mars);
         to_kepler = true;
         out.inatmos = false;
     end
@@ -117,7 +116,7 @@ while true
     end
 
     % if passed the planet without getting into the atmosphere..
-    if (out.inatmos == false) && (norm(out.R(i+1,2)) < -(R_m + h_atm))
+    if (out.inatmos == false) && (out.R(i+1,2) < -(R_m + h_atm))
         % escape velocity at the inital point
         V_esc_0 = sqrt(G*M_mars * 2 / norm(out.R(1,:))); 
         % check if initial velocity is sufficient to get into orbit
