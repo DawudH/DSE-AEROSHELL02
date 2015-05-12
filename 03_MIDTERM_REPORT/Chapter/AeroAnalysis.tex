@@ -29,7 +29,7 @@ C_{p_{max}}=\frac{2}{\gamma M_{\infty}^{2}}\left(\frac{p_{O_{2}}}{p_{\infty}}-1\
 \label{eq:cpmaxfinal}
 \end{equation}
 
-By dividing the surface of the body to be analysed into many elements the pressure coefficient distribution of said body can be determined numerically. A velocity magnitude is given as input, together with the angle of attack $\alpha$ and sideslip angle $\beta$. Following this the outward surface normal vector is computed in Cartesian coordinates for every element, after which the inclination angle $\theta$ is determined by taking [TBD, add in future] 
+By dividing the surface of the body to be analysed into many triangular elements the pressure coefficient distribution of said body can be determined numerically. A velocity magnitude is given as input, together with the angle of attack $\alpha$ and sideslip angle $\beta$. Following this the outward surface normal vector is computed in Cartesian coordinates for every element, after which the inclination angle $\theta$ is determined by taking [TBD, add in future] 
 
 Using $C_{p_{max}}$ and $\theta$ the $C_{p}$ for every surface element is calculated, after which it is multiplied with the element area and the element surface normal vector. This results in an elemental pressure force in three dimensions from which the lift and drag forces(, as well as the aerodynamic moments (how?)) can be determined. 
 
@@ -62,5 +62,12 @@ q_{w_{stagnation}}=1.83 \times 10^{-8}\rho_{\infty}^{0.5} V_{\infty}^{3.0} R^{-\
 \end{equation}
 Where $q_{w_{stagnation}}$ denotes the heat flux into the body at the stagnation point. This will be used as input for the thermodynamic model in order to compute the required thicknesses of the \acrfull{tps} lay-up.
 
+\subsection{Model verification \& validation}
+\label{subsec:aeroverval}
+After the model construction verification was carried out to determine whether the model correctly implemented the calculations of the modified Newtonian method. This was done by placing two triangular surface elements in a flow at an angle and comparing the model outputs with results obtained by manual computations. 
+
+Following the verification the model was validated using 
+
 \subsection{Application of analysis tool to system concepts}
 \label{subsec:appaeroanal}
+After the model development 
