@@ -2,17 +2,17 @@ The structural mass estimation is done using two separate methods: mass estimate
 
 \subsubsection{Isotensoid mass estimation}
 %los maar op
-For the mass estimation based on the structural models two different methods are employed. First off, for the isotensoid and trailing concepts Anderson \cite{Anderson1969} has developed a structural merit model. Modern implementations, as presented by for example Miller \cite{Miller2014}, use this mass estimation for current investigations in the feasibility of aerodynamic decelerators. The mass estimation presented by Anderson for the isotensoid concept considers a model inflated by ram-air, an inflation method commonly considered for isotensoid structures \cite{Smith2011}. For the trailing ballute configuration Anderson considers a ram-air inflated structure as well, similar to the isotensoid configuration. For the trailing configuration different models may be considered and the model presented by Anderson is not for this reason not considered. The mass estimation for the estimation for the trailing concept, along with the remaining inflatable concepts is provided by Samareh \cite{Samareh2011} discussed below using a pressurized gas as inflation mechanism. This model is thus only employed for the isotensoid analysis. 
+For the mass estimation based on the structural models two different methods are employed. First off, for the isotensoid and trailing concepts Anderson \cite{Anderson1969} has developed a structural merit model. Modern implementations, as presented by for example Miller \cite{Miller2014}, use this mass estimation for current investigations in the feasibility of aerodynamic decelerators. The mass estimation presented by Anderson for the isotensoid concept considers a model inflated by ram-air, an inflation method commonly considered for isotensoid structures \cite{Smith2011}. For the trailing ballute configuration Anderson considers a ram-air inflated structure as well, similar to the isotensoid configuration. For the trailing concept different configuration may be considered and the model presented by Anderson is for this reason not considered. The mass estimation for the trailing concept, along with the remaining inflatable concepts is given by a second model provided by Samareh \cite{Samareh2011} discussed below using a pressurized gas as inflation mechanism. The model provided by Anderson is thus only employed for the isotensoid analysis. 
 
-Andersons model is provided in two forms: First off a basic model requiring as input the peak dynamic pressure (\gls{sym:q}) and the frontal surface area (\gls{sym:A}) which can also be implicitly considered using the outer diameter. Moreover decelerator material properties are considered using the materials arial density (\gls{sym:df}). Andersons model assumes the use of a single material for the whole decelerator design. For the computation of the aerial density a minimum gage thickness is considered.
+Andersons model is provided in two forms: First off a basic model requiring as input the peak dynamic pressure (\gls{sym:q}) and the frontal surface area (\gls{sym:A_iad}) which can also be implicitly considered using the outer diameter. Moreover decelerator material properties are considered using the materials areal density (\gls{sym:df}). Andersons model assumes the use of a single material for the whole decelerator design. For the computation of the areal density a minimum gage thickness is considered.
 
- It must be noted that this simple model implicitly includes as set value for the drag coefficient (\gls{sym:CD}). The full model requires a complete set of parameters which is provided by \cite{Anderson1969} and allows control of the drag coefficient as well which can be considered useful for a sensitivity analysis. More detailed analysis of other parameters are not considered at this stage in the design. A more detailed estimation is not desired as it requires a detailed configuration of the concept.
+ It must be noted that this simple model implicitly includes as set value for the drag coefficient (\gls{sym:CD}). The full model requires a complete set of parameters which is provided by \cite{Anderson1969} for the basic model, and allows control of the drag coefficient as well. The full model can be considered useful for sensitivity analysis purposes. More detailed analysis of other parameters is not considered at this stage in the design. A more detailed estimation is not desired as it requires a more detailed configuration of the concept which is not yet feasible at this stage of the design.
 
 The inputs of this model can be summarized as follows for the simple model:
 \begin{itemize}
 \item Peak dynamic pressure (\gls{sym:q})
 \item Frontal surface area (\gls{sym:A})
-\item Arial density of the material (\gls{sym:df})
+\item Areal density of the material (\gls{sym:df})
 \end{itemize}
 This can be extended for with the following inputs for the full model:
 
@@ -21,15 +21,22 @@ This can be extended for with the following inputs for the full model:
 \item Detailed isotensoid shape parameters
 \end{itemize}
 
-Yielding as a final output the \acrfull{bc} of the model which can be transformed to the total mass of the isotensoid configuration. This is supplied as a single value following the assumption that all isotensoid components have the same material. The final output of the model can thus be given as:
+Yielding as a final output the \acrfull{bc} of the model defined by equation \ref{eq:bc} which can consequently be transformed to the total mass of the isotensoid configuration. 
+\begin{equation}
+\gls{sym:bc} = \frac{\gls{sym:m}}{\gls{sym:CD} \gls{sym:A_iad}}
+\label{eq:bc}
+\end{equation}
+The mass is supplied as a single value following the assumption that all isotensoid components have the same material. The final output of the model can thus be given as:
+
+
 
 \begin{itemize}
 \item The total mass of the isotensoid configuration.
 \end{itemize}
 
+Finally \texttt{MATLAB} is employed for the construction of a tool which allows for the investigation of changing input parameters of which the results are shown in consequent sections.
 
 
-%tot hier
 \subsubsection{Stacked toroid, tension cone and trailing ballute mass estimation}
 Mass estimation for stacked toroid, tension cone and trailing \gls{iad} configurations is performed by the method outlined in Ref.\cite{Samareh2011}. Similar to the model by Anderson, it introduces a figure of merit by defining a dimensionless mass efficiency parameter \gls{sym:mbar}, defined as:
 \begin{equation}
