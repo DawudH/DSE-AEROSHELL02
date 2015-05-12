@@ -1,12 +1,12 @@
 % Add paths
-added_pathes
+added_paths
 
 %Add sources & explanation per constant
 constants
 
 %Initial Position
 ry = SOI; %[m]
-rx = -4190000; %[m]
+rx = -8000000; %[m]
 R = [rx,ry,0];
 
 %Initial Velocity

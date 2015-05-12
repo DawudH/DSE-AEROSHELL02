@@ -1,4 +1,4 @@
-function [ orbit ] = in_atmosphere( V, R, a, a1, J, atm, CL, CD, dt, R_m, Omega_m, S, m )
+function [ out_o ] = in_atmosphere( V, R, a, a1, J, atm, CL, CD, dt, R_m, Omega_m, S, m )
 %IN_ATMOSPHERE Summary of this function goes here
 %   Detailed explanation goes here
 % a1 = ai-1
@@ -43,6 +43,17 @@ else
     orbit.speed_sound = 0;
     orbit.M = 0;
 end
+
+% output
+out_o.speed_sound = orbit.speed_sound;
+out_o.V = orbit.V;
+out_o.M = orbit.M;
+out_o.A = orbit.a;
+out_o.Ag = orbit.ag;
+out_o.Ad = orbit.ad;
+out_o.Al = orbit.al;
+out_o.J = orbit.J;
+out_o.q = orbit.q;
 
 end
 

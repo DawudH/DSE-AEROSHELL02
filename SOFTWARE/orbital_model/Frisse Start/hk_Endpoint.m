@@ -51,7 +51,7 @@ axis equal
 hold on
 polar(theta_plot,radius_mars,'r');
 polar(theta_plot,radius_mars_atmos,'g');
-theta_plot = param.theta:0.0000001:theta;
+theta_plot = param.theta:0.001:theta;
 rk = a * (1- e^2) ./ (1 + e * cos(theta_plot));
 polar(theta_plot+param.theta_p,rk,'k');
 plot(param.rp*cos(param.theta_p),param.rp*sin(param.theta_p),'*');

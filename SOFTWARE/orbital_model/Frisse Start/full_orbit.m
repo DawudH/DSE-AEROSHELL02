@@ -21,6 +21,7 @@ function [ out ] = full_orbit(R0, V0, V_esc, A0, G, M_mars, R_m, h_atm, atm, dt_
     Ad(1,:) = out_hk.Ad;
     Al(1,:) = out_hk.Al;
     J(1,:) = out_hk.J;
+    q(1,:) = out_hk.q;
     a_prev = A(1,:);
     %Get initial values for conditions
     [out_c] = checks(R,V,V_esc,t);
@@ -61,9 +62,10 @@ function [ out ] = full_orbit(R0, V0, V_esc, A0, G, M_mars, R_m, h_atm, atm, dt_
         Ad(i+1,:) = out_o.Ad;
         Al(i+1,:) = out_o.Al;
         J(i+1,:) = out_o.J;
+        q(i+1,:) = out_o.q;
 
         %Function to check when to end the orbit
-        [out_c] = checks(R,V,V_esc,t);
+        [out_c] = checks( R(i+1,:), V(i+1,:), R_m, h_atm, G, M_mars, out_c.in_atmos );
         if out_c.crash || out_c.flyby || out_c.t_end
             orbit = false;
         end
