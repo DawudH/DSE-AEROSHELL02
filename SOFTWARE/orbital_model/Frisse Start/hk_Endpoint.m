@@ -11,7 +11,7 @@ mu = G*M;
 
 %Position
 r  = R_m+h_atm;
-theta = acos((a*(1-e^2)-r)/(r*e));
+theta = -acos((a*(1-e^2)-r)/(r*e));
 %R wrt the elipse reference frame
 R = r*[cos(theta),sin(theta),0];
 %Express in 0-reference frame
@@ -49,7 +49,7 @@ axis equal
 hold on
 polar(theta_plot,radius_mars,'r');
 polar(theta_plot,radius_mars_atmos,'g');
-theta_plot = theta:0.01:param.theta;
+theta_plot = param.theta:0.0000001:theta;
 rk = a * (1- e^2) ./ (1 + e * cos(theta_plot));
 polar(theta_plot+param.theta_p,rk,'k');
 plot(param.rp*cos(param.theta_p),param.rp*sin(param.theta_p),'*');

@@ -1,7 +1,7 @@
 function [ out ] = full_orbit(R0,V0,V_esc,A0,G,M,R_m,h_atm,dt_kep_init,dt_atmos)
 %Calculates the full orbit for selected initial conditions until sepcified
 %end time
-    only_hyper = false
+    only_hyper = false;
     %%Input
     if only_hyper
         %Condition to run the script
@@ -15,7 +15,7 @@ function [ out ] = full_orbit(R0,V0,V_esc,A0,G,M,R_m,h_atm,dt_kep_init,dt_atmos)
     end
     %%Functions
     [out_hk] = hyperbolic_kepler(R0,V0,A0,G,M,R_m,h_atm,dt_kep_init);
-    if hyper_only
+    if only_hyper
         %%Inputs for while loop
         R = out_hk.R;
         V = out_hk.V;
