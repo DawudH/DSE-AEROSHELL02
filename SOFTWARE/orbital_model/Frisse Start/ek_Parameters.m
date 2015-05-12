@@ -30,7 +30,7 @@ function [ out ] = ek_Parameters(R_init,V_init,A_init,G,M,dt)
     %Apofocal distance
     ra = 2*a - rp;
     %Calculate theta (wrt the elipse reference frame [Xe,Ye,Ze])
-    theta = -acos( (a*(1-e^2)-r_init) / (e*r_init) );
+    theta = acos( (a*(1-e^2)-r_init) / (e*r_init) );
     %Calculate the angle between X0 and Xe
     theta_p = theta0 - theta;
     % calculate the orbital period
