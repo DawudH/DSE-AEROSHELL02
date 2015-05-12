@@ -33,7 +33,7 @@ By dividing the surface of the body to be analysed into many elements the pressu
 
 Using $C_{p_{max}}$ and $\theta$ the $C_{p}$ for every surface element is calculated, after which it is multiplied with the element area and the element surface normal vector. This results in an elemental pressure force in three dimensions from which the lift and drag forces(, as well as the aerodynamic moments (how?)) can be determined. 
 
-In addition to determining the aerodynamic forces and moments acting on the body, the heat flux in the stagnation point is also computed. A generalized equation to predict the heat flux on a body can be found in \cite{AndersonJr.2006}. This equation is shown in \ref{eq:heatflux}.
+In addition to determining the aerodynamic forces and moments acting on the body, the heat flux in the stagnation point is also computed. A generalized equation to predict the heat flux on a body can be found in \cite{AndersonJr.2006,Tauber1986}. This equation is shown in \ref{eq:heatflux}.
 \begin{equation}
 q_{w}=\rho_{\infty}^{N}V_{\infty}^{M}C
 \label{eq:heatflux}
@@ -54,7 +54,13 @@ M=3.0
 \label{eq:stagcoefficient}
 C=1.83 \times 10^{-8} R^{-\frac{1}{2}}\left(1-\frac{h_{w}}{h_{0}}\right)
 \end{equation}
-Where in equation \ref{eq:stagcoefficient} $R$ denotes the local body radius in the stagnation point. An additional assumption that is made here is that $\frac{h_{w}}{h_{0}}\ll 1$.
+Where in equation \ref{eq:stagcoefficient} $R$ denotes the local body radius in the stagnation point and $h_{w}$ and $h_{0}$ comprise of the wall and total enthalpies respectively. An additional assumption that is made here is that $\frac{h_{w}}{h_{0}}\ll 1$. Justification for this statement can be found in the fact that the wall temperature must be smaller than the melting or decomposition temperature during the entire flight. Thus, although the temperature can become very high, the resulting wall enthalpy $h_{w}$ will still be much smaller than the total enthalpy $h_{0}$ \cite[p.347]{AndersonJr.2006}. %In addition to this the computed heat flux will increase as a result of neglecting this factor. One can see that if in later design phases the enthalpy ratio is included into the calculations this will relax the design constraints.
+Combining equations \ref{eq:heatflux}, \ref{eq:stagdens}, \ref{eq:stagspeed}, \ref{eq:stagcoefficient} into one single equation produces:
+\begin{equation}
+q_{w_{stagnation}}=1.83 \times 10^{-8}\rho_{\infty}^{0.5} V_{\infty}^{3.0} R^{-\frac{1}{2}}
+\label{eq:qstag}
+\end{equation}
+Where $q_{w_{stagnation}}$ denotes the heat flux into the body at the stagnation point. This will be used as input for the thermodynamic model in order to compute the required thicknesses of the \acrfull{tps}.
 
 \subsection{Application of analysis tool on system concepts}
 \label{subsec:appaeroanal}
