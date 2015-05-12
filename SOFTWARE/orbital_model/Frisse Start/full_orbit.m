@@ -31,7 +31,7 @@ function [ out ] = full_orbit(R0,V0,V_esc,A0,G,M,R_m,h_atm,dt_kep_init,dt_atmos)
         if out_c.in_atmos
 
             [out_o] = in_atmosphere( V, R, a, a1, J, atm, CL, CD, dt, R_m, Omega_m, S, m );
-            t = t + dt_atmos
+            t = t + dt_atmos;
         %When the s/c is not in the atmosphere use a kepler orbit
         else
             [out_o] = eliptic_kepler(R,V,A,G,M,R_m,h_atm,dt_kep_init);
