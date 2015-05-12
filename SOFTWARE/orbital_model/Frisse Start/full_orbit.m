@@ -21,6 +21,7 @@ function [ out ] = full_orbit(R0, V0, V_esc, A0, G, M_mars, R_m, h_atm, atm, dt_
     Ad(1,:) = out_hk.Ad;
     Al(1,:) = out_hk.Al;
     J(1,:) = out_hk.J;
+    a_prev = A(1,:);
     %Get initial values for conditions
     [out_c] = checks(R,V,V_esc,t);
 
@@ -46,6 +47,7 @@ function [ out ] = full_orbit(R0, V0, V_esc, A0, G, M_mars, R_m, h_atm, atm, dt_
         else
             [out_o] = eliptic_kepler(R,V,A,G,M_mars,R_m,h_atm,dt_kep_init);
             round = round + 1;
+            a_prev = out_o.A;
             t = t + out_o.t_kep;
         end
         %%New Inputs for while loop
