@@ -5,12 +5,12 @@ close all
 % load constants
 constants
 
-ry = 10*R_m; %[m]
+ry = SOI; %[m]
 v = 7000; %[m/s]
-dt_init = 1;
+dt_init = 0.1;
 dt_atmos = 0.5;
 dt_kep_init = 1e-8;
-rx = -4386666;
+rx = 4190000;
 tend = 3600 * 24* 1;
 
 control.CL_range = [-0.35 0.35];
