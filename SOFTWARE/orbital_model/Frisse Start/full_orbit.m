@@ -6,7 +6,8 @@ function [ out ] = full_orbit(R0, V0, V_esc, A0, G, M_mars, R_m, h_atm, atm, dt_
     orbit = true;
 
     %Counters
-    tp(1) = 0;  %Time
+    tp(1) = 0; %Time for plot
+    t = 0; %Time
     round = 0; %Number of orbits around mars
     i = 1; %Number of loops
     %%Functions

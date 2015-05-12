@@ -40,6 +40,7 @@ out.Ag = A;
 out.Ad = [0,0,0];
 out.Al = [0,0,0];
 out.J = [0,0,0];
+out.q = 0;
 
 %Plot:
 theta_plot = 0:0.01:2*pi;
