@@ -6,15 +6,21 @@ function [ out ] = full_orbit(R0, V0, V_esc, A0, G, M_mars, R_m, h_atm, atm, dt_
     orbit = true;
 
     %Counters
-    t = 0;  %Time
+    tp(1) = 0;  %Time
     round = 0; %Number of orbits around mars
     i = 1; %Number of loops
     %%Functions
     [out_hk] = hyperbolic_kepler(R0,V0,A0,G,M_mars,R_m,h_atm,dt_kep_init);
     %%Inputs for while loop
     R(1,:) = out_hk.R;
+    speed_sound(1,:) = out_hk.speed_sound;
     V(1,:) = out_hk.V;
+    M(1,:) = out_hk.M;
     A(1,:) = out_hk.A;
+    Ag(1,:) = out_hk.Ag;
+    Ad(1,:) = out_hk.Ad;
+    Al(1,:) = out_hk.Al;
+    J(1,:) = out_hk.J;
     %Get initial values for conditions
     [out_c] = checks(R,V,V_esc,t);
 
@@ -43,8 +49,11 @@ function [ out ] = full_orbit(R0, V0, V_esc, A0, G, M_mars, R_m, h_atm, atm, dt_
             t = t + out_o.t_kep;
         end
         %%New Inputs for while loop
+        tp(i+1) = tp(i) + dt_atmos;
         R(i+1,:) = out_o.R;
+        speed_sound(i+1,:) = out_o.speed_sound;
         V(i+1,:) = out_o.V;
+        M(i+1,:) = out_o.M;
         A(i+1,:) = out_o.A;
         Ag(i+1,:) = out_o.Ag;
         Ad(i+1,:) = out_o.Ad;
@@ -61,13 +70,12 @@ function [ out ] = full_orbit(R0, V0, V_esc, A0, G, M_mars, R_m, h_atm, atm, dt_
     
     
     %%Output
-    out.R = 0;
-    out.V = 0;
-    out.A = 0;
-    out.Ag = 0;
-    out.Ad = 0;
-    out.Al = 0;
-    out.J = 0;
-    out.hk = out_hk;
+    out.R = R;
+    out.V = V;
+    out.A = A;
+    out.Ag = Ag;
+    out.Ad = Ad;
+    out.Al = Al;
+    out.J = J;
 end
 
