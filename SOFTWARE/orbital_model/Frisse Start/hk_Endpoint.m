@@ -38,6 +38,7 @@ out.A = A;
 out.Ag = A;
 out.Al = [0,0,0];
 out.Ad = [0,0,0];
+out.J = [0,0,0];
 
 % circle plot:
 theta_plot = 0:0.01:2*pi;
