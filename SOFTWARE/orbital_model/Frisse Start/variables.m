@@ -1,3 +1,6 @@
+% Add paths
+added_pathes
+
 %Add sources & explanation per constant
 constants
 
@@ -27,3 +30,6 @@ control.a = 2.9*g_earth;
 control.CLa = 0.02;
 control.dalpha = 0.2;
 control.CL_init = -0.18;
+
+% create atmosphere object
+atm = marsatmosphere();

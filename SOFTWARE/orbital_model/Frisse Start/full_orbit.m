@@ -1,4 +1,4 @@
-function [ out ] = full_orbit(R0,V0,V_esc,A0,G,M,R_m,h_atm,dt_kep_init,dt_atmos)
+function [ out ] = full_orbit(R0, V0, V_esc, A0, G, M_mars, R_m, h_atm, atm, dt_kep_init, dt_atmos, m, Omega_m, S, control)
 %Calculates the full orbit for selected initial conditions until sepcified
 %end time
 
@@ -10,7 +10,7 @@ function [ out ] = full_orbit(R0,V0,V_esc,A0,G,M,R_m,h_atm,dt_kep_init,dt_atmos)
     round = 0; %Number of orbits around mars
     i = 1; %Number of loops
     %%Functions
-    [out_hk] = hyperbolic_kepler(R0,V0,A0,G,M,R_m,h_atm,dt_kep_init);
+    [out_hk] = hyperbolic_kepler(R0,V0,A0,G,M_mars,R_m,h_atm,dt_kep_init);
     %%Inputs for while loop
     R(1,:) = out_hk.R;
     V(1,:) = out_hk.V;
@@ -23,13 +23,22 @@ function [ out ] = full_orbit(R0,V0,V_esc,A0,G,M,R_m,h_atm,dt_kep_init,dt_atmos)
     while orbit
         %When the s/c is in the atmosphere use the numerical solution including aerodynamic forces
         if out_c.in_atmos
-
-            [out_o] = in_atmosphere( V, R, a, a1, J, atm, CL, CD, dt, R_m, Omega_m, S, m );
-
+             % determine new cl and cd param
+                 state.CL = CL;
+                 state.CD = CD;
+                 state.a = norm(A(i,:) - Ag(i,:));
+                 % start controlling once the accel is above 1.5g
+                 if state.a > 1.5*g_earth
+                         [aero_param] = aero_conrol(state,control);
+                         CL = aero_param.CL;
+                         CD = aero_param.CD;
+                 end
+            [out_o] = in_atmosphere( V(i,:), R(i,:), A(i,:), a_prev, J(i,:), atm, CL, CD, dt_atmos, R_m, Omega_m, S, m );
+            a_prev = A(i,:);
             t = t + dt_atmos;
         %When the s/c is not in the atmosphere use a kepler orbit
         else
-            [out_o] = eliptic_kepler(R,V,A,G,M,R_m,h_atm,dt_kep_init);
+            [out_o] = eliptic_kepler(R,V,A,G,M_mars,R_m,h_atm,dt_kep_init);
             round = round + 1;
             t = t + out_o.t_kep;
         end
