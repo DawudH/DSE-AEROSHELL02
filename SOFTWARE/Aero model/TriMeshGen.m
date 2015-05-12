@@ -40,6 +40,8 @@ for i = 0:q-2
 end
 Tri0 = Tri(:,1) == 0;
 Tri(Tri0,:) = [];
+id = 'MATLAB:triangulation:PtsNotInTriWarnId';
+warning('off',id)
 TriGeom = triangulation(Tri, xvector', yvector', zvector');
 
 
@@ -75,6 +77,8 @@ for i = 0:q-2
 end
 Tri0 = Tri(:,1) == 0;
 Tri(Tri0,:) = [];
+id = 'MATLAB:triangulation:PtsNotInTriWarnId';
+warning('off',id)
 TriGeom = triangulation(Tri, xvector', yvector', zvector');    
 
 
@@ -136,14 +140,17 @@ for i = 0:q-1
             Tri(2*(i*q+j)-1,:) = [0 0 0];
             Tri(2*(i*q+j),:) = [i*q+j (1+i)*q+j+1 (1+i)*q+j];
         else
-            Tri(2*(i*q+j)-1,:) = [i*q+j 1*q+j+1 (i+1)*q+j+1];
+            Tri(2*(i*q+j)-1,:) = [i*q+j (i)*q+j+1 (i+1)*q+j+1];
             Tri(2*(i*q+j),:) = [i*q+j (1+i)*q+j+1 (1+i)*q+j];
         end
     end
 end
 Tri0 = Tri(:,1) == 0;
 Tri(Tri0,:) = [];
+id = 'MATLAB:triangulation:PtsNotInTriWarnId';
+warning('off',id)
 TriGeom = triangulation(Tri, xvector', yvector', zvector');
+
     end
 end
 
