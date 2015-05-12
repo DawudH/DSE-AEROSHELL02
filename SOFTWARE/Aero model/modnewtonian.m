@@ -10,6 +10,7 @@ classdef modnewtonian
         center;
         rho_inf;
         T_inf;
+        A;
         
         % Given for calculation
         V_array;
@@ -27,6 +28,10 @@ classdef modnewtonian
         CRA_aero_array;
         CMA_body_array;
         CMA_aero_array;
+        CR_body_array;
+        CR_aero_array;
+        CM_body_array;
+        CM_aero_array;
         CLCD_array;
         Tmax_array;
         qmax_array;
@@ -34,7 +39,7 @@ classdef modnewtonian
     
     methods
         
-        function obj = modnewtonian(coords, tri, gamma, a, center, rho, T)
+        function obj = modnewtonian(coords, tri, gamma, a, center, rho, T, A)
             % Constructor: Set the geometry and gamma on Mars
             obj.coords = coords;
             obj.tri = tri;
@@ -45,6 +50,7 @@ classdef modnewtonian
             obj.cellcenters = obj.calccellcenters();
             obj.rho_inf = rho;
             obj.T_inf = T;
+            obj.A = A;
             
         end
         
@@ -62,6 +68,10 @@ classdef modnewtonian
             [T,q] = obj.calcHeatFlux();
             obj.Tmax_array = [obj.Tmax_array, T];
             obj.qmax_array = [obj.qmax_array, q];
+            obj.CR_body_array = obj.CRA_body_array / obj.A;
+            obj.CR_aero_array = obj.CRA_aero_array / obj.A;
+            obj.CM_body_array = obj.CMA_body_array / obj.A;
+            obj.CM_aero_array = obj.CMA_aero_array / obj.A;
         end
         
         function obj = calcAeroangle(obj, Vinf, alpha, beta)
@@ -120,14 +130,17 @@ classdef modnewtonian
             points = perms(obj.tri(stagN,:));
             combis = points(:,1:2);
             nextpoints = 2*combis(:,2)-combis(:,1);
-            nextpoints = nextpoints + maxtri;
-            nextpoints = mod(nextpoints, maxtri);
+            nextpoints(nextpoints<1) = nextpoints(nextpoints<1)+maxtri;
+            nextpoints(nextpoints>maxtri) = nextpoints(nextpoints>maxtri)-maxtri;
             radii = zeros(size(nextpoints));
             for i = 1:length(nextpoints)
                 radius = obj.radiusOfCurvature(combis(i,1), combis(i,2), nextpoints(i));
                 radii(i) = radius;
             end
-            qmax = obj.rho_inf^0.5*Vinf^3*1.83e-8*max(radii)^(-0.5);
+            qmax = 0;
+            if max(radii) <=0
+                qmax = obj.rho_inf^0.5*Vinf^3*1.83e-8*max(radii)^(-0.5);
+            end
         end
         
         function ind = getTriangle(obj, n1, n2, n3)
@@ -241,32 +254,32 @@ classdef modnewtonian
             for i = plotboolarray
                 j = cell2mat(i{1});
                 switch j
-                    case 'cl'
+                    case 'cla'
                         figure;
                         plot(xarray, obj.CRA_aero_array(3,:));
                         ylabel(j);
                         xlabel(xlabeltxt);
-                    case 'cs'
+                    case 'csa'
                         figure;
                         plot(xarray, obj.CRA_aero_array(2,:));
                         ylabel(j);
                         xlabel(xlabeltxt);
-                    case 'cd'
+                    case 'cda'
                         figure;
                         plot(xarray, obj.CRA_aero_array(1,:));
                         ylabel(j);
                         xlabel(xlabeltxt);
-                    case 'cx'
+                    case 'cxa'
                         figure;
                         plot(xarray, obj.CRA_body_array(1,:));
                         ylabel(j);
                         xlabel(xlabeltxt);
-                    case 'cy'
+                    case 'cya'
                         figure;
                         plot(xarray, obj.CRA_body_array(2,:));
                         ylabel(j);
                         xlabel(xlabeltxt);
-                    case 'cz'
+                    case 'cza'
                         figure;
                         plot(xarray, obj.CRA_body_array(3,:));
                         ylabel(j);
@@ -276,7 +289,7 @@ classdef modnewtonian
                         plot(xarray, obj.CLCD_array);
                         ylabel(j);
                         xlabel(xlabeltxt);
-                    case 'cmy'
+                    case 'cmya'
                         figure;
                         plot(xarray, obj.CMA_aero_array(2,:));
                         ylabel(j);
