@@ -1,13 +1,13 @@
-clear all
-close all
+function [TriGeom,xvector,yvector,zvector] = Sharpcone(q,r,hca)
+%% Deze code is beun, indien nodig voor later project werk opschonen voor gebruik
 %% Define Spherical nose half cone in cylindrical coordinates
-q = 40;
-r = 1.5;
-rmax = 6;
+% q = 40;
+% r = 6;
+% rmax = tand(60);
 
-t=0.4;  %Gradient of half cone
+%t=tand(30);  %Gradient of half cone
 
-R = 1;  %Coordinate for lower dome, grid creation
+R = r*tand(hca);  %Coordinate for lower dome, grid creation
 R = linspace(0,R,q);
 R = meshgrid(R);
 
@@ -19,7 +19,7 @@ theta = meshgrid(theta);
 theta = theta';
 
 %% Cylindrical transformation
-R = t*(R.^2)/2;
+% R = t*(R);
 z=r.*cos(theta);           
 y=r.*sin(theta);
 x=-R;
@@ -28,13 +28,13 @@ y = y;
 z = z;
 
 %% Coordinate calculation of upper ring(after linear section)
-zmax = rmax.*cos(theta);
-ymax = rmax.*sin(theta);
-xmax = -max((t/rgrad)+(rmax-max(r))*(t/rgrad));
-xmax = ones(q)*xmax;
-x = [x,xmax(:,1)];
-y = [y,ymax(:,1)];
-z = [z,zmax(:,1)];
+% zmax = rmax.*cos(theta);
+% ymax = rmax.*sin(theta);
+% xmax = -max((t/rgrad)+(rmax-max(r))*(t/rgrad));
+% xmax = ones(q)*xmax;
+% x = [x,xmax(:,1)];
+% y = [y,ymax(:,1)];
+% z = [z,zmax(:,1)];
 
 %% Vectorization of grid
 xvector = [];
@@ -53,7 +53,7 @@ end
 %% Triangulation matrix 
 p = length(xvector);
 Tri = [0 0 0];
-for i = 0:q-1
+for i = 0:q-2
     for j = 1:q-1
         if i == 0      
             Tri(2*(i*q+j)-1,:) = [0 0 0];
