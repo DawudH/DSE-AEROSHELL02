@@ -6,7 +6,7 @@ function [TriGeom,xvector,yvector,zvector] = Sharpcone(q,r,hca)
 % rmax = tand(60);
 
 %t=tand(30);  %Gradient of half cone
-
+hca = 90-hca;
 R = r*tand(hca);  %Coordinate for lower dome, grid creation
 R = linspace(0,R,q);
 R = meshgrid(R);
@@ -68,12 +68,12 @@ Tri0 = Tri(:,1) == 0;
 Tri(Tri0,:) = [];
 TriGeom = triangulation(Tri, xvector', yvector', zvector');
 
-trisurf(TriGeom.ConnectivityList,xvector,yvector,zvector)
-axis equal
-xlabel('x')
-ylabel('y')
-zlabel('z')
-
+% trisurf(TriGeom.ConnectivityList,xvector,yvector,zvector)
+% axis equal
+% xlabel('x')
+% ylabel('y')
+% zlabel('z')
+end
 
 
 
