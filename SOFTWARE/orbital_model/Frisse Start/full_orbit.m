@@ -1,4 +1,4 @@
-function [ out ] = full_orbit(R0, V0, V_esc, A0, G, M_mars, R_m, h_atm, atm, dt_kep_init, dt_atmos, m, Omega_m, S, control)
+function [ out ] = full_orbit(R0, V0, V_esc, A0, G, M_mars, R_m, h_atm, atm, dt_kep_init, dt_atmos, m, Omega_m, S, control, tend, crash_margin, g_earth)
 %Calculates the full orbit for selected initial conditions until sepcified
 %end time
 
@@ -25,7 +25,11 @@ function [ out ] = full_orbit(R0, V0, V_esc, A0, G, M_mars, R_m, h_atm, atm, dt_
     q(1,:) = out_hk.q;
     a_prev = A(1,:);
     %Get initial values for conditions
-    [out_c] = checks(R,V,V_esc,t);
+    [out_c] = checks( R(1,:), V(1,:), t, tend, R_m, h_atm, G, M_mars, false, crash_margin );
+    
+    % give initial control state
+    CL = control.CL_init;
+    CD = abs(control.CL_init) / control.CLCD;
 
     %%Functions
     %As long as the s/c is in orbit keep calculating the next position
@@ -47,7 +51,10 @@ function [ out ] = full_orbit(R0, V0, V_esc, A0, G, M_mars, R_m, h_atm, atm, dt_
             t = t + dt_atmos;
         %When the s/c is not in the atmosphere use a kepler orbit
         else
-            [out_o] = eliptic_kepler(R,V,A,G,M_mars,dt_kep_init,out_o(i,:));
+            orbit_init.R = R(i,:);
+            orbit_init.V = V(i,:);
+            orbit_init.a = A(i,:);
+            [out_o] = eliptic_kepler(R(i,:),V(i,:),A(i,:),G,M_mars,dt_kep_init,orbit_init);
             round = round + 1;
             a_prev = out_o.A;
             t = t + out_o.t_kep;
@@ -66,7 +73,7 @@ function [ out ] = full_orbit(R0, V0, V_esc, A0, G, M_mars, R_m, h_atm, atm, dt_
         q(i+1,:) = out_o.q;
 
         %Function to check when to end the orbit
-        [out_c] = checks( R(i+1,:), V(i+1,:), R_m, h_atm, G, M_mars, out_c.in_atmos );
+        [out_c] = checks( R(i+1,:), V(i+1,:), t, tend, R_m, h_atm, G, M_mars, out_c.in_atmos, crash_margin );
         if out_c.crash || out_c.flyby || out_c.t_end
             orbit = false;
         end
@@ -82,5 +89,8 @@ function [ out ] = full_orbit(R0, V0, V_esc, A0, G, M_mars, R_m, h_atm, atm, dt_
     out.Ad = Ad;
     out.Al = Al;
     out.J = J;
+    out.q = q;
+    out.tp = tp;
+    out.M = M;
 end
 

@@ -30,7 +30,7 @@ end
 
 %calculate total accaleration
 orbit.a = orbit.ag + orbit.ad + orbit.al;
-orbit.J = (a1 - 4*a + 3*orbit.a);
+orbit.J = (a1 - 4*a + 3*orbit.a) / (2*dt);
 
 %calculate new velocity and location
 orbit.V = V + a*dt + 1/2*J*dt^2;
@@ -46,6 +46,7 @@ end
 
 % output
 out_o.speed_sound = orbit.speed_sound;
+out_o.R = orbit.R;
 out_o.V = orbit.V;
 out_o.M = orbit.M;
 out_o.A = orbit.a;

@@ -6,7 +6,9 @@ function [ out ] = ek_Endpoint(param,orbit_init)
     e = param.e;
     theta = param.theta;
     theta_p = param.theta_p;
-    
+    r = norm(orbit_init.R);
+    b = param.b;
+    T = param.T;
     c = a*e + r * cos(theta);
     Atot = b*a*pi;
     A = 1/2*b*a*pi + b*c*sqrt(1-c^2/a^2) - b*a*asin(-c/a) - 1/2*r^2*cos(theta)*sin(theta);
@@ -34,12 +36,12 @@ function [ out ] = ek_Endpoint(param,orbit_init)
     A = Te' * ae;
 
     %%Output
-    out.R = R;
+    out.R = R';
     out.speed_sound = 0;
-    out.V = V;
+    out.V = V';
     out.M = 0;
-    out.A = A;
-    out.Ag = A;
+    out.A = A';
+    out.Ag = A';
     out.Ad = [0,0,0];
     out.Al = [0,0,0];
     out.J = [0,0,0];
