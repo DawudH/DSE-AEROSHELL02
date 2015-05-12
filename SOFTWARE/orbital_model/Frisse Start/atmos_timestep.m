@@ -6,5 +6,4 @@ function [ out ] = atmos_timestep( ?? )
 
 %%Output
 
-
 end
