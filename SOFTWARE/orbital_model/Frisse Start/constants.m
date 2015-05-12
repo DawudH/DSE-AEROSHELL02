@@ -1,5 +1,3 @@
-addpath('..\..\mars_atmosphere')
-
 %%Universal constants
 %Gravitational constant
 G = 6.673*10^-11; %[N*(m/kg)^2]

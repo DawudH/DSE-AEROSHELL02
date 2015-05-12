@@ -58,6 +58,7 @@ orbit.V = V;
 orbit.a = acc;
 orbit.ad = [0,0,0];
 orbit.al = [0,0,0];
+orbit.J = [0,0,0];
 orbit.q = 0;
 orbit.speed_sound = 0;
 orbit.M = 0;
