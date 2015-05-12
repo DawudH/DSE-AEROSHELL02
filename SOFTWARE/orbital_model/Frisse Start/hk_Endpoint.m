@@ -32,15 +32,16 @@ A = -mu/r^3*R;
 
 %%Output
 out.R = R0;
+out.speed_sound = 0;
 out.V = V;
-out.Vrel = V;
+out.M = 0;
 out.A = A;
 out.Ag = A;
-out.Al = [0,0,0];
 out.Ad = [0,0,0];
+out.Al = [0,0,0];
 out.J = [0,0,0];
 
-% circle plot:
+%Plot:
 theta_plot = 0:0.01:2*pi;
 radius_mars = ones(1,length(theta_plot)) * R_m;
 radius_mars_atmos = ones(1,length(theta_plot)) * (R_m + h_atm);
