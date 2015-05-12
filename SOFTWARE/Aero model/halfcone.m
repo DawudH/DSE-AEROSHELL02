@@ -1,11 +1,11 @@
 clear all
 close all
 %% Define Spherical nose half cone in cylindrical coordinates
-q = 25;
-r = 3;
-rmax = 12;
+q = 40;
+r = 1.5;
+rmax = 6;
 
-t=1;  %Gradient of half cone
+t=0.4;  %Gradient of half cone
 
 R = 1;  %Coordinate for lower dome, grid creation
 R = linspace(0,R,q);

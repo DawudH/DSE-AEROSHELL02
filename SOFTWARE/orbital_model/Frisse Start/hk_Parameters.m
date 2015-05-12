@@ -1,21 +1,45 @@
-function [out] = hk_Parameters(R0,V0,G,M)
-%Calculates the kepler orbit parameters needed to calculate the hyperbolic
-%flightpath
+function [out] = hk_Parameters(R_init,V_init,A_init,G,M,dt)
+%Calculates the kepler orbit parameters needed to calculate the hyperbolic flightpath
 
 %%Input
-r0 = norm(R0);
-v0 = norm(V0);
-theta0 = atan2(R0(2),R0(1));
+%initial position
+r_init = norm(R_init);
+%position after dt
+R1 = R_init+V_init*dt+A_init*dt^2;
+r1 = norm(R1);
+%initial velocity
+v_init = norm(V_init);
+%angle change between R_init and R1
+theta0 = atan2(R_init(2),R_init(1));
+theta1 = atan2(R1(2),R1(1));
+%gravitational constant of Mars
 mu = G*M;
 
 %%Calculations
-a = (2/r0-v0^2/mu)^-1;
-e = -r0*cos(theta0)/(2*a)+sqrt(r0^2*cos(theta0)^2/(4*a^2)-r0/a+1);
+%determine semi-major axis
+a = (2/r_init-v_init^2/mu)^-1;
+% determine e with areal velocity
+dtheta = theta1 - theta0;
+dA = 1/2 * r_init * r1 * sin(dtheta);
+e = sqrt( 1 - 4 * (dA / dt)^2 / (a * mu) );
+%Determine semi-minor axis
 b = a*sqrt(e^2-1);
+%Perifocal distance
+rp  = a*(1-e);
+%Apofocal distance
+ra = 2*a - rp;
+%Calculate theta (wrt the elipse reference frame [Xe,Ye,Ze])
+theta = -acos( (a*(1-e^2)-r_init) / (e*r_init) );
+%Calculate the angle between X0 and Xe
+theta_p = theta0 - theta;
 %%Output
 out.a = a;
 out.e = e;
 out.b = b;
-out
+out.rp = rp;
+out.ra = ra;
+out.theta = theta;
+out.theta0 = theta0;
+out.theta_p = theta_p;
 end
 
