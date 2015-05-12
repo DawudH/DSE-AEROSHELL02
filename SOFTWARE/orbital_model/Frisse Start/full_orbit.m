@@ -6,7 +6,8 @@ function [ out ] = full_orbit(R0, V0, V_esc, A0, G, M_mars, R_m, h_atm, atm, dt_
     orbit = true;
 
     %Counters
-    tp(1) = 0;  %Time
+    tp(1) = 0; %Time for plot
+    t = 0; %Time
     round = 0; %Number of orbits around mars
     i = 1; %Number of loops
     %%Functions
@@ -46,7 +47,7 @@ function [ out ] = full_orbit(R0, V0, V_esc, A0, G, M_mars, R_m, h_atm, atm, dt_
             t = t + dt_atmos;
         %When the s/c is not in the atmosphere use a kepler orbit
         else
-            [out_o] = eliptic_kepler(R,V,A,G,M_mars,R_m,h_atm,dt_kep_init);
+            [out_o] = eliptic_kepler(R,V,A,G,M_mars,dt_kep_init,out_o(i,:));
             round = round + 1;
             a_prev = out_o.A;
             t = t + out_o.t_kep;
