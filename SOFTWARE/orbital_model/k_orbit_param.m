@@ -11,8 +11,8 @@ r2 = norm(R2);
 a = r*mu / (2*mu - r * v^2);
 
 % determine e with areal velocity
-dtheta = atan2(R2(2),R2(1)) - atan2(R1(2),R1(1))
-dA = 1/2 * r * r2 * sin(dtheta)
+dtheta = atan2(R2(2),R2(1)) - atan2(R1(2),R1(1));
+dA = 1/2 * r * r2 * sin(dtheta);
 e = sqrt( 1 - 4 * (dA / dt)^2 / (a * mu) );
 
 % calculate theta

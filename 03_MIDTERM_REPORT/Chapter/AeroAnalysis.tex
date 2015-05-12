@@ -66,7 +66,25 @@ Where $q_{w_{stagnation}}$ denotes the heat flux into the body at the stagnation
 \label{subsec:aeroverval}
 After the model construction verification was carried out to determine whether the model correctly implemented the calculations of the modified Newtonian method. This was done by placing two triangular surface elements in a flow at an angle and comparing the model outputs with results obtained by manual computations. 
 
-Following the verification the model was validated against \cite[p. 783]{AndersonJr.2007}
+Following the verification the model was validated using experimental drag coefficient values of a sphere at supersonic and hypersonic Mach numbers \cite[p. 783]{AndersonJr.2007}. It was found that at Mach 25 the difference between the experimental and numerical $C_{D}$'s was 2\%. This is found to be within acceptable margins for the program to be used during the conceptual and preliminary design phases.
+
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}[b]{0.49\textwidth}
+		\centering
+		\includegraphics[width=0.95\textwidth]{./Figure/CD_sphere_exp}
+		\caption[Variation of measured $C_{D}$ with Mach number for a sphere and cone-cylinder]{Variation of measured $C_{D}$ with Mach number for a sphere and cone-cylinder \cite{AndersonJr.2007,Cox1965}}
+		\label{fig:exp_cd}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.49\textwidth}
+		\centering
+		\includegraphics[width=0.95\textwidth]{./Figure/Nyan}
+		\caption{heading}
+		\label{fig:num_cd}
+	\end{subfigure}
+	\caption{Comparison of experimental and numerical values for $C_{D}$}
+	\label{fig:comparison_cd}
+\end{figure}
 
 \subsection{Application of analysis tool to system concepts}
 \label{subsec:appaeroanal}

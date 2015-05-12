@@ -4,7 +4,7 @@ constants
 
 % initial CL and CD
 CL = control.CL_init;
-CD = control.CL_init / control.CLCD;
+CD = abs(control.CL_init) / control.CLCD;
 
 % define output 
 out.inorbit = false;
@@ -21,7 +21,8 @@ out.al(1,:) = [0, 0, 0];
 out.q(1) = 0;
 out.speed_sound(1) = 0;
 out.M(1) = 0;
-
+out.J(1,:) = [0, 0, 0];
+a_prev = out.a(1,:);
 % create atmosphere object
 atm = marsatmosphere();
 
@@ -45,11 +46,11 @@ while true
     if to_kepler
         
         [orbit_new,t_kep] = orbit_kepler(kepler_param,orbit_new);
-        orbit_new
         to_kepler = false;
         out.inorbit = false;
         time_pased = time_pased + t_kep;
         t(i+1) = t(i) + dt;
+        a_prev = out.a(i,:);
     else
              % determine new cl and cd param when in atmos
              if out.inatmos
@@ -63,10 +64,17 @@ while true
                          CD = aero_param.CD;
                  end
              end
-                % get orbital parameters at next node
-        orbit_new = orbit(out.R(i,:),out.V(i,:),out.a(i,:),CD,CL,dt,atm,R_m,Omega_m,S,m);
+        % get orbital parameters at next node
+        input.R  = out.R(i,:);
+        input.V  = out.V(i,:);
+        input.a  = out.a(i,:);
+        input.a1 = a_prev;
+        a_prev = input.a;
+        input.J  = out.J(i,:);
+        orbit_new = orbit(input,CD,CL,dt,atm,R_m,Omega_m,S,m);
         time_pased = time_pased + dt;
         t(i+1) = t(i) + dt;
+        
     end
     
     out.R(i+1,:) = orbit_new.R;
@@ -77,10 +85,16 @@ while true
     out.ag(i+1,:) = orbit_new.ag;
     out.q(i+1) = orbit_new.q;
     out.M(i+1) = orbit_new.M;
+    out.J(i+1,:) = orbit_new.J;
     out.speed_sound(i+1) = orbit_new.speed_sound;
 
     if (out.inorbit && (to_kepler == false))% || ((i == 1)&& (to_kepler == false))
-        orbit_new = orbit(out.R(i,:),out.V(i,:),out.a(i,:),CD,CL,dt_kep_init,atm,R_m,Omega_m,S,m);
+        input.R  = out.R(i,:);
+        input.V  = out.V(i,:);
+        input.a  = out.a(i,:);
+        input.a1 = out.a(i,:); % assume constant accel in this small timestep
+        input.J  = [0,0,0]; % constant accel zo zero jerk
+        orbit_new = orbit(input,CD,CL,dt_kep_init,atm,R_m,Omega_m,S,m);
         kepler_param = k_orbit_param(out.R(i,:),orbit_new.R,out.V(i,:),dt_kep_init,G,M_mars);
         to_kepler = true;
         out.inatmos = false;
