@@ -24,3 +24,5 @@ for i in range(len(bib)):
     f.write(bib[i])
 f.close
 
+print "Done"
+

@@ -9,7 +9,7 @@ format long
 
 do_plot = false;
 write_to_file = true;
-file_name = 'orbits.txt';
+file_name = 'orbits_test_for_ronald.txt';
 
 
 ry = 10* R_m; %[m]
