@@ -28,6 +28,16 @@ function [ coords, tri, A ] = generategeometry( type, q )
             coords = TriGeom.Points';
             tri = TriGeom.ConnectivityList; 
             A = pi*6^2;
+        case 'deg60cone'
+            [TriGeom,xvector,yvector,zvector] = Sharpcone(q,6,30);
+            coords = [xvector;yvector;zvector];
+            tri = TriGeom.ConnectivityList;
+            A = pi*6^2;
+        case 'deg30cone'
+            [TriGeom,xvector,yvector,zvector] = Sharpcone(q,6,30);
+            coords = [xvector;yvector;zvector];
+            tri = TriGeom.ConnectivityList;
+            A = pi*6^2;            
         otherwise
             warning(strcat('The following type is not supported: ', num2str(type)));
             xvector = [0,0,0,0,-1,-1];

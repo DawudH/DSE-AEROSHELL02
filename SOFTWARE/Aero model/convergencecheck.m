@@ -19,12 +19,13 @@ CD = [];
 
 for q = qarray
     q
-    [ coords, tri, A ] = generategeometry( pastille12m3m, q );
+    [ coords, tri, A ] = generategeometry( 'deg30cone', q );
 
+    
     mod = modnewtonian( coords, tri, gamma, a, center, rho, T, A);
     % mod = mod.alphasweep(7e3, 0, deg2rad(alpha0), deg2rad(alphaend), deg2rad(dalpha));
 
-    mod = mod.calcAeroangle(7e3,deg2rad(30),0);
+    mod = mod.calcAeroangle(7e3,deg2rad(0),0);
     CD = [CD, mod.CR_aero_array(1,1)];
 end
 CD;
@@ -34,7 +35,8 @@ figure;
 plot(qarray, CD);
 % mod.plots(rad2deg(mod.alpha_array), 'alpha', {{'cl'}, {'cd'}, {'clcd'}, {'cx'}, {'cz'},{'cmy'},{'q'}, {'T'}});
 
-CD/CD(end);
+ratio = CD/CD(end);
+disp(strcat('Best q for this geometry: ', qarray(find(ratio(ratio>0.999))));
 % for i = 2:length(CD)
 % i;
 % CD(i)/CD(end);
