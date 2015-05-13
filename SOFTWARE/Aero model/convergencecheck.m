@@ -1,8 +1,11 @@
 % close all;
-horizontalplate = 'horizontalplate';
-verticalplate = 'verticalplate';
-sphere12m = 'sphere12m';
-pastille12m3m = 'pastille12m1.5m';
+shapetexts.horizontalplate = 'horizontalplate';
+shapetexts.verticalplate = 'verticalplate';
+shapetexts.sphere12m = 'sphere12m';
+shapetexts.pastille12m15m = 'pastille12m1.5m';
+shapetexts.deg60cone = 'deg60cone';
+shapetexts.deg30cone = 'deg30cone';
+shapetexts.irvevalidation = 'irvevalidation';
 
 a = 300;
 gamma = 1.4;
@@ -18,8 +21,8 @@ qarray = [4 5 6 7 8 9 10,10:1:40, 42:2:60, 65:5:100];
 CD = [];
 
 for q = qarray
-    q
-    [ coords, tri, A ] = generategeometry( 'deg30cone', q );
+    disp(strcat('Current q:', num2str(q)));
+    [ coords, tri, A ] = generategeometry( shapetexts.irvevalidation, q );
 
     
     mod = modnewtonian( coords, tri, gamma, a, center, rho, T, A);
@@ -36,7 +39,8 @@ plot(qarray, CD);
 % mod.plots(rad2deg(mod.alpha_array), 'alpha', {{'cl'}, {'cd'}, {'clcd'}, {'cx'}, {'cz'},{'cmy'},{'q'}, {'T'}});
 
 ratio = CD/CD(end);
-disp(strcat('Best q for this geometry: ', qarray(find(ratio(ratio>0.999))));
+bestarray = find(ratio>0.999);
+disp(strcat('q required for 99.9% convergence: ', num2str(qarray(bestarray(1)))));
 % for i = 2:length(CD)
 % i;
 % CD(i)/CD(end);

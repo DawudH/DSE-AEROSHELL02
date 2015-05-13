@@ -4,6 +4,13 @@ close all
 
 %%Input constants & variables
 variables
+step_rx = -10000;
+rx_b = -4100000;
+rx_e = -4500000;
+rx = (rx_b:step_rx:rx_e)'; %[m]
+n = length(rx);
+ry = SOI*ones(n,1); %[m]
+R = [rx,ry,zeros(n,1)];
 out_refine.rx = rx(1);
 out_orbit.c.orbit = false;
 

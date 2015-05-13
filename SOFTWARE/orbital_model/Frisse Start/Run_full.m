@@ -41,6 +41,7 @@ figure('name','Orbit')
 grid on
 axis equal
 hold on
+axis([-(R_m + h_atm)*1.5 (R_m + h_atm)*1.5 -(R_m + h_atm)*1.5 (R_m + h_atm)*1.5])
 plot(out.R(:,1),out.R(:,2))
 polar(theta_plot,radius_mars,'r');
 polar(theta_plot,radius_mars_atmos,'g')
