@@ -13,7 +13,7 @@ function [ out_c ] = checks( R, V, t, tend, R_m, h_atm, G, M_mars, inatmos, cras
     end
 
     % If the spacecraft is within the atmosphere boundary
-    if ( r <= (R_m + h_atm) ) 
+    if ( r <= (R_m + h_atm+100) ) 
         out_c.in_atmos = true;
     else
         out_c.in_atmos = false;
@@ -40,6 +40,8 @@ function [ out_c ] = checks( R, V, t, tend, R_m, h_atm, G, M_mars, inatmos, cras
         
         if (norm(V) > V_esc)
             out_c.flyby = true;
+        else
+            out_c.flyby = false;
         end
     else
         out_c.flyby = false;
