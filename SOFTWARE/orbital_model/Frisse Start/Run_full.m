@@ -47,3 +47,8 @@ hold on
 plot(out.R(:,1),out.R(:,2))
 polar(theta_plot,radius_mars,'r');
 polar(theta_plot,radius_mars_atmos,'g')
+theta_plot = out.theta0:0.001:out.theta;
+rk = out.a * (1- out.e^2) ./ (1 + out.e * cos(theta_plot));
+polar(theta_plot+out.theta_p,rk,'k');
+plot(out.rp*cos(out.theta_p),out.rp*sin(out.theta_p),'*');
+plot(-out.ra*cos(out.theta_p),-out.ra*sin(out.theta_p),'d');

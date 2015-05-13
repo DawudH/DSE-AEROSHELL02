@@ -13,16 +13,16 @@ function [ out ] = full_orbit(R0, V0, V_esc, A0, G, M_mars, R_m, h_atm, atm, dt_
     %%Functions
     [out_hk] = hyperbolic_kepler(R0,V0,A0,G,M_mars,R_m,h_atm,dt_kep_init);
     %%Inputs for while loop
-    R(1,:) = out_hk.R;
-    speed_sound(1,:) = out_hk.speed_sound;
-    V(1,:) = out_hk.V;
-    M(1,:) = out_hk.M;
-    A(1,:) = out_hk.A;
-    Ag(1,:) = out_hk.Ag;
-    Ad(1,:) = out_hk.Ad;
-    Al(1,:) = out_hk.Al;
-    J(1,:) = out_hk.J;
-    q(1,:) = out_hk.q;
+    R(1,:) = out_hk.end.R;
+    speed_sound(1,:) = out_hk.end.speed_sound;
+    V(1,:) = out_hk.end.V;
+    M(1,:) = out_hk.end.M;
+    A(1,:) = out_hk.end.A;
+    Ag(1,:) = out_hk.end.Ag;
+    Ad(1,:) = out_hk.end.Ad;
+    Al(1,:) = out_hk.end.Al;
+    J(1,:) = out_hk.end.J;
+    q(1,:) = out_hk.end.q;
     a_prev = A(1,:);
     %Get initial values for conditions
     [out_c] = checks( R(1,:), V(1,:), t, tend, R_m, h_atm, G, M_mars, false, crash_margin );
@@ -92,5 +92,13 @@ function [ out ] = full_orbit(R0, V0, V_esc, A0, G, M_mars, R_m, h_atm, atm, dt_
     out.q = q;
     out.tp = tp;
     out.M = M;
+    out.theta_p = out_hk.param.theta_p;
+    out.rp = out_hk.param.rp;
+    out.ra = out_hk.param.ra;
+    out.theta0 = out_hk.param.theta;
+    out.theta = out_hk.end.theta;
+    out.a = out_hk.param.a;
+    out.e = out_hk.param.e;
+    out.c = out_c;
 end
 
