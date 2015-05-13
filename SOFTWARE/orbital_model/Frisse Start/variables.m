@@ -5,7 +5,7 @@ added_paths
 constants
 
 %Initial Position
-rx = -4190000;
+rx = -4720545.5;
 ry = SOI;
 R = [rx,ry,0];
 
@@ -26,11 +26,12 @@ tend = 3600 * 24 * 1; %[s]
 %Control variables
 control.CL_range = [-0.35 0.35];
 control.CLCD = 0.25;
-control.a = 3*g_earth;
+control.a = 2.5*g_earth;
 control.CLa = 0.02;
 control.dalphadt = 0.2;
 control.dalpha = control.dalphadt*dt_atmos;
 control.CL_init = -0.25;
+control.alpha_init = -10; % deg
 
 % create atmosphere object
 atm = marsatmosphere();
