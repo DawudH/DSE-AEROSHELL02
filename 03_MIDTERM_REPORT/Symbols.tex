@@ -376,6 +376,16 @@ parent=greekletter % for sorting purposes, use romanletter or greekletter
 	parent=greekletter % for sorting purposes, use romanletter or greekletter
 }
 
+\newglossaryentry{sym:n}
+{
+	type=symbol, % entry should be in the list of symbols!
+	name={\ensuremath{n}, % Put the symbol here in dollar signs
+	description={Outward surface normal vector}, % A brief description of this entry (to appear in the glossary).
+	symbol={$\left[- \right]$}, % put the unit here.... kind of weird, i know 
+	sort=n, % for correct sorting type the full name of the symbol here
+	parent=romanletter % for sorting purposes, use romanletter or greekletter
+}
+
 \newglossaryentry{sym:alpha}
 {
 	type=symbol, % entry should be in the list of symbols!
