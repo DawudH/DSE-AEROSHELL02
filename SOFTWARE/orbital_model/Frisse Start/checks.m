@@ -11,9 +11,18 @@ function [ out_c ] = checks( R, V, t, tend, R_m, h_atm, G, M_mars, inatmos, cras
     else
         out_c.t_end = false;
     end
-
+    
+    %check if it makes at least one orbit.
+    if round>=1
+        out_c.orbit = true;
+    else
+        out_c.orbit = false;
+    end
+    
     % If the spacecraft is within the atmosphere boundary
-    if ( r <= (R_m + h_atm+100) ) 
+    % or in orbit (we only compute the in atmos part then..) and not in
+    % orbit without entering the atmosphere.. 
+    if ( r <= (R_m + h_atm+100) ) || ( out_c.orbit && isreal(R) )
         out_c.in_atmos = true;
     else
         out_c.in_atmos = false;
@@ -47,12 +56,7 @@ function [ out_c ] = checks( R, V, t, tend, R_m, h_atm, G, M_mars, inatmos, cras
         out_c.flyby = false;
     end
     
-    %check if it makes at least one orbit.
-    if round>=1
-        out_c.orbit = true;
-    else
-        out_c.orbit = false;
-    end
+    
 
 
 end

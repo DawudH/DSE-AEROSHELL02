@@ -1,7 +1,7 @@
 %function [TriGeom,xvector,yvector,zvector] = Apollo(q)
 close all
 clear all
-q=3;
+q=10;
 RShell = 4.694;
 Redge = 0.196;
 
@@ -45,22 +45,40 @@ for n = 1:length(x(1,:))
     end
 end
 
+xvector(1:2*q-1)=[];
+yvector(1:2*q-1)=[];
+zvector(1:2*q-1)=[];
+
+
 %% Triangulation matrix 
 p = length(xvector);
 Tri = [0 0 0];
-for i = 0:2*q-2
+for i = 1:2*q-2
     for j = 1:2*q-1
-        if i == 0      
-            Tri(2*(i*(2*q-1)+j)-1,:) = [0 0 0];
-            Tri(2*(i*(2*q-1)+j),:) = [i*2*q+j (1+i)*2*q+j+1 (1+i)*2*q+j];
-        else
+%         if i == 0      
+%             Tri(2*(i*(2*q-1)+j)-1,:) = [0 0 0];
+%             %Tri(2*(i*(2*q-1)+j),:) = [i*2*q+j (1+i)*2*q+j+1 (1+i)*2*q+j];
+%         else
             Tri(2*(i*(2*q-1)+j)-1,:) = [i*2*q+j (i)*2*q+j+1 (i+1)*2*q+j+1];
             Tri(2*(i*(2*q-1)+j),:) = [i*2*q+j (1+i)*2*q+j+1 (1+i)*2*q+j];
-         end
+%          end
     end
 end
- Tri0 = Tri(:,1) == 0;
- Tri(Tri0,:) = [];
+Tri1 = [0 0 0];
+for I = 2:2*q
+    Tri1(I-1,:) = [1 I+1 I];
+end
+
+Tri0 = Tri(:,1) == 0;
+Tri(Tri0,:) = [];
+Tri = Tri-(2*q-1);
+Tri = [Tri1;Tri];
+% xvector(1:2*q-1)=[];
+% yvector(1:2*q-1)=[];
+% zvector(1:2*q-1)=[];    
+ 
+ 
+ 
 TriGeom = triangulation(Tri, xvector', yvector', zvector');
 FN = faceNormal(TriGeom);
 IC = incenter(TriGeom);
