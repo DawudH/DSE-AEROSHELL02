@@ -6,7 +6,7 @@ constants
 
 %Initial Position
 ry = SOI; %[m]
-rx = -8000000; %[m]
+rx = -4190000; %[m]
 R = [rx,ry,0];
 
 %Initial Velocity

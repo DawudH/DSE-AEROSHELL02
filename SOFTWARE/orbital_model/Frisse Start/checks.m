@@ -1,4 +1,4 @@
-function [ out_c ] = checks( R, V, R_m, h_atm, G, M_mars, inatmos )
+function [ out_c ] = checks( R, V, t, tend, R_m, h_atm, G, M_mars, inatmos, crash_margin )
 %CHECKS Summary of this function goes here
 %   Detailed explanation goes here
 
