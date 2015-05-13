@@ -1,9 +1,12 @@
+% Add paths
+added_paths
+
 %Add sources & explanation per constant
 constants
 
 %Initial Position
 ry = SOI; %[m]
-rx = 4190000; %[m]
+rx = -4190000; %[m]
 R = [rx,ry,0];
 
 %Initial Velocity
@@ -27,3 +30,6 @@ control.a = 2.9*g_earth;
 control.CLa = 0.02;
 control.dalpha = 0.2;
 control.CL_init = -0.18;
+
+% create atmosphere object
+atm = marsatmosphere();
