@@ -18,7 +18,53 @@ In this section the assumptions that are used for the \gls{tps} mass estimation 
 \end{itemize}
 
 \subsubsection{Leading equations}
-Suthes
+The problem is modelled as a one-dimensional multilayer layup which can provide the accuracy needed or this stage of concept analysis as described in the assumptions. A description of the implementation of this model is given by Smith \cite{Smith2011}. The model is illustrated in Figure \ref{fig:1dthermal}. The figure shows the different methods of heat transfer in the model. There is heat radiating away from the surface, convective heating or heat flux from the aerodynamic effects and heat conduction within the layers.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics{Figure/1dthermal.png}
+	\caption{1D thermal model}
+	\label{fig:1dthermal}
+\end{figure}
+
+The layup is then discretised in $i_{max}$ nodes, each having a thickness of $\Delta x$. For the nodes that only experience conduction as heat transfer the one-dimensional, time-dependent (transient) heat equation can be used, which is given by Equation \eqref{eq:therm1}
+
+\begin{equation}
+\frac{\partial T}{\partial t} = \alpha\frac{\partial^2T}{\partial x^2}
+\label{eq:therm1}
+\end{equation}
+
+In this equation $\alpha=\frac{k}{\rho c_p}$ stands for the thermal diffusivity, $k$ for the thermal conductivity, $\rho$ the material density and $c_p$ the material specific heat. Since the layup has been discretised, the heat equation is discretised as well. The time march method used for this discretisation is the Forward in Time and Central in Space (FCTS) scheme is used. The advantage of this time march is that it is computationally inexpensive. The drawback is that it can be unstable and therefore $\Delta t$ and $\Delta x$ should be chosen such that it complies with a stability criterion. The result of the time march is given by Equation \eqref{eq:therm2}. The notation in the equation is as follows: the subscript $i$ refers to the node and the superscript $n$ refers to the timestep. Obviously, the distance between $i$ and $i+1$ is $\Delta x$ and the time between $n$ and $n+1$ is $\Delta t$.
+
+\begin{equation}
+\frac{T_i^{n+1}-T_i^n}{\Delta t} = \alpha\left[\frac{T_{i+1}^n-2T_i^n+T_{i-1}^n}{\left(\Delta x\right)^2}\right]
+\label{eq:therm2}
+\end{equation}
+
+This equation can be rewritten such that it shows the heat rate balance of a node per unit area in $\left[\frac{W}{m^2}\right]$ (Equation \eqref{eq:therm3}). This can be done by writing out $\alpha$. To account for different materials in the layup, the heat transfer between the neighbouring nodes is separated. For this the factors $K_{i-1}=2\left(\frac{1}{k_{i-1}}+\frac{1}{k_i}\right)^{-1}$ and $K_{i+1}=2\left(\frac{1}{k_{i+1}}+\frac{1}{k_i}\right)^{-1}$ are used. The same behaviour can be seen in electrical resistance as the inverse of the equivalent resistance is the sum of the inverse resistances in a parallel circuit ($\frac{1}{R_{eq}}=\frac{1}{R_1}+\frac{1}{R_2}$). This heat rate balance can also be presented schematically as shown in Figure \ref{fig:thermbalance1}.
+
+\begin{equation}
+\frac{\rho_ic_{p_i}\Delta x}{\Delta t}\left(T_i^{n+1}-T_i^n\right)=\frac{K_{i-1}}{\Delta x}\left(T_{i-1}^n-T_i^n\right)-\frac{K_{i+1}}{\Delta x}\left(T_i^n-T_{i+1}^n\right)
+\label{eq:therm3}
+\end{equation}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics{Figure/thermblocknode1.png}
+	\caption{Heat rate balance for conducting nodes}
+	\label{fig:thermbalance1}
+\end{figure}
+
+Recall that the first node, or the surface node also experiences radiation and convection. The heat rate balance can be easily illustrated by changing the blocks in the previous scheme according to the aforementioned differences. The surface node receives the heat flux, radiates heat away and conducts heat to node $i+1$ (or node 2). No conducted heat is received from node $i-1$ since node 0 does not exist. These changes result in Figure \ref{fig:thermbalance2}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics{Figure/thermblocknode2.png}
+	\caption{Heat rate balance for conducting nodes}
+	\label{fig:thermbalance2}
+\end{figure}
+
+Equation \eqref{eq:therm3} can then be altered by adding a $q^n$-term for the convective heating, or heat flux and adding  $\varepsilon\sigma\left(\left(T_1^4\right)^n-\left(T_\infty^4\right)^n\right)$ to account for the radiation. In here the superscript $n$ stands for timestep $n$. For the last node a similar heat balance can be constructed. Smith says that in this node the radiation and convection terms can omitted since they are much lower than the conductive heat rate in this part \cite{Smith2011}. In this case all heat conducted from node $i-1$ is stored into node $i$ as conduction towards node $i+1$ is not possible.
 \subsubsection{Input}
 Lucas
 \subsubsection{Output}
