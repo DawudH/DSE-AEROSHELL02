@@ -9,12 +9,12 @@ A mass estimations of the \gls{tps} requires analysis due to heat transfer in th
 In this section the assumptions that are used for the \gls{tps} mass estimation and tool developement are stated. Also, an elaboration is given of the impact of the assumption on the results.
 
 \begin{itemize}
-\item \textbf{1D solution instead of 3D}: 
-\item \textbf{Sizing is done with under stagnation conditions}: 
-\item \textbf{Model temperature and heat flux}: 
-\item \textbf{Constant material properties}:
-\item \textbf{Applicance to multiple layers}:
-\item \textbf{•}:
+\item \textbf{1D instead of 3D analysis}: For the determination of the temperature through the material over time, a one dimensional lay-up can be used. This is different from the actual case, where the body is heated over a three dimentional body. This assumption however is varied for instance by Ref. \cite{Corso2009}.
+\item \textbf{Sizing is done under stagnation conditions}: One of the inputs in the tool is the temperature at the wall. For this, the stagnation temperature is used instead of the actual temperature distribution over the surface. The stagnation temperature is a maximum value for the temperature and hence, the result of the tool will give the most conservative value needed for the design of the \gls{tps}. Therefore, the \gls{tps} will be overdesigned and can not be used as final values of the \gls{tps} mass. However, they do give an indication on how different concepts perform relative to eachother, such that the method can be used to make trade-off desisions.
+\item \textbf{Model for heat flux}: Another input in the tool is the heat flux. This heatflux input is based on an aerodnamic model described, as described in Chapter \ref{ch:aero_analysis}.
+\item \textbf{Constant material properties}: Material properties like tensile stregth, density and thermal conductivity change, if considered over a large temperature range. However, it is assumed that this change is negligable. 
+\item \textbf{Appliable to multiple layers}: The tool uses steps in legth that pass over layers with different materials. It is possible that a length step is located inbetween two layers but is only concidered as one material. Because length steps are very small, this has no major impact on the model.
+\item \textbf{discritisation of differential equations}: The tool is based on a finite difference discritisation. This method is verified. However, the discritisation errors are only stable for a certain range of time steps, as can be seen in Ref. \cite{Smith2011}. 
 \end{itemize}
 
 \subsubsection{Leading equations}
@@ -38,3 +38,4 @@ Suthes
 
 
 \subsection{Conclusion \& recomendations}
+Check for material failure other then for thermal reasons.
