@@ -21,6 +21,7 @@ for n = 1:length(x(1,:))
         zvector = [zvector,z(m,n)];
     end
 end
+
 %% Triangulation matrix 
 p = length(xvector);
 Tri = [0 0 0];
@@ -66,6 +67,7 @@ for n = 1:length(x(1,:))
         zvector = [zvector,z(m,n)];
     end
 end
+
 %% Create triangulation matrix
 p = length(xvector);
 Tri = [0 0 0];
