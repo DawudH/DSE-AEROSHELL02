@@ -108,6 +108,6 @@ function [ out ] = full_orbit(R0, V0, A0, G, M_mars, R_m, h_atm, atm, dt_kep_ini
     % output text
     a_human_mag = sqrt((out.Ad(:,1)+out.Al(:,1)).^2 + (out.Ad(:,2)+out.Al(:,2)).^2 + (out.Ad(:,3)+out.Al(:,3)).^2);
     maxaccel = max(a_human_mag)/g_earth;
-    disp(['rx = ' num2str(R0(1)) ' [m], CD = ' num2str(abs(control.CL_init) / control.CLCD) ' [-], CL = ' num2str(control.CL_init) ' [-], in atmosphere: ' num2str(out_c.in_atmos) ', crashed: ' num2str(out_c.crash) ', in orbit: ' num2str(out_c.inorbit) ', acceleration: ' num2str(maxaccel) ', time pased: ' num2str(t/(3600*24)) ' days' ])
+    disp(['rx = ' num2str(R0(1)) ' [m], CD = ' num2str(abs(control.CL_init) / control.CLCD) ' [-], CL = ' num2str(control.CL_init) ' [-], in atmosphere: ' num2str(out_c.in_atmos) ', crashed: ' num2str(out_c.crash) ', in orbit: ' num2str(out_c.orbit) ', acceleration: ' num2str(maxaccel) ', time pased: ' num2str(t/(3600*24)) ' days' ])
 end
 
