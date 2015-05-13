@@ -4,20 +4,21 @@ close all
 
 %%Input constants & variables
 variables
-step_rx = -10000;
+step = -10000;
 rx_b = -4100000;
 rx_e = -4500000;
-rx = (rx_b:step_rx:rx_e)'; %[m]
+rx = (rx_b:step:rx_e)'; %[m]
 n = length(rx);
 ry = SOI*ones(n,1); %[m]
 R = [rx,ry,zeros(n,1)];
 out_refine.rx = rx(1);
 out_orbit.c.orbit = false;
 
-while out_orbit.c.orbit == false
+while (out_orbit.c.orbit == false) && (abs(step)>1)
     for i=1:length(rx)
     %%function
         [out_orbit] = full_orbit(R(i,:), V, A, G, M_mars, R_m, h_atm, atm, dt_kep_init, dt_atmos, m, Omega_m, S, control, tend, crash_margin, g_earth);
+        i
         out_orbit.c
         [out_refine] = refine_check(out_orbit.c,rx(i),out_refine);
         if out_refine.refine
