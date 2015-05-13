@@ -230,7 +230,27 @@ classdef modnewtonian
             quiverV = - xlength * 0.5 * obj.V_array(:,end) / norm(obj.V_array(:,end));
             quiverx = xlength*0.5 - quiverV(1);
             quiver3(quiverx,mean(obj.coords(2,:))-quiverV(2),mean(obj.coords(3,:))-quiverV(2),quiverV(1), quiverV(2), quiverV(3));
-
+        end
+        
+        
+        
+        function points = getPointsOnXZPlane(obj, y)
+            epsilon = 1e-10;
+            points = find(obj.coords(2,:)>y-epsilon & obj.coords(2,:)<y+epsilon);
+        end
+        
+        function points = getPointsOnYZPlane(obj, x)
+            epsilon = 1e-10;            
+            points = find(obj.coords(1,:)>x-epsilon & obj.coords(1,:)<x+epsilon);
+        end
+        
+        function triangles = getTrianglesOnPoint(obj, point)
+            triangles = [find(obj.tri(:,1)==point);find(obj.tri(:,2)==point);find(obj.tri(:,3)==point)];
+        end
+        
+        function cp = calcCpOnPoint(obj, point)
+            triangles = getTrianglesOnPoint(obj, point);
+            cp = mean(obj.Cpdist_array(triangles, end));
         end
         
         function T = Tab(~, alpha, beta)
