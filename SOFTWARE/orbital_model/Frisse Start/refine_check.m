@@ -29,6 +29,12 @@ function [ out ] = refine_check(c , rx,in)
         refine = false;
     end
     
+    if to_close == false && to_far == false
+        out.break = true;
+    else
+        out.break = false;
+    end
+    
     %%output
     out.refine = refine;
 end
