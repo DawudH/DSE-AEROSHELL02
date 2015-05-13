@@ -34,7 +34,7 @@ function [ coords, tri, A ] = generategeometry( type, q )
             tri = TriGeom.ConnectivityList;
             A = pi*6^2;
         case 'deg30cone'
-            [TriGeom,xvector,yvector,zvector] = Sharpcone(q,6,1);
+            [TriGeom,xvector,yvector,zvector] = Sharpcone(q,6,15);
             coords = [xvector;yvector;zvector];
             tri = TriGeom.ConnectivityList;
             A = pi*6^2;
