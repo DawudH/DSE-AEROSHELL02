@@ -32,7 +32,6 @@ plot(t,out.M)
 plot(xlim,[5,5],'-.','color','r');
 grid on
 
-
 % plot orbit
 % circle plot:
 theta_plot = 0:0.01:2*pi;
