@@ -1,5 +1,3 @@
-addpath('..\..\mars_atmosphere')
-
 %%Universal constants
 %Gravitational constant
 G = 6.673*10^-11; %[N*(m/kg)^2]
@@ -24,6 +22,9 @@ R_m = 6794000/2; %[m]
 h_atm = 400e3; %[m]
 %Sphere of influence
 SOI = 0.576e9; %[m]
+
+% crash margin above the surface
+crash_margin = 10000; %[m]
 
 
 %Earth gravitational accaleration

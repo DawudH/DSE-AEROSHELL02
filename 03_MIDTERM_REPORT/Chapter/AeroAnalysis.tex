@@ -29,9 +29,18 @@ C_{p_{max}}=\frac{2}{\gamma M_{\infty}^{2}}\left(\frac{p_{O_{2}}}{p_{\infty}}-1\
 \label{eq:cpmaxfinal}
 \end{equation}
 
-By dividing the surface of the body to be analysed into many triangular elements the pressure coefficient distribution of said body can be determined numerically. A velocity magnitude is given as input, together with the angle of attack $\alpha$ and sideslip angle $\beta$. Following this the outward surface normal vector is computed in Cartesian coordinates for every element, after which the inclination angle $\theta$ is determined by taking [TBD, add in future] 
-
-Using $C_{p_{max}}$ and $\theta$ the $C_{p}$ for every surface element is calculated, after which it is multiplied with the element area and the element surface normal vector. This results in an elemental pressure force in three dimensions from which the lift and drag forces(, as well as the aerodynamic moments (how?)) can be determined. 
+By dividing the surface of the body to be analysed into many triangular elements the pressure coefficient distribution of said body can be determined numerically. A velocity magnitude is given as input, together with the angle of attack $\alpha$ and sideslip angle $\beta$. Following this the outward surface normal vector is computed in Cartesian coordinates for every element, after which the velocity unit vector is computed with equation \ref{eq:unitV}. To determine $sin(\theta)$ for every element the dot product of the velocity unit vector with the surface normal vector is then taken, as shown in equation \ref{eq:dotproduct}.
+\begin{multicols}{2}
+\begin{equation}
+\hat{V}=\frac{\bar{V}}{|\bar{V}|}
+\label{eq:unitV}
+\end{equation} \break
+\begin{equation}
+sin(\theta)=\hat{V} \bullet \hat{n}
+\label{eq:dotproduct}
+\end{equation}
+\end{multicols}
+Using $C_{p_{max}}$ and $sin(\theta)$ the $C_{p}$ for every surface element is calculated, after which it is multiplied with the element area and the element surface normal vector. This results in an elemental pressure force in three dimensions from which the lift and drag forces can be determined. By then summing the resultant forces for all elements the total body forces are found. Next to the body forces the resultant aerodynamic moment can also be found. For this the location of the \acrfull{cg} is used as input, after which the moments about the \gls{cg} caused by the force on each element can be summed. 
 
 In addition to determining the aerodynamic forces and moments acting on the body, the heat flux in the stagnation point is also computed. A generalized equation to predict the heat flux on a body can be found in \cite{AndersonJr.2006,Tauber1986}. This equation is shown in \ref{eq:heatflux}.
 \begin{equation}
@@ -64,9 +73,27 @@ Where $q_{w_{stagnation}}$ denotes the heat flux into the body at the stagnation
 
 \subsection{Model verification \& validation}
 \label{subsec:aeroverval}
-After the model construction verification was carried out to determine whether the model correctly implemented the calculations of the modified Newtonian method. This was done by placing two triangular surface elements in a flow at an angle and comparing the model outputs with results obtained by manual computations. 
+After the model construction verification was carried out to determine whether the model correctly implemented the calculations of the modified Newtonian method. This was done by placing two triangular surface elements in a flow. First at an angle and secondly normal to the flow. The model outputs were verified by also calculating the results by hand.
 
-Following the verification the model was validated against \cite[p. 783]{AndersonJr.2007}
+Following the verification the model was validated using experimental drag coefficient values of a sphere at supersonic and hypersonic Mach numbers \cite[p. 783]{AndersonJr.2007}. It was found that at Mach 25 the difference between the experimental and numerical \gls{sym:CD}'s was 2\%. This is found to be within acceptable margins for the program to be used during the conceptual and preliminary design phases.
+
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}[b]{0.49\textwidth}
+		\centering
+		\includegraphics[width=0.95\textwidth]{./Figure/CD_sphere_exp}
+		\caption[Variation of measured \gls{sym:CD} with Mach number for a sphere and cone-cylinder]{Variation of measured \gls{sym:CD} with Mach number for a sphere and cone-cylinder \cite{AndersonJr.2007,Cox1965}}
+		\label{fig:exp_cd}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.49\textwidth}
+		\centering
+		\includegraphics[width=0.95\textwidth]{./Figure/Nyan}
+		\caption{heading}
+		\label{fig:num_cd}
+	\end{subfigure}
+	\caption{Comparison of experimental and numerical \gls{sym:CD}-values}
+	\label{fig:comparison_cd}
+\end{figure}
 
 \subsection{Application of analysis tool to system concepts}
 \label{subsec:appaeroanal}
