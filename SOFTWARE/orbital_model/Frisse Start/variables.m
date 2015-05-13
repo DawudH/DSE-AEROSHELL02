@@ -5,7 +5,7 @@ added_paths
 constants
 
 %Initial Position
-rx = -4140000;
+rx = -4138000;
 ry = 10*R_m;
 R = [rx,ry,0];
 
@@ -17,7 +17,7 @@ V = [0,-v,0];
 A = G*M_mars/norm(R(1,:))^3*R(1,:);
 
 %timesteps
-dt_atmos = 0.5; %[s]
+dt_atmos = 0.1; %[s]
 dt_kep_init = 1e-6; %[s]
 
 %time to end simulation
