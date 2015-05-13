@@ -1,4 +1,4 @@
-function [ out ] = full_orbit(R0, V0, A0, G, M_mars, R_m, h_atm, atm, dt_kep_init, dt_atmos, m, Omega_m, S, control, tend, crash_margin, g_earth)
+function [ out ] = full_orbit(R0, V0, A0, G, M_mars, R_m, h_atm, atm, dt_kep_init, dt_atmos, m, Omega_m, S, control, tend, crash_margin, g_earth, aero_coef)
 %Calculates the full orbit for selected initial conditions until sepcified
 %end time
 
@@ -31,6 +31,7 @@ function [ out ] = full_orbit(R0, V0, A0, G, M_mars, R_m, h_atm, atm, dt_kep_ini
     % give initial control state
     CL = control.CL_init;
     CD = abs(control.CL_init) / control.CLCD;
+    alpha = control.alpha_init;
 
     %%Functions
     %As long as the s/c is in orbit keep calculating the next position
@@ -41,13 +42,17 @@ function [ out ] = full_orbit(R0, V0, A0, G, M_mars, R_m, h_atm, atm, dt_kep_ini
                  state.CL = CL;
                  state.CD = CD;
                  state.a = norm(A(i,:) - Ag(i,:));
+                 state.alpha = alpha;
                  % start controlling once the accel is above 1.5g
                  if state.a > 1.5*g_earth
-                         [aero_param] = aero_conrol(state,control);
-                         CL = aero_param.CL;
-                         CD = aero_param.CD;
+                         [aero_param] = aero_conrol(state,control,aero_coef);
+                         CL = aero_param.CLA / S;
+                         CD = aero_param.CDA / S;
+                         alpha = aero_param.alpha;
                  end
             [out_o] = in_atmosphere( V(i,:), R(i,:), A(i,:), a_prev, J(i,:), atm, CL, CD, dt_atmos, R_m, Omega_m, S, m );
+            %Function to check when to end the orbit
+            [out_c] = checks( R(i+1,:), V(i+1,:), t, tend, R_m, h_atm, G, M_mars, out_c.in_atmos, crash_margin,round );
             a_prev = A(i,:);
             t = t + dt_atmos;
         %When the s/c is not in the atmosphere use a kepler orbit
@@ -56,6 +61,9 @@ function [ out ] = full_orbit(R0, V0, A0, G, M_mars, R_m, h_atm, atm, dt_kep_ini
             orbit_init.V = V(i,:);
             orbit_init.a = A(i,:);
             [out_o] = eliptic_kepler(R(i,:),V(i,:),A(i,:),G,M_mars,dt_kep_init,orbit_init);
+            %Function to check when to end the orbit
+            [out_c] = checks( R(i+1,:), V(i+1,:), t, tend, R_m, h_atm, G, M_mars, out_c.in_atmos, crash_margin,round );
+            out_c.in_atmos = true;
             round = round + 1;
             a_prev = out_o.A;
             t = t + out_o.t_kep;
@@ -74,8 +82,8 @@ function [ out ] = full_orbit(R0, V0, A0, G, M_mars, R_m, h_atm, atm, dt_kep_ini
         J(i+1,:) = out_o.J;
         q(i+1,:) = out_o.q;
 
-        %Function to check when to end the orbit
-        [out_c] = checks( R(i+1,:), V(i+1,:), t, tend, R_m, h_atm, G, M_mars, out_c.in_atmos, crash_margin,round );
+        
+        out_c
         if out_c.crash || out_c.flyby || out_c.t_end
             orbit = false;
         end

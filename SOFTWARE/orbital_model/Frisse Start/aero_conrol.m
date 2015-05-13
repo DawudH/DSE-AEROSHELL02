@@ -1,4 +1,4 @@
-function [out] = aero_conrol(state,control)
+function [out] = aero_conrol(state,control,aero_coef)
     % state should contain:
         % state.a, the accelerataion at this instant
         % state.CL, the CL at this instant
@@ -15,33 +15,33 @@ function [out] = aero_conrol(state,control)
     if state.a < control.a
     % If state.a < control.a, decrease CL (so decrease alpha) to allow higer acceleration
     
-         
-         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-         CL = state.CL - control.CLa * control.dalpha;
-         % check if CL is out of bounds
-         if ( CL < min(control.CL_range) )
-             CL = min(control.CL_range);
-         end
-         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        alpha = state.alpha - control.dalpha;
+        if ( alpha < min(control.alpha_range) )
+             alpha = min(control.alpha_range);
+        end
+        [CLA, CDA, CMYA] = aero_coef.aeroCoeffs(alpha);
+        
          
     elseif state.a == control.a
-    % If state.a = control.a, keep the same CL
-        CL = state.CL;
+        % If state.a = control.a, keep the same CL
+        [CLA, CDA, CMYA] = aero_coef.aeroCoeffs(state.alpha);
     
     else
     % If state.a > control.a, increase CL (so increase alpha) to allow lower acceleration
-        CL = state.CL + control.CLa * control.dalpha;
-         % check if CL is out of bounds
-         if ( CL > max(control.CL_range) )
-             CL = max(control.CL_range);
-         end
-    end
     
-    CD = abs(CL) / control.CLCD;
+        alpha = state.alpha + control.dalpha;
+        if ( alpha > max(control.alpha_range) )
+             alpha = max(control.alpha_range);
+        end
+        [CLA, CDA, CMYA] = aero_coef.aeroCoeffs(alpha);
+        
+    end
     
     
     % generate output
-    out.CL = CL;
-    out.CD = CD;
+    out.CLA = CLA;
+    out.CDA = CDA;
+    out.CMYA = CMYA;
+    out.alpha = alpha;
     
 end
