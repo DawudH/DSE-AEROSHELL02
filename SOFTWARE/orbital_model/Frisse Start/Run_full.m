@@ -31,7 +31,6 @@ hold on
 plot(t,out.M)
 plot(xlim,[5,5],'-.','color','r');
 grid on
-
 % plot orbit
 % circle plot:
 theta_plot = 0:0.01:2*pi;
@@ -50,3 +49,5 @@ rk = out.a * (1- out.e^2) ./ (1 + out.e * cos(theta_plot));
 polar(theta_plot+out.theta_p,rk,'k');
 plot(out.rp*cos(out.theta_p),out.rp*sin(out.theta_p),'*');
 plot(-out.ra*cos(out.theta_p),-out.ra*sin(out.theta_p),'d');
+
+v = sqrt(G*M_mars*(2/(10*R_m)-1/out.a))

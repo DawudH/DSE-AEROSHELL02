@@ -5,12 +5,12 @@ added_paths
 constants
 
 %Initial Position
-rx = -4720545.5;
-ry = SOI;
+rx = -4149700;
+ry = 10*R_m;
 R = [rx,ry,0];
 
 %Initial Velocity
-v = 5000; %[m/s]
+v = 7.1679e+03; %[m/s]
 V = [0,-v,0];
 
 %Initial acceleration
