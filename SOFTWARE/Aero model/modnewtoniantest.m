@@ -13,21 +13,21 @@ gamma = 1.4;
 center = zeros(3,1);
 rho = 1e-3;
 T = 150;
-q = 40;
+q = 80;
 
-alpha0 = 0; %degrees
+alpha0 = -40; %degrees
 dalpha = 1; %degrees
-alphaend = 15; %degrees
+alphaend = 40; %degrees
 
-[ coords, tri, A ] = generategeometry( shapetexts.irvevalidation, q );
+[ coords, tri, A ] = generategeometry( shapetexts.pastille12m15m, q );
 
 mod = modnewtonian( coords, tri, gamma, a, center, rho, T, A);
-% mod = mod.alphasweep(7e3, 0, deg2rad(alpha0), deg2rad(alphaend), deg2rad(dalpha));
+mod = mod.alphasweep(a*20, 0, deg2rad(alpha0), deg2rad(alphaend), deg2rad(dalpha));
 
-mod = mod.calcAeroangle(7e3,deg2rad(10),0);
+% mod = mod.calcAeroangle(7e3,deg2rad(10),0);
 
 mod.plotCp(true, false);
-mod.CR_aero_array
+mod.CRA_aero_array
     
 % mod.plots(rad2deg(mod.alpha_array), 'alpha', {{'cl'}, {'cd'}, {'clcd'}, {'cx'}, {'cz'},{'cmy'},{'q'}, {'T'}});
 
