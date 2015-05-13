@@ -13,7 +13,7 @@ mu = G*M;
 r  = R_m+h_atm;
 theta = -acos((a*(1-e^2)-r)/(r*e));
 %R wrt the elipse reference frame
-R = r*[cos(theta),sin(theta),0];
+R = r*[cos(theta),-sin(theta),0];
 %Express in 0-reference frame
 R0 = rotz(rad2deg(theta_p))*R';
 x = R0(1);
