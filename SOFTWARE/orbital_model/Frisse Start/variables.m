@@ -5,16 +5,16 @@ added_paths
 constants
 
 %Initial Position
-ry = SOI; %[m]
-rx = -4190000; %[m]
+rx = -4190000;
+ry = SOI;
 R = [rx,ry,0];
 
 %Initial Velocity
-v = 7000; %[m/s]
+v = 6000; %[m/s]
 V = [0,-v,0];
 
 %Initial acceleration
-A = G*M_mars/norm(R)^3*R;
+A = G*M_mars/norm(R(1,:))^3*R(1,:);
 
 %timesteps
 dt_atmos = 0.5; %[s]
@@ -26,10 +26,11 @@ tend = 3600 * 24 * 1; %[s]
 %Control variables
 control.CL_range = [-0.35 0.35];
 control.CLCD = 0.25;
-control.a = 2.9*g_earth;
+control.a = 3*g_earth;
 control.CLa = 0.02;
-control.dalpha = 0.2;
-control.CL_init = -0.18;
+control.dalphadt = 0.2;
+control.dalpha = control.dalphadt*dt_atmos;
+control.CL_init = -0.25;
 
 % create atmosphere object
 atm = marsatmosphere();
