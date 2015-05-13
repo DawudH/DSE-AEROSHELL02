@@ -82,7 +82,7 @@ warning('off',id)
 TriGeom = triangulation(Tri, xvector', yvector', zvector');    
 
 
-%% Blunt Half Cone. t = gradient at dome edge, r is half dome radius, R is max radius
+%% Blunt Half Cone. t = angle of cone, r is half dome radius, R is max radius
 elseif type == 'c'
     if r>R 
         print('R must be bigger then r')
@@ -90,6 +90,9 @@ elseif type == 'c'
 X = 1;  
 X = linspace(0,X,q);
 X = meshgrid(X);
+
+t = 90 -t;
+t = tand(t)*r;
 
 R = 12;
 r = linspace(0,r,q); 
@@ -100,18 +103,16 @@ theta = meshgrid(theta);
 theta = theta';
 
 %% Cylindrical transformation
-X = (t/rgrad)*(X.^2)/2;
+X = (t)*(X.^2)/2;
 z=r.*cos(theta);           
 y=r.*sin(theta);
 x=-X;
-x = x;
-y = y;
-z = z;
 
 %% Coordinate calculation of upper ring(after linear section)
 zmax = R.*cos(theta);
 ymax = R.*sin(theta);
 xmax = -max((t/rgrad)+(R-max(r))*(t/rgrad));
+%xmax = -t/max(max(r))*(R-max(max(r)));
 xmax = ones(q)*xmax;
 x = [x,xmax(:,1)];
 y = [y,ymax(:,1)];
