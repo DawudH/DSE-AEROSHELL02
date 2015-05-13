@@ -100,7 +100,7 @@ theta = meshgrid(theta);
 theta = theta';
 
 %% Cylindrical transformation
-X = t*(X.^2)/2;
+X = (t/rgrad)*(X.^2)/2;
 z=r.*cos(theta);           
 y=r.*sin(theta);
 x=-X;
