@@ -5,7 +5,7 @@ added_paths
 constants
 
 %Initial Position
-rx = -4149700;
+rx = -4143000;
 ry = 10*R_m;
 R = [rx,ry,0];
 

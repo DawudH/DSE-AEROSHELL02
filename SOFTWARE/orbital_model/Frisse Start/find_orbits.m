@@ -17,7 +17,7 @@ out_orbit.c.orbit = false;
 while (out_orbit.c.orbit == false)
     for i=1:length(rx)
     %%function
-        [out_orbit] = full_orbit(R(i,:), V, A, G, M_mars, R_m, h_atm, atm, dt_kep_init, dt_atmos, m, Omega_m, S, control, tend, crash_margin, g_earth);
+        [out_orbit] = full_orbit(R(i,:), V, A, G, M_mars, R_m, h_atm, atm, dt_kep_init, dt_atmos, m, Omega_m, S, control, tend, crash_margin, g_earth, aero_coef);
         i
         out_orbit.c
         [out_refine] = refine_check(out_orbit.c,rx(i),out_refine);
