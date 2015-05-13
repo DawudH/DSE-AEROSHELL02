@@ -26,7 +26,7 @@ function [ out ] = full_orbit(R0, V0, A0, G, M_mars, R_m, h_atm, atm, dt_kep_ini
     q(1,:) = out_hk.end.q;
     a_prev = A(1,:);
     %Get initial values for conditions
-    [out_c] = checks( R(1,:), V(1,:), t, tend, R_m, h_atm, G, M_mars, false, crash_margin );
+    [out_c] = checks( R(1,:), V(1,:), t, tend, R_m, h_atm, G, M_mars, false, crash_margin, round );
     out_c.in_atmos = true;
     % give initial control state
     CL = control.CL_init;
@@ -75,7 +75,7 @@ function [ out ] = full_orbit(R0, V0, A0, G, M_mars, R_m, h_atm, atm, dt_kep_ini
         q(i+1,:) = out_o.q;
 
         %Function to check when to end the orbit
-        [out_c] = checks( R(i+1,:), V(i+1,:), t, tend, R_m, h_atm, G, M_mars, out_c.in_atmos, crash_margin );
+        [out_c] = checks( R(i+1,:), V(i+1,:), t, tend, R_m, h_atm, G, M_mars, out_c.in_atmos, crash_margin,round );
         if out_c.crash || out_c.flyby || out_c.t_end
             orbit = false;
         end

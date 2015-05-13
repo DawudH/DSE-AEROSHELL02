@@ -1,4 +1,4 @@
-function [ out_c ] = checks( R, V, t, tend, R_m, h_atm, G, M_mars, inatmos, crash_margin )
+function [ out_c ] = checks( R, V, t, tend, R_m, h_atm, G, M_mars, inatmos, crash_margin, round )
 %CHECKS Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -45,7 +45,12 @@ function [ out_c ] = checks( R, V, t, tend, R_m, h_atm, G, M_mars, inatmos, cras
         out_c.flyby = false;
     end
     
-    
+    %check if it makes at least one orbit.
+    if round>=1
+        out_c.orbit = true;
+    else
+        out_c.orbit = false;
+    end
 
 
 end
