@@ -4,8 +4,8 @@ close all
 
 %%Input constants & variables
 variables
-step = -10000;
-rx_b = -4100000;
+step = -10;
+rx_b = -4144700;
 rx_e = -4200000;
 rx = (rx_b:step:rx_e)'; %[m]
 n = length(rx);
@@ -29,6 +29,9 @@ while (out_orbit.c.orbit == false)
         end
         if out_orbit.c.orbit
             rx(i)
+        end
+        if out_refine.break
+            break;
         end
     end
     if out_refine.refine == false
