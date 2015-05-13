@@ -13,19 +13,23 @@ function [out] = aero_conrol(state,control)
         % timestep
 
     if state.a < control.a
-    % If state.a < control.a, decrease CL to allow higer acceleration
+    % If state.a < control.a, decrease CL (so decrease alpha) to allow higer acceleration
+    
+         
+         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
          CL = state.CL - control.CLa * control.dalpha;
          % check if CL is out of bounds
          if ( CL < min(control.CL_range) )
              CL = min(control.CL_range);
          end
+         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
          
     elseif state.a == control.a
     % If state.a = control.a, keep the same CL
         CL = state.CL;
     
     else
-    % If state.a > control.a, increase CL to allow lower acceleration
+    % If state.a > control.a, increase CL (so increase alpha) to allow lower acceleration
         CL = state.CL + control.CLa * control.dalpha;
          % check if CL is out of bounds
          if ( CL > max(control.CL_range) )

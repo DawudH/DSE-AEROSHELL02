@@ -13,7 +13,7 @@ mu = G*M;
 r  = R_m+h_atm;
 theta = -acos((a*(1-e^2)-r)/(r*e));
 theta0 = theta_p -2*pi + theta;
-%R wrt the elipse reference frame
+%R wrt the zero reference frame
 R0 = r*[cos(theta0),sin(theta0),0];
 x = R0(1);
 %Velocity
