@@ -1,8 +1,8 @@
 \section{Conceptual design options} \label{ch:options}
-This chapter will discuss the five design concepts that will be considered in this report. First the selection of concepts based on the shape, mission duration and controls system design option trees is made. Finally in Section \ref{sec:conf} the five selected configurations are sketched and described. The following five design are consequently used in the analysis in the relevant chapter of this report.
+This chapter will discuss the five design concepts that will be considered in this report. First the selection of concepts based on the shape, mission duration and controls system design option trees is made. Finally in Section \ref{sec:conf} the five selected configurations are sketched and described. A simple load analysis is given in the form of \gls{fbd} to gain insight in the functioning of each of the concepts. The following five design are consequently used for analysis in the relevant chapters of this report.
 
 \subsection{Concept selection}
- From the \acrfull{br} three \glspl{dot} were obtained for the design of the hypersonic decelerator. In these designs concept shape, mission duration and control system are considered. This yielded a set of all the individual design options. These options are shown in Figure \ref{fig:dotshape} to \ref{fig:dotcontrol}. From these \glspl{dot} a feasible set of design options can be obtained. In Figure \ref{fig:dotshape} six deemed feasible concept configurations  can be seen. This can consequently be combined with three possible control systems from Figure \ref{fig:dotcontrol}. The mission duration varies for all concepts and is therefore considered separately for every design. 
+ From the \acrfull{br} three \glspl{dot} were obtained for the design of the hypersonic decelerator. In these designs concepts; shape, mission duration and control system are considered. This yielded a set of all the individual design options. These options are shown in Fig. \ref{fig:dotshape} to \ref{fig:dotcontrol}. From these \glspl{dot} a feasible set of design options can be obtained. In Fig. \ref{fig:dotshape} six deemed feasible concept configurations  can be seen. This can consequently be combined with three possible control systems from Fig. \ref{fig:dotcontrol}. The mission duration varies for all concepts and is therefore considered separately for every design concept. 
 
 \begin{figure}[H]
 %\centering
@@ -15,26 +15,27 @@ This chapter will discuss the five design concepts that will be considered in th
 
 \begin{figure}[H]
 \centering
-\includegraphics[width = 1.0\textwidth]{Figure/DOT_missionduration.pdf}
-\vspace{-5mm}
-\caption{\acrlong{dot} for mission duration}
-\label{fig:dotduration}
-\end{figure}
-
-\begin{figure}[H]
-\centering
 \includegraphics[width = 0.93\textwidth]{Figure/DOT_control.pdf}
 \vspace{-5mm}
 \caption{\acrlong{dot} for control systems}
 \label{fig:dotcontrol}
 \end{figure}
 
+\begin{figure}[H]
+\centering
+\includegraphics[width = 1.0\textwidth]{Figure/DOT_missionduration.pdf}
+\vspace{-5mm}
+\caption{\acrlong{dot} for mission duration}
+\label{fig:dotduration}
+\end{figure}
 
-From the 18 options yielded by combining the feasible shapes and control systems shown above some may be disregarded immediately since they cannot be combined. For obvious reasons it is crucial that each concept configuration features at least one deemed feasible control system From this point onward the concept shape will be considered leading. The control systems from Figure \ref{fig:dotcontrol} are considered separately for each of these shape. Design options were only considered for the concept shape and control surfaces, since these require individual matching as not any shape and control surface system may be combined. Analysis on the performance in the fields of aerodynamics, thermodynamics or structures follow directly from the shape. The control surface is however considered separately and exotic concepts such as the, for now, deemed infeasible \gls{mhd} control have their own strict requirements on the structure. Since these exotic options are at this point deemed infeasible the shape of the structure can be considered leading in the design. 
+From the eighteen options yielded by combining the feasible shapes and control systems shown in Fig \ref{fig:dotshape} and \ref{fig:dotcontrol} some may be disregarded immediately since they cannot practically be combined. For obvious reasons it is crucial that each concept configuration features at least one deemed feasible control system. From this point onward the concept shape will be considered leading. 
 
-Table \ref{tab:designconcepts} shows the design option that will be considered within this report. The check-marked control systems are further investigated for their feasibility and performance within Chapter ?? discussing the control systems. For these control systems their performance needs to be considered separately and their feasibility must be properly supported by either references or computations. The use of a \gls{cg} offset as a control mechanism may for example be doubtful since the demonstration on its performance is only done in the \gls{irve} in which the \gls{hiad} has a relatively high mass fraction compared to the payload \cite{Dillman2012}. For this design, from the requirement CIA-Op-A02-02 (Appendix \ref{app:req}), this mass fraction is however specified to be only 10\% doubting the effectiveness of a \gls{cg} offset as control system. For control surfaces only specific designs may be possible resulting in only the use of for example body flaps or morphing the inflatable as control mechanism. All these considerations are again discussed in Chapter ... . These results are finally used as one of the selection criteria in the trade off.
+The control systems from Fig. \ref{fig:dotcontrol} are considered separately for each of these shapes. Due to infeasibility of exotic control concepts such as the, for now, deemed infeasible \gls{mhd} the control system can be integrated with each structure as the control systems themselves do not require strict geometric properties as would be required by for example \gls{mhd} control.
 
-It must be noted that the control configurations of Table \ref{tab:designconcepts} feature the primary control mechanism. These may always be appended later on in the design process, after the trade-off, if additional control systems increase the overall performance. 
+Table \ref{tab:designconcepts} shows the design options that will be considered within this report. The check-marked control systems are further investigated for their feasibility and performance within Chapter ?? discussing the control systems. For these control systems their performance needs to be considered separately and their feasibility must be properly supported by either references or computations. The use of a \gls{cg} offset as a control mechanism may for example be doubtful since the demonstration on its performance is only done in the \gls{irve} in which the \gls{hiad} has a relatively high mass fraction compared to the payload \cite{Dillman2012}. For this design, from the requirement CIA-Op-A02-02 (Appendix \ref{app:req}), this mass fraction is however specified to be only 10\% doubting the effectiveness of a \gls{cg} offset as control system. For other control surfaces only specific designs may be possible resulting in only the use of for example body flaps or morphing the inflatable structure as control mechanism. All these considerations are again discussed in Chapter ... . These results are finally used as one of the selection criteria in the trade off.
+
+It must be noted that the control configurations of Table \ref{tab:designconcepts} feature the primary control mechanism. These may always be appended later on in the design process, after the trade-off, if additional control systems increase the overall systems performance. 
 
 \begin{table}[H]
 	\caption{Generation of design concepts}
@@ -51,11 +52,11 @@ It must be noted that the control configurations of Table \ref{tab:designconcept
 		\end{tabular}
 \end{table}
 
-At this point it may be noted that within Table \ref{tab:designconcepts} for each shape a possible control mechanism can be considered. Rather, just three combinations are deemed infeasible. Thrusters are not considered for the Trailing and Combined configuration. Due to the aft elements of these designs thruster cannot be considered as the primary control mechanism. Due to the large moments of inertia (due to aft elements) and very high stability of the aft systems (e.g. compare to a parachute) thrusters cannot be considered due their inefficiency. 
+At this point it may be noted that within Table \ref{tab:designconcepts} for each shape a possible control mechanism can be considered. Rather, just three combinations are deemed infeasible. Thrusters are not considered for the trailing and combined configuration. Due to the aft elements of these designs thruster cannot be considered as the primary control mechanism. Due to the large moments of inertia (due to aft elements) and very high stability of the aft systems (e.g. compare to a parachute) thrusters cannot be considered due their inefficiency. 
 
-For the Isotensoid configuration controls surface are not deemed possible since the whole outer surface is covered by the inflatable. Controls systems such as for example body flaps can therefore not be placed. Using morphing of the structure as control surface is also considered unfeasable since again the whole outer surface is covered. 
+For the isotensoid configuration controls surface are not deemed possible since the whole outer surface is covered by the inflatable. Controls systems such as for example body flaps can therefore not be placed. Using morphing of the structure as control surface is also considered unfeasable since again the whole outer surface is covered. 
 
-Finally, although not deemed infeasible from Table \ref{tab:designconcepts}, the Combined concept is disregarded to yield a final five concepts. It is considered to be too similar to a Trailing concept. A trailing concept will still require a heat shield in front of the payload and can therefore be considered, is some aspects, a Combined configuration as well. It is therefore considered that a deployable inflatable at the front will have no additional advantage. A small deployable will have a similar performance as the Trailing configuration, but features the additional complexity of the front inflation system. A large frontal inflation systems will however place the aft inflatable in the wake making it effectively useless. Removing the aft declarator will however yield a "simple" Stacked toroid, Isotensoid or tension cone configuration. For these reasons the Trailing concept will not be considered. 
+Finally, although not deemed infeasible from Table \ref{tab:designconcepts}, the combined concept is disregarded to yield a final five concepts. It is considered to be too similar to a Trailing concept. A trailing concept will still require a heat shield in front of the payload and can therefore be considered, is some aspects, a combined configuration as well. It is therefore considered that a deployable inflatable at the front will have no additional advantage. A small deployable will have a similar performance as the trailing configuration, but features the additional complexity of the front inflation system. A large frontal inflatable will however place the aft inflatable in the wake making it effectively useless. Removing the aft declarator will however yield a "simple" stacked toroid, Isotensoid or tension cone configuration. For these reasons the trailing concept will not be considered. 
 
 
 ...Control department moet het hier mee eens zijn. Hier kunnen nog combinaties weg gehaald worden en naar het control chapter verplaatst worden (of andersom)... 
@@ -64,7 +65,7 @@ Finally, although not deemed infeasible from Table \ref{tab:designconcepts}, the
 
 \subsection{Concept configurations} \label{sec:conf}
 
-In this section a the global configuration of each of the final five shapes is considered. They are sketched and described shortly in the sections below.
+In this section a the global configuration of each of the final five shapes is considered. They are sketched and described shortly in the sections below. Moreover a simple \gls{fbd} is provided to gain insight in, where applicable, the structural principle of each of the concepts.
 
 \textbf{Stacked toroid}
 
@@ -80,7 +81,7 @@ Figure \ref{fig:conc_stacked} shows the stacked toroid concept. A stacked toroid
 \begin{figure}[H]
 \centering
 \includegraphics[width = 0.62\textwidth]{Figure/FBD_stacked.eps}
-\caption{A schematic view of a stacked toroid configuration}
+\caption{A \gls{fbd} of the stacked toroid configuration}
 \label{fig:fbd_stacked}
 \end{figure}
 
@@ -99,7 +100,7 @@ A Isotensoid configuration as displayed in Figure \ref{fig:conc_iso} features a 
 \begin{figure}[H]
 \centering
 \includegraphics[width = 0.55\textwidth]{Figure/FBD_isotensoid.eps}
-\caption{A schematic view of an isotensoid configuration}
+\caption{A \gls{fbd} of the isotensoid configuration}
 \label{fig:fbd_iso}
 \end{figure}
 
@@ -117,7 +118,7 @@ A Tension cone, as shown in Figure \ref{fig:conc_tension} again consists only of
 \begin{figure}[H]
 \centering
 \includegraphics[width = 0.4\textwidth]{Figure/FBD_tensioncone.eps}
-\caption{A schematic view of a tension cone configuration}
+\caption{A \gls{fbd} of the tension cone configuration}
 \label{fig:fbd_tension}
 \end{figure}
 
@@ -135,7 +136,7 @@ Figure \ref{fig:conc_trailing} shows a trailing configuration. A Trailing config
 \begin{figure}[H]
 \centering
 \includegraphics[width = 0.4\textwidth]{Figure/FBD_trailing.eps}
-\caption{A schematic view of a trailing configuration}
+\caption{A \gls{fbd} of the trailing configuration}
 \label{fig:fbd_trailing}
 \end{figure}
 
@@ -153,7 +154,7 @@ The Rigid configuration is the most typical configuration and frequently used by
 \begin{figure}[H]
 \centering
 \includegraphics[width = 0.3\textwidth]{Figure/FBD_rigid.eps}
-\caption{A schematic view of a rigid configuration}
+\caption{A \gls{fbd} of the rigid configuration}
 \label{fig:fbd_rigid}
 \end{figure}
 
