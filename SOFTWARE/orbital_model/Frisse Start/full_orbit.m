@@ -104,6 +104,7 @@ function [ out ] = full_orbit(R0, V0, A0, G, M_mars, R_m, h_atm, atm, dt_kep_ini
     out.theta = out_hk.end.theta;
     out.a = out_hk.param.a;
     out.e = out_hk.param.e;
+    out.rc = out_hk.end.rc;
     out.c = out_c;
     out.speed_sound = speed_sound;
     

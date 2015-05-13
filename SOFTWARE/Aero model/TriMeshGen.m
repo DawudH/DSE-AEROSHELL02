@@ -94,7 +94,7 @@ X = meshgrid(X);
 t = 90 -t;
 t = tand(t)*r;
 
-R = 12;
+%R = 12;
 r = linspace(0,r,q); 
 r = meshgrid(r);
 rgrad = max(max(r)); %Gradient of r at the outer edge of the half dome
@@ -111,7 +111,7 @@ x=-X;
 %% Coordinate calculation of upper ring(after linear section)
 zmax = R.*cos(theta);
 ymax = R.*sin(theta);
-xmax = -max((t/rgrad)+(R-max(r))*(t/rgrad));
+xmax = -max((t/(R*rgrad))+(R-max(r))*(t/rgrad));
 %xmax = -t/max(max(r))*(R-max(max(r)));
 xmax = ones(q)*xmax;
 x = [x,xmax(:,1)];

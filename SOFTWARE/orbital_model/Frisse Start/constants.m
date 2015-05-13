@@ -1,6 +1,6 @@
 %%Universal constants
 %Gravitational constant
-G = 6.673*10^-11; %[N*(m/kg)^2]
+G = 6.67384*10^-11; %[N*(m/kg)^2]
 
 %%Geometric properties of s/c
 %Mass
@@ -15,9 +15,9 @@ S = d^2*pi/4; %[m^2]
 omega_m = 2*pi / (24.6229622 * 3600 ); %[rad/sec]
 Omega_m = [0,0,1]*omega_m; %[rad/sec]
 %Mass
-M_mars = 6.419*10^23; %[kg]
+M_mars = 0.64174*10^24; %[kg]
 %Radius of Mars
-R_m = 6794000/2; %[m]
+R_m = 3.389945945211271e6; %[m]
 %Height of atmosphere
 h_atm = 400e3; %[m]
 %Sphere of influence
