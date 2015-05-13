@@ -35,3 +35,5 @@ control.alpha_init = -10; % deg
 
 % create atmosphere object
 atm = marsatmosphere();
+% create aerocoef object
+aero_coef = aeroProperties();
