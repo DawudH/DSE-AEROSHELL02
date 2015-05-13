@@ -4,11 +4,9 @@ close all
 
 %%Input constants & variables
 variables
-%escape velocity at boundary of atmosphere
-V_esc = sqrt(2*G*M_mars/(R_m+h_atm));
 
 %%function
-[out] = full_orbit(R, V, V_esc, A, G, M_mars, R_m, h_atm, atm, dt_kep_init, dt_atmos, m, Omega_m, S, control, tend, crash_margin, g_earth);
+[out] = full_orbit(R, V, A, G, M_mars, R_m, h_atm, atm, dt_kep_init, dt_atmos, m, Omega_m, S, control, tend, crash_margin, g_earth);
                     
 %%processing (plot/write to file)
 figure('name','parameters over time')
@@ -34,7 +32,6 @@ plot(t,out.M)
 plot(xlim,[5,5],'-.','color','r');
 grid on
 
-
 % plot orbit
 % circle plot:
 theta_plot = 0:0.01:2*pi;
@@ -44,6 +41,7 @@ figure('name','Orbit')
 grid on
 axis equal
 hold on
+axis([-(R_m + h_atm)*1.5 (R_m + h_atm)*1.5 -(R_m + h_atm)*1.5 (R_m + h_atm)*1.5])
 plot(out.R(:,1),out.R(:,2))
 polar(theta_plot,radius_mars,'r');
 polar(theta_plot,radius_mars_atmos,'g')
