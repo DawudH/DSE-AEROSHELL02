@@ -10,7 +10,7 @@ ry = SOI;
 R = [rx,ry,0];
 
 %Initial Velocity
-v = 6000; %[m/s]
+v = 5000; %[m/s]
 V = [0,-v,0];
 
 %Initial acceleration
