@@ -1,4 +1,4 @@
-function [ out ] = full_orbit(R0, V0, V_esc, A0, G, M_mars, R_m, h_atm, atm, dt_kep_init, dt_atmos, m, Omega_m, S, control, tend, crash_margin, g_earth)
+function [ out ] = full_orbit(R0, V0, A0, G, M_mars, R_m, h_atm, atm, dt_kep_init, dt_atmos, m, Omega_m, S, control, tend, crash_margin, g_earth)
 %Calculates the full orbit for selected initial conditions until sepcified
 %end time
 
@@ -26,7 +26,7 @@ function [ out ] = full_orbit(R0, V0, V_esc, A0, G, M_mars, R_m, h_atm, atm, dt_
     a_prev = A(1,:);
     %Get initial values for conditions
     [out_c] = checks( R(1,:), V(1,:), t, tend, R_m, h_atm, G, M_mars, false, crash_margin );
-    
+    out_c.in_atmos = true;
     % give initial control state
     CL = control.CL_init;
     CD = abs(control.CL_init) / control.CLCD;
@@ -100,5 +100,11 @@ function [ out ] = full_orbit(R0, V0, V_esc, A0, G, M_mars, R_m, h_atm, atm, dt_
     out.a = out_hk.param.a;
     out.e = out_hk.param.e;
     out.c = out_c;
+    
+    
+    % output text
+    a_human_mag = sqrt((out.Ad(:,1)+out.Al(:,1)).^2 + (out.Ad(:,2)+out.Al(:,2)).^2 + (out.Ad(:,3)+out.Al(:,3)).^2);
+    maxaccel = max(a_human_mag)/g_earth;
+    disp(['rx = ' num2str(rx) ' [m], CD = ' num2str(abs(control.CL_init) / control.CLCD) ' [-], CL = ' num2str(control.CL_init) ' [-], in atmosphere: ' num2str(out_c.in_atmos) ', crashed: ' num2str(out_c.crash) ', in orbit: ' num2str(out_c.inorbit) ', acceleration: ' num2str(maxaccel) ', time pased: ' num2str(t/(3600*24)) ' days' ])
 end
 
