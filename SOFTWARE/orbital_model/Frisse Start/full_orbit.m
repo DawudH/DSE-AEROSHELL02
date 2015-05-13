@@ -24,6 +24,8 @@ function [ out ] = full_orbit(R0, V0, A0, G, M_mars, R_m, h_atm, atm, dt_kep_ini
     Al(1,:) = out_hk.end.Al;
     J(1,:) = out_hk.end.J;
     q(1,:) = out_hk.end.q;
+    T(1,:) = out_hk.end.T;
+    rho(1,:) = out_hk.end.rho;
     a_prev = A(1,:);
     %Get initial values for conditions
     [out_c] = checks( R(1,:), V(1,:), t, tend, R_m, h_atm, G, M_mars, false, crash_margin, round );
@@ -82,6 +84,8 @@ function [ out ] = full_orbit(R0, V0, A0, G, M_mars, R_m, h_atm, atm, dt_kep_ini
         Al(i+1,:) = out_o.Al;
         J(i+1,:) = out_o.J;
         q(i+1,:) = out_o.q;
+        T(i+1,:) = out_o.T;
+        rho(i+1,:) = out_o.rho;
 
         if out_c.crash || out_c.flyby || out_c.t_end
             orbit = false;
@@ -111,6 +115,8 @@ function [ out ] = full_orbit(R0, V0, A0, G, M_mars, R_m, h_atm, atm, dt_kep_ini
     out.rc = out_hk.end.rc;
     out.c = out_c;
     out.speed_sound = speed_sound;
+    out.T = T;
+    out.rho = rho;
     
     
     % output text

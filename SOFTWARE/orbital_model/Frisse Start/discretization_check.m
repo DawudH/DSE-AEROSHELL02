@@ -25,7 +25,7 @@ cc = parula(length(dt)+3);
 
 % Loop through different dt
     for i = 1:length(dt)
-        [out] = full_orbit(R, V, A, G, M_mars, R_m, h_atm, atm, dt_kep_init, dt(i), m, Omega_m, S, control, tend, crash_margin, g_earth);
+        [out] = full_orbit(R, V, A, G, M_mars, R_m, h_atm, atm, dt_kep_init, dt(i), m, Omega_m, S, control, tend, crash_margin, g_earth, aero_coef);
         R_o{i} = out.R;
         len_old = length(R_o{1});
         len_new = length(out.R);

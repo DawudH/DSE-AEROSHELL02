@@ -42,9 +42,11 @@ orbit.J = (a1 - 4*a + 3*orbit.a) / (2*dt);
 if (norm(R)-R_m < 100000)
     orbit.speed_sound = atm.getSpeedofsound(0,0, norm(R)-R_m);
     orbit.M = norm(orbit.V) / orbit.speed_sound;
+    orbit.T = atm.getTemperature(0,0,norm(R)-R_m);
 else
     orbit.speed_sound = 0;
     orbit.M = 0;
+    orbit.T = 0;
 end
 
 % output
@@ -58,6 +60,7 @@ out_o.Ad = orbit.ad;
 out_o.Al = orbit.al;
 out_o.J = orbit.J;
 out_o.q = orbit.q;
-
+out_o.T = orbit.T;
+out_o.rho = rho;
 end
 
