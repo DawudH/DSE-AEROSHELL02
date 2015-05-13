@@ -1,7 +1,7 @@
 function [ out ] = full_orbit(R0, V0, A0, G, M_mars, R_m, h_atm, atm, dt_kep_init, dt_atmos, m, Omega_m, S, control, tend, crash_margin, g_earth, aero_coef)
 %Calculates the full orbit for selected initial conditions until sepcified
 %end time
-
+    h = waitbar(0,'Initializing waitbar...');
     %Condition to run the script
     orbit = true;
 
@@ -63,12 +63,11 @@ function [ out ] = full_orbit(R0, V0, A0, G, M_mars, R_m, h_atm, atm, dt_kep_ini
             orbit_init.V = V(i,:);
             orbit_init.a = A(i,:);
             [out_o] = eliptic_kepler(R(i,:),V(i,:),A(i,:),G,M_mars,dt_kep_init,orbit_init);
-            %Function to check when to end the orbit
-            [out_c] = checks( out_o.R, out_o.V, t, tend, R_m, h_atm, G, M_mars, out_c.in_atmos, crash_margin,round );
-            out_c.in_atmos = true;
             round = round + 1;
             a_prev = out_o.A;
             t = t + out_o.t_kep;
+            %Function to check when to end the orbit
+            [out_c] = checks( out_o.R, out_o.V, t, tend, R_m, h_atm, G, M_mars, out_c.in_atmos, crash_margin,round );
         end
         %%New Inputs for while loop
         tp(i+1) = tp(i) + dt_atmos;
@@ -88,6 +87,7 @@ function [ out ] = full_orbit(R0, V0, A0, G, M_mars, R_m, h_atm, atm, dt_kep_ini
             orbit = false;
         end
         i = i+1;
+        waitbar(t/tend,h,sprintf('%5.1f %...',t/tend*100))
     end
     
     
@@ -102,6 +102,7 @@ function [ out ] = full_orbit(R0, V0, A0, G, M_mars, R_m, h_atm, atm, dt_kep_ini
     out.q = q;
     out.tp = tp;
     out.M = M;
+    out.t = t;
     out.theta_p = out_hk.param.theta_p;
     out.rp = out_hk.param.rp;
     out.ra = out_hk.param.ra;
@@ -117,6 +118,9 @@ function [ out ] = full_orbit(R0, V0, A0, G, M_mars, R_m, h_atm, atm, dt_kep_ini
     % output text
     a_human_mag = sqrt((out.Ad(:,1)+out.Al(:,1)).^2 + (out.Ad(:,2)+out.Al(:,2)).^2 + (out.Ad(:,3)+out.Al(:,3)).^2);
     maxaccel = max(a_human_mag)/g_earth;
-    disp(['rx = ' num2str(R0(1)) ' [m], CD = ' num2str(abs(control.CL_init) / control.CLCD) ' [-], CL = ' num2str(control.CL_init) ' [-], in atmosphere: ' num2str(out_c.in_atmos) ', crashed: ' num2str(out_c.crash) ', in orbit: ' num2str(out_c.orbit) ', flyby: ' num2str(out_c.flyby) ', acceleration: ' num2str(maxaccel) ', time pased: ' num2str(t/(3600*24)) ' days' ])
+
+    disp(['rx = ' num2str(R0(1)) ' [m], CD = ' num2str(CDA / S) ' [-], CL = ' num2str(CLA / S) ' [-], in atmosphere: ' num2str(out_c.in_atmos) ', crashed: ' num2str(out_c.crash) ', in orbit: ' num2str(out_c.orbit) ', flyby: ' num2str(out_c.flyby) ', acceleration: ' num2str(maxaccel) ', time pased: ' num2str(t/(3600*24)) ' days' ])
+    %close waitbar
+    close(h);
 end
 

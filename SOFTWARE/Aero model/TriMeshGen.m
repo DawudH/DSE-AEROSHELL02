@@ -4,7 +4,7 @@ function [TriGeom,xvector,yvector,zvector] = TriMeshGen(q,R,r,t,type)
 if type == 's'
 %% Define Polar Coordinates
 theta = linspace(pi,0,q);              
-phi  = linspace(2*pi,0,q);
+phi  = linspace(pi,3*pi,q);
 [theta,phi]=meshgrid(theta,phi);
 %% Shape definition Sphere
 x=(r*sin(theta)).*cos(phi);           %x,y,z definitions of a donut in polar. Should be replaced by function??
@@ -21,6 +21,7 @@ for n = 1:length(x(1,:))
         zvector = [zvector,z(m,n)];
     end
 end
+
 %% Triangulation matrix 
 p = length(xvector);
 Tri = [0 0 0];
@@ -66,6 +67,7 @@ for n = 1:length(x(1,:))
         zvector = [zvector,z(m,n)];
     end
 end
+
 %% Create triangulation matrix
 p = length(xvector);
 Tri = [0 0 0];
