@@ -45,7 +45,7 @@ axis([-(R_m + h_atm)*1.5 (R_m + h_atm)*1.5 -(R_m + h_atm)*1.5 (R_m + h_atm)*1.5]
 plot(out.R(:,1),out.R(:,2))
 polar(theta_plot,radius_mars,'r');
 polar(theta_plot,radius_mars_atmos,'g')
-theta_plot = out.theta0:0.001:out.theta;
+theta_plot = out.theta0:0.00001:out.theta;
 rk = out.a * (1- out.e^2) ./ (1 + out.e * cos(theta_plot));
 polar(theta_plot+out.theta_p,rk,'k');
 plot(out.rp*cos(out.theta_p),out.rp*sin(out.theta_p),'*');

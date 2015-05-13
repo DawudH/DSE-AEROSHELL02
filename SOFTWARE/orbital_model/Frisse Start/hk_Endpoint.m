@@ -12,25 +12,26 @@ mu = G*M;
 %Position
 r  = R_m+h_atm;
 theta = -acos((a*(1-e^2)-r)/(r*e));
-%R wrt the elipse reference frame
-R = r*[cos(theta),sin(theta),0];
-%Express in 0-reference frame
-R0 = rotz(rad2deg(theta_p))*R';
+theta0 = theta_p -2*pi + theta;
+%R wrt the zero reference frame
+R0 = r*[cos(theta0),sin(theta0),0];
 x = R0(1);
-
 %Velocity
 %magnitude
 v = sqrt(mu*(2/r-1/a));
 %direction
-x_rc = (x+a*e);
-rc = b^2*x_rc/(a^2*sqrt(b^2*(x^2-a^2)/a^2));
+rc = b^2*(a*e+x)/(a^2*sqrt(b^2*(a*e+x)^2/a^2-b^2));
+%rc = b^2*x_rc/(a^2*sqrt(b^2*(x_rc^2-a^2)/a^2))
+%rc = a^2*x_rc/(b^2*sqrt(a^2*(b^2+x_rc^2)/b^2))
 V_unit = [1,rc,0]/norm([1,rc,0]);
+V_unit = (rotz(-theta_p)*V_unit')';
 V = v*V_unit;
 
 %Acceleration
-A = -mu/r^3*R;
+A = -mu/r^3*R0;
 
 %%Output
+out.rc = rc;
 out.R = R0;
 out.speed_sound = 0;
 out.V = V;
