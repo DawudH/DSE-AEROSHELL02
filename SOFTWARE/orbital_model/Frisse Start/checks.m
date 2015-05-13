@@ -40,6 +40,8 @@ function [ out_c ] = checks( R, V, t, tend, R_m, h_atm, G, M_mars, inatmos, cras
         
         if (norm(V) > V_esc)
             out_c.flyby = true;
+        else
+            out_c.flyby = false;
         end
     else
         out_c.flyby = false;

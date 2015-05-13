@@ -46,11 +46,15 @@ function [ out ] = full_orbit(R0, V0, A0, G, M_mars, R_m, h_atm, atm, dt_kep_ini
                  % start controlling once the accel is above 1.5g
                  if state.a > 1.5*g_earth
                          [aero_param] = aero_conrol(state,control,aero_coef);
-                         CL = aero_param.CLA * S;
-                         CD = aero_param.CDA * S;
+                         CL = aero_param.CLA / S;
+                         CD = aero_param.CDA / S;
                          alpha = aero_param.alpha;
                  end
             [out_o] = in_atmosphere( V(i,:), R(i,:), A(i,:), a_prev, J(i,:), atm, CL, CD, dt_atmos, R_m, Omega_m, S, m );
+            [out_c_beun] = checks( out_o.R, out_o.V, t, tend, R_m, h_atm, G, M_mars, out_c.in_atmos, crash_margin,round );
+            if out_c_beun.in_atmos == false
+                fdgdsfg = 1;
+            end
             a_prev = A(i,:);
             t = t + dt_atmos;
         %When the s/c is not in the atmosphere use a kepler orbit
@@ -79,6 +83,7 @@ function [ out ] = full_orbit(R0, V0, A0, G, M_mars, R_m, h_atm, atm, dt_kep_ini
 
         %Function to check when to end the orbit
         [out_c] = checks( R(i+1,:), V(i+1,:), t, tend, R_m, h_atm, G, M_mars, out_c.in_atmos, crash_margin,round );
+        out_c
         if out_c.crash || out_c.flyby || out_c.t_end
             orbit = false;
         end
