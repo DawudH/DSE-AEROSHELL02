@@ -5,16 +5,22 @@ added_paths
 constants
 
 %Initial Position
-ry = SOI; %[m]
-rx = -4190000; %[m]
-R = [rx,ry,0];
-
+step_rx = -10000;
+rx_b = -4100000;
+rx_e = -4500000;
+rx = (rx_b:step_rx:rx_e)'; %[m]
+n = length(rx);
+ry = SOI*ones(n,1); %[m]
+R = [rx,ry,zeros(n,1)];
+% rx = -4190000;
+% ry = SOI;
+% R = [rx,ry,0];
 %Initial Velocity
 v = 7000; %[m/s]
 V = [0,-v,0];
 
 %Initial acceleration
-A = G*M_mars/norm(R)^3*R;
+A = G*M_mars/norm(R(1,:))^3*R(1,:);
 
 %timesteps
 dt_atmos = 0.5; %[s]

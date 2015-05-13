@@ -13,7 +13,7 @@ mu = G*M;
 r  = R_m+h_atm;
 theta = -acos((a*(1-e^2)-r)/(r*e));
 %R wrt the elipse reference frame
-R = r*[cos(theta),sin(theta),0]
+R = r*[cos(theta),sin(theta),0];
 %Express in 0-reference frame
 R0 = rotz(rad2deg(theta_p))*R';
 x = R0(1);
@@ -24,11 +24,11 @@ v = sqrt(mu*(2/r-1/a));
 %direction
 x_rc = (x+a*e);
 rc = b^2*x_rc/(a^2*sqrt(b^2*(x^2-a^2)/a^2));
-V_unit = [1,rc,0]/norm([1,rc,0])
+V_unit = [1,rc,0]/norm([1,rc,0]);
 V = v*V_unit;
 
 %Acceleration
-A = -mu/r^3*R
+A = -mu/r^3*R;
 
 %%Output
 out.R = R0;
