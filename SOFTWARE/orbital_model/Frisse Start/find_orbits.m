@@ -4,9 +4,9 @@ close all
 
 %%Input constants & variables
 variables
-step = -10000;
-rx_b = -4100000;
-rx_e = -4500000;
+step = -100;
+rx_b = -4720500;
+rx_e = -4725000;
 rx = (rx_b:step:rx_e)'; %[m]
 n = length(rx);
 ry = SOI*ones(n,1); %[m]
@@ -14,7 +14,7 @@ R = [rx,ry,zeros(n,1)];
 out_refine.rx = rx(1);
 out_orbit.c.orbit = false;
 
-while (out_orbit.c.orbit == false) && (abs(step)>1)
+while (out_orbit.c.orbit == false) && (abs(step)>1/10000)
     for i=1:length(rx)
     %%function
         [out_orbit] = full_orbit(R(i,:), V, A, G, M_mars, R_m, h_atm, atm, dt_kep_init, dt_atmos, m, Omega_m, S, control, tend, crash_margin, g_earth);
