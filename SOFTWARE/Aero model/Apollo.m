@@ -18,7 +18,7 @@ y2 = 1.956-Redge+Redge.*sin(thetaedge);
 
 x = [x; x2'];
 y = [y; y2'];
-
+x = x-RShell;
 x = meshgrid(x);
 y = meshgrid(y);
 
