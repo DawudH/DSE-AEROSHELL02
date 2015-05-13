@@ -3,6 +3,13 @@ function [ out_o ] = in_atmosphere( V, R, a, a1, J, atm, CL, CD, dt, R_m, Omega_
 %   Detailed explanation goes here
 % a1 = ai-1
 
+%calculate new velocity and location
+orbit.V = V + a*dt + 1/2*J*dt^2;
+orbit.R = R + V*dt + 1/2*a*dt^2 + 1/6*J*dt^3;
+
+R = orbit.R;
+V = orbit.V;
+
 %Mars atmosphere, get density and g
 rho = atm.getDensity(0,0,norm(R)-R_m);
 g = atm.getg(norm(R)-R_m);
@@ -31,10 +38,6 @@ end
 %calculate total accaleration
 orbit.a = orbit.ag + orbit.ad + orbit.al;
 orbit.J = (a1 - 4*a + 3*orbit.a) / (2*dt);
-
-%calculate new velocity and location
-orbit.V = V + a*dt + 1/2*J*dt^2;
-orbit.R = R + V*dt + 1/2*a*dt^2 + 1/6*J*dt^3;
 
 if (norm(R)-R_m < 100000)
     orbit.speed_sound = atm.getSpeedofsound(0,0, norm(R)-R_m);
