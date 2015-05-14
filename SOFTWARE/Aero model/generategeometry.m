@@ -42,7 +42,7 @@ function [ coords, tri, A ] = generategeometry( type, q )
             TriGeom = TriMeshGen(q, 2.93/2, 0.21, 60, 'c');
             coords = TriGeom.Points';
             tri = TriGeom.ConnectivityList;
-            A = 1/4*2.93^2;
+            A = pi*1/4*2.93^2;
             %t gradient, r half dome radius, R is max radius
         case 'apollovalidation'
             [TriGeom, xvector, yvector, zvector] = Apollo(q);

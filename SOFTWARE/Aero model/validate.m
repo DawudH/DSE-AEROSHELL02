@@ -7,34 +7,33 @@ cases.deg60cone = 'deg60cone';
 cases.apollo = 'apollo';
 cases.irve = 'irve';
 
-shapecase = cases.irve;
+shapecase = cases.apollo;
 
 
 switch shapecase
     
     case cases.irve
         clc; close all; clear;
-        CDmeasured = 0.58;
-        a = 300;
+        qmax_measured = 14.4;
+        a = 329.799;
         gamma = 1.4;
         center = zeros(3,1);
-        rho = 1e-3;
-        T = 150;
-        q = 10;
-        M = 8;
+        rho = 0.000977525;
+        T = 270.650;
+        q = 15;
+        M = 7;
         [ coords, tri, A ] = generategeometry( 'irvevalidation', q );
 
         mod = modnewtonian( coords, tri, gamma, a, center, rho, T, A);
         mod = mod.calcAeroangle(M*a,deg2rad(0),0);
-        mod.plotCp(true, true);
-        disp('Validation of CD of a 60 degree (30deg halfangle) cone');
-        disp('Validation data provided by Anderson fundamentals page 783 and Stevens, 1950');
+        mod.plotCp(true, false);
+        disp('Validation of maximum heat flux of IRVE-3');
+        disp('Validation data provided Dillman IRVE-3 flight performance');
         disp('Settings: ');
         disp(strcat('gamma: ', num2str(gamma)));
         disp(strcat('M: ', num2str(M)));
-        disp(strcat('CD as Newtonian: ', num2str(mod.CR_aero_array(1,end))));
-        disp(strcat('CD as measured: ', num2str(CDmeasured)));
-        disp(strcat('CDnewton/CDmeasured: ', num2str(mod.CR_aero_array(1,end)/CDmeasured)));
+        disp(strcat('q_max as Newtonian: ', num2str(mod.qmax_array(end))));
+        disp(strcat('q_max measured: ', num2str(qmax_measured)));
         
     case cases.deg60cone
         clc; close all; clear;

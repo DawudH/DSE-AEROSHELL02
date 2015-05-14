@@ -6,6 +6,7 @@ shapetexts.pastille12m15m = 'pastille12m1.5m';
 shapetexts.deg60cone = 'deg60cone';
 shapetexts.deg30cone = 'deg30cone';
 shapetexts.irvevalidation = 'irvevalidation';
+shapetexts.apollovalidation = 'apollovalidation';
 
 a = 300;
 gamma = 1.4;
@@ -17,12 +18,12 @@ q = 10;
 alpha0 = 0; %degrees
 dalpha = 1; %degrees
 alphaend = 15; %degrees
-qarray = [4 5 6 7 8 9 10,10:1:40, 42:2:60, 65:5:100];
+qarray = [6:2:60, 65:5:100];
 CD = [];
 
 for q = qarray
     disp(strcat('Current q:', num2str(q)));
-    [ coords, tri, A ] = generategeometry( shapetexts.irvevalidation, q );
+    [ coords, tri, A ] = generategeometry( shapetexts.apollovalidation, q );
 
     
     mod = modnewtonian( coords, tri, gamma, a, center, rho, T, A);
