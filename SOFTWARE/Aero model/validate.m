@@ -4,7 +4,7 @@ cases.deg30cone = 'deg30cone';
 cases.sphere = 'sphere12m';
 cases.deg60cone = 'deg60cone';
 
-shapecase = cases.deg30cone;
+shapecase = cases.deg60cone;
 
 
 switch shapecase
