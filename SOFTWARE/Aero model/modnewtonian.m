@@ -143,22 +143,19 @@ classdef modnewtonian
                     radii(i) = obj.radiusOfCurvature(checkMatrix(i,1), checkMatrix(i,2), checkMatrix(i,3));
                 end
             else %If point on centerpoint fuck
-                trianglesincircle = sum(sum(obj.tri == ones(size(obj.tri))))
+                trianglesincircle = sum(sum(obj.tri == ones(size(obj.tri))));
                 point1 = triangle(1);
                 if point1 == 1
                     point1 = triangle(2);
                 end
-                point1
                 overflowvector = [0.5*trianglesincircle+1:trianglesincircle, 1:0.5*trianglesincircle];
                 point2 = overflowvector(point1);
                 if obj.coords(2, point1) ~= -obj.coords(2,point2)
                     point2 = point2 + 1;
                 end
-                point2
                 radii = obj.radiusOfCurvature(point1, point2, 1);
             end
             qmax = 0;
-            radii
             if max(radii) >=0
                 qmax = obj.rho_inf^0.5*Vinf^3*1.83e-8*max(radii)^(-0.5);
             end

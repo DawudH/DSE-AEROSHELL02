@@ -23,7 +23,7 @@ CD = [];
 
 for q = qarray
     disp(strcat('Current q:', num2str(q)));
-    [ coords, tri, A ] = generategeometry( shapetexts.apollovalidation, q );
+    [ coords, tri, A ] = generategeometry( shapetexts.pastille12m15m, q );
 
     
     mod = modnewtonian( coords, tri, gamma, a, center, rho, T, A);
@@ -42,6 +42,8 @@ plot(qarray, CD);
 ratio = CD/CD(end);
 bestarray = find(ratio>0.999);
 disp(strcat('q required for 99.9% convergence: ', num2str(qarray(bestarray(1)))));
+bestarray = find(ratio>0.995);
+disp(strcat('q required for 99.5% convergence: ', num2str(qarray(bestarray(1)))));
 % for i = 2:length(CD)
 % i;
 % CD(i)/CD(end);
