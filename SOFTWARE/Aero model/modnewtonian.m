@@ -114,6 +114,8 @@ classdef modnewtonian
             C = obj.coords(:,n3);
             a = A-C;
             b = B-C;
+            TR = triangulation([1,2,3], [A';B';C']);
+%             [CC, r] = circumcenter(TR);
             r = (norm(a)*norm(b)*norm(a-b))/(2*norm(cross(a,b)));
         end
         
@@ -125,8 +127,8 @@ classdef modnewtonian
             Tmax = obj.T_inf*(1+obj.gamma)/2*obj.M_array(end)^2;
             
             [cp, stagN] = max(obj.Cpdist_array(:,end));
-            nexttriangles = obj.getAdjacentTriangles(stagN);
             triangle = obj.tri(stagN, :);
+            opposites = zeros(1,3);
             for i = 1:3
                 opposites(i) = obj.opposite(stagN, i);
             end
@@ -134,14 +136,13 @@ classdef modnewtonian
             checkMatrix = [opposites(3),triangle(1), opposites(1); ...
                             opposites(1), triangle(2), opposites(2); ...
                             opposites(2), triangle(3), opposites(3)];
-                            
-
-            radii = zeros(size(nextpoints));
-            for i = 1:length(nextpoints)
+            radii = zeros(3,1);
+            for i = 1:length(radii)
                 radii(i) = obj.radiusOfCurvature(checkMatrix(i,1), checkMatrix(i,2), checkMatrix(i,3));
             end
             qmax = 0;
-            if max(radii) <=0
+            radii
+            if max(radii) >=0
                 qmax = obj.rho_inf^0.5*Vinf^3*1.83e-8*max(radii)^(-0.5);
             end
         end
@@ -165,7 +166,7 @@ classdef modnewtonian
             for i = 1:3
                 [baseside, checkside] = adjacency(obj, tbase, adjacents(i));
                 if baseside == side
-                    oppositePoint = temp(checkside);
+                    oppositePoint = obj.tri(adjacents(i),temp(checkside));
                     break;
                 end
             end

@@ -164,7 +164,7 @@ Tri = [Tri1;Tri];
 
 id = 'MATLAB:triangulation:PtsNotInTriWarnId';
 warning('off',id)
-Tri
+
 TriGeom = triangulation(Tri, xvector', yvector', zvector');
 
     end

@@ -18,7 +18,7 @@ q = 75;
 
 alpha0 = 0; %degrees
 dalpha = 1; %degrees
-alphaend = 10; %degrees
+alphaend = 75; %degrees
 
 [ coords, tri, A ] = generategeometry( shapetexts.sphere12m, q );
 
@@ -28,7 +28,8 @@ mod = modnewtonian( coords, tri, gamma, a, center, rho, T, A);
 mod = mod.calcAeroangle(7e3,deg2rad(0),0);
 
 mod.plotCp(true, false);
-mod.CRA_aero_array
+mod.CRA_aero_array;
     
+
 % mod.plots(rad2deg(mod.alpha_array), 'alpha', {{'cl'}, {'cd'}, {'clcd'}, {'cx'}, {'cz'},{'cmy'},{'q'}, {'T'}});
 
