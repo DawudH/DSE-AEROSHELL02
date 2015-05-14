@@ -66,7 +66,10 @@ for i = 1:2*q-2
 end
 Tri1 = [0 0 0];
 for I = 2:2*q
-    Tri1(I-1,:) = [1 I+1 I];
+    if I ==2*q
+        Tri1(I-1,:) = [1 2 I];
+    else
+        Tri1(I-1,:) = [1 I+1 I];
 end
 
 Tri0 = Tri(:,1) == 0;
