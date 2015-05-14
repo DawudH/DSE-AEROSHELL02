@@ -125,17 +125,20 @@ classdef modnewtonian
             Tmax = obj.T_inf*(1+obj.gamma)/2*obj.M_array(end)^2;
             
             [cp, stagN] = max(obj.Cpdist_array(:,end));
-            maxtri = max(max(obj.tri));
+            nexttriangles = obj.getAdjacentTriangles(stagN);
+            triangle = obj.tri(stagN, :);
+            for i = 1:3
+                opposites(i) = obj.opposite(stagN, i);
+            end
             
-            points = perms(obj.tri(stagN,:));
-            combis = points(:,1:2);
-            nextpoints = 2*combis(:,2)-combis(:,1);
-            nextpoints(nextpoints<1) = nextpoints(nextpoints<1)+maxtri;
-            nextpoints(nextpoints>maxtri) = nextpoints(nextpoints>maxtri)-maxtri;
+            checkMatrix = [opposites(3),triangle(1), opposites(1); ...
+                            opposites(1), triangle(2), opposites(2); ...
+                            opposites(2), triangle(3), opposites(3)];
+                            
+
             radii = zeros(size(nextpoints));
             for i = 1:length(nextpoints)
-                radius = obj.radiusOfCurvature(combis(i,1), combis(i,2), nextpoints(i));
-                radii(i) = radius;
+                radii(i) = obj.radiusOfCurvature(checkMatrix(i,1), checkMatrix(i,2), checkMatrix(i,3));
             end
             qmax = 0;
             if max(radii) <=0
@@ -154,6 +157,42 @@ classdef modnewtonian
                     ind = find(equalrows==3);
                 end
             end
+        end
+        
+        function oppositePoint = opposite(obj, tbase, side)
+            adjacents = obj.getAdjacentTriangles(tbase);
+            temp = [3,1,2];
+            for i = 1:3
+                [baseside, checkside] = adjacency(obj, tbase, adjacents(i));
+                if baseside == side
+                    oppositePoint = temp(checkside);
+                    break;
+                end
+            end
+        end
+        
+        function [baseside, checkside] = adjacency(obj, tbase, tcheck)
+            % Base is the central triangle, check is the triangle of which
+            % you want to know the connection
+            combischeck = obj.tri(tcheck, :);
+            combischeck = [combischeck(1),combischeck(2);combischeck(2),combischeck(3);combischeck(3),combischeck(1)];
+            combisbase = obj.tri(tbase, :);
+            combisbase = [combisbase(2),combisbase(1);combisbase(3),combisbase(2);combisbase(1),combisbase(3)];
+            baseside = 0;
+            checkside = 0;
+            for basesidecount = 1:3
+                for checksidecount = 1:3
+                    if sum(combischeck(checksidecount,:)==combisbase(basesidecount,:))==2
+                        baseside = basesidecount;
+                        checkside = checksidecount;
+                    end
+                end
+            end
+        end
+        
+        function indices = getAdjacentTriangles(obj, triangle)
+            T = triangulation(obj.tri, obj.coords');
+            indices = neighbors(T, triangle);
         end
 
         function [SN, areas] = calcsurfacenormals(obj)
@@ -228,7 +267,7 @@ classdef modnewtonian
             end
             xlength = max(obj.coords(1,:))-min(obj.coords(1,:));
             quiverV = - xlength * 0.5 * obj.V_array(:,end) / norm(obj.V_array(:,end));
-            quiverx = xlength*0.5 - quiverV(1);
+            quiverx = xlength*0.5 - quiverV(1) + max(obj.coords(1,:));
             quiver3(quiverx,mean(obj.coords(2,:))-quiverV(2),mean(obj.coords(3,:))-quiverV(2),quiverV(1), quiverV(2), quiverV(3));
         end
         

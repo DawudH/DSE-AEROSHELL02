@@ -94,7 +94,7 @@ X = meshgrid(X);
 t = 90 -t;
 t = tand(t)*r;
 
-R = 12;
+%R = 12;
 r = linspace(0,r,q); 
 r = meshgrid(r);
 rgrad = max(max(r)); %Gradient of r at the outer edge of the half dome
