@@ -128,17 +128,34 @@ classdef modnewtonian
             
             [cp, stagN] = max(obj.Cpdist_array(:,end));
             triangle = obj.tri(stagN, :);
-            opposites = zeros(1,3);
-            for i = 1:3
-                opposites(i) = obj.opposite(stagN, i);
-            end
-            
-            checkMatrix = [opposites(3),triangle(1), opposites(1); ...
-                            opposites(1), triangle(2), opposites(2); ...
-                            opposites(2), triangle(3), opposites(3)];
-            radii = zeros(3,1);
-            for i = 1:length(radii)
-                radii(i) = obj.radiusOfCurvature(checkMatrix(i,1), checkMatrix(i,2), checkMatrix(i,3));
+            if sum(triangle==[1 1 1])==0
+                opposites = zeros(1,3);
+                for i = 1:3
+                    opposites(i) = obj.opposite(stagN, i);
+                end
+
+                checkMatrix = [opposites(3),triangle(1), opposites(1); ...
+                                opposites(1), triangle(2), opposites(2); ...
+                                opposites(2), triangle(3), opposites(3)];
+
+                radii = zeros(3,1);
+                for i = 1:length(radii)
+                    radii(i) = obj.radiusOfCurvature(checkMatrix(i,1), checkMatrix(i,2), checkMatrix(i,3));
+                end
+            else %If point on centerpoint fuck
+                trianglesincircle = sum(sum(obj.tri == ones(size(obj.tri))))
+                point1 = triangle(1);
+                if point1 == 1
+                    point1 = triangle(2);
+                end
+                point1
+                overflowvector = [0.5*trianglesincircle+1:trianglesincircle, 1:0.5*trianglesincircle];
+                point2 = overflowvector(point1);
+                if obj.coords(2, point1) ~= -obj.coords(2,point2)
+                    point2 = point2 + 1;
+                end
+                point2
+                radii = obj.radiusOfCurvature(point1, point2, 1);
             end
             qmax = 0;
             radii
@@ -269,7 +286,7 @@ classdef modnewtonian
             xlength = max(obj.coords(1,:))-min(obj.coords(1,:));
             quiverV = - xlength * 0.5 * obj.V_array(:,end) / norm(obj.V_array(:,end));
             quiverx = xlength*0.5 - quiverV(1) + max(obj.coords(1,:));
-            quiver3(quiverx,mean(obj.coords(2,:))-quiverV(2),mean(obj.coords(3,:))-quiverV(2),quiverV(1), quiverV(2), quiverV(3));
+%             quiver3(quiverx,mean(obj.coords(2,:))-quiverV(2),mean(obj.coords(3,:))-quiverV(2),quiverV(1), quiverV(2), quiverV(3));
         end
         
         

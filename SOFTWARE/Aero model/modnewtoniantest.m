@@ -12,15 +12,15 @@ shapetexts.apollovalidation = 'apollovalidation';
 a = 300;
 gamma = 1.4;
 center = zeros(3,1);
-rho = 1e-3;
+rho = 1e-5;
 T = 150;
-q = 75;
+q = 5;
 
 alpha0 = 0; %degrees
 dalpha = 1; %degrees
 alphaend = 75; %degrees
 
-[ coords, tri, A ] = generategeometry( shapetexts.sphere12m, q );
+[ coords, tri, A ] = generategeometry( shapetexts.apollovalidation, q );
 
 mod = modnewtonian( coords, tri, gamma, a, center, rho, T, A);
 % mod = mod.alphasweep(a*20, 0, deg2rad(alpha0), deg2rad(alphaend), deg2rad(dalpha));
