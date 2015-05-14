@@ -119,7 +119,7 @@ function [ out ] = full_orbit(R0, V0, A0, G, M_mars, R_m, h_atm, atm, dt_kep_ini
     out.speed_sound = speed_sound;
     out.T = T;
     out.rho = rho;
-    
+    out.alpha = alpha;
     
     % output text
     a_human_mag = sqrt((out.Ad(:,1)+out.Al(:,1)).^2 + (out.Ad(:,2)+out.Al(:,2)).^2 + (out.Ad(:,3)+out.Al(:,3)).^2);
