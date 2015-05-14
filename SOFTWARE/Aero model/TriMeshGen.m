@@ -154,7 +154,11 @@ end
 %% Triangulation of base 
 Tri1 = [0 0 0];
 for I = 2:q
-    Tri1(I-1,:) = [1 I+1 I];
+    if I == q
+        Tri1(I-1,:) = [1 2 I];
+    else
+       Tri1(I-1,:) = [1 I+1 I];
+    end
 end
 
 Tri0 = Tri(:,1) == 0;
