@@ -96,19 +96,27 @@ X = meshgrid(X);
 t = 90 -t;
 t = tand(t)*r;
 
-%R = 12;
-r = linspace(0,r,q); 
-r = meshgrid(r);
-rgrad = max(max(r)); %Gradient of r at the outer edge of the half dome
-theta = linspace(0,2*pi,q);
-theta = meshgrid(theta);
-theta = theta';
+theta = linspace(pi,0,q);              
+phi  = linspace(pi,3*pi,q);
+[theta,phi]=meshgrid(theta,phi);
+%% Shape definition Sphere
+x=(r*sin(theta)).*cos(phi);           %x,y,z definitions of a donut in polar. Should be replaced by function??
+y=(r*sin(theta)).*sin(phi);
+z=r.*cos(theta);
 
-%% Cylindrical transformation
-X = (t)*(X.^2)/2;
-z=r.*cos(theta);           
-y=r.*sin(theta);
-x=-X;
+%R = 12;
+% r = linspace(0,r,q); 
+% r = meshgrid(r);
+ rgrad = max(max(r)); %Gradient of r at the outer edge of the half dome
+% theta = linspace(0,2*pi,q);
+% theta = meshgrid(theta);
+% theta = theta';
+% 
+% %% Cylindrical transformation
+% X = (t)*(X.^2)/2;
+% z=r.*cos(theta);           
+% y=r.*sin(theta);
+% x=-X;
 
 %% Coordinate calculation of upper ring(after linear section)
 zmax = R.*cos(theta);

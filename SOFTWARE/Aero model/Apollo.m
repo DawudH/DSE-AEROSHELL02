@@ -1,7 +1,7 @@
-%function [TriGeom,xvector,yvector,zvector] = Apollo(q)
-close all
-clear all
-q=10;
+function [TriGeom,xvector,yvector,zvector] = Apollo(q)
+% close all
+% clear all
+% q=7;
 RShell = 4.694;
 Redge = 0.196;
 
@@ -48,7 +48,9 @@ end
 xvector(1:2*q-1)=[];
 yvector(1:2*q-1)=[];
 zvector(1:2*q-1)=[];
-
+% xvector(q+1)=[];
+% yvector(q+1)=[];
+% zvector(q+1)=[];
 
 %% Triangulation matrix 
 p = length(xvector);
@@ -70,24 +72,22 @@ for I = 2:2*q
         Tri1(I-1,:) = [1 2 I];
     else
         Tri1(I-1,:) = [1 I+1 I];
+    end
 end
-
+Tri1(q,:)=[];
 Tri0 = Tri(:,1) == 0;
 Tri(Tri0,:) = [];
 Tri = Tri-(2*q-1);
 Tri = [Tri1;Tri];
-% xvector(1:2*q-1)=[];
-% yvector(1:2*q-1)=[];
-% zvector(1:2*q-1)=[];    
- 
+
  
  
 TriGeom = triangulation(Tri, xvector', yvector', zvector');
-FN = faceNormal(TriGeom);
-IC = incenter(TriGeom);
-
-trisurf(TriGeom.ConnectivityList,xvector',yvector',zvector');
-hold on
-scatter3(xvector',yvector',zvector')
-axis equal
-quiver3(IC(:,1),IC(:,2),IC(:,3),FN(:,1),FN(:,2),FN(:,3))
+% FN = faceNormal(TriGeom);
+% IC = incenter(TriGeom);
+% 
+% trisurf(TriGeom.ConnectivityList,xvector',yvector',zvector');
+% hold on
+% scatter3(xvector',yvector',zvector')
+% axis equal
+% quiver3(IC(:,1),IC(:,2),IC(:,3),FN(:,1),FN(:,2),FN(:,3))
