@@ -46,4 +46,6 @@ function [ out ] = ek_Endpoint(param,orbit_init)
     out.Al = [0,0,0];
     out.J = [0,0,0];
     out.q = 0;
+    out.T = 0;
+    out.rho = 0;
 end
