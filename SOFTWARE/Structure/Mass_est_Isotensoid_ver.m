@@ -12,7 +12,6 @@ mat_idx = find(strcmp([Materials{:}], Material));
 
 dfm=dfml(mat_idx)
 
-
 qbar_q  =1;
 kc      =299000;
 kf      =98500;
@@ -27,7 +26,7 @@ qimpl=[];
 
 
 
-for q=30:1:3000
+for q=20:1:4000
     
 for i=[1 2]
     if i==1
@@ -67,7 +66,7 @@ for i=[1 2]
 
     %Mass computation
     df= max((KD*beta*fbar*P_q/(2*(1+2*eta)*kf*sqrt(Cd*pi))) * qCdA05 , dfm)
-    BC(i)= (KD/ (sqrt(Cd*pi)*kc*(1-xi^2)^1.5)) *  (P_q/Cd*lm_R*Tbar/((1+2*eta)^3) + lt_R)  * (qCdA05);  + (KC/(Cd*(1+2*eta)^2)) * (Af_piR + 4*pi*eta*(1+eta)) * (df/(1-xi^2))
+    BC(i)= (KD/ (sqrt(Cd*pi)*kc*(1-xi^2)^1.5)) *  (P_q/Cd*lm_R*Tbar/((1+2*eta)^3) + lt_R)  * (qCdA05)  + (KC/(Cd*(1+2*eta)^2)) * (Af_piR + 4*pi*eta*(1+eta)) * (df/(1-xi^2))
     %BC(i)= b*qCdA05 + c*df
     m(i)=Cd*A*BC(i)
 

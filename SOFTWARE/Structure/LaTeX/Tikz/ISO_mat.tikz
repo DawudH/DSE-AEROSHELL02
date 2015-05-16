@@ -1,0 +1,116 @@
+% This file was created by matlab2tikz.
+% Minimal pgfplots version: 1.3
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=0.86284\figurewidth,
+height=\figureheight,
+at={(0\figurewidth,0\figureheight)},
+scale only axis,
+separate axis lines,
+every outer x axis line/.append style={black},
+every x tick label/.append style={font=\color{black}},
+xmin=500,
+xmax=5000,
+xlabel={Peak dynamic pressure [Pa]},
+every outer y axis line/.append style={black},
+every y tick label/.append style={font=\color{black}},
+ymin=2,
+ymax=9,
+ylabel={Ballistic coefficient[$\frac{kg}{m^2}$]},
+title={\textbf{Isotensoid}},
+legend style={at={(0.03,0.97)},anchor=north west,legend cell align=left,align=left,draw=black}
+]
+\addplot [color=black,solid,line width=1.1pt,mark size=3.3pt,mark=o,mark options={solid}]
+  table[row sep=crcr]{%
+500	2.99303280340811\\
+1000	3.05338149406088\\
+1500	3.11373018471365\\
+2000	3.17407887536643\\
+2500	3.2344275660192\\
+3000	3.29477625667197\\
+3500	3.35512494732475\\
+4000	3.41547363797752\\
+4500	3.4758223286303\\
+5000	3.53617101928307\\
+};
+\addlegendentry{Vectran};
+
+\addplot [color=black,solid,line width=1.1pt,mark size=3.3pt,mark=asterisk,mark options={solid}]
+  table[row sep=crcr]{%
+500	2.99303280340811\\
+1000	3.05338149406088\\
+1500	3.11373018471365\\
+2000	3.17407887536643\\
+2500	3.2344275660192\\
+3000	3.29477625667197\\
+3500	3.35512494732475\\
+4000	3.41547363797752\\
+4500	3.4758223286303\\
+5000	3.53617101928307\\
+};
+\addlegendentry{Kevlar 29};
+
+\addplot [color=black,solid,line width=1.1pt,mark size=3.3pt,mark=star,mark options={solid}]
+  table[row sep=crcr]{%
+500	4.24702196074961\\
+1000	4.30737065140239\\
+1500	4.36771934205516\\
+2000	4.42806803270793\\
+2500	4.48841672336071\\
+3000	4.54876541401348\\
+3500	4.60911410466625\\
+4000	4.66946279531903\\
+4500	4.7298114859718\\
+5000	4.79016017662457\\
+};
+\addlegendentry{Kevlar 49};
+
+\addplot [color=black,solid,line width=1.1pt,mark size=3.3pt,mark=x,mark options={solid}]
+  table[row sep=crcr]{%
+500	3.70355956511204\\
+1000	3.76390825576482\\
+1500	3.82425694641759\\
+2000	3.88460563707036\\
+2500	3.94495432772314\\
+3000	4.00530301837591\\
+3500	4.06565170902868\\
+4000	4.12600039968146\\
+4500	4.18634909033423\\
+5000	4.246697780987\\
+};
+\addlegendentry{Upilex-25S};
+
+\addplot [color=black,solid,line width=1.1pt,mark size=2.3pt,mark=square,mark options={solid}]
+  table[row sep=crcr]{%
+500	7.60843751895236\\
+1000	7.66878620960514\\
+1500	7.72913490025791\\
+2000	7.78948359091068\\
+2500	7.84983228156346\\
+3000	7.91018097221623\\
+3500	7.97052966286901\\
+4000	8.03087835352178\\
+4500	8.09122704417455\\
+5000	8.15157573482733\\
+};
+\addlegendentry{Nomex};
+
+\addplot [color=black,solid,line width=1.1pt,mark size=5.6pt,mark=diamond,mark options={solid}]
+  table[row sep=crcr]{%
+500	7.66479658220367\\
+1000	7.72514527285644\\
+1500	7.78549396350922\\
+2000	7.84584265416199\\
+2500	7.90619134481476\\
+3000	7.96654003546754\\
+3500	8.02688872612031\\
+4000	8.08723741677308\\
+4500	8.14758610742586\\
+5000	8.20793479807863\\
+};
+\addlegendentry{Nextel 610};
+
+\end{axis}
+\end{tikzpicture}%

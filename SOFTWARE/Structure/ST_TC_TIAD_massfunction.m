@@ -79,10 +79,10 @@ coating_mass_fraction = 0.5;
 %%selected_material_gasb = 'Upilex-25S'; %Gas barrier material
 %%selected_material_toro = 'Upilex-25S'; %Fiber or film material
 
-TensYield_Nondim = [16583 ; 207000 ; 212400 ; 237453 ; 45000 ; 383918 ; 350999 ; 2220007 ; 36059 ; 231346; 22653];
-Density = [1420;1440;1440;1700;1380;1540;970;1390;1470;1410;2700];
-Strain_break = 1/100.*[72;3.6;2.4;1.4;30.5;3.5;3;4.4;42;4.3;0.];
-Materials = { {'Kapton'}, {'Kevlar 29'}, {'Kevlar 49'}, {'M5'}, {'Nomex'}, {'PBO Zylon'}, {'Spectra 2000'}, {'Technora'}, {'Upilex-25S'},{'Vectran'},{'Aluminium'}};
+TensYield_Nondim = [16583 ; 207000 ; 212400 ; 237453 ; 45000 ; 383918 ; 350999 ; 2220007 ; 36059 ; 231346; 22653; 8.1054e+04];
+Density = [1420;1440;1440;1700;1380;1540;970;1390;1470;1410;2700;3900];
+Strain_break = 1/100.*[72;3.6;2.4;1.4;30.5;3.5;3;4.4;42;4.3;0.;0.];
+Materials = { {'Kapton'}, {'Kevlar 29'}, {'Kevlar 49'}, {'M5'}, {'Nomex'}, {'PBO Zylon'}, {'Spectra 2000'}, {'Technora'}, {'Upilex-25S'},{'Vectran'},{'Aluminium'},{'Nextel 610'}};
 
 
 %Toroid (fibres/film)
