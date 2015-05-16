@@ -1,6 +1,8 @@
 \section{Astrodynamics \& control tool development}
 \label{ch:astrocontrol}
-***Intro***\\
+In this chapter the development of a tool for astrodynamics and control is described. The tool calculates the trajectory of the spacecraft for varying initial conditions and aerodynamic properties. With the information extracted from this tool requirements**maybe requirements is not the right word** for the control systems can be determined. Based on these requirements the different control systems available for the different concepts (which are presented in chapter \ref{ch:options}) can be weighed off in a trade-off in chapter \ref{ch:tradeoff}.
+
+In this chapter first the purpose of the tool will be explained in section \ref{sec:astropurpose}. In sections \ref{sec:astrogov} and \ref{sec:astrowp} working principles of the tool are explained and the equations the tool is based on are presented. To ensure the tool calculates what it is supposed to calculate and to ensure this happens accurately enough in section \ref{sec:astrovv} the verification and validation of the tool is done. In section \ref{sec:astroref} performance of current day control systems are investigated. This performance is compared to the calculated needed performance to come to a conclusion in section \ref{sec:astrores}. Section \ref{sec:astrores} also presents some other results of the tool which are used as input for tools calculating i.e. structural mass.
 
 \subsection{Purpose of tool development}
 \label{sec:astropurpose}
@@ -10,16 +12,19 @@
 ***Investigate the need for \& effect of control***\\
 
 \subsection{Governing equations}
+\label{sec:astrogov}
 ***intro***\\
 ***Kepler for hyperbolic: Vis-Viva, polar expression of hyperbola, tangent to hyperbola)***\\
-***Forces give accelerations: like in baseline***\\
+***Forces give accelerations: like in baseline + Jerk***\\
 ***Kepler for elliptic: symmetry***\\
 
 \subsection{Working principles of the tool}
+\label{sec:astrowp}
 ***intro***\\
 ***Flowchart + very short explanation***\\
 
 \subsection{Verification \& validation}
+\label{sec:astrovv}
 ***intro***\\
 ***sensitivity analysis: very sensitive to initial location, thus for now assumed initial location closer***\\
 ***discretisation error: error for different dt***\\
@@ -27,11 +32,13 @@
 ***Validation through checking if output values are approximately the same as reference cases (peak dynamic pressure)***\\
 
 \subsection{Performance of control systems}
+ \label{sec:astroref}
 ***intro***\\
 ***Moment or dalpha/dt that control systems (cg offset, thrusters, control surfaces) can create***\\
 ***Weight estimate of each control system (per concept if needed)***\\
 
 \subsection{Results \& Conclusions}
+\label{sec:astrores}
 ***intro***\\
 ***Plot of a trajectory***\\
 ***Plots of output variables for that particular trajectory***\\
