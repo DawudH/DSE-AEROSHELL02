@@ -6,10 +6,11 @@ In this chapter first the purpose of the tool will be explained in section \ref{
 
 \subsection{Purpose of tool development}
 \label{sec:astropurpose}
-***intro***\\
-***No other tool publicly available***\\
-***Determine the required Aerodynamic characteristics to create an acceptable window of entry***\\
-***Investigate the need for \& effect of control***\\
+The purpose of developing a tool to calculate the trajectory of the spacecraft during entry is firstly to know the trajectory given the characteristics of the spacecraft. Secondly, calculating trajectories for varying input, for the different concepts and different control systems, this tool can also give an insight in which concepts have the characteristics needed for a successful entry.
+
+The tool has been developed in-house as no existing tool that suits our purpose and is publicly available has been found.
+
+More specifically the tool is used here to determine the required Aerodynamic characteristics to create an acceptable window of entry. Or in other words: What accuracy of the initial conditions is needed to, with a certain shape and control, get the required accuracy at the final position. Taking into account the different shapes the goal of this tool is to investigate the need for \& effect of control on the trajectory of the spacecraft. 
 
 \subsection{Governing equations}
 \label{sec:astrogov}
@@ -20,7 +21,8 @@ In this chapter first the purpose of the tool will be explained in section \ref{
 
 \subsection{Working principles of the tool}
 \label{sec:astrowp}
-***intro***\\
+The tool is able to calculate the trajectory of the spacecraft and a range of important parameters at each moment in time. These parameters are among others: Acceleration (\gls{sym:acc}), dynamic pressure (\gls{sym:q}), speed (\gls{sym:Vv}) and Mach number (\gls{sym:mach}). In order to calculate this the tool takes geometric and aerodynamic properties of the spacecraft and some initial conditions as input.
+
 ***Flowchart + very short explanation***\\
 
 \subsection{Verification \& validation}
