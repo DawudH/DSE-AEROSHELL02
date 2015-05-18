@@ -3,7 +3,7 @@ function [TriGeom,xvector,yvector,zvector] = TriMeshGen(q,R,r,t,type)
 %% Sphere
 if type == 's'
 %% Define Polar Coordinates
-theta = linspace(pi,0,q);              
+theta = linspace(-pi/2,pi/2,q);              
 phi  = linspace(pi,3*pi,q);
 [theta,phi]=meshgrid(theta,phi);
 %% Shape definition Sphere
@@ -20,6 +20,13 @@ for n = 1:length(x(1,:))
         yvector = [yvector,y(m,n)];
         zvector = [zvector,z(m,n)];
     end
+end
+
+p = length(xvector)/q;
+for i = 1:p
+    xvector(i*q+1) = xvector((i-1)*q+2);
+    yvector(i*q+1) = yvector((i-1)*q+2);
+    zvector(i*q+1) = zvector((i-1)*q+2);
 end
 
 %% Triangulation matrix 

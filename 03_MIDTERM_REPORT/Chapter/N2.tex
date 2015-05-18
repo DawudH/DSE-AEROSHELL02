@@ -1,6 +1,6 @@
 \section{Design interfaces} \label{ch:di}
 
-This chapter discusses the design interfaces. First off, in section \ref{sec:N2} the interfaces between the different subsystems or departments which are considered during the design are given and discussed. This is appended by the design interfaces which needs to be considered during the operation of the mission in the form of a communication flow diagram in section \ref{ }.
+This chapter discusses the design interfaces. First off, in section \ref{sec:N2} the interfaces between the different subsystems or departments which are considered during the design are given and discussed. This is appended by the design interfaces which needs to be considered during the operation of the mission in the form of a communication flow diagram in section \ref{sec:comflow}.
 
 \subsection{Subsystem design interfaces} \label{sec:N2}
 This section defines the interfaces between the different subsystems of the \gls{hiad}. The interfaces are defined in a similar manner as the technical work division of chapter \ref{sec:org}. This subdivision is trajectory \& control, aerodynamics, thermodynamics and structure.  The interfaces are illustrated in the form of a N2 chart as displayed in Fig. \ref{fig:N2} and will subsequently be discussed from the perspective of required inputs per subsystems.
@@ -46,7 +46,7 @@ The control forces are very dependent on the type of control system implemented.
 
 Finally a shape is defined by the aerodynamics department for which the structure needs to be sized. 
 
-\subsection{System communication flow}
+\subsection{System communication flow} \label{sec:comflow}
 Communication flow primarily takes place with respect to trajectory sensing and control. In order to adhere to a certain trajectory and to counteract perturbations, alterations in vehicle dynamics are required. These alterations are performed by actuators, as investigated in Chapter \ref{ch:astrocontrol}. The magnitude and direction of the alterations are determined by an on-board computing unit, by a comparison with the actual attitude as provided by attitude sensors mounted on the (re-)entry vehicle. Trajectory and attitude information is communicated to ground control via a Telemetry and Command Unit. A fail-safe system is included to take over computer functions in case of computer failure. This communication flow is depicted in Fig. \ref{fig:comflow}.
 
 \begin{figure}[H]
