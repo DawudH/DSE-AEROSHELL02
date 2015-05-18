@@ -35,9 +35,40 @@ In this section the equations on which the tool is based are shown and the reaso
  
 \subsubsection{Hyperbolic Kepler entry}
  \label{sec:hypkep}
-Before initial entry into the atmosphere the spacecraft follows a hyperbolic Kepler trajectory. From the initial conditions the 
+Before initial entry into the atmosphere the spacecraft follows a hyperbolic Kepler trajectory untill it reaches the atmosphere. From the initial conditions a new position, velocity and acceleration need to be found. 
 
-***Kepler for hyperbolic: Vis-Viva, polar expression of hyperbola, tangent to hyperbola***\\
+First the Keplerian orbit parameters need to be determined. For this calculations the known initial conditions are used. The eccentricity $\left(\gls{sym:e}\right)$ can be calculated by Kepler's second law, which is expressed in a formula in equation \ref{eq:kep2nd}.
+
+\begin{equation}
+\frac{dA}{dt} = \frac{1}{2}\sqrt{a\gls{con:mu}(1-e^2)}
+\label{eq:kep2nd}
+\end{equation}
+Where $\frac{dA}{dt} = \frac{1}{2}r(t)r(t+dt)*\sin{d\gls{sym:phi}}$.
+
+The semi-major axis $\left(\gls{sym:a}\right)$ can be extracted from the Vis-Viva equation, which is shown in equation \ref{eq:visviva}.
+
+\begin{equation}
+\gls{sym:V}^2 = \gls{con:mu}\left(\frac{2}{\gls{sym:R}}-\frac{1}{\gls{sym:a}}\right)
+\label{eq:visviva}
+\end{equation}
+
+From the initial position an angle \gls{sym:phi} wrt the hyperbolic reference frame can be calculated with equation \ref{eq:polarkep}. In the inertial reference frame the angle of the spacecraft can also be calculated. Using both angles an offset of the hyperbolic frame from the initial frame$\left (\gls{sym:phip}\right)$ can be calculated.
+
+\begin{equation}
+\gls{sym:R} = \frac{\gls{sym:a}(1-\gls{sym:e}^2)}{1+\gls{sym:e}\cos{\gls{sym:phi}}}
+\label{eq:polarkep}
+\end{equation}
+
+With the Keplerian orbital parameters and \gls{sym:R} on the edge of the atmosphere known. Using equation \ref{eq:visviva} the new magnitude of the \gls{sym:V} can be calculated. The direction of \gls{sym:Vv} has been determined based on the tangent to the hyperbola (calculated in the hyperbolic frame) rotated over an angle \gls{sym:phip}.
+
+The direction of \gls{sym:Rv} is based on \gls{sym:phi}, which is calculated with equation \label{eq:polarkep} where \gls{sym:R} is known.
+
+The acceleration $\left(\gls{sym:acc}\right)$ is only the gravitational pull $\left(\gls{sym:g}\right)$, which can be calculated with equation \ref{eq:grav}.
+
+\begin{equation} \label{eq:grav}
+\gls{sym:g} = -\frac{\gls{con:G}\gls{con:Mmars}}
+					{\gls{sym:R}^3}\gls{sym:Rv}
+\end{equation}
 
 \subsubsection{Trajectory in atmosphere}
  \label{sec:trajatmos}
