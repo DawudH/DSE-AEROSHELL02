@@ -113,7 +113,7 @@ theta = meshgrid(theta);
 theta = theta';
  
  %% Cylindrical transformation
- X = (t)*(X.^2)/2;
+ X = (t)*((X.^2)/2);
  z=r.*cos(theta);           
  y=r.*sin(theta);
  x=-X;
@@ -121,7 +121,6 @@ theta = theta';
 %% Coordinate calculation of upper ring(after linear section)
 zmax = R.*cos(theta);
 ymax = R.*sin(theta);
-%xmax = -max((t/(R*rgrad))+(R-max(r))*(t/rgrad));
 xmax = -t/max(max(r))*(R-max(max(r)));
 xmax = ones(q)*xmax;
 x = [x,xmax(:,1)];
@@ -144,9 +143,16 @@ end
 xvector(1:q-1)=[];
 yvector(1:q-1)=[];
 zvector(1:q-1)=[];
+p = length(xvector)/q;
+for i = 1:p
+    xvector(i*q+1) = xvector((i-1)*q+2);
+    yvector(i*q+1) = yvector((i-1)*q+2);
+    zvector(i*q+1) = zvector((i-1)*q+2);
+end
+
 
 %% Triangulation matrix 
-p = length(xvector);
+p = length(xvector)/q;
 Tri = [0 0 0];
 for i = 1:q-1
     for j = 1:q-1
