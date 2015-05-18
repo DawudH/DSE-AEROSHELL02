@@ -30,12 +30,45 @@ In this section the equations on which the tool is based are shown and the reaso
  \paragraph{secondary assumptions}
  \begin{itemize}
  \item The spacecraft is assumed to only feel a gravitational pull from mars. It is thus assumed that there is no gravitational pull from the sun, any other planet or the martian moons.
- \item The atmosphere stops at a height of 400 [km]. At this point the atmosphere is negligibly thin, adding any more atmosphere would not contribute significantly to the results.
+ \item The atmosphere stops at a height of 400 $\left[km\right]$. At this point the atmosphere is negligibly thin, adding any more atmosphere would not contribute significantly to the results.
  \end{itemize}
  
 \subsubsection{Hyperbolic Kepler entry}
  \label{sec:hypkep}
-***Kepler for hyperbolic: Vis-Viva, polar expression of hyperbola, tangent to hyperbola***\\
+Before initial entry into the atmosphere the spacecraft follows a hyperbolic Kepler trajectory untill it reaches the atmosphere. From the initial conditions a new position, velocity and acceleration need to be found. 
+
+First the Keplerian orbit parameters need to be determined. For this calculations the known initial conditions are used. The eccentricity $\left(\gls{sym:e}\right)$ can be calculated by Kepler's second law, which is expressed in a formula in equation \ref{eq:kep2nd}.
+
+\begin{equation}
+\frac{dA}{dt} = \frac{1}{2}\sqrt{a\gls{con:mu}(1-e^2)}
+\label{eq:kep2nd}
+\end{equation}
+Where $\frac{dA}{dt} = \frac{1}{2}r(t)r(t+dt)*\sin{d\gls{sym:phi}}$.
+
+The semi-major axis $\left(\gls{sym:a}\right)$ can be extracted from the Vis-Viva equation, which is shown in equation \ref{eq:visviva}.
+
+\begin{equation}
+\gls{sym:V}^2 = \gls{con:mu}\left(\frac{2}{\gls{sym:R}}-\frac{1}{\gls{sym:a}}\right)
+\label{eq:visviva}
+\end{equation}
+
+From the initial position an angle \gls{sym:phi} wrt the hyperbolic reference frame can be calculated with equation \ref{eq:polarkep}. In the inertial reference frame the angle of the spacecraft can also be calculated. Using both angles an offset of the hyperbolic frame from the initial frame$\left (\gls{sym:phip}\right)$ can be calculated.
+
+\begin{equation}
+\gls{sym:R} = \frac{\gls{sym:a}(1-\gls{sym:e}^2)}{1+\gls{sym:e}\cos{\gls{sym:phi}}}
+\label{eq:polarkep}
+\end{equation}
+
+With the Keplerian orbital parameters and \gls{sym:R} on the edge of the atmosphere known. Using equation \ref{eq:visviva} the new magnitude of the \gls{sym:V} can be calculated. The direction of \gls{sym:Vv} has been determined based on the tangent to the hyperbola (calculated in the hyperbolic frame) rotated over an angle \gls{sym:phip}.
+
+The direction of \gls{sym:Rv} is based on \gls{sym:phi}, which is calculated with equation \label{eq:polarkep} where \gls{sym:R} is known.
+
+The acceleration $\left(\gls{sym:acc}\right)$ is only the gravitational pull $\left(\gls{sym:g}\right)$, which can be calculated with equation \ref{eq:grav}.
+
+\begin{equation} \label{eq:grav}
+\gls{sym:g} = -\frac{\gls{con:G}\gls{con:Mmars}}
+					{\gls{sym:R}^3}\gls{sym:Rv}
+\end{equation}
 
 \subsubsection{Trajectory in atmosphere}
  \label{sec:trajatmos}
@@ -45,47 +78,9 @@ In this section the equations on which the tool is based are shown and the reaso
  \label{sec:eliptickep}
 ***Kepler for elliptic: symmetry***\\
 
-
-\subsubsection{Atmospheric model}
-\begin{figure}[h]
-	\centering
-	\begin{subfigure}{0.45\textwidth}
-	\centering
-	\includegraphics[trim={4cm 9.8cm 9cm 10cm},clip,width=0.9\textwidth]{Figure/atmos_model/density.pdf}
-	\caption{The atmospheric density} 
-	\label{fig:atmos_height_rho}
-	\end{subfigure}
-	\begin{subfigure}{0.45\textwidth}
-	\centering
-	\includegraphics[trim={4cm 9.8cm 9cm 10cm},clip,width=0.9\textwidth]{Figure/atmos_model/temperature.pdf}
-	\caption{The atmospheric temperature}
-	\label{fig:atmos_height_T}
-	\end{subfigure}
-	\caption{The atmospheric properties for different heights}
-	\label{fig:atmos_height}
-\end{figure}
-
-\begin{figure}[h]
-	\centering
-	\begin{subfigure}{0.9\textwidth}
-	\centering
-	\includegraphics[trim={4.25cm 11cm 3.2cm 11cm},clip,width=0.9\textwidth]{Figure/atmos_model/lon_50.pdf}
-	\caption{The atmospheric properties at $50$ $\left[km\right]$} 
-	\label{fig:atmos_lon_50}
-	\end{subfigure}
-	\begin{subfigure}{0.9\textwidth}
-	\centering
-	\includegraphics[trim={4.5cm 11cm 3.1cm 11cm},clip,width=0.9\textwidth]{Figure/atmos_model/lon_25.pdf}
-	\caption{The atmospheric properties at $25$ $\left[km\right]$} 
-	\label{fig:atmos_lon_25}
-	\end{subfigure}
-	\caption{The atmospheric properties for different heights at a latitude of 0 $\left[^\circ\right]$}
-	\label{fig:atmos_lon}
-\end{figure}
-
 \subsection{Working principles of the tool}
 \label{sec:astrowp}
-The tool is able to calculate the trajectory of the spacecraft and a range of important parameters at each moment in time. These parameters are among others: Acceleration (\gls{sym:acc}), dynamic pressure (\gls{sym:q}), speed (\gls{sym:Vv}) and Mach number (\gls{sym:M}). In order to calculate this the tool takes geometric and aerodynamic properties of the spacecraft and some initial conditions as input.
+The tool is able to calculate the trajectory of the spacecraft and a range of important parameters at each moment in time. These parameters are among others: Acceleration $\left(\gls{sym:acc}\right)$, dynamic pressure $\left(\gls{sym:q}\right)$, speed $\left(\gls{sym:Vv}\right)$ and Mach number $\left(\gls{sym:M}\right)$. In order to calculate this the tool takes geometric and aerodynamic properties of the spacecraft and some initial conditions as input.
 
 ***Flowchart + very short explanation***\\
 
@@ -134,7 +129,7 @@ Several options for the control system are considered. Using first-order calcula
 	\item A \acrfull{rcs}
 	\item Control surfaces (body flaps)
 \end{itemize}
-Each of these options will be quickly assessed in the subsequent sections. This will be done by taking angle of attack \gls{sym:alpha}$=30\deg$. This corresponds to $\gls{sym:CM}\gls{sym:A}=-100$, $\gls{sym:CL}\gls{sym:A}=-60$ and $\gls{sym:CD}\gls{sym:A}=126$. These values have been obtained by using the aerodynamical tool described in chapter \ref{ch:aero_analysis} for (geometry). Using equation \ref{eq:moment_from_cm} the control moment required can be obtained.
+Each of these options will be quickly assessed in the subsequent sections. This will be done by taking angle of attack \gls{sym:alpha}$=30\deg$. This corresponds to $\gls{sym:CM}\gls{sym:A}=-100$, $\gls{sym:CL}\gls{sym:A}=-58.8$ and $\gls{sym:CD}\gls{sym:A}=126$. These values have been obtained by using the aerodynamical tool described in chapter \ref{ch:aero_analysis} for an Apollo-shaped object. Using equation \ref{eq:moment_from_cm} the control moment required can be obtained.
 \begin{equation}
 M=\frac{1}{2}\gls{sym:rho}\gls{sym:V}^{2}\gls{sym:CM}\gls{sym:A}
 \label{eq:moment_from_cm}
@@ -142,19 +137,36 @@ M=\frac{1}{2}\gls{sym:rho}\gls{sym:V}^{2}\gls{sym:CM}\gls{sym:A}
 This moment has to be counteracted during a time $t$. Furthermore, for the \gls{rcs} and body flaps the required force can be directly determined by noting that $M=dF$, where $d$ is the moment arm and $F$ is the control force. 
 
 \subsubsection{\gls{cg}-shifting}
+By moving the \acrlong{cg} of the spacecraft the sum of the moments exerted on it changes. This will cause a change in spacecraft attitude, thereby also trimming the capsule. The \gls{cg}-shift can be achieved by shifting the location of the aeroshell with respect to the capsule. This will slightly move the \acrlong{cg} of the spacecraft and change the location of the lift and drag forces acting on it. In order to avoid over-designing the actuator concerned with shifting the aeroshell with respect to the capsule (and thus making it heavier) the movement speeds are limited to low values.
 
 \subsubsection{\acrlong{rcs}}
-By using the control force requirement the mass flow can be determined with equation \ref{eq:rcsmassflow} \cite{Allen2012}.
+By using the control force requirement the mass flow of the \acrlong{rcs} can be determined with equation \ref{eq:rcsmassflow} \cite{Allen2012}.
 \begin{equation}
 \frac{M}{d}=F=\gls{sym:mdot}\gls{sym:Isp}\gls{sym:ge}
+\label{eq:rcsmassflow}
 \end{equation}
-From equation \ref{eq:rcsmassflow} the required propulsive mass can be determined by multiplying both sides of the equation with timespan $t$ and solving for $\gls{sym:m}$, which results in equation \ref{eq:propmass}.
+From equation \ref{eq:rcsmassflow} the required propulsive mass can be obtained by multiplying both sides of the equation with timespan $t$ and solving for $\gls{sym:m}$, which results in equation \ref{eq:propmass}.
 \begin{equation}
 \gls{sym:m}=\frac{Ft}{\gls{sym:Isp}\gls{sym:ge}}
 \label{eq:propmass}
 \end{equation}
 
-\subsubsection{Control surfaces}
+By working out equation \ref{eq:propmass} one can see that the required propulsive mass $\gls{sym:m}=$. From this it can be observed that using a control system relying exclusively on rocket control is not reconcilable with the weight requirements imposed on the hypersonic decelerator.
+\subsubsection{Body flaps}
+Body flaps function by introducing a local aerodynamical force by controlling the local geometry. A body flap element produces a lift and drag force as in equation \ref{eq:flaplift} and \ref{eq:flapdrag}.
+\begin{multicols}{2}
+\begin{equation}
+L=\frac{1}{2}\gls{sym:rho}\gls{sym:V}^{2}\gls{sym:CL}\gls{sym:A}
+\label{eq:flaplift}
+\end{equation} \break
+\begin{equation}
+D=\frac{1}{2}\gls{sym:rho}\gls{sym:V}^{2}\gls{sym:CD}\gls{sym:A}
+\label{eq:flapdrag}
+\end{equation}
+\end{multicols}
+
+\subsubsection{Control system design conclusions}
+From the previous sections one can conclude that all proposed concepts have their own strengths and weaknesses. In order to combine these it has been decided to combine \gls{cg}-shifting with
 
 
 ***Moment or dalpha/dt that control systems (cg offset, thrusters, control surfaces) can create***\\
@@ -166,7 +178,41 @@ From equation \ref{eq:rcsmassflow} the required propulsive mass can be determine
 
 \subsubsection{Atmospheric model}
 \label{sec:astroatmos}
-***Plot rho,T vs. long,h***\\
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}{0.45\textwidth}
+	\centering
+	\includegraphics[trim={4cm 9.8cm 9cm 10cm},clip,width=0.9\textwidth]{Figure/atmos_model/density.pdf}
+	\caption{The atmospheric density} 
+	\label{fig:atmos_height_rho}
+	\end{subfigure}
+	\begin{subfigure}{0.45\textwidth}
+	\centering
+	\includegraphics[trim={4cm 9.8cm 9cm 10cm},clip,width=0.9\textwidth]{Figure/atmos_model/temperature.pdf}
+	\caption{The atmospheric temperature}
+	\label{fig:atmos_height_T}
+	\end{subfigure}
+	\caption{The atmospheric properties for different heights}
+	\label{fig:atmos_height}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}{0.9\textwidth}
+	\centering
+	\includegraphics[trim={4.25cm 11cm 3.2cm 11cm},clip,width=0.9\textwidth]{Figure/atmos_model/lon_50.pdf}
+	\caption{The atmospheric properties at $50$ $\left[km\right]$} 
+	\label{fig:atmos_lon_50}
+	\end{subfigure}
+	\begin{subfigure}{0.9\textwidth}
+	\centering
+	\includegraphics[trim={4.5cm 11cm 3.1cm 11cm},clip,width=0.9\textwidth]{Figure/atmos_model/lon_25.pdf}
+	\caption{The atmospheric properties at $25$ $\left[km\right]$} 
+	\label{fig:atmos_lon_25}
+	\end{subfigure}
+	\caption{The atmospheric properties for different heights at a latitude of 0 $\left[^\circ\right]$}
+	\label{fig:atmos_lon}
+\end{figure}
 
 \subsubsection{Effect of \gls{sym:CL} and \gls{sym:CD} on deceleration}
 \label{sec:astrodec}
