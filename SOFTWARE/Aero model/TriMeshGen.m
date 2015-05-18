@@ -45,6 +45,11 @@ Tri0 = Tri(:,1) == 0;
 Tri(Tri0,:) = [];
 id = 'MATLAB:triangulation:PtsNotInTriWarnId';
 warning('off',id)
+%% Periodic domain; set correct points in triangulaition matrix
+for i = 1:q
+    Tri(Tri==i*q)=(i-1)*q+1;
+end
+
 TriGeom = triangulation(Tri, xvector', yvector', zvector');
 
 
@@ -125,7 +130,8 @@ theta = theta';
 %% Coordinate calculation of upper ring(after linear section)
 zmax = R.*cos(theta);
 ymax = R.*sin(theta);
-xmax = -t/max(max(r))*(R-max(max(r)));
+xmax = -max((t/(R*rgrad))+(R-max(r))*(t/rgrad));
+%xmax = -t/max(max(r))*(R-max(max(r)));
 xmax = ones(q)*xmax;
 x = [x,xmax(:,1)];
 y = [y,ymax(:,1)];
@@ -186,6 +192,10 @@ Tri = [Tri1;Tri];
 
 id = 'MATLAB:triangulation:PtsNotInTriWarnId';
 warning('off',id)
+
+for i = 1:q
+    Tri(Tri==i*q+1)=(i-1)*q+2;
+end
 
 TriGeom = triangulation(Tri, xvector', yvector', zvector');
 

@@ -65,9 +65,9 @@ classdef modnewtonian
             obj.CMA_body_array = [obj.CMA_body_array, obj.calcMomentCoeffsBody()];
             obj.CMA_aero_array = [obj.CMA_aero_array, obj.calcMomentCoeffsAero()];
             obj.CLCD_array = obj.CRA_aero_array(3,:)./obj.CRA_aero_array(1,:);
-            [T,q] = obj.calcHeatFlux();
-            obj.Tmax_array = [obj.Tmax_array, T];
-            obj.qmax_array = [obj.qmax_array, q];
+%             [T,q] = obj.calcHeatFlux();
+%             obj.Tmax_array = [obj.Tmax_array, T];
+%             obj.qmax_array = [obj.qmax_array, q];
             obj.CR_body_array = obj.CRA_body_array / obj.A;
             obj.CR_aero_array = obj.CRA_aero_array / obj.A;
             obj.CM_body_array = obj.CMA_body_array / obj.A;
@@ -326,6 +326,36 @@ classdef modnewtonian
         
         function T = Tba(obj, alpha, beta)
             T = inv(obj.Tab(alpha, beta));
+        end
+        
+        function unconnectedTriangles = getUnconnectedTriangles(obj)
+            unconnectedTriangles = [];
+            for i = 1:size(obj.tri,1)
+                if sum(isnan(obj.getAdjacentTriangles(i))) > 0
+                    unconnectedTriangles(end+1) = i;
+                end
+            end
+        end
+        
+        function [] = plotUnconnectedTriangles(obj, pauselength)
+            unc = obj.getUnconnectedTriangles();
+            for i = 1:length(unc)
+                obj.plotTriangle(unc(i));
+                pause(pauselength);
+            end
+        end
+        
+        function [] = plotPoint(obj, n)
+        %PLOTPOINT Plot a point on the 3d plot
+            plot3(obj.coords(1,n), obj.coords(2,n), obj.coords(3,n), 'o');
+        end
+        
+        function [] = plotTriangle(obj, n)
+        %PLOTTRIANGLE Plot the triangle
+            t = obj.tri(n,:);
+            obj.plotPoint(t(1));
+            obj.plotPoint(t(2));
+            obj.plotPoint(t(3));
         end
         
         function obj = plots(obj, xarray, xlabeltxt, plotboolarray)
