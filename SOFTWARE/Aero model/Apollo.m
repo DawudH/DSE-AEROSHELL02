@@ -70,6 +70,8 @@ for i = 1:length(Vector)-1
 end
 
 VectorI = Vector(:,1) == 0 & Vector(:,2) == 0 & Vector(:,2) == 0;
+VectorI(1) = 0;
+Count = sum(VectorI);
 Vector(VectorI,:)=[];
 xvector = Vector(:,1);
 yvector = Vector(:,2);
@@ -78,7 +80,7 @@ zvector = Vector(:,3);
 %% Triangulation matrix 
 
 Tri = [0 0 0];
-for i = 1:2*q-2
+for i = 1:2*q-3
     for j = 1:2*q-1
 %         if i == 0      
 %             Tri(2*(i*(2*q-1)+j)-1,:) = [0 0 0];
