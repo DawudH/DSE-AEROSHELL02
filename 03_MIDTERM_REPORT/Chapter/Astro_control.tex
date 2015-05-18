@@ -75,15 +75,16 @@ This moment has to be counteracted during a time $t$. Furthermore, for the \gls{
 
 \subsubsection{\gls{cg}-shifting}
 
-CL*A=-60
-CD*A=126
-
 \subsubsection{\acrlong{rcs}}
 By using the control force requirement the mass flow can be determined with equation \ref{eq:rcsmassflow} \cite{Allen2012}.
 \begin{equation}
-F=\gls{sym:mdot}\gls{sym:Isp}\gls{sym:ge}
+\frac{M}{d}=F=\gls{sym:mdot}\gls{sym:Isp}\gls{sym:ge}
 \end{equation}
-From equation \ref{eq:rcsmassflow} the required propulsive mass can be determined by multiplying $F$ with timespan $t$.
+From equation \ref{eq:rcsmassflow} the required propulsive mass can be determined by multiplying both sides of the equation with timespan $t$ and solving for $\gls{sym:m}$, which results in equation \ref{eq:propmass}.
+\begin{equation}
+\gls{sym:m}=\frac{Ft}{\gls{sym:Isp}\gls{sym:ge}}
+\label{eq:propmass}
+\end{equation}
 
 \subsubsection{Control surfaces}
 
