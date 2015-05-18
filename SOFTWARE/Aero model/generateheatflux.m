@@ -33,3 +33,5 @@ for i = range
         disp(strcat('current number: (', num2str(i), '/', num2str(max(range)), '), qmax: ', num2str(qmax(i))));  
     end
 end
+
+disp('Finished!');

@@ -7,7 +7,7 @@ close all
 
 %% inputs
 filename = 'EX42.txt';
-dx = 0.0005;
+dx = 0.005;
 dt = 0.003;
 
 %% From aero-data
@@ -15,7 +15,7 @@ dt = 0.003;
 % q = interp1(t,qmax,tempt);
 % T_inf = interp1(t,T,tempt);
 % totalt = max(t)/dt+1;
-totalt = 10000;
+totalt = 40000;
 % Emissivity
 eps = 0.443; %[-]
 time = dt*(0:totalt-1);
@@ -52,7 +52,7 @@ qmax=100000;
 c1 = -25/4*qmax/totalt/totalt;
 c2 = 5*qmax/totalt;
 q = max(c1.*x.^2+c2.*x,0);
-q = ones(1,totalt)*350000;
+q = ones(1,totalt)*300000;
 % variable temp:
 tt = linspace(0,pi,totalt);
 T_inf = 1250.*sin(tt)*0+4*0;
@@ -80,18 +80,21 @@ Cp1(1:imax-1) = 2/dx./(1./k(2:imax)+1./k(1:imax-1));
 
 
 
-v = dt./rho./cp/dx;
-F = F + diag(1-v.*(Cm1+Cp1)) + diag(v(1:end-1).*Cp1(1:end-1),1) + diag(v(2:end).*Cm1(2:end),-1);
-F(1,1:2) = [1,0]+[-1,1]*v(1)*Cp1(1);
-F(imax,imax-1:imax) = [0,1]+[1,-1]*v(imax)*Cm1(imax);
-
-
+% v = dt./rho./cp/dx;
+% F = F + diag(1-v.*(Cm1+Cp1)) + diag(v(1:end-1).*Cp1(1:end-1),1) + diag(v(2:end).*Cm1(2:end),-1);
+% F(1,1:2) = [1,0]+[-1,1]*v(1)*Cp1(1);
+% F(imax,imax-1:imax) = [0,1]+[1,-1]*v(imax)*Cm1(imax);
+alpha=k./rho./cp;
+v = alpha*dt/dx/dx;
+F = diag(1-2*v) + diag(v(1:end-1),1) + diag(v(2:end),-1);
+F(1,1:2) = [1,0]+[-1,1]*v(1);
+F(imax,imax-1:imax) = [0,1]+[1,-1]*v(imax);
 %% Perform FCTS
 A = zeros(imax,1);
 
 for n=1:totalt-1
     cTrad = T(1,n)^4 - T_inf(n)^4;
-    A(1,1) =  2*v(1)*(q(n)-0*eps*sigma*cTrad);
+    A(1,1) =  2*v(1)*dx/k(1)*(q(n)-0*eps*sigma*cTrad);
     T(:,n+1) = F*T(:,n) + A;
 end
 
@@ -132,6 +135,8 @@ usssnum = T(1,end)-T(1,1);
 ussbana = 2*q0*sqrt(alpha*tau/pi)/k0*exp(-x^2/4/alpha/tau)-q0*x/k0*erfc(x/2/sqrt(alpha*tau));
 ussbnum = T(end,end)-T(1,1);
 output = table([ssana;ssnum;(ssnum-ssana)/ssana*100],[usssana;usssnum;(usssnum-usssana)/usssana*100],[ussbana;ussbnum;(ussbnum-ussbana)/ussbana*100],'RowNames',{'Analytical','Numerical','Difference%'},'VariableNames',{'SteadySB','UnsteadySS','UnsteadySB'})
+q0/k0*sqrt(pi*alpha*tau)
+
 
 qsb = 2*q0*sqrt(alpha*time/pi)/k0.*exp(-x^2/4/alpha./time)-q0*x/k0.*erfc(x/2./sqrt(alpha.*time));
 x=0;
