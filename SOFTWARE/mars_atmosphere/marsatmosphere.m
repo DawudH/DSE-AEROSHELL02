@@ -27,7 +27,8 @@ classdef marsatmosphere
             obj.GM_mars = G*M_mars;                 %Nm2/kg     G*M of mars for gravity
             
             % Atmosphere data from Mars-GRAM
-            uid = fopen('../../mars_atmosphere/atmosphere.txt');
+            location = which('atmosphere.txt');
+            uid = fopen(location);
             A = textscan(uid, '%f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f', 'HeaderLines', 1);
             fclose(uid);
             h_base = A{2}*1000;

@@ -124,7 +124,7 @@ classdef modnewtonian
             M = 3;
             N = 0.5;
             Vinf = obj.a_inf*obj.M_array(end);
-            Tmax = obj.T_inf*(1+obj.gamma)/2*obj.M_array(end)^2;
+            Tmax = obj.T_inf*(obj.gamma-1)/2*obj.M_array(end)^2;
             
             [cp, stagN] = max(obj.Cpdist_array(:,end));
             triangle = obj.tri(stagN, :);
@@ -296,6 +296,11 @@ classdef modnewtonian
         function points = getPointsOnYZPlane(obj, x)
             epsilon = 1e-10;            
             points = find(obj.coords(1,:)>x-epsilon & obj.coords(1,:)<x+epsilon);
+        end
+        
+        function points = getPointsOnXYPlane(obj, x)
+            epsilon = 1e-10;            
+            points = find(obj.coords(3,:)>x-epsilon & obj.coords(3,:)<x+epsilon);
         end
         
         function triangles = getTrianglesOnPoint(obj, point)
