@@ -5,8 +5,8 @@ function [ coords, tri, A ] = generategeometry( type, q )
 
     switch type
         case 'torus'
-            R = 12;
-            r = 3;
+            R = 6;
+            r = R/8;
             TriGeom = TriMeshGen(q, R, r, r, 't');
             coords = TriGeom.Points';
             tri = TriGeom.ConnectivityList;
@@ -51,6 +51,12 @@ function [ coords, tri, A ] = generategeometry( type, q )
             tri = TriGeom.ConnectivityList;
             A = pi*1/4*2.93^2;
             %t gradient, r half dome radius, R is max radius
+        case 'concept_irve'
+            TriGeom = TriMeshGen(q, 6, 2, 60, 'c');
+            coords = TriGeom.Points';
+            tri = TriGeom.ConnectivityList;
+            A = pi*6^2;
+            %t gradient, r half dome radius, R is max radius            
         case 'apollovalidation'
             [TriGeom, xvector, yvector, zvector] = Apollo(q);
             coords = [xvector;yvector;zvector];

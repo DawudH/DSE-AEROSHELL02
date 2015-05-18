@@ -7,23 +7,30 @@ shapetexts.pastille12m15m = 'pastille12m1.5m';
 shapetexts.deg60cone = 'deg60cone';
 shapetexts.deg30cone = 'deg30cone';
 shapetexts.irvevalidation = 'irvevalidation';
+shapetexts.apollovalidation = 'apollovalidation';
+shapetexts.torus = 'torus';
+shapetexts.concept_irve = 'concept_irve';
 
-a = 300;
-gamma = 1.4;
+a = 180;
+gamma = 1.29;
 center = zeros(3,1);
-rho = 1e-3;
-T = 150;
-q = 80;
+rho = 9e-5;
+T = 130;
+q = 11;
 
 alpha0 = -60; %degrees
 dalpha = 1; %degrees
 alphaend = 60; %degrees
 
-[ coords, tri, A ] = generategeometry( shapetexts.pastille12m15m, q );
+disp('Gererating geometry...');
+[ coords, tri, A ] = generategeometry( shapetexts.concept_irve, q );
 
+disp('Initialising...');
 mod = modnewtonian( coords, tri, gamma, a, center, rho, T, A);
+disp('Calculating...');
 mod = mod.alphasweep(a*20, 0, deg2rad(alpha0), deg2rad(alphaend), deg2rad(dalpha));
 
-dlmwrite('outputfiles/pastille.txt', [mod.alpha_array', mod.CRA_aero_array', mod.CMA_aero_array']);
-
+disp('Writing to file...');
+dlmwrite('outputfiles/irve.txt', [mod.alpha_array', mod.CRA_aero_array', mod.CMA_aero_array', mod.qmax_array']);
+disp('Done!');
 

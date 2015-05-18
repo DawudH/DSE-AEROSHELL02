@@ -29,7 +29,7 @@ for q = qarray
     mod = modnewtonian( coords, tri, gamma, a, center, rho, T, A);
     % mod = mod.alphasweep(7e3, 0, deg2rad(alpha0), deg2rad(alphaend), deg2rad(dalpha));
 
-    mod = mod.calcAeroangle(7e3,deg2rad(0),0);
+    mod = mod.calcAeroangle(7e3,deg2rad(1),0);
     CD = [CD, mod.CR_aero_array(1,1)];
 end
 CD;
