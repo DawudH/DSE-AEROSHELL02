@@ -2,46 +2,51 @@ input = { {'Cd'}, {'qmax'}, {'mf'}, {'M'}, {'T'}, {'Do'}, {'Di'},...
     {'theta'}, {'L'},{'N'},{'I'},{'All material'}};
 output ={ {'Decelerator mass [kg]'},'Decelerator mass [-]','Inflation gas mass [-]','Flexible material mass [-]',...
     {'Inflation gas pressure [Pa]','Flexible material mass [kg]','Inflation gas mass [kg]','Ballistic coefficient [$\frac{kg}{m^2}$]'}};
-x1 = {'theta'};
+x1 = {'Do'};
 x2 = {'qmax'};
-y  = {'Decelerator mass [kg]'};
+y  = {'Ballistic coefficient [$\frac{kg}{m^2}$]'};
 plotstyles = { { '2dx1' }, {'2dx2'}, {'3d_all'}, {'3d_stacked'}, {'3d_tension'}, {'3d_trailing'}, {'2d_matlegendx2_all'},{'2d_matlegendx2_stacked'},{'2d_matlegendx2_tension'},...
     {'2d_matlegendx2_trailing'}};
-desired_plotstyle = {'3d_all'};
+desired_plotstyle = {'3d_mesh'};
 
-Materials = {'Kapton','Kevlar 29','Kevlar 49','M5','Nomex','PBO Zylon','Spectra 2000', 'Technora', 'Upilex-25S','Vectran'};%,'Aluminium'};
+%addpath('.\matlab2tikz')
+%name = '.\LaTeX\Tikz\stacked_mat.tikz'
+figure(1)
+Materials = {'Kapton','Kevlar 29','Kevlar 49','M5','Nomex','PBO Zylon','Spectra 2000', 'Technora', 'Upilex-25S','Vectran','Nextel 610'};%,'Aluminium'};
 typeoftoroid = [0 1 2];
 %x2range = Materials;
 %x2range = Materials;
 %x2range = typeoftoroid;
 %x1range = 0.5:0.1:2.0; %CD
-x2range = 3000:100:5000; %dyn pressure
+x2range = 1000:500:10000; %dyn pressure
 %x1range = 5:2:40; %gas molar mass
 %x1range = 1:1:5;
-%x2range = 3:1:12; 
-%x2range = 5.01:0.5:12;
-x1range = 40:5:80;
-%x1range = 6:1:20;
+%x1range = 5.01:1:15.01; 
+x1range = 5.01:0.5:12;
+%x1range = 40:5:80;
+%x1range = 2:1:25;
 %x2range = 6:1:10;
+%x1range = 2:10:300;
+%x2range = 273.15:20:573.15;
 
 
-Cd = 1.2;
+Cd = 1.5;
 qmax = 3000;
 mf = 2;
 M = 22;
 T = 273.15;
 Do= 12;
-Di= 2;
+Di= 5;
 theta = 60;
 L = 1;
 N = 8;
 I = 18;
 
-selected_material_gore = 'Nomex';
-selected_material_rad  = 'Kevlar 49';
-selected_material_axi  = 'Kevlar 49';
-selected_material_gasb = 'Kapton';
-selected_material_toro = 'Kevlar 49';
+selected_material_gore = 'Vectran';
+selected_material_rad  = 'Vectran';
+selected_material_axi  = 'Vectran';
+selected_material_gasb = 'Vectran';
+selected_material_toro = 'Vectran';
 
 typeoftoroid = 1;
 
@@ -75,7 +80,7 @@ while i<=length(x1range)
         if strcmp(x1,'Cd')
             Cd = a; x1lab = {'Drag coefficient [-]'};
         elseif strcmp(x1,'qmax')
-            qmax = a; x1lab = {'Dynamic pressure [Pa]'};
+            qmax = a; x1lab = {'Peak dynamic pressure [Pa]'};
         elseif strcmp(x1,'mf')
             mf = a; x1lab = {'Regime [-]'};
         elseif strcmp(x1,'M')
@@ -115,7 +120,7 @@ while i<=length(x1range)
         if strcmp(x2,'Cd')
             Cd = b; x2lab = {'Drag coefficient [-]'};
         elseif strcmp(x2,'qmax')
-            qmax = b; x2lab = {'Dynamic pressure [Pa]'};
+            qmax = b; x2lab = {'Peak dynamic pressure [Pa]'};
         elseif strcmp(x2,'mf')
             mf = b; x2lab = {'Regime [-]'};
         elseif strcmp(x2,'M')
@@ -400,6 +405,8 @@ elseif strcmp(desired_plotstyle,'2dx1')
             plot(x1range,y2(1:end,1)','s','Color','m','LineStyle','-','LineWidth',1)
             hold on
             plot(x1range,y3(1:end,1)','v','Color','b','LineStyle','-','LineWidth',1)
+            hold on
+            %plot(Dl,BCl(end:-1:1),'*','Color','r','LineStyle','-','LineWidth',1)
         end
     end
     legend({'Stacked toroid','Tension cone', 'Trailing IAD'},'Interpreter','LaTex','FontSize',12,2)
@@ -477,6 +484,7 @@ elseif strcmp(desired_plotstyle,'2d_matlegendx2_all')
     grid on
     
     
+    
 elseif strcmp(desired_plotstyle,'2d_matlegendx2_stacked')
     
     markers = {'+','o','*','h','x','s','d','^','v','>','<','p','.'};
@@ -530,6 +538,87 @@ elseif strcmp(desired_plotstyle,'2d_matlegendx2_trailing')
     xlabel(x1lab,'Interpreter','LaTex','FontSize',14)
     ylabel(y,'Interpreter','LaTex','FontSize',14)
     grid on
+
+elseif strcmp(desired_plotstyle,'3d_mesh')   
+    rot_angle = -50;
+    %subplot(131)
+    if (strcmp(x1,'Toroid material') || (strcmp(x1,'Gas barrier material')) || (strcmp(x1,'Axial strap material')) || (strcmp(x1,'Radial strap material')) || (strcmp(x1,'Gore material'))) && strcmp(x2,'Toroid material') || (strcmp(x2,'Gas barrier material')) || (strcmp(x2,'Axial strap material')) || (strcmp(x2,'Radial strap material')) || (strcmp(x2,'Gore material')) || (strcmp(x2,'All material'))  || (strcmp(x1,'All material'))
+        C = contourf(1:length(x1range),1:length(x2range),y1');
+        set(gca, 'XTick',1:length(x1range), 'XTickLabel',x1range) 
+        set(gca, 'YTick',1:length(x2range), 'YTickLabel',x2range) 
+    elseif strcmp(x1,'Toroid material') || (strcmp(x1,'Gas barrier material')) || (strcmp(x1,'Axial strap material')) || (strcmp(x1,'Radial strap material')) || (strcmp(x1,'Gore material')) || (strcmp(x1,'All material'))
+        C = contourf(1:length(x1range),x2range,y1');
+        set(gca, 'XTick',1:length(x1range), 'XTickLabel',x1range) 
+    elseif strcmp(x2,'Toroid material') || (strcmp(x2,'Gas barrier material')) || (strcmp(x2,'Axial strap material')) || (strcmp(x2,'Radial strap material')) || (strcmp(x2,'Gore material'))  || (strcmp(x2,'All material'))
+        C = contourf(x1range,1:length(x2range),y1');
+        set(gca, 'YTick',1:length(x2range), 'YTickLabel',x2range) 
+    else
+        C = surface(x1range,x2range,y1');
+        hold on
+    end
+    colormap hsv
+    title({'\textbf{Stacked toroid}'},'Interpreter','LaTex','FontSize',13)
+    hxlabel=xlabel(x1lab,'Interpreter','LaTex','FontSize',13);
+    hylabel=ylabel(x2lab,'Interpreter','LaTex','FontSize',13);
+    hzlabel=zlabel(y,'Interpreter','LaTex','FontSize',13);
+    %set(hylabel,'rotation',rot_angle)
+    %set(hxlabel,'rotation',90+rot_angle)
+    grid on
+    
+    %subplot(132)
+    if (strcmp(x1,'Toroid material') || (strcmp(x1,'Gas barrier material')) || (strcmp(x1,'Axial strap material')) || (strcmp(x1,'Radial strap material')) || (strcmp(x1,'Gore material'))) && strcmp(x2,'Toroid material') || (strcmp(x2,'Gas barrier material')) || (strcmp(x2,'Axial strap material')) || (strcmp(x2,'Radial strap material')) || (strcmp(x2,'Gore material'))   || (strcmp(x2,'All material'))  || (strcmp(x1,'All material'))
+        C = contourf(1:length(x1range),1:length(x2range),y2');
+        set(gca, 'XTick',1:length(x1range), 'XTickLabel',x1range) 
+        set(gca, 'YTick',1:length(x2range), 'YTickLabel',x2range) 
+    elseif strcmp(x1,'Toroid material') || (strcmp(x1,'Gas barrier material')) || (strcmp(x1,'Axial strap material')) || (strcmp(x1,'Radial strap material')) || (strcmp(x1,'Gore material')) || (strcmp(x1,'All material'))
+        C = contourf(1:length(x1range),x2range,y2');
+        set(gca, 'XTick',1:length(x1range), 'XTickLabel',x1range) 
+    elseif strcmp(x2,'Toroid material') || (strcmp(x2,'Gas barrier material')) || (strcmp(x2,'Axial strap material')) || (strcmp(x2,'Radial strap material')) || (strcmp(x2,'Gore material')) || (strcmp(x2,'All material'))
+        C = contourf(x1range,1:length(x2range),y2');
+        set(gca, 'YTick',1:length(x2range), 'YTickLabel',x2range) 
+    else
+        C = surface(x1range,x2range,y2');
+        hold on
+    end
+    colormap parula
+    title({'\textbf{Tension cone}'},'Interpreter','LaTex','FontSize',13)
+    hxlabel=xlabel(x1lab,'Interpreter','LaTex','FontSize',13);
+    hylabel=ylabel(x2lab,'Interpreter','LaTex','FontSize',13);
+    hzlabel=zlabel(y,'Interpreter','LaTex','FontSize',13);
+    %set(hylabel,'rotation',rot_angle)
+    %set(hxlabel,'rotation',90+rot_angle)
+    grid on
+    
+    %subplot(133)
+    if (strcmp(x1,'Toroid material') || (strcmp(x1,'Gas barrier material')) || (strcmp(x1,'Axial strap material')) || (strcmp(x1,'Radial strap material')) || (strcmp(x1,'Gore material'))) && strcmp(x2,'Toroid material') || (strcmp(x2,'Gas barrier material')) || (strcmp(x2,'Axial strap material')) || (strcmp(x2,'Radial strap material')) || (strcmp(x2,'Gore material')) || (strcmp(x2,'All material'))  || (strcmp(x1,'All material'))
+        C = contourf(1:length(x1range),1:length(x2range),y3');
+        set(gca, 'XTick',1:length(x1range), 'XTickLabel',x1range) 
+        set(gca, 'YTick',1:length(x2range), 'YTickLabel',x2range) 
+    elseif strcmp(x1,'Toroid material') || (strcmp(x1,'Gas barrier material')) || (strcmp(x1,'Axial strap material')) || (strcmp(x1,'Radial strap material')) || (strcmp(x1,'Gore material')) || (strcmp(x1,'All material'))
+        C = contourf(1:length(x1range),x2range,y3');
+        set(gca, 'XTick',1:length(x1range), 'XTickLabel',x1range) 
+    elseif strcmp(x2,'Toroid material') || (strcmp(x2,'Gas barrier material')) || (strcmp(x2,'Axial strap material')) || (strcmp(x2,'Radial strap material')) || (strcmp(x2,'Gore material')) || (strcmp(x2,'All material'))
+        C = contourf(x1range,1:length(x2range),y3');
+        set(gca, 'YTick',1:length(x2range), 'YTickLabel',x2range) 
+    else
+        C = surface(x1range,x2range,y3');
+    end
+    title({'\textbf{Trailing IAD}'},'Interpreter','LaTex','FontSize',13)
+    hxlabel=xlabel(x1lab,'Interpreter','LaTex','FontSize',13);
+    hylabel=ylabel(x2lab,'Interpreter','LaTex','FontSize',13);
+    hzlabel=zlabel(y,'Interpreter','LaTex','FontSize',13);
+    %set(hylabel,'rotation',rot_angle)
+    %set(hxlabel,'rotation',90+rot_angle)
+    grid on
+    
+    legend('Stacked','Tension cone','Trailing IAD')
+    
+    
+    %h = colorbar;
+    %set(h,'Position',[0.07 0.1 0.02 0.8]);    
+    %set(h, 'YAxisLocation','left')
+    %ylabel(h,y,'Interpreter','LaTex','FontSize',13);
+
 end
-   
+%matlab2tikz(name,'height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
     

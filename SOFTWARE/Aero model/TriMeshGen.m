@@ -29,13 +29,13 @@ for i = 0:q-2
     for j = 1:q-1
         if i == 0      
             Tri(2*(i*q+j)-1,:) = [0 0 0];
-            Tri(2*(i*q+j),:) = [i*q+j (1+i)*q+j (1+i)*q+j+1];
+            Tri(2*(i*q+j),:) = [i*q+j (1+i)*q+j+1 (1+i)*q+j];
         elseif i == q-2
-            Tri(2*(i*q+j)-1,:) = [i*q+j (1+i)*q+j+1 i*q+j+1];
+            Tri(2*(i*q+j)-1,:) = [i*q+j (i)*q+j+1 (i+1)*q+j+1];
             Tri(2*(i*q+j),:) = [0 0 0];
         else
-            Tri(2*(i*q+j)-1,:) = [i*q+j (1+i)*q+j+1 i*q+j+1];
-            Tri(2*(i*q+j),:) = [i*q+j (1+i)*q+j (1+i)*q+j+1];
+            Tri(2*(i*q+j)-1,:) = [i*q+j (i)*q+j+1 (1+i)*q+j+1];
+            Tri(2*(i*q+j),:) = [i*q+j (1+i)*q+j+1 (1+i)*q+j];
         end
     end
 end
@@ -96,19 +96,27 @@ X = meshgrid(X);
 t = 90 -t;
 t = tand(t)*r;
 
-%R = 12;
-r = linspace(0,r,q); 
-r = meshgrid(r);
-rgrad = max(max(r)); %Gradient of r at the outer edge of the half dome
-theta = linspace(0,2*pi,q);
-theta = meshgrid(theta);
-theta = theta';
+theta = linspace(pi,0,q);              
+phi  = linspace(pi,3*pi,q);
+[theta,phi]=meshgrid(theta,phi);
+%% Shape definition Sphere
+x=(r*sin(theta)).*cos(phi);           %x,y,z definitions of a donut in polar. Should be replaced by function??
+y=(r*sin(theta)).*sin(phi);
+z=r.*cos(theta);
 
-%% Cylindrical transformation
-X = (t)*(X.^2)/2;
-z=r.*cos(theta);           
-y=r.*sin(theta);
-x=-X;
+%R = 12;
+% r = linspace(0,r,q); 
+% r = meshgrid(r);
+ rgrad = max(max(r)); %Gradient of r at the outer edge of the half dome
+% theta = linspace(0,2*pi,q);
+% theta = meshgrid(theta);
+% theta = theta';
+% 
+% %% Cylindrical transformation
+% X = (t)*(X.^2)/2;
+% z=r.*cos(theta);           
+% y=r.*sin(theta);
+% x=-X;
 
 %% Coordinate calculation of upper ring(after linear section)
 zmax = R.*cos(theta);
@@ -133,25 +141,42 @@ for n = 1:length(x(1,:))
     end
 end
 
+xvector(1:q-1)=[];
+yvector(1:q-1)=[];
+zvector(1:q-1)=[];
 
 %% Triangulation matrix 
 p = length(xvector);
 Tri = [0 0 0];
-for i = 0:q-1
+for i = 1:q-1
     for j = 1:q-1
-        if i == 0      
-            Tri(2*(i*q+j)-1,:) = [0 0 0];
-            Tri(2*(i*q+j),:) = [i*q+j (1+i)*q+j+1 (1+i)*q+j];
-        else
+%         if i == 0      
+%             Tri(2*(i*q+j)-1,:) = [0 0 0];
+%             Tri(2*(i*q+j),:) = [i*q+j (1+i)*q+j+1 (1+i)*q+j];
+%         else
             Tri(2*(i*q+j)-1,:) = [i*q+j (i)*q+j+1 (i+1)*q+j+1];
             Tri(2*(i*q+j),:) = [i*q+j (1+i)*q+j+1 (1+i)*q+j];
-        end
+%         end
     end
 end
+%% Triangulation of base 
+Tri1 = [0 0 0];
+for I = 2:q
+    if I == q
+        Tri1(I-1,:) = [1 2 I];
+    else
+       Tri1(I-1,:) = [1 I+1 I];
+    end
+end
+
 Tri0 = Tri(:,1) == 0;
 Tri(Tri0,:) = [];
+Tri = Tri-(q-1);
+Tri = [Tri1;Tri];
+
 id = 'MATLAB:triangulation:PtsNotInTriWarnId';
 warning('off',id)
+
 TriGeom = triangulation(Tri, xvector', yvector', zvector');
 
     end

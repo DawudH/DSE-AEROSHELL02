@@ -56,8 +56,8 @@ end
 %Mass computation
 qCdA05=q*sqrt(Cd*A);
 df= max((KD*beta*fbar*P_q/(2*(1+2*eta)*kf*sqrt(Cd*pi))) * qCdA05 , dfm)
-BC= (KD/ (sqrt(Cd*pi)*kc*(1-xi^2)^1.5)) *  (P_q/Cd*lm_R*Tbar/((1+2*eta)^3) + lt_R)  * (qCdA05);  + (KC/(Cd*(1+2*eta)^2)) * (Af_piR + 4*pi*eta*(1+eta)) * (df/(1-xi^2))
-%BC(i)= b*qCdA05 + c*df
+BC= (KD/ (sqrt(Cd*pi)*kc*(1-xi^2)^1.5)) *  (P_q/Cd*lm_R*Tbar/((1+2*eta)^3) + lt_R)  * (qCdA05)  + (KC/(Cd*(1+2*eta)^2)) * (Af_piR + 4*pi*eta*(1+eta)) * (df/(1-xi^2))
+BC= b*qCdA05 + c*df
 m=Cd*A*BC
 
 %Imperial coefficients

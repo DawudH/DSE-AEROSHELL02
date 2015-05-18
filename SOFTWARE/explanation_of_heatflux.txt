@@ -1,0 +1,14 @@
+A: frontal area
+gamma: gamma of the air on mars
+M: vector containing the mach number
+qmax: vector containing the maximum heat flux
+rho: vector containing density of the flow
+speed_sound: "" speed of sound at that point
+t: vector containing the time
+T: temperature in the air of freestream
+Tboundary: temperature at the stagnation point
+V: speed
+
+De vectoren zijn niet naast elkaar te leggen, de heatflux data is namelijk van de eerste pass.
+Als je ze wel naast elkaar wil leggen, het eerste element van heatflux en Tboundary
+corresponderen met index = 1251 in de andere vectoren.

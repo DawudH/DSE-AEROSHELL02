@@ -1,0 +1,74 @@
+% This file was created by matlab2tikz.
+% Minimal pgfplots version: 1.3
+%
+\definecolor{mycolor1}{rgb}{1.00000,0.00000,1.00000}%
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=0.849328\figurewidth,
+height=\figureheight,
+at={(0\figurewidth,0\figureheight)},
+scale only axis,
+separate axis lines,
+every outer x axis line/.append style={black},
+every x tick label/.append style={font=\color{black}},
+xmin=0,
+xmax=5000,
+xlabel={Peak dynamic pressure [Pa]},
+xmajorgrids,
+every outer y axis line/.append style={black},
+every y tick label/.append style={font=\color{black}},
+ymin=0,
+ymax=250000,
+ylabel={Decelerator mass [kg]},
+ymajorgrids,
+legend style={at={(0.03,0.97)},anchor=north west,legend cell align=left,align=left,fill=white}
+]
+\addplot [color=black,solid,line width=1.0pt,mark=diamond,mark options={solid}]
+  table[row sep=crcr]{%
+500	55.5578453770688\\
+1000	62.1121356155469\\
+1500	68.666425854025\\
+2000	75.2207160925031\\
+2500	81.7750063309812\\
+3000	88.3292965694593\\
+3500	94.8835868079374\\
+4000	101.437877046416\\
+4500	107.992167284894\\
+5000	114.546457523372\\
+};
+\addlegendentry{Stacked toroid};
+
+\addplot [color=mycolor1,solid,line width=1.0pt,mark=square,mark options={solid}]
+  table[row sep=crcr]{%
+500	23463.0858328261\\
+1000	46923.8395077544\\
+1500	70385.7109670802\\
+2000	93847.5824264059\\
+2500	117309.453885732\\
+3000	140771.325345058\\
+3500	164233.196804383\\
+4000	187695.068263709\\
+4500	211156.939723035\\
+5000	234618.811182361\\
+};
+\addlegendentry{Tension cone};
+
+\addplot [color=blue,solid,line width=1.0pt,mark=triangle,mark options={solid,rotate=180}]
+  table[row sep=crcr]{%
+500	22480.9240890489\\
+1000	44961.7515889949\\
+1500	67442.5790889409\\
+2000	89923.406588887\\
+2500	112404.234088833\\
+3000	134885.061588779\\
+3500	157365.889088725\\
+4000	179846.716588671\\
+4500	202327.544088617\\
+5000	224808.371588563\\
+};
+\addlegendentry{Trailing IAD};
+
+\end{axis}
+\end{tikzpicture}%
