@@ -46,5 +46,13 @@ The control forces are very dependent on the type of control system implemented.
 
 Finally a shape is defined by the aerodynamics department for which the structure needs to be sized. 
 
+\subsection{System communication flow}
+Communication flow primarily takes place with respect to trajectory sensing and control. In order to adhere to a certain trajectory and to counteract perturbations, alterations in vehicle dynamics are required. These alterations are performed by actuators, as investigated in Chapter \ref{ch:astrocontrol}. The magnitude and direction of the alterations are determined by an on-board computing unit, by a comparison with the actual attitude as provided by attitude sensors mounted on the (re-)entry vehicle. Trajectory and attitude information is communicated to ground control via a Telemetry and Command Unit. A fail-safe system is included to take over computer functions in case of computer failure. This communication flow is depicted in Fig. \ref{fig:comflow}.
 
+\begin{figure}[H]
+\centering
+\includegraphics[width = 0.8\textwidth]{Figure/CommunicationChart.pdf}
+\caption{Communication flow of control subsystem}
+\label{fig:comflow}
+\end{figure}
 
