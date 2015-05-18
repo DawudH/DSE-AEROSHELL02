@@ -81,7 +81,7 @@ Several options for the control system are considered. Using first-order calcula
 	\item A \acrfull{rcs}
 	\item Control surfaces (body flaps)
 \end{itemize}
-Each of these options will be quickly assessed in the subsequent sections. This will be done by taking angle of attack \gls{sym:alpha}$=30\deg$. This corresponds to $\gls{sym:CM}\gls{sym:A}=-100$, $\gls{sym:CL}\gls{sym:A}=-58.8$ and $\gls{sym:CD}\gls{sym:A}=126$. These values have been obtained by using the aerodynamical tool described in chapter \ref{ch:aero_analysis} for (geometry). Using equation \ref{eq:moment_from_cm} the control moment required can be obtained.
+Each of these options will be quickly assessed in the subsequent sections. This will be done by taking angle of attack \gls{sym:alpha}$=30\deg$. This corresponds to $\gls{sym:CM}\gls{sym:A}=-100$, $\gls{sym:CL}\gls{sym:A}=-58.8$ and $\gls{sym:CD}\gls{sym:A}=126$. These values have been obtained by using the aerodynamical tool described in chapter \ref{ch:aero_analysis} for an Apollo-shaped object. Using equation \ref{eq:moment_from_cm} the control moment required can be obtained.
 \begin{equation}
 M=\frac{1}{2}\gls{sym:rho}\gls{sym:V}^{2}\gls{sym:CM}\gls{sym:A}
 \label{eq:moment_from_cm}
@@ -89,7 +89,7 @@ M=\frac{1}{2}\gls{sym:rho}\gls{sym:V}^{2}\gls{sym:CM}\gls{sym:A}
 This moment has to be counteracted during a time $t$. Furthermore, for the \gls{rcs} and body flaps the required force can be directly determined by noting that $M=dF$, where $d$ is the moment arm and $F$ is the control force. 
 
 \subsubsection{\gls{cg}-shifting}
-By shifting the \acrlong{cg} of the spacecraft the sum of the moments exerted on it changes. This will cause a change in spacecraft attitude, thereby also trimming the capsule.
+By moving the \acrlong{cg} of the spacecraft the sum of the moments exerted on it changes. This will cause a change in spacecraft attitude, thereby also trimming the capsule. The \gls{cg}-shift can be achieved by shifting the location of the aeroshell with respect to the capsule. This will slightly move the \acrlong{cg} of the spacecraft and change the location of the lift and drag forces acting on it. In order to avoid over-designing the actuator concerned with shifting the aeroshell with respect to the capsule (and thus making it heavier) the movement speeds are limited to low values.
 
 \subsubsection{\acrlong{rcs}}
 By using the control force requirement the mass flow of the \acrlong{rcs} can be determined with equation \ref{eq:rcsmassflow} \cite{Allen2012}.
@@ -103,6 +103,7 @@ From equation \ref{eq:rcsmassflow} the required propulsive mass can be obtained 
 \label{eq:propmass}
 \end{equation}
 
+By working out equation \ref{eq:propmass} one can see that the required propulsive mass $\gls{sym:m}=$. From this it can be observed that using a control system relying exclusively on rocket control is not reconcilable with the weight requirements imposed on the hypersonic decelerator.
 \subsubsection{Body flaps}
 Body flaps function by introducing a local aerodynamical force by controlling the local geometry. A body flap element produces a lift and drag force as in equation \ref{eq:flaplift} and \ref{eq:flapdrag}.
 \begin{multicols}{2}
@@ -115,6 +116,10 @@ D=\frac{1}{2}\gls{sym:rho}\gls{sym:V}^{2}\gls{sym:CD}\gls{sym:A}
 \label{eq:flapdrag}
 \end{equation}
 \end{multicols}
+
+\subsubsection{Control system design conclusions}
+From the previous sections one can conclude that all proposed concepts have their own strengths and weaknesses. In order to combine these it has been decided to combine \gls{cg}-shifting with
+
 
 ***Moment or dalpha/dt that control systems (cg offset, thrusters, control surfaces) can create***\\
 ***Weight estimate of each control system (per concept if needed)***\\
