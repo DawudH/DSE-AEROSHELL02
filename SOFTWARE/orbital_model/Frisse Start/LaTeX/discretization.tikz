@@ -1,0 +1,45 @@
+% This file was created by matlab2tikz.
+% Minimal pgfplots version: 1.3
+%
+\definecolor{mycolor1}{rgb}{0.19855,0.72140,0.63095}%
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=0.863675\figurewidth,
+height=\figureheight,
+at={(0\figurewidth,0\figureheight)},
+scale only axis,
+separate axis lines,
+every outer x axis line/.append style={black},
+every x tick label/.append style={font=\color{black}},
+xmode=log,
+xmin=0.01,
+xmax=1,
+xminorticks=true,
+xlabel={$\Delta t$ $\left[s\right]$},
+xmajorgrids,
+xminorgrids,
+every outer y axis line/.append style={black},
+every y tick label/.append style={font=\color{black}},
+ymode=log,
+ymin=0.001,
+ymax=10,
+yminorticks=true,
+ylabel={max error in $R$ $\left[m\right]$},
+ymajorgrids,
+yminorgrids
+]
+\addplot [color=mycolor1,solid,mark=o,mark options={solid},forget plot]
+  table[row sep=crcr]{%
+0.00625	0\\
+0.0125	0.00149343713762117\\
+0.025	0.00739867498515249\\
+0.05	0.0309303522748736\\
+0.1	0.124819803827266\\
+0.2	0.500488393891274\\
+0.4	1.959987945547\\
+0.8	7.86925130505278\\
+};
+\end{axis}
+\end{tikzpicture}%

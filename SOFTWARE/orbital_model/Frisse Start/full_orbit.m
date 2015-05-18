@@ -1,4 +1,4 @@
-function [ out ] = full_orbit(R0, V0, A0, G, M_mars, R_m, h_atm, atm, dt_kep_init, dt_atmos, m, Omega_m, S, control, tend, crash_margin, g_earth, aero_coef)
+function [ out ] = full_orbit(R0, V0, A0, G, M_mars, R_m, h_atm, atm, dt_kep_init, dt_atmos, m, Omega_m, S, control, tend, crash_margin, g_earth, aero_coef, use_control, multiple_orbits)
 %Calculates the full orbit for selected initial conditions until sepcified
 %end time
     h = waitbar(0,'Initializing waitbar...');
@@ -48,7 +48,7 @@ function [ out ] = full_orbit(R0, V0, A0, G, M_mars, R_m, h_atm, atm, dt_kep_ini
                  state.a = norm(A(i,:) - Ag(i,:));
                  state.alpha = alpha;
                  % start controlling once the accel is above 1.5g
-                 if state.a > 1.5*g_earth
+                 if use_control && (state.a > 1.5*g_earth)
                          [aero_param] = aero_conrol(state,control,aero_coef);
                          CL = aero_param.CLA / S;
                          CD = aero_param.CDA / S;
@@ -87,7 +87,8 @@ function [ out ] = full_orbit(R0, V0, A0, G, M_mars, R_m, h_atm, atm, dt_kep_ini
         T(i+1,:) = out_o.T;
         rho(i+1,:) = out_o.rho;
 
-        if out_c.crash || out_c.flyby || out_c.t_end
+        
+        if out_c.crash || out_c.flyby || out_c.t_end || ( (multiple_orbits == false) && out_c.orbit)
             orbit = false;
         end
         i = i+1;
