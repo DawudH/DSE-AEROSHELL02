@@ -97,8 +97,7 @@ function [ out ] = full_orbit(R0, V0, A0, G, M_mars, R_m, h_atm, atm, dt_kep_ini
         waitbar(t/tend,h,sprintf('%5.1f %...',t/tend*100))
     end
     
-    a_human_mag = sqrt((out.Ad(:,1)+out.Al(:,1)).^2 + (out.Ad(:,2)+out.Al(:,2)).^2 + (out.Ad(:,3)+out.Al(:,3)).^2);
-    maxaccel = max(a_human_mag)/g_earth;
+    
     
     %%Output
     out.R = R;
@@ -125,6 +124,8 @@ function [ out ] = full_orbit(R0, V0, A0, G, M_mars, R_m, h_atm, atm, dt_kep_ini
     out.T = T;
     out.rho = rho;
     out.alpha = alpha;
+        a_human_mag = sqrt((out.Ad(:,1)+out.Al(:,1)).^2 + (out.Ad(:,2)+out.Al(:,2)).^2 + (out.Ad(:,3)+out.Al(:,3)).^2);
+        maxaccel = max(a_human_mag)/g_earth;
     out.a_human_mag = a_human_mag;
     out.maxaccel = maxaccel;
     
