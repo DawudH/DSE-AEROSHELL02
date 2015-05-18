@@ -15,3 +15,4 @@ set(h,'color',cc(2,:));
 grid on
 xlabel('$\Delta t$ $\left[s\right]$','interpreter','latex','fontsize',15)
 ylabel('max error in $R$ $\left[m\right]$','interpreter','latex','fontsize',15)
+matlab2tikz('.\LaTeX\discretization.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);

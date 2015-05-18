@@ -13,10 +13,10 @@ use_control = false;
 multiple_orbits = false;
 
 alpha = -25:2.5:25;
-file_name = 'orbit_alpha_fine_lower.txt';
+file_name = 'orbit_alpha_fine_upper.txt';
 
 %Initial Position
-rx = -4100000;
+rx = -4000000;
 ry = 10*R_m;
 
 accuracy = 5;
@@ -47,6 +47,8 @@ parfor i = 1:length(alpha)
             go = false;
             break;
         end
+        
+              
         if out.c.crash
             % to close
             rx_in = rx_in - refinestep;
@@ -54,14 +56,15 @@ parfor i = 1:length(alpha)
             % to far
             rx_in = rx_in + refinestep;
         elseif out.c.orbit
-            % go further to find minimum load
-            rx_in = rx_in - refinestep;
+            % go further to find maximum inorbit load
+            rx_in = rx_in + refinestep;
         end
+        
         
         % generate new R
         R = [rx_in,ry,0];
         
-        if (prev_c.crash && out.c.flyby) || (prev_c.orbit && out.c.flyby)
+        if (prev_c.flyby && out.c.crash) || (prev_c.crash && out.c.orbit)
             refinestep = refinestep / 2;
         end
         prev_c = out.c;
