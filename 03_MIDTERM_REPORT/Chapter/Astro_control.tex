@@ -15,15 +15,19 @@ More specifically the tool is used here to determine the required Aerodynamic ch
 \subsection{Governing equations}
 \label{sec:astrogov}
 In this section the equations on which the tool is based are shown and the reason for using them is explained. The trajectory is split up into three parts: hyperbolic kepler entry, trajectory in atmosphere and eliptic kepler orbit. These are parts presented respectively in sections \ref{sec:hypkep}, \ref{sec:trajatmos} and \ref{sec:eliptickep} respectively. However first all assumptions made are stated in section \ref{sec:astroassumption}.
+
 \subsubsection{Assumptions}
  \ref{sec:astroassumption}
  ***assumptions made (atmosphere constant with longitude, only mars as attracting body)***\\
+ 
 \subsubsection{Hyperbolic Kepler entry}
  \label{sec:hypkep}
 ***Kepler for hyperbolic: Vis-Viva, polar expression of hyperbola, tangent to hyperbola***\\
+
 \subsubsection{Trajectory in atmosphere}
  \label{sec:trajatmos}
 ***Forces give accelerations: like in baseline + Jerk***\\
+
 \subsubsection{Eliptical Kepler orbit}
  \label{sec:eliptickep}
 ***Kepler for elliptic: symmetry***\\
@@ -41,12 +45,15 @@ In order to be sure the results the tool produces are correct and can safely be 
 \subsubsection{Sensitivity analysis}
 \label{sec:astrosens}
 ***sensitivity analysis: very sensitive to initial location, thus for now assumed initial location closer***\\
+
 \subsubsection{Discretisation error}
 \label{sec:astrodisc}
 ***discretisation error: error for different dt***\\
+
 \subsubsection{Verification through comparison with kepler}
 \label{sec:astroverf}
 ***Compare numerical results with Kepler, should be the same for rho=0***\\
+
 \subsubsection{Validation through comparison with reference cases}
 \label{sec:astroval}
 ***Validation through checking if output values are approximately the same as reference cases (peak dynamic pressure)***\\
@@ -65,11 +72,14 @@ Several options for the control system are considered. Using first-order calcula
 \subsection{Results \& conclusions}
 \label{sec:astrores}
 ***intro***\\
+
 \subsubsection{Atmospheric model}
 \label{sec:astroatmos}
-***Plot rho,T vs. long,h***
+***Plot rho,T vs. long,h***\\
+
 \subsubsection{Effect of \gls{sym:CL} and \gls{sym:CD} on deceleration}
 \label{sec:astrodec}
+***Two plots for CL and CD***\\
 
 \subsubsection{A feasible trajectory and important output parameters over time}
 \label{sec:astrorestraj}
