@@ -22,12 +22,7 @@ for n = 1:length(x(1,:))
     end
 end
 
-p = length(xvector)/q;
-for i = 1:p
-    xvector(i*q+1) = xvector((i-1)*q+2);
-    yvector(i*q+1) = yvector((i-1)*q+2);
-    zvector(i*q+1) = zvector((i-1)*q+2);
-end
+
 
 %% Triangulation matrix 
 p = length(xvector);
@@ -56,7 +51,7 @@ TriGeom = triangulation(Tri, xvector', yvector', zvector');
 %% Torus
 elseif type == 't' 
 %% Define Polar Coordinates
-theta = linspace(0,2*pi,q);              
+theta = linspace(-pi,pi,q);              
 phi  = linspace(0,2*pi,q);
 [theta,phi]=meshgrid(theta,phi);
 %% Shape definition Torus
@@ -74,6 +69,8 @@ for n = 1:length(x(1,:))
         zvector = [zvector,z(m,n)];
     end
 end
+
+
 
 %% Create triangulation matrix
 p = length(xvector);
