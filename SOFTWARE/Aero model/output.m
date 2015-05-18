@@ -10,20 +10,21 @@ shapetexts.irvevalidation = 'irvevalidation';
 shapetexts.apollovalidation = 'apollovalidation';
 shapetexts.torus = 'torus';
 shapetexts.concept_irve = 'concept_irve';
+shapetexts.concept_apollo = 'concept_apollo';
 
 a = 180;
 gamma = 1.29;
 center = zeros(3,1);
 rho = 9e-5;
 T = 130;
-q = 11;
+q = 80;
 
 alpha0 = -60; %degrees
 dalpha = 1; %degrees
 alphaend = 60; %degrees
 
 disp('Gererating geometry...');
-[ coords, tri, A ] = generategeometry( shapetexts.concept_irve, q );
+[ coords, tri, A ] = generategeometry( shapetexts.concept_apollo, q );
 
 disp('Initialising...');
 mod = modnewtonian( coords, tri, gamma, a, center, rho, T, A);
@@ -31,6 +32,6 @@ disp('Calculating...');
 mod = mod.alphasweep(a*20, 0, deg2rad(alpha0), deg2rad(alphaend), deg2rad(dalpha));
 
 disp('Writing to file...');
-dlmwrite('outputfiles/irve.txt', [mod.alpha_array', mod.CRA_aero_array', mod.CMA_aero_array', mod.qmax_array']);
+dlmwrite('outputfiles/apollo.txt', [mod.alpha_array', mod.CRA_aero_array', mod.CMA_aero_array', mod.qmax_array']);
 disp('Done!');
 

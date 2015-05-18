@@ -332,7 +332,7 @@ classdef modnewtonian
             unconnectedTriangles = [];
             for i = 1:size(obj.tri,1)
                 if sum(isnan(obj.getAdjacentTriangles(i))) > 0
-                    unconnectedTriangles = [unconnectedTriangles, i];
+                    unconnectedTriangles(end+1) = i;
                 end
             end
         end

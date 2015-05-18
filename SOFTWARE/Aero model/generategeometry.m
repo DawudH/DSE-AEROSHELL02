@@ -35,6 +35,11 @@ function [ coords, tri, A ] = generategeometry( type, q )
             coords = TriGeom.Points';
             tri = TriGeom.ConnectivityList; 
             A = pi*6^2;
+        case 'concept_apollo'
+            TriGeom = TriMeshGen(q, 2.5, 0.564960922454593, 2.5, 's');
+            coords = TriGeom.Points';
+            tri = TriGeom.ConnectivityList; 
+            A = pi*2.5^2;            
         case 'deg60cone'
             [TriGeom,xvector,yvector,zvector] = Sharpcone(q,6,30);
             coords = [xvector;yvector;zvector];
