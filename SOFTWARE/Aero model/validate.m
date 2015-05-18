@@ -7,7 +7,7 @@ cases.deg60cone = 'deg60cone';
 cases.apollo = 'apollo';
 cases.irve = 'irve';
 
-shapecase = cases.irve;
+shapecase = cases.apollo;
 
 
 switch shapecase
@@ -93,7 +93,7 @@ switch shapecase
         center = zeros(3,1); % not important
         rho = 1e-3; %not important
         T = 150; % not important
-        q = 7;
+        q = 21;
         CP_apollo = open('CP_apollo.mat');
         zvalidation = CP_apollo.CP_apollo(:,1);
         Cpvalidation = CP_apollo.CP_apollo(:,2);
@@ -103,15 +103,28 @@ switch shapecase
         modn = modnewtonian( coords, tri, gamma, a, center, rho, T, A);
         modn = modn.calcAeroangle(V,deg2rad(0),0);
         modn.plotCp(true, false);
-        ysample = 0; % Just one sample
-        points = modn.getPointsOnXZPlane(ysample);
-        zvalues = modn.coords(3,points);
+        zsample = 0; % Just one sample
+        points = modn.getPointsOnXYPlane(zsample);
+        yvalues = modn.coords(2,points);
         Cps = zeros(size(points));
         for i = 1:length(Cps)
             Cps(i) = modn.calcCpOnPoint(points(i));
         end
-        modnewtonianmatrix = [zvalues',Cps'];
+        
+        
+        
+        modnewtonianmatrix = [yvalues',Cps', points'];
         modnewtonianmatrix = sortrows(modnewtonianmatrix, 1);
+%         Rb = 1.956;
+%         distancevalues = zeros(size(points'));
+%         for i = length(points)/2+1.5:length(points)
+%             distancevalues(i) = norm(modn.coords(:,modnewtonianmatrix(i-1,3))-modn.coords(:,modnewtonianmatrix(i,3)))+distancevalues(i-1);
+%         end
+%         for i = length(points)/2-0.5:-1:1
+%             distancevalues(i) = -norm(modn.coords(:,modnewtonianmatrix(i+1,3))-modn.coords(:,modnewtonianmatrix(i,3)))+distancevalues(i+1);
+%         end
+        
+        Cpvalidation = Cpvalidation * modn.Cpmax_array(end);
         
 
         disp('Validation of Cp for Apollo');
@@ -121,10 +134,10 @@ switch shapecase
         disp(strcat('gamma: ', num2str(gamma)));
         
         figure;
-        plot(modnewtonianmatrix(:,1), modnewtonianmatrix(:,2), 'o');
+        plot(modnewtonianmatrix(:,1)*1.095/max(modnewtonianmatrix(:,1)), modnewtonianmatrix(:,2));
         hold on;
         plot(zvalidation, Cpvalidation, '*');
-        xlabel('z (m)');
+        xlabel('y (m)');
         ylabel('Cp');
         legend('Modified Newtonian', 'Measured');     
         
