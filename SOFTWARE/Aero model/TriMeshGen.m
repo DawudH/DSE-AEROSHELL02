@@ -121,8 +121,7 @@ theta = theta';
 %% Coordinate calculation of upper ring(after linear section)
 zmax = R.*cos(theta);
 ymax = R.*sin(theta);
-xmax = -max((t/(R*rgrad))+(R-max(r))*(t/rgrad));
-%xmax = -t/max(max(r))*(R-max(max(r)));
+xmax = -t/max(max(r))*(R-max(max(r)));
 xmax = ones(q)*xmax;
 x = [x,xmax(:,1)];
 y = [y,ymax(:,1)];
