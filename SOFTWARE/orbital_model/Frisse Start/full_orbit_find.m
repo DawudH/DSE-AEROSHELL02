@@ -1,9 +1,10 @@
-function [ out ] = full_orbit(R0, V0, A0, G, M_mars, R_m, h_atm, atm, dt_kep_init, dt_atmos, m, Omega_m, S, control, tend, crash_margin, g_earth, aero_coef, use_control, multiple_orbits)
+function [ out ] = full_orbit_find(R0, V0, A0, G, M_mars, R_m, h_atm, atm, dt_kep_init, dt_atmos, m, Omega_m, S, control, tend, crash_margin, g_earth, aero_coef, use_control, multiple_orbits,alpha_init)
 %Calculates the full orbit for selected initial conditions until sepcified
 %end time
 
+    %% BEUN 
+    control.alpha_init = alpha_init;
     
-    h = waitbar(0,'Initializing waitbar...');
     %Condition to run the script
     orbit = true;
 
@@ -94,11 +95,9 @@ function [ out ] = full_orbit(R0, V0, A0, G, M_mars, R_m, h_atm, atm, dt_kep_ini
             orbit = false;
         end
         i = i+1;
-        waitbar(t/tend,h,sprintf('%5.1f %...',t/tend*100))
     end
     
-    a_human_mag = sqrt((out.Ad(:,1)+out.Al(:,1)).^2 + (out.Ad(:,2)+out.Al(:,2)).^2 + (out.Ad(:,3)+out.Al(:,3)).^2);
-    maxaccel = max(a_human_mag)/g_earth;
+
     
     %%Output
     out.R = R;
@@ -125,14 +124,14 @@ function [ out ] = full_orbit(R0, V0, A0, G, M_mars, R_m, h_atm, atm, dt_kep_ini
     out.T = T;
     out.rho = rho;
     out.alpha = alpha;
+        a_human_mag = sqrt((out.Ad(:,1)+out.Al(:,1)).^2 + (out.Ad(:,2)+out.Al(:,2)).^2 + (out.Ad(:,3)+out.Al(:,3)).^2);
+        maxaccel = max(a_human_mag)/g_earth;
     out.a_human_mag = a_human_mag;
     out.maxaccel = maxaccel;
     
-    % output text
     
+    % output text
+    disp(['alpha = ' num2str(alpha_init) ' [deg], rx = ' num2str(R0(1)) ' [m], CD = ' num2str(CDA / S) ' [-], CL = ' num2str(CLA / S) ' [-], in atmosphere: ' num2str(out_c.in_atmos) ', crashed: ' num2str(out_c.crash) ', in orbit: ' num2str(out_c.orbit) ', flyby: ' num2str(out_c.flyby) ', acceleration: ' num2str(maxaccel) ', time pased: ' num2str(t/(3600*24)) ' days' ])
 
-    disp(['rx = ' num2str(R0(1)) ' [m], CD = ' num2str(CDA / S) ' [-], CL = ' num2str(CLA / S) ' [-], in atmosphere: ' num2str(out_c.in_atmos) ', crashed: ' num2str(out_c.crash) ', in orbit: ' num2str(out_c.orbit) ', flyby: ' num2str(out_c.flyby) ', acceleration: ' num2str(maxaccel) ', time pased: ' num2str(t/(3600*24)) ' days' ])
-    %close waitbar
-    close(h);
 end
 
