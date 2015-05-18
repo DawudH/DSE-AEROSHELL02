@@ -47,44 +47,6 @@ Before initial entry into the atmosphere the spacecraft follows a hyperbolic Kep
  \label{sec:eliptickep}
 ***Kepler for elliptic: symmetry***\\
 
-
-\subsubsection{Atmospheric model}
-\begin{figure}[h]
-	\centering
-	\begin{subfigure}{0.45\textwidth}
-	\centering
-	\includegraphics[trim={4cm 9.8cm 9cm 10cm},clip,width=0.9\textwidth]{Figure/atmos_model/density.pdf}
-	\caption{The atmospheric density} 
-	\label{fig:atmos_height_rho}
-	\end{subfigure}
-	\begin{subfigure}{0.45\textwidth}
-	\centering
-	\includegraphics[trim={4cm 9.8cm 9cm 10cm},clip,width=0.9\textwidth]{Figure/atmos_model/temperature.pdf}
-	\caption{The atmospheric temperature}
-	\label{fig:atmos_height_T}
-	\end{subfigure}
-	\caption{The atmospheric properties for different heights}
-	\label{fig:atmos_height}
-\end{figure}
-
-\begin{figure}[h]
-	\centering
-	\begin{subfigure}{0.9\textwidth}
-	\centering
-	\includegraphics[trim={4.25cm 11cm 3.2cm 11cm},clip,width=0.9\textwidth]{Figure/atmos_model/lon_50.pdf}
-	\caption{The atmospheric properties at $50$ $\left[km\right]$} 
-	\label{fig:atmos_lon_50}
-	\end{subfigure}
-	\begin{subfigure}{0.9\textwidth}
-	\centering
-	\includegraphics[trim={4.5cm 11cm 3.1cm 11cm},clip,width=0.9\textwidth]{Figure/atmos_model/lon_25.pdf}
-	\caption{The atmospheric properties at $25$ $\left[km\right]$} 
-	\label{fig:atmos_lon_25}
-	\end{subfigure}
-	\caption{The atmospheric properties for different heights at a latitude of 0 $\left[^\circ\right]$}
-	\label{fig:atmos_lon}
-\end{figure}
-
 \subsection{Working principles of the tool}
 \label{sec:astrowp}
 The tool is able to calculate the trajectory of the spacecraft and a range of important parameters at each moment in time. These parameters are among others: Acceleration $\left(\gls{sym:acc}\right)$, dynamic pressure $\left(\gls{sym:q}\right)$, speed $\left(\gls{sym:Vv}\right)$ and Mach number $\left(\gls{sym:M}\right)$. In order to calculate this the tool takes geometric and aerodynamic properties of the spacecraft and some initial conditions as input.
@@ -151,7 +113,41 @@ From equation \ref{eq:rcsmassflow} the required propulsive mass can be determine
 
 \subsubsection{Atmospheric model}
 \label{sec:astroatmos}
-***Plot rho,T vs. long,h***\\
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}{0.45\textwidth}
+	\centering
+	\includegraphics[trim={4cm 9.8cm 9cm 10cm},clip,width=0.9\textwidth]{Figure/atmos_model/density.pdf}
+	\caption{The atmospheric density} 
+	\label{fig:atmos_height_rho}
+	\end{subfigure}
+	\begin{subfigure}{0.45\textwidth}
+	\centering
+	\includegraphics[trim={4cm 9.8cm 9cm 10cm},clip,width=0.9\textwidth]{Figure/atmos_model/temperature.pdf}
+	\caption{The atmospheric temperature}
+	\label{fig:atmos_height_T}
+	\end{subfigure}
+	\caption{The atmospheric properties for different heights}
+	\label{fig:atmos_height}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}{0.9\textwidth}
+	\centering
+	\includegraphics[trim={4.25cm 11cm 3.2cm 11cm},clip,width=0.9\textwidth]{Figure/atmos_model/lon_50.pdf}
+	\caption{The atmospheric properties at $50$ $\left[km\right]$} 
+	\label{fig:atmos_lon_50}
+	\end{subfigure}
+	\begin{subfigure}{0.9\textwidth}
+	\centering
+	\includegraphics[trim={4.5cm 11cm 3.1cm 11cm},clip,width=0.9\textwidth]{Figure/atmos_model/lon_25.pdf}
+	\caption{The atmospheric properties at $25$ $\left[km\right]$} 
+	\label{fig:atmos_lon_25}
+	\end{subfigure}
+	\caption{The atmospheric properties for different heights at a latitude of 0 $\left[^\circ\right]$}
+	\label{fig:atmos_lon}
+\end{figure}
 
 \subsubsection{Effect of \gls{sym:CL} and \gls{sym:CD} on deceleration}
 \label{sec:astrodec}
