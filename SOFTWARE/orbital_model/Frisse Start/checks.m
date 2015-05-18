@@ -51,6 +51,7 @@ function [ out_c ] = checks( R, V, t, tend, R_m, h_atm, G, M_mars, inatmos, cras
             out_c.flyby = true;
         else
             out_c.flyby = false;
+            out_c.orbit = true;
         end
     else
         out_c.flyby = false;
