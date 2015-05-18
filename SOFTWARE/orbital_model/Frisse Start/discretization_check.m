@@ -1,4 +1,4 @@
-function error = discretization_check(dt)
+function out = discretization_check(dt)
 % input a range of dt every following dt should be dubble of the previous)
 
 % load constants
@@ -23,9 +23,15 @@ polar(theta_plot,radius_mars,'r');
 polar(theta_plot,radius_mars_atmos,'g')
 cc = parula(length(dt)+3);
 
+% booleans
+use_control = false;
+multiple_orbits = false;
+
+
 % Loop through different dt
     for i = 1:length(dt)
-        [out] = full_orbit(R, V, A, G, M_mars, R_m, h_atm, atm, dt_kep_init, dt(i), m, Omega_m, S, control, tend, crash_margin, g_earth, aero_coef);
+        control.dalpha = control.dalphadt*dt(i);
+        [out] = full_orbit(R, V, A, G, M_mars, R_m, h_atm, atm, dt_kep_init, dt(i), m, Omega_m, S, control, tend, crash_margin, g_earth, aero_coef,use_control,multiple_orbits);
         R_o{i} = out.R;
         len_old = length(R_o{1});
         len_new = length(out.R);
@@ -56,4 +62,7 @@ cc = parula(length(dt)+3);
     loglog(dt,max_error,'o')
     grid on
 
+    out.error = error;
+    out.max_error = max_error;
+    out.dt = dt;
 end

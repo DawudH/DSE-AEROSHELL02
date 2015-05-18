@@ -3,7 +3,7 @@ function [TriGeom,xvector,yvector,zvector] = TriMeshGen(q,R,r,t,type)
 %% Sphere
 if type == 's'
 %% Define Polar Coordinates
-theta = linspace(-pi/2,pi/2,q);              
+theta = linspace(0,pi,q);              
 phi  = linspace(pi,3*pi,q);
 [theta,phi]=meshgrid(theta,phi);
 %% Shape definition Sphere
