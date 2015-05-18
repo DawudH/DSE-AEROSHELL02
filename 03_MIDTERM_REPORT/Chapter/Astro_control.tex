@@ -76,7 +76,14 @@ The acceleration $\left(\gls{sym:acc}\right)$ is only the gravitational pull $\l
 
 \subsubsection{Eliptical Kepler orbit}
  \label{sec:eliptickep}
-***Kepler for elliptic: symmetry***\\
+For an eliptical orbit \gls{sym:a}, \gls{sym:e} and \gls{sym:phip} can be calculated in the same way as was done in section \ref{sec:hypkep}. The point of reentry into the atmosphere is the old location exactly mirrored in the line between the pericenter and the apocenter. Also the velocity $\left(\gls{sym:Vv}\right)$ and the acceleration $\left(\gls{sym:acc}\right)$  should be mirrored in that line. The velocity should than be rotated over 180 $\left[^\circ\right]$ to point in the correct direction. The magnitude of the location $\left(\gls{sym:R}\right)$, velocity $\left(\gls{sym:V}\right)$ and acceleration $\left(\gls{sym:acc}\right)$ are still the same due to the symmetry of kepler orbits.
+
+For the eliptical orbit also the duration has to be calculated. As this time is part of the 10 days in which the spacecraft is required to decelerate. As keplers second law states: $\frac{dA}{dt}=\mbox{constant}$, the duration can be written as an area fraction of the period. This is done in equation \ref{eq:areatime}. Here $\gls{sym:T} = 2\pi\sqrt{\frac{\gls{sym:a}^3}{\gls{con:mu}}}$ and $\gls{sym:A}_{tot} = 2\pi \gls{sym:a} \sqrt{1-\gls{sym:e}^2}$.
+
+\begin{equation}
+t = \frac{\gls{sym:A}}{\gls{sym:A}_{tot}}\gls{sym:T}
+\label{eq:areatime}
+\end{equation}
 
 \subsection{Working principles of the tool}
 \label{sec:astrowp}
