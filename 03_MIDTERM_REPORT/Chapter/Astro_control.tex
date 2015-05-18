@@ -17,8 +17,21 @@ More specifically the tool is used here to determine the required Aerodynamic ch
 In this section the equations on which the tool is based are shown and the reason for using them is explained. The trajectory is split up into three parts: hyperbolic kepler entry, trajectory in atmosphere and eliptic kepler orbit. These are parts presented respectively in sections \ref{sec:hypkep}, \ref{sec:trajatmos} and \ref{sec:eliptickep} respectively. However first all assumptions made are stated in section \ref{sec:astroassumption}.
 
 \subsubsection{Assumptions}
- \ref{sec:astroassumption}
- ***assumptions made (atmosphere constant with longitude, only mars as attracting body)***\\
+ \label{sec:astroassumption}
+ In this section all assumptions used to create the tool are stated and justified. Some of the assumprions have a big impact and should be taken into account in next versions of the program, this are the primary assumptions. There are however also some assumptions that have a negligable effect on the results, this are the secondary assumptions. The list of assumption beneath is subdivided in these catagories.
+ 
+ \paragraph{primary assumptions}
+ \begin{itemize}
+ \item All atmospheric properties only vary with the height above MOLA ***source*** and not with longitude, latitude or time. This assumption induces a significant error in the output of the tool. However implementing a variable atmosphere adds a lot of complexity aswell. For example the longitude and latitude of initial entry will also become design variables
+ \item 
+ \end{itemize}
+ 
+ 
+ \paragraph{secondary assumptions}
+ \begin{itemize}
+ \item The spacecraft is assumed to only feel a gravitational pull from mars. It is thus assumed that there is no gravitational pull from the sun, any other planet or the martian moons.
+ \item The atmosphere stops at a height of 400 [km]. At this point the atmosphere is negligibly thin, adding any more atmosphere would not contribute significantly to the results.
+ \end{itemize}
  
 \subsubsection{Hyperbolic Kepler entry}
  \label{sec:hypkep}
