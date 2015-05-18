@@ -150,7 +150,7 @@ classdef modnewtonian
                 end
                 overflowvector = [0.5*trianglesincircle+1:trianglesincircle, 1:0.5*trianglesincircle];
                 point2 = overflowvector(point1);
-                if obj.coords(2, point1) ~= -obj.coords(2,point2)
+                if obj.coords(2, point1) - obj.coords(2,point2) < 1e-12
                     point2 = point2 + 1;
                 end
                 radii = obj.radiusOfCurvature(point1, point2, 1);
@@ -303,7 +303,7 @@ classdef modnewtonian
         end
         
         function cp = calcCpOnPoint(obj, point)
-            triangles = getTrianglesOnPoint(obj, point);
+            triangles = obj.getTrianglesOnPoint(point);
             cp = mean(obj.Cpdist_array(triangles, end));
         end
         
