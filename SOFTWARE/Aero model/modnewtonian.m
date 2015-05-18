@@ -124,7 +124,7 @@ classdef modnewtonian
             M = 3;
             N = 0.5;
             Vinf = obj.a_inf*obj.M_array(end);
-            Tmax = obj.T_inf*(1+obj.gamma)/2*obj.M_array(end)^2;
+            Tmax = obj.T_inf*(obj.gamma-1)/2*obj.M_array(end)^2;
             
             [cp, stagN] = max(obj.Cpdist_array(:,end));
             triangle = obj.tri(stagN, :);
@@ -150,7 +150,7 @@ classdef modnewtonian
                 end
                 overflowvector = [0.5*trianglesincircle+1:trianglesincircle, 1:0.5*trianglesincircle];
                 point2 = overflowvector(point1);
-                if obj.coords(2, point1) ~= -obj.coords(2,point2)
+                if obj.coords(2, point1) - obj.coords(2,point2) < 1e-12
                     point2 = point2 + 1;
                 end
                 radii = obj.radiusOfCurvature(point1, point2, 1);
@@ -298,12 +298,17 @@ classdef modnewtonian
             points = find(obj.coords(1,:)>x-epsilon & obj.coords(1,:)<x+epsilon);
         end
         
+        function points = getPointsOnXYPlane(obj, x)
+            epsilon = 1e-10;            
+            points = find(obj.coords(3,:)>x-epsilon & obj.coords(3,:)<x+epsilon);
+        end
+        
         function triangles = getTrianglesOnPoint(obj, point)
             triangles = [find(obj.tri(:,1)==point);find(obj.tri(:,2)==point);find(obj.tri(:,3)==point)];
         end
         
         function cp = calcCpOnPoint(obj, point)
-            triangles = getTrianglesOnPoint(obj, point);
+            triangles = obj.getTrianglesOnPoint(point);
             cp = mean(obj.Cpdist_array(triangles, end));
         end
         
