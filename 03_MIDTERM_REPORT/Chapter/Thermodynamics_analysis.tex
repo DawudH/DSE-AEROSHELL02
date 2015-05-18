@@ -1,9 +1,9 @@
 \section{Thermal mass estimation}
 \label{ch:thermtool}
-Decelerating an entry vehicle requires a thermal protection system. This system will contribute to a large extend to the mass of the entire vehicle. Therefore, a thermal protection system (\gls{tps}) has a critical impact on the mission an should be selected properly. This section will analyse the \gls{tps} of the five trade-off concepts with the use of a thermal protection tool. First the tool will be described in more detail. Afterwards it is described how the tool is verified and validated. In the third section, this tool will be used to analyse different lay-ups for the concepts under anlysis. As a result,the \gls{tps} masses for differnt concepts can be determined. Lastly, concluions and recomendations.\\
+Decelerating an entry vehicle requires a thermal protection system. This system will contribute to a large extend to the mass of the entire vehicle. Therefore, a \gls{tps} has a critical impact on the mission an should be selected properly. This section will analyse the \gls{tps} of the five trade-off concepts with the use of a thermal protection tool. First the tool will be described in more detail. Afterwards it is described how the tool is verified and validated. In the third section, this tool will be used to analyse different lay-ups for the concepts under anlysis. As a result, the \gls{tps} masses for differnt concepts can be determined. Lastly, concluions and recomendations are given.\\
 
 \subsection{Method of thermal analysis}
-A mass estimations of the \gls{tps} requires analysis due to heat transfer in the heat shield. Enable to analyse different lay-ups in a short amount of time, it will be usefull to make use of a \gls{tps} tool. The working principles of this tool are describes in detail in this section.\\
+A mass estimations of the \gls{tps} requires analysis due to heat transfer into the heat shield. Enable to analyse different lay-ups in a short amount of time, it will be usefull to make use of a \gls{tps} tool. In this section the working principles of this to in detail .\\
 
 \subsubsection{Assumptions}
 In this section the assumptions that are used for the \gls{tps} mass estimation and tool developement are stated. Also, an elaboration is given of the impact of the assumption on the results.\\
@@ -73,27 +73,28 @@ In order to make use of the tool, an input is required. This input consist of th
 
 Thermal inputs for the five condepts, temp and flux + graph.\\
 
-Several lay-ups are analysed, all with a variety of materials. An overview of these materials with their properties is shown in Table \ref{tab:tpsmatprop}.
+Several lay-ups are analysed, all with a variety of materials. An overview of these materials with their properties is shown in Table  \ref{tab:tpsmatprop}. Where for each material the thermal conductivity, the density, the specific heat, the maximum operative temperature and if applicable, the emissivity are given.
 
 \begin{table}[H]
 \caption {TPS Material properties}
 \centering
-    \begin{tabular}{|l|l|l|l|l|}
+    \begin{tabular}{|l|l|l|l|l|l|}
     \hline
-    \textbf{Material}         & \textbf{Conductivity $ \frac{W}{m*K} $} & \textbf{Density $ \frac{kg}{m^3} $} & \textbf{Specific heat \ $ \frac{J}{kg*K} $ }& \textbf{Emissivity $  [ - ] $} \\ \hline \hline
-    Nextel AF14       & 0.150                                                 & 858                                        & 1050                                            & 0.443                                      \\ \hline
-    Nextel BF20       & 0.146                                                 & 1362                                       & 1130                                            & 0.443                                      \\ \hline
-    Nextel XN513      & 0.148                                                 & 1151                                       & 1090                                            & 0.443                                      \\ \hline
-    Refrasil C1554-48 & 0.865                                                 & 924                                        & 1172                                            & 0.7                                        \\ \hline
-    Refrasil UC100-28 & 0.865                                                 & 890                                        & 1172                                            & 0.2                                        \\ \hline
-    Hexcel 282 Carbon & 0.5                                                   & 891                                        & 1000                                            & 0.9                                        \\ \hline
-    Pyrogel 6650      & 0.030                                                 & 110                                        & 1046                                            & ~                                          \\ \hline
-    Pyrogel 5401      & 0.0248                                                & 170                                        & 1046                                            & ~                                          \\ \hline
-    Pyrogel 1800      & 0.085                                                 & 156                                        & 1172                                            & ~                                          \\ \hline
-    Pyrogel 2000      & 0.095                                                 & 180                                        & 1172                                            & ~                                          \\ \hline
-    KFA 5             & 0.25                                                  & 98                                         & 1250                                            & ~                                          \\ \hline
-    Kapton            & 0.12                                                  & 1468                                       & 1022                                            & ~                                          \\ \hline
-    Upilex            & 0.29                                                  & 1470                                       & 1130                                            & ~                                          \\ \hline
+    \textbf{Material}         & \textbf{ $ k $ $ [ \frac{W}{m*K} ] $} & \textbf{ $ \rho $ $ [ \frac{kg}{m^3} ] $} & \textbf{  $ c_{p} $ $ [ \frac{J}{kg*K} ] $ }& \textbf{ $ T_{max} $ $ [ K ] $} &\textbf{ $ \epsilon $ $ [ - ] $} \\[1.5ex] \hline \hline
+    Nextel AF14       & 0.150                                                 & 858                                        & 1050                                            & ~	 & 0.443                                      \\ \hline
+    Nextel BF20       & 0.146                                                 & 1362                                       & 1130      
+    Nextel BF10       & ~                                                 & ~                                       & ~                                       & ~ & ~                                      \\ \hline
+    Nextel XN513      & 0.148                                                 & 1151                                       & 1090                                            & ~	 & 0.443                                      \\ \hline
+    Refrasil C1554-48 & 0.865                                                 & 924                                        & 1172                                            & ~	 & 0.7                                        \\ \hline
+    Refrasil UC100-28 & 0.865                                                 & 890                                        & 1172                                            & ~	 & 0.2                                        \\ \hline
+    Hexcel 282 Carbon & 0.5                                                   & 891                                        & 1000                                            & ~ 	 & 0.9                                        \\ \hline
+    Pyrogel 6650      & 0.030                                                 & 110                                        & 1046                                            & ~    & ~                                          \\ \hline
+    Pyrogel 5401      & 0.0248                                                & 170                                        & 1046                                            & ~  	 & ~                                          \\ \hline
+    Pyrogel 1800      & 0.085                                                 & 156                                        & 1172                                            & ~ 	 & ~                                          \\ \hline
+    Pyrogel 2000      & 0.095                                                 & 180                                        & 1172                                            & ~ 	 & ~                                          \\ \hline
+    KFA 5             & 0.25                                                  & 98                                         & 1250                                            & ~ 	 & ~                                          \\ \hline
+    Kapton            & 0.12                                                  & 1468                                       & 1022                                            & ~	 & ~                                          \\ \hline
+    Upilex            & 0.29                                                  & 1470                                       & 1130                                            & ~ 	 & ~                                          \\ \hline
     \end{tabular}
     \label{tab:tpsmatprop}
 \end{table}
