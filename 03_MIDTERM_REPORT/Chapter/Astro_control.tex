@@ -98,6 +98,23 @@ In order to be sure the results the tool produces are correct and can safely be 
 ***sensitivity analysis: very sensitive to initial location, thus for now assumed initial location closer***\\
 
 \subsubsection{Discretisation error}
+
+%Initial Position
+%rx = -4143775;
+%ry = 10*R_m;
+%R = [rx,ry,0];
+
+%Initial Velocity
+%v = 7.1679e+03; %[m/s]
+%V = [0,-v,0];
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[trim={4.25cm 10cm 3.2cm 10cm},clip,width=0.8\textwidth]{Figure/orbital_model/dicretization.pdf}
+	\caption{The atmospheric properties at $50$ $\left[km\right]$} 
+	\label{fig:atmos_disc}
+\end{figure}
+
 \label{sec:astrodisc}
 ***discretisation error: error for different dt***\\
 
