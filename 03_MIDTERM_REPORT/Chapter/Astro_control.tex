@@ -6,17 +6,26 @@ In this chapter first the purpose of the tool will be explained in section \ref{
 
 \subsection{Purpose of tool development}
 \label{sec:astropurpose}
-The purpose of developing a tool to calculate the trajectory of the spacecraft during entry is firstly to know the trajectory given the characteristics of the spacecraft. Secondly, calculating trajectories for varying input, for the different concepts and different control systems, this tool can also give an insight in which concepts have the characteristics needed for a successful entry.
+The purpose of developing a tool to calculate the trajectory of the spacecraft during entry is firstly to know the trajectory of the spacecraft given its characteristics. Secondly, calculating trajectories for varying input, for the different concepts and different control systems, this tool can also give an insight in which concepts have the characteristics needed for a successful entry.
 
-The tool has been developed in-house as no existing tool that suits our purpose and is publicly available has been found.
+The tool has been developed in-house as no existing tool that both suits our purpose and is publicly available has been found.
 
-More specifically the tool is used here to determine the required Aerodynamic characteristics to create an acceptable window of entry. Or in other words: What accuracy of the initial conditions is needed to, with a certain shape and control, get the required accuracy at the final position. Taking into account the different shapes the goal of this tool is to investigate the need for \& effect of control on the trajectory of the spacecraft. 
+More specifically the tool is used here to determine the required Aerodynamic characteristics to create an acceptable window of entry. Or in other words: What accuracy of the initial conditions is needed to, with a certain shape and control, get the required accuracy at the final position. Taking into account the different shapes the goal of this tool is to investigate the need for \& effect of control on the trajectory of the spacecraft.
 
 \subsection{Governing equations}
 \label{sec:astrogov}
-In this section the equations on which the tool is based are showed and ***
+In this section the equations on which the tool is based are shown and the reason for using them is explained. The trajectory is split up into three parts: hyperbolic kepler entry, trajectory in atmosphere and eliptic kepler orbit. These are parts presented respectively in sections \ref{sec:hypkep}, \ref{sec:trajatmos} and \ref{sec:eliptickep} respectively. However first all assumptions made are stated in section \ref{sec:astroassumption}.
+\subsubsection{Assumptions}
+ \ref{sec:astroassumption}
+ ***assumptions made (atmosphere constant with longitude, only mars as attracting body)***\\
+\subsubsection{Hyperbolic Kepler entry}
+ \label{sec:hypkep}
 ***Kepler for hyperbolic: Vis-Viva, polar expression of hyperbola, tangent to hyperbola***\\
+\subsubsection{Trajectory in atmosphere}
+ \label{sec:trajatmos}
 ***Forces give accelerations: like in baseline + Jerk***\\
+\subsubsection{Eliptical Kepler orbit}
+ \label{sec:eliptickep}
 ***Kepler for elliptic: symmetry***\\
 
 \subsection{Working principles of the tool}
@@ -27,24 +36,52 @@ The tool is able to calculate the trajectory of the spacecraft and a range of im
 
 \subsection{Verification \& validation}
 \label{sec:astrovv}
-***intro***\\
+In order to be sure the results the tool produces are correct and can safely be used in further efforts to design the \gls{cia} verification and validation is needed. This section presents the methods used to verify and validate the results produced by the tool. First a sensitivity analysis is presented in section \ref{sec:astrosens} which focusses on the sensitivity of the program to the initial conditions. In section \ref{sec:astrodisc} the discretisation error is analysed in order to ensure the results are accurate enough for it to be usefull. The numerical solution is compared to the simple case of a kepler orbit in section \ref{sec:astroverf}. Lastly in section \ref{sec:astroval} the results produced by the tool are compared to data from missions that have flown in the past.
+
+\subsubsection{Sensitivity analysis}
+\label{sec:astrosens}
 ***sensitivity analysis: very sensitive to initial location, thus for now assumed initial location closer***\\
+\subsubsection{Discretisation error}
+\label{sec:astrodisc}
 ***discretisation error: error for different dt***\\
+\subsubsection{Verification through comparison with kepler}
+\label{sec:astroverf}
 ***Compare numerical results with Kepler, should be the same for rho=0***\\
+\subsubsection{Validation through comparison with reference cases}
+\label{sec:astroval}
 ***Validation through checking if output values are approximately the same as reference cases (peak dynamic pressure)***\\
 
 \subsection{Performance of control systems}
  \label{sec:astroref}
-***intro***\\
+Several options for the control system are considered. Using first-order calculations the effectiveness of each control system design option will be assessed. In this context 'effectiveness' is defined as a combination of system mass, moment that can be caused by the system and whether a control output can be sustained for long periods of time. These three criteria will be considered for all three control system design options. The design options to be considered are:
+\begin{itemize}
+	\item \acrfull{cg} shifting
+	\item A \acrfull{rcs}
+	\item Control surfaces (bodyflaps)
+\end{itemize}
 ***Moment or dalpha/dt that control systems (cg offset, thrusters, control surfaces) can create***\\
 ***Weight estimate of each control system (per concept if needed)***\\
 
-\subsection{Results \& Conclusions}
+\subsection{Results \& conclusions}
 \label{sec:astrores}
 ***intro***\\
+\subsubsection{Atmospheric model}
+\label{sec:astroatmos}
+***Plot rho,T vs. long,h***
+\subsubsection{Effect of \gls{sym:CL} and \gls{sym:CD} on deceleration}
+\label{sec:astrodec}
+
+\subsubsection{A feasible trajectory and important output parameters over time}
+\label{sec:astrorestraj}
 ***Plot of a trajectory***\\
 ***Plots of output variables for that particular trajectory***\\
+
+\subsubsection{Required performance of the control system}
+\label{sec:astroperfomance}
 ***Results of needed CLmax, dalpha/dt, dCL/dalpha***\\
+
+\subsubsection{Conclusion on control system performance}
+\label{sec:conclusion}
 ***Conclusion on which control system (implemented in which concept) can perform as such***\\
 ***Conclusion on weight the control systems will bring along***\\
 ***State values for in trade-off matrix***\\
