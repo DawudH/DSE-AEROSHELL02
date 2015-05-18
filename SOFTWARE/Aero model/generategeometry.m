@@ -30,6 +30,11 @@ function [ coords, tri, A ] = generategeometry( type, q )
             coords = TriGeom.Points';
             tri = TriGeom.ConnectivityList;
             A = pi*6^2;
+        case 'concept_isotensoid'
+            TriGeom = TriMeshGen(q, 6, 5, 6, 's');
+            coords = TriGeom.Points';
+            tri = TriGeom.ConnectivityList;
+            A = pi*6^2;            
         case 'pastille12m1.5m'
             TriGeom = TriMeshGen(q, 6, 1.5, 6, 's');
             coords = TriGeom.Points';

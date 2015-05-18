@@ -3,7 +3,20 @@ close all;
 clc;
 out = open('out.mat');
 
-range = 1:1500;%length(out.out.tp);
+shapetexts.horizontalplate = 'horizontalplate';
+shapetexts.verticalplate = 'verticalplate';
+shapetexts.sphere12m = 'sphere12m';
+shapetexts.pastille12m15m = 'pastille12m1.5m';
+shapetexts.deg60cone = 'deg60cone';
+shapetexts.deg30cone = 'deg30cone';
+shapetexts.irvevalidation = 'irvevalidation';
+shapetexts.apollovalidation = 'apollovalidation';
+shapetexts.torus = 'torus';
+shapetexts.concept_irve = 'concept_irve';
+shapetexts.concept_apollo = 'concept_apollo';
+shapetexts.concept_isotensoid = 'concept_isotensoid';
+
+range = 1:length(out.out.tp);
 % range = 1251:4232;
 
 t = out.out.tp;
@@ -14,9 +27,9 @@ M = out.out.M;
 V = M.*speed_sound;
 
 gamma = 1.29;
-alpha = 10;
+alpha = 30;
 q = 24;
-[ coords, tri, A ] = generategeometry( 'pastille12m1.5m', q );
+[ coords, tri, A ] = generategeometry( shapetexts.concept_apollo, q );
 
 qmax = zeros(size(t));
 Tboundary = zeros(size(t));

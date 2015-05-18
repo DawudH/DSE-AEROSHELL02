@@ -11,6 +11,7 @@ shapetexts.apollovalidation = 'apollovalidation';
 shapetexts.torus = 'torus';
 shapetexts.concept_irve = 'concept_irve';
 shapetexts.concept_apollo = 'concept_apollo';
+shapetexts.concept_isotensoid = 'concept_isotensoid';
 
 a = 300;
 gamma = 1.4;
@@ -23,7 +24,7 @@ alpha0 = 0; %degrees
 dalpha = 1; %degrees
 alphaend = 40; %degrees
 
-[ coords, tri, A ] = generategeometry( shapetexts.pastille12m15m, q );
+[ coords, tri, A ] = generategeometry( shapetexts.concept_isotensoid, q );
 
 mod = modnewtonian( coords, tri, gamma, a, center, rho, T, A);
 % mod = mod.alphasweep(a*20, 0, deg2rad(alpha0), deg2rad(alphaend), deg2rad(dalpha));

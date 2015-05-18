@@ -11,6 +11,7 @@ shapetexts.apollovalidation = 'apollovalidation';
 shapetexts.torus = 'torus';
 shapetexts.concept_irve = 'concept_irve';
 shapetexts.concept_apollo = 'concept_apollo';
+shapetexts.concept_isotensoid = 'concept_isotensoid';
 
 a = 180;
 gamma = 1.29;
@@ -32,6 +33,6 @@ disp('Calculating...');
 mod = mod.alphasweep(a*20, 0, deg2rad(alpha0), deg2rad(alphaend), deg2rad(dalpha));
 
 disp('Writing to file...');
-dlmwrite('outputfiles/apollo.txt', [mod.alpha_array', mod.CRA_aero_array', mod.CMA_aero_array', mod.qmax_array']);
+dlmwrite('outputfiles/isotensoid.txt', [mod.alpha_array', mod.CRA_aero_array', mod.CMA_aero_array', mod.qmax_array']);
 disp('Done!');
 
