@@ -51,7 +51,7 @@ TriGeom = triangulation(Tri, xvector', yvector', zvector');
 %% Torus
 elseif type == 't' 
 %% Define Polar Coordinates
-theta = linspace(0,2*pi,q);              
+theta = linspace(-pi,pi,q);              
 phi  = linspace(0,2*pi,q);
 [theta,phi]=meshgrid(theta,phi);
 %% Shape definition Torus
