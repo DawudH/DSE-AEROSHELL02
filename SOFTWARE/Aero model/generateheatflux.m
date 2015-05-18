@@ -3,7 +3,7 @@ close all;
 clc;
 out = open('out.mat');
 
-range = 1:length(out.out.tp);
+range = 1:1500;%length(out.out.tp);
 % range = 1251:4232;
 
 t = out.out.tp;
@@ -21,12 +21,15 @@ q = 24;
 qmax = zeros(size(t));
 Tboundary = zeros(size(t));
 center = [0 0 0];
-
+mod = modnewtonian( coords, tri, gamma, speed_sound(1), center, rho(1), T(1), A);
 for i = range
 %     i
 %     rho(i)
     if rho(i) > 1e-7
-        mod = modnewtonian( coords, tri, gamma, speed_sound(i), center, rho(i), T(i), A);
+%         mod = modnewtonian( coords, tri, gamma, speed_sound(i), center, rho(i), T(i), A);
+        mod.a_inf = speed_sound(i);
+        mod.rho_inf = rho(i);
+        mod.T_inf = T(i);
         mod = mod.calcAeroangle(V(i),deg2rad(alpha),0);
         qmax(i) = mod.qmax_array(end);
         Tboundary(i) = mod.Tmax_array(end);
