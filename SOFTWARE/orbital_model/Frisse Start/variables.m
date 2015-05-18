@@ -5,7 +5,7 @@ added_paths
 constants
 
 %Initial Position
-rx = -4144800;
+rx = -4144760;
 ry = 10*R_m;
 R = [rx,ry,0];
 
@@ -21,7 +21,7 @@ dt_atmos = 0.1; %[s]
 dt_kep_init = 1e-6; %[s]
 
 %time to end simulation
-tend = 3600 * 24 * 5; %[s]
+tend = 3600 * 24 * 0.5; %[s]
 
 %Control variables
 control.a = 2.5*g_earth;

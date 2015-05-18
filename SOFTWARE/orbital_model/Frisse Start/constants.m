@@ -24,7 +24,7 @@ h_atm = 400e3; %[m]
 SOI = 0.576e9; %[m]
 
 % crash margin above the surface
-crash_margin = 40000; %[m]
+crash_margin = 10000; %[m]
 
 
 %Earth gravitational accaleration
