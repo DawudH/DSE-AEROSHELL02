@@ -66,6 +66,28 @@ Several options for the control system are considered. Using first-order calcula
 	\item A \acrfull{rcs}
 	\item Control surfaces (body flaps)
 \end{itemize}
+Each of these options will be quickly assessed in the subsequent sections. This will be done by taking angle of attack \gls{sym:alpha}$=30\deg$. This corresponds to $\gls{sym:CM}\gls{sym:A}=-100$, $\gls{sym:CL}\gls{sym:A}=-60$ and $\gls{sym:CD}\gls{sym:A}=126$. These values have been obtained by using the aerodynamical tool described in chapter \ref{ch:aero_analysis} for (geometry). Using equation \ref{eq:moment_from_cm} the control moment required can be obtained.
+\begin{equation}
+M=\frac{1}{2}\gls{sym:rho}\gls{sym:V}^{2}\gls{sym:CM}\gls{sym:A}
+\label{eq:moment_from_cm}
+\end{equation}
+This moment has to be counteracted during a time $t$. Furthermore, for the \gls{rcs} and body flaps the required force can be directly determined by noting that $M=dF$, where $d$ is the moment arm and $F$ is the control force. 
+
+\subsubsection{\gls{cg}-shifting}
+
+CL*A=-60
+CD*A=126
+
+\subsubsection{\acrlong{rcs}}
+By using the control force requirement the mass flow can be determined with equation \ref{eq:rcsmassflow} \cite{Allen2012}.
+\begin{equation}
+F=\gls{sym:mdot}\gls{sym:Isp}\gls{sym:ge}
+\end{equation}
+From equation \ref{eq:rcsmassflow} the required propulsive mass can be determined by multiplying $F$ with timespan $t$.
+
+\subsubsection{Control surfaces}
+
+
 ***Moment or dalpha/dt that control systems (cg offset, thrusters, control surfaces) can create***\\
 ***Weight estimate of each control system (per concept if needed)***\\
 
