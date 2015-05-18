@@ -4,6 +4,13 @@ function [ coords, tri, A ] = generategeometry( type, q )
 
 
     switch type
+        case 'torus'
+            R = 12;
+            r = 3;
+            TriGeom = TriMeshGen(q, R, r, r, 't');
+            coords = TriGeom.Points';
+            tri = TriGeom.ConnectivityList;
+            A = pi*((R+r)^2-(R-r)^2);
         case 'horizontalplate'
             xvector = [0 1 0 1];
             yvector = [0 0 1 1];
