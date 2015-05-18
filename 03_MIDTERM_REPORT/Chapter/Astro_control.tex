@@ -30,11 +30,13 @@ In this section the equations on which the tool is based are shown and the reaso
  \paragraph{secondary assumptions}
  \begin{itemize}
  \item The spacecraft is assumed to only feel a gravitational pull from mars. It is thus assumed that there is no gravitational pull from the sun, any other planet or the martian moons.
- \item The atmosphere stops at a height of 400 [km]. At this point the atmosphere is negligibly thin, adding any more atmosphere would not contribute significantly to the results.
+ \item The atmosphere stops at a height of 400 $\left[km\right]$. At this point the atmosphere is negligibly thin, adding any more atmosphere would not contribute significantly to the results.
  \end{itemize}
  
 \subsubsection{Hyperbolic Kepler entry}
  \label{sec:hypkep}
+Before initial entry into the atmosphere the spacecraft follows a hyperbolic Kepler trajectory. From the initial conditions the 
+
 ***Kepler for hyperbolic: Vis-Viva, polar expression of hyperbola, tangent to hyperbola***\\
 
 \subsubsection{Trajectory in atmosphere}
@@ -47,7 +49,7 @@ In this section the equations on which the tool is based are shown and the reaso
 
 \subsection{Working principles of the tool}
 \label{sec:astrowp}
-The tool is able to calculate the trajectory of the spacecraft and a range of important parameters at each moment in time. These parameters are among others: Acceleration (\gls{sym:acc}), dynamic pressure (\gls{sym:q}), speed (\gls{sym:Vv}) and Mach number (\gls{sym:M}). In order to calculate this the tool takes geometric and aerodynamic properties of the spacecraft and some initial conditions as input.
+The tool is able to calculate the trajectory of the spacecraft and a range of important parameters at each moment in time. These parameters are among others: Acceleration $\left(\gls{sym:acc}\right)$, dynamic pressure $\left(\gls{sym:q}\right)$, speed $\left(\gls{sym:Vv}\right)$ and Mach number $\left(\gls{sym:M}\right)$. In order to calculate this the tool takes geometric and aerodynamic properties of the spacecraft and some initial conditions as input.
 
 ***Flowchart + very short explanation***\\
 
