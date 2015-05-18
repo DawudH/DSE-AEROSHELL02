@@ -6,45 +6,176 @@ In this chapter first the purpose of the tool will be explained in section \ref{
 
 \subsection{Purpose of tool development}
 \label{sec:astropurpose}
-The purpose of developing a tool to calculate the trajectory of the spacecraft during entry is firstly to know the trajectory given the characteristics of the spacecraft. Secondly, calculating trajectories for varying input, for the different concepts and different control systems, this tool can also give an insight in which concepts have the characteristics needed for a successful entry.
+The purpose of developing a tool to calculate the trajectory of the spacecraft during entry is firstly to know the trajectory of the spacecraft given its characteristics. Secondly, calculating trajectories for varying input, for the different concepts and different control systems, this tool can also give an insight in which concepts have the characteristics needed for a successful entry.
 
-The tool has been developed in-house as no existing tool that suits our purpose and is publicly available has been found.
+The tool has been developed in-house as no existing tool that both suits our purpose and is publicly available has been found.
 
-More specifically the tool is used here to determine the required Aerodynamic characteristics to create an acceptable window of entry. Or in other words: What accuracy of the initial conditions is needed to, with a certain shape and control, get the required accuracy at the final position. Taking into account the different shapes the goal of this tool is to investigate the need for \& effect of control on the trajectory of the spacecraft. 
+More specifically the tool is used here to determine the required Aerodynamic characteristics to create an acceptable window of entry. Or in other words: What accuracy of the initial conditions is needed to, with a certain shape and control, get the required accuracy at the final position. Taking into account the different shapes the goal of this tool is to investigate the need for \& effect of control on the trajectory of the spacecraft.
 
 \subsection{Governing equations}
 \label{sec:astrogov}
-***intro***\\
-***Kepler for hyperbolic: Vis-Viva, polar expression of hyperbola, tangent to hyperbola)***\\
+In this section the equations on which the tool is based are shown and the reason for using them is explained. The trajectory is split up into three parts: hyperbolic kepler entry, trajectory in atmosphere and eliptic kepler orbit. These are parts presented respectively in sections \ref{sec:hypkep}, \ref{sec:trajatmos} and \ref{sec:eliptickep} respectively. However first all assumptions made are stated in section \ref{sec:astroassumption}.
+
+\subsubsection{Assumptions}
+ \label{sec:astroassumption}
+ In this section all assumptions used to create the tool are stated and justified. Some of the assumprions have a big impact and should be taken into account in next versions of the program, this are the primary assumptions. There are however also some assumptions that have a negligable effect on the results, this are the secondary assumptions. The list of assumption beneath is subdivided in these catagories.
+ 
+ \paragraph{primary assumptions}
+ \begin{itemize}
+ \item All atmospheric properties only vary with the height above MOLA ***source*** and not with longitude, latitude or time. This assumption induces a significant error in the output of the tool. However implementing a variable atmosphere adds a lot of complexity aswell. For example the longitude and latitude of initial entry will also become design variables
+ \item 
+ \end{itemize}
+ 
+ 
+ \paragraph{secondary assumptions}
+ \begin{itemize}
+ \item The spacecraft is assumed to only feel a gravitational pull from mars. It is thus assumed that there is no gravitational pull from the sun, any other planet or the martian moons.
+ \item The atmosphere stops at a height of 400 $\left[km\right]$. At this point the atmosphere is negligibly thin, adding any more atmosphere would not contribute significantly to the results.
+ \end{itemize}
+ 
+\subsubsection{Hyperbolic Kepler entry}
+ \label{sec:hypkep}
+Before initial entry into the atmosphere the spacecraft follows a hyperbolic Kepler trajectory. From the initial conditions the 
+
+***Kepler for hyperbolic: Vis-Viva, polar expression of hyperbola, tangent to hyperbola***\\
+
+\subsubsection{Trajectory in atmosphere}
+ \label{sec:trajatmos}
 ***Forces give accelerations: like in baseline + Jerk***\\
+
+\subsubsection{Eliptical Kepler orbit}
+ \label{sec:eliptickep}
 ***Kepler for elliptic: symmetry***\\
 
 \subsection{Working principles of the tool}
 \label{sec:astrowp}
-The tool is able to calculate the trajectory of the spacecraft and a range of important parameters at each moment in time. These parameters are among others: Acceleration (\gls{sym:acc}), dynamic pressure (\gls{sym:q}), speed (\gls{sym:Vv}) and Mach number (\gls{sym:mach}). In order to calculate this the tool takes geometric and aerodynamic properties of the spacecraft and some initial conditions as input.
+The tool is able to calculate the trajectory of the spacecraft and a range of important parameters at each moment in time. These parameters are among others: Acceleration $\left(\gls{sym:acc}\right)$, dynamic pressure $\left(\gls{sym:q}\right)$, speed $\left(\gls{sym:Vv}\right)$ and Mach number $\left(\gls{sym:M}\right)$. In order to calculate this the tool takes geometric and aerodynamic properties of the spacecraft and some initial conditions as input.
 
 ***Flowchart + very short explanation***\\
 
 \subsection{Verification \& validation}
 \label{sec:astrovv}
-***intro***\\
+In order to be sure the results the tool produces are correct and can safely be used in further efforts to design the \gls{cia} verification and validation is needed. This section presents the methods used to verify and validate the results produced by the tool. First a sensitivity analysis is presented in section \ref{sec:astrosens} which focusses on the sensitivity of the program to the initial conditions. In section \ref{sec:astrodisc} the discretisation error is analysed in order to ensure the results are accurate enough for it to be usefull. The numerical solution is compared to the simple case of a kepler orbit in section \ref{sec:astroverf}. Lastly in section \ref{sec:astroval} the results produced by the tool are compared to data from missions that have flown in the past.
+
+\subsubsection{Sensitivity analysis}
+\label{sec:astrosens}
 ***sensitivity analysis: very sensitive to initial location, thus for now assumed initial location closer***\\
+
+\subsubsection{Discretisation error}
+\label{sec:astrodisc}
 ***discretisation error: error for different dt***\\
+
+\subsubsection{Verification through comparison with kepler}
+\label{sec:astroverf}
 ***Compare numerical results with Kepler, should be the same for rho=0***\\
+
+\subsubsection{Validation through comparison with reference cases}
+\label{sec:astroval}
 ***Validation through checking if output values are approximately the same as reference cases (peak dynamic pressure)***\\
 
 \subsection{Performance of control systems}
  \label{sec:astroref}
-***intro***\\
+Several options for the control system are considered. Using first-order calculations the effectiveness of each control system design option will be assessed. In this context 'effectiveness' is defined as a combination of system mass, moment that can be caused by the system and whether a control output can be sustained for long periods of time. These three criteria will be considered for all three control system design options. The design options to be considered are:
+\begin{itemize}
+	\item Shifting the \acrfull{cg}
+	\item A \acrfull{rcs}
+	\item Control surfaces (body flaps)
+\end{itemize}
+Each of these options will be quickly assessed in the subsequent sections. This will be done by taking angle of attack \gls{sym:alpha}$=30\deg$. This corresponds to $\gls{sym:CM}\gls{sym:A}=-100$, $\gls{sym:CL}\gls{sym:A}=-58.8$ and $\gls{sym:CD}\gls{sym:A}=126$. These values have been obtained by using the aerodynamical tool described in chapter \ref{ch:aero_analysis} for (geometry). Using equation \ref{eq:moment_from_cm} the control moment required can be obtained.
+\begin{equation}
+M=\frac{1}{2}\gls{sym:rho}\gls{sym:V}^{2}\gls{sym:CM}\gls{sym:A}
+\label{eq:moment_from_cm}
+\end{equation}
+This moment has to be counteracted during a time $t$. Furthermore, for the \gls{rcs} and body flaps the required force can be directly determined by noting that $M=dF$, where $d$ is the moment arm and $F$ is the control force. 
+
+\subsubsection{\gls{cg}-shifting}
+
+
+\subsubsection{\acrlong{rcs}}
+By using the control force requirement the mass flow of the \acrlong{rcs} can be determined with equation \ref{eq:rcsmassflow} \cite{Allen2012}.
+\begin{equation}
+\frac{M}{d}=F=\gls{sym:mdot}\gls{sym:Isp}\gls{sym:ge}
+\label{eq:rcsmassflow}
+\end{equation}
+From equation \ref{eq:rcsmassflow} the required propulsive mass can be obtained by multiplying both sides of the equation with timespan $t$ and solving for $\gls{sym:m}$, which results in equation \ref{eq:propmass}.
+\begin{equation}
+\gls{sym:m}=\frac{Ft}{\gls{sym:Isp}\gls{sym:ge}}
+\label{eq:propmass}
+\end{equation}
+
+\subsubsection{Body flaps}
+Body flaps function by introducing a local aerodynamical force by controlling the local geometry. A body flap element produces a lift and drag force as in equation \ref{eq:flaplift} and \ref{eq:flapdrag}.
+\begin{multicols}{2}
+\begin{equation}
+L=\frac{1}{2}\gls{sym:rho}\gls{sym:V}^{2}\gls{sym:CL}\gls{sym:A}
+\label{eq:flaplift}
+\end{equation} \break
+\begin{equation}
+D=\frac{1}{2}\gls{sym:rho}\gls{sym:V}^{2}\gls{sym:CD}\gls{sym:A}
+\label{eq:flapdrag}
+\end{equation}
+\end{multicols}
+
 ***Moment or dalpha/dt that control systems (cg offset, thrusters, control surfaces) can create***\\
 ***Weight estimate of each control system (per concept if needed)***\\
 
-\subsection{Results \& Conclusions}
+\subsection{Results \& conclusions}
 \label{sec:astrores}
 ***intro***\\
+
+\subsubsection{Atmospheric model}
+\label{sec:astroatmos}
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}{0.45\textwidth}
+	\centering
+	\includegraphics[trim={4cm 9.8cm 9cm 10cm},clip,width=0.9\textwidth]{Figure/atmos_model/density.pdf}
+	\caption{The atmospheric density} 
+	\label{fig:atmos_height_rho}
+	\end{subfigure}
+	\begin{subfigure}{0.45\textwidth}
+	\centering
+	\includegraphics[trim={4cm 9.8cm 9cm 10cm},clip,width=0.9\textwidth]{Figure/atmos_model/temperature.pdf}
+	\caption{The atmospheric temperature}
+	\label{fig:atmos_height_T}
+	\end{subfigure}
+	\caption{The atmospheric properties for different heights}
+	\label{fig:atmos_height}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}{0.9\textwidth}
+	\centering
+	\includegraphics[trim={4.25cm 11cm 3.2cm 11cm},clip,width=0.9\textwidth]{Figure/atmos_model/lon_50.pdf}
+	\caption{The atmospheric properties at $50$ $\left[km\right]$} 
+	\label{fig:atmos_lon_50}
+	\end{subfigure}
+	\begin{subfigure}{0.9\textwidth}
+	\centering
+	\includegraphics[trim={4.5cm 11cm 3.1cm 11cm},clip,width=0.9\textwidth]{Figure/atmos_model/lon_25.pdf}
+	\caption{The atmospheric properties at $25$ $\left[km\right]$} 
+	\label{fig:atmos_lon_25}
+	\end{subfigure}
+	\caption{The atmospheric properties for different heights at a latitude of 0 $\left[^\circ\right]$}
+	\label{fig:atmos_lon}
+\end{figure}
+
+\subsubsection{Effect of \gls{sym:CL} and \gls{sym:CD} on deceleration}
+\label{sec:astrodec}
+***Two plots for CL and CD***\\
+
+\subsubsection{A feasible trajectory and important output parameters over time}
+\label{sec:astrorestraj}
 ***Plot of a trajectory***\\
 ***Plots of output variables for that particular trajectory***\\
+
+\subsubsection{Required performance of the control system}
+\label{sec:astroperfomance}
 ***Results of needed CLmax, dalpha/dt, dCL/dalpha***\\
+
+\subsubsection{Conclusion on control system performance}
+\label{sec:conclusion}
 ***Conclusion on which control system (implemented in which concept) can perform as such***\\
 ***Conclusion on weight the control systems will bring along***\\
 ***State values for in trade-off matrix***\\

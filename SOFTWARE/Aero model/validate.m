@@ -34,6 +34,7 @@ switch shapecase
         disp(strcat('M: ', num2str(M)));
         disp(strcat('q_max as Newtonian: ', num2str(mod.qmax_array(end))));
         disp(strcat('q_max measured: ', num2str(qmax_measured)));
+        disp(strcat('q_newton/q_measured: ', num2str(mod.qmax_array(end)/qmax_measured)));
         
     case cases.deg60cone
         clc; close all; clear;
@@ -86,42 +87,57 @@ switch shapecase
     case cases.apollo
         clear; clc; close all;
         a = 300;
-        M = 14.9; % As in the paper
+        M = 10.18; % As in the paper
         V = a*14.9;
         gamma = 1.67;
         center = zeros(3,1); % not important
         rho = 1e-3; %not important
         T = 150; % not important
-        q = 80;
+        q = 21;
+        CP_apollo = open('CP_apollo.mat');
+        zvalidation = CP_apollo.CP_apollo(:,1);
+        Cpvalidation = CP_apollo.CP_apollo(:,2);
         
-        betavalidation = 0:30:180;
-        Cpvalidation = [0.359,0.326,0.234,0.112,0.06,0.037,0.039];
-        
-        [ coords, tri, A ] = generategeometry( 'deg30cone', q );
+        [ coords, tri, A ] = generategeometry( 'apollovalidation', q );
 
         modn = modnewtonian( coords, tri, gamma, a, center, rho, T, A);
-        modn = modn.calcAeroangle(V,deg2rad(10),0);
+        modn = modn.calcAeroangle(V,deg2rad(0),0);
         modn.plotCp(true, false);
-        xsample = -3.968256554883363; % Just one sample
-        points = modn.getPointsOnYZPlane(xsample);
-        beta_points = mod(atan2(modn.coords(2,points), modn.coords(3,points)),2*pi);
-        beta_points = rad2deg(beta_points(1:end/2+1));
-        Cps = zeros(size(beta_points));
+        zsample = 0; % Just one sample
+        points = modn.getPointsOnXYPlane(zsample);
+        yvalues = modn.coords(2,points);
+        Cps = zeros(size(points));
         for i = 1:length(Cps)
             Cps(i) = modn.calcCpOnPoint(points(i));
         end
+        
+        
+        
+        modnewtonianmatrix = [yvalues',Cps', points'];
+        modnewtonianmatrix = sortrows(modnewtonianmatrix, 1);
+%         Rb = 1.956;
+%         distancevalues = zeros(size(points'));
+%         for i = length(points)/2+1.5:length(points)
+%             distancevalues(i) = norm(modn.coords(:,modnewtonianmatrix(i-1,3))-modn.coords(:,modnewtonianmatrix(i,3)))+distancevalues(i-1);
+%         end
+%         for i = length(points)/2-0.5:-1:1
+%             distancevalues(i) = -norm(modn.coords(:,modnewtonianmatrix(i+1,3))-modn.coords(:,modnewtonianmatrix(i,3)))+distancevalues(i+1);
+%         end
+        
+        Cpvalidation = Cpvalidation * modn.Cpmax_array(end);
+        
 
-        disp('Validation of Cp for a 30-degree cone');
-        disp('Validation data provided by Bertin, page 287');
+        disp('Validation of Cp for Apollo');
+        disp('Validation data provided by Bertin, page 292');
         disp('Settings:');
         disp(strcat('M: ', num2str(M)));
         disp(strcat('gamma: ', num2str(gamma)));
         
         figure;
-        plot(beta_points, Cps);
+        plot(modnewtonianmatrix(:,1)*1.095/max(modnewtonianmatrix(:,1)), modnewtonianmatrix(:,2));
         hold on;
-        plot(betavalidation, Cpvalidation, '*');
-        xlabel('beta (deg)');
+        plot(zvalidation, Cpvalidation, '*');
+        xlabel('y (m)');
         ylabel('Cp');
         legend('Modified Newtonian', 'Measured');     
         

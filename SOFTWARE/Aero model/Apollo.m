@@ -51,9 +51,17 @@ zvector(1:2*q-1)=[];
 % xvector(q+1)=[];
 % yvector(q+1)=[];
 % zvector(q+1)=[];
+p = length(xvector)/(q*2);
 
+
+
+for i = 1:p
+    xvector(i*2*q+1) = xvector((i-1)*2*q+2);
+    yvector(i*2*q+1) = yvector((i-1)*2*q+2);
+    zvector(i*2*q+1) = zvector((i-1)*2*q+2);
+end
 %% Triangulation matrix 
-p = length(xvector);
+
 Tri = [0 0 0];
 for i = 1:2*q-2
     for j = 1:2*q-1

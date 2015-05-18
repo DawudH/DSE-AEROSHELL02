@@ -100,29 +100,28 @@ theta = linspace(pi,0,q);
 phi  = linspace(pi,3*pi,q);
 [theta,phi]=meshgrid(theta,phi);
 %% Shape definition Sphere
-x=(r*sin(theta)).*cos(phi);           %x,y,z definitions of a donut in polar. Should be replaced by function??
-y=(r*sin(theta)).*sin(phi);
-z=r.*cos(theta);
+%x=(r*sin(theta)).*cos(phi);           %x,y,z definitions of a donut in polar. Should be replaced by function??
+%y=(r*sin(theta)).*sin(phi);
+%z=r.*cos(theta);
 
 %R = 12;
-% r = linspace(0,r,q); 
-% r = meshgrid(r);
- rgrad = max(max(r)); %Gradient of r at the outer edge of the half dome
-% theta = linspace(0,2*pi,q);
-% theta = meshgrid(theta);
-% theta = theta';
-% 
-% %% Cylindrical transformation
-% X = (t)*(X.^2)/2;
-% z=r.*cos(theta);           
-% y=r.*sin(theta);
-% x=-X;
+ r = linspace(0,r,q); 
+ r = meshgrid(r);
+rgrad = max(max(r)); %Gradient of r at the outer edge of the half dome
+theta = linspace(0,2*pi,q);
+theta = meshgrid(theta);
+theta = theta';
+ 
+ %% Cylindrical transformation
+ X = (t)*((X.^2)/2);
+ z=r.*cos(theta);           
+ y=r.*sin(theta);
+ x=-X;
 
 %% Coordinate calculation of upper ring(after linear section)
 zmax = R.*cos(theta);
 ymax = R.*sin(theta);
-xmax = -max((t/(R*rgrad))+(R-max(r))*(t/rgrad));
-%xmax = -t/max(max(r))*(R-max(max(r)));
+xmax = -t/max(max(r))*(R-max(max(r)));
 xmax = ones(q)*xmax;
 x = [x,xmax(:,1)];
 y = [y,ymax(:,1)];
@@ -144,9 +143,16 @@ end
 xvector(1:q-1)=[];
 yvector(1:q-1)=[];
 zvector(1:q-1)=[];
+p = length(xvector)/q;
+for i = 1:p
+    xvector(i*q+1) = xvector((i-1)*q+2);
+    yvector(i*q+1) = yvector((i-1)*q+2);
+    zvector(i*q+1) = zvector((i-1)*q+2);
+end
+
 
 %% Triangulation matrix 
-p = length(xvector);
+p = length(xvector)/q;
 Tri = [0 0 0];
 for i = 1:q-1
     for j = 1:q-1
