@@ -185,6 +185,16 @@ sort=CL, % for correct sorting type the full name of the symbol here
 parent=romanletter % for sorting purposes, use romanletter or greekletter
 }
 
+\newglossaryentry{sym:CM}
+{
+type=symbol, % entry should be in the list of symbols!
+name={\ensuremath{C_M}}, % Put the symbol here in dollar signs
+description={Pitching coefficient}, % A brief description of this entry (to appear in the glossary).
+symbol={$\left[-\right]$}, % put the unit here.... kind of weird, i know 
+sort=CM, % for correct sorting type the full name of the symbol here
+parent=romanletter % for sorting purposes, use romanletter or greekletter
+}
+
 \newglossaryentry{sym:CP}
 {
 	type=symbol, % entry should be in the list of symbols!
@@ -282,6 +292,26 @@ name={\ensuremath{m}}, % Put the symbol here in dollar signs
 description={Mass}, % A brief description of this entry (to appear in the glossary).
 symbol={$\left[kg\right]$}, % put the unit here.... kind of weird, i know 
 sort=m, % for correct sorting type the full name of the symbol here
+parent=romanletter % for sorting purposes, use romanletter or greekletter
+}
+
+\newglossaryentry{sym:mdot}
+{
+type=symbol, % entry should be in the list of symbols!
+name={\ensuremath{\dot{m}}}, % Put the symbol here in dollar signs
+description={Mass flow}, % A brief description of this entry (to appear in the glossary).
+symbol={$\left[\frac{kg}{s}\right]$}, % put the unit here.... kind of weird, i know 
+sort=mdot, % for correct sorting type the full name of the symbol here
+parent=romanletter % for sorting purposes, use romanletter or greekletter
+}
+
+\newglossaryentry{sym:Isp}
+{
+type=symbol, % entry should be in the list of symbols!
+name={\ensuremath{I_{sp}}}, % Put the symbol here in dollar signs
+description={Specific impulse}, % A brief description of this entry (to appear in the glossary).
+symbol={$\left[s\right]$}, % put the unit here.... kind of weird, i know 
+sort=Isp, % for correct sorting type the full name of the symbol here
 parent=romanletter % for sorting purposes, use romanletter or greekletter
 }
 
@@ -576,3 +606,25 @@ parent=romanletter % for sorting purposes, use romanletter or greekletter
 	sort=epsilon, % for correct sorting type the full name of the symbol here
 	parent=greekletter % for sorting purposes, use romanletter or greekletter
 }
+
+\newglossaryentry{sym:T0}
+{
+	type=symbol, % entry should be in the list of symbols!
+	name={\ensuremath{T0}}, % Put the symbol here in dollar signs
+	description={Stagnation temperature}, % A brief description of this entry (to appear in the glossary).
+	symbol={$\left[K\right]$}, % put the unit here.... kind of weird, i know 
+	sort=T0, % for correct sorting type the full name of the symbol here
+	parent=romanletter % for sorting purposes, use romanletter or greekletter
+}
+	
+	\newglossaryentry{sym:qsdot}
+{
+	type=symbol, % entry should be in the list of symbols!
+	name={\ensuremath{\dot{q_{s}}}}, % Put the symbol here in dollar signs
+	description={Stagnation heat flux}, % A brief description of this entry (to appear in the glossary).
+	symbol={$\left[ \frac{J}{kg*K} \right]$}, % put the unit here.... kind of weird, i know 
+	sort=qsdot, % for correct sorting type the full name of the symbol here
+	parent=romanletter % for sorting purposes, use romanletter or greekletter
+}
+
+	
