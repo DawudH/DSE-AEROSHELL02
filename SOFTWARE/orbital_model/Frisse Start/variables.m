@@ -29,6 +29,7 @@ control.dalphadt = 1*pi/180;
 control.dalpha = control.dalphadt*dt_atmos;
 control.alpha_init = -25*pi/180; % rad
 control.alpha_range = [-60 60]*pi/180;
+control.Kp = 0.5; % proportional gain
 
 % create atmosphere object
 atm = marsatmosphere();
