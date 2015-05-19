@@ -64,9 +64,9 @@ classdef modnewtonian
             obj.CMA_body_array = [obj.CMA_body_array, obj.calcMomentCoeffsBody()];
             obj.CMA_aero_array = [obj.CMA_aero_array, obj.calcMomentCoeffsAero()];
             obj.CLCD_array = obj.CRA_aero_array(3,:)./obj.CRA_aero_array(1,:);
-            [T,q] = obj.calcHeatFlux();
-            obj.Tmax_array = [obj.Tmax_array, T];
-            obj.qmax_array = [obj.qmax_array, q];
+            %[T,q] = obj.calcHeatFlux();
+            %obj.Tmax_array = [obj.Tmax_array, T];
+            %obj.qmax_array = [obj.qmax_array, q];
             obj.CR_body_array = obj.CRA_body_array / obj.A;
             obj.CR_aero_array = obj.CRA_aero_array / obj.A;
             obj.CM_body_array = obj.CMA_body_array / obj.A;

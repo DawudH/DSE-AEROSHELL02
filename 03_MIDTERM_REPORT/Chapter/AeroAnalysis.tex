@@ -110,10 +110,26 @@ As can be seen in figures \ref{fig:CPconealpha10} and \ref{fig:CPconealpha20} th
 \subsubsection{\gls{sym:CD}-validation against experimental data of a sharp cone}
 Stevens found that for a sharp cone-cylinder with a half-cone angle \gls{sym:theta} of $30\deg$ $\gls{sym:CD}=0.58$ in an air-stream of Mach $8$ where angle of attack \gls{sym:alpha} and sideslip angle \gls{sym:beta} are zero \cite{Stevens1950,AndersonJr.2007}. The numerical model predicts for this case that $\gls{sym:CD}=0.456$, which coincides with a discrepancy of $21.4\%$ of the experimental value. This is in line with the results of figure \ref{fig:CPcone30val} where the \glspl{sym:CP} predicted by the numerical model were smaller than the experimental values of a sharp cone.
 
-\subsubsection{\gls{sym:CP}-validation against experimental data of the Apollo capsule}
+\subsubsection{\gls{sym:CP}-validation against experimental data of the Apollo re-entry capsule}
+The data points in figure \ref{fig:Apollo_cp} represent pressure coefficients measured at various locations of one of the two axisymmetric axes \cite{Bertin1966}. The quantity shown on the X-axis is defined in figure \ref{fig:Apollo_y}. As can be seen in figure \ref{fig:Apollo_cp} the numerical model is most accurate around the centre of the capsule. As the 
+
+\begin{figure}[h]
+	\includegraphics[width=0.7\textwidth]{./Figure/Apollo_cp}
+	\caption{Comparison between experimental and numerical \glspl{sym:CP} for the Apollo re-entry capsule}
+	\label{fig:Apollo_cp}
+\end{figure}
+
+\begin{figure}[h]
+	\includegraphics[width=0.7\textwidth]{./Figure/Apollo_model}
+	\caption{Definition of unit on the X-axis of figure \ref{fig:Apollo_cp} \cite{Bertin1966}}
+	\label{fig:Apollo_y}
+\end{figure}
 
 \subsubsection{Maximum heat flux validation against experimental data of the \gls{irve} 3 vehicle}
 Dillman et al. observed that the maximum heat flux on the \acrfull{irve} 3 was $14.4$ $\frac{W}{cm^{2}}$ during re-entry at an altitude of $50$ kilometres and Mach $7.0$ \cite{Dillman2012}. The maximum heat flux computed by the numerical tool in the stagnation point for these flow conditions is $11.7$ $\frac{W}{cm^{2}}$. This is equal to $81.0\%$ of the experimental value. There is thus a discrepancy of $19.0\%$ present between the experimental and numerical maximum heat fluxes.
+
+\subsection{Conclusions after the validation procedure}
+\label{subsec:validconclusions}
 
 \subsection{Application of analysis tool to system concepts}
 \label{subsec:appaeroanal}
