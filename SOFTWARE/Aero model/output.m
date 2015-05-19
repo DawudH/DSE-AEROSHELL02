@@ -25,7 +25,7 @@ dalpha = 1; %degrees
 alphaend = 60; %degrees
 
 disp('Gererating geometry...');
-[ coords, tri, A ] = generategeometry( shapetexts.concept_apollo, q );
+[ coords, tri, A ] = generategeometry( shapetexts.concept_irve, q );
 
 disp('Initialising...');
 mod = modnewtonian( coords, tri, gamma, a, center, rho, T, A);
