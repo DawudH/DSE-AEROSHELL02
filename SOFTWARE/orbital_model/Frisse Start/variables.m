@@ -33,5 +33,5 @@ control.alpha_range = [-60 60]*pi/180;
 % create atmosphere object
 atm = marsatmosphere();
 % create aerocoef object
-aero_coef = aeroProperties('isotensoid');
+aero_coef = aeroProperties('torus');
 
