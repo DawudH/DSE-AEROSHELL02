@@ -18,14 +18,14 @@ gamma = 1.29;
 center = zeros(3,1);
 rho = 9e-5;
 T = 130;
-q = 80;
+q = 23;
 
 alpha0 = -60; %degrees
 dalpha = 1; %degrees
-alphaend = 60; %degrees
+alphaend = 37; %degrees
 
 disp('Gererating geometry...');
-[ coords, tri, A ] = generategeometry( shapetexts.concept_irve, q );
+[ coords, tri, A ] = generategeometry( shapetexts.concept_isotensoid, q );
 
 disp('Initialising...');
 mod = modnewtonian( coords, tri, gamma, a, center, rho, T, A);

@@ -5,7 +5,7 @@ close all
 constants
 addpath('..\..\matlab2tikz')
 
-files = {'orbit_alpha_isotensoid.txt', 'orbit_alpha_apollo.txt', 'orbit_alpha_torus.txt'};
+files = {'orbit_alpha_isotensoid.txt', 'orbit_alpha_apollo.txt', 'orbit_alpha_torus.txt', 'orbit_alpha_pastille.txt'};
 
 figure('name','Different orbits for certain alpha without control')
 hold on
@@ -13,14 +13,16 @@ grid on
 xlabel('$\alpha \left[^\circ\right]$','interpreter','LaTeX','fontsize',15)
 ylabel('$a_{max} \left[\frac{m}{s^2}\right]$','interpreter','LaTeX','fontsize',15)
 
-cc = parula(length(files) + 3);
-legend_str = cell(length(files)*3+1,1);
-j = 1;
-marker = {'-d'; '-o'; '-*'; '-x'; '-s'; '-+'; '-.'; '-^'; '-v'; '->'; '-<'; '-p'; '-h'};
-
+cc = parula(length(files) + 2);
+legend_str = cell(length(files)+1,1);
+legend_str{1} = 'Isotensoid';
+legend_str{2} = 'Apollo';
+legend_str{3} = 'Torus';
+legend_str{4} = 'Pastille';
+marker = {'d'; 'o'; '*'; 'x'; 's'; '+'; '.'; '^'; 'v'; '>'; '<'; 'p'; 'h'};
+%marker = {'-d'; '-o'; '-*'; '-x'; '-s'; '-+'; '-.'; '-^'; '-v'; '->'; '-<'; '-p'; '-h'};
 for i = 1:length(files)
 
-    files{i}
     fid = fopen(files{i},'r');
     C = textscan(fid,'%f %f %f %f %f %d %d %d %f');
     fclose(fid);
@@ -61,17 +63,13 @@ for i = 1:length(files)
             
         end
         
-        legend_str{j} = [num2str(different_V) ' [m/s], lower'];
-        legend_str{j+1} = [num2str(different_V) ' [m/s], upper'];
-        legend_str{j+2} = [num2str(different_V) ' [m/s], in orbit area'];
-        j = j + 3;
-        plot(different_alpha,a_plot_min,marker{i},'color',cc(i,:));
-        plot(different_alpha,a_plot_max,marker{i+4},'color',cc(i,:));
-        fill([different_alpha; flip(different_alpha)],[a_plot_min; flip(a_plot_max)],cc(i,:),'FaceAlpha',0.2)
-        %fill([different_alpha; flip(different_alpha)],[a_plot_min; flip(a_plot_max)],cc(i,:))
+        
+        %plot(different_alpha,a_plot_min,marker{i},'color',cc(i,:));
+        %plot(different_alpha,a_plot_max,marker{i+4},'color',cc(i,:));
+        fill([different_alpha; flip(different_alpha)],[a_plot_min; flip(a_plot_max)],cc(i,:),'FaceAlpha',0.2,'marker',marker{i})
         
 end
 plot(xlim,[3,3]*g_earth,'-.','color',cc(i+1,:));
 legend_str{end} = '29.43 m/s^2 (3g)';
 legend(legend_str,'location','northeast');
-%matlab2tikz('.\LaTeX\n_alpha.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
+matlab2tikz('.\LaTeX\n_alpha.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
