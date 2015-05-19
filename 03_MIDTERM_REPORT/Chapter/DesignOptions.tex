@@ -1,8 +1,8 @@
 \section{Conceptual design options} \label{ch:options}
-This chapter will discuss the five design concepts that will be considered in this report. First the selection of concepts based on the shape, mission duration and controls system design option trees is made. In section \ref{sec:conf} the five selected configurations are sketched and described. A simple load analysis is given in the form of \gls{fbd} to gain insight in the functioning of each of the concepts. The following five design are consequently used for analysis in the relevant chapters of this report. Finally the control systems corresponding to the each of the shape configurations are discussed in chapter \ref{sec:ccs}.
+This chapter will discuss the five design concepts that will be considered in this report. First the selection of concepts based on the shape, mission duration and controls system design option trees is made. For the six configurations of the \gls{br} one is disregarded as it has no additional advantages over the other concepts. In section \ref{sec:conf} the five selected configurations are sketched and described. A simple load analysis is given in the form of \gls{fbd} to gain insight in the functioning of each of the concepts. The following five design are consequently used for analysis in the relevant chapters of this report. Finally the control systems corresponding to the each of the shape configurations are discussed in chapter \ref{sec:ccs}. A full definition of the control system is not yet given but is rather further detailed in the \gls{fr}.
 
 \subsection{Concept selection}
- From the \acrfull{br} three \glspl{dot} were obtained for the design of the \gls{hiad}. In these designs concepts; shape, mission duration and control system are considered. This yielded a set of all the individual design options. These options are shown in Fig. \ref{fig:dotshape} to \ref{fig:dotcontrol}. From these \glspl{dot} a feasible set of design options can be obtained. In Fig. \ref{fig:dotshape} six deemed feasible concept configurations can be seen. This can consequently be combined with three possible control systems from Fig. \ref{fig:dotcontrol}. The mission duration varies for all concepts and is therefore considered separately for every design concept. 
+ From the \acrfull{br} three \glspl{dot} were obtained for the design of the \gls{hiad}. In these designs concepts; shape, mission duration and control system are considered. This yielded a set of all the individual design options. These options are shown in Fig. \ref{fig:dotshape} to \ref{fig:dotduration}. From these \glspl{dot} a feasible set of design options can be obtained. In Fig. \ref{fig:dotshape} six deemed feasible concept configurations can be seen. This can consequently be combined with three possible control systems from Fig. \ref{fig:dotcontrol}. The mission duration varies for all concepts and is therefore considered separately for every design concept. The mission duration appears in the from of a trade of criteria discussed further in section \ref{ch:tradeoff} discussing the trade off criteria.
 
 \begin{figure}[H]
 %\centering
@@ -29,9 +29,9 @@ This chapter will discuss the five design concepts that will be considered in th
 \label{fig:dotduration}
 \end{figure}
 
-From the eighteen options yielded by combining the feasible shapes and control systems shown in Figures \ref{fig:dotshape} and \ref{fig:dotcontrol} some may be disregarded immediately since they cannot practically be combined. For obvious reasons it is crucial that each concept configuration features at least one deemed feasible control system. From this point onward the concept shape will be considered leading. 
+From the eighteen options yielded by combining the 6 feasible shapes and 3 feasible control systems shown in Figures \ref{fig:dotshape} and \ref{fig:dotcontrol} some may be disregarded immediately since they cannot practically be combined. For obvious reasons it is crucial that each concept configuration features at least one deemed feasible control system. From this point onward the concept shape will be considered leading. 
 
-The control systems from Fig. \ref{fig:dotcontrol} are considered separately for each of these shapes. Due to infeasibility of exotic control concepts such as the, for now, deemed infeasible \gls{mhd} the control system can be integrated with each structure as the control systems themselves do not require strict geometric properties as would be required by for example \gls{mhd} control.
+The control systems from Fig. \ref{fig:dotcontrol} are considered separately for each of these shapes. Due to infeasibility of exotic control concepts such as the, for now, deemed infeasible \gls{mhd} the control system can be integrated with each structure. This can be done since the control systems themselves do no longer require strict geometric properties as would be required by for example \gls{mhd} control.
 
 Table \ref{tab:designconcepts} shows the design options that will be considered within this report. The check-marked control systems are further investigated for their feasibility and performance within section \ref{sec:ccs}. It must be noted that the control configurations of Table \ref{tab:designconcepts} feature the primary control mechanism. These may always be appended later on in the design process, after the trade-off, if additional control systems increase the overall systems performance. 
 
@@ -44,7 +44,7 @@ Table \ref{tab:designconcepts} shows the design options that will be considered 
 			Stacked toroid   & \cmark	& \cmark &  \cmark \\ \hline
 			Isotensoid		 & \cmark	& \cmark &  \xmark\\  \hline
 			Tension cone	 & \cmark	& \cmark &  \cmark \\ \hline
-			Trailing 		 & \xmark	& \xmark &  \cmark \\ \hline
+			Trailing ballute & \xmark	& \xmark &  \cmark \\ \hline
 			Combined 		 & \xmark	& \xmark &  \cmark \\ \hline
 			Rigid  		   	 & \cmark	& \cmark &  \cmark \\ \hline
 		\end{tabular}
@@ -150,34 +150,40 @@ The rigid configuration is the most typical configuration and frequently used by
 \end{figure}
 
 \subsection{Concept control systems} \label{sec:ccs}
-This section discusses the control systems for each of the control systems of the design option tree. This is related to the shapes of each of the concepts also explaining the checkmarks and crosses of Table \ref{tab:designconcepts}
+This section discusses the control systems for each of the control systems of the design option tree. This is related to the shapes of each of the concepts also serving to explain the checkmarks and crosses of Table \ref{tab:designconcepts}. 
+
+The control surfaces are not yet further detailed within the midterm report. Development risk and control system mass is however taken into account by considering the feasible control concepts and by considering the aerodynamic properties of the concepts. The latter is detailed in Chapter \ref{ch:aero_analysis}.
 
 \subsubsection{\gls{cg} offset}
-A centre of gravity offset can be used in two ways. A static centre of gravity offset which is typically employed, and a actively employed \gls{cg} offset system. The latter is already demonstrated in the \gls{irve}-3 mission \cite{Dillman2012} , however considering smaller payload module mass fractions. Applying a \gls{cg} offset yields  a non symmetric body, creating a lift vector. In a \gls{cg}-offset control system this property is actively used for the control of the system. 
+A centre of gravity offset can be used in two ways. A static centre of gravity offset which is typically employed, and a actively employed \gls{cg} offset system. The latter is already demonstrated in the \gls{irve}-3 mission \cite{Dillman2012}, however considering smaller payload module mass fractions. Applying a \gls{cg} offset yields  a non symmetric body, creating a lift vector. In a \gls{cg}-offset control system this property is actively used for the control of the system. 
 
 The use of a \gls{cg} does however have speed limitations as changes is centre of gravity are slow.
 
 The usage of a active \gls{cg} offset systems for the trailing and combined configuration is not deemed feasible due to the existence of aft the elements which are connected with a non rigid combination.
 
-
-For the trailing concept a \gls{cg} offset is a control system that is not deemed feasible
 \subsubsection{Thrusters}
 Thrusters are the only deemed feasible internal control system and is hence always featured on the spacecraft. For the part of the mission up to the first entry into the Martian atmosphere thruster will thus be used in any case. Thrusters can however also be employed as a primary control surface for which the mass and usage of the systems is obviously increased.  
 
 Thruster are deployed in pairs for the control of the spacecraft such that they can deliver pure torque. The amount of torque is a linear function of the relative distance between the thrusters and is constrained for this design by launcher constraints. 
 
+In terms of development risk thrusters are frequently used and feature minimal risk.
+
 Thrusters are not considered for the trailing and combined configuration. Due to the aft elements of these designs thruster cannot be considered as the primary control mechanism. Due to the large moments of inertia (due to aft elements) and very high stability of the aft systems (e.g. compare to a parachute) thrusters cannot be considered due their inefficiency. 
 
 \subsubsection{Control surfaces}
-Control surfaces have been subdivided into two forms; body flaps and morphing of the whole structure which are both covered below.
+Control surfaces have been subdivided into two forms; body flaps and morphing of the whole structure, which are both covered below.
 
 \paragraph{Body flaps}
 A control system with body flaps features deployable surfaces to control the flow around the spacecraft. Body flaps have previously been deployed at for example the Space Shuttle missions. It must however be noted that the usage was limited to lower Mach numbers at higher atmospheric densities. As such it is possible control concept for the rigid structure.
 
 Body flaps on inflatable structures have not yet been featured and are not deemed feasible. Since body flaps need to based inside the flow positioning is not possible. In these designs the inflatable is the part placed within the flow. Do to the nature of deployment and the structural layout of these systems body flaps are not deemed feasible.
 
+The usage of body flaps for the Mach numbers considered would also incur a significant development risk.
+
 \paragraph{Morphing}
 In morphing concepts the whole external shape is changed to control the spacecraft. This is not possible for rigid structures as no morphable parts exist, from the perspective of rigid decelerator structure. 
  For the inflatable structures morphing is deemed possible for with the exception of the isotensoid design and is already being investigated \cite{Hughes2011}. In the isotensoid design the whole outside is covered by inflatable. The whole inflatable can thus only e formed by usage of the gas inside. This is however not deemed possible due to the usage of ram-air as inflation mechanism.
 
 Morphing of the trailing ballute configuration would be done via the payload-ballute connection much like for example a parachute.
+
+In terms of development risk morphing of the structure is mostly at a very early conceptual phase posing significant development risks.
