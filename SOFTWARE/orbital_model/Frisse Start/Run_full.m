@@ -16,7 +16,7 @@ multiple_orbits = true;
 figure('name','parameters over time')
 t = out.tp;
 subplot(5,1,1)
-Rm = sqrt(out.R(:,1).^2 + out.R(:,3).^2 + out.R(:,2).^2);
+Rm = sqrt(out.R(:,1).^2 + out.R(:,3).^2 + out.R(:,2).^2) - R_m;
 plot(t,Rm)
 grid on
 subplot(5,1,2)

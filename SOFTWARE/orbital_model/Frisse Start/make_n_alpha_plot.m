@@ -5,7 +5,7 @@ close all
 constants
 addpath('..\..\matlab2tikz')
 
-fid = fopen('orbit_alpha.txt','r');
+fid = fopen('orbit_alpha_fine.txt','r');
 C = textscan(fid,'%f %f %f %f %f %d %d %d %f');
 fclose(fid);
 % filestr{1} = sprintf('rx(m) \t ry(m) \t v \t dt  \t alpha(deg) \t  crash \t flyby \t orbit \t max_accel \n');
