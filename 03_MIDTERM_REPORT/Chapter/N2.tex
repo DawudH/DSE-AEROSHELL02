@@ -23,7 +23,7 @@ The trajectory and control department requires stability derivatives in order to
 \item 
 \end{itemize}
 
-As the control department and aerodynamic department become integrated the trajectory will be controlled in order to stay within the performance limits. For this purpose an additional heat shield temperature limit is required. The temperature limit will function as a constraint on the maximum possible deceleration.
+As the control department and aerodynamic department become integrated the trajectory will be actively controlled in order to stay within the performance limits. For this purpose an additional heat shield temperature limit is required. The temperature limit will function as a constraint on the maximum possible deceleration.
 
 Finally the inertial properties, such as for example the mass moments of inertia, are provided by the structural department which are subsequently combined by the control department for the orbital analysis.
 
@@ -31,7 +31,7 @@ Finally the inertial properties, such as for example the mass moments of inertia
 The aerodynamics department provides two main function. Providing stability derivatives which are required for the orbital calculations, and providing the thermal loads. 
 For the former, stability derivatives are again considered in the broadest sense as discussed above. 
 
-The trajectory input is considered in very broad sense. The full trajectory yields a Machnumber, velocity and atmospheric properties all as a function of time which are required as a input for the Aerodynamic calculations. Note that the atmospheric properties follow from the location in the trajectory via the \gls{nasa} \gls{marsgram} software\cite{Justus2001}.
+The trajectory input is also considered in very broad sense. The full trajectory yields a Machnumber, velocity and atmospheric properties all as a function of time which are required as a input for the Aerodynamic calculations. Note that the atmospheric properties follow from the location in the trajectory via the \gls{nasa} \gls{marsgram} software\cite{Justus2001}.
 
 The actual shape of the system may differ slightly from the specifications as defined by the aerodynamic department itself. As such the aerodynamic department requires additional input from the structural department for the exact shape specification. This can be seen in the N2 chart as rather direct iteration loop between these two subsystems.
 
