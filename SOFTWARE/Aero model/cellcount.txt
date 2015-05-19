@@ -1,0 +1,55 @@
+torus
+q:
+q required for 99.9% convergence:5
+q required for 99.5% convergence:5
+q required for 99% convergence:5
+cl:
+q required for 99.9% convergence:51
+q required for 99.5% convergence:35
+q required for 99% convergence:27
+cd:
+q required for 99.9% convergence:65
+q required for 99.5% convergence:41
+q required for 99% convergence:31
+
+irve
+q:
+q required for 99.9% convergence:7
+q required for 99.5% convergence:7
+q required for 99% convergence:7
+cl:
+q required for 99.9% convergence:79
+q required for 99.5% convergence:69
+q required for 99% convergence:61
+cd:
+q required for 99.9% convergence:65
+q required for 99.5% convergence:43
+q required for 99% convergence:33
+
+apollo
+q:
+q required for 99.9% convergence:25
+q required for 99.5% convergence:15
+q required for 99% convergence:13
+cl:
+q required for 99.9% convergence:35
+q required for 99.5% convergence:11
+q required for 99% convergence:11
+cd:
+q required for 99.9% convergence:47
+q required for 99.5% convergence:23
+q required for 99% convergence:19
+
+isotensoid
+q:
+q required for 99.9% convergence:21
+q required for 99.5% convergence:11
+q required for 99% convergence:9
+cl:
+q required for 99.9% convergence:69
+q required for 99.5% convergence:49
+q required for 99% convergence:37
+cd:
+q required for 99.9% convergence:39
+q required for 99.5% convergence:21
+q required for 99% convergence:15

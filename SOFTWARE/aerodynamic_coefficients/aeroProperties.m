@@ -19,6 +19,7 @@ classdef aeroProperties
                 case 'torus'
                     filestring = 'torus.txt';    
                 otherwise
+                    warning(strcat('Case: ', object, ' does not exist'));
                     filestring = 'torus.txt';   
             end
             A = dlmread(filestring);
