@@ -12,6 +12,11 @@ function [ out ] = full_orbit(R0, V0, A0, G, M_mars, R_m, h_atm, atm, dt_kep_ini
     t = 0; %Time
     round = 0; %Number of orbits around mars
     i = 1; %Number of loops
+    
+    % give initial control state
+    alpha = control.alpha_init;
+    [CLA, CDA, CMYA] = aero_coef.aeroCoeffs(alpha);
+    
     %%Functions
     [out_hk] = hyperbolic_kepler(R0,V0,A0,G,M_mars,R_m,h_atm,dt_kep_init);
     %%Inputs for while loop
@@ -28,15 +33,15 @@ function [ out ] = full_orbit(R0, V0, A0, G, M_mars, R_m, h_atm, atm, dt_kep_ini
     q(1,:) = out_hk.end.q;
     T(1,:) = out_hk.end.T;
     rho(1,:) = out_hk.end.rho;
+    Alpha(1) = alpha;
+    CD(1) = CDA / S;
+    CL(1) = CLA / S;
+    
     a_prev = A(1,:);
     %Get initial values for conditions
     [out_c] = checks( R(1,:), V(1,:), t, tend, R_m, h_atm, G, M_mars, false, crash_margin, round );
     out_c.in_atmos = true;
-    % give initial control state
-    alpha = control.alpha_init;
-    [CLA, CDA, CMYA] = aero_coef.aeroCoeffs(alpha);
-    CL = CLA / S;
-    CD = CDA / S;
+    
     
 
     %%Functions
@@ -45,18 +50,21 @@ function [ out ] = full_orbit(R0, V0, A0, G, M_mars, R_m, h_atm, atm, dt_kep_ini
         %When the s/c is in the atmosphere use the numerical solution including aerodynamic forces
         if out_c.in_atmos
              % determine new cl and cd param
-                 state.CL = CL;
-                 state.CD = CD;
+                 state.CL = CL(i);
+                 state.CD = CD(i);
                  state.a = norm(A(i,:) - Ag(i,:));
                  state.alpha = alpha;
                  % start controlling once the accel is above 1.5g
                  if use_control && (state.a > 1.5*g_earth)
                          [aero_param] = aero_conrol(state,control,aero_coef);
-                         CL = aero_param.CLA / S;
-                         CD = aero_param.CDA / S;
+                         CL(i+1) = aero_param.CLA / S;
+                         CD(i+1) = aero_param.CDA / S;
                          alpha = aero_param.alpha;
+                 else
+                        CL(i+1) = CL(i);
+                        CD(i+1) = CD(i);     
                  end
-            [out_o] = in_atmosphere( V(i,:), R(i,:), A(i,:), a_prev, J(i,:), atm, CL, CD, dt_atmos, R_m, Omega_m, S, m );
+            [out_o] = in_atmosphere( V(i,:), R(i,:), A(i,:), a_prev, J(i,:), atm, CL(i+1), CD(i+1), dt_atmos, R_m, Omega_m, S, m );
             %Function to check when to end the orbit
             [out_c] = checks( out_o.R, out_o.V, t, tend, R_m, h_atm, G, M_mars, out_c.in_atmos, crash_margin,round );
             a_prev = A(i,:);
@@ -70,6 +78,8 @@ function [ out ] = full_orbit(R0, V0, A0, G, M_mars, R_m, h_atm, atm, dt_kep_ini
             round = round + 1;
             a_prev = out_o.A;
             t = t + out_o.t_kep;
+            CL(i+1) = CL(i);
+            CD(i+1) = CD(i);
             %Function to check when to end the orbit
             [out_c] = checks( out_o.R, out_o.V, t, tend, R_m, h_atm, G, M_mars, out_c.in_atmos, crash_margin,round );
         end
@@ -88,6 +98,7 @@ function [ out ] = full_orbit(R0, V0, A0, G, M_mars, R_m, h_atm, atm, dt_kep_ini
         q(i+1,:) = out_o.q;
         T(i+1,:) = out_o.T;
         rho(i+1,:) = out_o.rho;
+        Alpha(i+1) = alpha;
 
         
         if out_c.crash || out_c.flyby || out_c.t_end || ( (multiple_orbits == false) && out_c.orbit)
@@ -128,7 +139,8 @@ function [ out ] = full_orbit(R0, V0, A0, G, M_mars, R_m, h_atm, atm, dt_kep_ini
         maxaccel = max(a_human_mag)/g_earth;
     out.a_human_mag = a_human_mag;
     out.maxaccel = maxaccel;
-    
+    out.CL = CL;
+    out.CD = CD;
     % output text
     
 

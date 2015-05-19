@@ -1,4 +1,3 @@
-% close all;
 
 shapetexts.horizontalplate = 'horizontalplate';
 shapetexts.verticalplate = 'verticalplate';
