@@ -53,9 +53,7 @@ parfor i = 1:length(alpha)
         if refinestep <= accuracy
             go = false;
             break;
-        end
-        
-              
+        end     
         if out.c.crash
             % to close
             rx_in = rx_in - refinestep;
@@ -66,7 +64,6 @@ parfor i = 1:length(alpha)
             % go further to find maximum inorbit load
             rx_in = rx_in + refinestep;
         end
-        
         
         % generate new R
         R = [rx_in,ry,0];
