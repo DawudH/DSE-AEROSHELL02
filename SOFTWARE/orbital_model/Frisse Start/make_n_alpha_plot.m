@@ -5,7 +5,7 @@ close all
 constants
 addpath('..\..\matlab2tikz')
 
-files = {'orbit_alpha_isotensoid.txt', 'orbit_alpha_apollo.txt'};
+files = {'orbit_alpha_isotensoid.txt', 'orbit_alpha_apollo.txt', 'orbit_alpha_torus.txt'};
 
 figure('name','Different orbits for certain alpha without control')
 hold on
@@ -16,8 +16,11 @@ ylabel('$a_{max} \left[\frac{m}{s^2}\right]$','interpreter','LaTeX','fontsize',1
 cc = parula(length(files) + 3);
 legend_str = cell(length(files)*3+1,1);
 j = 1;
+marker = {'-d'; '-o'; '-*'; '-x'; '-s'; '-+'; '-.'; '-^'; '-v'; '->'; '-<'; '-p'; '-h'};
+
 for i = 1:length(files)
 
+    files{i}
     fid = fopen(files{i},'r');
     C = textscan(fid,'%f %f %f %f %f %d %d %d %f');
     fclose(fid);
@@ -36,9 +39,6 @@ for i = 1:length(files)
 
 
     %ylim([0 6]*g_earth)
-
-
-    marker = {'-d'; '-o'; '-*'; '-x'; '-s'; '-+'; '-.'; '-^'; '-v'; '->'; '-<'; '-p'; '-h'};
 
 
         index_V = find( V_inorbit == different_V );
@@ -74,4 +74,4 @@ end
 plot(xlim,[3,3]*g_earth,'-.','color',cc(i+1,:));
 legend_str{end} = '29.43 m/s^2 (3g)';
 legend(legend_str,'location','northeast');
-matlab2tikz('.\LaTeX\n_alpha.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
+%matlab2tikz('.\LaTeX\n_alpha.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
