@@ -78,10 +78,10 @@ The acceleration $\left(\gls{sym:acc}\right)$ is only the gravitational pull $\l
  \label{sec:eliptickep}
 For an eliptical orbit \gls{sym:a}, \gls{sym:e} and \gls{sym:phip} can be calculated in the same way as was done in section \ref{sec:hypkep}. The point of reentry into the atmosphere is the old location exactly mirrored in the line between the pericenter and the apocenter. Also the velocity $\left(\gls{sym:Vv}\right)$ and the acceleration $\left(\gls{sym:acc}\right)$  should be mirrored in that line. The velocity should than be rotated over 180 $\left[^\circ\right]$ to point in the correct direction. The magnitude of the location $\left(\gls{sym:R}\right)$, velocity $\left(\gls{sym:V}\right)$ and acceleration $\left(\gls{sym:acc}\right)$ are still the same due to the symmetry of kepler orbits.
 
-For the eliptical orbit also the duration has to be calculated. As this time is part of the 10 days in which the spacecraft is required to decelerate. As keplers second law states: $\frac{dA}{dt}=\mbox{constant}$, the duration can be written as an area fraction of the period. This is done in equation \ref{eq:areatime}. Here $\gls{sym:T} = 2\pi\sqrt{\frac{\gls{sym:a}^3}{\gls{con:mu}}}$ and $\gls{sym:A}_{tot} = 2\pi \gls{sym:a} \sqrt{1-\gls{sym:e}^2}$.
+For the eliptical orbit also the duration has to be calculated. As this time is part of the 10 days in which the spacecraft is required to decelerate. As keplers second law states: $\frac{dA}{dt}=\mbox{constant}$, the duration can be written as an area fraction of the period. This is done in equation \ref{eq:areatime}. Here $\gls{sym:P} = 2\pi\sqrt{\frac{\gls{sym:a}^3}{\gls{con:mu}}}$ and $\gls{sym:A}_{tot} = 2\pi \gls{sym:a} \sqrt{1-\gls{sym:e}^2}$.
 
 \begin{equation}
-t = \frac{\gls{sym:A}}{\gls{sym:A}_{tot}}\gls{sym:T}
+t = \frac{\gls{sym:A}}{\gls{sym:A}_{tot}}\gls{sym:P}
 \label{eq:areatime}
 \end{equation}
 
@@ -93,10 +93,14 @@ The tool is able to calculate the trajectory of the spacecraft and a range of im
 
 \subsection{Verification \& validation}
 \label{sec:astrovv}
+
 In order to be sure the results the tool produces are correct and can safely be used in further efforts to design the \gls{cia} verification and validation is needed. This section presents the methods used to verify and validate the results produced by the tool. First a sensitivity analysis is presented in section \ref{sec:astrosens} which focusses on the sensitivity of the program to the initial conditions. In section \ref{sec:astrodisc} the discretisation error is analysed in order to ensure the results are accurate enough for it to be usefull. The numerical solution is compared to the simple case of a kepler orbit in section \ref{sec:astroverf}. Lastly in section \ref{sec:astroval} the results produced by the tool are compared to data from missions that have flown in the past.
 
 \subsubsection{Sensitivity analysis}
 \label{sec:astrosens}
+
+In order to assure 
+
 ***sensitivity analysis: very sensitive to initial location, thus for now assumed initial location closer***\\
 
 \subsubsection{Discretisation error}
@@ -128,62 +132,62 @@ In order to be sure the results the tool produces are correct and can safely be 
 \label{sec:astroval}
 ***Validation through checking if output values are approximately the same as reference cases (peak dynamic pressure)***\\
 
-\subsection{Performance of control systems}
- \label{sec:astroref}
-Several options for the control system are considered. Using first-order calculations the effectiveness of each control system design option will be assessed. In this context 'effectiveness' is defined as a combination of system mass, moment that can be caused by the system and whether a control output can be sustained for long periods of time. These three criteria will be considered for all three control system design options. The design options to be considered are:
-\begin{itemize}
-	\item Shifting the \acrfull{cg}
-	\item A \acrfull{rcs}
-	\item Control surfaces (body flaps)
-\end{itemize}
-Each of these options will be quickly assessed in the subsequent sections. This will be done by taking angle of attack \gls{sym:alpha}$=30\deg$. This corresponds to $\gls{sym:CM}\gls{sym:A}=-100$, $\gls{sym:CL}\gls{sym:A}=-58.8$ and $\gls{sym:CD}\gls{sym:A}=126$. These values have been obtained by using the aerodynamical tool described in chapter \ref{ch:aero_analysis} for an Apollo-shaped object. Using equation \ref{eq:moment_from_cm} the control moment required can be obtained.
-\begin{equation}
-M=\frac{1}{2}\gls{sym:rho}\gls{sym:V}^{2}\gls{sym:CM}\gls{sym:A}
-\label{eq:moment_from_cm}
-\end{equation}
-This moment has to be counteracted during a time $t$. Furthermore, for the \gls{rcs} and body flaps the required force can be directly determined by noting that $M=dF$, where $d$ is the moment arm and $F$ is the control force. 
-
-\subsubsection{\gls{cg}-shifting}
-By moving the \acrlong{cg} of the spacecraft the sum of the moments exerted on it changes. This will cause a change in spacecraft attitude, thereby also trimming the capsule. The \gls{cg}-shift can be achieved by shifting the location of the aeroshell with respect to the capsule. This will slightly move the \acrlong{cg} of the spacecraft and change the location of the lift and drag forces acting on it. In order to avoid over-designing the actuator concerned with shifting the aeroshell with respect to the capsule (and thus making it heavier) the movement speeds are limited to low values.
-
-\subsubsection{\acrlong{rcs}}
-By using the control force requirement the mass flow of the \acrlong{rcs} can be determined with equation \ref{eq:rcsmassflow} \cite{Allen2012}.
-\begin{equation}
-\frac{M}{d}=F=\gls{sym:mdot}\gls{sym:Isp}\gls{sym:ge}
-\label{eq:rcsmassflow}
-\end{equation}
-From equation \ref{eq:rcsmassflow} the required propulsive mass can be obtained by multiplying both sides of the equation with timespan $t$ and solving for $\gls{sym:m}$, which results in equation \ref{eq:propmass}.
-\begin{equation}
-\gls{sym:m}=\frac{Ft}{\gls{sym:Isp}\gls{sym:ge}}
-\label{eq:propmass}
-\end{equation}
-
-By working out equation \ref{eq:propmass} one can see that the required propulsive mass $\gls{sym:m}=$. From this it can be observed that using a control system relying exclusively on rocket control is not reconcilable with the weight requirements imposed on the hypersonic decelerator.
-\subsubsection{Body flaps}
-Body flaps function by introducing a local aerodynamical force by controlling the local geometry. A body flap element produces a lift and drag force as in equation \ref{eq:flaplift} and \ref{eq:flapdrag}.
-\begin{multicols}{2}
-\begin{equation}
-L=\frac{1}{2}\gls{sym:rho}\gls{sym:V}^{2}\gls{sym:CL}\gls{sym:A}
-\label{eq:flaplift}
-\end{equation} \break
-\begin{equation}
-D=\frac{1}{2}\gls{sym:rho}\gls{sym:V}^{2}\gls{sym:CD}\gls{sym:A}
-\label{eq:flapdrag}
-\end{equation}
-\end{multicols}
-Consider figure \ref{fig:flapstuff}. It can be seen that the moment around the \gls{cg} caused by an drag of an element at a distance is equal to 
-\begin{figure}
-	\includegraphics[width=0.7\textwidth]{./Figure/def_flap_distances}
-	\caption{Definition of flap moment arms}
-	\label{fig:flapstuff}
-\end{figure}
-By noting that both of these forces cause a moment
-\subsubsection{Control system design conclusions}
-From the previous sections one can conclude that all proposed concepts have their own strengths and weaknesses. In order to combine these it has been decided to combine \gls{cg}-shifting with
-
-
-***Moment or dalpha/dt that control systems (cg offset, thrusters, control surfaces) can create***\\
-***Weight estimate of each control system (per concept if needed)***\\
+%\subsection{Performance of control systems}
+% \label{sec:astroref}
+%Several options for the control system are considered. Using first-order calculations the effectiveness of each control system design option will be assessed. In this context 'effectiveness' is defined as a combination of system mass, moment that can be caused by the system and whether a control output can be sustained for long periods of time. These three criteria will be considered for all three control system design options. The design options to be considered are:
+%\begin{itemize}
+%	\item Shifting the \acrfull{cg}
+%	\item A \acrfull{rcs}
+%	\item Control surfaces (body flaps)
+%\end{itemize}
+%Each of these options will be quickly assessed in the subsequent sections. This will be done by taking angle of attack \gls{sym:alpha}$=30\deg$. This corresponds to $\gls{sym:CM}\gls{sym:A}=-100$, $\gls{sym:CL}\gls{sym:A}=-58.8$ and $\gls{sym:CD}\gls{sym:A}=126$. These values have been obtained by using the aerodynamical tool described in chapter \ref{ch:aero_analysis} for an Apollo-shaped object. Using equation \ref{eq:moment_from_cm} the control moment required can be obtained.
+%\begin{equation}
+%M=\frac{1}{2}\gls{sym:rho}\gls{sym:V}^{2}\gls{sym:CM}\gls{sym:A}
+%\label{eq:moment_from_cm}
+%\end{equation}
+%This moment has to be counteracted during a time $t$. Furthermore, for the \gls{rcs} and body flaps the required force can be directly determined by noting that $M=dF$, where $d$ is the moment arm and $F$ is the control force. 
+%
+%\subsubsection{\gls{cg}-shifting}
+%By moving the \acrlong{cg} of the spacecraft the sum of the moments exerted on it changes. This will cause a change in spacecraft attitude, thereby also trimming the capsule. The \gls{cg}-shift can be achieved by shifting the location of the aeroshell with respect to the capsule. This will slightly move the \acrlong{cg} of the spacecraft and change the location of the lift and drag forces acting on it. In order to avoid over-designing the actuator concerned with shifting the aeroshell with respect to the capsule (and thus making it heavier) the movement speeds are limited to low values.
+%
+%\subsubsection{\acrlong{rcs}}
+%By using the control force requirement the mass flow of the \acrlong{rcs} can be determined with equation \ref{eq:rcsmassflow} \cite{Allen2012}.
+%\begin{equation}
+%\frac{M}{d}=F=\gls{sym:mdot}\gls{sym:Isp}\gls{sym:ge}
+%\label{eq:rcsmassflow}
+%\end{equation}
+%From equation \ref{eq:rcsmassflow} the required propulsive mass can be obtained by multiplying both sides of the equation with timespan $t$ and solving for $\gls{sym:m}$, which results in equation \ref{eq:propmass}.
+%\begin{equation}
+%\gls{sym:m}=\frac{Ft}{\gls{sym:Isp}\gls{sym:ge}}
+%\label{eq:propmass}
+%\end{equation}
+%
+%By working out equation \ref{eq:propmass} one can see that the required propulsive mass $\gls{sym:m}=$. From this it can be observed that using a control system relying exclusively on rocket control is not reconcilable with the weight requirements imposed on the hypersonic decelerator.
+%\subsubsection{Body flaps}
+%Body flaps function by introducing a local aerodynamical force by controlling the local geometry. A body flap element produces a lift and drag force as in equation \ref{eq:flaplift} and \ref{eq:flapdrag}.
+%\begin{multicols}{2}
+%\begin{equation}
+%L=\frac{1}{2}\gls{sym:rho}\gls{sym:V}^{2}\gls{sym:CL}\gls{sym:A}
+%\label{eq:flaplift}
+%\end{equation} \break
+%\begin{equation}
+%D=\frac{1}{2}\gls{sym:rho}\gls{sym:V}^{2}\gls{sym:CD}\gls{sym:A}
+%\label{eq:flapdrag}
+%\end{equation}
+%\end{multicols}
+%Consider figure \ref{fig:flapstuff}. It can be seen that the moment around the \gls{cg} caused by an drag of an element at a distance is equal to 
+%\begin{figure}
+%	\includegraphics[width=0.7\textwidth]{./Figure/def_flap_distances}
+%	\caption{Definition of flap moment arms}
+%	\label{fig:flapstuff}
+%\end{figure}
+%By noting that both of these forces cause a moment
+%\subsubsection{Control system design conclusions}
+%From the previous sections one can conclude that all proposed concepts have their own strengths and weaknesses. In order to combine these it has been decided to combine \gls{cg}-shifting with
+%
+%
+%***Moment or dalpha/dt that control systems (cg offset, thrusters, control surfaces) can create***\\
+%***Weight estimate of each control system (per concept if needed)***\\
 
 \subsection{Results \& conclusions}
 \label{sec:astrores}

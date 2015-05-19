@@ -12,14 +12,14 @@ variables
 use_control = false;
 multiple_orbits = false;
 
-alpha = -25:2.5:25;
-file_name = 'orbit_alpha_fine_upper.txt';
+alpha = -25:5:25;
+file_name = 'orbit_alpha_apollo.txt';
 
 %Initial Position
 rx = -4100000;
 ry = 10*R_m;
 
-accuracy = 5;
+accuracy = 50;
 init_step = 5000;
 filestr = cell(length(alpha),1);
 parfor i = 1:length(alpha)
