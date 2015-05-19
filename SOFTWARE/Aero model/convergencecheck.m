@@ -18,12 +18,12 @@ gamma = 1.4;
 center = zeros(3,1);
 rho = 1e-3;
 T = 150;
-qarray = [5:2:40];
+qarray = [5:2:44];
 qmax = [];
 
 for q = qarray
     disp(strcat('Current q:', num2str(q)));
-    [ coords, tri, A ] = generategeometry( shapetexts.irvevalidation, q );
+    [ coords, tri, A ] = generategeometry( shapetexts.torus, q );
     
     mod = modnewtonian( coords, tri, gamma, a, center, rho, T, A);
 
