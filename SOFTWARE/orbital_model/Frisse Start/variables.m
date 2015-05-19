@@ -5,7 +5,7 @@ added_paths
 constants
 
 %Initial Position
-rx = -4142343.75;
+rx = -4146953.125000;
 ry = 10*R_m;
 R = [rx,ry,0];
 
@@ -21,17 +21,18 @@ dt_atmos = 0.5; %[s]
 dt_kep_init = 1e-6; %[s]
 
 %time to end simulation
-tend = 3600 * 24 * 600; %[s]
+tend = 3600 * 24 * 5; %[s]
 
 %Control variables
 control.a = 2.5*g_earth;
 control.dalphadt = 1*pi/180;
 control.dalpha = control.dalphadt*dt_atmos;
-control.alpha_init = -25*pi/180; % rad
-control.alpha_range = [-60 60]*pi/180;
+control.alpha_init = 10*pi/180; % rad
+control.alpha_range = [-25 25]*pi/180;
+control.Kp = 1; % proportional gain
 
 % create atmosphere object
 atm = marsatmosphere();
 % create aerocoef object
-aero_coef = aeroProperties('isotensoid');
+aero_coef = aeroProperties('pastille');
 

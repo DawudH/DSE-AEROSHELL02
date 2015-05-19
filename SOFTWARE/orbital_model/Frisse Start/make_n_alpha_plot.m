@@ -5,18 +5,29 @@ close all
 constants
 addpath('..\..\matlab2tikz')
 
-files = {'orbit_alpha_isotensoid.txt', 'orbit_alpha_apollo.txt'};
+files = {'orbit_alpha_isotensoid.txt', 'orbit_alpha_apollo.txt', 'orbit_alpha_torus.txt', 'orbit_alpha_irve.txt'};
 
+
+
+cc = parula(length(files) + 2);
+legend_str = cell(length(files)+1,1);
+legend_str{1} = 'Isotensoid';
+legend_str{2} = 'Rigid';
+legend_str{3} = 'Trailing balute';
+legend_str{4} = 'Stacked toroid / Tension cone';
+legend_str{end} = '29.43 m/s^2 (3g)';
+marker = {'d'; 'o'; '*'; 'x'; 's'; '+'; '.'; '^'; 'v'; '>'; '<'; 'p'; 'h'};
+%marker = {'-d'; '-o'; '-*'; '-x'; '-s'; '-+'; '-.'; '-^'; '-v'; '->'; '-<'; '-p'; '-h'};
 figure('name','Different orbits for certain alpha without control')
+for i = 1:length(files)
+
+    
+subplot(1,4,i)
+ylim([0 200])
+xlim([-25 25])
 hold on
 grid on
-xlabel('$\alpha \left[^\circ\right]$','interpreter','LaTeX','fontsize',15)
-ylabel('$a_{max} \left[\frac{m}{s^2}\right]$','interpreter','LaTeX','fontsize',15)
-
-cc = parula(length(files) + 3);
-legend_str = cell(length(files)*3+1,1);
-j = 1;
-for i = 1:length(files)
+xlabel('$\alpha \left[^\circ\right]$','interpreter','LaTeX','fontsize',18)
 
     fid = fopen(files{i},'r');
     C = textscan(fid,'%f %f %f %f %f %d %d %d %f');
@@ -36,9 +47,6 @@ for i = 1:length(files)
 
 
     %ylim([0 6]*g_earth)
-
-
-    marker = {'-d'; '-o'; '-*'; '-x'; '-s'; '-+'; '-.'; '-^'; '-v'; '->'; '-<'; '-p'; '-h'};
 
 
         index_V = find( V_inorbit == different_V );
@@ -61,17 +69,22 @@ for i = 1:length(files)
             
         end
         
-        legend_str{j} = [num2str(different_V) ' [m/s], lower'];
-        legend_str{j+1} = [num2str(different_V) ' [m/s], upper'];
-        legend_str{j+2} = [num2str(different_V) ' [m/s], in orbit area'];
-        j = j + 3;
-        plot(different_alpha,a_plot_min,marker{i},'color',cc(i,:));
-        plot(different_alpha,a_plot_max,marker{i+4},'color',cc(i,:));
-        fill([different_alpha; flip(different_alpha)],[a_plot_min; flip(a_plot_max)],cc(i,:),'FaceAlpha',0.2)
-        %fill([different_alpha; flip(different_alpha)],[a_plot_min; flip(a_plot_max)],cc(i,:))
+        
+        %plot(different_alpha,a_plot_min,marker{i},'color',cc(i,:));
+        %plot(different_alpha,a_plot_max,marker{i+4},'color',cc(i,:));
+
+        fill([different_alpha; flip(different_alpha)],[a_plot_min; flip(a_plot_max)],cc(i,:),'FaceAlpha',0.4,'marker',marker{i})
+        plot(xlim,[3,3]*g_earth,'-.','color',cc(end-1,:));
+        legend(legend_str{i},'Location','northoutside','Orientation','horizontal');
+
+        
+        if i == 1
+            ylabel('$a_{max} \left[\frac{m}{s^2}\right]$','interpreter','LaTeX','fontsize',18)
+            
+        else
+            
+            %set(gca, 'YTickLabel', [])
+        end
         
 end
-plot(xlim,[3,3]*g_earth,'-.','color',cc(i+1,:));
-legend_str{end} = '29.43 m/s^2 (3g)';
-legend(legend_str,'location','northeast');
 matlab2tikz('.\LaTeX\n_alpha.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);

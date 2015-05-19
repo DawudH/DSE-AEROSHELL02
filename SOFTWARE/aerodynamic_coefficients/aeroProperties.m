@@ -19,6 +19,7 @@ classdef aeroProperties
                 case 'torus'
                     filestring = 'torus.txt';    
                 otherwise
+                    warning(strcat('Case: ', object, ' does not exist'));
                     filestring = 'torus.txt';   
             end
             A = dlmread(filestring);
@@ -48,6 +49,25 @@ classdef aeroProperties
         
         function cmya = getCMYA(obj, alpha)
             cmya = interp1(obj.alpha, obj.cmya, alpha);
+        end
+        
+        function clcd = getCLCD(obj, alpha)
+            clcd = obj.getCLA(alpha)/obj.getCDA(alpha);
+        end
+        
+        function dCLAdalpha = getLiftGradient(obj, alpha)
+            dalpha = 0.01;
+            dCLAdalpha = (-obj.getCLA(alpha)+obj.getCLA(alpha+dalpha))/dalpha;
+        end
+        
+        function dCDAdalpha = getDragGradient(obj, alpha)
+            dalpha = 0.01;
+            dCDAdalpha = (-obj.getCDA(alpha)+obj.getCDA(alpha+dalpha))/dalpha;
+        end        
+        
+        function dCMYAdalpha = getMomentGradient(obj, alpha)
+            dalpha = 0.01;
+            dCMYAdalpha = (-obj.getCMYA(alpha)+obj.getCMYA(alpha+dalpha))/dalpha;
         end
         
     end

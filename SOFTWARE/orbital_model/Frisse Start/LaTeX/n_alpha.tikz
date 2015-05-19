@@ -1,147 +1,238 @@
 % This file was created by matlab2tikz.
 % Minimal pgfplots version: 1.3
 %
-\definecolor{mycolor1}{rgb}{0.20810,0.16630,0.52920}%
-\definecolor{mycolor2}{rgb}{0.07947,0.51590,0.83283}%
-\definecolor{mycolor3}{rgb}{0.19855,0.72140,0.63095}%
+\definecolor{mycolor1}{rgb}{0.47830,0.74890,0.48770}%
+\definecolor{mycolor2}{rgb}{0.92640,0.72560,0.29960}%
+\definecolor{mycolor3}{rgb}{0.02820,0.66630,0.75740}%
+\definecolor{mycolor4}{rgb}{0.05820,0.46770,0.85890}%
+\definecolor{mycolor5}{rgb}{0.20810,0.16630,0.52920}%
 %
 \begin{tikzpicture}
 
 \begin{axis}[%
-width=0.947926\figurewidth,
-height=\figureheight,
+width=0.202128\figurewidth,
+height=0.932352\figureheight,
+at={(0.797872\figurewidth,0\figureheight)},
+scale only axis,
+every outer x axis line/.append style={black},
+every x tick label/.append style={font=\color{black}},
+xmin=-25,
+xmax=25,
+xlabel={$\alpha \left[^\circ\right]$},
+xmajorgrids,
+every outer y axis line/.append style={black},
+every y tick label/.append style={font=\color{black}},
+ymin=0,
+ymax=200,
+ymajorgrids,
+axis x line*=bottom,
+axis y line*=left,
+legend style={at={(0.5,1.03)},anchor=south,legend columns=1,legend cell align=left,align=left,fill=white}
+]
+
+\addplot[area legend,mark=x,mark options={solid},solid,fill=mycolor1,opacity=4.000000e-01,draw=black]
+table[row sep=crcr] {%
+x	y\\
+-25	87.98620392\\
+-20	80.90850474\\
+-15	73.72137501\\
+-10	67.03273062\\
+-5	60.8085603\\
+0	55.32061086\\
+5	50.45843151\\
+10	46.38523122\\
+15	42.38097561\\
+20	39.26052252\\
+25	35.76747582\\
+25	35.76747582\\
+20	40.30518942\\
+15	44.96493942\\
+10	50.79658221\\
+5	58.33645992\\
+0	67.60810674\\
+-5	78.93113247\\
+-10	90.98727912\\
+-15	105.44214735\\
+-20	123.13577727\\
+-25	142.32634452\\
+}--cycle;
+
+\addlegendentry{Stacked toroid};
+
+\addplot [color=mycolor2,dash pattern=on 1pt off 3pt on 3pt off 3pt,forget plot]
+  table[row sep=crcr]{%
+-25	29.43\\
+25	29.43\\
+};
+\end{axis}
+
+\begin{axis}[%
+width=0.202128\figurewidth,
+height=0.932352\figureheight,
+at={(0.531915\figurewidth,0\figureheight)},
+scale only axis,
+every outer x axis line/.append style={black},
+every x tick label/.append style={font=\color{black}},
+xmin=-25,
+xmax=25,
+xlabel={$\alpha \left[^\circ\right]$},
+xmajorgrids,
+every outer y axis line/.append style={black},
+every y tick label/.append style={font=\color{black}},
+ymin=0,
+ymax=200,
+ymajorgrids,
+axis x line*=bottom,
+axis y line*=left,
+legend style={at={(0.5,1.03)},anchor=south,legend columns=1,legend cell align=left,align=left,fill=white}
+]
+
+\addplot[area legend,mark=asterisk,mark options={solid},solid,fill=mycolor3,opacity=4.000000e-01,draw=black]
+table[row sep=crcr] {%
+x	y\\
+-25	83.79965889\\
+-20	77.69448387\\
+-15	71.40847131\\
+-10	65.28870882\\
+-5	59.73356088\\
+0	54.6499404\\
+5	49.95918099\\
+10	45.79695495\\
+15	42.26389326\\
+20	39.53785122\\
+25	36.929745\\
+25	37.8797454\\
+20	40.73633892\\
+15	45.02079756\\
+10	50.6655108\\
+5	57.20664222\\
+0	66.66511068\\
+-5	77.42595474\\
+-10	89.40573054\\
+-15	102.25998936\\
+-20	115.3275372\\
+-25	127.43407782\\
+}--cycle;
+
+\addlegendentry{Trailing balute};
+
+\addplot [color=mycolor2,dash pattern=on 1pt off 3pt on 3pt off 3pt,forget plot]
+  table[row sep=crcr]{%
+-25	29.43\\
+25	29.43\\
+};
+\end{axis}
+
+\begin{axis}[%
+width=0.202128\figurewidth,
+height=0.932352\figureheight,
+at={(0.265957\figurewidth,0\figureheight)},
+scale only axis,
+every outer x axis line/.append style={black},
+every x tick label/.append style={font=\color{black}},
+xmin=-25,
+xmax=25,
+xlabel={$\alpha \left[^\circ\right]$},
+xmajorgrids,
+every outer y axis line/.append style={black},
+every y tick label/.append style={font=\color{black}},
+ymin=0,
+ymax=200,
+ymajorgrids,
+axis x line*=bottom,
+axis y line*=left,
+legend style={at={(0.5,1.03)},anchor=south,legend columns=1,legend cell align=left,align=left,fill=white}
+]
+
+\addplot[area legend,mark=o,mark options={solid},solid,fill=mycolor4,opacity=4.000000e-01,draw=black]
+table[row sep=crcr] {%
+x	y\\
+-25	108.24966144\\
+-20	95.11287462\\
+-15	82.72693539\\
+-10	71.95686993\\
+-5	62.35319385\\
+0	53.79265431\\
+5	46.18769706\\
+10	39.77433108\\
+15	34.71731532\\
+25	27.33582006\\
+25	27.33582006\\
+15	35.07564519\\
+10	42.0767577\\
+5	51.70457619\\
+0	64.59641712\\
+-5	81.45440181\\
+-10	102.09760443\\
+-15	126.6631884\\
+-20	158.03804052\\
+-25	196.96159935\\
+}--cycle;
+
+\addlegendentry{Rigid};
+
+\addplot [color=mycolor2,dash pattern=on 1pt off 3pt on 3pt off 3pt,forget plot]
+  table[row sep=crcr]{%
+-25	29.43\\
+25	29.43\\
+};
+\end{axis}
+
+\begin{axis}[%
+width=0.202128\figurewidth,
+height=0.932352\figureheight,
 at={(0\figurewidth,0\figureheight)},
 scale only axis,
 every outer x axis line/.append style={black},
 every x tick label/.append style={font=\color{black}},
 xmin=-25,
-xmax=15,
+xmax=25,
 xlabel={$\alpha \left[^\circ\right]$},
 xmajorgrids,
 every outer y axis line/.append style={black},
 every y tick label/.append style={font=\color{black}},
-ymin=20,
+ymin=0,
 ymax=200,
 ylabel={$a_{max} \left[\frac{m}{s^2}\right]$},
 ymajorgrids,
 axis x line*=bottom,
 axis y line*=left,
-legend style={legend cell align=left,align=left,draw=black}
+legend style={at={(0.5,1.03)},anchor=south,legend columns=1,legend cell align=left,align=left,fill=white}
 ]
-\addplot [color=mycolor1,solid,mark=diamond,mark options={solid}]
-  table[row sep=crcr]{%
--25	108.02559123\\
--20	94.99581189\\
--15	82.51904187\\
--10	71.92072008\\
--5	62.22943089\\
-0	53.37607266\\
-5	46.30978251\\
-10	39.88401669\\
-15	34.83229833\\
-};
-\addlegendentry{7167.9 [m/s], lower};
 
-\addplot [color=mycolor1,solid,mark=square,mark options={solid}]
-  table[row sep=crcr]{%
--25	117.14906781\\
--20	126.49235706\\
--15	124.92126594\\
--10	94.71670758\\
--5	68.89809231\\
-0	55.1283741\\
-5	49.87955322\\
-10	41.02206498\\
-15	34.83229833\\
-};
-\addlegendentry{7167.9 [m/s], upper};
-
-
-\addplot[area legend,solid,fill=mycolor1,opacity=2.000000e-01,draw=black]
+\addplot[area legend,mark=diamond,mark options={solid},solid,fill=mycolor5,opacity=4.000000e-01,draw=black]
 table[row sep=crcr] {%
 x	y\\
--25	108.02559123\\
--20	94.99581189\\
--15	82.51904187\\
--10	71.92072008\\
--5	62.22943089\\
-0	53.37607266\\
-5	46.30978251\\
-10	39.88401669\\
-15	34.83229833\\
-15	34.83229833\\
-10	41.02206498\\
-5	49.87955322\\
-0	55.1283741\\
--5	68.89809231\\
--10	94.71670758\\
--15	124.92126594\\
--20	126.49235706\\
--25	117.14906781\\
+-25	67.28530869\\
+-20	64.91890125\\
+-15	62.59247937\\
+-10	60.22286406\\
+-5	57.76281036\\
+0	55.4692716\\
+5	53.07615153\\
+10	50.70176856\\
+15	49.14347949\\
+20	47.36205216\\
+25	45.58116438\\
+25	50.67093573\\
+20	52.92105543\\
+15	56.26942425\\
+10	59.64759585\\
+5	63.25207434\\
+0	67.73112414\\
+-5	71.72554032\\
+-10	76.91055696\\
+-15	81.68406372\\
+-20	86.66042166\\
+-25	91.21579326\\
 }--cycle;
 
-\addlegendentry{7167.9 [m/s], in orbit area};
+\addlegendentry{Isotensoid};
 
-\addplot [color=mycolor2,solid,mark=o,mark options={solid}]
-  table[row sep=crcr]{%
--25	108.02559123\\
--20	94.99581189\\
--15	82.51904187\\
--10	71.92072008\\
--5	62.22943089\\
-0	53.37607266\\
-5	46.30978251\\
-10	39.88401669\\
-15	34.83229833\\
-};
-\addlegendentry{7167.9 [m/s], lower};
-
-\addplot [color=mycolor2,solid,mark=+,mark options={solid}]
-  table[row sep=crcr]{%
--25	196.12459053\\
--20	157.56030333\\
--15	126.26526537\\
--10	101.92871547\\
--5	81.38114073\\
-0	64.76460957\\
-5	51.33973248\\
-10	42.18658065\\
-15	35.19125604\\
-};
-\addlegendentry{7167.9 [m/s], upper};
-
-
-\addplot[area legend,solid,fill=mycolor2,opacity=2.000000e-01,draw=black]
-table[row sep=crcr] {%
-x	y\\
--25	108.02559123\\
--20	94.99581189\\
--15	82.51904187\\
--10	71.92072008\\
--5	62.22943089\\
-0	53.37607266\\
-5	46.30978251\\
-10	39.88401669\\
-15	34.83229833\\
-15	35.19125604\\
-10	42.18658065\\
-5	51.33973248\\
-0	64.76460957\\
--5	81.38114073\\
--10	101.92871547\\
--15	126.26526537\\
--20	157.56030333\\
--25	196.12459053\\
-}--cycle;
-
-\addlegendentry{7167.9 [m/s], in orbit area};
-
-\addplot [color=mycolor3,dash pattern=on 1pt off 3pt on 3pt off 3pt]
+\addplot [color=mycolor2,dash pattern=on 1pt off 3pt on 3pt off 3pt,forget plot]
   table[row sep=crcr]{%
 -25	29.43\\
-15	29.43\\
+25	29.43\\
 };
-\addlegendentry{$\text{29.43 m/s}^\text{2}\text{ (3g)}$};
-
 \end{axis}
 \end{tikzpicture}%
