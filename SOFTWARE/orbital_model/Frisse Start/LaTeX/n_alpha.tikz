@@ -1,0 +1,88 @@
+% This file was created by matlab2tikz.
+% Minimal pgfplots version: 1.3
+%
+\definecolor{mycolor1}{rgb}{0.20810,0.16630,0.52920}%
+\definecolor{mycolor2}{rgb}{0.02650,0.61370,0.81350}%
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=0.947926\figurewidth,
+height=\figureheight,
+at={(0\figurewidth,0\figureheight)},
+scale only axis,
+every outer x axis line/.append style={black},
+every x tick label/.append style={font=\color{black}},
+xmin=-20,
+xmax=15,
+xlabel={$\alpha \left[^\circ\right]$},
+xmajorgrids,
+every outer y axis line/.append style={black},
+every y tick label/.append style={font=\color{black}},
+ymin=20,
+ymax=200,
+ylabel={$a_{max} \left[\frac{m}{s^2}\right]$},
+ymajorgrids,
+axis x line*=bottom,
+axis y line*=left,
+legend style={legend cell align=left,align=left,draw=black}
+]
+\addplot [color=mycolor1,solid,mark=diamond,mark options={solid}]
+  table[row sep=crcr]{%
+-20	104.68229418\\
+-15	90.27003078\\
+-10	76.53571686\\
+-5	65.27843775\\
+0	55.72563633\\
+5	47.32193907\\
+10	40.38945732\\
+15	35.48431017\\
+};
+\addlegendentry{7167.9 [m/s], lower};
+
+\addplot [color=mycolor1,solid,mark=square,mark options={solid}]
+  table[row sep=crcr]{%
+-20	183.46314726\\
+-15	144.8155143\\
+-10	112.8563982\\
+-5	88.43222538\\
+0	67.58537697\\
+5	53.39261232\\
+10	42.68529162\\
+15	35.48431017\\
+};
+\addlegendentry{7167.9 [m/s], upper};
+
+
+\addplot[area legend,solid,fill=mycolor1,opacity=2.000000e-01,draw=black]
+table[row sep=crcr] {%
+x	y\\
+-20	104.68229418\\
+-15	90.27003078\\
+-10	76.53571686\\
+-5	65.27843775\\
+0	55.72563633\\
+5	47.32193907\\
+10	40.38945732\\
+15	35.48431017\\
+15	35.48431017\\
+10	42.68529162\\
+5	53.39261232\\
+0	67.58537697\\
+-5	88.43222538\\
+-10	112.8563982\\
+-15	144.8155143\\
+-20	183.46314726\\
+}--cycle;
+
+\addlegendentry{7167.9 [m/s], in orbit area};
+
+\addplot [color=mycolor2,dash pattern=on 1pt off 3pt on 3pt off 3pt]
+  table[row sep=crcr]{%
+-20	29.43\\
+15	29.43\\
+};
+\addlegendentry{$\text{29.43 m/s}^\text{2}\text{ (3g)}$};
+
+\end{axis}
+\end{tikzpicture}%

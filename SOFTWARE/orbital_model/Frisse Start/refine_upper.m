@@ -16,7 +16,7 @@ alpha = -25:2.5:25;
 file_name = 'orbit_alpha_fine_upper.txt';
 
 %Initial Position
-rx = -4000000;
+rx = -4100000;
 ry = 10*R_m;
 
 accuracy = 5;
