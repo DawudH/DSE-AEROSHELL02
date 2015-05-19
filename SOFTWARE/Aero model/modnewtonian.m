@@ -51,7 +51,6 @@ classdef modnewtonian
             obj.rho_inf = rho;
             obj.T_inf = T;
             obj.A = A;
-            
         end
         
         function obj = calcAero(obj, V)
