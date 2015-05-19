@@ -28,11 +28,11 @@ am = sqrt((out.A(:,1) - out.Ag(:,1)).^2 + (out.A(:,2) - out.Ag(:,2)).^2 + (out.A
 plot(t,am)
 grid on
 subplot(5,1,4)
-plot(t,out.q)
+plot(t,out.CD)
 grid on
 subplot(5,1,5)
 hold on
-plot(t,out.M)
+plot(t,out.CL)
 plot(xlim,[5,5],'-.','color','r');
 grid on
 % plot orbit

@@ -19,8 +19,8 @@ function [out] = aero_conrol(state,control,aero_coef)
             dalpha = control.dalpha;
         end
         
-    if state.a < control.a
-    % If state.a < control.a, decrease CL (so decrease alpha) to allow higer acceleration
+    if state.a > control.a
+    % If state.a > control.a, increase CL (so decrease alpha) to allow higer acceleration
         
         alpha = state.alpha - dalpha;
         if ( alpha < min(control.alpha_range) )
@@ -34,7 +34,7 @@ function [out] = aero_conrol(state,control,aero_coef)
         [CLA, CDA, CMYA] = aero_coef.aeroCoeffs(state.alpha);
     
     else
-    % If state.a > control.a, increase CL (so increase alpha) to allow lower acceleration
+    % If state.a < control.a, decrease CL (so increase alpha) to allow lower acceleration
     
         alpha = state.alpha + dalpha;
         if ( alpha > max(control.alpha_range) )
