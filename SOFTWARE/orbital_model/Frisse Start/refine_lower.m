@@ -8,7 +8,7 @@ format long
 %%Input constants & variables
 variables
 
-files = {'orbit_alpha_isotensoid.txt', 'orbit_alpha_apollo.txt', 'orbit_alpha_torus.txt', 'orbit_alpha_pastille.txt', 'orbit_alpha_irve.txt'};
+files = {'orbit_alpha_isotensoid_l.txt', 'orbit_alpha_apollo_l.txt', 'orbit_alpha_torus_l.txt', 'orbit_alpha_pastille_l.txt', 'orbit_alpha_irve_l.txt'};
 names = {'isotensoid', 'apollo', 'torus', 'pastille', 'irve'};
 
 for bla = length(names)
