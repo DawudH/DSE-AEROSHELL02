@@ -1,25 +1,25 @@
 \section{Thermal mass estimation}
 \label{ch:thermtool}
-Decelerating an entry vehicle requires a thermal protection system. This system will contribute to a large extend to the mass of the entire vehicle. Therefore, a \gls{tps} has a critical impact on the mission an should be selected properly. This section will analyse the \gls{tps} of the five trade-off concepts with the use of a thermal protection tool. First the tool will be described in more detail. Afterwards it is described how the tool is verified and validated. In the third section, this tool will be used to analyse different lay-ups for the concepts under anlysis. As a result, the \gls{tps} masses for differnt concepts can be determined. Lastly, concluions and recomendations are given.\\
+Decelerating an entry vehicle requires a thermal protection system. This system will contribute to a large extend to the mass of the entire vehicle. Therefore, a \acrfull{tps} has a critical impact on the mission an should be selected properly. This section will analyse the \gls{tps} of the five trade-off concepts with the use of a thermal protection tool. First the tool will be described in more detail. Afterwards it is described how the tool is verified and validated. In the third section, analysis of the different lay-ups for the concepts is done. As a result, the \gls{tps} masses for different concepts can be compared. Lastly, conclusions and recommendations are given.
 
 \subsection{Method of thermal analysis}
-A mass estimations of the \gls{tps} requires analysis due to heat transfer into the heat shield. Enable to analyse different lay-ups in a short amount of time, it will be usefull to make use of a \gls{tps} tool. In this section the working principles of this to in detail .\\
+A mass estimation of the \gls{tps} requires analysis due to heat transfer into the heat shield. Enabling the analysis of different lay-ups in a short amount of time, it will be useful to make use of a \gls{tps} tool. In this section the working principles of this is explained.
 
 \subsubsection{Assumptions}
-In this section the assumptions that are used for the \gls{tps} mass estimation and tool developement are stated. Also, an elaboration is given of the impact of the assumption on the results.\\
+In this section the assumptions that are used for the \gls{tps} mass estimation and tool development are stated. Also, an elaboration is given on the impact of the assumptions on the results.
 
 \begin{itemize}
-\item \textbf{1D instead of 3D analysis}: For the determination of the temperature through the material over time, a one dimensional lay-up can be used. This is different from the actual case, where the body is heated over a three dimentional body. This assumption however is varified for instance by Ref. \cite{Corso2009}.
-\item \textbf{Sizing is done under stagnation conditions}: One of the inputs in the tool is the temperature at the wall. For this, the stagnation temperature is used instead of the actual temperature distribution over the surface. The stagnation temperature is a maximum value for the temperature and hence, the result of the tool will give the most conservative value needed for the design of the \gls{tps}. Therefore, the \gls{tps} will be overdesigned and can not be used as final values of the \gls{tps} mass. However, they do give an indication on how different concepts perform relative to eachother, such that the method can be used to make trade-off desisions.
-\item \textbf{Model for heat flux}: Another input in the tool is the heat flux. This heatflux input is based on an aerodnamic model described, as described in Chapter \ref{ch:aero_analysis}.
-\item \textbf{Constant material properties}: Material properties like tensile stregth, density and thermal conductivity change, if considered over a large temperature range. However, it is assumed that this change is negligable. 
+\item \textbf{1D instead of 3D analysis}: For the determination of the temperature through the material over time, a one dimensional lay-up can be used. This is different from the actual case, where the body is heated over a three dimensional body. This assumption is verified for instance by Ref. \cite{Corso2009}.
+\item \textbf{Sizing is done under stagnation conditions}: One of the inputs in the tool is the temperature at the wall. For this, the stagnation temperature is used instead of the actual temperature distribution over the surface. The stagnation temperature is a maximum value for the temperature and hence, the result of the tool will give the most conservative value needed for the design of the \gls{tps}. Therefore, the \gls{tps} will be over-designed and do not necessarily have to be used as final values of the \gls{tps} mass. However, they do give an indication on how different concepts perform relative to each other, such that the method can be used to make trade-off decisions.
+\item \textbf{Model for heat flux}: Another input in the tool is the heat flux. This heat flux input is based on an aerodynamic model, as described in Chapter \ref{ch:aero_analysis}.
+\item \textbf{Constant material properties}: Material properties like tensile strength, density and thermal conductivity change, if considered over a large temperature range. However, it is assumed that this change is negligible for this low fidelity tool. 
 \item Ablative materials of rigid structures are assumed not to reduce in thickness as a first approximation.
-\item \textbf{Appliable to multiple layers}: The tool uses steps in legth that pass over layers with different materials. It is possible that a length step is located inbetween two layers but is only concidered as one material. Because length steps are very small, this has no major impact on the model.
-\item \textbf{discritisation of differential equations}: The tool is based on a finite difference discritisation. This method is verified. However, the discritisation errors are only stable for a certain range of time steps, as can be seen in Ref. \cite{Smith2011}. 
+\item \textbf{Applicable to multiple layers}: The tool uses steps in legth that pass over layers with different materials. It is possible that a length step is located in between two layers but is only considered as one material. Because length steps are very small, this has no major impact on the model.
+\item \textbf{discretisation of differential equations}: The tool is based on a finite difference discretisation. This method is verified. However, the discretisation errors are only stable for a certain range of time steps, as can be seen in Ref. \cite{Smith2011}. 
 \end{itemize}
 
 \subsubsection{Leading equations}
-The problem is modelled as a one-dimensional multilayer layup which can provide the accuracy needed or this stage of concept analysis as described in the assumptions. A description of the implementation of this model is given by Smith \cite{Smith2011}. The model is illustrated in Figure \ref{fig:1dthermal}. The figure shows the different methods of heat transfer in the model. There is heat radiating away from the surface, convective heating or heat flux from the aerodynamic effects and heat conduction within the layers.
+The problem is modelled as a one-dimensional multilayer lay-up which can provide the accuracy needed or this stage of concept analysis as described in the assumptions. A description of the implementation of this model is given by Smith \cite{Smith2011}. The model is illustrated in Figure \ref{fig:1dthermal}. The figure shows the different methods of heat transfer in the model. There is heat radiating away from the surface, convective heating or heat flux from the aerodynamic effects and heat conduction within the layers.
 
 \begin{figure}[H]
 	\centering
@@ -69,9 +69,9 @@ Equation \eqref{eq:therm3} can then be altered by adding a $q^n$-term for the co
 
 
 \subsubsection{Input}
-In order to make use of the tool, an input is required. This input consist of thermal conditions and material properties for five different concepts. The thermal properties are the stagnation temperature $ \gls{sym:T0}(t) $ and a stagnation heat flux $ \gls{sym:qsdot}(t) $. The material properties are the layer thickness $ L_1 $, $ L_2 $, etc., The thermal conducticity $ \gls{sym:k} $, the density $ \gls{sym:rho} $ and lastly the specific heat $ \gls{sym:cp} $.\\
+In order to make use of the tool, an input is required. This input consists of thermal conditions and material properties for five different concepts. The thermal properties are the stagnation temperature $ \gls{sym:T0}(t) $ and a stagnation heat flux $ \gls{sym:qsdot}(t) $. The material properties are the layer thickness $ L_1 $, $ L_2 $, etc., The thermal conductivity $ \gls{sym:k} $, the density $ \gls{sym:rho} $ and lastly the specific heat $ \gls{sym:cp} $.\\
 
-Thermal inputs for the five condepts, temp and flux + graph.\\
+Thermal inputs for the five concepts, temp and flux + graph.\\
 
 Several lay-ups are analysed, all with a variety of materials. An overview of these materials with their properties is shown in Table  \ref{tab:tpsmatprop}. Where for each material the thermal conductivity, the density, the specific heat, the maximum operative temperature and if applicable, the emissivity are given.
 
@@ -106,18 +106,32 @@ Several lay-ups are analysed, all with a variety of materials. An overview of th
 \end{table}
 
 \subsubsection{Output}
-To perform analysis with different material lay-ups certain the tool needs to output the Temperature ($\gls{sym:T}$) at different locations ($\gls{sym:x}$) at different times ($\gls{sym:t}$)
+To perform analysis with different material lay-ups certain the tool needs to output the Temperature ($\gls{sym:T}$) at different locations ($\gls{sym:x}$) at different times ($\gls{sym:t}$). This is the result of working out Equation \eqref{eq:therm2} using a correct $\Delta \gls{sym:x}$ and $\Delta \gls{sym:t}$. The output also shows that the results diverge if the stability criterion is not met: $\frac{\gls{sym:alphat}\Delta\gls{sym:t}}{\left(\Delta \gls{sym:x}\right)^2}$ \cite{Holman2002}. Knowing the temperature through the lay-up over time allows to determine the maximum temperature in each layer. Comparing this with maximum allowable temperature, one can check whether a certain lay-up provides enough protection or not.
 
 \subsection{Verification \& Validation}
+The full process of verification and validation has shown that the tool does not function correctly. This part is meant to show what the tool does incorrectly and what will be used to continue the verification and validation after the code is debugged.
 
 \subsubsection{Verification}
-Suthes
-\subsubsection{Validation}
+The verification has been split up in three parts. The first verifies the steady, or time-independent solutions of the tool. The second covers the unsteady, or transient solutions of the tool. The last part verifies the multilayer functionality of the tool.
 
+Although the tool only provides time-dependent results, it is still possible to verify the steady part of the tool. By integrating Fourier's law on heat conduction Equation \eqref{eq:therm4} is formulated. In here $\gls{sym:T}_1$ is the wall temperature and $\gls{sym:T}_2$ the back temperature. The temperature difference should be shown by the tool when it is run for a considerate amount of time with a constant heat flux. It has been shown that for a given constant heat flux the same temperature difference can be seen in the tool from the surface to the back as is calculated with Equation \eqref{eq:therm4}.
+\begin{equation}
+\frac{q}{\gls{sym:A}} = \frac{\gls{sym:k}}{\Delta \gls{sym:x}}(\gls{sym:T}_1-\gls{sym:T}_2)
+\label{eq:therm4}
+\end{equation}
+For the transient solution one can use the analytical solution (Equation \eqref{eq:therm5}) provided by both Smith and Holman \cite{Smith2011,Holman2012}. Here $\gls{sym:T}_1$ is the wall temperature at $\gls{sym:t}=0$ and $\gls{sym:T}_2$ the back temperature at $\gls{sym:t}=\gls{sym:t}_{end}$. Comparing this solution with the tool shows that the tool does not function correctly. It is not able to give a correct time response, which is essential for the implementation of the tool within the design of the aeroshell.
+\begin{equation}
+\gls{sym:T}_2-\gls{sym:T}_1 = \frac{2q\sqrt{\gls{sym:alphat}\gls{sym:t}/\pi}}{\gls{sym:k}\gls{sym:A}}\exp\left(\frac{-\gls{sym:x}^2}{4\gls{sym:alphat}\gls{sym:t}}\right)-\frac{q\gls{sym:x}}{\gls{sym:k}\gls{sym:A}}\left(1-erf\frac{\gls{sym:x}}{2\sqrt{\gls{sym:alphat}\gls{sym:t}}}\right)
+\label{eq:therm5}
+\end{equation}
+For the verification of the multilayer Smith suggests to perform an energy balance as energy should be conserved. Looking at Figure \ref{fig:1dthermal} one can see that at any point in time the energy stored in the material lay-up should be the same as the energy convected into the material minus the energy radiated away from the material. \textcolor{red}{SHOW PLOT Energy [J/m2] against time [s]}
+
+\subsubsection{Validation}
+In this section the tool is validated against real experimental data. This data has a given applied heat flux and measures temperature through different layers. The tool should show no extreme deviation from the real experimental data. \textcolor{red}{GIVE SOURCE...}
 
 
 \subsection{Results per concept}
-Since it has not been possible to verify and validate the tool in time due to a bug in the software, another solution is proposed. To compare different concepts it is assumed that the \gls{tps}-mass is dependent on the time integrated heat flux. As explained before the heat flux is given at the stagnation point. Also it is assumed that temperature of the wall is much lower than the stagnation point temperature. Therefore it is possible to omit the wall temperature in the analysis as Equation \ref{eq:stagcoefficient} shows that the resulting heat flux shall be a conservative estimate. 
+Since it has not been possible to verify and validate the tool in time due to a bug in the software, another solution is proposed. To compare different concepts it is assumed that the \gls{tps}-mass is dependent on the time integrated heat flux which gives a heat load. As explained before the heat flux is given at the stagnation point. Also it is assumed that temperature of the wall is much lower than the stagnation point temperature. Therefore it is possible to omit the wall temperature in the analysis as Equation \eqref{eq:stagcoefficient} shows that the resulting heat load shall be a conservative estimate. 
 
 
 \subsection{Conclusion \& recommendations}
