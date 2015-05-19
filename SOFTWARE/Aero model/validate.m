@@ -7,7 +7,7 @@ cases.deg60cone = 'deg60cone';
 cases.apollo = 'apollo';
 cases.irve = 'irve';
 
-shapecase = cases.apollo;
+shapecase = cases.deg60cone;
 
 
 switch shapecase
@@ -88,7 +88,7 @@ switch shapecase
         clear; clc; close all;
         a = 300;
         M = 10.18; % As in the paper
-        V = a*14.9;
+        V = a*M;
         gamma = 1.67;
         center = zeros(3,1); % not important
         rho = 1e-3; %not important
