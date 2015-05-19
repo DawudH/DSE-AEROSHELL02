@@ -28,8 +28,8 @@ V = M.*speed_sound;
 
 gamma = 1.29;
 alpha = 30;
-q = 24;
-[ coords, tri, A ] = generategeometry( shapetexts.concept_apollo, q );
+q = 7;
+[ coords, tri, A ] = generategeometry( shapetexts.concept_irve, q );
 
 qmax = zeros(size(t));
 Tboundary = zeros(size(t));
