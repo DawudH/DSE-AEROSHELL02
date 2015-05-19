@@ -1,8 +1,8 @@
 \section{Astrodynamics \& control tool development}
 \label{ch:astrocontrol}
-In this chapter the development of a tool for astrodynamics and control is described. The tool calculates the trajectory of the spacecraft for varying initial conditions and aerodynamic properties. With the information extracted from this tool requirements**maybe requirements is not the right word** for the control systems can be determined. Based on these requirements the different control systems available for the different concepts (which are presented in chapter \ref{ch:options}) can be weighed off in a trade-off in chapter \ref{ch:tradeoff}.
+In this chapter the development of a tool for astrodynamics and control is described. The tool calculates the trajectory of the spacecraft for varying initial conditions and aerodynamic properties. With the information extracted from this tool, required performance for the control systems can be determined. Based on these requirements the different control systems available for the different concepts (which are presented in chapter \ref{ch:options}) can be weighed off in a trade-off in chapter \ref{ch:tradeoff}.
 
-In this chapter first the purpose of the tool will be explained in section \ref{sec:astropurpose}. In sections \ref{sec:astrogov} and \ref{sec:astrowp} working principles of the tool are explained and the equations the tool is based on are presented. To ensure the tool calculates what it is supposed to calculate and to ensure this happens accurately enough in section \ref{sec:astrovv} the verification and validation of the tool is done. In section \ref{sec:astroref} performance of current day control systems are investigated. This performance is compared to the calculated needed performance to come to a conclusion in section \ref{sec:astrores}. Section \ref{sec:astrores} also presents some other results of the tool which are used as input for tools calculating i.e. structural mass.
+In this chapter first the purpose of the tool will be explained in section \ref{sec:astropurpose}. In sections \ref{sec:astrogov} and \ref{sec:astrowp} working principles of the tool are explained and the equations the tool is based on are presented. To ensure the tool calculates what it is supposed to calculate and to ensure this happens accurately enough in section \ref{sec:astrovv} the verification and validation of the tool is done. In section \ref{sec:ccs} performance of current day control systems are investigated. This performance is compared to the calculated needed performance to come to a conclusion in section \ref{sec:astrores}. Section \ref{sec:astrores} also presents some other results of the tool which are used as input for tools calculating i.e. structural mass.
 
 \subsection{Purpose of tool development}
 \label{sec:astropurpose}
@@ -106,9 +106,9 @@ The temporary solution that was chosen to solve this problem is to take an initi
 \subsubsection{Discretisation error}
 \label{sec:astrodisc}
 
-***relatief
-***fout is verwaarloosbaar
-***geen control
+Due to the use of a discrete timestep an error relative to the real solution is induced. By testing the tool with the same initial conditions using different time meshes the difference between the solutions can be analysed. When the smallest timestep is assumed to be exact the error of the larger timesteps can be expressed relative to that. This relative error is shown in Figure \ref{fig:atmos_disc}. Please also note these errors are calculated running the tool without control.
+
+Two conclusions can be drawn from this. First the error decreases quadraticaly with decreasing timestep. This means that the system converges to a solution. Secondly the error is smaller than 1 $\left[m\right]$ for a dt of smaller than $0.3 \left[s\right]$. This error is negligable compared to the error that will be induced by the assumptions that were made in section \ref{sec:astroassumption}.
 
 %Initial Position
 %rx = -4143775;
@@ -122,11 +122,9 @@ The temporary solution that was chosen to solve this problem is to take an initi
 \begin{figure}[h]
 	\centering
 	\includegraphics[trim={4.25cm 10cm 3.2cm 10cm},clip,width=0.8\textwidth]{Figure/orbital_model/dicretization.pdf}
-	\caption{Discretisation error in radius $\left(\gls{sym:R}\right)$ after one pass through the atmosphere for initial position $\left[-4143775,10\cdot\gls{con:rm}\right]$ $\left[m\right]$ and initial velocity $\left[0,-7167.9\right]$ $\left[\frac{m}{s}\right]$ at \gls{sym:alpha}} 
+	\caption{Discretisation error in radius $\left(\gls{sym:R}\right)$ after one pass through the atmosphere for initial position $\left[-4143775,10\cdot\gls{con:rm}\right]$ $\left[m\right]$ and initial velocity $\left[0,-7167.9\right]$ $\left[\frac{m}{s}\right]$ at $\gls{sym:alpha}=-10\left[^\circ\right]$ for the apollo shape}
 	\label{fig:atmos_disc}
 \end{figure}
-
-***discretisation error: error for different dt***\\
 
 \subsubsection{Verification through comparison with kepler}
 \label{sec:astroverf}
@@ -195,7 +193,9 @@ The temporary solution that was chosen to solve this problem is to take an initi
 
 \subsection{Results \& conclusions}
 \label{sec:astrores}
-***intro***\\
+In this section the results from the astrodynamics \& control are presented. Furthermore the required performance of the controlsystem is analysed and a conclusion is drawn on which control systems are feasible.
+
+In section \ref{sec:astroatmos} the data from the atmospheric model is shown. This data is used as a primary input for the computations. Section \ref{sec:astrodec} shows the effect of angle of attack $\left(\gls{sym:alpha}\right)$ on the maximum deceleration during a trajectory for which the spacecraft goes into orbit. In section \ref{sec:astrorestraj} one of the trajectories which was found to be feasible in section \ref{sec:astroperfomance} is shown and the important parameters, most of which will serve as input for other tools
 
 \subsubsection{Atmospheric model}
 \label{sec:astroatmos}
@@ -238,15 +238,22 @@ The temporary solution that was chosen to solve this problem is to take an initi
 \subsubsection{Effect of \gls{sym:alpha} on deceleration}
 \label{sec:astrodec}
 ***Two plots for CL and CD***\\
+\begin{figure}[h]
+	\centering
+	\includegraphics[trim={4.25cm 10.5cm 1cm 10.5cm},clip,width=0.95\textwidth]{Figure/orbital_model/n_alpha.pdf}
+	\caption{Discretisation error in radius $\left(\gls{sym:R}\right)$ after one pass through the atmosphere for initial position $\left[-4143775,10\cdot\gls{con:rm}\right]$ $\left[m\right]$ and initial velocity $\left[0,-7167.9\right]$ $\left[\frac{m}{s}\right]$ at $\gls{sym:alpha}=-10\left[^\circ\right]$ for the apollo shape}
+	\label{fig:n_alpha}
+\end{figure}
+
+
+\subsubsection{Required performance of the control system}
+\label{sec:astroperfomance}
+***Results of needed CLmax, dalpha/dt, dCL/dalpha***\\
 
 \subsubsection{A feasible trajectory and important output parameters over time}
 \label{sec:astrorestraj}
 ***Plot of a trajectory***\\
 ***Plots of output variables for that particular trajectory***\\
-
-\subsubsection{Required performance of the control system}
-\label{sec:astroperfomance}
-***Results of needed CLmax, dalpha/dt, dCL/dalpha***\\
 
 \subsubsection{Conclusion on control system performance}
 \label{sec:conclusion}

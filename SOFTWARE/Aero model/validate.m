@@ -7,7 +7,7 @@ cases.deg60cone = 'deg60cone';
 cases.apollo = 'apollo';
 cases.irve = 'irve';
 
-shapecase = cases.apollo;
+shapecase = cases.deg60cone;
 
 
 switch shapecase
@@ -88,12 +88,12 @@ switch shapecase
         clear; clc; close all;
         a = 300;
         M = 10.18; % As in the paper
-        V = a*14.9;
+        V = a*M;
         gamma = 1.67;
         center = zeros(3,1); % not important
         rho = 1e-3; %not important
         T = 150; % not important
-        q = 21;
+        q = 31;
         CP_apollo = open('CP_apollo.mat');
         zvalidation = CP_apollo.CP_apollo(:,1);
         Cpvalidation = CP_apollo.CP_apollo(:,2);
@@ -137,8 +137,8 @@ switch shapecase
         plot(modnewtonianmatrix(:,1)*1.095/max(modnewtonianmatrix(:,1)), modnewtonianmatrix(:,2));
         hold on;
         plot(zvalidation, Cpvalidation, '*');
-        xlabel('y (m)');
-        ylabel('Cp');
+        xlabel('y [m]');
+        ylabel('C_p [-]');
         legend('Modified Newtonian', 'Measured');     
         
     case cases.deg30cone10alpha % See the work by Cleary, JW in mendeley, and Bertin page 287
@@ -179,8 +179,8 @@ switch shapecase
         plot(beta_points, Cps);
         hold on;
         plot(betavalidation, Cpvalidation, '*');
-        xlabel('beta (deg)');
-        ylabel('Cp');
+        xlabel('\beta [deg]');
+        ylabel('C_p [-]');
         legend('Modified Newtonian', 'Measured');     
         
     case cases.deg30cone20alpha % See the work by Cleary, JW in mendeley, and Bertin page 287
@@ -221,8 +221,8 @@ switch shapecase
         plot(beta_points, Cps);
         hold on;
         plot(betavalidation, Cpvalidation, '*');
-        xlabel('beta (deg)');
-        ylabel('Cp');
+        xlabel('\beta [deg]');
+        ylabel('C_p [-]');
         legend('Modified Newtonian', 'Measured');            
     otherwise
 end
