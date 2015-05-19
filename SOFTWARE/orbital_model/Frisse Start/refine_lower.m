@@ -13,7 +13,7 @@ use_control = false;
 multiple_orbits = false;
 
 alpha = -25:5:25;
-file_name = 'orbit_alpha_apollo.txt';
+file_name = 'orbit_alpha_isotensoid.txt';
 
 %Initial Position
 rx = -4100000;
