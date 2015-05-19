@@ -17,6 +17,10 @@ plot(rad2deg(alpha), aertorus.getCLA(alpha));
 xlabel('$\alpha [deg]$', 'interpreter', 'latex');
 ylabel('$C_LA [m^2]$', 'interpreter', 'latex');
 legend('Stacked Toroid, Tension Cone', 'Rigid', 'Isotensoid', 'Trailing Ballute');
+% set(gcf, 'PaperUnits', 'inches');
+% x_width=3 ;y_width=3;
+% set(gcf, 'PaperPosition', [0 0 x_width y_width]); %
+% saveas(clplot,'plots/cl.eps')
 print('plots/cl', '-depsc');
 
 figure;
@@ -47,7 +51,7 @@ plot(rad2deg(alpha), aerirve.getLiftGradient(alpha));
 plot(rad2deg(alpha), aerapollo.getLiftGradient(alpha));
 plot(rad2deg(alpha), aerisotensoid.getLiftGradient(alpha));
 plot(rad2deg(alpha), aertorus.getLiftGradient(alpha));
-xlabel('$\alpha [deg]$');
+xlabel('$\alpha [deg]$', 'interpreter', 'latex');
 ylabel('$C_{L_\alpha}A [\frac{m^2}{rad}]$', 'interpreter', 'latex');
 legend('Stacked Toroid, Tension Cone', 'Rigid', 'Isotensoid', 'Trailing Ballute');
 print('plots/clalpha', '-depsc');
