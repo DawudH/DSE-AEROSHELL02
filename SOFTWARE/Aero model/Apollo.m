@@ -107,7 +107,7 @@ Tri = [Tri1;Tri];
 
  
  
-TriGeom = triangulation(Tri, xvector, yvector, zvector);
+TriGeom = triangulation(Tri, xvector', yvector', zvector');
 % FN = faceNormal(TriGeom);
 % IC = incenter(TriGeom);
 % 
