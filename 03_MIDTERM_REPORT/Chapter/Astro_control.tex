@@ -78,10 +78,10 @@ The acceleration $\left(\gls{sym:acc}\right)$ is only the gravitational pull $\l
  \label{sec:eliptickep}
 For an eliptical orbit \gls{sym:a}, \gls{sym:e} and \gls{sym:phip} can be calculated in the same way as was done in section \ref{sec:hypkep}. The point of reentry into the atmosphere is the old location exactly mirrored in the line between the pericenter and the apocenter. Also the velocity $\left(\gls{sym:Vv}\right)$ and the acceleration $\left(\gls{sym:acc}\right)$  should be mirrored in that line. The velocity should than be rotated over 180 $\left[^\circ\right]$ to point in the correct direction. The magnitude of the location $\left(\gls{sym:R}\right)$, velocity $\left(\gls{sym:V}\right)$ and acceleration $\left(\gls{sym:acc}\right)$ are still the same due to the symmetry of kepler orbits.
 
-For the eliptical orbit also the duration has to be calculated. As this time is part of the 10 days in which the spacecraft is required to decelerate. As keplers second law states: $\frac{dA}{dt}=\mbox{constant}$, the duration can be written as an area fraction of the period. This is done in equation \ref{eq:areatime}. Here $\gls{sym:T} = 2\pi\sqrt{\frac{\gls{sym:a}^3}{\gls{con:mu}}}$ and $\gls{sym:A}_{tot} = 2\pi \gls{sym:a} \sqrt{1-\gls{sym:e}^2}$.
+For the eliptical orbit also the duration has to be calculated. As this time is part of the 10 days in which the spacecraft is required to decelerate. As keplers second law states: $\frac{dA}{dt}=\mbox{constant}$, the duration can be written as an area fraction of the period. This is done in equation \ref{eq:areatime}. Here $\gls{sym:P} = 2\pi\sqrt{\frac{\gls{sym:a}^3}{\gls{con:mu}}}$ and $\gls{sym:A}_{tot} = 2\pi \gls{sym:a} \sqrt{1-\gls{sym:e}^2}$.
 
 \begin{equation}
-t = \frac{\gls{sym:A}}{\gls{sym:A}_{tot}}\gls{sym:T}
+t = \frac{\gls{sym:A}}{\gls{sym:A}_{tot}}\gls{sym:P}
 \label{eq:areatime}
 \end{equation}
 
@@ -93,10 +93,14 @@ The tool is able to calculate the trajectory of the spacecraft and a range of im
 
 \subsection{Verification \& validation}
 \label{sec:astrovv}
+
 In order to be sure the results the tool produces are correct and can safely be used in further efforts to design the \gls{cia} verification and validation is needed. This section presents the methods used to verify and validate the results produced by the tool. First a sensitivity analysis is presented in section \ref{sec:astrosens} which focusses on the sensitivity of the program to the initial conditions. In section \ref{sec:astrodisc} the discretisation error is analysed in order to ensure the results are accurate enough for it to be usefull. The numerical solution is compared to the simple case of a kepler orbit in section \ref{sec:astroverf}. Lastly in section \ref{sec:astroval} the results produced by the tool are compared to data from missions that have flown in the past.
 
 \subsubsection{Sensitivity analysis}
 \label{sec:astrosens}
+
+In order to assure 
+
 ***sensitivity analysis: very sensitive to initial location, thus for now assumed initial location closer***\\
 
 \subsubsection{Discretisation error}
