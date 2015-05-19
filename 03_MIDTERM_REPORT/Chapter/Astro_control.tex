@@ -99,9 +99,9 @@ In order to be sure the results the tool produces are correct and can safely be 
 \subsubsection{Sensitivity analysis}
 \label{sec:astrosens}
 
-In order to assure 
+In the sensetivity analysis the effect of a small change in input variables on the output is analysed. This effect was as expected for all variables except for the initial location. For all other variables the effect of a small change in input gave a small change in output. For the initial location however the effect of a small change in input gives a change of output orders of magnitude larger than the change in input. This large change can be explained by the long duration during which the spacecraft is attracted by a slightly different gravitational force. This force constantly increases the difference between the locations. this results in a difference in the order of kilometers in entry location for a difference in the order of millimeters in input location. It can thus be concluded that the model cannot be used as it is in this form, however this is not an error in the model. The model is correct and shows that in the future a controlsystem should be implemented in the simulation during the initial approach to diminish the increase in difference of location. This is also what will have to happen in reality on the spacecraft.
 
-***sensitivity analysis: very sensitive to initial location, thus for now assumed initial location closer***\\
+The temporary solution that was chosen to solve this problem is to take an initial location far closer to the planet. This induces an error because the initial conditions are no longer valid. The main error induced by this is the initial velocity that changes significantly between the sphere of influence \gls{soi} and the new initial condition which is located at ten times the mars radius above mars. Both have a variable distance to the left of mars. This difference in velocity is diminished by calculating the change in velocity from \gls{soi} to $10\cdot\gls{con:rm}$ for an orbit that starts straight above mars and using that difference in all other calculations aswell.
 
 \subsubsection{Discretisation error}
 
