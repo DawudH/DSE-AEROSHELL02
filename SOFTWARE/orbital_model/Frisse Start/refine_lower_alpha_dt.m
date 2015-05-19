@@ -8,7 +8,7 @@ format long
 %%Input constants & variables
 variables
 
-files = {'orbit_alpha_isotensoid_up.txt', 'orbit_alpha_apollo_up.txt', 'orbit_alpha_torus_up.txt', 'orbit_alpha_pastille_up.txt', 'orbit_alpha_irve_up.txt'};
+files = {'orbit_alpha_dt_isotensoid_l.txt', 'orbit_alpha_dt_apollo_l.txt', 'orbit_alpha_dt_torus_l.txt', 'orbit_alpha_dt_pastille_l.txt', 'orbit_alpha_dt_irve_l.txt'};
 names = {'isotensoid', 'apollo', 'torus', 'pastille', 'irve'};
 
 for bla = 1:length(names)
@@ -53,7 +53,7 @@ parfor i = 1:length(alpha)
         if refinestep <= accuracy
             go = false;
             break;
-        end     
+        end
         if out.c.crash
             % to close
             rx_in = rx_in - refinestep;
@@ -61,20 +61,22 @@ parfor i = 1:length(alpha)
             % to far
             rx_in = rx_in + refinestep;
         elseif out.c.orbit
-            % go further to find maximum inorbit load
-            rx_in = rx_in + refinestep;
+            % go further to find minimum load
+            rx_in = rx_in - refinestep;
         end
         
         % generate new R
         R = [rx_in,ry,0];
         
-        if (prev_c.flyby && out.c.crash) || (prev_c.crash && out.c.orbit)
+        if (prev_c.crash && out.c.flyby) || (prev_c.orbit && out.c.flyby)
             refinestep = refinestep / 2;
         end
         prev_c = out.c;
         
     end
 end
+
+
 
 %% write to file
 fid = fopen(file_name,'a');

@@ -19,6 +19,7 @@ legend_str{1} = 'Isotensoid';
 legend_str{2} = 'Apollo';
 legend_str{3} = 'Torus';
 legend_str{4} = 'Pastille';
+legend_str{5} = 'Irve';
 marker = {'d'; 'o'; '*'; 'x'; 's'; '+'; '.'; '^'; 'v'; '>'; '<'; 'p'; 'h'};
 %marker = {'-d'; '-o'; '-*'; '-x'; '-s'; '-+'; '-.'; '-^'; '-v'; '->'; '-<'; '-p'; '-h'};
 for i = 1:length(files)
