@@ -5,7 +5,7 @@ close all
 constants
 addpath('..\..\matlab2tikz')
 
-files = {'orbit_alpha_isotensoid.txt', 'orbit_alpha_apollo.txt', 'orbit_alpha_torus.txt', 'orbit_alpha_pastille.txt'};
+files = {'orbit_alpha_isotensoid.txt', 'orbit_alpha_apollo.txt', 'orbit_alpha_torus.txt', 'orbit_alpha_pastille.txt', 'orbit_alpha_irve.txt'};
 
 figure('name','Different orbits for certain alpha without control')
 hold on

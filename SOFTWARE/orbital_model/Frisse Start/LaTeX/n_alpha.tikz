@@ -10,14 +10,14 @@
 \begin{tikzpicture}
 
 \begin{axis}[%
-width=0.947926\figurewidth,
+width=0.952709\figurewidth,
 height=\figureheight,
 at={(0\figurewidth,0\figureheight)},
 scale only axis,
 every outer x axis line/.append style={black},
 every x tick label/.append style={font=\color{black}},
-xmin=-30,
-xmax=30,
+xmin=-25,
+xmax=25,
 xlabel={$\alpha \left[^\circ\right]$},
 xmajorgrids,
 every outer y axis line/.append style={black},
@@ -28,7 +28,7 @@ ylabel={$a_{max} \left[\frac{m}{s^2}\right]$},
 ymajorgrids,
 axis x line*=bottom,
 axis y line*=left,
-legend style={legend cell align=left,align=left,fill=white}
+legend style={legend cell align=left,align=left,draw=black}
 ]
 
 \addplot[area legend,mark=diamond,mark options={solid},solid,fill=mycolor1,opacity=2.000000e-01,draw=black]
@@ -140,8 +140,8 @@ x	y\\
 
 \addplot [color=mycolor5,dash pattern=on 1pt off 3pt on 3pt off 3pt]
   table[row sep=crcr]{%
--30	29.43\\
-30	29.43\\
+-25	29.43\\
+25	29.43\\
 };
 \addlegendentry{$\text{29.43 m/s}^\text{2}\text{ (3g)}$};
 

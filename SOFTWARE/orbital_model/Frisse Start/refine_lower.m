@@ -8,7 +8,7 @@ format long
 %%Input constants & variables
 variables
 
-files = {'orbit_alpha_isotensoid_l.txt', 'orbit_alpha_apollo_l.txt', 'orbit_alpha_torus_l.txt', 'orbit_alpha_pastille_l.txt', 'orbit_alpha_irve_l.txt'};
+files = {'orbit_alpha_isotensoid_low.txt', 'orbit_alpha_apollo_low.txt', 'orbit_alpha_torus_low.txt', 'orbit_alpha_pastille_low.txt', 'orbit_alpha_irve_low.txt'};
 names = {'isotensoid', 'apollo', 'torus', 'pastille', 'irve'};
 
 for bla = length(names)
@@ -75,8 +75,6 @@ parfor i = 1:length(alpha)
         
     end
 end
-
-
 
 %% write to file
 fid = fopen(file_name,'a');
