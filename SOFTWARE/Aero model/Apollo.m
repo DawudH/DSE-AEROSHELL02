@@ -61,21 +61,21 @@ for i = 1:p
     zvector(i*2*q+1) = zvector((i-1)*2*q+2);
 end
 
-Vector = [xvector' yvector' zvector'];
-
-for i = 1:length(Vector)-1
-    if Vector(i,:) == Vector (i+1,:)
-       Vector(i+1,:) = [0 0 0]; 
-    end
-end
-
-VectorI = Vector(:,1) == 0 & Vector(:,2) == 0 & Vector(:,2) == 0;
-VectorI(1) = 0;
-Count = sum(VectorI);
-Vector(VectorI,:)=[];
-xvector = Vector(:,1);
-yvector = Vector(:,2);
-zvector = Vector(:,3);
+% Vector = [xvector' yvector' zvector'];
+% 
+% for i = 1:length(Vector)-1
+%     if Vector(i,:) == Vector (i+1,:)
+%        Vector(i+1,:) = [0 0 0]; 
+%     end
+% end
+% 
+% VectorI = Vector(:,1) == 0 & Vector(:,2) == 0 & Vector(:,2) == 0;
+% VectorI(1) = 0;
+% Count = sum(VectorI);
+% Vector(VectorI,:)=[];
+% xvector = Vector(:,1);
+% yvector = Vector(:,2);
+% zvector = Vector(:,3);
 
 %% Triangulation matrix 
 
@@ -107,7 +107,7 @@ Tri = [Tri1;Tri];
 
  
  
-TriGeom = triangulation(Tri, xvector, yvector, zvector);
+TriGeom = triangulation(Tri, xvector', yvector', zvector');
 % FN = faceNormal(TriGeom);
 % IC = incenter(TriGeom);
 % 

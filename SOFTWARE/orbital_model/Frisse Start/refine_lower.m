@@ -8,18 +8,25 @@ format long
 %%Input constants & variables
 variables
 
+files = {'orbit_alpha_isotensoid_low.txt', 'orbit_alpha_apollo_low.txt', 'orbit_alpha_torus_low.txt', 'orbit_alpha_pastille_low.txt', 'orbit_alpha_irve_low.txt'};
+names = {'isotensoid', 'apollo', 'torus', 'pastille', 'irve'};
+
+for bla = 1:length(names)
 % booleans (no control, stop at beginning of elliptic orbit)
 use_control = false;
 multiple_orbits = false;
 
-alpha = -25:2.5:25;
-file_name = 'orbit_alpha_fine_lower.txt';
+alpha = -25:5:25;
+file_name = files{bla};
+
+clear aero_coef
+aero_coef = aeroProperties(names{bla});
 
 %Initial Position
 rx = -4100000;
 ry = 10*R_m;
 
-accuracy = 5;
+accuracy = 50;
 init_step = 5000;
 filestr = cell(length(alpha),1);
 parfor i = 1:length(alpha)
@@ -69,12 +76,13 @@ parfor i = 1:length(alpha)
     end
 end
 
-% close parallel processing
-delete(poolobj);
-
 %% write to file
 fid = fopen(file_name,'a');
 for k = 1:length(alpha)
     fprintf(fid,'%s',filestr{k});
 end
 fclose(fid);
+
+end
+% close parallel processing
+delete(poolobj);
