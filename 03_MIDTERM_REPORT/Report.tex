@@ -27,13 +27,17 @@
 \usepackage{caption}
 \usepackage{multicol}
 \usepackage{subcaption}
-
+\usepackage{pgfplots}
 \usepackage{lscape}
 \usepackage{rotating}
 
 \usepackage{pifont}
 \newcommand{\cmark}{\ding{51}}%
 \newcommand{\xmark}{\ding{55}}%
+
+\newlength\figureheight 
+\newlength\figurewidth
+\pgfplotsset{compat=1.3}
 
 % PAGESTYLE
 \pagestyle{plain}
