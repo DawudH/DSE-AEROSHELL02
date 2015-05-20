@@ -69,7 +69,7 @@ Equation \eqref{eq:therm3} can then be altered by adding a $q^n$-term for the co
 
 
 \subsubsection{Input}
-In order to make use of the tool, an input is required. This input consists of thermal conditions and material properties for five different concepts. The thermal properties are the stagnation temperature $ \gls{sym:T0}(t) $ and a stagnation heat flux $ \gls{sym:qsdot}(t) $. The material properties are the layer thickness $ L_1 $, $ L_2 $, etc., the thermal conductivity $ \gls{sym:k} $, the density $ \gls{sym:rho} $ and lastly the specific heat $ \gls{sym:cp} $.\\
+In order to make use of the tool, an input is required. This input consists of thermal conditions and material properties for five different concepts. The thermal properties are the stagnation temperature $ \gls{sym:T0}(t) $ and a stagnation heat flux $ \gls{sym:qdot}_s(t) $. The material properties are the layer thickness $ L_1 $, $ L_2 $, etc., the thermal conductivity $ \gls{sym:k} $, the density $ \gls{sym:rho} $ and lastly the specific heat $ \gls{sym:cp} $.\\
 
 Thermal inputs for the five concepts, temp and flux + graph.\\
 
@@ -138,18 +138,18 @@ To compare different concepts it is assumed that the \gls{tps}-mass is dependent
 
 In obtaining the incoming heat flux, is assumed that the temperature of the wall is much lower than the stagnation point temperature. The aerodynamics group has calculated stagnation temperatures in the order of tens of thousands Kelvin. Table \ref{tab:tpsmatprop} shows that the commonly used materials for thermal protection in inflatables have a maximum operating temperature of $1700K$. Therefore it is possible to omit the wall temperature in the heat flux as Equation \eqref{eq:stagcoefficient} shows that the resulting heat load shall be a conservative estimate. 
 
-Another consideration made in this method is the radiation as shown in Equation . Figure \ref{fig:1dthermal} shows that the incoming heat flux is counteracted by the radiation. Using the Stefan–Boltzmann law the radiation is calculated for different wall temperatures ($\gls{sym:T}_w$) and subtracted from the incoming heat flux to yield the actual heat rate \cite{Holman2002}. This heat rate is then integrated to obtain the heat load. The temperature ($\gls{sym:T}_\infty$) of the space that the wall radiates into is equal to the ambient atmosphere temperature at that point which is given by the astrodynamic tool. It is assumed that the radiation has a constant $\gls{sym:T}_w$, and that the $\gls{sym:T}_w$ does not decrease due to this radiation. In the actual conditions the $\gls{sym:T}_w$ will decrease if the radiation is greater than the incoming heat flux if the entry vehicle for example exits the atmosphere. This indicates that the magnitude of the resulting heat rate, and therefore the heat load, are rough estimates and should only be used to compare the different concepts. Furthermore, the radiation also depends on the emissivity $ \gls{sym:eps}$
+Another consideration made in this method is the radiation as shown in Equation \ref{eq:radiation}. Figure \ref{fig:1dthermal} shows that the incoming heat flux is counteracted by the radiation. Using the Stefan–Boltzmann law the radiation is calculated for different wall temperatures ($\gls{sym:T}_w$) and subtracted from the incoming heat flux to yield the actual heat rate \cite{Holman2002}. This heat rate is then integrated to obtain the heat load. The temperature ($\gls{sym:T}_\infty$) of the space that the wall radiates into is equal to the ambient atmosphere temperature at that point which is given by the astrodynamic tool. It is assumed that the radiation has a constant $\gls{sym:T}_w$, and that the $\gls{sym:T}_w$ does not decrease due to this radiation. In the actual conditions the $\gls{sym:T}_w$ will decrease if the radiation is greater than the incoming heat flux if the entry vehicle for example exits the atmosphere. This indicates that the magnitude of the resulting heat rate, and therefore the heat load, are rough estimates and should only be used to compare the different concepts. Furthermore, the radiation also depends on the emissivity $ \gls{sym:eps}$. This value might change from concept to concept, but it is assumed that all concepts have the same emissivity.
 
 \begin{equation}
-\label{radiation}
-/ \gls{sym:A} = 
+\label{eq:radiation}
+\gls{sym:qdot}_r = \gls{sym:eps} \cdot \gls{con:stefanboltzmann} \cdot \left( {\gls{sym:T}_w}^4 - {\gls{sym:T}_\infty}^4  \right)
 \end{equation}
 
 
 Since the radiation is strongly dependent on $\gls{sym:T}_w$, the heat load (in $\left[\frac{J}{m^2}\right]$) is calculated using a variable wall temperature. Then the heat load is divided by a reference heat load. This reference heat load is chosen to be the heat load of the stacked toroid. The resulting graph can then be used to compare the concepts.
 
 \subsubsection{Results of the alternative method}
-
+As discussed before, integrating the total heat flux will result in the heat load. the heat loads of the different concepts can be compared as a function of the heat load of the stacked torroid. However, 
 
 \subsection{Conclusion \& recommendations}
 Check for material failure other then for thermal reasons.
