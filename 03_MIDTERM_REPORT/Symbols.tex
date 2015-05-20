@@ -199,7 +199,7 @@ parent=romanletter % for sorting purposes, use romanletter or greekletter
 {
 	type=symbol, % entry should be in the list of symbols!
 	name={\ensuremath{C_p}}, % Put the symbol here in dollar signs
-	description={Coefficient of pressure}, % A brief description of this entry (to appear in the glossary).
+	description={Pressure coefficient}, % A brief description of this entry (to appear in the glossary).
 	symbol={$\left[-\right]$}, % put the unit here.... kind of weird, i know 
 	sort=Cp, % for correct sorting type the full name of the symbol here
 	parent=romanletter % for sorting purposes, use romanletter or greekletter
@@ -240,7 +240,7 @@ parent=romanletter % for sorting purposes, use romanletter or greekletter
 type=symbol, % entry should be in the list of symbols!
 name={\ensuremath{R}}, % Put the symbol here in dollar signs
 description={radius magnitude}, % A brief description of this entry (to appear in the glossary).
-symbol={$\left[\frac{m}{s^3}\right]$}, % put the unit here.... kind of weird, i know 
+symbol={$\left[m\right]$}, % put the unit here.... kind of weird, i know 
 sort=jerk, % for correct sorting type the full name of the symbol here
 parent=romanletter % for sorting purposes, use romanletter or greekletter
 }
@@ -250,7 +250,7 @@ parent=romanletter % for sorting purposes, use romanletter or greekletter
 type=symbol, % entry should be in the list of symbols!
 name={\ensuremath{J}}, % Put the symbol here in dollar signs
 description={Jerk of the spacecraft}, % A brief description of this entry (to appear in the glossary).
-symbol={$\left[m\right]$}, % put the unit here.... kind of weird, i know 
+symbol={$\left[\frac{m}{s^3}]}{den}\right]$}, % put the unit here.... kind of weird, i know 
 sort=Rm, % for correct sorting type the full name of the symbol here
 parent=romanletter % for sorting purposes, use romanletter or greekletter
 }
@@ -516,26 +516,6 @@ sort=m0, % for correct sorting type the full name of the symbol here
 parent=romanletter % for sorting purposes, use romanletter or greekletter
 }
 
-\newglossaryentry{sym:mheat}
-{
-type=symbol, % entry should be in the list of symbols!
-name={\ensuremath{m_{heatshield}}}, % Put the symbol here in dollar signs
-description={Heatshield mass }, % A brief description of this entry (to appear in the glossary).
-symbol={$\left[kg \right]$}, % put the unit here.... kind of weird, i know 
-sort=mheat, % for correct sorting type the full name of the symbol here
-parent=romanletter % for sorting purposes, use romanletter or greekletter
-}
-
-\newglossaryentry{sym:mstructure}
-{
-type=symbol, % entry should be in the list of symbols!
-name={\ensuremath{m_{structure}}}, % Put the symbol here in dollar signs
-description={Structural mass}, % A brief description of this entry (to appear in the glossary).
-symbol={$\left[kg \right]$}, % put the unit here.... kind of weird, i know 
-sort=mstruct, % for correct sorting type the full name of the symbol here
-parent=romanletter % for sorting purposes, use romanletter or greekletter
-}
-
 
 \newglossaryentry{sym:T}
 {
@@ -632,7 +612,7 @@ parent=romanletter % for sorting purposes, use romanletter or greekletter
 	type=symbol, % entry should be in the list of symbols!
 	name={\ensuremath{\dot{q_{s}}}}, % Put the symbol here in dollar signs
 	description={Stagnation heat flux}, % A brief description of this entry (to appear in the glossary).
-	symbol={$\left[ \frac{J}{kg*K} \right]$}, % put the unit here.... kind of weird, i know 
+	symbol={$\left[ \frac{W}{cm^2} \right]$}, % put the unit here.... kind of weird, i know 
 	sort=qsdot, % for correct sorting type the full name of the symbol here
 	parent=romanletter % for sorting purposes, use romanletter or greekletter
 }
@@ -693,7 +673,7 @@ parent=romanletter % for sorting purposes, use romanletter or greekletter
 	type=symbol, % entry should be in the list of symbols!
 	name={\ensuremath{C_MA}}, % Put the symbol here in dollar signs
 	description={Moment coefficient around y-axis times reference area}, % A brief description of this entry (to appear in the glossary).
-	symbol={$\left[\right]$}, % put the unit here.... kind of weird, i know 
+	symbol={$\left[m^2\right]$}, % put the unit here.... kind of weird, i know 
 	sort=CMA, % for correct sorting type the full name of the symbol here
 	parent=romanletter % for sorting purposes, use romanletter or greekletter
 }
@@ -703,7 +683,7 @@ parent=romanletter % for sorting purposes, use romanletter or greekletter
 	type=symbol, % entry should be in the list of symbols!
 	name={\ensuremath{C_{M_\alpha}A}}, % Put the symbol here in dollar signs
 	description={Moment coefficient gradient around y-axis times reference area}, % A brief description of this entry (to appear in the glossary).
-	symbol={$\left[s\right]$}, % put the unit here.... kind of weird, i know 
+	symbol={$\left[\frac{m^2}{rad}\right]$}, % put the unit here.... kind of weird, i know 
 	sort=CMAalpha, % for correct sorting type the full name of the symbol here
 	parent=romanletter % for sorting purposes, use romanletter or greekletter
 }
