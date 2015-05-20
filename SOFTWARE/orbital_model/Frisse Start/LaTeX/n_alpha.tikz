@@ -11,7 +11,7 @@
 
 \begin{axis}[%
 width=0.202128\figurewidth,
-height=0.932352\figureheight,
+height=0.928725\figureheight,
 at={(0.797872\figurewidth,0\figureheight)},
 scale only axis,
 every outer x axis line/.append style={black},
@@ -27,7 +27,7 @@ ymax=200,
 ymajorgrids,
 axis x line*=bottom,
 axis y line*=left,
-legend style={at={(0.5,1.03)},anchor=south,legend columns=1,legend cell align=left,align=left,fill=white}
+legend style={at={(0.5,1.03)},anchor=south,legend columns=1,legend cell align=left,align=left,draw=black}
 ]
 
 \addplot[area legend,mark=x,mark options={solid},solid,fill=mycolor1,opacity=4.000000e-01,draw=black]
@@ -57,7 +57,7 @@ x	y\\
 -25	142.32634452\\
 }--cycle;
 
-\addlegendentry{Stacked toroid};
+\addlegendentry{Stacked toroid / Tension cone};
 
 \addplot [color=mycolor2,dash pattern=on 1pt off 3pt on 3pt off 3pt,forget plot]
   table[row sep=crcr]{%
@@ -68,7 +68,7 @@ x	y\\
 
 \begin{axis}[%
 width=0.202128\figurewidth,
-height=0.932352\figureheight,
+height=0.928725\figureheight,
 at={(0.531915\figurewidth,0\figureheight)},
 scale only axis,
 every outer x axis line/.append style={black},
@@ -84,7 +84,7 @@ ymax=200,
 ymajorgrids,
 axis x line*=bottom,
 axis y line*=left,
-legend style={at={(0.5,1.03)},anchor=south,legend columns=1,legend cell align=left,align=left,fill=white}
+legend style={at={(0.5,1.03)},anchor=south,legend columns=1,legend cell align=left,align=left,draw=black}
 ]
 
 \addplot[area legend,mark=asterisk,mark options={solid},solid,fill=mycolor3,opacity=4.000000e-01,draw=black]
@@ -125,7 +125,7 @@ x	y\\
 
 \begin{axis}[%
 width=0.202128\figurewidth,
-height=0.932352\figureheight,
+height=0.928725\figureheight,
 at={(0.265957\figurewidth,0\figureheight)},
 scale only axis,
 every outer x axis line/.append style={black},
@@ -141,32 +141,30 @@ ymax=200,
 ymajorgrids,
 axis x line*=bottom,
 axis y line*=left,
-legend style={at={(0.5,1.03)},anchor=south,legend columns=1,legend cell align=left,align=left,fill=white}
+legend style={at={(0.5,1.03)},anchor=south,legend columns=1,legend cell align=left,align=left,draw=black}
 ]
 
 \addplot[area legend,mark=o,mark options={solid},solid,fill=mycolor4,opacity=4.000000e-01,draw=black]
 table[row sep=crcr] {%
 x	y\\
--25	108.24966144\\
--20	95.11287462\\
--15	82.72693539\\
--10	71.95686993\\
--5	62.35319385\\
-0	53.79265431\\
-5	46.18769706\\
-10	39.77433108\\
-15	34.71731532\\
-25	27.33582006\\
-25	27.33582006\\
-15	35.07564519\\
-10	42.0767577\\
-5	51.70457619\\
-0	64.59641712\\
--5	81.45440181\\
--10	102.09760443\\
--15	126.6631884\\
--20	158.03804052\\
--25	196.96159935\\
+-25	108.01223982\\
+-20	94.98078297\\
+-15	82.50644583\\
+-10	71.90960535\\
+-5	62.21882628\\
+0	53.36310384\\
+5	46.29544029\\
+10	39.86811468\\
+15	34.81538589\\
+15	35.17418664\\
+10	42.16970745\\
+5	51.81387921\\
+0	64.75052241\\
+-5	81.37015353\\
+-10	101.91633525\\
+-15	126.25238484\\
+-20	157.54453866\\
+-25	196.11227898\\
 }--cycle;
 
 \addlegendentry{Rigid};
@@ -180,7 +178,7 @@ x	y\\
 
 \begin{axis}[%
 width=0.202128\figurewidth,
-height=0.932352\figureheight,
+height=0.928725\figureheight,
 at={(0\figurewidth,0\figureheight)},
 scale only axis,
 every outer x axis line/.append style={black},
@@ -197,7 +195,7 @@ ylabel={$a_{max} \left[\frac{m}{s^2}\right]$},
 ymajorgrids,
 axis x line*=bottom,
 axis y line*=left,
-legend style={at={(0.5,1.03)},anchor=south,legend columns=1,legend cell align=left,align=left,fill=white}
+legend style={at={(0.5,1.03)},anchor=south,legend columns=1,legend cell align=left,align=left,draw=black}
 ]
 
 \addplot[area legend,mark=diamond,mark options={solid},solid,fill=mycolor5,opacity=4.000000e-01,draw=black]
