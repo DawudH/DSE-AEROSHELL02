@@ -42,7 +42,7 @@ Table \ref{tab:designconcepts} shows the design options that will be considered 
 		\begin{tabular}{|p{0.3\textwidth}|p{0.14\textwidth}|p{0.14\textwidth}|p{0.14\textwidth}|} \hline 
 			\textbf{Concept} & \textbf{Thrusters}	& \textbf{\gls{cg} offset} &  \textbf{Control surfaces} \\ \hline \hline
 			Stacked toroid   & \cmark	& \cmark &  \cmark \\ \hline
-			Isotensoid		 & \cmark	& \cmark &  \xmark\\  \hline
+			Isotensoid		 & \cmark	& \cmark &  \cmark\\  \hline
 			Tension cone	 & \cmark	& \cmark &  \cmark \\ \hline
 			Trailing ballute & \xmark	& \xmark &  \cmark \\ \hline
 			Combined 		 & \xmark	& \xmark &  \cmark \\ \hline
@@ -50,15 +50,14 @@ Table \ref{tab:designconcepts} shows the design options that will be considered 
 		\end{tabular}
 \end{table}
 
-From Table \ref{tab:designconcepts} it can be noted that all shape configurations are deemed feasible for at least one control system. To yield a total of five concepts the combined concept is disregarded.
- It is considered to be too similar to a Trailing concept. A trailing concept will still require a heat shield in front of the payload and can therefore be considered, is some aspects, a combined configuration as well. It is therefore considered that a deployable inflatable at the front will have no additional advantage. A small deployable will have a similar performance as the trailing configuration, but features the additional complexity of the front inflation system. A large frontal inflatable will however place the aft inflatable in the wake making it effectively useless. Removing the aft declarator will however yield a "simple" stacked toroid, Isotensoid or tension cone configuration. For these reasons the trailing concept will not be considered. 
+From Table \ref{tab:designconcepts} it can be noted that all shape configurations are deemed feasible for at least one control system. To yield a total of five system-level concepts the combined concept is disregarded. This is the case because it is considered to be too similar to a trailing ballute concept. A trailing concept will still require a heat shield in front of the capsule and can therefore be considered, in some aspects, a combined configuration as well. It is therefore considered that a deployable inflatable at the front will have no additional advantages. A small deployable structure will have a similar performance as the trailing configuration, but features the additional complexity of the front inflation system. A large inflatable located on the front of the capsule will however place the aft inflatable in its wake, making it effectively useless for producing drag. Removing the aft decelerator will however yield a "simple" stacked toroid, isotensoid or tension cone configuration, depending on the structure located on the front of the capsule. For these reasons the trailing concept will not be considered. 
  
- The infeasible combinations of control systems are further detailed in \ref{sec:ccs}, together with a general description of each set of control system. 
+The infeasible combinations of control systems are further detailed in \ref{sec:ccs}, together with a general description of each control system concept. 
 
 \subsection{Concept configurations} \label{sec:conf}
-In this section a the global configuration of each of the final five shapes is considered. They are sketched and described shortly in the sections below. Moreover a simple \gls{fbd} is provided to gain insight in, where applicable, the structural principle of each of the concepts.
+In this section a the global configuration of each of the final five shapes is considered. They are sketched and described shortly in the sections below. Moreover a simple \gls{fbd} is provided for each concept to gain insight into, where applicable, the structural principle of each of the concepts.
 
-\textbf{Stacked toroid}
+\paragraph{Stacked toroid}
 
 Fig. \ref{fig:conc_stacked} and \ref{fig:fbd_stacked} show the stacked toroid concept. A stacked toroid configuration features multiple inflatables which are stacked together to form the aeroshell. These inflatables are consequently covered with a thermal protection layer. In this design the payload is placed aft of the aeroshell.\
 
@@ -77,7 +76,7 @@ Fig. \ref{fig:conc_stacked} and \ref{fig:fbd_stacked} show the stacked toroid co
 \end{figure}
 
 
-\textbf{Isotensoid}
+\paragraph{Isotensoid}
 
 An isotensoid configuration as displayed in Fig. \ref{fig:conc_iso} and \ref{fig:fbd_iso} features a single inflatable. This inflatable covers the whole of the payload. This inflatable is relatively large and is typically inflated using ram-air \cite{Smith2011}. 
 
@@ -95,7 +94,7 @@ An isotensoid configuration as displayed in Fig. \ref{fig:conc_iso} and \ref{fig
 \label{fig:fbd_iso}
 \end{figure}
 
-\textbf{Tension cone}
+\paragraph{Tension cone}
 
 A tension cone, as shown in Fig. \ref{fig:conc_tension} and \ref{fig:fbd_tension}  again consists only of a single inflatable. In this case the inflatable is ring formed, using the ring to provide stiffness to a web spanned within. In this configuration the aeroshell is placed front of the payload, warping around it in some extend.
 
@@ -113,7 +112,7 @@ A tension cone, as shown in Fig. \ref{fig:conc_tension} and \ref{fig:fbd_tension
 \label{fig:fbd_tension}
 \end{figure}
 
-\textbf{Trailing}
+\paragraph{Trailing}
 
 Fig. \ref{fig:conc_trailing} \ref{fig:fbd_trailing} show a trailing configuration. A trailing configuration consist of two parts. An aft-placed inflatable, typically referred to as the trailing, and a front placed rigid heat shield. Since the inflatable is placed aft the payload is directly exposed to the atmosphere requiring the addition of the rigid heat shield. The shock waves induced by the front of the payload consequently create a wake aft of the payload. A typical trailing device is therefore ring formed to stay out of this wake is also displayed by Fig. \ref{fig:conc_trailing}. This is also the trailing configuration as treated within this report.
 
@@ -131,7 +130,7 @@ Fig. \ref{fig:conc_trailing} \ref{fig:fbd_trailing} show a trailing configuratio
 \label{fig:fbd_trailing}
 \end{figure}
 
-\textbf{Rigid}
+\paragraph{Rigid}
 
 The rigid configuration is the most typical configuration and frequently used by returns to the earth atmosphere such as in the Apollo, Soyuz or planned Orion mission. Fig. \ref{fig:conc_rigid} and \ref{fig:fbd_rigid} show the Rigid configuration. This design features a rigid heat shield in front of the payload and is the only concept featuring no inflatable parts.
 
@@ -150,7 +149,7 @@ The rigid configuration is the most typical configuration and frequently used by
 \end{figure}
 
 \subsection{Concept control systems} \label{sec:ccs}
-This section discusses the control systems for each of the control systems of the design option tree. This is related to the shapes of each of the concepts also serving to explain the checkmarks and crosses of Table \ref{tab:designconcepts}. 
+This section discusses the control systems for each of the control systems of the design option tree. This is related to the shapes of each of the concepts also serving to explain the check-marks and crosses of Table \ref{tab:designconcepts}. 
 
 The control surfaces are not yet further detailed within the midterm report. Development risk and control system mass is however taken into account by considering the feasible control concepts and by considering the aerodynamic properties of the concepts. The latter is detailed in Chapter \ref{ch:aero_analysis}.
 
@@ -176,12 +175,11 @@ Control surfaces have been subdivided into two forms; body flaps and morphing of
 \paragraph{Body flaps}
 A control system with body flaps features deployable surfaces to manipulate the flow around the spacecraft. Body flaps have previously been deployed at for example the Space Shuttle missions. It must however be noted that its usage was limited to supersonic Mach numbers at higher atmospheric densities. As such it is a possible control concept for the rigid structure.
 
-Body flaps on inflatable structures have not yet been featured and are not deemed feasible. Since body flaps need to based inside the flow positioning is not possible. In these designs the inflatable is the part placed within the flow. Do to the nature of deployment and the structural layout of these systems body flaps are not deemed to be feasible. The usage of body flaps for the Mach numbers considered would also incur a significant development risk.
+Body flaps on inflatable structures have not yet been featured and are not deemed feasible. This is the case because when a body flap is placed on the outer extremity of an inflatable surface said surface will deflect due to the forces exerted by the flap. Thus the combination of body flaps and inflatable structures is not deemed to be feasible. The usage of body flaps for the Mach numbers considered would also incur a significant development risk.
 
 \paragraph{Morphing}
-In morphing concepts the whole external shape is changed to control the spacecraft. This is not possible for rigid structures as no morphable parts exist, from the perspective of rigid decelerator structure. 
- For the inflatable structures morphing is deemed possible for with the exception of the isotensoid design and is already being investigated \cite{Hughes2011}. In the isotensoid design the whole outside is covered by inflatable. The whole inflatable can thus only e formed by usage of the gas inside. This is however not deemed possible due to the usage of ram-air as inflation mechanism.
+In morphing concepts the external shape of the aeroshell is manipulated in order to control the spacecraft. The difference between morphing structures and body flaps is that in a morphing structure the moving section is an integral part of the aeroshell, whereas a body flap is an additional, separate section specifically designed to be actuated. Using a morphing structure as control system is not possible in conjunction with a rigid structure, since the stiffness of the structure would require extreme control forces and thus a heavy control system. For inflatable structures (who typically have less stiffness than a rigid structure) morphing is deemed possible with exception of the isotensoid design and has already been investigated in recent years \cite{Hughes2011}.
 
-Morphing of the trailing ballute configuration would be done via the payload-ballute connection much like for example a parachute.
+Morphing a trailing ballute configuration would be done via the payload-ballute connection much like a parachute, where the length of the connection elements would be individually altered to change the orientation of the trailing element with respect to the flow.
 
-In terms of development risk morphing of the structure is mostly at a very early conceptual phase posing significant development risks. Investigations for morphing of a stacked toroid configuration have for example been performed \cite{Green2013} but no actual testing  is done.
+In terms of development risk morphing structures are mostly at a very early conceptual phase posing significant development risks. Theoretical investigations for morphing of a stacked toroid configuration have been conducted \cite{Green2013} but no actual testing is done. One can see how employing a morphing structure as control system would thus increase the overall development risk.
