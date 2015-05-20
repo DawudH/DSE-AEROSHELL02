@@ -23,7 +23,7 @@ function [ coords, tri, A, center ] = generategeometry( type, q )
             coords = [coordstorus, coordsapollo];
             tri = [tritorus;triapollo];
             A = Atorus+Aapollo;
-            center = (centerapollo*9000+(centertorus+distance)*1000)/10000;
+            center = (centerapollo*9000+(centertorus+[distance,0,0])*1000)/10000;
         case 'horizontalplate'
             xvector = [0 1 0 1];
             yvector = [0 0 1 1];
@@ -39,7 +39,7 @@ function [ coords, tri, A, center ] = generategeometry( type, q )
             coords = [xvector;yvector;zvector];        
             tri = [1 4 2;2 4 3];
             A = 1;
-            center = [0 0 0];
+            center = [0 0.5 0.5];
         case 'sphere12m'
             TriGeom = TriMeshGen(q, 6, 6, 6, 's');
             coords = TriGeom.Points';
@@ -53,7 +53,7 @@ function [ coords, tri, A, center ] = generategeometry( type, q )
             coords = TriGeom.Points';
             tri = TriGeom.ConnectivityList;
             A = pi*6^2;   
-            center = [(r/2*1000+(5/3*+5)*9000)/10000, 0, 0];
+            center = [-(r/2*1000+(5/3*+5)*9000)/10000, 0, 0];
         case 'pastille12m1.5m'
             TriGeom = TriMeshGen(q, 6, 1.5, 6, 's');
             coords = TriGeom.Points';
@@ -95,7 +95,7 @@ function [ coords, tri, A, center ] = generategeometry( type, q )
             A = pi*6^2;
             t = 90-t;
             t = tand(t)*r;            
-            center = [((5/3+t/(2.5*r)+(2.5-r)*t/r)*9000+3/5*(t/R/r+(R-r)*t/r)*1000)/10000, 0, 0];
+            center = [-((5/3+t/(2.5*r)+(2.5-r)*t/r)*9000+3/5*(t/R/r+(R-r)*t/r)*1000)/10000, 0, 0];
             %t gradient, r half dome radius, R is max radius            
         case 'apollovalidation'
             [TriGeom, xvector, yvector, zvector] = Apollo(q);
