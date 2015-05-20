@@ -18,6 +18,8 @@ classdef aeroProperties
                     filestring = 'pastille.txt';
                 case 'torus'
                     filestring = 'torus.txt';    
+                case 'ballute'
+                    filestring = 'ballute.txt';                    
                 otherwise
                     warning(strcat('Case: ', object, ' does not exist'));
                     filestring = 'torus.txt';   
@@ -52,21 +54,25 @@ classdef aeroProperties
         end
         
         function clcd = getCLCD(obj, alpha)
-            clcd = obj.getCLA(alpha)/obj.getCDA(alpha);
+            clcd = obj.getCLA(alpha)./obj.getCDA(alpha);
+        end
+        
+        function cmcl = getCMCL(obj, alpha)
+            cmcl = obj.getCMYA(alpha)./obj.getCLA(alpha);
         end
         
         function dCLAdalpha = getLiftGradient(obj, alpha)
-            dalpha = 0.01;
+            dalpha = 0.1;
             dCLAdalpha = (-obj.getCLA(alpha)+obj.getCLA(alpha+dalpha))/dalpha;
         end
         
         function dCDAdalpha = getDragGradient(obj, alpha)
-            dalpha = 0.01;
+            dalpha = 0.1;
             dCDAdalpha = (-obj.getCDA(alpha)+obj.getCDA(alpha+dalpha))/dalpha;
         end        
         
         function dCMYAdalpha = getMomentGradient(obj, alpha)
-            dalpha = 0.01;
+            dalpha = 0.1;
             dCMYAdalpha = (-obj.getCMYA(alpha)+obj.getCMYA(alpha+dalpha))/dalpha;
         end
         

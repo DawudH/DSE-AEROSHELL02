@@ -11,10 +11,10 @@ shapetexts.torus = 'torus';
 shapetexts.concept_irve = 'concept_irve';
 shapetexts.concept_apollo = 'concept_apollo';
 shapetexts.concept_isotensoid = 'concept_isotensoid';
+shapetexts.ballute = 'ballute';
 
 a = 300;
 gamma = 1.4;
-center = zeros(3,1);
 rho = 1e-5;
 T = 150;
 q = 31;
@@ -23,15 +23,15 @@ alpha0 = 0; %degrees
 dalpha = 1; %degrees
 alphaend = 40; %degrees
 
-[ coords, tri, A ] = generategeometry( shapetexts.concept_isotensoid, q );
+[ coords, tri, A, center ] = generategeometry( shapetexts.deg60cone, q );
 
 mod = modnewtonian( coords, tri, gamma, a, center, rho, T, A);
 % mod = mod.alphasweep(a*20, 0, deg2rad(alpha0), deg2rad(alphaend), deg2rad(dalpha));
 
-mod = mod.calcAeroangle(7e3,deg2rad(10),deg2rad(0));
+mod = mod.calcAeroangle(7e3,deg2rad(30),deg2rad(0));
 
 mod.plotCp(true, false);
-mod.CR_aero_array
+% mod.CR_aero_array
     
   
 % mod.plots(rad2deg(mod.alpha_array), 'alpha', {{'cl'}, {'cd'}, {'clcd'}, {'cx'}, {'cz'},{'cmy'},{'q'}, {'T'}});

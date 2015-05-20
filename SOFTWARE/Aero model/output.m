@@ -1,4 +1,5 @@
 % close all;
+clear
 
 shapetexts.horizontalplate = 'horizontalplate';
 shapetexts.verticalplate = 'verticalplate';
@@ -12,20 +13,21 @@ shapetexts.torus = 'torus';
 shapetexts.concept_irve = 'concept_irve';
 shapetexts.concept_apollo = 'concept_apollo';
 shapetexts.concept_isotensoid = 'concept_isotensoid';
+shapetexts.ballute = 'ballute';
 
 a = 180;
 gamma = 1.29;
-center = zeros(3,1);
 rho = 9e-5;
 T = 130;
-q = 23;
+q = 37;
 
 alpha0 = -60; %degrees
 dalpha = 1; %degrees
-alphaend = 37; %degrees
-
-disp('Gererating geometry...');
-[ coords, tri, A ] = generategeometry( shapetexts.concept_isotensoid, q );
+alphaend = 60; %degrees
+shape = shapetexts.concept_isotensoid;
+disp(shape);
+disp('Generating geometry...');
+[ coords, tri, A, center ] = generategeometry( shape, q );
 
 disp('Initialising...');
 mod = modnewtonian( coords, tri, gamma, a, center, rho, T, A);
