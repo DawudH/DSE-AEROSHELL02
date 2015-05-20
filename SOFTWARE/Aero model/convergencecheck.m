@@ -12,6 +12,7 @@ shapetexts.torus = 'torus';
 shapetexts.concept_irve = 'concept_irve';
 shapetexts.concept_apollo = 'concept_apollo';
 shapetexts.concept_isotensoid = 'concept_isotensoid';
+shapetexts.ballute = 'ballute';
 
 a = 300;
 gamma = 1.4;
@@ -26,7 +27,7 @@ cl = zeros(size(qarray));
 for i = 1:length(qarray)
     q = qarray(i);
     disp(strcat('Current q:', num2str(q)));
-    [ coords, tri, A ] = generategeometry( shapetexts.concept_isotensoid, q );
+    [ coords, tri, A ] = generategeometry( shapetexts.ballute, q );
     
     mod = modnewtonian( coords, tri, gamma, a, center, rho, T, A);
 

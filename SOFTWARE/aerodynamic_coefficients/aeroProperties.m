@@ -18,6 +18,8 @@ classdef aeroProperties
                     filestring = 'pastille.txt';
                 case 'torus'
                     filestring = 'torus.txt';    
+                case 'ballute'
+                    filestring = 'ballute.txt';                    
                 otherwise
                     warning(strcat('Case: ', object, ' does not exist'));
                     filestring = 'torus.txt';   
