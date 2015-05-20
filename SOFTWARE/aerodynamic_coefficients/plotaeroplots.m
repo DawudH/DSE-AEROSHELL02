@@ -77,3 +77,15 @@ xlabel('$\alpha [deg]$', 'interpreter', 'latex');
 ylabel('$C_{M_\alpha}A [\frac{m^2}{rad}]$', 'interpreter', 'latex');
 legend('Stacked Toroid, Tension Cone', 'Rigid', 'Isotensoid', 'Trailing Ballute');
 print('plots/cmalpha', '-depsc');
+
+figure;
+hold on;
+alpha = alpha(2:end);
+plot(rad2deg(alpha), aerirve.getCMCL(alpha));
+plot(rad2deg(alpha), aerapollo.getCMCL(alpha));
+plot(rad2deg(alpha), aerisotensoid.getCMCL(alpha));
+plot(rad2deg(alpha), aerballute.getCMCL(alpha));
+xlabel('$\alpha [deg]$', 'interpreter', 'latex');
+ylabel('$\frac{C_M}{C_L} [-]$', 'interpreter', 'latex');
+legend('Stacked Toroid, Tension Cone', 'Rigid', 'Isotensoid', 'Trailing Ballute');
+print('plots/cmcl', '-depsc');

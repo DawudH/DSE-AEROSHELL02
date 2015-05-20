@@ -54,7 +54,11 @@ classdef aeroProperties
         end
         
         function clcd = getCLCD(obj, alpha)
-            clcd = obj.getCLA(alpha)/obj.getCDA(alpha);
+            clcd = obj.getCLA(alpha)./obj.getCDA(alpha);
+        end
+        
+        function cmcl = getCMCL(obj, alpha)
+            cmcl = obj.getCMYA(alpha)./obj.getCLA(alpha);
         end
         
         function dCLAdalpha = getLiftGradient(obj, alpha)
