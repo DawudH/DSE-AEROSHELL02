@@ -607,13 +607,20 @@ parent=romanletter % for sorting purposes, use romanletter or greekletter
 	parent=romanletter % for sorting purposes, use romanletter or greekletter
 }
 	
-	\newglossaryentry{sym:qsdot}
+	\newglossaryentry{sym:qdot}
 {
 	type=symbol, % entry should be in the list of symbols!
+<<<<<<< HEAD
 	name={\ensuremath{\dot{q_{s}}}}, % Put the symbol here in dollar signs
 	description={Stagnation heat flux}, % A brief description of this entry (to appear in the glossary).
 	symbol={$\left[ \frac{W}{cm^2} \right]$}, % put the unit here.... kind of weird, i know 
 	sort=qsdot, % for correct sorting type the full name of the symbol here
+=======
+	name={\ensuremath{\dot{q}}}, % Put the symbol here in dollar signs
+	description={heat flux}, % A brief description of this entry (to appear in the glossary).
+	symbol={$\left[ \frac{J}{kg*K} \right]$}, % put the unit here.... kind of weird, i know 
+	sort=qdot, % for correct sorting type the full name of the symbol here
+>>>>>>> 963857e7dfacc5c2c83f20ba142f2bfae22fab12
 	parent=romanletter % for sorting purposes, use romanletter or greekletter
 }
 
@@ -674,6 +681,19 @@ parent=romanletter % for sorting purposes, use romanletter or greekletter
 	name={\ensuremath{C_MA}}, % Put the symbol here in dollar signs
 	description={Moment coefficient around y-axis times reference area}, % A brief description of this entry (to appear in the glossary).
 	symbol={$\left[m^2\right]$}, % put the unit here.... kind of weird, i know 
+<<<<<<< HEAD
+=======
+	sort=CMA, % for correct sorting type the full name of the symbol here
+	parent=romanletter % for sorting purposes, use romanletter or greekletter
+}
+
+\newglossaryentry{sym:cmcl}
+{
+	type=symbol, % entry should be in the list of symbols!
+	name={\ensuremath{\frac{C_M}{C_L}}}, % Put the symbol here in dollar signs
+	description={Moment coefficient around y-axis divided by Lift coefficient}, % A brief description of this entry (to appear in the glossary).
+	symbol={$\left[-\right]$}, % put the unit here.... kind of weird, i know 
+>>>>>>> 963857e7dfacc5c2c83f20ba142f2bfae22fab12
 	sort=CMA, % for correct sorting type the full name of the symbol here
 	parent=romanletter % for sorting purposes, use romanletter or greekletter
 }

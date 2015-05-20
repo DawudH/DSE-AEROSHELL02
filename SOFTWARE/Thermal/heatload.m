@@ -123,14 +123,14 @@ plot(Twall,fraction(1,:),'b')
 hold on
 grid on
 plot(Twall,fraction(2,:),'-.b')
-plot(Twall,fraction(3,:),'r')
-plot(Twall,fraction(4,:),'g')
-plot(Twall,fraction(5,:),'-.g')
+%plot(Twall,fraction(3,:),'r')
+plot(Twall,fraction(4,:),'r')
+plot(Twall,fraction(5,:),'-.r')
 title('Heat load fractions')
 xlabel('wall temperature [K]')
 ylabel('Heat load fraction [-]')
-legend('ballute','isotensoid','rigid','stacked torroid','tension cone')
-    
+legend('ballute','isotensoid','stacked torroid','tension cone')
+axis([min mout 0.55 1.25  ])   
     
     
     
