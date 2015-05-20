@@ -144,8 +144,57 @@ The model for the maximum heat flux found on a body was validated in section \re
 \subsection{Application of analysis tool to system concepts}
 \label{subsec:appaeroanal}
 After the model development and validation, the different system concepts are evaluated on performance in the different trade-off criteria. Specifically, the lift, drag and aerodynamic heating are discussed.
-\subsubsection{Lift performance}
+In order to assess these values, a representative geometry is chosen. Since Newtonian flow only affects the parts of the vehicle that are in direct line of sight of the oncoming flow, only the front of the decelerator has to be accurately modelled. The stacked toroid and tension cone concepts are modelled after the \gls{irve} missions as flown by NASA, as can be seen in Figure \ref{fig:cp_stackedtoroid}. The isotensoid model is modelled as a slightly flattened sphere, with a radius of 6 meters perpendicular and a radius of 5 meter in direction of the flow. This model can be seen in Figure \ref{fig:cp_isotensoid}. The Trailing ballute is modelled as a single torus, as seen in Figure \ref{fig:cp_torus}, and the rigid concept's front is a largely flattened sphere, as seen in Figure \ref{fig:cp_rigid}.
 
---cl performance
---cm performance
---q	 performance
+\subsubsection{Lift performance}
+The lift is defined as the component of the aerodynamic force perpendicular to the flow, where the direction away from Mars is defined positive. The equation used to calculate the total lift of a vehicle is given in Eq \ref{eq:lift}.
+\begin{equation}
+\gls{sym:L} = \frac{1}{2}\gls{sym:rho}\gls{sym:V}^2\gls{sym:cla}
+\label{eq:lift}
+\end{equation}
+This $\gls{sym:cla}$ is the lift coefficient times the reference area and as such gives insight in the lift generation of a given spacecraft, incorporating its size. For blunt vehicles with a blunt surface perpendicular to the flow, a positive angle of attack $\gls{sym:alpha}$ results in a negative lift.
+
+In Figure \ref{fig:clplots}, the lift coefficient is seen to vary greatly for the different concepts: the stacked toroid and tension cone produce about 3 times the lift of the other concepts. This is also reflected in the lift gradient plot, which can be found in \ref{fig:claplha}. The lift gradient plot is the plot that provides information as needed for the trade-off, since the lift gradient determines how much the control system has to change the angle of attack to achieve a given lift. It is clear that the stacked toroid and tension cone have a significantly greater lift and lift gradient. The other three concepts offer quite similar performance, where the trailing ballute provides a better performance than the isotensoid and the rigid concept, while the isotensoid appears to maintain a higher lift 
+
+--More numbers
+
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}[b]{0.49\textwidth}
+		\includegraphics[width=0.96\textwidth]{./Figure/aero_model/cl.eps}
+		\caption{$\gls{sym:cla}$}
+		\label{fig:cl}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.49\textwidth}
+		\includegraphics[width=0.96\textwidth]{./Figure/aero_model/clalpha.eps}
+		\caption{$\gls{sym:cla-alpha}$}
+		\label{fig:claplha}
+	\end{subfigure}
+	\caption{Comparisons of the lift characteristics of the different concepts}
+	\label{fig:clplots}
+\end{figure}
+
+
+
+\subsubsection{Aerodynamic moments}
+--Implement final changes to the moment calculation, write piece about stability
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}[b]{0.49\textwidth}
+		\includegraphics[width=0.96\textwidth]{./Figure/aero_model/cl.eps}
+		\caption{$\gls{sym:cma}$}
+		\label{fig:cm}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.49\textwidth}
+		\includegraphics[width=0.96\textwidth]{./Figure/aero_model/clalpha.eps}
+		\caption{$\gls{sym:cma-alpha}$}
+		\label{fig:cmaplha}
+	\end{subfigure}
+	\caption{Comparisons of the aerodynamic moment characteristics of the different concepts}
+	\label{fig:cmplots}
+\end{figure}
+
+\subsubsection{Aerodynamic heating}
+As given in Eq. \ref{eq:qstag}, the stagnation temperature of different concepts, assessed for equal velocity, density and Mach number, is a function of the local radius of curvature. The heat flux is calculated for an orbit, using the density and Mach number of each point in that orbit to calculate the heat flux generated.
+
+--q-alpha plot for all concepts? Is very doable. Show heat flux through time?

@@ -23,7 +23,8 @@ In this section the equations on which the tool is based are shown and the reaso
  \paragraph{primary assumptions}
  \begin{itemize}
  \item All atmospheric properties only vary with the height above MOLA ***source*** and not with longitude, latitude or time. This assumption induces a significant error in the output of the tool. However implementing a variable atmosphere adds a lot of complexity aswell. For example the longitude and latitude of initial entry will also become design variables
- \item 
+ \item All trajectories are assumed to only occur in the equatorial plane. This means that the latitude is always $0 \left[^\circ\right]$. Changing the latitude will have a big impact on the relative speed of the martian atmosphere.
+ \item
  \end{itemize}
  
  
@@ -31,6 +32,7 @@ In this section the equations on which the tool is based are shown and the reaso
  \begin{itemize}
  \item The spacecraft is assumed to only feel a gravitational pull from mars. It is thus assumed that there is no gravitational pull from the sun, any other planet or the martian moons.
  \item The atmosphere stops at a height of 400 $\left[km\right]$. At this point the atmosphere is negligibly thin, adding any more atmosphere would not contribute significantly to the results.
+ \item
  \end{itemize}
  
 \subsubsection{Hyperbolic Kepler entry}
@@ -63,7 +65,7 @@ With the Keplerian orbital parameters and \gls{sym:R} on the edge of the atmosph
 
 The direction of \gls{sym:Rv} is based on \gls{sym:phi}, which is calculated with equation \label{eq:polarkep} where \gls{sym:R} is known.
 
-The acceleration $\left(\gls{sym:acc}\right)$ is only the gravitational pull $\left(\gls{sym:g}\right)$, which can be calculated with equation \ref{eq:grav}.
+The acceleration $\left(\gls{sym:acc}\right)$ is only the gravitational pull $\left(\gls{sym:g}\right)$, which can be calculated with equation \ref{eq:grav} \cite{Weiland2004}.
 
 \begin{equation} \label{eq:grav}
 \gls{sym:g} = -\frac{\gls{con:G}\gls{con:Mmars}}
@@ -72,7 +74,64 @@ The acceleration $\left(\gls{sym:acc}\right)$ is only the gravitational pull $\l
 
 \subsubsection{Trajectory in atmosphere}
  \label{sec:trajatmos}
-***Forces give accelerations: like in baseline + Jerk***\\
+ 
+\begin{wrapfigure}{r}{0.4\textwidth}
+		\centering
+		\includegraphics[width = 0.4\textwidth]{Figure/orbital_mechanics.pdf}
+		\caption{The kinetic diagram visualizing the governing equations of the trajectory analysis}
+		\label{fig:orb}
+\end{wrapfigure}
+
+The motion of a spacecraft can be broken down in some dominant contributors. These are the gravitational pull and the aerodynamic forces. Disturbances like solar radiation or gravitational pull from other bodies are neglected in the model. Because the aerodynamic forces do have to be taken into account no Kepler orbit can be used.
+
+To be able to fully describe the contributors, two reference frames need to be defined. The non-rotating inertial frame is defined with its origin in the centre of mass of Mars (if it would be perfectly spherical), this is the \gls{mci}. 
+Another reference frame is the \gls{mcmf}, in our first model the origin and the z-axis of both reference frames are equal (so no axis tilt is taken into account). The difference between the two is that the \gls{mcmf} is rotating around the z-axis with rotational velocity \gls{con:omegamars} compared to the \gls{mci}.
+
+The gravitational pull is described by Newton's law of gravitation, together with Newton's second law, it can be written as an acceleration as in equation \ref{eq:grav}.
+
+The aerodynamic forces are described by the lift and the drag, these forces are acting in the negative direction and orthogonal to the velocity of the spacecraft with respect to the atmosphere as shown in Figure \ref{fig:orb}, this is the velocity of the spacecraft in the \gls{mcmf}. This velocity needs to be converted to \gls{mci} to be able to express the aerodynamic forces in the \gls{mci}, as in equation \ref{eq:Vsc_mcmf_mci}.
+
+\begin{equation} \label{eq:Vsc_mcmf_mci}
+\left.\gls{sym:Vvsc}\right|_{MCMF}^{MCI} = \gls{sym:Vvsc}_{,a} = \left.\gls{sym:Vvsc}\right|_{MCI} - \left(\gls{con:Omegamars} \times \gls{sym:Rv} \right)
+\end{equation}
+
+The aerodynamic accelerations due to the lift and the drag are described by equations \ref{eq:aL} and \ref{eq:aD} respectively \cite{AndersonJr.2007}.
+
+\begin{equation} \label{eq:aL}
+\gls{sym:aL} = \frac{\gls{sym:CL}\gls{sym:rho}\gls{sym:A}}{2 \gls{sym:m}} 
+				\left|\gls{sym:Vvsc}_{,a}\right|^2
+				\frac{\gls{sym:Vvsc}_{,a} \times \mathbf{z}}
+				{\left| \gls{sym:Vvsc}_{,a} \times \mathbf{z}\right|}
+\end{equation}
+
+\begin{equation} \label{eq:aD}
+\gls{sym:aD} = \frac{\gls{sym:CD}\gls{sym:rho}\gls{sym:A}}{2 \gls{sym:m}}
+				\left|\gls{sym:Vvsc}_{,a}\right|^2 \frac{\gls{sym:Vvsc}_{,a}}{\left|\gls{sym:Vvsc}_{,a}\right|}
+\end{equation}
+
+The total acceleration is now the summation of the gravitational, lift and drag acceleration as in equation \ref{eq:aD}.
+
+\begin{equation} \label{eq:acc}
+\gls{sym:acc} = \gls{sym:g} + \gls{sym:aL} + \gls{sym:aD}
+\end{equation}
+
+Numerically differentiating the acceleration gives the Jerk $\left(\gls{sym:jerk}\right)$ This is done in equation \ref{eq:jerk}. Then the new position and velocity can be determined by discretizing the dynamic equations of motion resulting in equations \ref{eq:ai}, \ref{eq:Vi} and \ref{eq:Ri}.
+
+\begin{equation} \label{eq:ai}
+\gls{sym:acc}_i = \gls{sym:g}_i + \gls{sym:aL}_i + \gls{sym:aD}_i
+\end{equation}
+
+\begin{equation} \label{eq:jerk}
+\gls{sym:jerk}_{i+1} = \frac{\gls{sym:acc}_{i-2} - 4\gls{sym:acc}_{i-1}+3\gls{sym:acc}_i}{2\gls{sym:Dt}}
+\end{equation}
+
+\begin{equation} \label{eq:Vi}
+\gls{sym:Vv}_{i+1} = \gls{sym:Vv}_i + \gls{sym:acc}_i \gls{sym:Dt} + \frac{1}{2}\gls{sym:jerk}_i \gls{sym:Dt}^2
+\end{equation}
+
+\begin{equation} \label{eq:Ri}
+\gls{sym:Rv}_{i+1} = \gls{sym:Rv}_i + \gls{sym:Vv}_i \gls{sym:Dt} + \frac{1}{2}\gls{sym:acc}_i \gls{sym:Dt}^2 + \frac{1}{6}\gls{sym:jerk}_i \gls{sym:Dt}^3
+\end{equation}
 
 \subsubsection{Eliptical Kepler orbit}
  \label{sec:eliptickep}
@@ -195,11 +254,16 @@ Two conclusions can be drawn from this. First the error decreases quadraticaly w
 \label{sec:astrores}
 In this section the results from the astrodynamics \& control are presented. Furthermore the required performance of the controlsystem is analysed and a conclusion is drawn on which control systems are feasible.
 
-In section \ref{sec:astroatmos} the data from the atmospheric model is shown. This data is used as a primary input for the computations. Section \ref{sec:astrodec} shows the effect of angle of attack $\left(\gls{sym:alpha}\right)$ on the maximum deceleration during a trajectory for which the spacecraft goes into orbit. In section \ref{sec:astrorestraj} one of the trajectories which was found to be feasible in section \ref{sec:astroperfomance} is shown and the important parameters, most of which will serve as input for other tools
+In section \ref{sec:astroatmos} the data from the atmospheric model is shown. This data is used as a primary input for the computations. Section \ref{sec:astrodec} shows the effect of angle of attack $\left(\gls{sym:alpha}\right)$ on the maximum deceleration during a trajectory for which the spacecraft goes into orbit. In section \ref{sec:astroperfomance} the required performance of the control system is analysed. In section \ref{sec:astrorestraj} one of the trajectories which was found to be feasible in section \ref{sec:astroperfomance} is shown and the important parameters, most of which will serve as input for other tools, are analysed. In section \ref{sec:conclusion} a conclusion is drawn about which control system can meet the required controler performance.
 
 \subsubsection{Atmospheric model}
 \label{sec:astroatmos}
-\begin{figure}[h]
+
+In this section the data from the atmospheric model is presented. This data is of upmost importance for our tool to work properly.
+
+The data that is most important to us is the variation of density $\left(\gls{sym:rho}\right)$ and temperature $\left(\gls{sym:T}\right)$ with height. these relations are shown in figure \ref{fig:atmos_height}.
+
+\begin{figure}[ht!]
 	\centering
 	\begin{subfigure}{0.45\textwidth}
 	\centering
@@ -217,7 +281,9 @@ In section \ref{sec:astroatmos} the data from the atmospheric model is shown. Th
 	\label{fig:atmos_height}
 \end{figure}
 
-\begin{figure}[h]
+As was already stated in section \ref{sec:astroassumption} the atmospheric properties are assumed to be equal over different longitudes. That this is not exacly true can be seen in figure \ref{fig:atmos_lon}. In order for this assumption to induce as little error as possible a constant longitude at which all atmospheric properties are approximately at their average has been chosen to do the calculations with. The longitude that fits this description best for different heights is $180 \left[^\circ\right]$.
+
+\begin{figure}[ht!]
 	\centering
 	\begin{subfigure}{0.9\textwidth}
 	\centering
@@ -237,14 +303,15 @@ In section \ref{sec:astroatmos} the data from the atmospheric model is shown. Th
 
 \subsubsection{Effect of \gls{sym:alpha} on deceleration}
 \label{sec:astrodec}
-***Two plots for CL and CD***\\
+
+***text***\\
+
 \begin{figure}[h]
 	\centering
 	\includegraphics[trim={4.25cm 10.5cm 1cm 10.5cm},clip,width=0.95\textwidth]{Figure/orbital_model/n_alpha.pdf}
-	\caption{Discretisation error in radius $\left(\gls{sym:R}\right)$ after one pass through the atmosphere for initial position $\left[-4143775,10\cdot\gls{con:rm}\right]$ $\left[m\right]$ and initial velocity $\left[0,-7167.9\right]$ $\left[\frac{m}{s}\right]$ at $\gls{sym:alpha}=-10\left[^\circ\right]$ for the apollo shape}
+	\caption{Possible trajectories for which the spacecraft goes into orbit without control.}
 	\label{fig:n_alpha}
 \end{figure}
-
 
 \subsubsection{Required performance of the control system}
 \label{sec:astroperfomance}
