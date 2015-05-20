@@ -1,12 +1,12 @@
 \section{Thermal mass estimation}
 \label{ch:thermtool}
-Decelerating an entry vehicle requires a thermal protection system. This system will contribute to a large extend to the mass of the entire vehicle. Therefore, a \acrfull{tps} has a critical impact on the mission an should be selected properly. This section will analyse the \gls{tps} of the five trade-off concepts with the use of a thermal protection tool. First the tool will be described in more detail. Afterwards it is described how the tool is verified and validated. In the third section, analysis of the different lay-ups for the concepts is done. As a result, the \gls{tps} masses for different concepts can be compared. Lastly, conclusions and recommendations are given.
+Decelerating an entry vehicle requires a thermal protection system. This system will contribute to a large extend to the mass of the entire vehicle. Therefore, a \acrfull{tps} has a critical impact on the mission and should be selected properly. This section will analyse the \gls{tps} of the five trade-off concepts with the use of a thermal protection tool. Note that for the rigid concept a mass estimate is already given in \ref{sec:rigid} as the \gls{tps} is normally integrated in the structure. First the tool will be described in more detail. Afterwards it is described how the tool could not be verified and validated. In the third section, analysis of the different lay-ups for the concepts is done using a more simple approach since the tool does not function correctly. As a result, the relative \gls{tps}-masses for different concepts can be given. Lastly, the conclusions of this analysis and recommendations for future work are discussed.
 
 \subsection{Method of thermal analysis}
 A mass estimation of the \gls{tps} requires analysis due to heat transfer into the heat shield. Enabling the analysis of different lay-ups in a short amount of time, it will be useful to make use of a \gls{tps} tool. In this section the working principles of this is explained.
 
 \subsubsection{Assumptions}
-In this section the assumptions that are used for the \gls{tps} mass estimation and tool development are stated. Also, an elaboration is given on the impact of the assumptions on the results.
+In this section the assumptions used for the \gls{tps} mass estimation for the tool development are stated. Also, an elaboration is given on the impact of the assumptions on the results.
 
 \begin{itemize}
 \item \textbf{1D instead of 3D analysis}: For the determination of the temperature through the material over time, a one dimensional lay-up can be used. This is different from the actual case, where the body is heated over a three dimensional body. This assumption is verified for instance by Ref. \cite{Corso2009}.
@@ -19,7 +19,7 @@ In this section the assumptions that are used for the \gls{tps} mass estimation 
 \end{itemize}
 
 \subsubsection{Leading equations}
-The problem is modelled as a one-dimensional multilayer lay-up which can provide the accuracy needed or this stage of concept analysis as described in the assumptions. A description of the implementation of this model is given by Smith \cite{Smith2011}. The model is illustrated in Figure \ref{fig:1dthermal}. The figure shows the different methods of heat transfer in the model. There is heat radiating away from the surface, convective heating or heat flux from the aerodynamic effects and heat conduction within the layers.
+The problem is modelled as a one-dimensional multilayer lay-up which can provide the accuracy needed for this stage of concept analysis as described in the assumptions. A description of the implementation of this model is given by Smith \cite{Smith2011}. The model is illustrated in Figure \ref{fig:1dthermal}. The figure shows the different methods of heat transfer in the model. There is heat radiating away from the surface, convective heating or heat flux from the aerodynamic effects and heat conduction within the layers.
 
 \begin{figure}[H]
 	\centering
@@ -127,14 +127,18 @@ For the transient solution one can use the analytical solution (Equation \eqref{
 For the verification of the multilayer Smith suggests to perform an energy balance as energy should be conserved. Looking at Figure \ref{fig:1dthermal} one can see that at any point in time the energy stored in the material lay-up should be the same as the energy convected into the material minus the energy radiated away from the material. \textcolor{red}{SHOW PLOT Energy [J/m2] against time [s]}
 
 \subsubsection{Validation}
-In this section the tool is validated against real experimental data. This data has a given applied heat flux and measures temperature throughout the different layers. The tool should show no extreme deviation from the real experimental data. \textcolor{red}{GIVE SOURCE...2 cases, rigid and inflatable}
+In this section the tool is validated against real experimental data. This data has a given applied heat flux and measures temperature throughout the different layers. The tool should show no extreme deviation from the experimental data. \textcolor{red}{GIVE SOURCE...2 cases, rigid and inflatable}
 
 
 \subsection{Results per concept}
-Since it has not been possible to verify and validate the tool in time due to a bug in the software, another solution is proposed. 
+It has not been possible to verify and validate the tool in time due to a bug in the software. Therefore another solution has to be proposed, in order to be able to analyse the different concepts. Note that this method is much more simple than the initial developed tool, and will not be as accurate as the tool. 
 
 \subsubsection{Alternative method}
-To compare different concepts it is assumed that the \gls{tps}-mass is dependent on the time integrated heat flux which gives a heat load. As explained before the heat flux is given at the stagnation point. Also it is assumed that temperature of the wall is much lower than the stagnation point temperature. Therefore it is possible to omit the wall temperature in the analysis as Equation \eqref{eq:stagcoefficient} shows that the resulting heat load shall be a conservative estimate.
+To compare different concepts it is assumed that the \gls{tps}-mass is dependent on the time integrated heat rate which gives a heat load. As explained before the incoming heat flux is given at the stagnation point by the aerodynamics group (section\ref{subsec:aerotool}). To obtain this heat flux the aerodynamics group has put different shapes into the same trajectory. For the four inflatable concepts this is a valid trajectory according to the orbit tool. For the rigid concept this is not the case. However, this does not have to be analysed since the structural mass described in section \ref{sec:rigid} already incorporates the \gls{tps}-mass.
+
+It is assumed that the temperature of the wall is much lower than the stagnation point temperature. The aerodynamics group has calculated stagnation temperatures in the order of tens of thousands Kelvin. Table \ref{tab:tpsmatprop} shows that the commonly used materials for thermal protection in inflatables have a maximum operating temperature of $1700K$. Therefore it is possible to omit the wall temperature in the heat flux as Equation \eqref{eq:stagcoefficient} shows that the resulting heat load shall be a conservative estimate. 
+
+Another consideration made in this method is the radiation. Figure \ref{fig:1dthermal} shows that the incoming heat flux is counteracted by the radiation. Using the Stefan–Boltzmann law the radiation is calculated for different wall temperatures ($\gls{sym:T}_w$) and subtracted from the incoming heat flux to yield the actual heat rate.
 
 \subsubsection{Results of the alternative method}
 afasf
