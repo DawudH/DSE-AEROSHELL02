@@ -22,7 +22,7 @@ q = 23;
 
 alpha0 = -60; %degrees
 dalpha = 1; %degrees
-alphaend = 37; %degrees
+alphaend = 60; %degrees
 
 disp('Gererating geometry...');
 [ coords, tri, A ] = generategeometry( shapetexts.concept_isotensoid, q );

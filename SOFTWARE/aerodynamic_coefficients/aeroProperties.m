@@ -56,17 +56,17 @@ classdef aeroProperties
         end
         
         function dCLAdalpha = getLiftGradient(obj, alpha)
-            dalpha = 0.01;
+            dalpha = 0.1;
             dCLAdalpha = (-obj.getCLA(alpha)+obj.getCLA(alpha+dalpha))/dalpha;
         end
         
         function dCDAdalpha = getDragGradient(obj, alpha)
-            dalpha = 0.01;
+            dalpha = 0.1;
             dCDAdalpha = (-obj.getCDA(alpha)+obj.getCDA(alpha+dalpha))/dalpha;
         end        
         
         function dCMYAdalpha = getMomentGradient(obj, alpha)
-            dalpha = 0.01;
+            dalpha = 0.1;
             dCMYAdalpha = (-obj.getCMYA(alpha)+obj.getCMYA(alpha+dalpha))/dalpha;
         end
         
