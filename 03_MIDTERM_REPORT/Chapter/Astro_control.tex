@@ -153,7 +153,7 @@ The tool is able to calculate the trajectory of the spacecraft and a range of im
 \subsection{Verification \& validation}
 \label{sec:astrovv}
 
-In order to be sure the results the tool produces are correct and can safely be used in further efforts to design the \gls{cia} verification and validation is needed. This section presents the methods used to verify and validate the results produced by the tool. First a sensitivity analysis is presented in section \ref{sec:astrosens} which focusses on the sensitivity of the program to the initial conditions. In section \ref{sec:astrodisc} the discretisation error is analysed in order to ensure the results are accurate enough for it to be usefull. The numerical solution is compared to the simple case of a kepler orbit in section \ref{sec:astroverf}. Lastly in section \ref{sec:astroval} the results produced by the tool are compared to data from missions that have flown in the past.
+In order to be sure the results the tool produces are correct and can safely be used in further efforts to design the \gls{cia} verification and validation is needed. This section presents the methods used to verify and validate the results produced by the tool. First a sensitivity analysis is presented in section \ref{sec:astrosens} which focusses on the sensitivity of the program to the initial conditions. In section \ref{sec:astrodisc} the discretisation error is analysed in order to ensure the results are accurate enough for it to be usefull. The numerical solution is compared to the simple case of a kepler orbit in section \ref{sec:astroverf}
 
 \subsubsection{Sensitivity analysis}
 \label{sec:astrosens}
@@ -187,11 +187,17 @@ Two conclusions can be drawn from this. First the error decreases quadraticaly w
 
 \subsubsection{Verification through comparison with kepler}
 \label{sec:astroverf}
-***Compare numerical results with Kepler, should be the same for rho=0***\\
 
-\subsubsection{Validation through comparison with reference cases}
-\label{sec:astroval}
-***Validation through checking if output values are approximately the same as reference cases (peak dynamic pressure)***\\
+In this section the results from the numerical simulation, which is usually only used in atmosphere, is compared to a kepler orbit. For this comparison the density is assumed to be zero, or in other words, it is assumed that there is no atmosphere. This comparison is done for different values of \gls{sym:Dt}. The error for each \gls{sym:Dt} is shown in Fig. \ref{fig:kep_error}.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[trim={4.25cm 10cm 3.2cm 10cm},clip,width=0.8\textwidth]{Figure/orbital_model/keplererror.pdf}
+	\caption{Error compared to a kepler orbit after 50005 seconds for initial position $\left[-4143775,10\cdot\gls{con:rm}\right]$ $\left[m\right]$ and initial velocity $\left[0,-7167.9\right]$ $\left[\frac{m}{s}\right]$ at $\gls{sym:alpha}=-10\left[^\circ\right]$ for the apollo shape}
+	\label{fig:kep_error}
+\end{figure}
+
+The figure shows the error is between 15 and 5 for \gls{sym:Dt} between 1 and 0.01. The error decreases, but seems to tend to a non-zero constant value. The method used for numeical simulation is thus convergent, but has a small offset from the exact solution. This error is however so small it can easily be accepted.
 
 %\subsection{Performance of control systems}
 % \label{sec:astroref}
@@ -304,7 +310,7 @@ As was already stated in section \ref{sec:astroassumption} the atmospheric prope
 \subsubsection{Effect of \gls{sym:alpha} on deceleration}
 \label{sec:astrodec}
 
-***text***\\
+In this section the effect of the angle of attack $\left(\gls{sym:alpha}\right)$ on the maximum load endured during an orbit is discussed. In figure \ref{fig:n_alpha} this effect is shown for all of the different concepts. The figure for stacked toroid is the same as the figure for the tension cone. All combinations of \gls{sym:alpha} and $\gls{sym:acc}_{max}$ in the coloured part of the graphs are feasible orbits. For all combinations above the coloured part the spacecraft crashes. For all combinations underneath the coloured part the spacecraft flies past mars without getting into orbit. 
 
 \begin{figure}[h]
 	\centering
