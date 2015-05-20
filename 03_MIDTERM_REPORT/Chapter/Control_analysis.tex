@@ -1,2 +1,25 @@
 \section{Control system mass estimation}
 \label{sec:controlmass}
+Using the results produced by the aerodynamic tool shown in section \ref{subsec:appaeroanal} the relative masses of the control systems for each proposed structural concept can be determined. Section \ref{subsec:controlmoments} will derive the magnitudes of the control system moments, after which these will be used in section \ref{subsec:controlmassest} to estimate the relative masses of the control systems required by each respective system-level concept.
+
+\subsection{Required control system moments}
+\label{subsec:controlmoments}
+In section \ref{subsec:appaeroanal} figure \ref{fig:cm} the \glspl{sym:cma} required for each concept are shown for a range of angles of attack (\gls{sym:alpha}). As can be seen in figure \ref{fig:cl} the \glspl{sym:CL} delivered by the various concepts are different at all angles of attack. However, the astrodynamics tool described in chapter \ref{ch:astrocontrol} uses \glspl{sym:CL} to control the orbit of the spacecraft. Since \gls{sym:CM} and \gls{sym:CL} both vary with angle of attack \gls{sym:alpha} the angles of attack required for the correct orbits will vary for each concept. To adjust for these variations the ratio $\frac{\gls{sym:CM}}{\gls{sym:CL}}$ is used to estimate the control system masses for each concept relative to one another. Figure \ref{fig:cmcl} shows this ratio for all considered concepts. It can be seen from this figure that the ratio between the lift and moment coefficients can be considered constant for $0\deg\leq\alpha\leq 25\deg$.
+
+\subsection{Relative mass estimation}
+\label{subsec:controlmassest}
+To determine the relative control system masses the absolute value of the ratio $\frac{\gls{sym:CM}}{\gls{sym:CL}}$ at $\alpha=1\deg$ is determined for all concepts.
+\begin{table}[h]
+	\centering
+	\caption{A caption}
+	\begin{tabular}{|c|c|c|}
+		\hline
+		\textbf{Concept} & $\frac{\gls{sym:CM}}{\gls{sym:CL}}$ & Fraction of stacked toroid \\ \hline \hline
+		Stacked toroid & $5.81$ & $1.00$\\
+		Rigid & $0.41$ & $0.07$\\
+		Isotensoid & $5.72$ & $0.99$\\
+		Trailing ballute & $5.00$ & $0.86$\\
+		\hline
+	\end{tabular}
+	\label{tab:controlmass}
+\end{table}

@@ -7,11 +7,11 @@ format long
 
 %%Input constants & variables
 variables
-
+S = pi/4*5^2;
 files = {'orbit_alpha_isotensoid_low.txt', 'orbit_alpha_apollo_low.txt', 'orbit_alpha_torus_low.txt', 'orbit_alpha_pastille_low.txt', 'orbit_alpha_irve_low.txt'};
 names = {'isotensoid', 'apollo', 'torus', 'pastille', 'irve'};
 
-for bla = 1:length(names)
+for bla = 2
 % booleans (no control, stop at beginning of elliptic orbit)
 use_control = false;
 multiple_orbits = false;
