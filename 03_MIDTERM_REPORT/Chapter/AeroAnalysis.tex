@@ -146,6 +146,34 @@ The model for the maximum heat flux found on a body was validated in section \re
 After the model development and validation, the different system concepts are evaluated on performance in the different trade-off criteria. Specifically, the lift, drag and aerodynamic heating are discussed.
 In order to assess these values, a representative geometry is chosen. Since Newtonian flow only affects the parts of the vehicle that are in direct line of sight of the oncoming flow, only the front of the decelerator has to be accurately modelled. The stacked toroid and tension cone concepts are modelled after the \gls{irve} missions as flown by NASA, as can be seen in Figure \ref{fig:cp_stackedtoroid}. The isotensoid model is modelled as a slightly flattened sphere, with a radius of 6 meters perpendicular and a radius of 5 meter in direction of the flow. This model can be seen in Figure \ref{fig:cp_isotensoid}. The Trailing ballute is modelled as a single torus, as seen in Figure \ref{fig:cp_torus}, and the rigid concept's front is a largely flattened sphere, as seen in Figure \ref{fig:cp_rigid}.
 
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}[b]{0.49\textwidth}
+		\includegraphics[width=0.96\textwidth]{./Figure/aero_model/irve.eps}
+		\caption{Stacked toroid, tension cone}
+		\label{fig:cpstackedtoroid}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.49\textwidth}
+		\includegraphics[width=0.96\textwidth]{./Figure/aero_model/rigid.eps}
+		\caption{Rigid structure}
+		\label{fig:cprigid}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.49\textwidth}
+		\includegraphics[width=0.96\textwidth]{./Figure/aero_model/isotensoid.eps}
+		\caption{Isotensoid}
+		\label{fig:cpisotensoid}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.49\textwidth}
+		\includegraphics[width=0.96\textwidth]{./Figure/aero_model/ballute.eps}
+		\caption{Trailing ballute}
+		\label{fig:cpballute}
+	\end{subfigure}	
+	\caption{Geometry and pressure coefficient \gls{sym:CP} distribution over the different concepts, at an angle of attack $\gls{sym:alpha}=20[deg]$. }
+	\label{fig:conceptscp}
+\end{figure}
+
+
+
 \subsubsection{Lift performance}
 The lift is defined as the component of the aerodynamic force perpendicular to the flow, where the direction away from Mars is defined positive. The equation used to calculate the total lift of a vehicle is given in Eq \ref{eq:lift}.
 \begin{equation}
@@ -161,12 +189,16 @@ In Figure \ref{fig:clplots}, the lift coefficient can be seen to vary greatly fo
 \begin{figure}[h]
 	\centering
 	\begin{subfigure}[b]{0.49\textwidth}
-		\includegraphics[width=0.96\textwidth]{./Figure/aero_model/cl.eps}
+		\setlength\figureheight{0.8\textwidth} 
+		\setlength\figurewidth{0.75\textwidth}
+		\input{./Figure/aero_model/cl.tikz}
 		\caption{$\gls{sym:cla}$}
 		\label{fig:cl}
 	\end{subfigure}
 	\begin{subfigure}[b]{0.49\textwidth}
-		\includegraphics[width=0.96\textwidth]{./Figure/aero_model/clalpha.eps}
+		\setlength\figureheight{0.8\textwidth} 
+		\setlength\figurewidth{0.75\textwidth}
+		\input{./Figure/aero_model/clalpha.tikz}
 		\caption{$\gls{sym:cla-alpha}$}
 		\label{fig:claplha}
 	\end{subfigure}
@@ -177,22 +209,41 @@ In Figure \ref{fig:clplots}, the lift coefficient can be seen to vary greatly fo
 
 
 \subsubsection{Aerodynamic moments}
---Implement final changes to the moment calculation, write piece about stability
+The moment coefficients of the different concepts around their centers of gravity, the derivatives of the moment coefficient with respect to alpha and the moment coefficient divided by the lift coefficient are plotted in figures \ref{fig:cm}, \ref{fig:cmalpha} and \ref{fig:cmplots} respectively. The stability of the vehicle can be determined from $C_{M}$ and $C_{M_{\alpha}}$. For the vehicle to be statically stable, both $C_{M}$ and $C_{M_{\alpha}}$ must be negative. 
 \begin{figure}[h]
 	\centering
 	\begin{subfigure}[b]{0.49\textwidth}
-		\includegraphics[width=0.96\textwidth]{./Figure/aero_model/cm.eps}
+
+		\setlength\figureheight{0.8\textwidth} 
+		\setlength\figurewidth{0.75\textwidth}
+		\input{./Figure/aero_model/cm.tikz}		
+
 		\caption{$\gls{sym:cma}$}
 		\label{fig:cm}
 	\end{subfigure}
 	\begin{subfigure}[b]{0.49\textwidth}
-		\includegraphics[width=0.96\textwidth]{./Figure/aero_model/cmalpha.eps}
+
+		\setlength\figureheight{0.8\textwidth} 
+		\setlength\figurewidth{0.75\textwidth}
+		\input{./Figure/aero_model/cmalpha.tikz}		
+
 		\caption{$\gls{sym:cma-alpha}$}
 		\label{fig:cmaplha}
 	\end{subfigure}
 	\caption{Comparisons of the aerodynamic moment characteristics of the different concepts}
 	\label{fig:cmplots}
 \end{figure}
+
+
+\begin{figure}[h]
+	\centering
+	\setlength\figureheight{0.49\textwidth} 
+	\setlength\figurewidth{0.49\textwidth}
+	\input{./Figure/aero_model/cmcl.tikz}	
+	\caption{Comparisons of the different concepts for $\gls{sym:cmcl}$, an indication of the control system effort to attain a certain lift}
+	\label{fig:cmcl}
+\end{figure}
+
 
 \subsubsection{Aerodynamic heating}
 As given in Eq. \ref{eq:qstag}, the stagnation temperature of different concepts, assessed for equal velocity, density and Mach number, is a function of the local radius of curvature. The heat flux is calculated for an orbit, using the density and Mach number of each point in that orbit to calculate the heat flux generated at each respective point.
