@@ -7,7 +7,7 @@ theta = linspace(0,pi,q);
 phi  = linspace(pi,3*pi,q);
 [theta,phi]=meshgrid(theta,phi);
 %% Shape definition Sphere
-x=(r*sin(theta)).*cos(phi);           %x,y,z definitions of a donut in polar. Should be replaced by function??
+x=(r*sin(theta)).*cos(phi)-r;           %x,y,z definitions of a donut in polar. Should be replaced by function??
 y=(t*sin(theta)).*sin(phi);
 z=R.*cos(theta);
 %% Vector setup
@@ -60,7 +60,7 @@ theta = linspace(-pi,pi,q);
 phi  = linspace(0,2*pi,q);
 [theta,phi]=meshgrid(theta,phi);
 %% Shape definition Torus
-x=r.*cos(theta);
+x=r.*cos(theta) -r;
 y=(R+t*sin(theta)).*sin(phi);
 z=(R+r*sin(theta)).*cos(phi);
 %% Vector Setup
@@ -131,6 +131,7 @@ theta = theta';
 zmax = R.*cos(theta);
 ymax = R.*sin(theta);
 xmax = -max((t/(R*rgrad))+(R-max(r))*(t/rgrad));
+% x5 = -max((t/(2.5*rgrad))+(2.5-max(r))*(t/rgrad))
 %xmax = -t/max(max(r))*(R-max(max(r)));
 xmax = ones(q)*xmax;
 x = [x,xmax(:,1)];
