@@ -34,13 +34,24 @@ T = Tatm{1,1};
 % hold off
 
 
+
 % Define different wall temperatures
-dT      = cell(5,1);
-dT{1,1} = 2000^4 - T.^4;
-dT{2,1} = 1500^4 - T.^4;
-dT{3,1} = 1000^4 - T.^4;
-dT{4,1} = 500^4 - T.^4;
-dT{5,1} = 0;
+min  = 500;
+mout = 1500;
+
+for m = min:mout;
+
+   dT{m-(min-1),1} = m.^4 - T.^4;
+   
+end
+ 
+
+% dT      = cell(5,1);
+% dT{1,1} = T.^4 - T.^4;
+% dT{2,1} = 0500^4 - T.^4;
+% dT{3,1} = 1000^4 - T.^4;
+% dT{4,1} = 1500^4 - T.^4;
+% dT{5,1} = 2000^4 - T.^4;
 
 % Material emissivity per concept
 eps      = zeros(5,1);
@@ -60,43 +71,65 @@ Qtot = cell(5,1);
 qtoto = zeros(length(t),1);
 Qmax = zeros(5,1);
 
-% for loop, to analyse each concept
-for i = 1:length(Tatm)  
-   %Detrmine the output flux 
-   qoutc{i,1} = (1/10000).*eps(i,1)*sig.*dT{3,1}';
-   
-   
-    % Define var
-    Q = zeros(1,(length(qmax)-1));
-    qin = qearo{i,1};
-    qout = qoutc{i,1};
-    % Now determine the het load for all concepts, as well as the corrected
-    % total heat flux.
-    for j = 1:(length(qmax)-1)
-        
-        qtoto(j+1,1) = (qin(j)-qout(j));
-        Q(j+1) = qtoto(j+1,1)*dt+Q(j);
-        if Q(j+1) < 0
-            Q(j+1) = 0;
-            qtoto(j+1,1) = 0;
-        end
-   
-    end
-    qtot{i,1} = qtoto;
-    Qtot{i,1} = Q;
+% sensativity for different concepts
+for k = 1:length(dT)
     
-    Qmax(i,1) = max(Q);
-end
+    % for loop, to analyse each concept
+    for i = 1:length(Tatm)  
+       %Detrmine the output flux 
+       qoutc{i,1} = (1/10000).*eps(i,1)*sig.*dT{k,1}';
 
-% plotting thermal results
-figure(2)
-plot(t,qtoto,'r')
+
+        % Define var
+        Q = zeros(1,(length(qmax)-1));
+        qin = qearo{i,1};
+        qout = qoutc{i,1};
+        % Now determine the het load for all concepts, as well as the corrected
+        % total heat flux.
+        for j = 1:(length(qmax)-1)
+
+            qtoto(j+1,1) = (qin(j)-qout(j));
+            Q(j+1) = qtoto(j+1,1)*dt+Q(j);
+            if Q(j+1) < 0
+                Q(j+1) = 0;
+                qtoto(j+1,1) = 0;
+            end
+
+        end
+        qtot{i,1} = qtoto;
+        Qtot{i,1} = Q;
+
+        Qmax(i,1) = max(Q);
+    end
+    
+    fraction(:,k) = Qmax./Qmax(4);
+end
+    % plotting thermal results
+%     figure(2)
+%     plot(t,qtoto,'r')
+%     hold on
+%     plot(t,qmax,'b')
+%     figure(3)
+%     plot(t,Q)
+% 
+%     Qmax
+%     Qmax./Qmax(4)
+
+% Temperature range vector
+Twall = linspace(min,mout,(mout-min+1));
+
+figure(1)
+plot(Twall,fraction(1,:),'b')
 hold on
-plot(t,qmax,'b')
-figure(3)
-plot(t,Q)
-    
-    
+grid on
+plot(Twall,fraction(2,:),'-.b')
+plot(Twall,fraction(3,:),'r')
+plot(Twall,fraction(4,:),'g')
+plot(Twall,fraction(5,:),'-.g')
+title('Heat load fractions')
+xlabel('wall temperature [K]')
+ylabel('Heat load fraction [-]')
+legend('ballute','isotensoid','rigid','stacked torroid','tension cone')
     
     
     
