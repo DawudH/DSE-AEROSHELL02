@@ -11,7 +11,7 @@ variables
 files = {'orbit_alpha_isotensoid_up.txt', 'orbit_alpha_apollo_up.txt', 'orbit_alpha_torus_up.txt', 'orbit_alpha_pastille_up.txt', 'orbit_alpha_irve_up.txt'};
 names = {'isotensoid', 'apollo', 'torus', 'pastille', 'irve'};
 
-for bla = 1:length(names)
+for bla = 2
 % booleans (no control, stop at beginning of elliptic orbit)
 use_control = false;
 multiple_orbits = false;
