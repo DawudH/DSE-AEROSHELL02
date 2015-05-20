@@ -149,14 +149,16 @@ Another consideration made in this method is the radiation as shown in Equation 
 Since the radiation is strongly dependent on $\gls{sym:T}_w$, the heat load (in $\left[\frac{J}{m^2}\right]$) is calculated using a variable wall temperature. Then the heat load is divided by a reference heat load. This reference heat load is chosen to be the heat load of the stacked toroid. The resulting graph can then be used to compare the concepts.
 
 \subsubsection{Results of the alternative method}
-As discussed before, integrating the total heat flux will result in the heat load. the heat loads of the different concepts can be compared as a function of the heat load of the stacked torroid. However, The wall temperature is assumed constant throughout the entire descend. This is not actually the case and therefore a sensitivity analysis is performed. The wall temerature is varied between 500 and 1500 K. The results can be seen in Figure 
+As discussed before, integrating the total heat flux will result in the heat load. the heat loads of the different concepts can be compared as a function of the heat load of the stacked torroid. However, The wall temperature is assumed constant throughout the entire descend. This is not actually the case and therefore a sensitivity analysis is performed. The wall temerature is varied from 500 to 1500 K. The results can be seen in Figure \ref{fig:heatload}.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics{Figure/thermblocknode2.png}
-	\caption{Heat rate balance for conducting nodes}
-	\label{fig:thermbalance2}
+	\includegraphics{Figure/heatload.pdf}
+	\caption{Standardised heat loads with resepct to the isotensoid, varied over different wall temperatures}
+	\label{fig:heatload}
 \end{figure}
+
+From the figure above, 
 
 \subsection{Conclusion \& recommendations}
 The initial approach was to develop a tool to analyse the \gls{tps}-mass for different concepts. Since this tool is not functioning correctly, an alternative analysis method had to be proposed. This approach, described in the previous sections, is very simplistic and resulting values should only be used for comparison of the concepts and not for the actual design of the \gls{tps}.

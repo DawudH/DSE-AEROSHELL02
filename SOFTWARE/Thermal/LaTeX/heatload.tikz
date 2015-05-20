@@ -13,7 +13,6 @@ width=0.95092\figurewidth,
 height=\figureheight,
 at={(0\figurewidth,0\figureheight)},
 scale only axis,
-separate axis lines,
 every outer x axis line/.append style={black},
 every x tick label/.append style={font=\color{black}},
 xmin=500,
@@ -26,9 +25,35 @@ ymin=0.55,
 ymax=1.25,
 ylabel={Heat load fraction [-]},
 ymajorgrids,
+axis x line*=bottom,
+axis y line*=left,
 legend style={legend cell align=left,align=left,draw=black}
 ]
-\addplot [color=mycolor1,solid]
+\addplot [color=mycolor1,solid,mark=diamond,mark options={solid}]
+  table[row sep=crcr]{%
+500	0.868226869330757\\
+};
+\addlegendentry{ballute};
+
+\addplot [color=mycolor2,solid,mark=+,mark options={solid}]
+  table[row sep=crcr]{%
+500	0.806254532114479\\
+};
+\addlegendentry{isotensoid};
+
+\addplot [color=mycolor3,solid,mark=square,mark options={solid}]
+  table[row sep=crcr]{%
+500	1\\
+};
+\addlegendentry{stacked torroid};
+
+\addplot [color=mycolor4,solid,mark=triangle,mark options={solid,rotate=180}]
+  table[row sep=crcr]{%
+500	1\\
+};
+\addlegendentry{tension cone};
+
+\addplot [color=mycolor1,solid,forget plot]
   table[row sep=crcr]{%
 500	0.868226869330757\\
 501	0.868162817947778\\
@@ -1032,9 +1057,31 @@ legend style={legend cell align=left,align=left,draw=black}
 1499	0.748170503737261\\
 1500	0.747715331458305\\
 };
-\addlegendentry{ballute};
-
-\addplot [color=mycolor2,solid]
+\addplot [color=mycolor1,only marks,mark=diamond,mark options={solid},forget plot]
+  table[row sep=crcr]{%
+500	0.868226869330757\\
+550	0.864437316724735\\
+600	0.859210069459369\\
+650	0.852015653323165\\
+700	0.841970667329448\\
+750	0.827467130143831\\
+800	0.866131553905674\\
+850	0.863664730600307\\
+900	0.860748506597441\\
+950	0.857481151111058\\
+1000	0.853819999939934\\
+1050	0.849777607994036\\
+1100	0.844820531245843\\
+1150	0.838876215219806\\
+1200	0.831716285006295\\
+1250	0.823291534257201\\
+1300	0.813190807242293\\
+1350	0.800952739354354\\
+1400	0.786418809105454\\
+1450	0.768939497416269\\
+1500	0.747715331458305\\
+};
+\addplot [color=mycolor2,solid,forget plot]
   table[row sep=crcr]{%
 500	0.806254532114479\\
 501	0.806160460300732\\
@@ -2038,9 +2085,31 @@ legend style={legend cell align=left,align=left,draw=black}
 1499	0.633567355238178\\
 1500	0.632924773961938\\
 };
-\addlegendentry{isotensoid};
-
-\addplot [color=mycolor3,solid]
+\addplot [color=mycolor2,only marks,mark=+,mark options={solid},forget plot]
+  table[row sep=crcr]{%
+500	0.806254532114479\\
+550	0.800700187907912\\
+600	0.79302433808179\\
+650	0.782452415657033\\
+700	0.767696061752323\\
+750	0.752361147876964\\
+800	0.804168847702118\\
+850	0.80055825751717\\
+900	0.796314725591851\\
+950	0.791541664976405\\
+1000	0.786190442651182\\
+1050	0.78020027652867\\
+1100	0.772860269865146\\
+1150	0.764072726760914\\
+1200	0.753617422084414\\
+1250	0.741300869073742\\
+1300	0.726482975063334\\
+1350	0.708844727972671\\
+1400	0.68788799353491\\
+1450	0.66276634631622\\
+1500	0.632924773961938\\
+};
+\addplot [color=mycolor3,solid,forget plot]
   table[row sep=crcr]{%
 500	1\\
 501	1\\
@@ -3044,9 +3113,31 @@ legend style={legend cell align=left,align=left,draw=black}
 1499	1\\
 1500	1\\
 };
-\addlegendentry{stacked torroid};
-
-\addplot [color=mycolor4,solid]
+\addplot [color=mycolor3,only marks,mark=square,mark options={solid},forget plot]
+  table[row sep=crcr]{%
+500	1\\
+550	1\\
+600	1\\
+650	1\\
+700	1\\
+750	1\\
+800	1\\
+850	1\\
+900	1\\
+950	1\\
+1000	1\\
+1050	1\\
+1100	1\\
+1150	1\\
+1200	1\\
+1250	1\\
+1300	1\\
+1350	1\\
+1400	1\\
+1450	1\\
+1500	1\\
+};
+\addplot [color=mycolor4,solid,forget plot]
   table[row sep=crcr]{%
 500	1\\
 501	1\\
@@ -4050,7 +4141,28 @@ legend style={legend cell align=left,align=left,draw=black}
 1499	1\\
 1500	1\\
 };
-\addlegendentry{tension cone};
-
+\addplot [color=mycolor4,only marks,mark=triangle,mark options={solid,rotate=180},forget plot]
+  table[row sep=crcr]{%
+524	1\\
+574	1\\
+624	1\\
+674	1\\
+724	1\\
+774	1\\
+824	1\\
+874	1\\
+924	1\\
+974	1\\
+1024	1\\
+1074	1\\
+1124	1\\
+1174	1\\
+1224	1\\
+1274	1\\
+1324	1\\
+1374	1\\
+1424	1\\
+1474	1\\
+};
 \end{axis}
 \end{tikzpicture}%

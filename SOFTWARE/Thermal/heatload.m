@@ -116,17 +116,32 @@ end
 %     Qmax
 %     Qmax./Qmax(4)
 
+
 %% Temperature range vector
 Twall = linspace(min,mout,(mout-min+1));
 cc = summer(6);
 figure(1)
-plot(Twall,fraction(1,:),'color',cc(1,:))
 hold on
 grid on
-plot(Twall,fraction(2,:),'color',cc(2,:))
+plot(Twall(1),fraction(1,1),'d-','color',cc(1,:),'DisplayName','ballute')
+plot(Twall(1),fraction(2,1),'+-','color',cc(2,:))
+plot(Twall(1),fraction(4,1),'s-','color',cc(3,:))
+plot(Twall(1),fraction(5,1),'v-','color',cc(4,:))
+
+plot(Twall(1:1:end),fraction(1,1:1:end),'-','color',cc(1,:))
+plot(Twall(1:50:end),fraction(1,1:50:end),'d','color',cc(1,:))
+plot(Twall(1:1:end),fraction(2,1:1:end),'-','color',cc(2,:))
+plot(Twall(1:50:end),fraction(2,1:50:end),'+','color',cc(2,:))
+plot(Twall(1:1:end),fraction(4,1:1:end),'-','color',cc(3,:))
+plot(Twall(1:50:end),fraction(4,1:50:end),'s','color',cc(3,:))
+plot(Twall(1:1:end),fraction(5,1:1:end),'-','color',cc(4,:))
+plot(Twall(25:50:end),fraction(5,25:50:end),'v','color',cc(4,:))
+
+
+%plot(Twall,fraction(2,:),'-.','color',cc(2,:))
 %plot(Twall,fraction(3,:),'b')
-plot(Twall,fraction(4,:),'color',cc(3,:))
-plot(Twall,fraction(5,:),'color',cc(4,:))
+%plot(Twall,fraction(4,:),'color',cc(3,:))
+%plot(Twall,fraction(5,:),'color',cc(4,:))
 %title('Heat load fractions')
 xlabel('wall temperature [K]')
 ylabel('Heat load fraction [-]')
