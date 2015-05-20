@@ -12,6 +12,18 @@ function [ coords, tri, A, center ] = generategeometry( type, q )
             tri = TriGeom.ConnectivityList;
             A = pi*((R+r)^2-(R-r)^2);
             center = [0 0 0];
+        case 'ballute'
+            distance = -10; %m distance between front of apollo and front of ballute
+            [coordstorus, tritorus, Atorus, centertorus] = generategeometry('torus', q);
+            [coordsapollo, triapollo, Aapollo, centerapollo] = generategeometry('concept_apollo', q);
+            
+            triapollo = triapollo + length(coordstorus);
+            coordstorus(1,:) = coordstorus(1,:) + distance;
+            
+            coords = [coordstorus, coordsapollo];
+            tri = [tritorus;triapollo];
+            A = Atorus+Aapollo;
+            center = (centerapollo*9000+(centertorus+distance)*1000)/10000;
         case 'horizontalplate'
             xvector = [0 1 0 1];
             yvector = [0 0 1 1];
@@ -74,11 +86,16 @@ function [ coords, tri, A, center ] = generategeometry( type, q )
             center = [0 0 0];
             %t gradient, r half dome radius, R is max radius
         case 'concept_irve'
-            TriGeom = TriMeshGen(q, 6, 2, 60, 'c');
+            t = 60;
+            R = 6;
+            r = 2;
+            TriGeom = TriMeshGen(q, R, 2, t, 'c');
             coords = TriGeom.Points';
             tri = TriGeom.ConnectivityList;
             A = pi*6^2;
-            center = [0 0 0];
+            t = 90-t;
+            t = tand(t)*r;            
+            center = [((5/3+t/(2.5*r)+(2.5-r)*t/r)*9000+3/5*(t/R/r+(R-r)*t/r)*1000)/10000, 0, 0];
             %t gradient, r half dome radius, R is max radius            
         case 'apollovalidation'
             [TriGeom, xvector, yvector, zvector] = Apollo(q);
