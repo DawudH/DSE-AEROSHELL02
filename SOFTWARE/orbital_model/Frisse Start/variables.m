@@ -5,7 +5,7 @@ added_paths
 constants
 
 %Initial Position
-rx = -4109453.125000;
+rx = -4147300;
 ry = 10*R_m;
 R = [rx,ry,0];
 
@@ -27,12 +27,12 @@ tend = 3600 * 24 * 3; %[s]
 
 %Control variables
 control.a = 2.9*g_earth;
-control.dalphadt = -1.3*pi/180;
+control.dalphadt = -1.5*pi/180;
 control.dalpha = control.dalphadt*dt_atmos;
-control.alpha_init =10*pi/180; % rad
+control.alpha_init = 10*pi/180; % rad
 control.alpha_range = [-50 50]*pi/180;
-control.control_up_lim = 0.0; % g_earth
-control.control_low_lim = 0.00; % g_earth
+control.control_up_lim = 2.5; % g_earth
+control.control_low_lim = 0.5; % g_earth
 control.Kp = 0.001*control.dalpha; % proportional gain
 control.Ki = 0.0001*control.dalpha; % integral gain
 control.Kd = 20*control.dalpha; % differential gain
