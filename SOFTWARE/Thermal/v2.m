@@ -61,7 +61,7 @@ T_inf = 1250.*sin(tt)*0+4*0;
 
 
 %% Temp-table
-T0 = 35+273.15;
+T0 = 20+273.15;
 T = ones(imax,totalt)*(T0); %Temp-table
 %T(:,1) = 300; %[K]
 
