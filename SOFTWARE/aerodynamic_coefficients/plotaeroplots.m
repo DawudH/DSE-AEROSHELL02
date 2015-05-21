@@ -7,7 +7,7 @@ aerapollo = aeroProperties('apollo');
 aerisotensoid = aeroProperties('isotensoid');
 aerballute = aeroProperties('ballute');
 
-alpha = linspace(0, deg2rad(60), 100);
+alpha = linspace(0, deg2rad(60), 60);
 
 figure;
 hold on;
@@ -83,6 +83,19 @@ matlab2tikz('.\plots\cmalpha.tikz','height','\figureheight','width','\figurewidt
 
 figure;
 hold on;
+plot(rad2deg(alpha), aerirve.getCLCD(alpha));
+plot(rad2deg(alpha), aerapollo.getCLCD(alpha));
+plot(rad2deg(alpha), aerisotensoid.getCLCD(alpha));
+plot(rad2deg(alpha), aerballute.getCLCD(alpha));
+xlabel('$\alpha [deg]$', 'interpreter', 'latex');
+ylabel('$\frac{C_L}{C_D} [-]$', 'interpreter', 'latex');
+legend('Stacked Toroid, Tension Cone', 'Rigid', 'Isotensoid', 'Trailing Ballute', 'Location', 'northoutside');
+grid on;
+matlab2tikz('.\plots\clcd.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
+
+
+figure;
+hold on;
 alpha = alpha(2:end);
 plot(rad2deg(alpha), aerirve.getCMCL(alpha));
 plot(rad2deg(alpha), aerapollo.getCMCL(alpha));
@@ -93,3 +106,4 @@ ylabel('$\frac{C_M}{C_L} [-]$', 'interpreter', 'latex');
 legend('Stacked Toroid, Tension Cone', 'Rigid', 'Isotensoid', 'Trailing Ballute', 'Location', 'northoutside');
 grid on;
 matlab2tikz('.\plots\cmcl.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
+
