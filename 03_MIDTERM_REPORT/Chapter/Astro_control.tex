@@ -2,9 +2,7 @@
 \label{ch:astrocontrol}
 In this chapter the development of a tool for astrodynamics and control is described. The tool calculates the trajectory of the spacecraft for varying initial conditions and aerodynamic properties. With the information extracted from this tool, required performance for the control systems can be determined. Based on these requirements the different control systems available for the different concepts (which are presented in chapter \ref{ch:options}) can be weighed off in a trade-off in chapter \ref{ch:tradeoff}.
 
-
 In this chapter first the purpose of the tool will be explained in section \ref{sec:astropurpose}. In sections \ref{sec:astrogov} and \ref{sec:astrowp} working principles of the tool are explained and the equations the tool is based on are presented. To ensure that the tool calculates what it is supposed to calculate and that this happens accurately enough, in section \ref{sec:astrovv} the verification and validation of the tool is done. The needed performance of the control system is presented in section \ref{sec:astrores}. Section \ref{sec:astrores} also presents other results of the tool which are used as input for tools calculating i.e. structural mass.
-
 
 \subsection{Purpose of tool development}
 \label{sec:astropurpose}
@@ -24,11 +22,11 @@ In this section the equations on which the tool is based are shown and the reaso
  
  \paragraph{primary assumptions}
  \begin{itemize}
- \item All atmospheric properties only vary with the height above MOLA ***source*** and not with longitude, latitude or time. This assumption induces an error in the output of the tool, this is described in section \ref{sec:astroatmos}. However implementing a variable atmosphere adds a lot of complexity. For example the longitude and latitude of initial entry will also become design variables.
+ \item All atmospheric properties only vary with the height above Mars Orbiter Laser Altimeter (\gls{mola}) and not with longitude, latitude or time. This assumption induces an error in the output of the tool, this is described in section \ref{sec:astroatmos}. However implementing a variable atmosphere adds a lot of complexity. For example the longitude and latitude of initial entry will also become design variables.
  \item All trajectories are assumed to only occur in the equatorial plane. This means that the latitude is always $0 \left[^\circ\right]$. Changing the latitude will have a big impact on the relative speed of the Martian atmosphere.
- \item The gravitational pull is assumed to only vary with the height above MOLA. The gravitational field of Mars is however not uniform over longitude and latitude, this will induce significant errors in the trajectory as gravity is one of the major forces in the analysis.
+ \item The gravitational pull is assumed to only vary with the height above \gls{mola}. The gravitational field of Mars is however not uniform over longitude and latitude, this will induce significant errors in the trajectory as gravity is one of the major forces in the analysis.
  \end{itemize}
- 
+
  
  \paragraph{secondary assumptions}
  \begin{itemize}
@@ -96,8 +94,6 @@ The acceleration $\left(\gls{sym:acc}\right)$ is only the gravitational pull $\l
 
 \subsubsection{Trajectory in atmosphere}
  \label{sec:trajatmos}
- 
-
 
 The motion of a spacecraft can be broken down in some dominant contributors. These are the gravitational pull and the aerodynamic forces. Disturbances like solar radiation or gravitational pull from other bodies are neglected in the model. Because the aerodynamic forces do have to be taken into account no Kepler orbit can be used.
 
@@ -296,19 +292,7 @@ In section \ref{sec:tradeoffaero} of Chapter \ref{ch:aero_analysis} the aerodyna
 \subsubsection{A feasible trajectory and important output parameters over time}
 \label{sec:astrorestraj}
 
-In this section a controlled orbit for each concept is shown. This is done to show which values for i.e. dynamic pressure $\left(\gls{sym:q}\right)$ are reasonable to use in the other tools.
-
-\paragraph{Stacked toroid/tension cone}
-
-\paragraph{Rigid}
-
-\paragraph{Isotensoid}
-
-\paragraph{Trailing Ballute}
+In this section an orbit for the stacked toroid concept is shown. This is done to show which values for i.e. dynamic pressure $\left(\gls{sym:q}\right)$ are reasonable to use in the other tools. For this purpose a temporary \gls{pid} contoller is put into the simulation which has the goal to keep the acceleration under 3\gls{sym:g}. Although the controller does not always meet this objective the trajectory that is presented here comes as is close to it as currently possible. This will give results that are representable for trajectories that will later be calculated with a better controller.
 
 ***Plot of a trajectory***\\
 ***Plots of output variables for that particular trajectory***\\
-
-\subsubsection{Conclusion on control system performance}
-\label{sec:conclusion}
-As stated in section ...
