@@ -131,11 +131,12 @@ switch shapecase
         disp(strcat('gamma: ', num2str(gamma)));
         
         figure;
-        plot(modnewtonianmatrix(:,1)*1.095/max(modnewtonianmatrix(:,1)), modnewtonianmatrix(:,2));
+        cc = parula(3);
+        plot(modnewtonianmatrix(:,1)*1.095/max(modnewtonianmatrix(:,1)), modnewtonianmatrix(:,2),'color',cc(1,:));
         hold on;
-        plot(zvalidation, Cpvalidation, '*');
+        plot(zvalidation, Cpvalidation, '*','color',cc(2,:));
         xlabel('$\frac{s}{R}$ [-]', 'interpreter', 'latex');
-        ylabel('C_p [-]');
+        ylabel('$C_p$ [-]', 'interpreter', 'latex');
         legend('Modified Newtonian', 'Measured', 'Location', 'south');   
         grid on;
         matlab2tikz('.\plots\apollovalidation.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
