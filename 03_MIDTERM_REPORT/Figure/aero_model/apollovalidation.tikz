@@ -1,8 +1,8 @@
 % This file was created by matlab2tikz.
 % Minimal pgfplots version: 1.3
 %
-\definecolor{mycolor1}{rgb}{0.00000,0.44700,0.74100}%
-\definecolor{mycolor2}{rgb}{0.85000,0.32500,0.09800}%
+\definecolor{mycolor1}{rgb}{0.20810,0.16630,0.52920}%
+\definecolor{mycolor2}{rgb}{0.19855,0.72140,0.63095}%
 %
 \begin{tikzpicture}
 
@@ -18,7 +18,7 @@ xlabel={$\frac{s}{R}$ [-]},
 xmajorgrids,
 ymin=0,
 ymax=1.8,
-ylabel={$\text{C}_\text{p}\text{ [-]}$},
+ylabel={$C_p$ [-]},
 ymajorgrids,
 legend style={at={(0.5,0.03)},anchor=south,legend cell align=left,align=left,draw=white!15!black}
 ]
