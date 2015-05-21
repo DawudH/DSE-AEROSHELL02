@@ -1,4 +1,5 @@
 % close all;
+addpath('..\matlab2tikz');
 
 cases.deg30cone10alpha = 'deg30cone10alpha';
 cases.deg30cone20alpha = 'deg30cone20alpha';
@@ -7,7 +8,7 @@ cases.deg60cone = 'deg60cone';
 cases.apollo = 'apollo';
 cases.irve = 'irve';
 
-shapecase = cases.deg60cone;
+shapecase = cases.apollo;
 
 
 switch shapecase
@@ -133,9 +134,12 @@ switch shapecase
         plot(modnewtonianmatrix(:,1)*1.095/max(modnewtonianmatrix(:,1)), modnewtonianmatrix(:,2));
         hold on;
         plot(zvalidation, Cpvalidation, '*');
-        xlabel('y [m]');
+        xlabel('$\frac{s}{R}$ [-]', 'interpreter', 'latex');
         ylabel('C_p [-]');
-        legend('Modified Newtonian', 'Measured');     
+        legend('Modified Newtonian', 'Measured', 'Location', 'south');   
+        grid on;
+        matlab2tikz('.\plots\apollovalidation.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
+
         
     case cases.deg30cone10alpha % See the work by Cleary, JW in mendeley, and Bertin page 287
         clear; clc; close all;

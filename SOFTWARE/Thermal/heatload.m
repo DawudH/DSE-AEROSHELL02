@@ -3,7 +3,7 @@ close all
 clc
 
 addpath('..\matlab2tikz')
-%% Determination of heat loads
+%% Loading aerodynamic properties
 
 Tatm = cell(5,1);
 qearo = cell(5,1);
@@ -13,17 +13,29 @@ qearo = cell(5,1);
 load('heatflux_ballute.mat');
 qearo{1,1} = qmax;
 Tatm{1,1} = T;
+
 load('heatflux_isotensoid.mat');
 qearo{2,1} = qmax;
 Tatm{2,1}   = T;
+
 load('heatflux_rigid.mat');
 qearo{3,1} = qmax;
 Tatm{3,1}    = T;
+
 load('heatflux_stackedtoroid_tensioncone.mat');
 qearo{4,1} = qmax;
 Tatm{4,1}   = T;
 qearo{5,1} = qmax;
 Tatm{5,1}    = T;
+
+
+Tstag(:,1) = Tboundary;
+
+
+
+
+
+%% Determination of heat loads
 
 %Determine dt
 dt = t(length(t))/length(t);
@@ -119,8 +131,9 @@ end
 
 %% Temperature range vector
 Twall = linspace(min,mout,(mout-min+1));
+
 cc = summer(6);
-figure(1)
+figure(2)
 hold on
 grid on
 plot(Twall(1),fraction(1,1),'d-','color',cc(1,:),'DisplayName','ballute')
@@ -149,8 +162,67 @@ legend('ballute','isotensoid','stacked torroid','tension cone')
 axis([min mout 0.55 1.25  ])   
 matlab2tikz('.\LaTeX\heatload.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
     
-    
-    
-    
-    
+%% Input figures
 
+figure(1)
+plot(t(1:4:end),Tstag(1:4:end),'-','color',cc(2,:))
+grid on
+xlabel('Time [s]')
+ylabel('T_S [K]') 
+matlab2tikz('.\LaTeX\stagnationtemp.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
+    
+figure(3)
+hold on
+grid on
+plot(t(1),qearo{1,1}(1),'d-','color',cc(1,:),'DisplayName','ballute')
+plot(t(1),qearo{2,1}(1),'+-','color',cc(2,:))
+plot(t(1),qearo{3,1}(1),'s-','color',cc(3,:))
+plot(t(1),qearo{4,1}(1),'v-','color',cc(4,:))
+plot(t(1),qearo{5,1}(1),'.-','color',cc(4,:))
+
+plot(t(1:4:7500),qearo{1,1}(1:4:7500),'-','color',cc(1,:))
+plot(t(1:200:7500),qearo{1,1}(1:200:7500),'d','color',cc(1,:))
+plot(t(1:4:7500),qearo{2,1}(1:4:7500),'-','color',cc(2,:))
+plot(t(1:200:7500),qearo{2,1}(1:200:7500),'+','color',cc(2,:))
+plot(t(1:4:7500),qearo{3,1}(1:4:7500),'-','color',cc(3,:))
+plot(t(1:200:7500),qearo{3,1}(1:200:7500),'s','color',cc(3,:))
+plot(t(1:4:7500),qearo{4,1}(1:4:7500),'-','color',cc(4,:))
+plot(t(1:200:7500),qearo{4,1}(1:200:7500),'v','color',cc(4,:))
+plot(t(1:4:7500),qearo{5,1}(1:4:7500),'-','color',cc(4,:))
+plot(t(1:200:7500),qearo{5,1}(1:200:7500),'.','color',cc(4,:))
+
+%title('Heat load fractions')
+ylabel('stagnation heat flux [W/cm^2]')
+xlabel('Time [s]')
+axis([0 500 0 50])
+legend('Ballute','Isotensoid','Rigid','Stacked torroid','Tension cone')  
+matlab2tikz('.\LaTeX\heatflux1.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
+
+%%
+
+figure(4)
+hold on
+grid on
+plot(t(1),qearo{1,1}(1),'d-','color',cc(1,:),'DisplayName','ballute')
+plot(t(1),qearo{2,1}(1),'+-','color',cc(2,:))
+plot(t(1),qearo{3,1}(1),'s-','color',cc(3,:))
+plot(t(1),qearo{4,1}(1),'v-','color',cc(4,:))
+plot(t(1),qearo{5,1}(1),'.-','color',cc(4,:))
+
+plot(t(7500:4:end),qearo{1,1}(7500:4:end),'-','color',cc(1,:))
+plot(t(7500:200:end),qearo{1,1}(7500:200:end),'d','color',cc(1,:))
+plot(t(7500:4:end),qearo{2,1}(7500:4:end),'-','color',cc(2,:))
+plot(t(7500:200:end),qearo{2,1}(7500:200:end),'+','color',cc(2,:))
+plot(t(7500:4:end),qearo{3,1}(7500:4:end),'-','color',cc(3,:))
+plot(t(7500:200:end),qearo{3,1}(7500:200:end),'s','color',cc(3,:))
+plot(t(7500:4:end),qearo{4,1}(7500:4:end),'-','color',cc(4,:))
+plot(t(7500:200:end),qearo{4,1}(7500:200:end),'v','color',cc(4,:))
+plot(t(7500:4:end),qearo{5,1}(7500:4:end),'-','color',cc(4,:))
+plot(t(7500:200:end),qearo{5,1}(7500:200:end),'.','color',cc(4,:))
+
+%title('Heat load fractions')
+ylabel('Stagnation heat flux [W/cm^2]')
+xlabel('Time [s]')
+axis([1000 2400 0 8.5])
+legend('Ballute','Isotensoid','Rigid','Stacked torroid','Tension cone')  
+matlab2tikz('.\LaTeX\heatflux2.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
