@@ -65,7 +65,7 @@ M=3.0
 C=1.83 \times 10^{-8} R^{-\frac{1}{2}}\left(1-\frac{h_{w}}{h_{0}}\right)
 \end{equation}
 Where in Equation \ref{eq:stagcoefficient} $R$ denotes the local body radius in the stagnation point and $h_{w}$ and $h_{0}$ comprise of the wall and total enthalpies respectively. An additional assumption that is made here is that $\frac{h_{w}}{h_{0}}\ll 1$. Justification for this statement can be found in the fact that the wall temperature must be smaller than the melting or decomposition temperature during the entire flight. Thus, although the temperature can become very high, the resulting wall enthalpy $h_{w}$ will still be much smaller than the total enthalpy $h_{0}$ \cite[p.347]{AndersonJr.2006}. %In addition to this the computed heat flux will increase as a result of neglecting this factor. One can see that if in later design phases the enthalpy ratio is included into the calculations this will relax the design constraints.
-Combining Equations \ref{eq:heatflux}, \ref{eq:stagdens}, \ref{eq:stagspeed}, \ref{eq:stagcoefficient} into one single Equation produces:
+Combining Equations \ref{eq:heatflux}, \ref{eq:stagdens}, \ref{eq:stagspeed}, \ref{eq:stagcoefficient} into one single equation produces:
 \begin{equation}
 \gls{sym:qw}_{stagnation}=1.83 \times 10^{-8}\rho_{\infty}^{0.5} V_{\infty}^{3.0} R^{-\frac{1}{2}}
 \label{eq:qstag}
@@ -139,7 +139,7 @@ Dillman et al. observed that the maximum heat flux on the \acrfull{irve} 3 was $
 \subsubsection{Conclusions after the validation procedure}
 \label{subsec:validconclusions}
 
-From section \ref{subsec:aeroverval} it can be concluded that the accuracy of the modified Newtonian method varies between geometries. The \gls{sym:CD} predicted in section \ref{subsubsec:valsphere} is accurate to within $1\%$ of the experimental value, whereas the accuracy of the \gls{sym:CP} in section \ref{subsubsec:valsharpconeCP} varied over the cone surface. This discrepancy was also observed in section \ref{subsubsec:valsharpconeCD}, where the difference between the numerical and experimental \gls{sym:CD} was $21.4\%$, and again for the Apollo capsule in Section \ref{subsubsec:Apollo_validation}. After judging the accuracy shown in figures \ref{fig:CPcone30val} and \ref{fig:Apollo_cp} it was determined that the accuracy of the modified Newtonian method is adequate for the conceptual and preliminary design phases.
+From section \ref{subsec:aeroverval} it can be concluded that the accuracy of the modified Newtonian method varies between geometries. The \gls{sym:CD} predicted in section \ref{subsubsec:valsphere} is accurate to within $1\%$ of the experimental value, whereas the accuracy of the \gls{sym:CP} in section \ref{subsubsec:valsharpconeCP} varied over the cone surface. This discrepancy was also observed in section \ref{subsubsec:valsharpconeCD}, where the difference between the numerical and experimental \gls{sym:CD} was $21.4\%$, and again for the Apollo capsule in section \ref{subsubsec:Apollo_validation}. After judging the accuracy shown in figures \ref{fig:CPcone30val} and \ref{fig:Apollo_cp} it was determined that the accuracy of the modified Newtonian method is adequate for the conceptual and preliminary design phases.
 
 The model for the maximum heat flux found on a body was validated in section \ref{subsubsec:heatvalidation}. It was observed that a discrepancy of $19.0\%$ was present between the numerical and experimental maximum heat fluxes. After consideration this was deemed to be acceptable for conceptual and preliminary design.
 
@@ -187,7 +187,7 @@ The control system mass is based on the moment that the control system has to pr
 		\caption{Trailing ballute}
 		\label{fig:cpballute}
 	\end{subfigure}	
-	\caption{Geometry and pressure coefficient \gls{sym:CP} distribution over the different concepts, at an angle of attack $\gls{sym:alpha}=20\left[^\circ\right]$. }
+	\caption{Geometry and pressure coefficient \gls{sym:CP} distribution over the different concepts, at an angle of attack $\gls{sym:alpha}=20[deg]$. $\gls{sym:M}=23.3$, $\gls{sym:gamma}=1.4$}
 	\label{fig:conceptscp}
 \end{figure}
 
@@ -205,10 +205,10 @@ The lift is defined as the component of the aerodynamic force perpendicular to t
 \end{equation}
 This $\gls{sym:cla}$ is the lift coefficient multiplied with the reference area and as such gives insight in the lift generation of a given spacecraft, incorporating its size. For blunt vehicles with a blunt surface perpendicular to the flow, a positive angle of attack $\gls{sym:alpha}$ results in a negative lift.
 
-In Figure \ref{fig:clplots}, the lift coefficient can be seen to vary greatly for the different concepts: the stacked toroid and tension cone produce about three times the lift of the other concepts. This is also reflected by the lift gradient plot, which can be found in Figure \ref{fig:claplha}. The lift gradient plot is the graph that provides the information needed for the trade-off, since the lift gradient determines how much the control system has to change the angle of attack to achieve a certain lift. It is clear that the stacked toroid and tension cone have the greatest lift and lift gradient, while the trailing ballute follows closely. The other two concepts offer a significantly lower lift performance. The lift and lift gradient at an angle of attack of $\gls{sym:alpha}=20^\circ$ are summarized in Table \ref{tab:lift}.
+In Figure \ref{fig:clplots}, the lift coefficient can be seen to vary greatly for the different concepts: the stacked toroid and tension cone produce about three times the lift of the other concepts. This is also reflected by the lift gradient plot, which can be found in Figure \ref{fig:claplha}. The lift gradient plot is the graph that provides the information needed for the trade-off, since the lift gradient determines how much the control system has to change the angle of attack to achieve a certain lift. It is clear that the stacked toroid and tension cone have the greatest lift and lift gradient, while the trailing ballute follows closely. The other two concepts offer a significantly lower lift performance. The lift and lift gradient at an angle of attack of $\gls{sym:alpha}=20 [deg]$ are summarized in Table \ref{tab:lift}.
 
 \begin{table}[H]
-	\caption{Lift and lift gradient of the different concepts at $\gls{sym:alpha}=20\left[^\circ\right]$}% CAPTION HERE !
+	\caption{Lift and lift gradient of the different concepts at $\gls{sym:alpha}=20 [deg]$}% CAPTION HERE !
 	\label{tab:lift}% LABEL HERE
 	\begin{tabular}{|p{0.4\textwidth}|p{0.25\textwidth}|p{0.25\textwidth}|}
 		\hline
@@ -236,7 +236,7 @@ In Figure \ref{fig:clplots}, the lift coefficient can be seen to vary greatly fo
 		\caption{$\gls{sym:cla-alpha}$}
 		\label{fig:claplha}
 	\end{subfigure}
-	\caption{Comparisons of the lift characteristics of the different concepts}
+	\caption{Comparisons of the lift characteristics of the different concepts. $\gls{sym:M}=20[-]$, $\gls{sym:gamma}=1.29[-]$}
 	\label{fig:clplots}
 \end{figure}
 
@@ -269,7 +269,7 @@ As can be seen in Figures \ref{fig:cm} and \ref{fig:cmalpha}, the ballute, stack
 		\caption{$\gls{sym:cma-alpha}$}
 		\label{fig:cmalpha}
 	\end{subfigure}
-	\caption{Comparisons of the aerodynamic moment characteristics of the different concepts}
+	\caption{Comparisons of the aerodynamic moment characteristics of the different concepts. $\gls{sym:M}=20[-]$, $\gls{sym:gamma}=1.29[-]$}
 	\label{fig:cmplots}
 \end{figure}
 
@@ -279,7 +279,7 @@ As can be seen in Figures \ref{fig:cm} and \ref{fig:cmalpha}, the ballute, stack
 	\setlength\figureheight{0.49\textwidth} 
 	\setlength\figurewidth{0.49\textwidth}
 	\input{./Figure/aero_model/cmcl.tikz}	
-	\caption{Comparisons of the different concepts for $\gls{sym:cmcl}$, an indication of the control system effort to attain a certain lift}
+	\caption{Comparisons of the different concepts for $\gls{sym:cmcl}$, an indication of the control system effort to attain a certain lift. $\gls{sym:M}=20[-]$, $\gls{sym:gamma}=1.29[-]$}
 	\label{fig:cmcl}
 \end{figure}
 
@@ -305,4 +305,6 @@ The $\frac{\gls{sym:CM}}{\gls{sym:CL}}$-fractions shown in Table \ref{tab:contro
 \subsubsection{Aerodynamic heating}
 As given in Equation \ref{eq:qstag}, the stagnation temperature of different concepts, assessed for equal velocity, density and Mach number, is a function of the local radius of curvature. The heat flux is calculated for an orbit, using the density and Mach number of each point in that orbit to calculate the heat flux generated at each respective point.
 
---q-alpha plot for all concepts? Is very doable. Show heat flux through time?
+
+
+\subsection{Conclusion}
