@@ -74,7 +74,7 @@ end
         if out_c.in_atmos
              % determine new cl and cd param
                  % start controlling once the accel is above 1.5g
-                 if use_control %&& out_c.use_control
+                 if use_control && out_c.use_control
                          [aero_param] = aero_conrol_no_control(state,control,aero_coef,V(i,:),R(i,:),q(i),Omega_m,m,g_earth);
                          CL(i+1) = aero_param.CLA / S;
                          CD(i+1) = aero_param.CDA / S;
