@@ -104,22 +104,28 @@ As can be seen in Figures \ref{fig:CPconealpha10} and \ref{fig:CPconealpha20} th
 \begin{figure}[h]
 	\centering
 	\begin{subfigure}[b]{0.49\textwidth}
-		\includegraphics[width=0.96\textwidth]{./Figure/cone30deg_alpha10}
+		\centering
+		\setlength\figureheight{0.6\textwidth} 
+		\setlength\figurewidth{0.85\textwidth}
+		\input{./Figure/aero_model/deg30cone10alpha.tikz}
 		\caption{$\gls{sym:alpha}=10\deg$}
 		\label{fig:CPconealpha10}
 	\end{subfigure}
 		\begin{subfigure}[b]{0.49\textwidth}
-			\includegraphics[width=0.96\textwidth]{./Figure/cone30deg_alpha20}
+			\centering
+			\setlength\figureheight{0.6\textwidth} 
+			\setlength\figurewidth{0.85\textwidth}
+			\input{./Figure/aero_model/deg30cone20alpha.tikz}
 		\caption{$\gls{sym:alpha}=20\deg$}
 		\label{fig:CPconealpha20}
 	\end{subfigure}
-	\caption{Comparisons between experimental and numerical \glspl{sym:CP}}
+	\caption{Comparisons between experimental and numerical pressure coefficients}
 	\label{fig:CPcone30val}
 \end{figure}
 
 \subsubsection{\gls{sym:CD}-validation against experimental data of a sharp cone}
 \label{subsubsec:valsharpconeCD}
-Stevens found that for a sharp cone-cylinder with a half-cone angle \gls{sym:theta} of $30\deg$ $\gls{sym:CD}=0.58$ in an air-stream of Mach $8$ where angle of attack \gls{sym:alpha} and sideslip angle \gls{sym:beta} are zero \cite{Stevens1950,AndersonJr.2007}. The numerical model predicts for this case that $\gls{sym:CD}=0.456$, which coincides with a discrepancy of $21.4\%$ of the experimental value. This is in line with the results of Figure \ref{fig:CPcone30val} where the \glspl{sym:CP} predicted by the numerical model were smaller than the experimental values of a sharp cone.
+Stevens found that for a sharp cone-cylinder with half-cone angle \gls{sym:theta} of $30\deg$ $\gls{sym:CD}=0.58$ in an air-stream of Mach $8$ where angle of attack \gls{sym:alpha} and sideslip angle \gls{sym:beta} are zero \cite{Stevens1950,AndersonJr.2007}. The numerical model predicts for this case that $\gls{sym:CD}=0.456$, which coincides with a discrepancy of $21.4\%$ of the experimental value. This is in line with the results of Figure \ref{fig:CPcone30val} where the \glspl{sym:CP} predicted by the numerical model were smaller than the experimental values of a sharp cone.
 
 \subsubsection{\gls{sym:CP}-validation against experimental data of the Apollo re-entry capsule}
 \label{subsubsec:Apollo_validation}
@@ -127,7 +133,9 @@ The data points in Figure \ref{fig:Apollo_cp} represent pressure coefficients me
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\textwidth]{./Figure/Apollo_cp}
+	\setlength\figureheight{0.4\textwidth} 
+	\setlength\figurewidth{0.95\textwidth}
+	\input{./Figure/aero_model/apollovalidation.tikz}
 	\caption{Comparison between experimental and numerical \glspl{sym:CP} for the Apollo re-entry capsule}
 	\label{fig:Apollo_cp}
 \end{figure}
@@ -220,7 +228,7 @@ The lift is defined as the component of the aerodynamic force perpendicular to t
 \end{equation}
 This $\gls{sym:cla}$ is the lift coefficient multiplied with the reference area and as such gives insight in the lift generation of a given spacecraft, incorporating its size. For blunt vehicles with a blunt surface perpendicular to the flow, a positive angle of attack $\gls{sym:alpha}$ results in a negative lift.
 
-In Figure \ref{fig:clplots}, the lift coefficient can be seen to vary greatly for the different concepts: the stacked toroid and tension cone produce about 3 times the lift of the other concepts. This is also reflected in the lift gradient plot, which can be found in \ref{fig:claplha}. The lift gradient plot is the graph that provides the information needed for the trade-off, since the lift gradient determines how much the control system has to change the angle of attack to achieve a given lift. It is clear that the stacked toroid and tension cone have the greatest lift and lift gradient, while the trailing ballute follows closely. The other two concepts offer a significantly less lift performance. The lift and lift gradient at an angle of attack of $\gls{sym:alpha}=20^\circ$ are summarized in Table \ref{tab:lift}.
+In Figure \ref{fig:clplots}, the lift coefficient can be seen to vary greatly for the different concepts: the stacked toroid and tension cone produce about 3 times the lift of the other concepts. This is also reflected in the lift gradient plot, which can be found in \ref{fig:claplha}. The lift gradient plot is the graph that provides the information needed for the trade-off, since the lift gradient determines how much the control system has to change the angle of attack to achieve a given lift. It is clear that the stacked toroid and tension cone have the greatest lift and lift gradient, while the trailing ballute follows closely. The other two concepts offer a significantly less lift performance. The lift and lift gradient at an angle of attack of $\gls{sym:alpha}=20^\circ$ are summarized in Table \ref{tab:clcdift}.
 
 In order to assess these values, a representative geometry is chosen. Since Newtonian flow only affects the parts of the vehicle that are in direct line of sight of the oncoming flow, only the front of the decelerator has to be accurately modelled. The stacked toroid and tension cone concepts are modelled after the \gls{irve} missions as flown by NASA, as can be seen in Figure \ref{fig:cpstackedtoroid}. The rigid concept's front is a largely flattened sphere, as seen in Figure \ref{fig:cprigid}. The isotensoid is modelled as a slightly flattened sphere, with a radius of 6 meters perpendicular and a radius of 5 meter in direction of the flow. This model can be seen in Figure \ref{fig:cpisotensoid}. The trailing ballute is modelled as a single torus trailing a body comparable to the rigid concept, as seen in Figure \ref{fig:cpballute}. 
 
@@ -229,24 +237,39 @@ In order to assess these values, a representative geometry is chosen. Since Newt
 \subsubsection{Deceleration performance}
 $\gls{sym:clcd}$ is the lift coefficient divided by the drag coefficient. In Figure \ref{fig:clcd}, a graph is presented showing the lift over drag ratios of the different concepts for different angles of attack.
 
-\begin{figure}[b]
-	\setlength\figureheight{0.8\textwidth} 
-	\setlength\figurewidth{0.75\textwidth}
-	\input{./Figure/aero_model/clcd.tikz}
-	\caption{$\gls{sym:clcd}$ of the different concepts versus \gls{sym:alpha}. $\gls{sym:M}=20[-]$, $\gls{sym:gamma}=1.29[-]$}
-	\label{fig:clcd}
+
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}{0.49\textwidth}
+		\setlength\figureheight{0.8\textwidth} 
+		\setlength\figurewidth{0.75\textwidth}
+		\input{./Figure/aero_model/clcd.tikz}
+		\caption{$\gls{sym:clcd}$}
+		\label{fig:clcd}
+	\end{subfigure}
+	\begin{subfigure}{0.49\textwidth}
+		\setlength\figureheight{0.8\textwidth} 
+		\setlength\figurewidth{0.75\textwidth}
+		\input{./Figure/aero_model/cmcl.tikz}	
+		\caption{$\gls{sym:cmcl}$}
+		\label{fig:cmcl}
+	\end{subfigure}
+	\caption{Comparisons of the different concepts for $\gls{sym:clcd}$ and $\gls{sym:cmcl}$. $\gls{sym:M}=20[-]$, $\gls{sym:gamma}=1.29[-]$}
+	\label{fig:cmcl-clcd}
 \end{figure}
 
+The lift over drag ratio seems to be linear up until around $\gls{sym:alpha}=20 [deg]$. Furthermore, there is a clear distinction between the different concepts: at $\gls{sym:alpha}=20 [deg]$, the rigid concepts performs best, followed by the stacked toroid, tension con and trailing ballute. The isotensoid performs worst. The results are summarized in table \ref{tab:clcd}.
+
 \begin{table}[H]
-	\caption{Lift and Lift gradient of the different concepts at $\gls{sym:alpha}=20^\circ$}% CAPTION HERE !
-	\label{tab:lift}% LABEL HERE
-	\begin{tabular}{|p{0.4\textwidth}|p{0.25\textwidth}|p{0.25\textwidth}|}
+	\caption{Lift over drag ratio of the different concepts at $\gls{sym:alpha}=20 [deg]$. $\gls{sym:M}=20[-]$, $\gls{sym:gamma}=1.29[-]$}% CAPTION HERE !
+	\label{tab:clcd}% LABEL HERE
+	\begin{tabular}{|p{0.36\textwidth}|p{0.23\textwidth}|p{0.31\textwidth}|}
 		\hline
-		Concept name  					& $\gls{sym:cla}$	& $\gls{sym:cla-alpha}$	\\ \hline \hline
-		Stacked Toroid, Tension Cone	& -22.70     		& -50.18				\\ \hline
-		Rigid  							& -8.62				& -14.91				\\ \hline
-		Isotensoid  					& -8.25				& -16.95				\\ \hline
-		Trailing Ballute				& -19.32			& -34.16				\\ \hline				
+		\textbf{Concept}  				& \textbf{$\gls{sym:clcd}$}	& \textbf{Fraction of stacked toroid}	\\ \hline \hline
+		Stacked toroid, tension cone	& -0.176     				& 1								\\ \hline
+		Rigid  							& -0.311					& 1.764						\\ \hline
+		Isotensoid  					& -0.072					& 0.410						\\ \hline
+		Trailing ballute				& -0.210					& 1.193						\\ \hline
 	\end{tabular}
 \end{table}
 
@@ -312,16 +335,6 @@ The stability of the vehicle can be determined from $\gls{sym:cma}$ and $\gls{sy
 	\label{fig:cmplots}
 \end{figure}
 
-
-\begin{figure}[h]
-	\centering
-	\setlength\figureheight{0.49\textwidth} 
-	\setlength\figurewidth{0.49\textwidth}
-	\input{./Figure/aero_model/cmcl.tikz}	
-	\caption{Comparisons of the different concepts for $\gls{sym:cmcl}$, an indication of the control system effort to attain a certain lift}
-	\label{fig:cmcl}
-\end{figure}
-
 \subsubsection{Control system mass estimation}
 To estimate the relative control system masses the absolute value of the ratio \gls{sym:cmcl} at $\gls{sym:alpha}=1\deg$ is determined for all concepts. The values of this parameter are shown in Table \ref{tab:controlmass}. Note that the rigid concept has not been taken into account. This is the case because, as covered in Chapter \ref{ch:strucmass}, the structural mass of the rigid design option does not meet the requirements. As such the control system mass of this concept will not be taken into account. 
 
@@ -329,8 +342,14 @@ To estimate the relative control system masses the absolute value of the ratio \
 	\centering
 	\caption{A caption}
 	\begin{tabular}{|c|c|c|}
+<<<<<<< HEAD
 		\hline		\textbf{Concept} & \textbf{\gls{sym:cmcl}} & \textbf{Fraction of stacked toroid} \\ \hline \hline
+=======
+		\hline
+		\textbf{Concept} & \textbf{\gls{sym:cmcl}} [-] & \textbf{Fraction of stacked toroid} \\ \hline \hline
+>>>>>>> 5df67b72148d7c16fbdc594999aec97c64d14844
 		Stacked toroid, tension cone & $5.81$ & $1.00$\\
+		Rigid & $0.41$ & $0.07$ \\
 		Isotensoid & $5.72$ & $0.99$\\
 		Trailing ballute & $5.00$ & $0.86$\\
 		\hline
@@ -340,7 +359,8 @@ To estimate the relative control system masses the absolute value of the ratio \
 
 The $\frac{\gls{sym:CM}}{\gls{sym:CL}}$-fractions shown in Table \ref{tab:controlmass} will be used in Chapter \ref{ch:tfsum} as input for the trade-off procedure. It should be noted here that the analysis methods used to predict these required control system moments do not take into account dynamic behaviour, as the analysis is carried out under the assumption of steady flow.
 
-\subsubsection{Aerodynamic heating}
-As given in Equation \ref{eq:qstag}, the stagnation temperature of different concepts, assessed for equal velocity, density and Mach number, is a function of the local radius of curvature. The heat flux is calculated for an orbit, using the density and Mach number of each point in that orbit to calculate the heat flux generated at each respective point.
+\section{Conclusion}
+The performance of the different concepts on the trade-off criteria can now be assessed. The deceleration time performance of the rigid structure is the highest of the researched shapes, with a lift over drag ratio almost $80\%$ higher than that of the stacked toroid. The isotensoid has a performance more similar to the stacked toroid and tension cone, being around $20\%$ better.The performance of the different concepts on the trade-off criteria can now be assessed. The deceleration time performance of the rigid structure is the highest of the researched shapes, with a lift over drag ratio almost $80\%$ higher than that of the stacked toroid. The isotensoid has a performance more similar to the stacked toroid and tension cone, being around $20\%$ better. The isotensoid has the worst performance compared to the stacked toroid and tension cone, being almost $60\%$ worse.
 
-%--q-alpha plot for all concepts? Is very doable. Show heat flux through time?
+
+
