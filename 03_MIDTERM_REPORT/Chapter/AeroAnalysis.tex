@@ -1,11 +1,11 @@
 \section{Aerodynamic concept analysis}
 \label{ch:aero_analysis}
-In order to analyse the aerodynamic characteristics of the proposed concepts a software tool was developed. This chapter will deal with the development and implementation of this program. The aerodynamic tool is 
-developed to be able to assess the performance of the different system concepts on the different trade-off criteria as defined in Chapter \label{ch:trade-offcriteria}: the lift gradient \gls{sym:cla-alpha} relates to the deceleration time and the moment stability \gls{sym:cma-alpha} relates to the static stability of the decelerator. In order to calculate these values, the concept shapes are discretised in triangles, and for each triangle the pressure coefficient \gls{sym:cp} is calculated. This can then be integrated over the surface to obtain lift, drag and moment. Also, the maximum heat flux \gls{sym:qw} is determined for each concept, which is used to determine the thermal protection system mass. First section \ref{subsec:aerotool} will discuss the tool development process. Secondly section \ref{subsec:appaeroanal} 
+In order to analyse the aerodynamic characteristics of the proposed concepts a software tool was developed. This chapter will deal with the development and implementation of this program. The aerodynamic tool is developed to be able to assess the performance of the different system concepts on the different trade-off criteria as defined in Chapter \ref{ch:tfsum}: the lift gradient \gls{sym:cla-alpha} relates to the deceleration time and the moment stability \gls{sym:cma-alpha} relates to the static stability of the decelerator. In order to calculate these values, the concept shapes are discretised in triangles, and for each triangle the pressure coefficient \gls{sym:cp} is calculated. This can then be integrated over the surface to obtain lift, drag and moment. Also, the maximum heat flux \gls{sym:qw} is determined for each concept, which is used to determine the thermal protection system mass. 
+The chapter will start with a description of the analysis method used to determine the different aerodynamic properties of the various concepts in section \ref{subsec:aerotool}. The verification and validation of the analysis tool is discussed in section \ref{subsec:aeroverval}. Finally the developed analysis method is used to analyse the various system concepts and generate the required data for the trade off. 
 
 \subsection{Development of aerodynamic analysis tool}
 \label{subsec:aerotool}
-For analysing the aerodynamic characteristics of each concept the modified Newtonian method will be used. This method relates the inclination angle $\gls{sym:chi}$ of a flat plate with respect to an incoming flow to the magnitude of its coefficient of pressure, as shown in equation \ref{eq:modnewtonian} \cite{AndersonJr.2006}.
+For analysing the aerodynamic characteristics of each concept the modified Newtonian method will be used. This method relates the inclination angle $\gls{sym:chi}$ of a flat plate with respect to an incoming flow to the magnitude of its coefficient of pressure, as shown in Equation \ref{eq:modnewtonian} \cite{AndersonJr.2006}.
 \begin{multicols}{2}
 \begin{equation}
 \gls{sym:CP}=\gls{sym:CP}_{max}sin^{2}(\gls{sym:chi})
@@ -16,21 +16,21 @@ For analysing the aerodynamic characteristics of each concept the modified Newto
 \label{eq:cpmax}
 \end{equation}
 \end{multicols}
-In equation \ref{eq:modnewtonian} $\gls{sym:CP}_{max}$ is the value of $\gls{sym:CP}$ in the stagnation point of an arbitrary body. Since the stagnation point is per definition located behind a normal shock its value can be found from the normal shock relations. The result of doing this is shown in equation \ref{eq:cpmax}. Here $p_{O_{2}}$ denotes the total pressure in the stagnation point and can be found using equation \ref{eq:po2} \cite{AndersonJr.2007}.
+In equation \ref{eq:modnewtonian} $\gls{sym:CP}_{max}$ is the value of $\gls{sym:CP}$ in the stagnation point of an arbitrary body. Since the stagnation point is per definition located behind a normal shock its value can be found from the normal shock relations. The result of doing this is shown in Equation \ref{eq:cpmax}. Here $p_{O_{2}}$ denotes the total pressure in the stagnation point and can be found using Equation \ref{eq:po2} \cite{AndersonJr.2007}.
 
 \begin{equation}
 \frac{p_{O_{2}}}{p_{\infty}}=\left(\frac{(\gls{sym:gamma}+1)^{2}M_{\infty}^{2}}{4\gls{sym:gamma} M_{\infty}^{2}-2(\gls{sym:gamma}-1)}\right)^{\frac{\gls{sym:gamma}}{\gls{sym:gamma}-1}}\left(\frac{1-\gls{sym:gamma}+2\gls{sym:gamma} M_{\infty}^{2}}{\gls{sym:gamma}+1}\right)
 \label{eq:po2}
 \end{equation}
 
-Furthermore it can be noted that $\frac{1}{2}\rho_{\infty}V_{\infty}^{2}=\frac{\gls{sym:gamma}}{2}p_{\infty}M_{\infty}^{2}$ \cite{AndersonJr.2007}. Combining this with equation \ref{eq:cpmax} produces equation \ref{eq:cpmaxfinal}, where the ratio $\frac{p_{O_{2}}}{p_{\infty}}$ can be calculated using equation \ref{eq:po2}.
+Furthermore it can be noted that $\frac{1}{2}\rho_{\infty}V_{\infty}^{2}=\frac{\gls{sym:gamma}}{2}p_{\infty}M_{\infty}^{2}$ \cite{AndersonJr.2007}. Combining this with Equation \ref{eq:cpmax} produces Equation \ref{eq:cpmaxfinal}, where the ratio $\frac{p_{O_{2}}}{p_{\infty}}$ can be calculated using Equation \ref{eq:po2}.
 
 \begin{equation}
 C_{p_{max}}=\frac{2}{\gls{sym:gamma} M_{\infty}^{2}}\left(\frac{p_{O_{2}}}{p_{\infty}}-1\right)
 \label{eq:cpmaxfinal}
 \end{equation}
 
-By dividing the surface of the body to be analysed into many triangular elements the pressure coefficient distribution of said body can be determined numerically. A velocity magnitude is given as input, together with the angle of attack \gls{sym:alpha} and sideslip angle \gls{sym:beta}. Following this the outward surface normal vector is computed in Cartesian coordinates for every element, after which the velocity unit vector is computed with equation \ref{eq:unitV}. To determine $sin(\gls{sym:chi})$ for every element the dot product of the velocity unit vector with the surface normal vector is then taken, as shown in equation \ref{eq:dotproduct}.
+By dividing the surface of the body to be analysed into many triangular elements the pressure coefficient distribution of said body can be determined numerically. A velocity magnitude is given as input, together with the angle of attack \gls{sym:alpha} and sideslip angle \gls{sym:beta}. Following this the outward surface normal vector is computed in Cartesian coordinates for every element, after which the velocity unit vector is computed with Equation \ref{eq:unitV}. To determine $sin(\gls{sym:chi})$ for every element the dot product of the velocity unit vector with the surface normal vector is then taken, as shown in Equation \ref{eq:dotproduct}.
 \begin{multicols}{2}
 \begin{equation}
 \gls{sym:Vhat}=\frac{\gls{sym:Vv}}{\gls{sym:V}}
@@ -42,7 +42,6 @@ sin(\gls{sym:chi})=\gls{sym:Vhat} \bullet \gls{sym:n}
 \end{equation}
 \end{multicols}
 Using $C_{p_{max}}$ and $sin(\gls{sym:chi})$ the \gls{sym:CP} for every surface element is calculated, after which it is multiplied with the element area and the element surface normal vector. This results in an elemental pressure force in three dimensions from which the lift and drag forces can be determined. By then summing the resultant forces for all elements the total body forces are found. Next to the body forces the resultant aerodynamic moment can also be found. For this the location of the \acrfull{cg} is used as input, after which the moments about the \gls{cg} caused by the force on each element can be summed. 
-
 
 Two notes are made here with regard to the results produced by the Newtonian flow method:
 \begin{itemize}
@@ -57,7 +56,7 @@ In addition to determining the aerodynamic forces and moments acting on the body
 \label{eq:heatflux}
 \end{equation}
 
-From the same theory it is furthermore known that: 
+From this same theory it is furthermore known that in the stagnation point: 
 \begin{multicols}{2}
 \begin{equation}
 \label{eq:stagdens}
@@ -73,7 +72,7 @@ M=3.0
 C=1.83 \times 10^{-8} R^{-\frac{1}{2}}\left(1-\frac{h_{w}}{h_{0}}\right)
 \end{equation}
 Where in Equation \ref{eq:stagcoefficient} $R$ denotes the local body radius in the stagnation point and $h_{w}$ and $h_{0}$ comprise of the wall and total enthalpies respectively. An additional assumption that is made here is that $\frac{h_{w}}{h_{0}}\ll 1$. Justification for this statement can be found in the fact that the wall temperature must be smaller than the melting or decomposition temperature during the entire flight. Thus, although the temperature can become very high, the resulting wall enthalpy $h_{w}$ will still be much smaller than the total enthalpy $h_{0}$ \cite[p.347]{AndersonJr.2006}. %In addition to this the computed heat flux will increase as a result of neglecting this factor. One can see that if in later design phases the enthalpy ratio is included into the calculations this will relax the design constraints.
-Combining Equations \ref{eq:heatflux}, \ref{eq:stagdens}, \ref{eq:stagspeed}, \ref{eq:stagcoefficient} into one single equation produces:
+Combining Equations \ref{eq:heatflux}, \ref{eq:stagdens}, \ref{eq:stagspeed}, \ref{eq:stagcoefficient} into one single Equation produces:
 \begin{equation}
 \gls{sym:qw}_{stagnation}=1.83 \times 10^{-8}\rho_{\infty}^{0.5} V_{\infty}^{3.0} R^{-\frac{1}{2}}
 \label{eq:qstag}
@@ -88,12 +87,12 @@ Following the verification process the model was validated using experimental va
 
 \subsubsection{\gls{sym:CD}-validation against experimental drag of a sphere}
 \label{subsubsec:valsphere}
-For the first model validation case a comparison was made the between the \gls{sym:CD}-value of a sphere in hypersonic flow that were computed by the model and as found in an experiment. It was found that for hypersonic Mach numbers the experimental \gls{sym:CD}-value of a sphere is $0.92$ \cite{Bailey1966,AndersonJr.2007,Cox1965}. When computing \gls{sym:CD} numerically with the modified Newtonian method using $>10,000$ surface elements produces $\gls{sym:CD}=0.916$, which coincides with a discrepancy of $0.5\%$ of the experimental value. Since the accuracy of the experimental data is approximately $\pm1.5\%$ \cite{Bailey1966} this discrepancy falls within the confidence interval of the measurements.
+For the first model validation case a comparison was made the between the \gls{sym:CD}-value of a sphere in hypersonic flow that were computed by the model and as found in an experiment. It was found that for hypersonic Mach numbers the experimental \gls{sym:CD}-value of a sphere is $0.92$ \cite{Bailey1966,AndersonJr.2007,Cox1965}. When computing \gls{sym:CD} numerically with the modified Newtonian method using more than $10,000$ surface elements produces $\gls{sym:CD}=0.916$, which coincides with a discrepancy of $0.5\%$ of the experimental value. Since the accuracy of the experimental data is approximately $\pm1.5\%$ \cite{Bailey1966} this discrepancy falls within the confidence interval of the measurements.
 
 \subsubsection{\gls{sym:CP}-validation against experimental data of a sharp cone}
 \label{subsubsec:valsharpconeCP}
-Following the \gls{sym:CD}-validation for blunt bodies presented in the previous section now \gls{sym:CP}-validation will be carried out for sharp bodies. This is carried out by comparing the \glspl{sym:CP} at several points on the surface of a cone with half-cone angle \gls{sym:theta} of $15$ degrees. The experimental data was collected for $\gls{sym:M}=14.9$ and $\gls{sym:gamma}=\frac{5}{3}$ (helium was used as medium) \cite{Bertin1994,Cleary1970}. Figure \ref{fig:CPcone30val} shows the data points that were collected for angles of attack $\gls{sym:alpha}=10\deg$ and $\gls{sym:alpha}=20\deg$ in figure \ref{fig:CPconealpha10} and \ref{fig:CPconealpha20} respectively. On the X-axis the variable \gls{sym:beta_cone} is used. This quantity refers to the local cross-sectional surface rotation with respect to an axis that is defined positive in the positive Z-direction. Figure \ref{fig:beta_cone} showcases this concept more clearly. Normally the domain of \gls{sym:beta_cone} lies between $0\deg$ and $360\deg$, but because the cone is symmetrical only half of the cone surface is plotted here. Furthermore, since the cone in question is a sharp cone with a constant semi-cone angle the \gls{sym:CP}-distribution is constant along the cone surface for constant \gls{sym:beta_cone}.
-As can be seen in figures \ref{fig:CPconealpha10} and \ref{fig:CPconealpha20} the modified Newtonian method is the most accurate around $\gls{sym:beta_cone}=90\deg$.
+Following the \gls{sym:CD}-validation for blunt bodies presented in the previous section now \gls{sym:CP}-validation will be carried out for sharp bodies. This is performed out by comparing the \glspl{sym:CP} at select points on the surface of a cone with half-cone angle \gls{sym:theta} of $15$ degrees. The experimental data was collected for $\gls{sym:M}=14.9$ and $\gls{sym:gamma}=\frac{5}{3}$ (helium was used as medium) \cite{Bertin1994,Cleary1970}. Figure \ref{fig:CPcone30val} shows the data points that were collected for angles of attack $\gls{sym:alpha}=10[[]\deg]]$ and $\gls{sym:alpha}=20[\deg]$ in Figure \ref{fig:CPconealpha10} and \ref{fig:CPconealpha20} respectively. On the X-axis the variable \gls{sym:beta_cone} is used. This quantity refers to the local cross-sectional surface rotation with respect to an axis that is defined positive in the positive Z-direction. Figure \ref{fig:beta_cone} showcases this concept more clearly. Normally the domain of \gls{sym:beta_cone} lies between $0[\deg]$ and $360[\deg]$, but because the cone is symmetrical only half of the cone surface is plotted here. Furthermore, since the cone in question is a sharp cone with a constant semi-cone angle the \gls{sym:CP}-distribution is constant along the cone surface for constant \gls{sym:beta_cone}.
+As can be seen in Figures \ref{fig:CPconealpha10} and \ref{fig:CPconealpha20} the modified Newtonian method is the most accurate around $\gls{sym:beta_cone}=90[\deg]$.
 
 \begin{figure}[h]
 	\centering
@@ -105,38 +104,46 @@ As can be seen in figures \ref{fig:CPconealpha10} and \ref{fig:CPconealpha20} th
 \begin{figure}[h]
 	\centering
 	\begin{subfigure}[b]{0.49\textwidth}
-		\includegraphics[width=0.96\textwidth]{./Figure/cone30deg_alpha10}
+		\centering
+		\setlength\figureheight{0.6\textwidth} 
+		\setlength\figurewidth{0.85\textwidth}
+		\input{./Figure/aero_model/deg30cone10alpha.tikz}
 		\caption{$\gls{sym:alpha}=10\deg$}
 		\label{fig:CPconealpha10}
 	\end{subfigure}
 		\begin{subfigure}[b]{0.49\textwidth}
-			\includegraphics[width=0.96\textwidth]{./Figure/cone30deg_alpha20}
+			\centering
+			\setlength\figureheight{0.6\textwidth} 
+			\setlength\figurewidth{0.85\textwidth}
+			\input{./Figure/aero_model/deg30cone20alpha.tikz}
 		\caption{$\gls{sym:alpha}=20\deg$}
 		\label{fig:CPconealpha20}
 	\end{subfigure}
-	\caption{Comparisons between experimental and numerical \glspl{sym:CP}}
+	\caption{Comparisons between experimental and numerical pressure coefficients}
 	\label{fig:CPcone30val}
 \end{figure}
 
 \subsubsection{\gls{sym:CD}-validation against experimental data of a sharp cone}
 \label{subsubsec:valsharpconeCD}
-Stevens found that for a sharp cone-cylinder with a half-cone angle \gls{sym:theta} of $30\deg$ $\gls{sym:CD}=0.58$ in an air-stream of Mach $8$ where angle of attack \gls{sym:alpha} and sideslip angle \gls{sym:beta} are zero \cite{Stevens1950,AndersonJr.2007}. The numerical model predicts for this case that $\gls{sym:CD}=0.456$, which coincides with a discrepancy of $21.4\%$ of the experimental value. This is in line with the results of figure \ref{fig:CPcone30val} where the \glspl{sym:CP} predicted by the numerical model were smaller than the experimental values of a sharp cone.
+Stevens found that for a sharp cone-cylinder with half-cone angle \gls{sym:theta} of $30\deg$ $\gls{sym:CD}=0.58$ in an air-stream of Mach $8$ where angle of attack \gls{sym:alpha} and sideslip angle \gls{sym:beta} are zero \cite{Stevens1950,AndersonJr.2007}. The numerical model predicts for this case that $\gls{sym:CD}=0.456$, which coincides with a discrepancy of $21.4\%$ of the experimental value. This is in line with the results of Figure \ref{fig:CPcone30val} where the \glspl{sym:CP} predicted by the numerical model were smaller than the experimental values of a sharp cone.
 
 \subsubsection{\gls{sym:CP}-validation against experimental data of the Apollo re-entry capsule}
 \label{subsubsec:Apollo_validation}
-The data points in figure \ref{fig:Apollo_cp} represent pressure coefficients measured at various locations of one of the two axisymmetric axes \cite{Bertin1966}. The quantity shown on the X-axis is defined in figure \ref{fig:Apollo_y}. As can be seen in figure \ref{fig:Apollo_cp} the numerical model is most accurate around the centre of the capsule. As the distance to the centreline increases, so does the discrepancy between the experimental and numerical values.
+The data points in Figure \ref{fig:Apollo_cp} represent pressure coefficients measured at various locations of one of the two axisymmetric axes \cite{Bertin1966}. The quantity shown on the X-axis is defined in Figure \ref{fig:Apollo_y}. As can be seen in Figure \ref{fig:Apollo_cp} the numerical model is most accurate around the centre of the capsule. As the distance to the centreline increases, so does the discrepancy between the experimental and numerical values.
 
 \begin{figure}[H]
 	\centering
+	\setlength\figureheight{0.4\textwidth} 
+	\setlength\figurewidth{0.95\textwidth}
 	\input{./Figure/aero_model/apollovalidation.tikz}
-	\caption{Comparison between experimental and numerical \gls{sym:CP}'s for the Apollo re-entry capsule}
+	\caption{Comparison between experimental and numerical \glspl{sym:CP} for the Apollo re-entry capsule}
 	\label{fig:Apollo_cp}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.4\textwidth]{./Figure/Apollo_model}
-	\caption{Definition of unit on the X-axis of figure \ref{fig:Apollo_cp} \cite{Bertin1966}}
+	\caption{Definition of unit on the horizontal axis of Figure \ref{fig:Apollo_cp} \cite{Bertin1966}}
 	\label{fig:Apollo_y}
 \end{figure}
 
@@ -144,17 +151,22 @@ The data points in figure \ref{fig:Apollo_cp} represent pressure coefficients me
 \label{subsubsec:heatvalidation}
 Dillman et al. observed that the maximum heat flux on the \acrfull{irve} 3 was $14.4$ $\frac{W}{cm^{2}}$ during re-entry at an altitude of $50$ kilometres and Mach $7.0$ \cite{Dillman2012}. The maximum heat flux computed by the numerical tool in the stagnation point for these flow conditions is $11.7$ $\frac{W}{cm^{2}}$. This is equal to $81.0\%$ of the experimental value. Thus a discrepancy of $19.0\%$ is present between the experimental and numerical maximum heat fluxes.
 
-\subsection{Conclusions after the validation procedure}
+\subsubsection{Conclusions after the validation procedure}
 \label{subsec:validconclusions}
-
-From section \ref{subsec:aeroverval} it can be concluded that the accuracy of the modified Newtonian method varies between geometries. The \gls{sym:CD} predicted in section \ref{subsubsec:valsphere} is accurate to within $1\%$ of the experimental value, whereas the accuracy of the \gls{sym:CP} in section \ref{subsubsec:valsharpconeCP} varied over the cone surface. This discrepancy was also observed in section \ref{subsubsec:valsharpconeCD}, where the difference between the numerical and experimental \gls{sym:CD} was $21.4\%$, and again for the Apollo capsule in section \ref{subsubsec:Apollo_validation}. After judging the accuracy shown in figures \ref{fig:CPcone30val} and \ref{fig:Apollo_cp} it was determined that the accuracy of the modified Newtonian method is adequate for the conceptual and preliminary design phases.
-
-
+From section \ref{subsec:aeroverval} it can be seen that the accuracy of the modified Newtonian method varies between geometries. The \gls{sym:CD} predicted in section \ref{subsubsec:valsphere} is accurate to within $1\%$ of the experimental value, whereas the accuracy of the \glspl{sym:CP} in section \ref{subsubsec:valsharpconeCP} varied over the cone surface. This discrepancy was also seen in section \ref{subsubsec:valsharpconeCD}, where the difference between the numerical and experimental \gls{sym:CD} was $21.4\%$, and again for the Apollo capsule in section \ref{subsubsec:Apollo_validation}. After judging the accuracy shown in Figures \ref{fig:CPcone30val} and \ref{fig:Apollo_cp} it was determined that the accuracy of the modified Newtonian method is adequate for the conceptual and preliminary design phases.
 The model for the maximum heat flux found on a body was validated in section \ref{subsubsec:heatvalidation}. It was observed that a discrepancy of $19.0\%$ was present between the numerical and experimental maximum heat fluxes. After consideration this was deemed to be acceptable for conceptual and preliminary design.
 
 \subsection{Application of analysis tool to system concepts}
 \label{subsec:appaeroanal}
-After the model development and validation, the different system concepts are evaluated for their performance in the different trade-off criteria. Specifically, the lift, moment and aerodynamic heating are discussed. They are all related to the trade-off criteria as defined in Chapter \ref{ch:tradeoff}. Firstly, the relation between the aerodynamic properties and the trade-off criteria is discussed. After that, the results from the aerodynamic analysis are given.
+After the model development and validation, the different system concepts are evaluated on performance in the different trade-off criteria. Specifically, the lift, moment and aerodynamic heating are discussed. They are all related to the trade-off criteria as defined in Chapter \ref{ch:tradeoff}. Firstly, the relation between the aerodynamic properties and the trade-off criteria is discussed. After that, the results from the aerodynamic analysis is given.
+
+The stability trade-off criterion is given by the static stability of the vehicle. This is characterised by the pitch moment gradient \gls{sym:cma-alpha}: if a positive angle of attack leads to a negative moment, the angle of attack is restored by the induced moment. This leads to a spacecraft that is less reactant to disturbances in the atmosphere, which leads to a less strict requirement on the control system keep the spacecraft pointed in the desired direction. A positive value of \gls{sym:cma-alpha} means the spacecraft is not stable, and the control system will have to very actively monitor the spacecraft in order for it to not diverge from the nominal condition.
+
+Aerodynamic drag is used as the method to decelerate the vehicle from over escape velocity to $\gls{sym:M}=5$ before landing. The drag Equation is given in Eq. \ref{eq:drag}.
+\begin{equation} \label{eq:drag}
+\gls{sym:D} = \frac{1}{2}\gls{sym:rho}\gls{sym:V}^2\gls{sym:cda}
+\end{equation}
+As can be seen, the drag is dependent on the drag coefficient of the spacecraft as well as the density. In this sense, the maximum deceleration limit can be achieved by having the lowest part of an orbit lower if the drag coefficient is lower as well. Then, the higher density compensates for the low drag coefficient to produce the same force as a spacecraft with a high drag coefficient. In this way, the drag coefficient is not a key driver for the design. However, the spacecraft can influence its time in the atmosphere by producing lift: if the spacecraft were to fly out of the atmosphere, a downward pointing lift would divert it's trajectory more through the atmosphere. The spacecraft's ability to influence this trajectory through the atmosphere is thus characterised by the amount of lift that can be produced. This is characterised by the lift coefficient times the area of the spacecraft \gls{sym:cla}.
 
 \subsubsection{Trade-off criteria justification} \label{sec:tradeoffaero}
 In this section, the quantification method of the trade-off criteria relating to aerodynamics is justified.
@@ -175,11 +187,11 @@ The lift is defined as the component of the aerodynamic force perpendicular to t
 
 The drag and lift are dependent on the drag and lift coefficients of the spacecraft as well as the density. As can be seen in Figure \ref{fig:atmos_height_rho}, the density is significantly higher in lower parts of the atmosphere. For a given \gls{sym:cda}, the maximum deceleration can be chosen by varying the lowest part of the orbit: a higher density compensates for a low drag coefficient to produce the same force as a spacecraft with a high drag coefficient and a low density. Because of the large variation of density in the atmosphere, it is possible to find a trajectory for any \gls{sym:cda}. Thus, the drag coefficient itself is not a key driver for the design. However, the spacecraft can influence its deceleration time in the atmosphere by producing lift: if the spacecraft were to fly out of the atmosphere, a downward pointing lift would divert it's trajectory more through the atmosphere. The ability of the spacecraft to influence this trajectory through the atmosphere is characterised by the amount of lift that can be produced, with respect to the amount of drag produced at the same \gls{sym:alpha}. The dependence on drag is due to the fact that two spacecraft with the same \gls{sym:clcd} but a different \gls{sym:cda}, will just have the lowest part of the trajectory in a different height, where the total lift and drag force will be the same for both spacecraft. Therefore, the deceleration time is characterised by \gls{sym:clcd}. \\
 
-The mass of the decelerator is composed of the structural mass, the \gls{tps} mass and the control system mass.
-
+The mass of the decelerator is composed of the structural mass, the \gls{tps} mass and the control system mass. 
 The \gls{tps} mass is estimated based on the heat load on the spacecraft, which is the integral of the heat flux over time. This heat load is the total amount of heat supplied to the spacecraft between initial entry and final descent, and estimates the total amount of energy the \gls{tps} has to withstand. This can thus be used to size the thickness of the \gls{tps}, which leads directly to the mass of the system.
+The control system mass is based on the moment that the control system has to provide. The amount of lift that a spacecraft has to produce in order to attain a desirable orbit directly dictates the angle of attack. This angle of attack, in turn, determines the moment that the control system has to compensate in order to maintain the required angle of attack. It is thus not the moment coefficient itself that has to be minimised, but rather the amount of moment that is needed to provide a certain amount of lift. Therefore, the ratio \gls{sym:cmcl} is used to quantify the control system mass.
 
-The control system mass is based on the moment that the control system has to provide. The amount of lift that a spacecraft has to produce in order to attain a desirable orbit directly dictates the angle of attack. This angle of attack, in turn, determines the moment that the control system has to compensate in order to maintain the required angle of attack. It is thus not the moment coefficient itself that has to be minimised, but rather the amount of moment that is needed to provide a certain amount of lift. Therefore, the ratio \gls{sym:cmcl} is used to quantify the control system mass. \\
+In order to assess these values, a representative geometry is chosen. Since Newtonian flow only affects the parts of the vehicle that are in direct line of sight of the oncoming flow, only the front of the decelerator has to be accurately modelled. The stacked toroid and tension cone concepts are modelled after the \gls{irve} missions as flown by NASA, as can be seen in Figure \ref{fig:cpstackedtoroid}. The isotensoid model is modelled as a slightly flattened sphere, with a radius of 6 meters perpendicular and a radius of 5 meter in direction of the flow. This model can be seen in Figure \ref{fig:cpisotensoid}. The Trailing ballute is modelled as a single torus trailing body comparable to the rigid concept., as seen in Figure \ref{fig:cpballute}, and the rigid concept's front is a largely flattened sphere, as seen in Figure \ref{fig:cprigid}.
 
 
 \begin{figure}[h]
@@ -204,48 +216,98 @@ The control system mass is based on the moment that the control system has to pr
 		\caption{Trailing ballute}
 		\label{fig:cpballute}
 	\end{subfigure}	
-	\caption{Geometry and pressure coefficient \gls{sym:CP} distribution over the different concepts, at an angle of attack $\gls{sym:alpha}=20[deg]$. $\gls{sym:M}=23.3$, $\gls{sym:gamma}=1.4$}
+	\caption{Geometry and pressure coefficient \gls{sym:CP} distribution over the different concepts, at an angle of attack $\gls{sym:alpha}=20[deg]$. }
 	\label{fig:conceptscp}
 \end{figure}
 
+\subsubsection{Lift performance}
+The lift is defined as the component of the aerodynamic force perpendicular to the flow, where the direction away from Mars is defined positive. The Equation used to calculate the total lift of a vehicle is given in Eq \ref{eq:lift}.
+\begin{equation}
+\gls{sym:L} = \frac{1}{2}\gls{sym:rho}\gls{sym:V}^2\gls{sym:cla}
+\label{eq:lift}
+\end{equation}
+This $\gls{sym:cla}$ is the lift coefficient multiplied with the reference area and as such gives insight in the lift generation of a given spacecraft, incorporating its size. For blunt vehicles with a blunt surface perpendicular to the flow, a positive angle of attack $\gls{sym:alpha}$ results in a negative lift.
 
-
-In order to assess these values, a representative geometry is chosen. Since Newtonian flow only affects the parts of the vehicle that are in direct line of sight of the oncoming flow, only the front of the decelerator has to be accurately modelled. The stacked toroid and tension cone concepts are modelled after the \gls{irve} missions as flown by NASA, as can be seen in Figure \ref{fig:cpstackedtoroid}. The rigid concept's front is a largely flattened sphere, as seen in Figure \ref{fig:cprigid}. The isotensoid is modelled as a slightly flattened sphere, with a radius of 6 meters perpendicular and a radius of 5 meter in direction of the flow. This model can be seen in Figure \ref{fig:cpisotensoid}. The trailing ballute is modelled as a single torus trailing a body comparable to the rigid concept, as seen in Figure \ref{fig:cpballute}, and 
+In Figure \ref{fig:clplots}, the lift coefficient can be seen to vary greatly for the different concepts: the stacked toroid and tension cone produce about 3 times the lift of the other concepts. This is also reflected in the lift gradient plot, which can be found in \ref{fig:claplha}. The lift gradient plot is the graph that provides the information needed for the trade-off, since the lift gradient determines how much the control system has to change the angle of attack to achieve a given lift. It is clear that the stacked toroid and tension cone have the greatest lift and lift gradient, while the trailing ballute follows closely. The other two concepts offer a significantly less lift performance. The lift and lift gradient at an angle of attack of $\gls{sym:alpha}=20^\circ$ are summarized in Table \ref{tab:clcdift}.
 
 
 
 \subsubsection{Deceleration performance}
 $\gls{sym:clcd}$ is the lift coefficient divided by the drag coefficient. In Figure \ref{fig:clcd}, a graph is presented showing the lift over drag ratios of the different concepts for different angles of attack.
 
-\begin{figure}[b]
-	\setlength\figureheight{0.8\textwidth} 
-	\setlength\figurewidth{0.75\textwidth}
-	\input{./Figure/aero_model/clcd.tikz}
-	\caption{$\gls{sym:clcd}$ of the different concepts versus \gls{sym:alpha}. $\gls{sym:M}=20[-]$, $\gls{sym:gamma}=1.29[-]$}
-	\label{fig:clcd}
+
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}{0.49\textwidth}
+		\setlength\figureheight{0.8\textwidth} 
+		\setlength\figurewidth{0.75\textwidth}
+		\input{./Figure/aero_model/clcd.tikz}
+		\caption{$\gls{sym:clcd}$}
+		\label{fig:clcd}
+	\end{subfigure}
+	\begin{subfigure}{0.49\textwidth}
+		\setlength\figureheight{0.8\textwidth} 
+		\setlength\figurewidth{0.75\textwidth}
+		\input{./Figure/aero_model/cmcl.tikz}	
+		\caption{$\gls{sym:cmcl}$}
+		\label{fig:cmcl}
+	\end{subfigure}
+	\caption{Comparisons of the different concepts for $\gls{sym:clcd}$ and $\gls{sym:cmcl}$. $\gls{sym:M}=20[-]$, $\gls{sym:gamma}=1.29[-]$}
+	\label{fig:cmcl-clcd}
 \end{figure}
 
+The lift over drag ratio seems to be linear up until around $\gls{sym:alpha}=20 [deg]$. Furthermore, there is a clear distinction between the different concepts: at $\gls{sym:alpha}=20 [deg]$, the rigid concepts performs best, followed by the stacked toroid, tension cone and trailing ballute. The isotensoid performs worst. The results are summarized in table \ref{tab:clcd}.
+
 \begin{table}[H]
-	\caption{Lift and lift gradient of the different concepts at $\gls{sym:alpha}=20 [deg]$}% CAPTION HERE !
-	\label{tab:lift}% LABEL HERE
-	\begin{tabular}{|p{0.4\textwidth}|p{0.25\textwidth}|p{0.25\textwidth}|}
+	\caption{Lift over drag ratio of the different concepts at $\gls{sym:alpha}=20 [deg]$. $\gls{sym:M}=20[-]$, $\gls{sym:gamma}=1.29[-]$}% CAPTION HERE !
+	\label{tab:clcd}% LABEL HERE
+	\begin{tabular}{|p{0.36\textwidth}|p{0.23\textwidth}|p{0.31\textwidth}|}
 		\hline
-		Concept  					& $\gls{sym:cla}$	& $\gls{sym:cla-alpha}$	\\ \hline \hline
-		Stacked Toroid, Tension Cone	& -22.70     		& -50.18				\\ \hline
-		Rigid  							& -8.62				& -14.91				\\ \hline
-		Isotensoid  					& -8.25				& -16.95				\\ \hline
-		Trailing Ballute				& -19.32			& -34.16				\\ \hline				
+		\textbf{Concept}  				& \textbf{$\gls{sym:clcd}$}	& \textbf{Fraction of stacked toroid}	\\ \hline \hline
+		Stacked toroid, tension cone	& -0.176     				& 1								\\ \hline
+		Rigid  							& -0.311					& 1.764						\\ \hline
+		Isotensoid  					& -0.072					& 0.410						\\ \hline
+		Trailing ballute				& -0.210					& 1.193						\\ \hline
 	\end{tabular}
 \end{table}
 
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}[b]{0.49\textwidth}
+		\setlength\figureheight{0.8\textwidth} 
+		\setlength\figurewidth{0.75\textwidth}
+		\input{./Figure/aero_model/cl.tikz}
+		\caption{$\gls{sym:cla}$}
+		\label{fig:cl}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.49\textwidth}
+		\setlength\figureheight{0.8\textwidth} 
+		\setlength\figurewidth{0.75\textwidth}
+		\input{./Figure/aero_model/clalpha.tikz}
+		\caption{$\gls{sym:cla-alpha}$}
+		\label{fig:claplha}
+	\end{subfigure}
+	\caption{Comparisons of the lift characteristics of the different concepts}
+	\label{fig:clplots}
+\end{figure}
 
 \subsubsection{Aerodynamic moments}
 The moment coefficients of the different concepts around their centres of gravity, the derivatives of the moment coefficient with respect to alpha and the moment coefficient divided by the lift coefficient are plotted in Figures \ref{fig:cm}, \ref{fig:cmalpha} and \ref{fig:cmplots} respectively. The centre of gravity of the decelerator is assumed to be in the geometric centroid of the decelerator. The centre of gravity of the crew module is assumed to be at 1/3 of the height of the crew module, which itself is assumed to be five meters high. This assumption rests on the expectation that the crew module will be packaged in a way that increases the stability of the vehicle. This requires a centre of gravity as far forward as possible. The centre of gravities of the decelerator and the crew module are then combined to obtain the vehicle centre of gravity. 
 
-The stability of the vehicle can be determined from $\gls{sym:CM}$ and $\gls{sym:cma}$. For the vehicle to be statically stable, both $\gls{sym:CM}$ and $\gls{sym:cma}$ must be negative. The $\gls{sym:cmcl}$ gives an indication of the control moment required to maintain stability at a given angle of attack. The lower the required moment at a given angle of attack, the greater the controllability of the vehicle. A lower required moment will also reduce the requried control system mass. 
+The stability of the vehicle can be determined from $\gls{sym:cma}$ and $\gls{sym:cma-alpha}$. As can be seen in Figures \ref{fig:cm} and \ref{fig:cmalpha}, the ballute, stacked toroid and the tension cone configurations are statically stable. The rigid concept is marginally stable, and the isotensoid is unstable. Table \ref{tab:MomentCoeff} compares the values of $\gls{sym:CM}$ and $\gls{sym:cma}$ at an angle of attack of twenty degrees. 
  
-As can be seen in Figures \ref{fig:cm} and \ref{fig:cmalpha}, the ballute, stacked toroid and the tension cone configurations are statically stable. The rigid concept is marginally stable, and the isotensoid is unstable. The marginal stability of the rigid concept will lead to low required control moments, as can be seen in Figure \ref{fig:cmplots}. The remainder of the concepts have control moments of roughly similar magnitudes, especially in the lower angle of attack range ($\alpha = 0^{o}-20^{o}$).  
-
+\begin{table}[H]
+	\caption{Moment and Moment gradient of the different concepts at $\gls{sym:alpha}=20^\circ$}% CAPTION HERE !
+	\label{tab:MomentCoeff}% LABEL HERE
+	\begin{tabular}{|p{0.4\textwidth}|p{0.25\textwidth}|p{0.25\textwidth}|}
+		\hline
+		Concept name  					& $\gls{sym:cma}$	& $\gls{sym:cma-alpha}$	\\ \hline \hline
+		Stacked Toroid, Tension Cone	& -134    		& -277				\\ \hline
+		Rigid  							& -3.70			& -8.57				\\ \hline
+		Isotensoid  					& 52.7				& 20.3				\\ \hline
+		Trailing Ballute				& -107			& -309				\\ \hline				
+	\end{tabular}
+\end{table} 
  
 \begin{figure}[h]
 	\centering
@@ -267,32 +329,23 @@ As can be seen in Figures \ref{fig:cm} and \ref{fig:cmalpha}, the ballute, stack
 		\caption{$\gls{sym:cma-alpha}$}
 		\label{fig:cmalpha}
 	\end{subfigure}
-	\caption{Comparisons of the aerodynamic moment characteristics of the different concepts. $\gls{sym:M}=20[-]$, $\gls{sym:gamma}=1.29[-]$}
+	\caption{Comparisons of the aerodynamic moment characteristics of the different concepts}
 	\label{fig:cmplots}
 \end{figure}
 
-
-\begin{figure}[h]
-	\centering
-	\setlength\figureheight{0.49\textwidth} 
-	\setlength\figurewidth{0.49\textwidth}
-	\input{./Figure/aero_model/cmcl.tikz}	
-	\caption{Comparisons of the different concepts for $\gls{sym:cmcl}$, an indication of the control system effort to attain a certain lift. $\gls{sym:M}=20[-]$, $\gls{sym:gamma}=1.29[-]$}
-	\label{fig:cmcl}
-\end{figure}
-
-
 \subsubsection{Control system mass estimation}
-To estimate the relative control system masses the absolute value of the ratio \gls{sym:cmcl} at $\gls{sym:alpha}=1\deg$ is determined for all concepts. The values of this parameter are shown in Table \ref{tab:controlmass}. %Note that the rigid concept has not been taken into account. This is the case because, as covered in Chapter \ref{ch:strucmass}, the structural mass of the rigid design option does not meet the requirements. As such the control system mass of this concept will not be taken into account. 
+To estimate the relative control system masses the absolute value of the ratio \gls{sym:cmcl} at $\gls{sym:alpha}=1\deg$ is determined for all concepts. The values of this parameter are shown in Table \ref{tab:controlmass}.
 
 \begin{table}[h]
 	\centering
-	\caption{A caption}
+	\caption{Estimation of relative required control system moments}
 	\begin{tabular}{|c|c|c|}
+
 		\hline
-		\textbf{Concept} & \textbf{\gls{sym:cmcl}} & \textbf{Fraction of stacked toroid} \\ \hline \hline
+		\textbf{Concept} & \textbf{\gls{sym:cmcl}} [-] & \textbf{Fraction of stacked toroid} \\ \hline \hline
+
 		Stacked toroid, tension cone & $5.81$ & $1.00$\\
-		Rigid & $0.41$ & $0.07$\\
+		Rigid & $0.41$ & $0.07$ \\
 		Isotensoid & $5.72$ & $0.99$\\
 		Trailing ballute & $5.00$ & $0.86$\\
 		\hline
@@ -300,11 +353,12 @@ To estimate the relative control system masses the absolute value of the ratio \
 	\label{tab:controlmass}
 \end{table}
 
-The $\frac{\gls{sym:CM}}{\gls{sym:CL}}$-fractions shown in Table \ref{tab:controlmass} will be used in Chapter \ref{ch:tfsum} as input for the trade-off procedure. It should be noted here that the analysis methods used to predict these required control system moments do not take into account dynamic behaviour, as the analysis is carried out using a modified Newtonian flow method.
+The $\frac{\gls{sym:CM}}{\gls{sym:CL}}$-fractions shown in Table \ref{tab:controlmass} will be used in Chapter \ref{ch:tfsum} as input for the trade-off procedure. It should be noted here that the analysis methods used to predict these required control system moments do not take into account dynamic behaviour, as the analysis is carried out under the assumption of steady flow.
 
+\subsection{Conclusion}
+As can be seen in Table \ref{tab:clcd}, the performance of the different concepts on the trade-off criteria can now be assessed. The deceleration time performance of the rigid structure is the highest of the researched shapes, with a lift over drag ratio almost $80\%$ higher than that of the stacked toroid. The isotensoid has a performance more similar to the stacked toroid and tension cone, being around $20\%$ better. The isotensoid has the worst performance compared to the stacked toroid and tension cone, being almost $60\%$ worse.
 
-\subsection{Concept conclusion}
+For stability, the performance can be found in Table \ref{tab:MomentCoeff}. A negative $\gls{sym:cma-alpha}$ means the spacecraft is stable. It is clear the isotensoid has a very bad performance: it's $\gls{sym:cma-alpha}>0$, meaning it is unstable, which is very undesirable. The rigid body is neutrally stable, which is not desirable either. The stacked toroid, tension cone and trailing ballute offer comparable performance, depending on the angle of attack that is looked at.
 
-
-
+Finally, as can be seen in Table \ref{tab:controlmass}, there are big differences in $\gls{sym:cmcl}$. As explained in \ref{sec:tradeoffaero}, a lower $\gls{sym:cmcl}$ leads to a lower control system mass. The stacked toroid and tension cone perform similarly but offer the worst performance, while the isotensoid performs very similarly, but is unstable. The trailing ballute is slightly better, but the rigid structure is by far the best option in this respect, having a $93\%$ lower $\gls{sym:cmcl}$.
 

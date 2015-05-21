@@ -8,7 +8,7 @@ cases.deg60cone = 'deg60cone';
 cases.apollo = 'apollo';
 cases.irve = 'irve';
 
-shapecase = cases.apollo;
+shapecase = cases.deg30cone10alpha;
 
 
 switch shapecase
@@ -131,11 +131,12 @@ switch shapecase
         disp(strcat('gamma: ', num2str(gamma)));
         
         figure;
-        plot(modnewtonianmatrix(:,1)*1.095/max(modnewtonianmatrix(:,1)), modnewtonianmatrix(:,2));
+        cc = parula(3);
+        plot(modnewtonianmatrix(:,1)*1.095/max(modnewtonianmatrix(:,1)), modnewtonianmatrix(:,2),'color',cc(1,:));
         hold on;
-        plot(zvalidation, Cpvalidation, '*');
+        plot(zvalidation, Cpvalidation, '*','color',cc(2,:));
         xlabel('$\frac{s}{R}$ [-]', 'interpreter', 'latex');
-        ylabel('C_p [-]');
+        ylabel('$C_p$ [-]', 'interpreter', 'latex');
         legend('Modified Newtonian', 'Measured', 'Location', 'south');   
         grid on;
         matlab2tikz('.\plots\apollovalidation.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
@@ -175,12 +176,15 @@ switch shapecase
         disp(strcat('gamma: ', num2str(gamma)));
         
         figure;
-        plot(beta_points, Cps);
+        cc = parula(3);
+        plot(beta_points, Cps,'color',cc(1,:));
         hold on;
-        plot(betavalidation, Cpvalidation, '*');
-        xlabel('\beta [deg]');
-        ylabel('C_p [-]');
-        legend('Modified Newtonian', 'Measured');     
+        plot(betavalidation, Cpvalidation, '*','color',cc(2,:));
+        xlabel('$\beta$ [deg]', 'interpreter', 'latex');
+        ylabel('$C_p$ [-]', 'interpreter', 'latex');
+        legend('Modified Newtonian', 'Measured');
+        grid on;
+        matlab2tikz('.\plots\deg30cone10alpha.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
         
     case cases.deg30cone20alpha % See the work by Cleary, JW in mendeley, and Bertin page 287
         clear; clc; close all;
@@ -216,11 +220,15 @@ switch shapecase
         disp(strcat('gamma: ', num2str(gamma)));
         
         figure;
-        plot(beta_points, Cps);
+        cc = parula(3);
+        plot(beta_points, Cps,'color',cc(1,:));
         hold on;
-        plot(betavalidation, Cpvalidation, '*');
-        xlabel('\beta [deg]');
-        ylabel('C_p [-]');
-        legend('Modified Newtonian', 'Measured');            
+        plot(betavalidation, Cpvalidation, '*','color',cc(2,:));
+        xlabel('$\beta$ [deg]', 'interpreter', 'latex');
+        ylabel('$C_p$ [-]', 'interpreter', 'latex');
+        legend('Modified Newtonian', 'Measured');
+        grid on;
+        matlab2tikz('.\plots\deg30cone20alpha.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
+        
     otherwise
 end
