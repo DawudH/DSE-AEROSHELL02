@@ -14,25 +14,25 @@ variables
 files = {'orbit_irve_no_control.txt'};
 names = {'irve'};
 
-for bla = 2
+for bla = 1:length(names)
 % booleans (no control, stop at beginning of elliptic orbit)
 use_control = true;
 multiple_orbits = false;
 
-alpha = -10;
+alpha = 10;
 file_name = files{bla};
 
 clear aero_coef
 aero_coef = aeroProperties(names{bla});
 
 %Initial Position
-rx = -4100000;
+rx = -4150300;
 ry = 10*R_m;
 
-accuracy = 50;
-init_step = 5000;
+accuracy = 1;
+init_step = 100;
 filestr = cell(length(alpha),1);
-parfor i = 1:length(alpha)
+for i = 1:length(alpha)
     
     rx_in = rx;
     R = [rx_in,ry,0];
@@ -59,10 +59,9 @@ parfor i = 1:length(alpha)
         end
         
         
-        % generate new R
-        R = [rx_in,ry,0];
         
-        if (prev_c.crash && out.c.flyby) || (prev_c.orbit && out.c.flyby)
+        
+        if (prev_c.crash && out.c.flyby) || (prev_c.orbit && out.c.flyby) || (prev_c.flyby && out.c.orbit) || (prev_c.flyby && out.c.crash)
             refinestep = refinestep / 2;
         end
         prev_c = out.c
@@ -77,6 +76,9 @@ parfor i = 1:length(alpha)
             % go further to find minimum load
             rx_in = rx_in - refinestep;
         end
+        
+        % generate new R
+        R = [rx_in,ry,0];
         
     end
 end
