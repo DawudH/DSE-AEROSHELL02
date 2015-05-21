@@ -43,6 +43,12 @@ sin(\gls{sym:chi})=\gls{sym:Vhat} \bullet \gls{sym:n}
 \end{multicols}
 Using $C_{p_{max}}$ and $sin(\gls{sym:chi})$ the \gls{sym:CP} for every surface element is calculated, after which it is multiplied with the element area and the element surface normal vector. This results in an elemental pressure force in three dimensions from which the lift and drag forces can be determined. By then summing the resultant forces for all elements the total body forces are found. Next to the body forces the resultant aerodynamic moment can also be found. For this the location of the \acrfull{cg} is used as input, after which the moments about the \gls{cg} caused by the force on each element can be summed. 
 
+Two notes are made here with regard to the results produced by the Newtonian flow method:
+\begin{itemize}
+	\item The accuracy of the Newtonian and modified Newtonian methods increases as \gls{sym:M} become higher \cite{AndersonJr.2007,Bertin1994}
+	\item Newtonian and modified Newtonian theory is more accurate for three-dimensional bodies than it is for two-dimensional cases \cite{AndersonJr.2007}
+\end{itemize}
+
 In addition to determining the aerodynamic forces and moments acting on the body, the heat flux in the stagnation point is also computed. A generalized Equation to predict the heat flux on a body can be found in \cite{AndersonJr.2006,Tauber1986}. This  is shown in Equation \ref{eq:heatflux}.
 \begin{equation}
 \gls{sym:qw}=\rho_{\infty}^{N}V_{\infty}^{M}C
