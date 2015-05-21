@@ -22,8 +22,7 @@ classdef marsatmosphere
             % http://nssdc.gsfc.nasa.gov/planetary/factsheet/marsfact.html
             G = 6.67384e-11;                    %Nm2/kg2    Gravitational constant
             M_mars = 0.64174e24;                    %kg         Mars mass in kg
-            V_mars = 16.318e19;                     %m^3        Mars Volume in m^3
-            obj.r_mars = (V_mars*3/(4*pi))^(1/3);   %m          Mars Volumetric mean radius
+            obj.r_mars = 3396000;   %m          Mars Volumetric mean radius
             obj.GM_mars = G*M_mars;                 %Nm2/kg     G*M of mars for gravity
             
             % Atmosphere data from Mars-GRAM
