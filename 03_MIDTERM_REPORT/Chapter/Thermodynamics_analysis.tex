@@ -71,7 +71,7 @@ Equation \eqref{eq:therm3} can then be altered by adding a $q^n$-term for the co
 \subsubsection{Input}
 In order to make use of the tool, an input is required. This input consists of thermal conditions and material properties for five different concepts. The thermal properties are the stagnation temperature $ \gls{sym:T0}(t) $ and a stagnation heat flux $ \gls{sym:qdot}_s(t) $. The material properties are the layer thickness $ L_1 $, $ L_2 $, etc., the thermal conductivity $ \gls{sym:k} $, the density $ \gls{sym:rho} $ and lastly the specific heat $ \gls{sym:cp} $.\\
 
-The thermal inputs are the stagnation temperature and the stagnation heat flux for the different concepts. These results are obtained from the aerodynamic models as described in Chapter \ref{ch:aero_analysis} and their trajectory. The stagnation temperature is only dependent on speed and hence on the trajectory. Because all concepts are assumed to fly the same trajectory, the stagnation temperatures are identical for all concepts. The stagnation temperature is shown in Figure \ref{fig:stagnationtemp}. The stagnation heat fluxes are shown in Figure \ref{fig:stagflux1} and \ref{fig:stagflux1}. A distinction is made in the aerocapture and the aerobraking phase.  \\
+The thermal inputs are the stagnation temperature and the stagnation heat flux for the different concepts. These results are obtained from the aerodynamic models as described in Chapter \ref{ch:aero_analysis} and their trajectory. The stagnation temperature is only dependent on speed and hence on the trajectory. Because all concepts are assumed to fly the same trajectory, the stagnation temperatures are identical for all concepts. The stagnation temperature is shown in Figure \ref{fig:stagnationtemp}. The stagnation heat fluxes are shown in Figure \ref{fig:stagflux1} and \ref{fig:stagflux2}. A distinction is made in the aerocapture and the aerobraking phase.  \\
 
 \begin{figure}[H]
 	\centering
@@ -94,34 +94,35 @@ The thermal inputs are the stagnation temperature and the stagnation heat flux f
 	\label{fig:stagflux2}
 \end{figure}
 
-Several lay-ups can be analysed, all with a variety of materials. An overview of these materials with their properties is shown in Table  \ref{tab:tpsmatprop}. Where for each material the thermal conductivity, the density, the specific heat, the maximum operative temperature and if applicable, the emissivity are given.
+Several lay-ups can be analysed, all with a variety of materials. An overview of these materials with their properties is shown in Table  \ref{tab:tpsmatprop} \cite{Corso2009,DuPont2011,Smith2011} . Where for each material the thermal conductivity, the density, the specific heat, the maximum operative temperature and if applicable, the emissivity are given. The latter is only apllicable to top layers, because these layers will radiate heat into the surroundings.
 
 \begin{table}[H]
 	\caption {TPS Material properties}
 	\centering
-	\begin{tabular}{|l|l|l|l|l|l|}
+	\begin{tabular}{|l|l|l|l|l|l|l|}
 		\hline
-		\textbf{Material}         & \textbf{ $ k $ $ [ \frac{W}{m*K} ] $} & \textbf{ $ \rho $ $ [ \frac{kg}{m^3} ] $} & \textbf{  $ c_{p} $ $ [ \frac{J}{kg*K} ] $ }& \textbf{ $ T_{max} $ $ [ K ] $} &\textbf{ $ \varepsilon $ $ [ - ] $} \\[1.5ex] \hline \hline
-		Viton       & 0.202 
-		& 1842 & 1654 
-		& 	 & 0.85
+		\textbf{Material}         & \textbf{ $ k $ $ \left[ \frac{W}{m \cdot K} \right] $} & \textbf{ $ \rho $ $ \left[ \frac{kg}{m^3} \right] $} & \textbf{  $ c_{p} $ $ \left[ \frac{J}{kg \cdot K} \right] $ }& \textbf{ $ T_{max} $ $ [ K ] $} &\textbf{ $ \varepsilon $ $ [ - ] $} & \textbf{function} \\[1.6ex]   \hline \hline
+		Viton       & 0.202 & 1842 & 1654 & N/A	 & 0.85 & radiation coating
 		\\ \hline
-		Nextel AF14       & 0.150                                                 & 858                                        & 1050                                            & 1373	 & 0.443                                      \\ \hline
+		Nextel AF14       & 0.150                                                 & 858                                        & 1050                                            & 1373	 & 0.443    & rad. and heat barrier                                 \\ \hline
 		Nextel BF20       & 0.146 
 		& 1362                                        & 1130 
-		& 1643	 & 0.443                                      
+		& 1643	 & 0.443  & rad. and heat barrier                                  
 		\\ \hline
-		Nextel XN513      & 0.148                                                 & 1151                                       & 1090                                            & 1673	 & 0.443                                      \\ \hline
-		Refrasil C1554-48 & 0.865                                                 & 924                                        & 1172                                            & 1533	 & 0.7                                        \\ \hline
-		Refrasil UC100-28 & 0.865                                                 & 890                                        & 1172                                            & 1255  & 0.2                                        \\ \hline
-		Hexcel 282 Carbon & 0.5                                                   & 891                                        & 1000                                            & ~ 	 & 0.9                                        \\ \hline
-		Pyrogel 6650      & 0.030                                                 & 110                                        & 1046                                            & 923    & ~                                          \\ \hline
-		Pyrogel 5401      & 0.0248                                                & 170                                        & 1046                                            & ~  	 & ~                                          \\ \hline
-		Refrasil 1800      & 0.085                                                 & 156                                        & 1172                                            & 1255 	 & ~                                          \\ \hline
-		Refrasil 2000      & 0.095                                                 & 180                                        & 1172                                            & 1366 	 & ~                                          \\ \hline
-		KFA 5             & 0.25                                                  & 98                                         & 1250                                            & 1473* 	 & ~                                          \\ \hline
-		Kapton            & 0.12                                                  & 1468                                       & 1022                                            & 673	 & ~                                          \\ \hline
-		Upilex            & 0.29                                                  & 1470                                       & 1130                                            & 773 	 & ~                                          \\ \hline
+		Nextel XN513      & 0.148                                                 & 1151                                       & 1090                                            & 1673	 & 0.443           & rad. and heat barrier                               \\ \hline
+		Refrasil C1554-48 & 0.865                                                 & 924                                        & 1172                                            & 1533	 & 0.7     & rad. and heat barrier                                       \\ \hline
+		Refrasil UC100-28 & 0.865                                                 & 890                                        & 1172                                            & 1255  & 0.2       & rad. and heat barrier                                    \\ \hline
+		Hexcel 282 Carbon & 0.5                                                   & 891                                        & 1000                                            & N/A 	 & 0.9      & rad. and heat barrier                                     \\ \hline
+		Pyrogel 6650      & 0.030                                                 & 110                                        & 1046                                            & 923    & ~        & insulator                                  \\ \hline
+		Pyrogel 5401      & 0.0248                                                & 170                                        & 1046                                            & N/A  	 & ~          & insulator                                 \\ \hline
+		Refrasil 1800      & 0.085                                                 & 156                                        & 1172                                            & 1255 	 & ~           & insulator                                \\ \hline
+		Refrasil 2000      & 0.095                                                 & 180                                        & 1172                                            & 1366 	 & ~            & insulator                               \\ \hline
+		KFA 5             & 0.25                                                  & 98                                         & 1250                                            & 1473 	 & ~        & insulator                                   \\ \hline
+		Nomex             & 0.035                                                  & 384                                         & 1465                                            & N/A 	 & ~        & insulator                                   \\ \hline
+		Kapton            & 0.12                                                  & 1468                                       & 1022                                            & 673	 & ~            & gas barrier                              \\ \hline
+		Upilex            & 0.29                                                  & 1470                                       & 1130                                            & 773 	 & ~             & structural                            \\ \hline
+				Kevlar            & 0.04 & 1440                                       & 1420                                            & 443 	 & ~             & structural                            \\ \hline
+		Vectran            & 0.37 & 1400 & 1259 & N/A 	 &  & structural                            \\ \hline
 	\end{tabular}
 	\label{tab:tpsmatprop}
 \end{table}
@@ -211,7 +212,7 @@ The initial approach was to develop a tool to analyse the \gls{tps}-mass for dif
 
 Since the \gls{tps}-mass of the rigid concept is integrated in the structural mass (section \ref{sec:rigid}), it is not possible to compare the thermal mass of this concept with the inflatable concepts. The inflatable concepts have been compared with the stacked toroid as reference. The tension cone, having the same shape input parameters as input for the aerodynamic tool, receives the same heat load. Therefore it is assumed that the tension cone has the same \gls{tps}-mass as the stacked toroid. The isotensiod is at 76\% and the trailing ballute is at 84\% of the \gls{tps}-mass.
 
-Again it is stressed that the obtained values are rough estimates. Future work should start with the debugging and subsequent verification and validation of the tool. The tool can then be used to design lay-ups that can withstand the incoming heat flux and outgoing radiation and thereby obtain actual values for the \gls{tps}-mass in $\left[\frac{kg}{m^2}\right]$. The tool could also be improved by incorporating the change in thermal conductivity due to the increase in temperature of the materials. Furthermore, the current point of investigation is the stagnation point as the incoming heat flux is the largest at that location. For now the complete heat shield is assumed the be constant in thickness. It can be expected that the required thickness at the edges shall be lower and this could be optimised by using a 3D analysis tool. When the rigid concepts is chosen for the next design phase it is advised to optimise the tools for ablative materials, since that is not supported by the tool in its current state.
+Again it is stressed that the obtained values are rough estimates. Future work should start with the debugging and subsequent verification and validation of the tool. The tool can then be used to design lay-ups that can withstand the incoming heat flux and outgoing radiation and thereby obtain actual values for the \gls{tps}-mass in $\left[\frac{kg}{m^2}\right]$. Furthermore, the input of the tool can be improved, if created in a more detailed tage of the design. The tool could also be improved by incorporating the change in thermal conductivity due to the increase in temperature of the materials as well as analysing the production capabilities. Furthermore, the current point of investigation is the stagnation point as the incoming heat flux is the largest at that location. For now the complete heat shield is assumed the be constant in thickness. It can be expected that the required thickness at the edges shall be lower and this could be optimised by using a 3D analysis tool. When the rigid concepts is chosen for the next design phase it is advised to optimise the tools for ablative materials, since that is not supported by the tool in its current state.
 
 
 %Check for material failure other then for thermal reasons.
