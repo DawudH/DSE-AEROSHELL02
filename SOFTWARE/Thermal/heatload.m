@@ -132,7 +132,7 @@ end
 %% Temperature range vector
 Twall = linspace(min,mout,(mout-min+1));
 
-cc = summer(6);
+cc = parula(6);
 figure(2)
 hold on
 grid on
@@ -209,15 +209,15 @@ plot(t(1),qearo{3,1}(1),'s-','color',cc(3,:))
 plot(t(1),qearo{4,1}(1),'v-','color',cc(4,:))
 plot(t(1),qearo{5,1}(1),'.-','color',cc(4,:))
 
-plot(t(7500:4:end),qearo{1,1}(7500:4:end),'-','color',cc(1,:))
+plot(t(7500:10:end),qearo{1,1}(7500:10:end),'-','color',cc(1,:))
 plot(t(7500:200:end),qearo{1,1}(7500:200:end),'d','color',cc(1,:))
-plot(t(7500:4:end),qearo{2,1}(7500:4:end),'-','color',cc(2,:))
+plot(t(7500:10:end),qearo{2,1}(7500:10:end),'-','color',cc(2,:))
 plot(t(7500:200:end),qearo{2,1}(7500:200:end),'+','color',cc(2,:))
-plot(t(7500:4:end),qearo{3,1}(7500:4:end),'-','color',cc(3,:))
+plot(t(7500:10:end),qearo{3,1}(7500:10:end),'-','color',cc(3,:))
 plot(t(7500:200:end),qearo{3,1}(7500:200:end),'s','color',cc(3,:))
-plot(t(7500:4:end),qearo{4,1}(7500:4:end),'-','color',cc(4,:))
+plot(t(7500:10:end),qearo{4,1}(7500:10:end),'-','color',cc(4,:))
 plot(t(7500:200:end),qearo{4,1}(7500:200:end),'v','color',cc(4,:))
-plot(t(7500:4:end),qearo{5,1}(7500:4:end),'-','color',cc(4,:))
+plot(t(7500:10:end),qearo{5,1}(7500:10:end),'-','color',cc(4,:))
 plot(t(7500:200:end),qearo{5,1}(7500:200:end),'.','color',cc(4,:))
 
 %title('Heat load fractions')
