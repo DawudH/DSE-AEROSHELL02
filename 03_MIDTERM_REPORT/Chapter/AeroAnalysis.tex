@@ -217,24 +217,39 @@ In order to assess these values, a representative geometry is chosen. Since Newt
 \subsubsection{Deceleration performance}
 $\gls{sym:clcd}$ is the lift coefficient divided by the drag coefficient. In Figure \ref{fig:clcd}, a graph is presented showing the lift over drag ratios of the different concepts for different angles of attack.
 
-\begin{figure}[b]
-	\setlength\figureheight{0.8\textwidth} 
-	\setlength\figurewidth{0.75\textwidth}
-	\input{./Figure/aero_model/clcd.tikz}
-	\caption{$\gls{sym:clcd}$ of the different concepts versus \gls{sym:alpha}. $\gls{sym:M}=20[-]$, $\gls{sym:gamma}=1.29[-]$}
-	\label{fig:clcd}
+
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}{0.49\textwidth}
+		\setlength\figureheight{0.8\textwidth} 
+		\setlength\figurewidth{0.75\textwidth}
+		\input{./Figure/aero_model/clcd.tikz}
+		\caption{$\gls{sym:clcd}$}
+		\label{fig:clcd}
+	\end{subfigure}
+	\begin{subfigure}{0.49\textwidth}
+		\setlength\figureheight{0.8\textwidth} 
+		\setlength\figurewidth{0.75\textwidth}
+		\input{./Figure/aero_model/cmcl.tikz}	
+		\caption{$\gls{sym:cmcl}$}
+		\label{fig:cmcl}
+	\end{subfigure}
+	\caption{Comparisons of the different concepts for $\gls{sym:clcd}$ and $\gls{sym:cmcl}$. $\gls{sym:M}=20[-]$, $\gls{sym:gamma}=1.29[-]$}
+	\label{fig:cmcl-clcd}
 \end{figure}
 
+The lift over drag ratio seems to be linear up until around $\gls{sym:alpha}=20 [deg]$. Furthermore, there is a clear distinction between the different concepts: at $\gls{sym:alpha}=20 [deg]$, the rigid concepts performs best, followed by the stacked toroid, tension con and trailing ballute. The isotensoid performs worst. The results are summarized in table \ref{tab:clcd}.
+
 \begin{table}[H]
-	\caption{Lift and lift gradient of the different concepts at $\gls{sym:alpha}=20 [deg]$}% CAPTION HERE !
-	\label{tab:lift}% LABEL HERE
-	\begin{tabular}{|p{0.4\textwidth}|p{0.25\textwidth}|p{0.25\textwidth}|}
+	\caption{Lift over drag ratio of the different concepts at $\gls{sym:alpha}=20 [deg]$}. $\gls{sym:M}=20[-]$, $\gls{sym:gamma}=1.29[-]$% CAPTION HERE !
+	\label{tab:clcd}% LABEL HERE
+	\begin{tabular}{|p{0.36\textwidth}|p{0.27\textwidth}|p{0.27\textwidth}|}
 		\hline
-		Concept  					& $\gls{sym:cla}$	& $\gls{sym:cla-alpha}$	\\ \hline \hline
-		Stacked Toroid, Tension Cone	& -22.70     		& -50.18				\\ \hline
-		Rigid  							& -8.62				& -14.91				\\ \hline
-		Isotensoid  					& -8.25				& -16.95				\\ \hline
-		Trailing Ballute				& -19.32			& -34.16				\\ \hline				
+		\textbf{Concept}  						& \textbf{$\gls{sym:clcd}}$	& \textbf{Fraction of stacked toroid}	\\ \hline \hline
+		Stacked toroid, tension cone	& -0.176     		& 1								\\ \hline
+		Rigid  							& -0.311			& 1.764						\\ \hline
+		Isotensoid  					& -0.072			& 0.410						\\ \hline
+		Trailing ballute				& -0.210			& 1.193						\\ \hline
 	\end{tabular}
 \end{table}
 
@@ -270,17 +285,6 @@ As can be seen in Figures \ref{fig:cm} and \ref{fig:cmalpha}, the ballute, stack
 	\caption{Comparisons of the aerodynamic moment characteristics of the different concepts. $\gls{sym:M}=20[-]$, $\gls{sym:gamma}=1.29[-]$}
 	\label{fig:cmplots}
 \end{figure}
-
-
-\begin{figure}[h]
-	\centering
-	\setlength\figureheight{0.49\textwidth} 
-	\setlength\figurewidth{0.49\textwidth}
-	\input{./Figure/aero_model/cmcl.tikz}	
-	\caption{Comparisons of the different concepts for $\gls{sym:cmcl}$, an indication of the control system effort to attain a certain lift. $\gls{sym:M}=20[-]$, $\gls{sym:gamma}=1.29[-]$}
-	\label{fig:cmcl}
-\end{figure}
-
 
 \subsubsection{Control system mass estimation}
 To estimate the relative control system masses the absolute value of the ratio \gls{sym:cmcl} at $\gls{sym:alpha}=1\deg$ is determined for all concepts. The values of this parameter are shown in Table \ref{tab:controlmass}. %Note that the rigid concept has not been taken into account. This is the case because, as covered in Chapter \ref{ch:strucmass}, the structural mass of the rigid design option does not meet the requirements. As such the control system mass of this concept will not be taken into account. 
