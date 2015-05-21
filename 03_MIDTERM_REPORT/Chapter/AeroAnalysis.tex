@@ -222,7 +222,7 @@ The lift is defined as the component of the aerodynamic force perpendicular to t
 \end{equation}
 This $\gls{sym:cla}$ is the lift coefficient multiplied with the reference area and as such gives insight in the lift generation of a given spacecraft, incorporating its size. For blunt vehicles with a blunt surface perpendicular to the flow, a positive angle of attack $\gls{sym:alpha}$ results in a negative lift.
 
-In Figure \ref{fig:clplots}, the lift coefficient can be seen to vary greatly for the different concepts: the stacked toroid and tension cone produce about 3 times the lift of the other concepts. This is also reflected in the lift gradient plot, which can be found in \ref{fig:claplha}. The lift gradient plot is the graph that provides the information needed for the trade-off, since the lift gradient determines how much the control system has to change the angle of attack to achieve a given lift. It is clear that the stacked toroid and tension cone have the greatest lift and lift gradient, while the trailing ballute follows closely. The other two concepts offer a significantly less lift performance. The lift and lift gradient at an angle of attack of $\gls{sym:alpha}=20^\circ$ are summarized in Table \ref{tab:lift}.
+In Figure \ref{fig:clplots}, the lift coefficient can be seen to vary greatly for the different concepts: the stacked toroid and tension cone produce about 3 times the lift of the other concepts. This is also reflected in the lift gradient plot, which can be found in \ref{fig:claplha}. The lift gradient plot is the graph that provides the information needed for the trade-off, since the lift gradient determines how much the control system has to change the angle of attack to achieve a given lift. It is clear that the stacked toroid and tension cone have the greatest lift and lift gradient, while the trailing ballute follows closely. The other two concepts offer a significantly less lift performance. The lift and lift gradient at an angle of attack of $\gls{sym:alpha}=20^\circ$ are summarized in Table \ref{tab:clcdift}.
 
 In order to assess these values, a representative geometry is chosen. Since Newtonian flow only affects the parts of the vehicle that are in direct line of sight of the oncoming flow, only the front of the decelerator has to be accurately modelled. The stacked toroid and tension cone concepts are modelled after the \gls{irve} missions as flown by NASA, as can be seen in Figure \ref{fig:cpstackedtoroid}. The rigid concept's front is a largely flattened sphere, as seen in Figure \ref{fig:cprigid}. The isotensoid is modelled as a slightly flattened sphere, with a radius of 6 meters perpendicular and a radius of 5 meter in direction of the flow. This model can be seen in Figure \ref{fig:cpisotensoid}. The trailing ballute is modelled as a single torus trailing a body comparable to the rigid concept, as seen in Figure \ref{fig:cpballute}, and 
 
@@ -257,7 +257,7 @@ The lift over drag ratio seems to be linear up until around $\gls{sym:alpha}=20 
 \begin{table}[H]
 	\caption{Lift over drag ratio of the different concepts at $\gls{sym:alpha}=20 [deg]$. $\gls{sym:M}=20[-]$, $\gls{sym:gamma}=1.29[-]$}% CAPTION HERE !
 	\label{tab:clcd}% LABEL HERE
-	\begin{tabular}{|p{0.36\textwidth}|p{0.27\textwidth}|p{0.27\textwidth}|}
+	\begin{tabular}{|p{0.36\textwidth}|p{0.23\textwidth}|p{0.31\textwidth}|}
 		\hline
 		\textbf{Concept}  				& \textbf{$\gls{sym:clcd}$}	& \textbf{Fraction of stacked toroid}	\\ \hline \hline
 		Stacked toroid, tension cone	& -0.176     				& 1								\\ \hline
@@ -336,5 +336,9 @@ To estimate the relative control system masses the absolute value of the ratio \
 \end{table}
 
 The $\frac{\gls{sym:CM}}{\gls{sym:CL}}$-fractions shown in Table \ref{tab:controlmass} will be used in Chapter \ref{ch:tfsum} as input for the trade-off procedure. It should be noted here that the analysis methods used to predict these required control system moments do not take into account dynamic behaviour, as the analysis is carried out using a modified Newtonian flow method.
+
+\section{Conclusion}
+The performance of the different concepts on the trade-off criteria can now be assessed. The deceleration time performance of the rigid structure is the highest of the researched shapes, with a lift over drag ratio almost $80\%$ higher than that of the stacked toroid. The isotensoid has a performance more similar to the stacked toroid and tension cone, being around $20\%$ better.
+
 
 
