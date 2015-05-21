@@ -2,11 +2,11 @@
 \label{ch:astrocontrol}
 In this chapter the development of a tool for astrodynamics and control is described. The tool calculates the trajectory of the spacecraft for varying initial conditions and aerodynamic properties. With the information extracted from this tool, required performance for the control systems can be determined. Based on, among others, these requirements the different control systems available for the different concepts (which are presented in Chapter \ref{ch:options}) can be weighed off in a trade-off in Chapter \ref{ch:tradeoff}.
 
-In this chapter first the purpose of the tool will be explained in section \ref{sec:astropurpose}. In sections \ref{sec:astrogov} and \ref{sec:astrowp} working principles of the tool are explained and the equations the tool is based on are presented. To ensure the tool calculates what it is supposed to calculate and to ensure this happens accurately enough in section \ref{sec:astrovv} the verification and validation of the tool is done. The needed performance of the control system is presented in section \ref{sec:astrores}. Section \ref{sec:astrores} also presents other results of the tool which are used as input for tools calculating i.e. structural mass.
+In this chapter first the purpose of the tool will be explained in section \ref{sec:astropurpose}. In sections \ref{sec:astrogov} and \ref{sec:astrowp} working principles of the tool are explained and the equations the tool is based on are presented. To ensure that the tool calculates what it is supposed to calculate and that this happens accurately enough, in section \ref{sec:astrovv} the verification and validation of the tool is done. The needed performance of the control system is presented in section \ref{sec:astrores}. Section \ref{sec:astrores} also presents other results of the tool which are used as input for tools calculating i.e. structural mass.
 
 \subsection{Purpose of tool development}
 \label{sec:astropurpose}
-The purpose of developing a tool to calculate the trajectory of the spacecraft during entry is firstly to know the trajectory of the spacecraft given its characteristics. Secondly, calculating trajectories for varying input, for the different concepts and different control systems, this tool can also give an insight in which concepts have the characteristics needed for a successful entry.
+The purpose of developing a tool to calculate the trajectory of the spacecraft during entry is firstly to get a better understanding of the problem of designing a re-entry vehicle. Secondly, calculating trajectories for varying input, for the different concepts and control systems, this tool can also give an insight in which concepts have the characteristics needed for a successful entry.
 
 The tool has been developed in-house as no existing tool that both suits our purpose and is publicly available has been found.
 
@@ -22,7 +22,7 @@ In this section the equations on which the tool is based are shown and the reaso
  
  \paragraph{primary assumptions}
  \begin{itemize}
- \item All atmospheric properties only vary with the height above MOLA ***source*** and not with longitude, latitude or time. This assumption induces a significant error in the output of the tool. However implementing a variable atmosphere adds a lot of complexity aswell. For example the longitude and latitude of initial entry will also become design variables
+ \item All atmospheric properties only vary with the height above MOLA ***source*** and not with longitude, latitude or time. This assumption induces an error in the output of the tool, this is described in section \ref{sec:astroatmos}. However implementing a variable atmosphere adds a lot of complexity. For example the longitude and latitude of initial entry will also become design variables.
  \item All trajectories are assumed to only occur in the equatorial plane. This means that the latitude is always $0 \left[^\circ\right]$. Changing the latitude will have a big impact on the relative speed of the martian atmosphere.
  \item The gravitational pull is assumed to only vary with the height above MOLA. The gravitational field of mars is however not uniform over longitude and latitude, this will induce significant errors in the trajectory as gravity is one of the major forces in the analysis.
  \end{itemize}
@@ -31,8 +31,8 @@ In this section the equations on which the tool is based are shown and the reaso
  \paragraph{secondary assumptions}
  \begin{itemize}
  \item The spacecraft is assumed to only feel a gravitational pull from mars. It is thus assumed that there is no gravitational pull from the sun, any other planet or the martian moons.
- \item The atmosphere stops at a height of 400 $\left[km\right]$. At this point the atmosphere is negligibly thin, adding any more atmosphere would not contribute significantly to the results.
- \item The effect of solar radiation is neglected.
+ \item The atmosphere stops at a height of 400 $\left[km\right]$. At this point the atmosphere is negligibly thin (see figure \ref{fig:atmos_height_rho}),  expanding the atmospheric model would not contribute to the results.
+ \item The effect of other disturbances i.e. solar radiation is neglected.
  \end{itemize}
  
 \subsubsection{Hyperbolic Kepler entry}
@@ -65,7 +65,15 @@ With the Keplerian orbital parameters and \gls{sym:R} on the edge of the atmosph
 
 The direction of \gls{sym:Rv} is based on \gls{sym:phi}, which is calculated with equation \label{eq:polarkep} where \gls{sym:R} is known.
 
+\begin{wrapfigure}{r}{0.4\textwidth}
+		\centering
+		\includegraphics[width = 0.4\textwidth]{Figure/orbital_mechanics.pdf}
+		\caption{The kinetic diagram visualizing the governing equations of the trajectory analysis}
+		\label{fig:orb}
+\end{wrapfigure}
+
 The acceleration $\left(\gls{sym:acc}\right)$ is only the gravitational pull $\left(\gls{sym:g}\right)$, which can be calculated with equation \ref{eq:grav} \cite{Weiland2004}.
+
 
 \begin{equation} \label{eq:grav}
 \gls{sym:g} = -\frac{\gls{con:G}\gls{con:Mmars}}
@@ -75,12 +83,7 @@ The acceleration $\left(\gls{sym:acc}\right)$ is only the gravitational pull $\l
 \subsubsection{Trajectory in atmosphere}
  \label{sec:trajatmos}
  
-\begin{wrapfigure}{r}{0.4\textwidth}
-		\centering
-		\includegraphics[width = 0.4\textwidth]{Figure/orbital_mechanics.pdf}
-		\caption{The kinetic diagram visualizing the governing equations of the trajectory analysis}
-		\label{fig:orb}
-\end{wrapfigure}
+
 
 The motion of a spacecraft can be broken down in some dominant contributors. These are the gravitational pull and the aerodynamic forces. Because the aerodynamic forces do have to be taken into account no Kepler orbit can be used.
 
@@ -346,4 +349,4 @@ In this section a controlled orbit for each concept is shown. This is done to sh
 
 \subsubsection{Conclusion on control system performance}
 \label{sec:conclusion}
-As stated in section \ref{
+As stated in section
