@@ -74,38 +74,45 @@ Equation \eqref{eq:therm3} can then be altered by adding a $q^n$-term for the co
 \subsubsection{Input}
 In order to make use of the tool, an input is required. This input consists of thermal conditions and material properties for five different concepts. The thermal properties are the stagnation temperature $ \gls{sym:T0}(t) $ and a stagnation heat flux $ \gls{sym:qdot}_s(t) $. The material properties are the layer thickness $ L_1 $, $ L_2 $, etc., the thermal conductivity $ \gls{sym:k} $, the density $ \gls{sym:rho} $ and lastly the specific heat $ \gls{sym:cp} $.\\
 
-Thermal inputs for the five concepts, temp and flux + graph.\\
+The thermal inputs are the stagnation temperature and the stagnation heat flux for the different concepts. These results are obtained from the aerodynamic models as described in Chapter \ref{ch:aero_analysis} and their trajectory. The stagnation temperature is only dependent on speed and hence on the trajectory. Because all concepts are assumed to fly the same trajectory, the stagnation temperatures are identical for all concepts. The stagnation temperature is shown in Figure \ref{fig:stagnationtemp}. The stagnation heat fluxes are shown in Figure \ref{fig:stagflux}.  \\
+
+\begin{figure}[H]
+	\centering
+	\includegraphics{Figure/stagnationtemp.pdf}
+	\caption{The stagnation temperature throughout the mission for all concepts.}
+	\label{fig:stagnationtemp}
+\end{figure}
 
 Several lay-ups can be analysed, all with a variety of materials. An overview of these materials with their properties is shown in Table  \ref{tab:tpsmatprop}. Where for each material the thermal conductivity, the density, the specific heat, the maximum operative temperature and if applicable, the emissivity are given.
 
 \begin{table}[H]
-\caption {TPS Material properties}
-\centering
-    \begin{tabular}{|l|l|l|l|l|l|}
-    \hline
-    \textbf{Material}         & \textbf{ $ k $ $ [ \frac{W}{m*K} ] $} & \textbf{ $ \rho $ $ [ \frac{kg}{m^3} ] $} & \textbf{  $ c_{p} $ $ [ \frac{J}{kg*K} ] $ }& \textbf{ $ T_{max} $ $ [ K ] $} &\textbf{ $ \varepsilon $ $ [ - ] $} \\[1.5ex] \hline \hline
-     Viton       & 0.202 
-& 1842 & 1654 
-& 	 & 0.85
- \\ \hline
-    Nextel AF14       & 0.150                                                 & 858                                        & 1050                                            & 1373	 & 0.443                                      \\ \hline
-    Nextel BF20       & 0.146 
-& 1362                                        & 1130 
-& 1643	 & 0.443                                      
- \\ \hline
-    Nextel XN513      & 0.148                                                 & 1151                                       & 1090                                            & 1673	 & 0.443                                      \\ \hline
-    Refrasil C1554-48 & 0.865                                                 & 924                                        & 1172                                            & 1533	 & 0.7                                        \\ \hline
-    Refrasil UC100-28 & 0.865                                                 & 890                                        & 1172                                            & 1255  & 0.2                                        \\ \hline
-    Hexcel 282 Carbon & 0.5                                                   & 891                                        & 1000                                            & ~ 	 & 0.9                                        \\ \hline
-    Pyrogel 6650      & 0.030                                                 & 110                                        & 1046                                            & 923    & ~                                          \\ \hline
-    Pyrogel 5401      & 0.0248                                                & 170                                        & 1046                                            & ~  	 & ~                                          \\ \hline
-    Refrasil 1800      & 0.085                                                 & 156                                        & 1172                                            & 1255 	 & ~                                          \\ \hline
-    Refrasil 2000      & 0.095                                                 & 180                                        & 1172                                            & 1366 	 & ~                                          \\ \hline
-    KFA 5             & 0.25                                                  & 98                                         & 1250                                            & 1473* 	 & ~                                          \\ \hline
-    Kapton            & 0.12                                                  & 1468                                       & 1022                                            & 673	 & ~                                          \\ \hline
-    Upilex            & 0.29                                                  & 1470                                       & 1130                                            & 773 	 & ~                                          \\ \hline
-    \end{tabular}
-    \label{tab:tpsmatprop}
+	\caption {TPS Material properties}
+	\centering
+	\begin{tabular}{|l|l|l|l|l|l|}
+		\hline
+		\textbf{Material}         & \textbf{ $ k $ $ [ \frac{W}{m*K} ] $} & \textbf{ $ \rho $ $ [ \frac{kg}{m^3} ] $} & \textbf{  $ c_{p} $ $ [ \frac{J}{kg*K} ] $ }& \textbf{ $ T_{max} $ $ [ K ] $} &\textbf{ $ \varepsilon $ $ [ - ] $} \\[1.5ex] \hline \hline
+		Viton       & 0.202 
+		& 1842 & 1654 
+		& 	 & 0.85
+		\\ \hline
+		Nextel AF14       & 0.150                                                 & 858                                        & 1050                                            & 1373	 & 0.443                                      \\ \hline
+		Nextel BF20       & 0.146 
+		& 1362                                        & 1130 
+		& 1643	 & 0.443                                      
+		\\ \hline
+		Nextel XN513      & 0.148                                                 & 1151                                       & 1090                                            & 1673	 & 0.443                                      \\ \hline
+		Refrasil C1554-48 & 0.865                                                 & 924                                        & 1172                                            & 1533	 & 0.7                                        \\ \hline
+		Refrasil UC100-28 & 0.865                                                 & 890                                        & 1172                                            & 1255  & 0.2                                        \\ \hline
+		Hexcel 282 Carbon & 0.5                                                   & 891                                        & 1000                                            & ~ 	 & 0.9                                        \\ \hline
+		Pyrogel 6650      & 0.030                                                 & 110                                        & 1046                                            & 923    & ~                                          \\ \hline
+		Pyrogel 5401      & 0.0248                                                & 170                                        & 1046                                            & ~  	 & ~                                          \\ \hline
+		Refrasil 1800      & 0.085                                                 & 156                                        & 1172                                            & 1255 	 & ~                                          \\ \hline
+		Refrasil 2000      & 0.095                                                 & 180                                        & 1172                                            & 1366 	 & ~                                          \\ \hline
+		KFA 5             & 0.25                                                  & 98                                         & 1250                                            & 1473* 	 & ~                                          \\ \hline
+		Kapton            & 0.12                                                  & 1468                                       & 1022                                            & 673	 & ~                                          \\ \hline
+		Upilex            & 0.29                                                  & 1470                                       & 1130                                            & 773 	 & ~                                          \\ \hline
+	\end{tabular}
+	\label{tab:tpsmatprop}
 \end{table}
 
 \subsubsection{Output}
@@ -138,8 +145,28 @@ For the inflatable concepts, the paper by Del Corso can be used \cite{Corso2009}
 To check whether the tool can be used for the rigid concept with ablative materials, one must validate the tool with experimental data for a rigid lay-up. The paper by Feldman has done the experiment by applying a heat flux to an ablative material lay-up suitable for the rigid concept \cite{Feldman2012}.
 
 
-\subsection{Results per concept}
-It has not been possible to verify and validate the tool in time due to a bug in the software. Therefore another solution has to be proposed, in order to be able to analyse the different concepts. Note that this method is much more simple than the initial developed tool, and will not be as accurate as the tool. 
+\subsubsection{Results of the alternative method}
+As discussed before, integrating the total heat flux will result in the heat load. The peak heat loads can be used for sizing the concepts. the peak heat loads of the different concepts can be compared as a function of the peak heat load of the stacked torroid. However, The wall temperature is assumed constant throughout the entire descend. This is not actually the case and therefore a sensitivity analysis is performed. The wall temerature is varied from 500 to 1500 K. The results can be seen in Figure \ref{fig:heatload}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics{Figure/heatload.pdf}
+	\caption{Standardised heat loads with respect to the stacked toroid, varied over different wall temperatures}
+	\label{fig:heatload}
+\end{figure}
+
+As can be seen from the above figure, the heat load fractions are almost invariant over the variety of constant wall temperatures. Therefore, the heat load fraction calculated under constant wall temperature conditions can be used to compare concepts relative too each other. The stacked toroid and tension cone will obtain the highest heat load, whereas the ballute and the isotensoid obtain lower heat loads. For the trade-off, average values of these heat load fractions will be used. These values are listed in Table \ref{tab:fractions}.
+
+\begin{table}[H]
+	\centering
+	\caption {Peak heat load fractions of the concepts under analysis.}
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		Stacked Toroid & Tension cone & Ballute & Isotensoid \\ \hline
+		1              & 1            & 0.84    & 0.76       \\ \hline
+	\end{tabular}
+	\label{tab:fractions}
+\end{table}
 
 \subsubsection{Alternative method}
 To compare different concepts it is assumed that the \gls{tps}-mass is dependent on the time integrated total heat rate which gives a heat load. As explained before the incoming heat flux is given at the stagnation point by the aerodynamics group (section \ref{subsec:aerotool}). To obtain this heat flux the aerodynamics group has put different shapes into the same trajectory. For the four inflatable concepts this is a valid trajectory according to the orbit tool. For the rigid concept this is not the case. However, this does not have to be analysed since the structural mass described in section \ref{sec:rigid} already incorporates the \gls{tps}-mass.
