@@ -1,6 +1,6 @@
 \section{Aerodynamic concept analysis}
 \label{ch:aero_analysis}
-In order to analyse the aerodynamic characteristics of the proposed concepts a software tool was developed. This chapter will deal with the development and implementation of this program. The aerodynamic tool is developed to be able to assess the performance of the different system concepts on the different trade-off criteria as defined in Chapter \ref{ch:trade-offcriteria}: the lift gradient \gls{sym:cla-alpha} relates to the deceleration time and the moment stability \gls{sym:cma-alpha} relates to the static stability of the decelerator. In order to calculate these values, the concept shapes are discretized in triangles, and for each triangle the pressure coefficient \gls{sym:cp} is calculated. This can then be integrated over the surface to obtain lift, drag and moment. Also, the maximum heat flux \gls{sym:qw} is determined for each concept, which is used to determine the thermal protection system mass. 
+In order to analyse the aerodynamic characteristics of the proposed concepts a software tool was developed. This chapter will deal with the development and implementation of this program. The aerodynamic tool is developed to be able to assess the performance of the different system concepts on the different trade-off criteria as defined in Chapter \ref{ch:tfsum}: the lift gradient \gls{sym:cla-alpha} relates to the deceleration time and the moment stability \gls{sym:cma-alpha} relates to the static stability of the decelerator. In order to calculate these values, the concept shapes are discretised in triangles, and for each triangle the pressure coefficient \gls{sym:cp} is calculated. This can then be integrated over the surface to obtain lift, drag and moment. Also, the maximum heat flux \gls{sym:qw} is determined for each concept, which is used to determine the thermal protection system mass. 
 The chapter will start with a description of the analysis method used to determine the different aerodynamic properties of the various concepts in section \ref{subsec:aerotool}. The verification and validation of the analysis tool is discussed in section \ref{subsec:aeroverval}. Finally the developed analysis method is used to analyse the various system concepts and generate the required data for the trade off. 
 
 \subsection{Development of aerodynamic analysis tool}
@@ -282,7 +282,7 @@ To estimate the relative control system masses the absolute value of the ratio \
 	\caption{A caption}
 	\begin{tabular}{|c|c|c|}
 		\hline
-		\textbf{Concept} & \mathbf{\gls{sym:cmcl}} & \textbf{Fraction of stacked toroid} \\ \hline \hline
+		\textbf{Concept} & \textbf{\gls{sym:cmcl}} & \textbf{Fraction of stacked toroid} \\ \hline \hline
 		Stacked toroid, tension cone & $5.81$ & $1.00$\\
 		Isotensoid & $5.72$ & $0.99$\\
 		Trailing ballute & $5.00$ & $0.86$\\
