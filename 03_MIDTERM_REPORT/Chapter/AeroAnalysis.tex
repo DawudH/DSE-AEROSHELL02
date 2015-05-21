@@ -43,7 +43,14 @@ sin(\gls{sym:chi})=\gls{sym:Vhat} \bullet \gls{sym:n}
 \end{multicols}
 Using $C_{p_{max}}$ and $sin(\gls{sym:chi})$ the \gls{sym:CP} for every surface element is calculated, after which it is multiplied with the element area and the element surface normal vector. This results in an elemental pressure force in three dimensions from which the lift and drag forces can be determined. By then summing the resultant forces for all elements the total body forces are found. Next to the body forces the resultant aerodynamic moment can also be found. For this the location of the \acrfull{cg} is used as input, after which the moments about the \gls{cg} caused by the force on each element can be summed. 
 
-In addition to determining the aerodynamic forces and moments acting on the body, the heat flux in the stagnation point is also computed. A generalized Equation to predict the heat flux on a body can be found in \cite{AndersonJr.2006,Tauber1986}. This  is shown in Equation \ref{eq:heatflux}.
+Two notes are made here with regard to the results produced by the Newtonian flow method:
+\begin{itemize}
+	\item The accuracy of the Newtonian and modified Newtonian methods increases as \gls{sym:M} become higher \cite{AndersonJr.2007,Bertin1994}
+	\item Newtonian and modified Newtonian theory is more accurate for three-dimensional bodies than it is for two-dimensional cases \cite{AndersonJr.2007}
+\end{itemize}
+
+In addition to determining the aerodynamic forces and moments acting on the body, the heat flux in the stagnation point is also computed. A generalized equation to predict the heat flux on a body can be found in \cite{AndersonJr.2006,Tauber1986}. This is shown in Equation \ref{eq:heatflux}.
+
 \begin{equation}
 \gls{sym:qw}=\rho_{\infty}^{N}V_{\infty}^{M}C
 \label{eq:heatflux}
@@ -153,6 +160,25 @@ Aerodynamic drag is used as the method to decelerate the vehicle from over escap
 \end{equation}
 As can be seen, the drag is dependent on the drag coefficient of the spacecraft as well as the density. In this sense, the maximum deceleration limit can be achieved by having the lowest part of an orbit lower if the drag coefficient is lower as well. Then, the higher density compensates for the low drag coefficient to produce the same force as a spacecraft with a high drag coefficient. In this way, the drag coefficient is not a key driver for the design. However, the spacecraft can influence its time in the atmosphere by producing lift: if the spacecraft were to fly out of the atmosphere, a downward pointing lift would divert it's trajectory more through the atmosphere. The spacecraft's ability to influence this trajectory through the atmosphere is thus characterised by the amount of lift that can be produced. This is characterised by the lift coefficient times the area of the spacecraft \gls{sym:cla}.
 
+\subsubsection{Trade-off criteria justification} \label{sec:tradeoffaero}
+In this section, the quantification method of the trade-off criteria relating to aerodynamics is justified.
+
+The stability trade-off criterion is given by the static stability of the vehicle. This is characterised by the pitch moment gradient \gls{sym:cma-alpha}: For a negative \gls{sym:cma-alpha}, a positive angle of attack leads to a negative moment, such that the angle of attack is restored by the induced moment. This leads to a spacecraft that is less reactant to disturbances in the atmosphere, which leads to a less strict requirement on the control system to keep the spacecraft pointed in the desired direction. A positive value of \gls{sym:cma-alpha} means the spacecraft is not stable, and the control system will have to very actively monitor the spacecraft in order for it to not diverge from the required attitude. \\
+
+
+Aerodynamic drag is used as the method to decelerate the vehicle from the initial velocity to $\gls{sym:M}=5$ before landing. The drag equation is given in Eq. \ref{eq:drag}.
+
+\begin{equation} \label{eq:drag}
+\gls{sym:D} = \frac{1}{2}\gls{sym:rho}\gls{sym:V}^2\gls{sym:cda}
+\end{equation}
+\begin{equation} \label{eq:lift}
+\gls{sym:L} = \frac{1}{2}\gls{sym:rho}\gls{sym:V}^2\gls{sym:cla}
+\end{equation}
+
+The lift is defined as the component of the aerodynamic force perpendicular to the flow, where the direction away from Mars is defined positive. The drag component is defined parallel to the flow. For blunt bodies in hypersonic flow with the blunt side pointed towards the oncoming flow, a positive angle of attack results in a negative lift.
+
+The drag and lift are dependent on the drag and lift coefficients of the spacecraft as well as the density. As can be seen in Figure \ref{fig:atmos_height_rho}, the density is significantly higher in lower parts of the atmosphere. For a given \gls{sym:cda}, the maximum deceleration can be chosen by varying the lowest part of the orbit: a higher density compensates for a low drag coefficient to produce the same force as a spacecraft with a high drag coefficient and a low density. Because of the large variation of density in the atmosphere, it is possible to find a trajectory for any \gls{sym:cda}. Thus, the drag coefficient itself is not a key driver for the design. However, the spacecraft can influence its deceleration time in the atmosphere by producing lift: if the spacecraft were to fly out of the atmosphere, a downward pointing lift would divert it's trajectory more through the atmosphere. The ability of the spacecraft to influence this trajectory through the atmosphere is characterised by the amount of lift that can be produced, with respect to the amount of drag produced at the same \gls{sym:alpha}. The dependence on drag is due to the fact that two spacecraft with the same \gls{sym:clcd} but a different \gls{sym:cda}, will just have the lowest part of the trajectory in a different height, where the total lift and drag force will be the same for both spacecraft. Therefore, the deceleration time is characterised by \gls{sym:clcd}. \\
+
 The mass of the decelerator is composed of the structural mass, the \gls{tps} mass and the control system mass. 
 The \gls{tps} mass is estimated based on the heat load on the spacecraft, which is the integral of the heat flux over time. This heat load is the total amount of heat supplied to the spacecraft between initial entry and final descent, and estimates the total amount of energy the \gls{tps} has to withstand. This can thus be used to size the thickness of the \gls{tps}, which leads directly to the mass of the system.
 The control system mass is based on the moment that the control system has to provide. The amount of lift that a spacecraft has to produce in order to attain a desirable orbit directly dictates the angle of attack. This angle of attack, in turn, determines the moment that the control system has to compensate in order to maintain the required angle of attack. It is thus not the moment coefficient itself that has to be minimised, but rather the amount of moment that is needed to provide a certain amount of lift. Therefore, the ratio \gls{sym:cmcl} is used to quantify the control system mass.
@@ -186,8 +212,6 @@ In order to assess these values, a representative geometry is chosen. Since Newt
 	\label{fig:conceptscp}
 \end{figure}
 
-
-
 \subsubsection{Lift performance}
 The lift is defined as the component of the aerodynamic force perpendicular to the flow, where the direction away from Mars is defined positive. The Equation used to calculate the total lift of a vehicle is given in Eq \ref{eq:lift}.
 \begin{equation}
@@ -197,6 +221,21 @@ The lift is defined as the component of the aerodynamic force perpendicular to t
 This $\gls{sym:cla}$ is the lift coefficient multiplied with the reference area and as such gives insight in the lift generation of a given spacecraft, incorporating its size. For blunt vehicles with a blunt surface perpendicular to the flow, a positive angle of attack $\gls{sym:alpha}$ results in a negative lift.
 
 In Figure \ref{fig:clplots}, the lift coefficient can be seen to vary greatly for the different concepts: the stacked toroid and tension cone produce about 3 times the lift of the other concepts. This is also reflected in the lift gradient plot, which can be found in \ref{fig:claplha}. The lift gradient plot is the graph that provides the information needed for the trade-off, since the lift gradient determines how much the control system has to change the angle of attack to achieve a given lift. It is clear that the stacked toroid and tension cone have the greatest lift and lift gradient, while the trailing ballute follows closely. The other two concepts offer a significantly less lift performance. The lift and lift gradient at an angle of attack of $\gls{sym:alpha}=20^\circ$ are summarized in Table \ref{tab:lift}.
+
+In order to assess these values, a representative geometry is chosen. Since Newtonian flow only affects the parts of the vehicle that are in direct line of sight of the oncoming flow, only the front of the decelerator has to be accurately modelled. The stacked toroid and tension cone concepts are modelled after the \gls{irve} missions as flown by NASA, as can be seen in Figure \ref{fig:cpstackedtoroid}. The rigid concept's front is a largely flattened sphere, as seen in Figure \ref{fig:cprigid}. The isotensoid is modelled as a slightly flattened sphere, with a radius of 6 meters perpendicular and a radius of 5 meter in direction of the flow. This model can be seen in Figure \ref{fig:cpisotensoid}. The trailing ballute is modelled as a single torus trailing a body comparable to the rigid concept, as seen in Figure \ref{fig:cpballute}, and 
+
+
+
+\subsubsection{Deceleration performance}
+$\gls{sym:clcd}$ is the lift coefficient divided by the drag coefficient. In Figure \ref{fig:clcd}, a graph is presented showing the lift over drag ratios of the different concepts for different angles of attack.
+
+\begin{figure}[b]
+	\setlength\figureheight{0.8\textwidth} 
+	\setlength\figurewidth{0.75\textwidth}
+	\input{./Figure/aero_model/clcd.tikz}
+	\caption{$\gls{sym:clcd}$ of the different concepts versus \gls{sym:alpha}. $\gls{sym:M}=20[-]$, $\gls{sym:gamma}=1.29[-]$}
+	\label{fig:clcd}
+\end{figure}
 
 \begin{table}[H]
 	\caption{Lift and Lift gradient of the different concepts at $\gls{sym:alpha}=20^\circ$}% CAPTION HERE !
@@ -230,8 +269,6 @@ In Figure \ref{fig:clplots}, the lift coefficient can be seen to vary greatly fo
 	\caption{Comparisons of the lift characteristics of the different concepts}
 	\label{fig:clplots}
 \end{figure}
-
-
 
 \subsubsection{Aerodynamic moments}
 The moment coefficients of the different concepts around their centres of gravity, the derivatives of the moment coefficient with respect to alpha and the moment coefficient divided by the lift coefficient are plotted in Figures \ref{fig:cm}, \ref{fig:cmalpha} and \ref{fig:cmplots} respectively. The centre of gravity of the decelerator is assumed to be in the geometric centroid of the decelerator. The centre of gravity of the crew module is assumed to be at 1/3 of the height of the crew module, which itself is assumed to be five meters high. This assumption rests on the expectation that the crew module will be packaged in a way that increases the stability of the vehicle. This requires a centre of gravity as far forward as possible. The centre of gravities of the decelerator and the crew module are then combined to obtain the vehicle centre of gravity. 
