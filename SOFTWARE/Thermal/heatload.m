@@ -181,18 +181,48 @@ plot(t(1),qearo{4,1}(1),'v-','color',cc(4,:))
 plot(t(1),qearo{5,1}(1),'.-','color',cc(4,:))
 
 plot(t(1:4:7500),qearo{1,1}(1:4:7500),'-','color',cc(1,:))
-plot(t(1:1000:7500),qearo{1,1}(1:1000:7500),'d','color',cc(1,:))
+plot(t(1:200:7500),qearo{1,1}(1:200:7500),'d','color',cc(1,:))
 plot(t(1:4:7500),qearo{2,1}(1:4:7500),'-','color',cc(2,:))
-plot(t(1:1000:7500),qearo{2,1}(1:1000:7500),'+','color',cc(2,:))
+plot(t(1:200:7500),qearo{2,1}(1:200:7500),'+','color',cc(2,:))
 plot(t(1:4:7500),qearo{3,1}(1:4:7500),'-','color',cc(3,:))
-plot(t(1:1000:7500),qearo{3,1}(1:1000:7500),'s','color',cc(3,:))
+plot(t(1:200:7500),qearo{3,1}(1:200:7500),'s','color',cc(3,:))
 plot(t(1:4:7500),qearo{4,1}(1:4:7500),'-','color',cc(4,:))
-plot(t(1:1000:7500),qearo{4,1}(1:1000:7500),'v','color',cc(4,:))
+plot(t(1:200:7500),qearo{4,1}(1:200:7500),'v','color',cc(4,:))
 plot(t(1:4:7500),qearo{5,1}(1:4:7500),'-','color',cc(4,:))
-plot(t(1:1000:7500),qearo{5,1}(1:1000:7500),'.','color',cc(4,:))
+plot(t(1:200:7500),qearo{5,1}(1:200:7500),'.','color',cc(4,:))
 
 %title('Heat load fractions')
 ylabel('stagnation heat flux [W/cm^2]')
 xlabel('Time [s]')
+axis([0 500 0 50])
 legend('Ballute','Isotensoid','Rigid','Stacked torroid','Tension cone')  
-matlab2tikz('.\LaTeX\heatflux.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
+matlab2tikz('.\LaTeX\heatflux1.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
+
+%%
+
+figure(4)
+hold on
+grid on
+plot(t(1),qearo{1,1}(1),'d-','color',cc(1,:),'DisplayName','ballute')
+plot(t(1),qearo{2,1}(1),'+-','color',cc(2,:))
+plot(t(1),qearo{3,1}(1),'s-','color',cc(3,:))
+plot(t(1),qearo{4,1}(1),'v-','color',cc(4,:))
+plot(t(1),qearo{5,1}(1),'.-','color',cc(4,:))
+
+plot(t(7500:4:end),qearo{1,1}(7500:4:end),'-','color',cc(1,:))
+plot(t(7500:200:end),qearo{1,1}(7500:200:end),'d','color',cc(1,:))
+plot(t(7500:4:end),qearo{2,1}(7500:4:end),'-','color',cc(2,:))
+plot(t(7500:200:end),qearo{2,1}(7500:200:end),'+','color',cc(2,:))
+plot(t(7500:4:end),qearo{3,1}(7500:4:end),'-','color',cc(3,:))
+plot(t(7500:200:end),qearo{3,1}(7500:200:end),'s','color',cc(3,:))
+plot(t(7500:4:end),qearo{4,1}(7500:4:end),'-','color',cc(4,:))
+plot(t(7500:200:end),qearo{4,1}(7500:200:end),'v','color',cc(4,:))
+plot(t(7500:4:end),qearo{5,1}(7500:4:end),'-','color',cc(4,:))
+plot(t(7500:200:end),qearo{5,1}(7500:200:end),'.','color',cc(4,:))
+
+%title('Heat load fractions')
+ylabel('Stagnation heat flux [W/cm^2]')
+xlabel('Time [s]')
+axis([1000 2400 0 8.5])
+legend('Ballute','Isotensoid','Rigid','Stacked torroid','Tension cone')  
+matlab2tikz('.\LaTeX\heatflux2.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
