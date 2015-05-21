@@ -8,28 +8,33 @@ format long
 %%Input constants & variables
 variables
 
-files = {'orbit_alpha_dt_isotensoid_l.txt', 'orbit_alpha_dt_apollo_l.txt', 'orbit_alpha_dt_torus_l.txt', 'orbit_alpha_dt_pastille_l.txt', 'orbit_alpha_dt_irve_l.txt'};
-names = {'isotensoid', 'apollo', 'torus', 'pastille', 'irve'};
+%files = {'orbit_alpha_dt_isotensoid_l.txt', 'orbit_alpha_dt_apollo_l.txt', 'orbit_alpha_dt_torus_l.txt', 'orbit_alpha_dt_pastille_l.txt', 'orbit_alpha_dt_irve_l.txt'};
+%names = {'isotensoid', 'apollo', 'torus', 'pastille', 'irve'};
+
+files = {'orbit_alpha_dt_irve_l.txt'};
+names = {'irve'};
 
 for bla = 1:length(names)
-% booleans (no control, stop at beginning of elliptic orbit)
-use_control = false;
+% booleans (use control, stop at beginning of elliptic orbit)
+use_control = true;
 multiple_orbits = false;
 
-alpha = -25:5:25;
+alpha = 15; % deg
+dalphadt = -1.3:0.1:-0.9; %deg
 file_name = files{bla};
 
 clear aero_coef
 aero_coef = aeroProperties(names{bla});
 
 %Initial Position
-rx = -4100000;
+rx = -4140000;
 ry = 10*R_m;
 
-accuracy = 50;
+accuracy = 25;
 init_step = 5000;
-filestr = cell(length(alpha),1);
-parfor i = 1:length(alpha)
+
+filestr = cell(length(dalphadt),1);
+parfor i = 1:length(dalphadt)
     
     rx_in = rx;
     R = [rx_in,ry,0];
@@ -45,11 +50,11 @@ parfor i = 1:length(alpha)
     
     while go
         % run :)
-        [out] = full_orbit_find(R, V, A, G, M_mars, R_m, h_atm, atm, dt_kep_init, dt_atmos, m, Omega_m, S, control, tend, crash_margin, g_earth, aero_coef, use_control, multiple_orbits, alpha(i)*pi/180);
-        
+        [out] = full_orbit(R, V, A, G, M_mars, R_m, h_atm, atm, dt_kep_init, dt_atmos, m, Omega_m, S, control, tend, crash_margin, g_earth, aero_coef, use_control, multiple_orbits, alpha*pi/180,dalphadt(i)*pi/180);
+
         % save output
-        filestr{i} =  [filestr{i}  sprintf(' %f %f %f %f %f %d %d %d %f \n',rx_in, ry, v, dt_atmos, alpha(i), out.c.crash, out.c.flyby, out.c.orbit, out.maxaccel)];
-            
+        filestr{i} =  [filestr{i}  sprintf(' %f %f %f %f %f %d %d %d %f %f %f %f %f \n',rx_in, ry, v, dt_atmos, dalphadt(i), out.c.crash, out.c.flyby, out.c.orbit, out.maxaccel, out.alpha(1), out.Kp, out.Ki, out.Kd)];
+  
         if refinestep <= accuracy
             go = false;
             break;
@@ -64,11 +69,10 @@ parfor i = 1:length(alpha)
             % go further to find minimum load
             rx_in = rx_in - refinestep;
         end
-        
         % generate new R
         R = [rx_in,ry,0];
         
-        if (prev_c.crash && out.c.flyby) || (prev_c.orbit && out.c.flyby)
+        if (prev_c.crash && out.c.flyby) || (prev_c.orbit && out.c.flyby) || (prev_c.flyby && out.c.orbit) || (prev_c.flyby && out.c.crash)
             refinestep = refinestep / 2;
         end
         prev_c = out.c;
@@ -80,7 +84,7 @@ end
 
 %% write to file
 fid = fopen(file_name,'a');
-for k = 1:length(alpha)
+for k = 1:length(dalphadt)
     fprintf(fid,'%s',filestr{k});
 end
 fclose(fid);

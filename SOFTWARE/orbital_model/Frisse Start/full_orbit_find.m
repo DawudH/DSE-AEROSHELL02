@@ -1,9 +1,10 @@
-function [ out ] = full_orbit_find(R0, V0, A0, G, M_mars, R_m, h_atm, atm, dt_kep_init, dt_atmos, m, Omega_m, S, control, tend, crash_margin, g_earth, aero_coef, use_control, multiple_orbits,alpha_init)
+function [ out ] = full_orbit_find(R0, V0, A0, G, M_mars, R_m, h_atm, atm, dt_kep_init, dt_atmos, m, Omega_m, S, control, tend, crash_margin, g_earth, aero_coef, use_control, multiple_orbits,alpha_init,dalphadt)
 %Calculates the full orbit for selected initial conditions until sepcified
 %end time
 
     %% BEUN 
     control.alpha_init = alpha_init;
+    control.dalphadt = dalphadt;
     
     %Condition to run the script
     orbit = true;

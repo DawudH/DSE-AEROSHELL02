@@ -6,7 +6,7 @@ close all
 variables
 
 % booleans
-use_control = false;
+use_control = true;
 multiple_orbits = true;
 
 %%function
@@ -15,26 +15,48 @@ multiple_orbits = true;
 %%processing (plot/write to file)
 figure('name','parameters over time')
 t = out.tp;
-subplot(5,1,1)
+subplot(5,2,1)
 Rm = sqrt(out.R(:,1).^2 + out.R(:,3).^2 + out.R(:,2).^2) - R_m;
 plot(t,Rm)
+ylabel('$h$ $\left[m\right]$','interpreter','latex')
 grid on
-subplot(5,1,2)
+subplot(5,2,3)
 Vm = sqrt(out.V(:,1).^2 + out.V(:,3).^2 + out.V(:,2).^2);
 plot(t,Vm)
+ylabel('$V$ $\left[\frac{m}{s}\right]$','interpreter','latex')
 grid on
-subplot(5,1,3)
+subplot(5,2,5)
+hold on
 am = sqrt((out.A(:,1) - out.Ag(:,1)).^2 + (out.A(:,2) - out.Ag(:,2)).^2 + (out.A(:,3) - out.Ag(:,3)).^2) / g_earth;
 plot(t,am)
+plot(xlim,[3,3],'-.','color','r');
+plot(xlim,[control.a/g_earth,control.a/g_earth],'-.','color','g');
+ylabel('$a_{human}$ $\left[\frac{m}{s^2}\right]$','interpreter','latex')
 grid on
-subplot(5,1,4)
-plot(t,out.CD)
+subplot(5,2,7)
+plot(t,out.q)
+ylabel('$\bar{q}$  $\left[Pa\right]$','interpreter','latex')
 grid on
-subplot(5,1,5)
+subplot(5,2,9)
 hold on
-plot(t,out.CL)
+plot(t,out.M)
 plot(xlim,[5,5],'-.','color','r');
+ylabel('$M$  $\left[-\right]$','interpreter','latex')
 grid on
+subplot(5,2,2)
+plot(t,out.CL)
+ylabel('$C_L$  $\left[-\right]$','interpreter','latex')
+grid on
+subplot(5,2,4)
+plot(t,out.CD)
+ylabel('$C_D$  $\left[-\right]$','interpreter','latex')
+grid on
+subplot(5,2,6)
+plot(t,out.alpha*180/pi)
+ylabel('$\alpha$  $\left[^circ\right]$','interpreter','latex')
+grid on
+
+
 % plot orbit
 % circle plot:
 theta_plot = 0:0.01:2*pi;
