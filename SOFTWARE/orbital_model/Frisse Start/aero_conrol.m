@@ -1,4 +1,4 @@
-function [out] = aero_conrol(state,control,aero_coef)
+function [out] = aero_conrol(state,control,aero_coef,dt)
     % state should contain:
         % state.a, the accelerataion at this instant
         % state.CL, the CL at this instant
@@ -13,36 +13,56 @@ function [out] = aero_conrol(state,control,aero_coef)
         % timestep
     
         % determine the error
+        
         e = abs(control.a - state.a);
-        dalpha = control.Kp * e * control.dalpha;
-        if dalpha > control.dalpha
+        error_I = control.error_I + dt * (e + control.error)/2; % trapozoidal integration
+        error_D = (e - control.error) / dt; 
+        dalpha = ( control.Kp * e * control.dalpha + control.Ki * error_I * control.dalpha + control.Kd * error_D * control.dalpha);
+        dalpha_beun = dalpha;
+        if (control.dalpha > 0) && (dalpha > control.dalpha)
+            dalpha = control.dalpha;
+        elseif (control.dalpha < 0) && (dalpha < control.dalpha)
             dalpha = control.dalpha;
         end
         
-    if state.a > control.a
-    % If state.a > control.a, increase CL (so decrease alpha) to allow higer acceleration
-        
-        alpha = state.alpha - dalpha;
+        alpha = state.alpha + dalpha;
         if ( alpha < min(control.alpha_range) )
              alpha = min(control.alpha_range);
-        end
-        [CLA, CDA, CMYA] = aero_coef.aeroCoeffs(alpha);
-        
-         
-    elseif state.a == control.a
-        % If state.a = control.a, keep the same CL
-        [CLA, CDA, CMYA] = aero_coef.aeroCoeffs(state.alpha);
-    
-    else
-    % If state.a < control.a, decrease CL (so increase alpha) to allow lower acceleration
-    
-        alpha = state.alpha + dalpha;
-        if ( alpha > max(control.alpha_range) )
+        elseif ( alpha > max(control.alpha_range) )
              alpha = max(control.alpha_range);
         end
+        
         [CLA, CDA, CMYA] = aero_coef.aeroCoeffs(alpha);
         
-    end
+%     if state.a < control.a
+%     % If state.a < control.a, decrease CL (so decrease alpha) to allow lower acceleration
+%       
+%         alpha = state.alpha - dalpha;
+%         if ( alpha < min(control.alpha_range) )
+%              alpha = min(control.alpha_range);
+%         elseif ( alpha > max(control.alpha_range) )
+%              alpha = max(control.alpha_range);
+%         end
+%         [CLA, CDA, CMYA] = aero_coef.aeroCoeffs(alpha);
+%         
+%          
+%     elseif state.a == control.a
+%         % If state.a = control.a, keep the same CL
+%         alpha = state.alpha;
+%         [CLA, CDA, CMYA] = aero_coef.aeroCoeffs(alpha);
+%     
+%     else
+%     % If state.a > control.a, increase CL (so increase alpha) to allow higer acceleration
+%     
+%         alpha = state.alpha + dalpha;
+%         if ( alpha < min(control.alpha_range) )
+%              alpha = min(control.alpha_range);
+%         elseif ( alpha > max(control.alpha_range) )
+%              alpha = max(control.alpha_range);
+%         end
+%         [CLA, CDA, CMYA] = aero_coef.aeroCoeffs(alpha);
+%         
+%     end
     
     
     % generate output
@@ -50,5 +70,7 @@ function [out] = aero_conrol(state,control,aero_coef)
     out.CDA = CDA;
     out.CMYA = CMYA;
     out.alpha = alpha;
-    
+    out.error = e;
+    out.error_I = error_I;
+    disp(['error: ' num2str(e) ' error_I: ' num2str(error_I) ' error_D: ' num2str(error_D) ' dalpha_beun: ' num2str(dalpha_beun) ' dalpha: ' num2str(dalpha) ' alpha: ' num2str(alpha*180/pi)])
 end
