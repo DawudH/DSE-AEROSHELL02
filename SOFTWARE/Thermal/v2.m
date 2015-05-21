@@ -6,7 +6,7 @@ clear all
 close all
 
 %% inputs
-filename = 'EX42.txt';
+filename = 'VAL.txt';
 dx = 0.005;
 dt = 0.003;
 
@@ -61,7 +61,7 @@ T_inf = 1250.*sin(tt)*0+4*0;
 
 
 %% Temp-table
-T0 = 35+273.15;
+T0 = 20+273.15;
 T = ones(imax,totalt)*(T0); %Temp-table
 %T(:,1) = 300; %[K]
 
@@ -141,3 +141,25 @@ q0/k0*sqrt(pi*alpha*tau)
 qsb = 2*q0*sqrt(alpha*time/pi)/k0.*exp(-x^2/4/alpha./time)-q0*x/k0.*erfc(x/2./sqrt(alpha.*time));
 x=0;
 qss = 2*q0*sqrt(alpha*time/pi)/k0.*exp(-x^2/4/alpha./time)-q0*x/k0.*erfc(x/2./sqrt(alpha.*time));
+
+
+%% Plot validation
+x = layers(:,1);
+Tvalana = T0+2*q0*sqrt(alpha*tau/pi)/k0.*exp(-x.^2/4/alpha/tau)-q0*x/k0.*erfc(x/2/sqrt(alpha*tau));
+Tvalnum = T(:,end);
+cc = parula(6);
+figure(1);
+hold on
+grid on
+plot(1000*x(1),Tvalana(1),'d-','color',cc(1,:))
+plot(1000*x(1),Tvalnum(1),'x-','color',cc(3,:))
+plot(1000*x(1:10:end),Tvalana(1:10:end),'d','color',cc(1,:))
+plot(1000*x(1:10:end:10:end),Tvalnum(1:10:end),'x','color',cc(3,:))
+plot(1000*x,Tvalana,'-','color',cc(1,:))
+plot(1000*x,Tvalnum,'-','color',cc(3,:))
+axis([0 500 280 500])   
+
+legend('Analytic','Numeric')
+xlabel('Depth [mm]')
+ylabel('T [K]')
+matlab2tikz('.\LaTeX\copperval.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);

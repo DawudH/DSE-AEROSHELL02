@@ -1,8 +1,8 @@
 \section{Astrodynamics \& control tool development}
 \label{ch:astrocontrol}
-In this chapter the development of a tool for astrodynamics and control is described. The tool calculates the trajectory of the spacecraft for varying initial conditions and aerodynamic properties. With the information extracted from this tool, required performance for the control systems can be determined. Based on these requirements the different control systems available for the different concepts (which are presented in chapter \ref{ch:options}) can be weighed off in a trade-off in chapter \ref{ch:tradeoff}.
+In this chapter the development of a tool for astrodynamics and control is described. The tool calculates the trajectory of the spacecraft for varying initial conditions and aerodynamic properties. With the information extracted from this tool, required performance for the control systems can be determined. Based on, among others, these requirements the different control systems available for the different concepts (which are presented in Chapter \ref{ch:options}) can be weighed off in a trade-off in Chapter \ref{ch:tradeoff}.
 
-In this chapter first the purpose of the tool will be explained in section \ref{sec:astropurpose}. In sections \ref{sec:astrogov} and \ref{sec:astrowp} working principles of the tool are explained and the equations the tool is based on are presented. To ensure the tool calculates what it is supposed to calculate and to ensure this happens accurately enough in section \ref{sec:astrovv} the verification and validation of the tool is done. In section \ref{sec:ccs} performance of current day control systems are investigated. This performance is compared to the calculated needed performance to come to a conclusion in section \ref{sec:astrores}. Section \ref{sec:astrores} also presents some other results of the tool which are used as input for tools calculating i.e. structural mass.
+In this chapter first the purpose of the tool will be explained in section \ref{sec:astropurpose}. In sections \ref{sec:astrogov} and \ref{sec:astrowp} working principles of the tool are explained and the equations the tool is based on are presented. To ensure the tool calculates what it is supposed to calculate and to ensure this happens accurately enough in section \ref{sec:astrovv} the verification and validation of the tool is done. The needed performance of the control system is presented in section \ref{sec:astrores}. Section \ref{sec:astrores} also presents other results of the tool which are used as input for tools calculating i.e. structural mass.
 
 \subsection{Purpose of tool development}
 \label{sec:astropurpose}
@@ -24,7 +24,7 @@ In this section the equations on which the tool is based are shown and the reaso
  \begin{itemize}
  \item All atmospheric properties only vary with the height above MOLA ***source*** and not with longitude, latitude or time. This assumption induces a significant error in the output of the tool. However implementing a variable atmosphere adds a lot of complexity aswell. For example the longitude and latitude of initial entry will also become design variables
  \item All trajectories are assumed to only occur in the equatorial plane. This means that the latitude is always $0 \left[^\circ\right]$. Changing the latitude will have a big impact on the relative speed of the martian atmosphere.
- \item
+ \item The gravitational pull is assumed to only vary with the height above MOLA. The gravitational field of mars is however not uniform over longitude and latitude, this will induce significant errors in the trajectory as gravity is one of the major forces in the analysis.
  \end{itemize}
  
  
@@ -32,7 +32,7 @@ In this section the equations on which the tool is based are shown and the reaso
  \begin{itemize}
  \item The spacecraft is assumed to only feel a gravitational pull from mars. It is thus assumed that there is no gravitational pull from the sun, any other planet or the martian moons.
  \item The atmosphere stops at a height of 400 $\left[km\right]$. At this point the atmosphere is negligibly thin, adding any more atmosphere would not contribute significantly to the results.
- \item
+ \item The effect of solar radiation is neglected.
  \end{itemize}
  
 \subsubsection{Hyperbolic Kepler entry}
@@ -82,7 +82,7 @@ The acceleration $\left(\gls{sym:acc}\right)$ is only the gravitational pull $\l
 		\label{fig:orb}
 \end{wrapfigure}
 
-The motion of a spacecraft can be broken down in some dominant contributors. These are the gravitational pull and the aerodynamic forces. Disturbances like solar radiation or gravitational pull from other bodies are neglected in the model. Because the aerodynamic forces do have to be taken into account no Kepler orbit can be used.
+The motion of a spacecraft can be broken down in some dominant contributors. These are the gravitational pull and the aerodynamic forces. Because the aerodynamic forces do have to be taken into account no Kepler orbit can be used.
 
 To be able to fully describe the contributors, two reference frames need to be defined. The non-rotating inertial frame is defined with its origin in the centre of mass of Mars (if it would be perfectly spherical), this is the \gls{mci}. 
 Another reference frame is the \gls{mcmf}, in our first model the origin and the z-axis of both reference frames are equal (so no axis tilt is taken into account). The difference between the two is that the \gls{mcmf} is rotating around the z-axis with rotational velocity \gls{con:omegamars} compared to the \gls{mci}.
@@ -346,6 +346,4 @@ In this section a controlled orbit for each concept is shown. This is done to sh
 
 \subsubsection{Conclusion on control system performance}
 \label{sec:conclusion}
-***Conclusion on which control system (implemented in which concept) can perform as such***\\
-***Conclusion on weight the control systems will bring along***\\
-***State values for in trade-off matrix***\\
+As stated in section \ref{
