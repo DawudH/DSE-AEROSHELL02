@@ -119,11 +119,13 @@ Although the tool only provides time-dependent results, it is still possible to 
 \frac{q}{\gls{sym:A}} = \frac{\gls{sym:k}}{\Delta \gls{sym:x}}(\gls{sym:T}_1-\gls{sym:T}_2)
 \label{eq:therm4}
 \end{equation}
-For the transient solution one can use the analytical solution (Equation \eqref{eq:therm5}) provided by both Smith and Holman \cite{Smith2011,Holman2012}. Here $\gls{sym:T}_1$ is the wall temperature at $\gls{sym:t}=0$ and $\gls{sym:T}_2$ the back temperature at $\gls{sym:t}=\gls{sym:t}_{end}$. Comparing this solution with the tool shows that the tool does not function correctly. It is not able to give a correct time response, which is essential for the implementation of the tool within the design of the aeroshell.
+For the transient solution one can use the analytical solution (Equation \eqref{eq:therm5}) provided by both Smith and Holman \cite{Smith2011,Holman2012}. Here $\gls{sym:T}_1$ is the wall temperature at $\gls{sym:t}=0$ and $\gls{sym:T}_2$ the back temperature at $\gls{sym:t}=\gls{sym:t}_{end}$.
 \begin{equation}
 \gls{sym:T}_2-\gls{sym:T}_1 = \frac{2q\sqrt{\gls{sym:alphat}\gls{sym:t}/\pi}}{\gls{sym:k}\gls{sym:A}}\exp\left(\frac{-\gls{sym:x}^2}{4\gls{sym:alphat}\gls{sym:t}}\right)-\frac{q\gls{sym:x}}{\gls{sym:k}\gls{sym:A}}\left(1-erf\frac{\gls{sym:x}}{2\sqrt{\gls{sym:alphat}\gls{sym:t}}}\right)
 \label{eq:therm5}
 \end{equation}
+Figure \ref{fig:thermalval} shows the temperature of a semi-infinite copper block, which is the same Smith uses to verify his model \cite{Smith2011}. Semi-infinite in this case means that the block only has a finite depth. In this case the constant applied heat flux is $30 \frac{W}{cm^2}$, the initial temperature is $20 ^{\circ}C$ and the time at which the temperature is reported is $120 [s]$. Using Figure \ref{fig:thermalval} to compare this analytical solution with the numerical tool shows that the tool does not function correctly. It is not able to give a correct time response, which is essential for the implementation of the tool within the design of the aeroshell. The temperature increases faster in the numerical model than the analytical solution prescribes.
+
 For the verification of the multilayer Smith suggests to perform an energy balance as energy should be conserved. Looking at Figure \ref{fig:1dthermal} one can see that at any point in time the energy stored in the material lay-up should be the same as the energy convected into the material minus the energy radiated away from the material. \textcolor{red}{SHOW PLOT Energy [J/m2] against time [s]}
 
 \subsubsection{Validation}
