@@ -1,9 +1,26 @@
-function [ out ] = full_orbit(R0, V0, A0, G, M_mars, R_m, h_atm, atm, dt_kep_init, dt_atmos, m, Omega_m, S, control, tend, crash_margin, g_earth, aero_coef, use_control, multiple_orbits)
+function [ out ] = full_orbit(R0, V0, A0, G, M_mars, R_m, h_atm, atm, dt_kep_init, dt_atmos, m, Omega_m, S, control, tend, crash_margin, g_earth, aero_coef, use_control, multiple_orbits,alpha_init,dalphadt)
 %Calculates the full orbit for selected initial conditions until sepcified
 %end time
-
+switch nargin
+    case 21
+        control.alpha_init = alpha_init;
+        no_waitbar = true;
+    case 22
+        control.alpha_init = alpha_init;
+        control.dalphadt = dalphadt;
+        control.Kp = control.Kp/control.dalpha*control.dalphadt*dt_atmos; % proportional gain
+        control.Ki = control.Ki/control.dalpha*control.dalphadt*dt_atmos; % integral gain
+        control.Kd = control.Kd/control.dalpha*control.dalphadt*dt_atmos; % differential gain
+        control.dalpha = control.dalphadt*dt_atmos;
+        
+        no_waitbar = true;
+    otherwise
+        no_waitbar = false;
+end
     
+if no_waitbar == false
     h = waitbar(0,'Initializing waitbar...');
+end
     %Condition to run the script
     orbit = true;
 
@@ -38,8 +55,14 @@ function [ out ] = full_orbit(R0, V0, A0, G, M_mars, R_m, h_atm, atm, dt_kep_ini
     CL(1) = CLA / S;
     
     a_prev = A(1,:);
+    
+    state.CL = CL(1);
+    state.CD = CD(1);
+    state.a = norm(A(1,:) - Ag(1,:));
+    state.alpha = alpha;
+            
     %Get initial values for conditions
-    [out_c] = checks( R(1,:), V(1,:), t, tend, R_m, h_atm, G, M_mars, false, crash_margin, round );
+    [out_c] = checks( R(1,:), V(1,:), t, tend, R_m, h_atm, G, M_mars,g_earth, false, crash_margin, false, round, state, control );
     out_c.in_atmos = true;
     
     
@@ -50,23 +73,26 @@ function [ out ] = full_orbit(R0, V0, A0, G, M_mars, R_m, h_atm, atm, dt_kep_ini
         %When the s/c is in the atmosphere use the numerical solution including aerodynamic forces
         if out_c.in_atmos
              % determine new cl and cd param
-                 state.CL = CL(i);
-                 state.CD = CD(i);
-                 state.a = norm(A(i,:) - Ag(i,:));
-                 state.alpha = alpha;
                  % start controlling once the accel is above 1.5g
-                 if use_control && (state.a > 1.5*g_earth)
-                         [aero_param] = aero_conrol(state,control,aero_coef);
+                 if use_control %&& out_c.use_control
+                         [aero_param] = aero_conrol_no_control(state,control,aero_coef,V(i,:),R(i,:),q(i),Omega_m,m,g_earth);
                          CL(i+1) = aero_param.CLA / S;
                          CD(i+1) = aero_param.CDA / S;
                          alpha = aero_param.alpha;
+                         control.error = aero_param.error;
+                         control.error_I = aero_param.error_I;
                  else
+                        control.error = 0;
+                        control.error_I = 0;
                         CL(i+1) = CL(i);
-                        CD(i+1) = CD(i);     
+                        CD(i+1) = CD(i);    
                  end
             [out_o] = in_atmosphere( V(i,:), R(i,:), A(i,:), a_prev, J(i,:), atm, CL(i+1), CD(i+1), dt_atmos, R_m, Omega_m, S, m );
-            %Function to check when to end the orbit
-            [out_c] = checks( out_o.R, out_o.V, t, tend, R_m, h_atm, G, M_mars, out_c.in_atmos, crash_margin,round );
+            %update state
+            state.CL = CL(i);
+            state.CD = CD(i);
+            state.a = norm(A(i,:) - Ag(i,:));
+            state.alpha = alpha;
             a_prev = A(i,:);
             t = t + dt_atmos;
         %When the s/c is not in the atmosphere use a kepler orbit
@@ -77,12 +103,22 @@ function [ out ] = full_orbit(R0, V0, A0, G, M_mars, R_m, h_atm, atm, dt_kep_ini
             [out_o] = eliptic_kepler(R(i,:),V(i,:),A(i,:),G,M_mars,dt_kep_init,orbit_init);
             round = round + 1;
             a_prev = out_o.A;
+            
             t = t + out_o.t_kep;
             CL(i+1) = CL(i);
             CD(i+1) = CD(i);
-            %Function to check when to end the orbit
-            [out_c] = checks( out_o.R, out_o.V, t, tend, R_m, h_atm, G, M_mars, out_c.in_atmos, crash_margin,round );
+            %readjust attitude to get back to initial alpha
+            alpha = control.alpha_init;
+            [CLA, CDA, CMYA] = aero_coef.aeroCoeffs(alpha);
+            state.alpha = alpha;
+            control.error = 0;
+            control.error_I = 0;
+
         end
+        
+        %Function to check when to end the orbit              
+        [out_c] = checks( out_o.R, out_o.V, t, tend, R_m, h_atm, G, M_mars,g_earth, out_c.in_atmos, crash_margin, out_c.use_control,round, state, control );
+            
         %%New Inputs for while loop
         tp(i+1) = tp(i) + dt_atmos;
         R(i+1,:) = out_o.R;
@@ -98,14 +134,16 @@ function [ out ] = full_orbit(R0, V0, A0, G, M_mars, R_m, h_atm, atm, dt_kep_ini
         q(i+1,:) = out_o.q;
         T(i+1,:) = out_o.T;
         rho(i+1,:) = out_o.rho;
-        Alpha(i+1) = alpha;
+        Alpha(i+1) = state.alpha;
 
         
         if out_c.crash || out_c.flyby || out_c.t_end || ( (multiple_orbits == false) && out_c.orbit)
             orbit = false;
         end
         i = i+1;
-        waitbar(t/tend,h,sprintf('%5.1f %...',t/tend*100))
+        if no_waitbar == false
+            waitbar(t/tend,h,sprintf('%5.1f %...',t/tend*100))
+        end
     end
     
     
@@ -134,18 +172,24 @@ function [ out ] = full_orbit(R0, V0, A0, G, M_mars, R_m, h_atm, atm, dt_kep_ini
     out.speed_sound = speed_sound;
     out.T = T;
     out.rho = rho;
-    out.alpha = alpha;
+    out.alpha = Alpha;
         a_human_mag = sqrt((out.Ad(:,1)+out.Al(:,1)).^2 + (out.Ad(:,2)+out.Al(:,2)).^2 + (out.Ad(:,3)+out.Al(:,3)).^2);
         maxaccel = max(a_human_mag)/g_earth;
     out.a_human_mag = a_human_mag;
     out.maxaccel = maxaccel;
     out.CL = CL;
     out.CD = CD;
+    out.Kp = control.Kp;
+    out.Ki = control.Ki;
+    out.Kd = control.Kd;
     % output text
     
 
     disp(['rx = ' num2str(R0(1)) ' [m], CD = ' num2str(CDA / S) ' [-], CL = ' num2str(CLA / S) ' [-], in atmosphere: ' num2str(out_c.in_atmos) ', crashed: ' num2str(out_c.crash) ', in orbit: ' num2str(out_c.orbit) ', flyby: ' num2str(out_c.flyby) ', acceleration: ' num2str(maxaccel) ', time pased: ' num2str(t/(3600*24)) ' days' ])
-    %close waitbar
-    close(h);
+    
+    if no_waitbar == false
+        %close waitbar
+        close(h);
+    end
 end
 

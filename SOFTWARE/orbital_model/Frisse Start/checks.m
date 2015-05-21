@@ -1,4 +1,4 @@
-function [ out_c ] = checks( R, V, t, tend, R_m, h_atm, G, M_mars, inatmos, crash_margin, round )
+function [ out_c ] = checks( R, V, t, tend, R_m, h_atm, G, M_mars,g_earth, inatmos, crash_margin, use_control, round,  state, control )
 %CHECKS Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -57,7 +57,14 @@ function [ out_c ] = checks( R, V, t, tend, R_m, h_atm, G, M_mars, inatmos, cras
         out_c.flyby = false;
     end
     
-    
+    % check if to use control
+    if (state.a >= control.control_up_lim*g_earth)
+        out_c.use_control = true;
+    elseif (state.a < control.control_low_lim*g_earth)
+        out_c.use_control = false;
+    else
+        out_c.use_control = use_control;
+    end
 
 
 end

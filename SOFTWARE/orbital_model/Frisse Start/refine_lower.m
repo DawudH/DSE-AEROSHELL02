@@ -8,15 +8,18 @@ format long
 %%Input constants & variables
 variables
 
-files = {'orbit_alpha_isotensoid_low.txt', 'orbit_alpha_apollo_low.txt', 'orbit_alpha_torus_low.txt', 'orbit_alpha_pastille_low.txt', 'orbit_alpha_irve_low.txt'};
-names = {'isotensoid', 'apollo', 'torus', 'pastille', 'irve'};
+% files = {'orbit_alpha_isotensoid_low.txt', 'orbit_alpha_apollo_low.txt', 'orbit_alpha_torus_low.txt', 'orbit_alpha_pastille_low.txt', 'orbit_alpha_irve_low.txt'};
+% names = {'isotensoid', 'apollo', 'torus', 'pastille', 'irve'};
+
+files = {'orbit_irve_no_control.txt'};
+names = {'irve'};
 
 for bla = 1:length(names)
 % booleans (no control, stop at beginning of elliptic orbit)
-use_control = false;
+use_control = true;
 multiple_orbits = false;
 
-alpha = -25:5:25;
+alpha = -10;
 file_name = files{bla};
 
 clear aero_coef
@@ -45,7 +48,7 @@ parfor i = 1:length(alpha)
     
     while go
         % run :)
-        [out] = full_orbit_find(R, V, A, G, M_mars, R_m, h_atm, atm, dt_kep_init, dt_atmos, m, Omega_m, S, control, tend, crash_margin, g_earth, aero_coef, use_control, multiple_orbits, alpha(i)*pi/180);
+        [out] = full_orbit(R, V, A, G, M_mars, R_m, h_atm, atm, dt_kep_init, dt_atmos, m, Omega_m, S, control, tend, crash_margin, g_earth, aero_coef, use_control, multiple_orbits, alpha(i)*pi/180);
         
         % save output
         filestr{i} =  [filestr{i}  sprintf(' %f %f %f %f %f %d %d %d %f \n',rx_in, ry, v, dt_atmos, alpha(i), out.c.crash, out.c.flyby, out.c.orbit, out.maxaccel)];
@@ -54,6 +57,16 @@ parfor i = 1:length(alpha)
             go = false;
             break;
         end
+        
+        
+        % generate new R
+        R = [rx_in,ry,0];
+        
+        if (prev_c.crash && out.c.flyby) || (prev_c.orbit && out.c.flyby)
+            refinestep = refinestep / 2;
+        end
+        prev_c = out.c
+        
         if out.c.crash
             % to close
             rx_in = rx_in - refinestep;
@@ -64,14 +77,6 @@ parfor i = 1:length(alpha)
             % go further to find minimum load
             rx_in = rx_in - refinestep;
         end
-        
-        % generate new R
-        R = [rx_in,ry,0];
-        
-        if (prev_c.crash && out.c.flyby) || (prev_c.orbit && out.c.flyby)
-            refinestep = refinestep / 2;
-        end
-        prev_c = out.c;
         
     end
 end
