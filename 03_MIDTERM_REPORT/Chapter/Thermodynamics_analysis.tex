@@ -119,11 +119,13 @@ Although the tool only provides time-dependent results, it is still possible to 
 \frac{q}{\gls{sym:A}} = \frac{\gls{sym:k}}{\Delta \gls{sym:x}}(\gls{sym:T}_1-\gls{sym:T}_2)
 \label{eq:therm4}
 \end{equation}
-For the transient solution one can use the analytical solution (Equation \eqref{eq:therm5}) provided by both Smith and Holman \cite{Smith2011,Holman2012}. Here $\gls{sym:T}_1$ is the wall temperature at $\gls{sym:t}=0$ and $\gls{sym:T}_2$ the back temperature at $\gls{sym:t}=\gls{sym:t}_{end}$. Comparing this solution with the tool shows that the tool does not function correctly. It is not able to give a correct time response, which is essential for the implementation of the tool within the design of the aeroshell.
+For the transient solution one can use the analytical solution (Equation \eqref{eq:therm5}) provided by both Smith and Holman \cite{Smith2011,Holman2012}. Here $\gls{sym:T}_1$ is the wall temperature at $\gls{sym:t}=0$ and $\gls{sym:T}_2$ the back temperature at $\gls{sym:t}=\gls{sym:t}_{end}$.
 \begin{equation}
 \gls{sym:T}_2-\gls{sym:T}_1 = \frac{2q\sqrt{\gls{sym:alphat}\gls{sym:t}/\pi}}{\gls{sym:k}\gls{sym:A}}\exp\left(\frac{-\gls{sym:x}^2}{4\gls{sym:alphat}\gls{sym:t}}\right)-\frac{q\gls{sym:x}}{\gls{sym:k}\gls{sym:A}}\left(1-erf\frac{\gls{sym:x}}{2\sqrt{\gls{sym:alphat}\gls{sym:t}}}\right)
 \label{eq:therm5}
 \end{equation}
+Figure \ref{fig:thermalval} shows the temperature of a semi-infinite copper block, which is the same Smith uses to verify his model \cite{Smith2011}. Semi-infinite in this case means that the block only has a finite depth. In this case the constant applied heat flux is $30 \frac{W}{cm^2}$, the initial temperature is $20 ^{\circ}C$ and the time at which the temperature is reported is $120 [s]$. Using Figure \ref{fig:thermalval} to compare this analytical solution with the numerical tool shows that the tool does not function correctly. It is not able to give a correct time response, which is essential for the implementation of the tool within the design of the aeroshell. The temperature increases faster in the numerical model than the analytical solution prescribes.
+
 For the verification of the multilayer Smith suggests to perform an energy balance as energy should be conserved. Looking at Figure \ref{fig:1dthermal} one can see that at any point in time the energy stored in the material lay-up should be the same as the energy convected into the material minus the energy radiated away from the material. \textcolor{red}{SHOW PLOT Energy [J/m2] against time [s]}
 
 \subsubsection{Validation}
@@ -149,21 +151,32 @@ Another consideration made in this method is the radiation as shown in Equation 
 Since the radiation is strongly dependent on $\gls{sym:T}_w$, the heat load (in $\left[\frac{J}{m^2}\right]$) is calculated using a variable wall temperature. Then the heat load is divided by a reference heat load. This reference heat load is chosen to be the heat load of the stacked toroid. The resulting graph can then be used to compare the concepts.
 
 \subsubsection{Results of the alternative method}
-As discussed before, integrating the total heat flux will result in the heat load. the heat loads of the different concepts can be compared as a function of the heat load of the stacked torroid. However, The wall temperature is assumed constant throughout the entire descend. This is not actually the case and therefore a sensitivity analysis is performed. The wall temerature is varied from 500 to 1500 K. The results can be seen in Figure \ref{fig:heatload}.
+As discussed before, integrating the total heat flux will result in the heat load. The peak heat loads can be used for sizing the concepts. the peak heat loads of the different concepts can be compared as a function of the peak heat load of the stacked torroid. However, The wall temperature is assumed constant throughout the entire descend. This is not actually the case and therefore a sensitivity analysis is performed. The wall temerature is varied from 500 to 1500 K. The results can be seen in Figure \ref{fig:heatload}.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics{Figure/heatload.pdf}
-	\caption{Standardised heat loads with respect to the isotensoid, varied over different wall temperatures}
+	\caption{Standardised heat loads with respect to the stacked toroid, varied over different wall temperatures}
 	\label{fig:heatload}
 \end{figure}
 
-From the figure above, 
+ As can be seen from the above figure, the heat load fractions are almost invariant over the variety of constant wall temperatures. Therefore, the heat load fraction calculated under constant wall temperature conditions can be used to compare concepts relative too each other. The stacked toroid and tension cone will obtain the highest heat load, whereas the ballute and the isotensoid obtain lower heat loads. For the trade-off, average values of these heat load fractions will be used. These values are listed in Table \ref{tab:fractions}.
+
+\begin{table}[H]
+\centering
+\caption {Peak heat load fractions of the concepts under analysis.}
+    \begin{tabular}{|l|l|l|l|}
+    \hline
+    Stacked Toroid & Tension cone & Ballute & Isotensoid \\ \hline
+    1              & 1            & 0.84    & 0.76       \\ \hline
+    \end{tabular}
+    \label{tab:fractions}
+\end{table}
 
 \subsection{Conclusion \& recommendations}
 The initial approach was to develop a tool to analyse the \gls{tps}-mass for different concepts. Since this tool is not functioning correctly, an alternative analysis method had to be proposed. This approach, described in the previous sections, is very simplistic and resulting values should only be used for comparison of the concepts and not for the actual design of the \gls{tps}.
 
-Since the \gls{tps}-mass of the rigid concept is integrated in the structural mass (section \ref{sec:rigid}), it is not possible to compare the thermal mass of this concept with the inflatable concepts. The inflatable concepts have been compared with the stacked toroid as reference. The tension cone, having the same shape input parameters as input for the aerodynamic tool, receives the same heat load. Therefore it is assumed that the tension cone has the same \gls{tps}-mass as the stacked toroid. The isotensiod is at 79\% and the trailing ballute is at 85\% of the \gls{tps}-mass.
+Since the \gls{tps}-mass of the rigid concept is integrated in the structural mass (section \ref{sec:rigid}), it is not possible to compare the thermal mass of this concept with the inflatable concepts. The inflatable concepts have been compared with the stacked toroid as reference. The tension cone, having the same shape input parameters as input for the aerodynamic tool, receives the same heat load. Therefore it is assumed that the tension cone has the same \gls{tps}-mass as the stacked toroid. The isotensiod is at 76\% and the trailing ballute is at 84\% of the \gls{tps}-mass.
 
 Again it is stressed that the obtained values are rough estimates. Future work should start with the debugging and subsequent verification and validation of the tool. The tool can then be used to design lay-ups that can withstand the incoming heat flux and outgoing radiation and thereby obtain actual values for the \gls{tps}-mass in $\left[\frac{kg}{m^2}\right]$. The tool could also be improved by incorporating the change in thermal conductivity due to the increase in temperature of the materials. Furthermore, the current point of investigation is the stagnation point as the incoming heat flux is the largest at that location. For now the complete heat shield is assumed the be constant in thickness. It can be expected that the required thickness at the edges shall be lower and this could be optimised by using a 3D analysis tool.
 
