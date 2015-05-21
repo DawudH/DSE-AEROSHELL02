@@ -1,8 +1,8 @@
 \section{Astrodynamics \& control tool development}
 \label{ch:astrocontrol}
-In this chapter the development of a tool for astrodynamics and control is described. The tool calculates the trajectory of the spacecraft for varying initial conditions and aerodynamic properties. With the information extracted from this tool requirements**maybe requirements is not the right word** for the control systems can be determined. Based on these requirements the different control systems available for the different concepts (which are presented in chapter \ref{ch:options}) can be weighed off in a trade-off in chapter \ref{ch:tradeoff}.
+In this chapter the development of a tool for astrodynamics and control is described. The tool calculates the trajectory of the spacecraft for varying initial conditions and aerodynamic properties. With the information extracted from this tool, required performance for the control systems can be determined. Based on these requirements the different control systems available for the different concepts (which are presented in chapter \ref{ch:options}) can be weighed off in a trade-off in chapter \ref{ch:tradeoff}.
 
-In this chapter first the purpose of the tool will be explained in section \ref{sec:astropurpose}. In sections \ref{sec:astrogov} and \ref{sec:astrowp} working principles of the tool are explained and the equations the tool is based on are presented. To ensure the tool calculates what it is supposed to calculate and to ensure this happens accurately enough in section \ref{sec:astrovv} the verification and validation of the tool is done. In section \ref{sec:astroref} performance of current day control systems are investigated. This performance is compared to the calculated needed performance to come to a conclusion in section \ref{sec:astrores}. Section \ref{sec:astrores} also presents some other results of the tool which are used as input for tools calculating i.e. structural mass.
+In this chapter first the purpose of the tool will be explained in section \ref{sec:astropurpose}. In sections \ref{sec:astrogov} and \ref{sec:astrowp} working principles of the tool are explained and the equations the tool is based on are presented. To ensure the tool calculates what it is supposed to calculate and to ensure this happens accurately enough in section \ref{sec:astrovv} the verification and validation of the tool is done. In section \ref{sec:ccs} performance of current day control systems are investigated. This performance is compared to the calculated needed performance to come to a conclusion in section \ref{sec:astrores}. Section \ref{sec:astrores} also presents some other results of the tool which are used as input for tools calculating i.e. structural mass.
 
 \subsection{Purpose of tool development}
 \label{sec:astropurpose}
@@ -23,7 +23,8 @@ In this section the equations on which the tool is based are shown and the reaso
  \paragraph{primary assumptions}
  \begin{itemize}
  \item All atmospheric properties only vary with the height above MOLA ***source*** and not with longitude, latitude or time. This assumption induces a significant error in the output of the tool. However implementing a variable atmosphere adds a lot of complexity aswell. For example the longitude and latitude of initial entry will also become design variables
- \item 
+ \item All trajectories are assumed to only occur in the equatorial plane. This means that the latitude is always $0 \left[^\circ\right]$. Changing the latitude will have a big impact on the relative speed of the martian atmosphere.
+ \item
  \end{itemize}
  
  
@@ -31,6 +32,7 @@ In this section the equations on which the tool is based are shown and the reaso
  \begin{itemize}
  \item The spacecraft is assumed to only feel a gravitational pull from mars. It is thus assumed that there is no gravitational pull from the sun, any other planet or the martian moons.
  \item The atmosphere stops at a height of 400 $\left[km\right]$. At this point the atmosphere is negligibly thin, adding any more atmosphere would not contribute significantly to the results.
+ \item
  \end{itemize}
  
 \subsubsection{Hyperbolic Kepler entry}
@@ -63,7 +65,7 @@ With the Keplerian orbital parameters and \gls{sym:R} on the edge of the atmosph
 
 The direction of \gls{sym:Rv} is based on \gls{sym:phi}, which is calculated with equation \label{eq:polarkep} where \gls{sym:R} is known.
 
-The acceleration $\left(\gls{sym:acc}\right)$ is only the gravitational pull $\left(\gls{sym:g}\right)$, which can be calculated with equation \ref{eq:grav}.
+The acceleration $\left(\gls{sym:acc}\right)$ is only the gravitational pull $\left(\gls{sym:g}\right)$, which can be calculated with equation \ref{eq:grav} \cite{Weiland2004}.
 
 \begin{equation} \label{eq:grav}
 \gls{sym:g} = -\frac{\gls{con:G}\gls{con:Mmars}}
@@ -72,7 +74,64 @@ The acceleration $\left(\gls{sym:acc}\right)$ is only the gravitational pull $\l
 
 \subsubsection{Trajectory in atmosphere}
  \label{sec:trajatmos}
-***Forces give accelerations: like in baseline + Jerk***\\
+ 
+\begin{wrapfigure}{r}{0.4\textwidth}
+		\centering
+		\includegraphics[width = 0.4\textwidth]{Figure/orbital_mechanics.pdf}
+		\caption{The kinetic diagram visualizing the governing equations of the trajectory analysis}
+		\label{fig:orb}
+\end{wrapfigure}
+
+The motion of a spacecraft can be broken down in some dominant contributors. These are the gravitational pull and the aerodynamic forces. Disturbances like solar radiation or gravitational pull from other bodies are neglected in the model. Because the aerodynamic forces do have to be taken into account no Kepler orbit can be used.
+
+To be able to fully describe the contributors, two reference frames need to be defined. The non-rotating inertial frame is defined with its origin in the centre of mass of Mars (if it would be perfectly spherical), this is the \gls{mci}. 
+Another reference frame is the \gls{mcmf}, in our first model the origin and the z-axis of both reference frames are equal (so no axis tilt is taken into account). The difference between the two is that the \gls{mcmf} is rotating around the z-axis with rotational velocity \gls{con:omegamars} compared to the \gls{mci}.
+
+The gravitational pull is described by Newton's law of gravitation, together with Newton's second law, it can be written as an acceleration as in equation \ref{eq:grav}.
+
+The aerodynamic forces are described by the lift and the drag, these forces are acting in the negative direction and orthogonal to the velocity of the spacecraft with respect to the atmosphere as shown in Figure \ref{fig:orb}, this is the velocity of the spacecraft in the \gls{mcmf}. This velocity needs to be converted to \gls{mci} to be able to express the aerodynamic forces in the \gls{mci}, as in equation \ref{eq:Vsc_mcmf_mci}.
+
+\begin{equation} \label{eq:Vsc_mcmf_mci}
+\left.\gls{sym:Vvsc}\right|_{MCMF}^{MCI} = \gls{sym:Vvsc}_{,a} = \left.\gls{sym:Vvsc}\right|_{MCI} - \left(\gls{con:Omegamars} \times \gls{sym:Rv} \right)
+\end{equation}
+
+The aerodynamic accelerations due to the lift and the drag are described by equations \ref{eq:aL} and \ref{eq:aD} respectively \cite{AndersonJr.2007}.
+
+\begin{equation} \label{eq:aL}
+\gls{sym:aL} = \frac{\gls{sym:CL}\gls{sym:rho}\gls{sym:A}}{2 \gls{sym:m}} 
+				\left|\gls{sym:Vvsc}_{,a}\right|^2
+				\frac{\gls{sym:Vvsc}_{,a} \times \mathbf{z}}
+				{\left| \gls{sym:Vvsc}_{,a} \times \mathbf{z}\right|}
+\end{equation}
+
+\begin{equation} \label{eq:aD}
+\gls{sym:aD} = \frac{\gls{sym:CD}\gls{sym:rho}\gls{sym:A}}{2 \gls{sym:m}}
+				\left|\gls{sym:Vvsc}_{,a}\right|^2 \frac{\gls{sym:Vvsc}_{,a}}{\left|\gls{sym:Vvsc}_{,a}\right|}
+\end{equation}
+
+The total acceleration is now the summation of the gravitational, lift and drag acceleration as in equation \ref{eq:aD}.
+
+\begin{equation} \label{eq:acc}
+\gls{sym:acc} = \gls{sym:g} + \gls{sym:aL} + \gls{sym:aD}
+\end{equation}
+
+Numerically differentiating the acceleration gives the Jerk $\left(\gls{sym:jerk}\right)$ This is done in equation \ref{eq:jerk}. Then the new position and velocity can be determined by discretizing the dynamic equations of motion resulting in equations \ref{eq:ai}, \ref{eq:Vi} and \ref{eq:Ri}.
+
+\begin{equation} \label{eq:ai}
+\gls{sym:acc}_i = \gls{sym:g}_i + \gls{sym:aL}_i + \gls{sym:aD}_i
+\end{equation}
+
+\begin{equation} \label{eq:jerk}
+\gls{sym:jerk}_{i+1} = \frac{\gls{sym:acc}_{i-2} - 4\gls{sym:acc}_{i-1}+3\gls{sym:acc}_i}{2\gls{sym:Dt}}
+\end{equation}
+
+\begin{equation} \label{eq:Vi}
+\gls{sym:Vv}_{i+1} = \gls{sym:Vv}_i + \gls{sym:acc}_i \gls{sym:Dt} + \frac{1}{2}\gls{sym:jerk}_i \gls{sym:Dt}^2
+\end{equation}
+
+\begin{equation} \label{eq:Ri}
+\gls{sym:Rv}_{i+1} = \gls{sym:Rv}_i + \gls{sym:Vv}_i \gls{sym:Dt} + \frac{1}{2}\gls{sym:acc}_i \gls{sym:Dt}^2 + \frac{1}{6}\gls{sym:jerk}_i \gls{sym:Dt}^3
+\end{equation}
 
 \subsubsection{Eliptical Kepler orbit}
  \label{sec:eliptickep}
@@ -94,7 +153,7 @@ The tool is able to calculate the trajectory of the spacecraft and a range of im
 \subsection{Verification \& validation}
 \label{sec:astrovv}
 
-In order to be sure the results the tool produces are correct and can safely be used in further efforts to design the \gls{cia} verification and validation is needed. This section presents the methods used to verify and validate the results produced by the tool. First a sensitivity analysis is presented in section \ref{sec:astrosens} which focusses on the sensitivity of the program to the initial conditions. In section \ref{sec:astrodisc} the discretisation error is analysed in order to ensure the results are accurate enough for it to be usefull. The numerical solution is compared to the simple case of a kepler orbit in section \ref{sec:astroverf}. Lastly in section \ref{sec:astroval} the results produced by the tool are compared to data from missions that have flown in the past.
+In order to be sure the results the tool produces are correct and can safely be used in further efforts to design the \gls{cia} verification and validation is needed. This section presents the methods used to verify and validate the results produced by the tool. First a sensitivity analysis is presented in section \ref{sec:astrosens} which focusses on the sensitivity of the program to the initial conditions. In section \ref{sec:astrodisc} the discretisation error is analysed in order to ensure the results are accurate enough for it to be usefull. The numerical solution is compared to the simple case of a kepler orbit in section \ref{sec:astroverf}
 
 \subsubsection{Sensitivity analysis}
 \label{sec:astrosens}
@@ -106,12 +165,9 @@ The temporary solution that was chosen to solve this problem is to take an initi
 \subsubsection{Discretisation error}
 \label{sec:astrodisc}
 
-Due to the use of a discrete timestep an error relative to the real solution is induced. By testing the tool with the same initial conditions using different time meshes the difference between the solutions can be analysed. When the smallest timestep is assumed to be exact the error of the larger timesteps can be expressed relative to that. This relative error is shown in Figure \ref{fig:atmos_disc}. 
+Due to the use of a discrete timestep an error relative to the real solution is induced. By testing the tool with the same initial conditions using different time meshes the difference between the solutions can be analysed. When the smallest timestep is assumed to be exact the error of the larger timesteps can be expressed relative to that. This relative error is shown in Figure \ref{fig:atmos_disc}. Please also note these errors are calculated running the tool without control.
 
-Two conclusions can be drawn from this. First the error decreases quadraticaly with decreasing timestep. Secondly the error is smaller than 1 $\left[m\right]$ for a dt of
-***relatief
-***fout is verwaarloosbaar
-***geen control
+Two conclusions can be drawn from this. First the error decreases quadraticaly with decreasing timestep. This means that the system converges to a solution. Secondly the error is smaller than 1 $\left[m\right]$ for a dt of smaller than $0.3 \left[s\right]$. This error is negligable compared to the error that will be induced by the assumptions that were made in section \ref{sec:astroassumption}.
 
 %Initial Position
 %rx = -4143775;
@@ -129,15 +185,19 @@ Two conclusions can be drawn from this. First the error decreases quadraticaly w
 	\label{fig:atmos_disc}
 \end{figure}
 
-***discretisation error: error for different dt***\\
-
 \subsubsection{Verification through comparison with kepler}
 \label{sec:astroverf}
-***Compare numerical results with Kepler, should be the same for rho=0***\\
 
-\subsubsection{Validation through comparison with reference cases}
-\label{sec:astroval}
-***Validation through checking if output values are approximately the same as reference cases (peak dynamic pressure)***\\
+In this section the results from the numerical simulation, which is usually only used in atmosphere, is compared to a kepler orbit. For this comparison the density is assumed to be zero, or in other words, it is assumed that there is no atmosphere. This comparison is done for different values of \gls{sym:Dt}. The error for each \gls{sym:Dt} is shown in Fig. \ref{fig:kep_error}.
+
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics[trim={4.25cm 10cm 3.2cm 10cm},clip,width=0.8\textwidth]{Figure/orbital_model/keplererror.pdf}
+%	\caption{Error compared to a kepler orbit after 50005 seconds for initial position $\left[-4143775,10\cdot\gls{con:rm}\right]$ $\left[m\right]$ and initial velocity $\left[0,-7167.9\right]$ $\left[\frac{m}{s}\right]$ at $\gls{sym:alpha}=-10\left[^\circ\right]$ for the apollo shape}
+%	\label{fig:kep_error}
+%\end{figure}
+
+The figure shows the error is between 15 and 5 for \gls{sym:Dt} between 1 and 0.01. The error decreases, but seems to tend to a non-zero constant value. The method used for numeical simulation is thus convergent, but has a small offset from the exact solution. This error is however so small it can easily be accepted.
 
 %\subsection{Performance of control systems}
 % \label{sec:astroref}
@@ -198,11 +258,18 @@ Two conclusions can be drawn from this. First the error decreases quadraticaly w
 
 \subsection{Results \& conclusions}
 \label{sec:astrores}
-***intro***\\
+In this section the results from the astrodynamics \& control are presented. Furthermore the required performance of the controlsystem is analysed and a conclusion is drawn on which control systems are feasible.
+
+In section \ref{sec:astroatmos} the data from the atmospheric model is shown. This data is used as a primary input for the computations. Section \ref{sec:astrodec} shows the effect of angle of attack $\left(\gls{sym:alpha}\right)$ on the maximum deceleration during a trajectory for which the spacecraft goes into orbit. In section \ref{sec:astroperfomance} the required performance of the control system is analysed. In section \ref{sec:astrorestraj} one of the trajectories which was found to be feasible in section \ref{sec:astroperfomance} is shown and the important parameters, most of which will serve as input for other tools, are analysed. In section \ref{sec:conclusion} a conclusion is drawn about which control system can meet the required controler performance.
 
 \subsubsection{Atmospheric model}
 \label{sec:astroatmos}
-\begin{figure}[h]
+
+In this section the data from the atmospheric model is presented. This data is of upmost importance for our tool to work properly.
+
+The data that is most important to us is the variation of density $\left(\gls{sym:rho}\right)$ and temperature $\left(\gls{sym:T}\right)$ with height. these relations are shown in figure \ref{fig:atmos_height}.
+
+\begin{figure}[ht!]
 	\centering
 	\begin{subfigure}{0.45\textwidth}
 	\centering
@@ -220,7 +287,9 @@ Two conclusions can be drawn from this. First the error decreases quadraticaly w
 	\label{fig:atmos_height}
 \end{figure}
 
-\begin{figure}[h]
+As was already stated in section \ref{sec:astroassumption} the atmospheric properties are assumed to be equal over different longitudes. That this is not exacly true can be seen in figure \ref{fig:atmos_lon}. In order for this assumption to induce as little error as possible a constant longitude at which all atmospheric properties are approximately at their average has been chosen to do the calculations with. The longitude that fits this description best for different heights is $180 \left[^\circ\right]$.
+
+\begin{figure}[ht!]
 	\centering
 	\begin{subfigure}{0.9\textwidth}
 	\centering
@@ -240,23 +309,40 @@ Two conclusions can be drawn from this. First the error decreases quadraticaly w
 
 \subsubsection{Effect of \gls{sym:alpha} on deceleration}
 \label{sec:astrodec}
-***Two plots for CL and CD***\\
+
+In this section the effect of the angle of attack $\left(\gls{sym:alpha}\right)$ on the maximum load endured during an orbit is discussed. In figure \ref{fig:n_alpha} this effect is shown for all of the different concepts. The figure for stacked toroid is the same as the figure for the tension cone. All combinations of \gls{sym:alpha} and $\gls{sym:acc}_{max}$ in the coloured part of the graphs are feasible orbits. For all combinations above the coloured part the spacecraft crashes. For all combinations underneath the coloured part the spacecraft flies past Mars without getting into orbit. It is clear from these graphs that there is no concept for which an orbit can be found with a maximum acceleration of less than the required $3 \gls{sym:g} \left[\frac{m}{s^2}\right]$. From this it can be concluded that the spacecraft needs active control to find an orbit which meets the requirements.
+
 \begin{figure}[h]
 	\centering
 	\includegraphics[trim={4.25cm 10.5cm 1cm 10.5cm},clip,width=0.95\textwidth]{Figure/orbital_model/n_alpha.pdf}
-	\caption{Discretisation error in radius $\left(\gls{sym:R}\right)$ after one pass through the atmosphere for initial position $\left[-4143775,10\cdot\gls{con:rm}\right]$ $\left[m\right]$ and initial velocity $\left[0,-7167.9\right]$ $\left[\frac{m}{s}\right]$ at $\gls{sym:alpha}=-10\left[^\circ\right]$ for the apollo shape}
+	\caption{Possible trajectories for which the spacecraft goes into orbit without control.}
 	\label{fig:n_alpha}
 \end{figure}
 
+\subsubsection{Required performance of the control system}
+\label{sec:astroperfomance}
+
+In section \ref{sec:astrodec} it was found that a control system will be needed to find an orbit that meets the requirements. In this section the required performance of the control system is outlined and some important parameters with respect to this performance are explained.
+
+The control system is required to force the acceleration into a rectangular shape as much as possible. This rectangle should have a height of $3 \gls{sym:g} \left[\frac{m}{s^2}\right]$ acceleration and a width of the time the spacecraft is in the atmosphere. This shape is not even achievable with infinitely good control as the atmosphere is too thin at the outer edges. However with rounded off edges this shape is very well possible. Whether the initial rise has an overshoot, how well the upper limit can be kept and how far the sides of the rectangle are separated is dependent on the performance of the control system.
+
+***Results of needed CLmax, dalpha/dt, dCL/dalpha***\\
 
 \subsubsection{A feasible trajectory and important output parameters over time}
 \label{sec:astrorestraj}
+
+In this section a controlled orbit for each concept is shown. This is done to show which values for i.e. dynamic pressure $\left(\gls{sym:q}\right)$ are reasonable to use in the other tools.
+
+\paragraph{Stacked toroid/tension cone}
+
+\paragraph{Rigid}
+
+\paragraph{Isotensoid}
+
+\paragraph{Trailing Ballute}
+
 ***Plot of a trajectory***\\
 ***Plots of output variables for that particular trajectory***\\
-
-\subsubsection{Required performance of the control system}
-\label{sec:astroperfomance}
-***Results of needed CLmax, dalpha/dt, dCL/dalpha***\\
 
 \subsubsection{Conclusion on control system performance}
 \label{sec:conclusion}

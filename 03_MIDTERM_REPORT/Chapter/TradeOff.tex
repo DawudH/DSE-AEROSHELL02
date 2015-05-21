@@ -1,93 +1,24 @@
-\section{Concept trade-off}
-\label{ch:tradeoff}
-This chapter gives an overview of the trade-off process and the elements involved. It is essential that concepts are evaluated for their qualities important to the customer. While all concepts shall meet the requirement, freedom in the design space remains to allow for the best possible solution to maximize customer satisfaction. This freedom is expressed by the differing design options, customer satisfaction by a selected set of trade-off criteria. A conceptual analysis, described in previous chapters, has been performed to establish concept performance in terms of these criteria. Dialogue with the customer  during the \acrfull{mtr} yields a decision for a final concept for preliminary analysis and design.
+\section{Concept Trade-Off Criteria}\label{ch:tradeoff}
+This chapter gives an overview of the trade-off process and the elements involved. It is essential that concepts are evaluated for their qualities important to the customer. While all concepts shall meet the requirements, freedom in the design space remains to allow for the best possible solution to maximize customer satisfaction. This freedom is expressed by the differing design options, customer satisfaction by a selected set of trade-off criteria. Each trade-off criterion is stated and thereafter briefly discussed in the sections below.
 
-The chapter commences with a section on the trade-off criteria used, proceeds with a discussion on the performance of each concept for each of the trade-off criteria and concludes with a brief summary of concept performance for each of the concepts.
+\subsection{Decelerator mass}\label{subsub:decelmass}
+The (re-)entry vehicle consists of a decelerator, either in the form of a rigid heat shield and supporting structure or in the form of an inflatable heat shield and supporting structure and inflation system, and a payload module. Since total entry mass is constrained by launcher considerations, a reduction in decelerator mass will allow for a larger payload mass to be taken on-board. To fully exploit launcher mass-carrying capabilities, total entry mass is held constant at its maximum and increments in the two components making up total entry mass directly transfer from one to the other. It is highly desirable to maximize payload mass, since it is synonymous to maximizing the useful load-carrying capability of the (re-)entry vehicle. The latter allows either taking more payload in a fixed number of missions to Mars or taking a fixed total payload to Mars in a decreased amount of missions, thereby decreasing the total launches required. This translates to higher sustainability, by a decreased use of resources, and increased cost-effectiveness, by a decreased number of total launches and resulting total launch costs.
 
-\subsection{Definition of trade-off criteria}
-The following trade-off criteria are used in the concept selection phase. A brief discussion follows for each one of the selected criteria.
+\subsection{Development risk}
+Concepts with a lower development risk are preferable, since technology readiness directly affects schedule risk, cost risk and technical performance risk. Underdeveloped concepts inherently feature a larger amount of uncertainty. Eliminating this uncertainty requires additional resource expenditure, in the form of an increased number of test runs for example, thereby imposing a greater burden on available schedule time and monetary resources. In case the uncertainty would be left unexplored, technical performance would suffer by a decreased knowledge about product behavior and capability, increasing technical performance risk. To preserve mission reliability, concepts with a higher development risk require additional investigation and thereby carry additional resource and schedule loads. Moreover, in case these concepts are further explored and found to be ill-suited to the mission, a re-run of concept selection, analysis and design is required. It is therefore essential that development risk is as low as possible primarily for economical reasons.
 
-\subsubsection{Decelerator mass}\label{subsub:decelmass}
-The (re-)entry vehicle consists of a decelerator, either in the form of a rigid heat shield and supporting structure or in the form of an inflatable heat shield and supporting structure and inflation system, and a payload module. Since total entry mass is constrained by launcher considerations, a reduction in decelerator mass will allow for a larger payload mass to be taken on-board. To fully exploit launcher mass-carrying capabilities, total entry mass is held at its maximum and increments in the two components making up total entry mass directly transfer from one to the other. It is highly desirable to maximize payload mass, since it is synonymous to maximizing the useful load-carrying capability of the (re-)entry vehicle. The latter allows either taking more payload in a fixed series of missions to Mars or taking a fixed total payload to Mars in a decreased amount of missions, thereby decreasing the total launches required. This translates to higher sustainability, by a decreased use of resources, and increased cost-effectiveness, by a decreased number of total launches and resulting total launch costs.
+\subsection{Deceleration time}
+A decreased time to touchdown alleviates costs incurred by ground operations and mitigates physical taxation of human payload on-board. Ground operations are required to be fully active during entry operations and a decrease in entry duration will reduce the working hours and associated costs. Physical taxation is reduced by a shorter duration of high g-loads on human payload. A reduction in physical taxation will require less measures to counteract the negative effects thereof on the human body. As such, it is desirable that entry time is as small as possible, within the requirements imposed by the customer.
 
-\subsubsection{Development risk}
-Concepts with a lower development risk are preferable, since technology readiness directly affects schedule risk, cost risk and technical performance risk. Underdeveloped concepts inherently feature a larger amount of uncertainty. Eliminating this uncertainty requires additional resource expenditure, in the form of test runs for example, thereby posing a greater burden on available schedule time and monetary resources. In case the uncertainty would be left unexplored, technical performance would suffer by a decreased knowledge about product behavior and capability, increasing technical performance risk. To preserve mission reliability, concepts with a higher development risk require additional investigation and thereby carry additional resource and schedule loads. Moreover, in case these concepts are further explored and found to be ill-suited to the mission, a re-run of concept selection, analysis and design is required. It is therefore essential that development risk is as low as possible for economical reasons.
+%Deceleration is maximized when the maximum tolerable acceleration is sustained throughout entry, as discussed in Chapter \ref{ch:astrocontrol}. Control is performed by a control system that alters the lift by changing the angle of attack of the vehicle, the performance of which increases for an increasing lift gradient. An increased performance of the control system leads to longer adherence to the 3-g limit imposed and thereby to a decreased deceleration time.
 
-\subsubsection{Deceleration time}
-Deceleration time required for entry. A decreased entry time alleviates costs incurred by ground operations and minimizes physical taxation of human payload on-board. As such, it is desirable that entry time is as small as possible, within the requirements imposed by the customer and regulations. Deceleration is maximized when the maximum tolerable acceleration is sustained throughout entry, as discussed in Chapter \ref{ch:astrocontrol}. Control is performed by a control system that alters the lift by changing the angle of attack of the vehicle, the performance of which increases for an increasing lift gradient. An increased performance of the control system leads to longer adherence to the 3-g limit imposed and thereby to a decreased deceleration time.
+\subsection{Stability}
+An increased vehicle stability is preferable, since a stable vehicle requires less control forces to counteract perturbations. A stable vehicle will react to a perturbation by an oppositely directed moment to revert itself to its equilibrium condition, where an increase in stability will bring about a larger reaction moment. This counters the perturbation faster than a less stable vehicle, while an unstable vehicle would increase the effects of the perturbation and bring it further from its equilibrium condition. It is desirable that the effect of perturbations is mitigated as much as possible, since these are unpredictable and bring about vehicle deviation from its intended trajectory. Stability is the preferable method of mitigation, since counteraction of perturbations by active control requires additional expenditure of power or propellant mass. 
 
-\subsubsection{Stability}
-An increased vehicle stability is preferable, since a stable vehicle requires less control forces to counteract perturbances. A stable vehicle will react to a perturbance by an oppositely directed moment to revert itself to its equilibrium condition, where an increase in stability will bring about a larger reaction moment. In the context of the two-dimensional orbit model, perturbances are considered in pitch direction and hence causing a change in angle of attack. A first indication for stability is decelerator static stability, measured in the moment coefficient derivative with respect to angle of attack. As discussed in Chapter \ref{ch:aero_analysis}, this parameter is obtainable using the developed aerodynamic analysis tool for each of the five concepts.
+It should be noted that stability is in conflict with controllability, since stability and controllability are negatively correlated. Controllability is reflected by decelerator mass, in which control system mass is incorporated.
+
+%In the context of the two-dimensional orbit model, perturbances are considered in pitch direction and hence causing a change in angle of attack. A first indication for stability is decelerator static stability, measured in the moment coefficient derivative with respect to angle of attack. As discussed in Chapter \ref{ch:aero_analysis}, this parameter is obtainable using the developed aerodynamic analysis tool for each of the five concepts.
 %An increased orbit controllability brings about greater freedom in trajectory selection and optimization on one hand and increases vehicle capability of counteracting perturbations on the other hand. While the latter capability is to be safeguarded in all designs in order to maintain minimum mission reliability, the former distinguishes concepts by a greater design efficiency. Increased controllability allows fine-tuning trajectories to a larger extent, such that trajectories can be optimized to induce smaller thermal and aerodynamic loads. Lowering peak loads allows design of a structure and \acrfull{tps} with lower design loads, thereby sized smaller than an equivalent structure and \gls{tps} sized for higher peak loads. This effects a decrease in decelerator mass, thereby increasing payload-carrying capability (see subsection \ref{subsub:decelmass}).
 
-\subsection{Concept performance in trade-off criteria}
-This section treats the concept performance for all five selected concepts in terms of the trade-off criteria formulated in the previous section.
 
-\subsubsection{Decelerator mass}
-Concepts have been evaluated for the three primary components that make up and distinguish concepts: structure, \acrfull{tps} and control system. The structural mass has been estimated using parametric models in Chapter \ref{ch:strucmass}; the \gls{tps} mass via a basic thermal layer analysis in Chapter \ref{ch:thermtool}; the control system mass via the required moments to be generated in Chapter \ref{ch:astrocontrol}.  These masses are given in Table \ref{tab:cmass}. It should be noted that the structural mass excludes connection mass, not taken into account in the mass estimation and deemed equal for all concepts. Hence the summed mass consists of only 85 $\%$ of the decelerator mass.
-
-\begin{table}[h]
-\caption{Concept mass comparison}\label{tab:cmass}
-\hspace{-10mm}
-\begin{tabular}{|p{0.2\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}||p{0.20\textwidth}|}
-\hline
-                          & \textbf{Structural mass (20 \%)} & \textbf{Thermal mass (50 \%)} & \textbf{Control system mass (15 \%)} & \textbf{Total mass} \\ \hline
-\textbf{Stacked toroid}   &  100                                 &                          &                                       &\cellcolor{green!70}                            \\ \hline
-\textbf{Tension cone}     &   168                               &                                &                                       &\cellcolor{green!70}                                \\ \hline
-\textbf{Trailing ballute} &  221                                 &                                &                                       &\cellcolor{green!70}                                \\ \hline
-\textbf{Isotensoid}       &  516                                 &                                &                                       &\cellcolor{yellow!75}                             \\ \hline
-\textbf{Rigid}            &  \multicolumn{1}{c}{xxx}       &                                  &                                       &\cellcolor{red!60}                             \\ \hline
-\end{tabular}
-\end{table}
-
-Each of the components, structural mass, thermal mass and control system mass, has been given an importance factor, of respectively 20 $\%$,  50 $\%$ and  15 $\%$ corresponding to the weight fraction assigned in the budget breakdown in the Baseline Report \cite[p.28]{Balasooriyan2015a}. These weights have been used since masses are relative comparisons. Most notably, thermal and control system masses have been estimated as heat loads and control moments required and expressed directly in terms of this. As such, since the subsystems contribute in a different magnitude to the total decelerator mass, this scaling is required for a first-order estimate of concept mass.
-
-From the last column in Table \ref{tab:cmass} it follows that the lowest mass is achieved using the XXX configuration. Evidently the highest mass is achieved by the rigid concept, well in excess of the 1000 [kg] limit imposed. The latter is therefore deemed unacceptable; the former is deemed excellent performance. Concepts mass performance of the other concepts is designated from good to weak.
-
-\subsubsection{Development risk}
-Development risk has been evaluated on the basis of concept technology readiness in Chapter \ref{ch:riskestimation}. It was concluded that frequent historic investigation, testing and application of rigid concepts for (re-)entry make this concept the most developed. Inflatable concepts are a relatively novel solution and investigation thereof has been limited: isotensoid, trailing ballute and tension cone concepts have been tested up to an estimated \gls{trl} of 4. The stacked toroid concept has undergone a more extensive research program (\acrfull{irve}) and is hence at a \gls{trl} of 7 while ongoing research by \gls{nasa} continues to further the technology readiness \cite{Dillman2014}. It should be noted that the trailing ballute is only capable of featuring morphing as a viable control option, as investigated in Chapter \ref{ch:astrocontrol}, an underdeveloped area of technology for the application at hand. To reflect the difficulty of control with a trailing ballute, its \gls{trl} is lowered to 2 since morphing has only been formulated, but not tested, for this concept.
-
-The \glspl{trl} of the five selected concepts are stated in Table \ref{tab:gls_rev}.
-
-\begin{table}[h]
-\caption{Review of concept development risk}
-\begin{tabular}{|l|l|l|l|l|l|}
-\hline
-\textbf{Concept {[}-{]}} & Stacked toroid & Tension cone & Trailing ballute & Isotensoid & Rigid \\ \hline
-\textbf{TRL {[}-{]}}     &\cellcolor{green!70} 7  &\cellcolor{yellow!75}  4   &\cellcolor{red!60} 2 & \cellcolor{yellow!75}      4          &\cellcolor{green!70} 9     \\ \hline
-\end{tabular}
-\label{tab:gls_rev}
-\end{table}
-
-\subsubsection{Deceleration time}
-The deceleration time is evaluated on the basis of vehicle lift gradient, taken as the average over a range of considered angles of attack. A higher ligt gradient is thereby deemed positive in achieving deceleration within a shorter time. This evaluation, discussed in Chapter \ref{ch:aero_analysis}, has yielded the results given in Table \ref{tab:decel_time}.
-
-\begin{table}[h]
-\caption{Review of concept lift gradient}
-\hspace{-20mm}
-\begin{tabular}{|c|c|c|c|c|c|}
-\hline
-\textbf{}                          & \textbf{Stacked toroid} & \textbf{Tension cone} & \textbf{Trailing ballute} & \textbf{Isotensoid} & \textbf{Rigid} \\ \hline
-\textbf{Average lift gradient {[}1/rad{]}} &\cellcolor{green!70} 7  &\cellcolor{yellow!75}  4   &\cellcolor{red!60} 2 & \cellcolor{yellow!75}      4          &\cellcolor{green!70} 9                 \\ \hline
-\end{tabular}
-\end{table}
-
-From Table \ref{tab:decel_time} it may be observed that the highest lift gradient is attained for the ... configuration. [ADD AERO EXPLANATION]
-
-\subsubsection{Stability}
-Stability of concepts is measured by the static stability, as explained in Chapter \ref{ch:aero_analysis}. A more stable concept is reflected by a more negative static stability coefficient. This derivative is given in Table \ref{tab:stab}.
-
-\begin{table}[h]
-\caption{Review of concept lift gradient}
-\hspace{-20mm}
-\begin{tabular}{|c|c|c|c|c|c|}
-\hline
-\textbf{}                          & \textbf{Stacked toroid} & \textbf{Tension cone} & \textbf{Trailing ballute} & \textbf{Isotensoid} & \textbf{Rigid} \\ \hline
-\textbf{Static stability coefficient {[}1/rad{]}} &\cellcolor{green!70} 7  &\cellcolor{yellow!75}  4   &\cellcolor{red!60} 2 & \cellcolor{yellow!75}      4          &\cellcolor{green!70} 9                 \\ \hline
-\end{tabular}
-\end{table}
-
-[ADD AERO EXPLANATION]
-
-\subsection{Con}
 

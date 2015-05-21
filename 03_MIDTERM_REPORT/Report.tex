@@ -27,6 +27,7 @@
 \usepackage{caption}
 \usepackage{multicol}
 \usepackage{subcaption}
+\usepackage{pgfplots}
 
 \usepackage{lscape}
 \usepackage{rotating}
@@ -34,6 +35,10 @@
 \usepackage{pifont}
 \newcommand{\cmark}{\ding{51}}%
 \newcommand{\xmark}{\ding{55}}%
+
+\newlength\figureheight 
+\newlength\figurewidth
+\pgfplotsset{compat=1.3}
 
 % PAGESTYLE
 \pagestyle{plain}
@@ -88,14 +93,15 @@
 \include{./Chapter/WorkDefinitionandDivision}
 \include{./Chapter/Sustainability}
 \include{./Chapter/OperationalSegment}
+\include{./Chapter/TradeOff}
 \include{./Chapter/DesignOptions}
 \include{./Chapter/N2}
 \include{./Chapter/Astro_control}
-\include{./Chapter/StructuralMass}
 \include{./Chapter/AeroAnalysis}
+\include{./Chapter/StructuralMass}
 \include{./Chapter/Thermodynamics_analysis}
 \include{./Chapter/RiskEstimation}
-%\include{./Chapter/TradeOff}
+\include{./Chapter/TradeOffSummary}
 \include{./Chapter/Conclusion}
 
 

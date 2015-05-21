@@ -14,7 +14,7 @@ variables
 files = {'orbit_irve_no_control.txt'};
 names = {'irve'};
 
-for bla = 1:length(names)
+for bla = 2
 % booleans (no control, stop at beginning of elliptic orbit)
 use_control = true;
 multiple_orbits = false;

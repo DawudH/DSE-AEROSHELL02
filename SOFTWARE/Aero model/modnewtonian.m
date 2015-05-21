@@ -64,9 +64,9 @@ classdef modnewtonian
             obj.CMA_body_array = [obj.CMA_body_array, obj.calcMomentCoeffsBody()];
             obj.CMA_aero_array = [obj.CMA_aero_array, obj.calcMomentCoeffsAero()];
             obj.CLCD_array = obj.CRA_aero_array(3,:)./obj.CRA_aero_array(1,:);
-            %[T,q] = obj.calcHeatFlux();
-            %obj.Tmax_array = [obj.Tmax_array, T];
-            %obj.qmax_array = [obj.qmax_array, q];
+%             [T,q] = obj.calcHeatFlux();
+%             obj.Tmax_array = [obj.Tmax_array, T];
+%             obj.qmax_array = [obj.qmax_array, q];
             obj.CR_body_array = obj.CRA_body_array / obj.A;
             obj.CR_aero_array = obj.CRA_aero_array / obj.A;
             obj.CM_body_array = obj.CMA_body_array / obj.A;
@@ -92,7 +92,7 @@ classdef modnewtonian
         
         function CMAbody = calcMomentCoeffsBody(obj)
             % Calculate aerodynamic moment coefficients on the body
-            CMAbody = sum(cross(obj.cellcenters, -obj.normals * diag(obj.Cpdist_array(:,end) .* obj.areas),1),2);
+            CMAbody = sum(cross(obj.cellcenters-repmat(obj.center',1,size(obj.tri,1)), -obj.normals * diag(obj.Cpdist_array(:,end) .* obj.areas),1),2);
         end
         
         function CMAaero = calcMomentCoeffsAero(obj)
@@ -268,17 +268,21 @@ classdef modnewtonian
             set(h1, 'Zdir', 'reverse');            
             hold on;
             if plotfaces
-                trisurf(obj.tri,obj.coords(1,:),obj.coords(2,:),obj.coords(3,:), obj.Cpdist_array(:,end));
+                trisurf(obj.tri,obj.coords(1,:),obj.coords(2,:),obj.coords(3,:), obj.Cpdist_array(:,end), 'EdgeColor', 'none');
             end
             caxis([0,2]); %Cp goes from 0 to 2
             axis equal;
-            colorbar;
+            h = colorbar;
+            ylabel(h, '$C_P$', 'interpreter', 'latex');
             xlabel('x')
             ylabel('y')
             zlabel('z')
             if plotnormals
                 quiver3(obj.cellcenters(1,:), obj.cellcenters(2,:), obj.cellcenters(3,:), obj.normals(1,:), obj.normals(2,:), obj.normals(3,:))
             end
+            zlim([min(obj.coords(3,:)), max(obj.coords(3,:))]);
+            ylim([min(obj.coords(2,:)), max(obj.coords(2,:))]);
+            view(40,30);
             xlength = max(obj.coords(1,:))-min(obj.coords(1,:));
             quiverV = - xlength * 0.5 * obj.V_array(:,end) / norm(obj.V_array(:,end));
             quiverx = xlength*0.5 - quiverV(1) + max(obj.coords(1,:));

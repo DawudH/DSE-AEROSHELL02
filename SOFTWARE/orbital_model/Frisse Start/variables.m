@@ -16,6 +16,8 @@ V = [0,-v,0];
 %Initial acceleration
 A = G*M_mars/norm(R(1,:))^3*R(1,:);
 
+J = [0,0,0];
+
 %timesteps
 dt_atmos = 0.5; %[s]
 dt_kep_init = 1e-6; %[s]
@@ -42,4 +44,5 @@ control.error_I = 0;
 atm = marsatmosphere();
 % create aerocoef object
 aero_coef = aeroProperties('irve');
+
 

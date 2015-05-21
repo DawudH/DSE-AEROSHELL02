@@ -7,7 +7,7 @@ cases.deg60cone = 'deg60cone';
 cases.apollo = 'apollo';
 cases.irve = 'irve';
 
-shapecase = cases.apollo;
+shapecase = cases.deg60cone;
 
 
 switch shapecase
@@ -17,12 +17,11 @@ switch shapecase
         qmax_measured = 14.4;
         a = 329.799;
         gamma = 1.4;
-        center = zeros(3,1);
         rho = 0.000977525;
         T = 270.650;
         q = 15;
         M = 7;
-        [ coords, tri, A ] = generategeometry( 'irvevalidation', q );
+        [ coords, tri, A, center ] = generategeometry( 'irvevalidation', q );
 
         mod = modnewtonian( coords, tri, gamma, a, center, rho, T, A);
         mod = mod.calcAeroangle(M*a,deg2rad(0),0);
@@ -41,12 +40,11 @@ switch shapecase
         CDmeasured = 0.58;
         a = 300;
         gamma = 1.4;
-        center = zeros(3,1);
         rho = 1e-3;
         T = 150;
         q = 100;
         M = 8;
-        [ coords, tri, A ] = generategeometry( 'deg60cone', q );
+        [ coords, tri, A, center ] = generategeometry( 'deg60cone', q );
 
         mod = modnewtonian( coords, tri, gamma, a, center, rho, T, A);
         mod = mod.calcAeroangle(M*a,deg2rad(0),0);
@@ -65,12 +63,11 @@ switch shapecase
         CDmeasured = 0.92;
         a = 300;
         gamma = 1.4;
-        center = zeros(3,1);
         rho = 1e-3;
         T = 150;
         q = 80;
         M = 10;
-        [ coords, tri, A ] = generategeometry( 'sphere12m', q );
+        [ coords, tri, A, center ] = generategeometry( 'sphere12m', q );
 
         mod = modnewtonian( coords, tri, gamma, a, center, rho, T, A);
         mod = mod.calcAeroangle(M*a,deg2rad(0),0);
@@ -88,9 +85,8 @@ switch shapecase
         clear; clc; close all;
         a = 300;
         M = 10.18; % As in the paper
-        V = a*14.9;
+        V = a*M;
         gamma = 1.67;
-        center = zeros(3,1); % not important
         rho = 1e-3; %not important
         T = 150; % not important
         q = 31;
@@ -98,7 +94,7 @@ switch shapecase
         zvalidation = CP_apollo.CP_apollo(:,1);
         Cpvalidation = CP_apollo.CP_apollo(:,2);
         
-        [ coords, tri, A ] = generategeometry( 'apollovalidation', q );
+        [ coords, tri, A, center ] = generategeometry( 'apollovalidation', q );
 
         modn = modnewtonian( coords, tri, gamma, a, center, rho, T, A);
         modn = modn.calcAeroangle(V,deg2rad(0),0);
@@ -147,7 +143,6 @@ switch shapecase
         M = 14.9; % As in the paper
         V = a*14.9;
         gamma = 1.67;
-        center = zeros(3,1); % not important
         rho = 1e-3; %not important
         T = 150; % not important
         q = 80;
@@ -155,7 +150,7 @@ switch shapecase
         betavalidation = 0:30:180;
         Cpvalidation = [0.359,0.326,0.234,0.112,0.06,0.037,0.039];
         
-        [ coords, tri, A ] = generategeometry( 'deg30cone', q );
+        [ coords, tri, A, center ] = generategeometry( 'deg30cone', q );
 
         modn = modnewtonian( coords, tri, gamma, a, center, rho, T, A);
         modn = modn.calcAeroangle(V,deg2rad(10),0);
@@ -189,7 +184,6 @@ switch shapecase
         M = 14.9; % As in the paper
         V = a*14.9;
         gamma = 1.67;
-        center = zeros(3,1); % not important
         rho = 1e-3; %not important
         T = 150; % not important
         q = 80;
@@ -197,7 +191,7 @@ switch shapecase
         betavalidation = 0:30:180;
         Cpvalidation = [0.63, 0.550, 0.327, 0.093, 0.028, 0.009, 0.014];
         
-        [ coords, tri, A ] = generategeometry( 'deg30cone', q );
+        [ coords, tri, A, center ] = generategeometry( 'deg30cone', q );
 
         modn = modnewtonian( coords, tri, gamma, a, center, rho, T, A);
         modn = modn.calcAeroangle(V,deg2rad(20),0);

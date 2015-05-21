@@ -1,3 +1,17 @@
+ballute
+q:
+q required for 99.9% convergence:33
+q required for 99.5% convergence:21
+q required for 99% convergence:21
+cl:
+q required for 99.9% convergence:43
+q required for 99.5% convergence:27
+q required for 99% convergence:19
+cd:
+q required for 99.9% convergence:61
+q required for 99.5% convergence:37
+q required for 99% convergence:29
+
 torus
 q:
 q required for 99.9% convergence:5
