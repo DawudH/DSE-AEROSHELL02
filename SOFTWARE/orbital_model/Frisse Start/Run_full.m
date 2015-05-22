@@ -123,12 +123,12 @@ ylim([-0.05 0.32])
 grid on
 hold on
 plot(t,out.dAlpha_dt*180/pi,'color',cc(2,:))
-ylabel('$\frac{d \alpha}{dt}$  $\left[^\circ\right]$','interpreter','latex')
+ylabel('$\frac{d \alpha}{dt}$  $\left[\frac{^\circ}{s}\right]$','interpreter','latex')
 xlabel('$t$ $\left[s\right]$','interpreter','latex')
 if isfield(out,'tkep') 
     plot([out.tkep, out.tkep],ylim,'-.','color',cc(1,:),'LineWidth',1.4); 
 end
-matlab2tikz('.\LaTeX\orbit_results.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
+matlab2tikz('.\LaTeX\orbit_results2.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
 
 
 % plot orbit

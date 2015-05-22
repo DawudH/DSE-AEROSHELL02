@@ -22,7 +22,7 @@ every outer y axis line/.append style={black},
 every y tick label/.append style={font=\color{black}},
 ymin=-0.05,
 ymax=0.32,
-ylabel={$\frac{d \alpha}{dt}$  $\left[^\circ\right]$},
+ylabel={$\frac{d \alpha}{dt}$  $\left[\frac{^\circ}{s}\right]$},
 ymajorgrids,
 axis x line*=bottom,
 axis y line*=left
@@ -18362,7 +18362,7 @@ every outer y axis line/.append style={black},
 every y tick label/.append style={font=\color{black}},
 ymin=0,
 ymax=6,
-ylabel={$a_{human}$ $\left[\frac{m}{s^2}\right]$},
+ylabel={$a_{astronaut}$ $\left[g_e\right]$},
 ymajorgrids,
 axis x line*=bottom,
 axis y line*=left
@@ -21425,7 +21425,7 @@ ymax=10000,
 ylabel={$V$ $\left[\frac{m}{s}\right]$},
 ymajorgrids,
 axis x line*=bottom,
-axis y line*=left,
+axis y line*=left
 ]
 \addplot [color=mycolor1,solid,forget plot]
   table[row sep=crcr]{%
