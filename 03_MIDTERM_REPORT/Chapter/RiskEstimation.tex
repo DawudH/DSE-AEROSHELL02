@@ -13,13 +13,15 @@ Before the concept-specific development risks are discussed the concept-independ
 		\textbf{Number} & \textbf{Element} \\ \hline \hline
 		1 & \acrlong{tps} \\
 		2 & Magnitude of lift \& drag\\
-		3 & Control system mass\\
-		4 & Vibration resistance\\
-		5 & Dynamic stability\\
-		6 & Thermal load resistance\\
-		7 & Capsule-aeroshell integration\\
-		8 & Orbit accuracy\\
-		9 & Controller accuracy\\
+		3 & Dynamic stability\\
+		4 & Static stability\\
+		5 & Thermal load resistance\\
+		6 & Capsule-aeroshell integration\\
+		7 & Orbit accuracy\\
+		8 & Controller accuracy\\
+		9 & Capsule \acrlong{cg}\\
+		10 & Ability of structure to withstand mission loads\\
+		11 & Maximum deceleration\\
 		\hline
 	\end{tabular}
 \end{table}
@@ -51,12 +53,12 @@ The concept-independent risk elements shown in Table \ref{tab:riskmapelements} h
 	\label{tab:riskmap}
 	\begin{tabular}{|c|c|c|c|c|} % MAKE SURE THAT THE TOTAL WIDTH IS 0.95\textwidth!! (that way its exactly the textwidth.... haha) 
 		\hline
-		\textbf{\gls{trl} 1} & \cellcolor{green!70} & \cellcolor{yellow!75} & \cellcolor{red!60} & \cellcolor{red!60} \\ \hline
-		\textbf{\gls{trl} 2} & \cellcolor{green!70} & \cellcolor{yellow!75} & \cellcolor{red!60} & \cellcolor{red!60} \\ \hline
-		\textbf{\gls{trl} 3} & \cellcolor{green!70} & \cellcolor{yellow!75} & \cellcolor{red!60} & \cellcolor{red!60} \\ \hline
+		\textbf{\gls{trl} 1} & \cellcolor{green!70} & \cellcolor{yellow!75} 3, 4 & \cellcolor{red!60} & \cellcolor{red!60} 10 \\ \hline
+		\textbf{\gls{trl} 2} & \cellcolor{green!70} & \cellcolor{yellow!75} 6, 9 & \cellcolor{red!60} & \cellcolor{red!60} \\ \hline
+		\textbf{\gls{trl} 3} & \cellcolor{green!70} & \cellcolor{yellow!75} & \cellcolor{red!60} 8 & \cellcolor{red!60} 7, 11 \\ \hline
 		\textbf{\gls{trl} 4} & \cellcolor{green!70} & \cellcolor{yellow!75} & \cellcolor{yellow!75} & \cellcolor{yellow!75} \\ \hline
-		\textbf{\gls{trl} 5} & \cellcolor{green!70} & \cellcolor{green!70} & \cellcolor{yellow!75} & \cellcolor{yellow!75} \\ \hline
-		\textbf{\gls{trl} 6} & \cellcolor{green!70} & \cellcolor{green!70} & \cellcolor{green!70} & \cellcolor{green!70} \\ \hline
+		\textbf{\gls{trl} 5} & \cellcolor{green!70} & \cellcolor{green!70} & \cellcolor{yellow!75} 2 & \cellcolor{yellow!75} \\ \hline
+		\textbf{\gls{trl} 6} & \cellcolor{green!70} & \cellcolor{green!70} & \cellcolor{green!70} & \cellcolor{green!70} 1, 5 \\ \hline
 		\textbf{\gls{trl} 7} & \cellcolor{green!70} & \cellcolor{green!70} & \cellcolor{green!70} & \cellcolor{green!70} \\ \hline
 		\textbf{\gls{trl} 8} & \cellcolor{green!70} & \cellcolor{green!70} & \cellcolor{green!70} & \cellcolor{green!70} \\ \hline
 		\textbf{\gls{trl} 9} & \cellcolor{green!70} & \cellcolor{green!70} & \cellcolor{green!70} & \cellcolor{green!70} \\ \hline
