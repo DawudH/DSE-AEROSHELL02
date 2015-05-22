@@ -31,6 +31,8 @@
 
 \usepackage{lscape}
 \usepackage{rotating}
+\usepackage{pdflscape}
+
 
 \usepackage{pifont}
 
@@ -58,7 +60,7 @@
 \newcommand{\HRule}{\rule{\linewidth}{0.04cm}}
 \renewcommand{\abstractname}{{\Large Summary}}
 \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
-\setlength{\parskip}{5pt plus4pt minus2pt}
+\setlength{\parskip}{6pt plus4pt minus2pt}
 \setcounter{tocdepth}{2}
 % ENVIRONMENTS
 \newenvironment{drawing}
@@ -85,6 +87,7 @@
 \newpage
 \printnoidxglossary[type=\acronymtype,nonumberlist]
 \newpage
+\renewcommand{\arraystretch}{1.1}
 \printnoidxglossary[type=symbol,nonumberlist,style=listos]
 \printnoidxglossary[type=constants,style=listoc]
 \newpage
