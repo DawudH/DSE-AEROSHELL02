@@ -321,7 +321,7 @@ The stability of the vehicle can be determined from $\gls{sym:CM}\gls{sym:A}$ an
 \end{figure}
 
 \subsubsection{Control system mass estimation}
-To estimate the relative control system masses the absolute value of the ratio $\frac{\gls{sym:CM}}{\gls{sym:CL}/\gls{sym:CD}}$ at $\gls{sym:alpha}=20\deg$ is determined for all concepts. The values of this parameter are shown in Table \ref{tab:controlmass}. The value of $\frac{\gls{sym:CM}}{\gls{sym:CL}/\gls{sym:CD}}$ as a function of $\gls{sym:alpha}$ is shown in Figure \ref{fig:cmcl-clcd}.
+To estimate the relative control system masses the absolute value of the ratio $\frac{\gls{sym:CM}\gls{sym:A}}{\gls{sym:CL}/\gls{sym:CD}}$ at $\gls{sym:alpha}=20\deg$ is determined for all concepts. The values of this parameter are shown in Table \ref{tab:controlmass}. The value of $\frac{\gls{sym:CM}\gls{sym:A}}{\gls{sym:CL}/\gls{sym:CD}}$ as a function of $\gls{sym:alpha}$ is shown in Figure \ref{fig:cmcl-clcd}.
 
 \begin{table}[h]
 	\centering
@@ -329,7 +329,7 @@ To estimate the relative control system masses the absolute value of the ratio $
 	\begin{tabular}{|c|c|c|}
 
 		\hline
-		\textbf{Concept} & $\frac{\gls{sym:CM}}{\gls{sym:CL}/\gls{sym:CD}}$ [-] & \textbf{Fraction of stacked toroid} \\ \hline \hline
+		\textbf{Concept} & $\frac{\gls{sym:CM}\gls{sym:A}}{\gls{sym:CL}/\gls{sym:CD}}$ [-] & \textbf{Fraction of stacked toroid} \\ \hline \hline
 
 		Stacked toroid, tension cone & $0.045$ & $1.00$\\
 		Rigid & $0.015$ & $0.34$ \\
@@ -340,7 +340,7 @@ To estimate the relative control system masses the absolute value of the ratio $
 	\label{tab:controlmass}
 \end{table}
 
-The $\frac{\gls{sym:CM}}{\gls{sym:CL}/\gls{sym:CD}}$-fractions shown in Table \ref{tab:controlmass} will be used in Chapter \ref{ch:tfsum} as input for the trade-off procedure. It should be noted here that the analysis methods used to predict these required control system moments do not take into account dynamic behaviour, as the analysis is carried out under the assumption of steady flow.
+The $\frac{\gls{sym:CM}\gls{sym:A}}{\gls{sym:CL}/\gls{sym:CD}}$-fractions shown in Table \ref{tab:controlmass} will be used in Chapter \ref{ch:tfsum} as input for the trade-off procedure. It should be noted here that the analysis methods used to predict these required control system moments do not take into account dynamic behaviour, as the analysis is carried out under the assumption of steady flow.
 
 \subsection{Conclusion}
 As can be seen in Table \ref{tab:clcd}, the performance of the different concepts on the trade-off criteria can now be assessed. The deceleration time performance of the rigid structure is the highest of the researched shapes, with a lift over drag ratio almost $80\%$ higher than that of the stacked toroid. The isotensoid has a performance more similar to the stacked toroid and tension cone, being around $20\%$ better. The isotensoid has the worst performance compared to the stacked toroid and tension cone, being almost $60\%$ worse.
