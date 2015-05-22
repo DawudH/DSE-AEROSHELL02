@@ -189,7 +189,7 @@ The drag and lift are dependent on the drag and lift coefficients of the spacecr
 
 The mass of the decelerator is composed of the structural mass, the \gls{tps} mass and the control system mass. 
 The \gls{tps} mass is estimated based on the heat load on the spacecraft, which is the integral of the heat flux over time. This heat load is the total amount of heat supplied to the spacecraft between initial entry and final descent, and estimates the total amount of energy the \gls{tps} has to withstand. This can thus be used to size the thickness of the \gls{tps}, which leads directly to the mass of the system.
-The control system mass is based on the moment that the control system has to provide. The amount of lift that a spacecraft has to produce in order to attain a desirable orbit directly dictates the angle of attack. This angle of attack, in turn, determines the moment that the control system has to compensate in order to maintain the required angle of attack. It is thus not the moment coefficient itself that has to be minimised, but rather the amount of moment that is needed to provide a certain amount of lift. Therefore, the ratio \gls{sym:cmcl} is used to quantify the control system mass.
+The control system mass is based on the moment that the control system has to provide. The spacecraft has to fly at a given lift to drag ratio to maintain its trajectory. These lift to drag ratios are obtained at a certain angle of attack. This angle of attack in turn corresponds to a moment produced by the spacecraft. To maintain a stable trajectory, this moment needs to be counteracted by the spacecraft control systems. The greater the moment that needs to be counteracted, the greater the required control system mass will be. Therefore the ratio between the lift to drag ratio required and the moment coefficient that is required to maintain this lift to drag ratio will indicate the required control system mass. This ratio is given by \gls{sym:cmclcd}
 
 In order to assess these values, a representative geometry is chosen. Since Newtonian flow only affects the parts of the vehicle that are in direct line of sight of the oncoming flow, only the front of the decelerator has to be accurately modelled. The stacked toroid and tension cone concepts are modelled after the \gls{irve} missions as flown by NASA, as can be seen in Figure \ref{fig:cpstackedtoroid}. The isotensoid model is modelled as a slightly flattened sphere, with a radius of 6 meters perpendicular and a radius of 5 meter in direction of the flow. This model can be seen in Figure \ref{fig:cpisotensoid}. The Trailing ballute is modelled as a single torus trailing body comparable to the rigid concept., as seen in Figure \ref{fig:cpballute}, and the rigid concept's front is a largely flattened sphere, as seen in Figure \ref{fig:cprigid}.
 
@@ -334,7 +334,7 @@ The stability of the vehicle can be determined from $\gls{sym:cma}$ and $\gls{sy
 \end{figure}
 
 \subsubsection{Control system mass estimation}
-To estimate the relative control system masses the absolute value of the ratio \gls{sym:cmcl} at $\gls{sym:alpha}=1\deg$ is determined for all concepts. The values of this parameter are shown in Table \ref{tab:controlmass}.
+To estimate the relative control system masses the absolute value of the ratio \gls{sym:cmclcd} at $\gls{sym:alpha}=20\deg$ is determined for all concepts. The values of this parameter are shown in Table \ref{tab:controlmass}.
 
 \begin{table}[h]
 	\centering
@@ -342,7 +342,7 @@ To estimate the relative control system masses the absolute value of the ratio \
 	\begin{tabular}{|c|c|c|}
 
 		\hline
-		\textbf{Concept} & \textbf{\gls{sym:cmcl}} [-] & \textbf{Fraction of stacked toroid} \\ \hline \hline
+		\textbf{Concept} & \textbf{\gls{sym:cmclcd}} [-] & \textbf{Fraction of stacked toroid} \\ \hline \hline
 
 		Stacked toroid, tension cone & $5.81$ & $1.00$\\
 		Rigid & $0.41$ & $0.07$ \\
