@@ -268,7 +268,7 @@ As was already stated in subsection \ref{sec:astroassumption} the atmospheric pr
 \subsubsection{Effect of \gls{sym:alpha} on deceleration}
 \label{sec:astrodec}
 
-In this subsection the effect of the angle of attack $\left(\gls{sym:alpha}\right)$ on the maximum load endured during an orbit is discussed. In Figure \ref{fig:n_alpha} this effect is shown for all of the different concepts. The figure for the stacked toroid is the same as the figure for the tension cone. All combinations of \gls{sym:alpha} and $\gls{sym:acc}_{max}$ in the coloured part of the graphs are feasible orbits. For all combinations above the coloured part the spacecraft crashes. For all combinations underneath the coloured part the spacecraft flies past Mars without getting into orbit. It is clear from these graphs that there is no concept for which an orbit can be found with a maximum acceleration of less than the required $3 \gls{sym:g} \left[\frac{m}{s^2}\right]$. From this it can be concluded that the spacecraft needs active control to find an orbit which meets the requirements.
+In this subsection the effect of the angle of attack $\left(\gls{sym:alpha}\right)$ on the maximum load endured during an orbit is discussed. In Figure \ref{fig:n_alpha} this effect is shown for all of the different concepts. The figure for the stacked toroid is the same as the figure for the tension cone. All combinations of \gls{sym:alpha} and $\gls{sym:acc}_{max}$ in the coloured part of the graphs are feasible orbits. For all combinations above the coloured part the spacecraft crashes. For all combinations underneath the coloured part the spacecraft flies past Mars without getting into orbit. It is clear from these graphs that there is no concept for which an orbit can be found with a maximum acceleration of less than the required $3 \gls{sym:ge} \left[\frac{m}{s^2}\right]$. From this it can be concluded that the spacecraft needs active control to find an orbit which meets the requirements.
 
 \begin{figure}[h]
 	\centering
@@ -282,20 +282,24 @@ In this subsection the effect of the angle of attack $\left(\gls{sym:alpha}\righ
 
 In subsection \ref{sec:astrodec} it was found that a control system will be needed to find an orbit that meets the requirements. In this section the required performance of the control system is outlined.
 
-The control system is required to force the acceleration into a rectangular shape as much as possible. This rectangle should have a height of $3 \gls{sym:g} \left[\frac{m}{s^2}\right]$ acceleration and a width of the time the spacecraft is in the atmosphere. Even with perfect control this shape is not achievable, as the atmosphere is too thin at the outer edges. However with rounded off edges this shape is very well possible. Whether the initial rise has an overshoot, how well the upper limit can be kept and how far the sides of the rectangle are separated is dependent on the performance of the control system.
+The control system is required to force the acceleration into a rectangular shape as much as possible. This rectangle should have a height of $3 \gls{sym:ge} \left[\frac{m}{s^2}\right]$ acceleration and a width of the time the spacecraft is in the atmosphere. Even with perfect control this shape is not achievable, as the atmosphere is too thin at the outer edges. However with rounded off edges this shape is very well possible. Whether the initial rise has an overshoot, how well the upper limit can be kept and how far the sides of the rectangle are separated is dependent on the performance of the control system.
 
 In subsection \ref{sec:tradeoffaero} of Chapter \ref{ch:aero_analysis} the aerodynamic properties that are preferred in order to get as close to an ideal trajectory as possible are shown.
 
 \subsubsection{A feasible trajectory and important output parameters over time}
 \label{sec:astrorestraj}
 \begin{wrapfigure}{r}{0.4\textwidth}
+	\vspace{-0.5cm}
 	\centering
 	\includegraphics[width=0.35\textwidth]{Figure/orbital_model/orbit.pdf}
-	\caption{ The orbit near computed with the  }
+	\caption{ The orbit of the stacked toroid without a properly tuned control system, computed with the trajectory tool.}
+	\vspace{-1cm}
 	\label{fig:orbit}
 \end{wrapfigure}
 
-In this section an orbit for the stacked toroid concept is shown. This is done to show which values for i.e. dynamic pressure $\left(\gls{sym:q}\right)$ are reasonable to use in the other tools. For this purpose a temporary \gls{pid} controller is put into the simulation which has the goal to keep the acceleration under 3\gls{sym:g}. Although the controller does not always meet this objective the trajectory that is presented here comes as is close to it as currently possible. This will give results that are representable for trajectories that will later be calculated with a better (tuned) controller.
+In this section an orbit for the stacked toroid concept is shown (Figure \ref{fig:orbit}). This is done to show which values for i.e. dynamic pressure $\left(\gls{sym:q}\right)$ are reasonable to use in the other tools. For this purpose a temporary \gls{pid} controller is put into the simulation which has the goal to keep the acceleration under 3\gls{sym:ge}. Although the controller does not always meet this objective the trajectory that is presented here comes as is close to it as currently possible. This will give results that are representable for trajectories that will later be calculated with a better (tuned) controller.
+
+Looking at figure \ref{fig:orbit}, the different stages of the orbit can de distinguished. The first leg is the hyperbolic Kepler described in section \ref{sec:hypkep}, this leg ends at the border of the atmosphere. The second leg is the first pass through the atmosphere, here the control system is turned on and it will try to maintain the constant acceleration of 3\gls{sym:ge} (on the astronauts). In this part of the orbit the deceleration is not sufficient to stay in the atmosphere of Mars, this is the point where this leg ends and the elliptical Kepler leg starts. In this part there are no aerodynamic forces acting on the spacecraft so the assumptions used for a Kepler orbit are valid. The next and last leg in this computed orbit is the second pass through the atmosphere. This leg slows down sufficiently to start the landing process.
 
 \begin{sidewaysfigure}[h]
 	\centering
@@ -303,5 +307,3 @@ In this section an orbit for the stacked toroid concept is shown. This is done t
 	\caption{ CAPTION HERE!! }
 	\label{fig:orbit_results}
 \end{sidewaysfigure}
-
-***Plots of output variables for that particular trajectory***\\

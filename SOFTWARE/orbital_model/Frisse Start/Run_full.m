@@ -50,7 +50,7 @@ grid on
 hold on
 am = sqrt((out.A(:,1) - out.Ag(:,1)).^2 + (out.A(:,2) - out.Ag(:,2)).^2 + (out.A(:,3) - out.Ag(:,3)).^2) / g_earth;
 plot(t,am,'color',cc(2,:))
-ylabel('$a_{human}$ $\left[\frac{m}{s^2}\right]$','interpreter','latex')
+ylabel('$a_{astronaut}$ $\left[g_e\right]$','interpreter','latex')
 xlabel('$t$ $\left[s\right]$','interpreter','latex')
 plot(xlim,[3,3],'-.','color',cc(5,:),'LineWidth',1.4);
 if isfield(out,'tkep') 

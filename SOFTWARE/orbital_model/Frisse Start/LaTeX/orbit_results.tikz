@@ -9192,6 +9192,7 @@ ylabel={$C_L$  $\left[-\right]$},
 ymajorgrids,
 axis x line*=bottom,
 axis y line*=left
+scaled x ticks=10:1
 ]
 \addplot [color=mycolor1,solid,forget plot]
   table[row sep=crcr]{%
