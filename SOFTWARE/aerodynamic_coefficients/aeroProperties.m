@@ -76,5 +76,9 @@ classdef aeroProperties
             dCMYAdalpha = (-obj.getCMYA(alpha)+obj.getCMYA(alpha+dalpha))/dalpha;
         end
         
+        function cmclcd = getCMCLCD(obj, alpha)
+            cmclcd = obj.getCMYA(alpha)./obj.getCLA(alpha)./obj.getCDA(alpha);
+        end
+        
     end
 end

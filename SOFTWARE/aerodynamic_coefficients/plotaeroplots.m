@@ -8,13 +8,25 @@ aerisotensoid = aeroProperties('isotensoid');
 aerballute = aeroProperties('ballute');
 
 alphasample = deg2rad(20);
-disp(strcat('cl of irve: ', num2str(aerirve.getCLCD(alphasample)), ', percentage: ', num2str(aerirve.getCLCD(alphasample)/aerirve.getCLCD(alphasample))));
-disp(strcat('cl of apollo: ', num2str(aerapollo.getCLCD(alphasample)), ', percentage: ', num2str(aerapollo.getCLCD(alphasample)/aerirve.getCLCD(alphasample))));
-disp(strcat('cl of isotensoid: ', num2str(aerisotensoid.getCLCD(alphasample)), ', percentage: ', num2str(aerisotensoid.getCLCD(alphasample)/aerirve.getCLCD(alphasample))));
-disp(strcat('cl of ballute: ', num2str(aerballute.getCLCD(alphasample)), ', percentage: ', num2str(aerballute.getCLCD(alphasample)/aerirve.getCLCD(alphasample))));
+disp(strcat('clcd of irve: ', num2str(aerirve.getCLCD(alphasample)), ', percentage: ', num2str(aerirve.getCLCD(alphasample)/aerirve.getCLCD(alphasample))));
+disp(strcat('clcd of apollo: ', num2str(aerapollo.getCLCD(alphasample)), ', percentage: ', num2str(aerapollo.getCLCD(alphasample)/aerirve.getCLCD(alphasample))));
+disp(strcat('clcd of isotensoid: ', num2str(aerisotensoid.getCLCD(alphasample)), ', percentage: ', num2str(aerisotensoid.getCLCD(alphasample)/aerirve.getCLCD(alphasample))));
+disp(strcat('clcd of ballute: ', num2str(aerballute.getCLCD(alphasample)), ', percentage: ', num2str(aerballute.getCLCD(alphasample)/aerirve.getCLCD(alphasample))));
+
+disp(' ');
+disp(strcat('cmclcd of irve: ', num2str(aerirve.getCMCLCD(alphasample)), ', percentage: ', num2str(aerirve.getCMCLCD(alphasample)/aerirve.getCMCLCD(alphasample))));
+disp(strcat('cmclcd of apollo: ', num2str(aerapollo.getCMCLCD(alphasample)), ', percentage: ', num2str(aerapollo.getCMCLCD(alphasample)/aerirve.getCMCLCD(alphasample))));
+disp(strcat('cmclcd of isotensoid: ', num2str(aerisotensoid.getCMCLCD(alphasample)), ', percentage: ', num2str(aerisotensoid.getCMCLCD(alphasample)/aerirve.getCMCLCD(alphasample))));
+disp(strcat('cmclcd of ballute: ', num2str(aerballute.getCMCLCD(alphasample)), ', percentage: ', num2str(aerballute.getCMCLCD(alphasample)/aerirve.getCMCLCD(alphasample))));
+
+disp(' ');
+disp(strcat('clalpha of irve: ', num2str(aerirve.getMomentGradient(alphasample)), ', percentage: ', num2str(aerirve.getMomentGradient(alphasample)/aerirve.getMomentGradient(alphasample))));
+disp(strcat('clalpha of apollo: ', num2str(aerapollo.getMomentGradient(alphasample)), ', percentage: ', num2str(aerapollo.getMomentGradient(alphasample)/aerirve.getMomentGradient(alphasample))));
+disp(strcat('clalpha of isotensoid: ', num2str(aerisotensoid.getMomentGradient(alphasample)), ', percentage: ', num2str(aerisotensoid.getMomentGradient(alphasample)/aerirve.getMomentGradient(alphasample))));
+disp(strcat('clalpha of ballute: ', num2str(aerballute.getMomentGradient(alphasample)), ', percentage: ', num2str(aerballute.getMomentGradient(alphasample)/aerirve.getMomentGradient(alphasample))));
 
 alpha = linspace(0, deg2rad(60), 60);
-if true
+if false
     figure;
     hold on;
     plot(rad2deg(alpha), aerirve.getCLA(alpha));
@@ -99,10 +111,21 @@ if true
     grid on;
     matlab2tikz('.\plots\clcd.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
 
-
     figure;
     hold on;
     alpha = alpha(2:end);
+    plot(rad2deg(alpha), aerirve.getCMCLCD(alpha));
+    plot(rad2deg(alpha), aerapollo.getCMCLCD(alpha));
+    plot(rad2deg(alpha), aerisotensoid.getCMCLCD(alpha));
+    plot(rad2deg(alpha), aerballute.getCMCLCD(alpha));
+    xlabel('$\alpha [deg]$', 'interpreter', 'latex');
+    ylabel('$\frac{C_M}{\left({C_L}/{C_D}\right)} [-]$', 'interpreter', 'latex');
+    legend('Stacked Toroid, Tension Cone', 'Rigid', 'Isotensoid', 'Trailing Ballute', 'Location', 'northoutside');
+    grid on;
+    matlab2tikz('.\plots\cmclcd.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);     
+
+    figure;
+    hold on;
     plot(rad2deg(alpha), aerirve.getCMCL(alpha));
     plot(rad2deg(alpha), aerapollo.getCMCL(alpha));
     plot(rad2deg(alpha), aerisotensoid.getCMCL(alpha));
@@ -112,4 +135,6 @@ if true
     legend('Stacked Toroid, Tension Cone', 'Rigid', 'Isotensoid', 'Trailing Ballute', 'Location', 'northoutside');
     grid on;
     matlab2tikz('.\plots\cmcl.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
+    
+   
 end
