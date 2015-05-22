@@ -51,6 +51,7 @@ end
     T(1,:) = out_hk.end.T;
     rho(1,:) = out_hk.end.rho;
     Alpha(1) = alpha;
+    dAlpha_dt(1) = 0;
     CD(1) = CDA / S;
     CL(1) = CLA / S;
     
@@ -136,7 +137,12 @@ end
         T(i+1,:) = out_o.T;
         rho(i+1,:) = out_o.rho;
         Alpha(i+1) = state.alpha;
-
+        if i < 1
+               dAlpha_dt(i+1) = 0;
+        else
+               %dAlpha_dt(i+1) = (Alpha(i-1) - 4*Alpha(i) + 3*Alpha(i+1))/(dt_atmos * 2);
+               dAlpha_dt(i+1) = (Alpha(i+1) - Alpha(i))/(dt_atmos);
+        end
         
         if out_c.crash || out_c.flyby || out_c.t_end || ( (multiple_orbits == false) && out_c.orbit)
             orbit = false;
@@ -183,11 +189,11 @@ end
     out.Kp = control.Kp;
     out.Ki = control.Ki;
     out.Kd = control.Kd;
+    out.dAlpha_dt = dAlpha_dt;
+    
     if exist('tkep','var')
         out.tkep = tkep;
         out.okep = out_e.param;
-    else
-        out.tkep = 0;
     end
     
     % output text

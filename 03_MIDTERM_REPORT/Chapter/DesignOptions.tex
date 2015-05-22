@@ -1,15 +1,17 @@
 \section{Conceptual design options} \label{ch:options}
-This chapter will discuss the five design concepts that will be considered in this report. First the selection of concepts based on the shape, mission duration and controls system design option trees is made. For the six configurations of the \gls{br} one is disregarded as it has no additional advantages over the other concepts. In section \ref{sec:conf} the five selected configurations are sketched and described. A simple load analysis is given in the form of \gls{fbd} to gain insight in the functioning of each of the concepts. The following five designs are consequently used for analysis in the relevant chapters of this report. Finally the control systems corresponding to the each of the shape configurations are discussed in chapter \ref{sec:ccs}. A full definition of the control system is not yet given but is rather further detailed in the \gls{fr}. The control systems are just checked whether they are feasible for each concept, and what type of development risk they may incur.
+This chapter will discuss the five design concepts that will be considered in this report. First the selection of concepts based on the shape, mission duration and controls system design option trees is made. For the six configurations of the \gls{br} one is disregarded as it has no additional advantages over the other concepts. In section \ref{sec:conf} the five selected configurations are sketched and described. A simple load analysis is given in the form of \gls{fbd} to gain insight in the functioning of each of the concepts. The following five designs are consequently used for analysis in the relevant chapters of this report. Finally the control systems corresponding to the each of the shape configurations are discussed in chapter \ref{sec:ccs}. A full definition of the control system is not yet given but is rather further detailed in the \gls{fr}. Only the feasibility and risk associated with the various combinations will be assesed.
+
+
 
 \subsection{Concept selection}
- From the \acrfull{br} three \glspl{dot} were obtained for the design of the \gls{hiad}. In these design concepts shape, mission duration and control system were considered. This yielded a set of all the individual design options. These options are shown in Figures \ref{fig:dotshape} to \ref{fig:dotduration}. From these \glspl{dot} a feasible set of design options can be obtained. In Figure  \ref{fig:dotshape} six deemed feasible concept configurations are distinguished. This can consequently be combined with three possible control systems from Figure  \ref{fig:dotcontrol}. The mission duration varies for all concepts and is therefore considered separately for every design concept. The mission duration appears in the form of a trade-off criterion discussed further in chapter \ref{ch:tradeoff} discussing the trade-off criteria.
+ From the \acrfull{br} three \glspl{dot} were obtained for the design of the \gls{hiad}. In these design concepts shape, mission duration and control system were considered. This yielded a set of all the individual design options. These options are shown in Figures \ref{fig:dotshape} to \ref{fig:dotduration}. From these \glspl{dot} a feasible set of design options can be obtained. In Figure  \ref{fig:dotshape} six concept configurations deemed feasible are distinguished. These can be combined with three possible control systems from Figure  \ref{fig:dotcontrol}. The mission duration varies for all concepts and is therefore considered separately for every design concept. The mission duration appears in the form of a trade-off criterion discussed further in chapter \ref{ch:tradeoff} discussing the trade-off criteria.
 
 \begin{figure}[H]
 %\centering
 \hspace{-23mm}
 \includegraphics[width = 1.25\textwidth]{Figure/DOT_configuration.pdf}
 \vspace{-5mm}
-\caption{\acrlong{dot} for entry vehicle configurations}
+\caption{\acrfull{dot} for entry vehicle configurations}
 \label{fig:dotshape}
 \end{figure}
 
@@ -17,7 +19,7 @@ This chapter will discuss the five design concepts that will be considered in th
 \centering
 \includegraphics[width = 0.93\textwidth]{Figure/DOT_control.pdf}
 \vspace{-5mm}
-\caption{\acrlong{dot} for control systems}
+\caption{\acrfull{dot} for control systems}
 \label{fig:dotcontrol}
 \end{figure}
 
@@ -25,7 +27,7 @@ This chapter will discuss the five design concepts that will be considered in th
 \centering
 \includegraphics[width = 1.0\textwidth]{Figure/DOT_missionduration.pdf}
 \vspace{-5mm}
-\caption{\acrlong{dot} for mission duration}
+\caption{\acrfull{dot} for mission duration}
 \label{fig:dotduration}
 \end{figure}
 
@@ -59,12 +61,14 @@ In this section the global configuration of each of the final five shapes is con
 
 \paragraph{Stacked toroid}
 
-Figures \ref{fig:conc_stacked} and \ref{fig:fbd_stacked} show the stacked toroid concept. A stacked toroid configuration features multiple inflatables which are stacked together to form the aeroshell. These inflatables are consequently covered with a thermal protection layer. In this design the payload is placed aft of the aeroshell.\
+Figures \ref{fig:conc_stacked} and \ref{fig:fbd_stacked} show the stacked toroid concept. A stacked toroid configuration features multiple inflatables which are stacked together to form the aeroshell. These inflatables are consequently covered with a thermal protection layer. In this design the payload is placed aft of the aeroshell.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width = 0.5\textwidth]{Figure/ISO_comp.eps}
-\caption{A schematic view of a stacked toroid configuration}
+\includegraphics[width = 0.45\textwidth]{Figure/stacked_toroid.eps}
+
+\caption{An impression of a stacked toroid configuration. Courtesy of Irene Heemskerk.}
+
 \label{fig:conc_stacked}
 \end{figure}
 
@@ -84,8 +88,10 @@ An isotensoid configuration as displayed in Figures \ref{fig:conc_iso} and \ref{
 
 \begin{figure}[H]
 \centering
-\includegraphics[width = 0.5\textwidth]{Figure/ISO_comp.eps}
-\caption{A schematic view of a isotensoid configuration}
+\includegraphics[width = 0.45\textwidth]{Figure/isotensoid.eps}
+
+\caption{An impression of an isotensoid configuration. Courtesy of Irene Heemskerk.}
+
 \label{fig:conc_iso}
 \end{figure}
 
@@ -100,12 +106,14 @@ From Figure  \ref{fig:fbd_iso} it may be observed that the inflatable bladder is
 
 \paragraph{Tension cone}
 
-A tension cone, as shown in Figure  \ref{fig:conc_tension} and \ref{fig:fbd_tension} again consists only of a single inflatable. In this case the inflatable is ring formed, using the ring to provide stiffness to a membrane spanned within. In this configuration the aeroshell is placed in front of the payload, warping around it in some extend.
+A tension cone, as shown in Figure  \ref{fig:conc_tension} and \ref{fig:fbd_tension} again consists only of a single inflatable. In this case the inflatable is ring shaped, using the ring to provide stiffness to a membrane spanned within. In this configuration the aeroshell is placed in front of the payload, warping around it in some extend.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width = 0.5\textwidth]{Figure/ISO_comp.eps}
-\caption{A schematic view of a tension cone configuration}
+\includegraphics[width = 0.45\textwidth]{Figure/tension_cone.eps}
+
+\caption{An impression of of a tension cone configuration. Courtesy of Irene Heemskerk.}
+
 \label{fig:conc_tension}
 \end{figure}
 
@@ -124,8 +132,10 @@ Figures \ref{fig:conc_trailing} and \ref{fig:fbd_trailing} show a trailing confi
 
 \begin{figure}[H]
 \centering
-\includegraphics[width = 0.5\textwidth]{Figure/ISO_comp.eps}
-\caption{A schematic view of a trailing configuration}
+\includegraphics[width = 0.5\textwidth]{Figure/trailing_ballute.eps}
+
+\caption{An impression of a trailing configuration. Courtesy of Irene Heemskerk.}
+
 \label{fig:conc_trailing}
 \end{figure}
 
@@ -144,8 +154,10 @@ The rigid configuration is the most typical configuration and frequently used, f
 
 \begin{figure}[H]
 \centering
-\includegraphics[width = 0.5\textwidth]{Figure/ISO_comp.eps}
-\caption{A schematic view of a rigid configuration}
+
+\includegraphics[angle=180, width = 0.3\textwidth]{Figure/rigid.eps}
+\caption{An impression of a rigid configuration. Courtesy of Irene Heemskerk.}
+
 \label{fig:conc_rigid}
 \end{figure}
 
