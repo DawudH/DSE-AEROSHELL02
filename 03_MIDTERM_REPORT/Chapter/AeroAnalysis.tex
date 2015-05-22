@@ -1,6 +1,6 @@
 \section{Aerodynamic concept analysis}
 \label{ch:aero_analysis}
-In order to analyse the aerodynamic characteristics of the proposed concepts a software tool was developed. This chapter will deal with the development and implementation of this program. The aerodynamic tool is developed to be able to assess the performance of the different system concepts on the different trade-off criteria as defined in Chapter \ref{ch:tfsum}: the lift gradient \gls{sym:cla-alpha} relates to the deceleration time and the moment stability \gls{sym:cma-alpha} relates to the static stability of the decelerator. In order to calculate these values, the concept shapes are discretised in triangles, and for each triangle the pressure coefficient \gls{sym:cp} is calculated. This can then be integrated over the surface to obtain lift, drag and moment. Also, the maximum heat flux $\gls{sym:qdot}_w$ is determined for each concept, which is used to determine the thermal protection system mass. 
+In order to analyse the aerodynamic characteristics of the proposed concepts a software tool was developed. This chapter will deal with the development and implementation of this program. The aerodynamic tool is developed to be able to assess the performance of the different system concepts on the different trade-off criteria as defined in Chapter \ref{ch:tfsum}: the lift gradient \gls{sym:cl-alpha}\gls{sym:A} relates to the deceleration time and the moment stability \gls{sym:cm-alpha}\gls{sym:A} relates to the static stability of the decelerator. In order to calculate these values, the concept shapes are discretised in triangles, and for each triangle the pressure coefficient \gls{sym:cp} is calculated. This can then be integrated over the surface to obtain lift, drag and moment. Also, the maximum heat flux $\gls{sym:qdot}_w$ is determined for each concept, which is used to determine the thermal protection system mass. 
 The chapter will start with a description of the analysis method used to determine the different aerodynamic properties of the various concepts in section \ref{subsec:aerotool}. The verification and validation of the analysis tool is discussed in section \ref{subsec:aeroverval}. Finally the developed analysis method is used to analyse the various system concepts and generate the required data for the trade off. 
 
 \subsection{Development of aerodynamic analysis tool}
@@ -160,36 +160,36 @@ The model for the maximum heat flux found on a body was validated in section \re
 \label{subsec:appaeroanal}
 After the model development and validation, the different system concepts are evaluated on performance in the different trade-off criteria. Specifically, the lift, moment and aerodynamic heating are discussed. They are all related to the trade-off criteria as defined in Chapter \ref{ch:tradeoff}. Firstly, the relation between the aerodynamic properties and the trade-off criteria is discussed. After that, the results from the aerodynamic analysis is given.
 
-The stability trade-off criterion is given by the static stability of the vehicle. This is characterised by the pitch moment gradient \gls{sym:cma-alpha}: if a positive angle of attack leads to a negative moment, the angle of attack is restored by the induced moment. This leads to a spacecraft that is less reactant to disturbances in the atmosphere, which leads to a less strict requirement on the control system keep the spacecraft pointed in the desired direction. A positive value of \gls{sym:cma-alpha} means the spacecraft is not stable, and the control system will have to very actively monitor the spacecraft in order for it to not diverge from the nominal condition.
+The stability trade-off criterion is given by the static stability of the vehicle. This is characterised by the pitch moment gradient \gls{sym:cm-alpha}\gls{sym:A}: if a positive angle of attack leads to a negative moment, the angle of attack is restored by the induced moment. This leads to a spacecraft that is less reactant to disturbances in the atmosphere, which leads to a less strict requirement on the control system keep the spacecraft pointed in the desired direction. A positive value of \gls{sym:cm-alpha}\gls{sym:A} means the spacecraft is not stable, and the control system will have to very actively monitor the spacecraft in order for it to not diverge from the nominal condition.
 
 Aerodynamic drag is used as the method to decelerate the vehicle from over escape velocity to $\gls{sym:M}=5$ before landing. The drag Equation is given in Eq. \ref{eq:drag}.
 \begin{equation} \label{eq:drag}
-\gls{sym:D} = \frac{1}{2}\gls{sym:rho}\gls{sym:V}^2\gls{sym:cda}
+\gls{sym:D} = \frac{1}{2}\gls{sym:rho}\gls{sym:V}^2\gls{sym:CD}\gls{sym:A}
 \end{equation}
-As can be seen, the drag is dependent on the drag coefficient of the spacecraft as well as the density. In this sense, the maximum deceleration limit can be achieved by having the lowest part of an orbit lower if the drag coefficient is lower as well. Then, the higher density compensates for the low drag coefficient to produce the same force as a spacecraft with a high drag coefficient. In this way, the drag coefficient is not a key driver for the design. However, the spacecraft can influence its time in the atmosphere by producing lift: if the spacecraft were to fly out of the atmosphere, a downward pointing lift would divert it's trajectory more through the atmosphere. The spacecraft's ability to influence this trajectory through the atmosphere is thus characterised by the amount of lift that can be produced. This is characterised by the lift coefficient times the area of the spacecraft \gls{sym:cla}.
+As can be seen, the drag is dependent on the drag coefficient of the spacecraft as well as the density. In this sense, the maximum deceleration limit can be achieved by having the lowest part of an orbit lower if the drag coefficient is lower as well. Then, the higher density compensates for the low drag coefficient to produce the same force as a spacecraft with a high drag coefficient. In this way, the drag coefficient is not a key driver for the design. However, the spacecraft can influence its time in the atmosphere by producing lift: if the spacecraft were to fly out of the atmosphere, a downward pointing lift would divert it's trajectory more through the atmosphere. The spacecraft's ability to influence this trajectory through the atmosphere is thus characterised by the amount of lift that can be produced. This is characterised by the lift coefficient times the area of the spacecraft \gls{sym:CL}\gls{sym:A}.
 
 \subsubsection{Trade-off criteria justification} \label{sec:tradeoffaero}
 In this section, the quantification method of the trade-off criteria relating to aerodynamics is justified.
 
-The stability trade-off criterion is given by the static stability of the vehicle. This is characterised by the pitch moment gradient \gls{sym:cma-alpha}: For a negative \gls{sym:cma-alpha}, a positive angle of attack leads to a negative moment, such that the angle of attack is restored by the induced moment. This leads to a spacecraft that is less reactant to disturbances in the atmosphere, which leads to a less strict requirement on the control system to keep the spacecraft pointed in the desired direction. A positive value of \gls{sym:cma-alpha} means the spacecraft is not stable, and the control system will have to very actively monitor the spacecraft in order for it to not diverge from the required attitude. \\
+The stability trade-off criterion is given by the static stability of the vehicle. This is characterised by the pitch moment gradient \gls{sym:cm-alpha}\gls{sym:A}: For a negative \gls{sym:cm-alpha}\gls{sym:A}, a positive angle of attack leads to a negative moment, such that the angle of attack is restored by the induced moment. This leads to a spacecraft that is less reactant to disturbances in the atmosphere, which leads to a less strict requirement on the control system to keep the spacecraft pointed in the desired direction. A positive value of \gls{sym:cm-alpha}\gls{sym:A} means the spacecraft is not stable, and the control system will have to very actively monitor the spacecraft in order for it to not diverge from the required attitude. \\
 
 
 Aerodynamic drag is used as the method to decelerate the vehicle from the initial velocity to $\gls{sym:M}=5$ before landing. The drag equation is given in Eq. \ref{eq:drag}.
 
 \begin{equation} \label{eq:drag}
-\gls{sym:D} = \frac{1}{2}\gls{sym:rho}\gls{sym:V}^2\gls{sym:cda}
+\gls{sym:D} = \frac{1}{2}\gls{sym:rho}\gls{sym:V}^2\gls{sym:CD}\gls{sym:A}
 \end{equation}
 \begin{equation} \label{eq:lift}
-\gls{sym:L} = \frac{1}{2}\gls{sym:rho}\gls{sym:V}^2\gls{sym:cla}
+\gls{sym:L} = \frac{1}{2}\gls{sym:rho}\gls{sym:V}^2\gls{sym:CL}\gls{sym:A}
 \end{equation}
 
 The lift is defined as the component of the aerodynamic force perpendicular to the flow, where the direction away from Mars is defined positive. The drag component is defined parallel to the flow. For blunt bodies in hypersonic flow with the blunt side pointed towards the oncoming flow, a positive angle of attack results in a negative lift.
 
-The drag and lift are dependent on the drag and lift coefficients of the spacecraft as well as the density. As can be seen in Figure \ref{fig:atmos_height_rho}, the density is significantly higher in lower parts of the atmosphere. For a given \gls{sym:cda}, the maximum deceleration can be chosen by varying the lowest part of the orbit: a higher density compensates for a low drag coefficient to produce the same force as a spacecraft with a high drag coefficient and a low density. Because of the large variation of density in the atmosphere, it is possible to find a trajectory for any \gls{sym:cda}. Thus, the drag coefficient itself is not a key driver for the design. However, the spacecraft can influence its deceleration time in the atmosphere by producing lift: if the spacecraft were to fly out of the atmosphere, a downward pointing lift would divert it's trajectory more through the atmosphere. The ability of the spacecraft to influence this trajectory through the atmosphere is characterised by the amount of lift that can be produced, with respect to the amount of drag produced at the same \gls{sym:alpha}. The dependence on drag is due to the fact that two spacecraft with the same \gls{sym:clcd} but a different \gls{sym:cda}, will just have the lowest part of the trajectory in a different height, where the total lift and drag force will be the same for both spacecraft. Therefore, the deceleration time is characterised by \gls{sym:clcd}. \\
+The drag and lift are dependent on the drag and lift coefficients of the spacecraft as well as the density. As can be seen in Figure \ref{fig:atmos_height_rho}, the density is significantly higher in lower parts of the atmosphere. For a given \gls{sym:CD}\gls{sym:A}, the maximum deceleration can be chosen by varying the lowest part of the orbit: a higher density compensates for a low drag coefficient to produce the same force as a spacecraft with a high drag coefficient and a low density. Because of the large variation of density in the atmosphere, it is possible to find a trajectory for any \gls{sym:CD}\gls{sym:A}. Thus, the drag coefficient itself is not a key driver for the design. However, the spacecraft can influence its deceleration time in the atmosphere by producing lift: if the spacecraft were to fly out of the atmosphere, a downward pointing lift would divert it's trajectory more through the atmosphere. The ability of the spacecraft to influence this trajectory through the atmosphere is characterised by the amount of lift that can be produced, with respect to the amount of drag produced at the same \gls{sym:alpha}. The dependence on drag is due to the fact that two spacecraft with the same $\frac{\gls{sym:CL}}{\gls{sym:CD}}$ but a different \gls{sym:CD}\gls{sym:A}, will just have the lowest part of the trajectory in a different height, where the total lift and drag force will be the same for both spacecraft. Therefore, the deceleration time is characterised by $\frac{\gls{sym:CL}}{\gls{sym:CD}}$. \\
 
 The mass of the decelerator is composed of the structural mass, the \gls{tps} mass and the control system mass. 
 The \gls{tps} mass is estimated based on the heat load on the spacecraft, which is the integral of the heat flux over time. This heat load is the total amount of heat supplied to the spacecraft between initial entry and final descent, and estimates the total amount of energy the \gls{tps} has to withstand. This can thus be used to size the thickness of the \gls{tps}, which leads directly to the mass of the system.
-The control system mass is based on the moment that the control system has to provide. The spacecraft has to fly at a given lift to drag ratio to maintain its trajectory. These lift to drag ratios are obtained at a certain angle of attack. This angle of attack in turn corresponds to a moment produced by the spacecraft. To maintain a stable trajectory, this moment needs to be counteracted by the spacecraft control systems. The greater the moment that needs to be counteracted, the greater the required control system mass will be. Therefore the ratio between the lift to drag ratio required and the moment coefficient that is required to maintain this lift to drag ratio will indicate the required control system mass. This ratio is given by \gls{sym:cmclcd}
+The control system mass is based on the moment that the control system has to provide. The spacecraft has to fly at a given lift to drag ratio to maintain its trajectory. These lift to drag ratios are obtained at a certain angle of attack. This angle of attack in turn corresponds to a moment produced by the spacecraft. To maintain a stable trajectory, this moment needs to be counteracted by the spacecraft control systems. The greater the moment that needs to be counteracted, the greater the required control system mass will be. Therefore the ratio between the lift to drag ratio required and the moment coefficient that is required to maintain this lift to drag ratio will indicate the required control system mass. This ratio is given by $\frac{\gls{sym:CM}}{\frac{\gls{sym:CL}}{\gls{sym:CD}}}$.
 
 In order to assess these values, a representative geometry is chosen. Since Newtonian flow only affects the parts of the vehicle that are in direct line of sight of the oncoming flow, only the front of the decelerator has to be accurately modelled. The stacked toroid and tension cone concepts are modelled after the \gls{irve} missions as flown by NASA, as can be seen in Figure \ref{fig:cpstackedtoroid}. The isotensoid model is modelled as a slightly flattened sphere, with a radius of 6 meters perpendicular and a radius of 5 meter in direction of the flow. This model can be seen in Figure \ref{fig:cpisotensoid}. The Trailing ballute is modelled as a single torus trailing body comparable to the rigid concept., as seen in Figure \ref{fig:cpballute}, and the rigid concept's front is a largely flattened sphere, as seen in Figure \ref{fig:cprigid}.
 
@@ -223,17 +223,17 @@ In order to assess these values, a representative geometry is chosen. Since Newt
 \subsubsection{Lift performance}
 The lift is defined as the component of the aerodynamic force perpendicular to the flow, where the direction away from Mars is defined positive. The Equation used to calculate the total lift of a vehicle is given in Eq \ref{eq:lift}.
 \begin{equation}
-\gls{sym:L} = \frac{1}{2}\gls{sym:rho}\gls{sym:V}^2\gls{sym:cla}
+\gls{sym:L} = \frac{1}{2}\gls{sym:rho}\gls{sym:V}^2\gls{sym:CL}\gls{sym:A}
 \label{eq:lift}
 \end{equation}
-This $\gls{sym:cla}$ is the lift coefficient multiplied with the reference area and as such gives insight in the lift generation of a given spacecraft, incorporating its size. For blunt vehicles with a blunt surface perpendicular to the flow, a positive angle of attack $\gls{sym:alpha}$ results in a negative lift.
+This $\gls{sym:CL}\gls{sym:A}$ is the lift coefficient multiplied with the reference area and as such gives insight in the lift generation of a given spacecraft, incorporating its size. For blunt vehicles with a blunt surface perpendicular to the flow, a positive angle of attack $\gls{sym:alpha}$ results in a negative lift.
 
 In Figure \ref{fig:clplots}, the lift coefficient can be seen to vary greatly for the different concepts: the stacked toroid and tension cone produce about 3 times the lift of the other concepts. This is also reflected in the lift gradient plot, which can be found in \ref{fig:claplha}. The lift gradient plot is the graph that provides the information needed for the trade-off, since the lift gradient determines how much the control system has to change the angle of attack to achieve a given lift. It is clear that the stacked toroid and tension cone have the greatest lift and lift gradient, while the trailing ballute follows closely. The other two concepts offer a significantly less lift performance. The lift and lift gradient at an angle of attack of $\gls{sym:alpha}=20^\circ$ are summarized in Table \ref{tab:clcdift}.
 
 
 
 \subsubsection{Deceleration performance}
-$\gls{sym:clcd}$ is the lift coefficient divided by the drag coefficient. In Figure \ref{fig:clcd}, a graph is presented showing the lift over drag ratios of the different concepts for different angles of attack.
+$\frac{\gls{sym:CL}}{\gls{sym:CD}}$ is the lift coefficient divided by the drag coefficient. In Figure \ref{fig:clcd}, a graph is presented showing the lift over drag ratios of the different concepts for different angles of attack.
 
 
 \begin{figure}[h]
@@ -242,17 +242,17 @@ $\gls{sym:clcd}$ is the lift coefficient divided by the drag coefficient. In Fig
 		\setlength\figureheight{0.8\textwidth} 
 		\setlength\figurewidth{0.75\textwidth}
 		\input{./Figure/aero_model/clcd.tikz}
-		\caption{$\gls{sym:clcd}$}
+		\caption{$\frac{\gls{sym:CL}}{\gls{sym:CD}}$}
 		\label{fig:clcd}
 	\end{subfigure}
 	\begin{subfigure}{0.49\textwidth}
 		\setlength\figureheight{0.8\textwidth} 
 		\setlength\figurewidth{0.75\textwidth}
 		\input{./Figure/aero_model/cmcl.tikz}	
-		\caption{$\gls{sym:cmcl}$}
+		\caption{$\frac{\gls{sym:CM}}{\gls{sym:CL}}$}
 		\label{fig:cmcl}
 	\end{subfigure}
-	\caption{Comparisons of the different concepts for $\gls{sym:clcd}$ and $\gls{sym:cmcl}$. $\gls{sym:M}=20[-]$, $\gls{sym:gamma}=1.29[-]$}
+	\caption{Comparisons of the different concepts for $\frac{\gls{sym:CL}}{\gls{sym:CD}}$ and $\frac{\gls{sym:CM}}{\gls{sym:CL}}$. $\gls{sym:M}=20[-]$, $\gls{sym:gamma}=1.29[-]$}
 	\label{fig:cmcl-clcd}
 \end{figure}
 
@@ -263,7 +263,7 @@ The lift over drag ratio seems to be linear up until around $\gls{sym:alpha}=20 
 	\label{tab:clcd}% LABEL HERE
 	\begin{tabular}{|p{0.36\textwidth}|p{0.23\textwidth}|p{0.31\textwidth}|}
 		\hline
-		\textbf{Concept}  				& \textbf{$\gls{sym:clcd}$}	& \textbf{Fraction of stacked toroid}	\\ \hline \hline
+		\textbf{Concept}  				& \textbf{$\frac{\gls{sym:CL}}{\gls{sym:CD}}$}	& \textbf{Fraction of stacked toroid}	\\ \hline \hline
 		Stacked toroid, tension cone	& -0.176     				& 1								\\ \hline
 		Rigid  							& -0.311					& 1.764						\\ \hline
 		Isotensoid  					& -0.072					& 0.410						\\ \hline
@@ -277,14 +277,14 @@ The lift over drag ratio seems to be linear up until around $\gls{sym:alpha}=20 
 		\setlength\figureheight{0.8\textwidth} 
 		\setlength\figurewidth{0.75\textwidth}
 		\input{./Figure/aero_model/cl.tikz}
-		\caption{$\gls{sym:cla}$}
+		\caption{$\gls{sym:CL}\gls{sym:A}$}
 		\label{fig:cl}
 	\end{subfigure}
 	\begin{subfigure}[b]{0.49\textwidth}
 		\setlength\figureheight{0.8\textwidth} 
 		\setlength\figurewidth{0.75\textwidth}
 		\input{./Figure/aero_model/clalpha.tikz}
-		\caption{$\gls{sym:cla-alpha}$}
+		\caption{$\gls{sym:cl-alpha}\gls{sym:A}$}
 		\label{fig:claplha}
 	\end{subfigure}
 	\caption{Comparisons of the lift characteristics of the different concepts}
@@ -294,14 +294,14 @@ The lift over drag ratio seems to be linear up until around $\gls{sym:alpha}=20 
 \subsubsection{Aerodynamic moments}
 The moment coefficients of the different concepts around their centres of gravity, the derivatives of the moment coefficient with respect to alpha and the moment coefficient divided by the lift coefficient are plotted in Figures \ref{fig:cm}, \ref{fig:cmalpha} and \ref{fig:cmplots} respectively. The centre of gravity of the decelerator is assumed to be in the geometric centroid of the decelerator. The centre of gravity of the crew module is assumed to be at 1/3 of the height of the crew module, which itself is assumed to be five meters high. This assumption rests on the expectation that the crew module will be packaged in a way that increases the stability of the vehicle. This requires a centre of gravity as far forward as possible. The centre of gravities of the decelerator and the crew module are then combined to obtain the vehicle centre of gravity. 
 
-The stability of the vehicle can be determined from $\gls{sym:cma}$ and $\gls{sym:cma-alpha}$. As can be seen in Figures \ref{fig:cm} and \ref{fig:cmalpha}, the ballute, stacked toroid and the tension cone configurations are statically stable. The rigid concept is marginally stable, and the isotensoid is unstable. Table \ref{tab:MomentCoeff} compares the values of $\gls{sym:CM}$ and $\gls{sym:cma}$ at an angle of attack of twenty degrees. 
+The stability of the vehicle can be determined from $\gls{sym:CM}\gls{sym:A}$ and $\gls{sym:cm-alpha}\gls{sym:A}$. As can be seen in Figures \ref{fig:cm} and \ref{fig:cmalpha}, the ballute, stacked toroid and the tension cone configurations are statically stable. The rigid concept is marginally stable, and the isotensoid is unstable. Table \ref{tab:MomentCoeff} compares the values of $\gls{sym:CM}$ and $\gls{sym:CM}\gls{sym:A}$ at an angle of attack of twenty degrees. 
  
 \begin{table}[H]
 	\caption{Moment and Moment gradient of the different concepts at $\gls{sym:alpha}=20^\circ$}% CAPTION HERE !
 	\label{tab:MomentCoeff}% LABEL HERE
 	\begin{tabular}{|p{0.4\textwidth}|p{0.25\textwidth}|p{0.25\textwidth}|}
 		\hline
-		Concept name  					& $\gls{sym:cma}$	& $\gls{sym:cma-alpha}$	\\ \hline \hline
+		Concept name  					& $\gls{sym:CM}\gls{sym:A}$	& $\gls{sym:cm-alpha}\gls{sym:A}$	\\ \hline \hline
 		Stacked Toroid, Tension Cone	& -134    		& -277				\\ \hline
 		Rigid  							& -3.70			& -8.57				\\ \hline
 		Isotensoid  					& 52.7				& 20.3				\\ \hline
@@ -317,7 +317,7 @@ The stability of the vehicle can be determined from $\gls{sym:cma}$ and $\gls{sy
 		\setlength\figurewidth{0.75\textwidth}
 		\input{./Figure/aero_model/cm.tikz}		
 
-		\caption{$\gls{sym:cma}$}
+		\caption{$\gls{sym:CM}\gls{sym:A}$}
 		\label{fig:cm}
 	\end{subfigure}
 	\begin{subfigure}[b]{0.49\textwidth}
@@ -326,7 +326,7 @@ The stability of the vehicle can be determined from $\gls{sym:cma}$ and $\gls{sy
 		\setlength\figurewidth{0.75\textwidth}
 		\input{./Figure/aero_model/cmalpha.tikz}		
 
-		\caption{$\gls{sym:cma-alpha}$}
+		\caption{$\gls{sym:cm-alpha}\gls{sym:A}$}
 		\label{fig:cmalpha}
 	\end{subfigure}
 	\caption{Comparisons of the aerodynamic moment characteristics of the different concepts}
@@ -334,7 +334,7 @@ The stability of the vehicle can be determined from $\gls{sym:cma}$ and $\gls{sy
 \end{figure}
 
 \subsubsection{Control system mass estimation}
-To estimate the relative control system masses the absolute value of the ratio \gls{sym:cmclcd} at $\gls{sym:alpha}=20\deg$ is determined for all concepts. The values of this parameter are shown in Table \ref{tab:controlmass}.
+To estimate the relative control system masses the absolute value of the ratio $\frac{\gls{sym:CM}}{\frac{\gls{sym:CL}}{\gls{sym:CD}}}$ at $\gls{sym:alpha}=20\deg$ is determined for all concepts. The values of this parameter are shown in Table \ref{tab:controlmass}.
 
 \begin{table}[h]
 	\centering
@@ -342,7 +342,7 @@ To estimate the relative control system masses the absolute value of the ratio \
 	\begin{tabular}{|c|c|c|}
 
 		\hline
-		\textbf{Concept} & \textbf{\gls{sym:cmclcd}} [-] & \textbf{Fraction of stacked toroid} \\ \hline \hline
+		\textbf{Concept} & $\mathbf{\frac{\gls{sym:CM}}{\frac{\gls{sym:CL}}{\gls{sym:CD}}}}$ [-] & \textbf{Fraction of stacked toroid} \\ \hline \hline
 
 		Stacked toroid, tension cone & $0.045$ & $1.00$\\
 		Rigid & $0.015$ & $0.34$ \\
@@ -353,12 +353,12 @@ To estimate the relative control system masses the absolute value of the ratio \
 	\label{tab:controlmass}
 \end{table}
 
-The \gls{sym:cmclcd}-fractions shown in Table \ref{tab:controlmass} will be used in Chapter \ref{ch:tfsum} as input for the trade-off procedure. It should be noted here that the analysis methods used to predict these required control system moments do not take into account dynamic behaviour, as the analysis is carried out under the assumption of steady flow.
+The $\frac{\gls{sym:CM}}{\frac{\gls{sym:CL}}{\gls{sym:CD}}}$-fractions shown in Table \ref{tab:controlmass} will be used in Chapter \ref{ch:tfsum} as input for the trade-off procedure. It should be noted here that the analysis methods used to predict these required control system moments do not take into account dynamic behaviour, as the analysis is carried out under the assumption of steady flow.
 
 \subsection{Conclusion}
 As can be seen in Table \ref{tab:clcd}, the performance of the different concepts on the trade-off criteria can now be assessed. The deceleration time performance of the rigid structure is the highest of the researched shapes, with a lift over drag ratio almost $80\%$ higher than that of the stacked toroid. The isotensoid has a performance more similar to the stacked toroid and tension cone, being around $20\%$ better. The isotensoid has the worst performance compared to the stacked toroid and tension cone, being almost $60\%$ worse.
 
-For stability, the performance can be found in Table \ref{tab:MomentCoeff}. A negative $\gls{sym:cma-alpha}$ means the spacecraft is stable. It is clear the isotensoid has a very bad performance: it's $\gls{sym:cma-alpha}>0$, meaning it is unstable, which is very undesirable. The rigid body is neutrally stable, which is not desirable either. The stacked toroid, tension cone and trailing ballute offer comparable performance, depending on the angle of attack that is looked at.
+For stability, the performance can be found in Table \ref{tab:MomentCoeff}. A negative $\gls{sym:cm-alpha}\gls{sym:A}$ means the spacecraft is stable. It is clear the isotensoid has a very bad performance: it's $\gls{sym:cm-alpha}\gls{sym:A}>0$, meaning it is unstable, which is very undesirable. The rigid body is neutrally stable, which is not desirable either. The stacked toroid, tension cone and trailing ballute offer comparable performance, depending on the angle of attack that is looked at.
 
-Finally, as can be seen in Table \ref{tab:controlmass}, there are big differences in $\gls{sym:cmcl}$. As explained in \ref{sec:tradeoffaero}, a lower $\gls{sym:cmcl}$ leads to a lower control system mass. The stacked toroid and tension cone perform similarly but offer the worst performance, while the isotensoid performs very similarly, but is unstable. The trailing ballute is slightly better, but the rigid structure is by far the best option in this respect, having a $93\%$ lower $\gls{sym:cmcl}$.
+Finally, as can be seen in Table \ref{tab:controlmass}, there are big differences in $\frac{\gls{sym:CM}}{\gls{sym:CL}}$. As explained in \ref{sec:tradeoffaero}, a lower $\frac{\gls{sym:CM}}{\gls{sym:CL}}$ leads to a lower control system mass. The stacked toroid and tension cone perform similarly but offer the worst performance, while the isotensoid performs very similarly, but is unstable. The trailing ballute is slightly better, but the rigid structure is by far the best option in this respect, having a $93\%$ lower $\frac{\gls{sym:CM}}{\gls{sym:CL}}$.
 
