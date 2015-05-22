@@ -19,11 +19,17 @@ function [out] = aero_conrol(state,control,aero_coef,dt)
         error_D = (e - control.error) / dt; 
         dalpha = ( control.Kp * e * control.dalpha + control.Ki * error_I * control.dalpha + control.Kd * error_D * control.dalpha);
         dalpha_beun = dalpha;
+
         if (control.dalpha > 0) && (dalpha > control.dalpha)
             dalpha = control.dalpha;
+        elseif (control.dalpha > 0) && (dalpha < -control.dalpha)
+            dalpha = -control.dalpha;
+        elseif (control.dalpha < 0) && (dalpha > -control.dalpha)
+             dalpha = -control.dalpha;
         elseif (control.dalpha < 0) && (dalpha < control.dalpha)
-            dalpha = control.dalpha;
+             dalpha = control.dalpha;
         end
+
         
         alpha = state.alpha + dalpha;
         if ( alpha < min(control.alpha_range) )
@@ -72,5 +78,5 @@ function [out] = aero_conrol(state,control,aero_coef,dt)
     out.alpha = alpha;
     out.error = e;
     out.error_I = error_I;
-    disp(['error: ' num2str(e) ' error_I: ' num2str(error_I) ' error_D: ' num2str(error_D) ' dalpha_beun: ' num2str(dalpha_beun) ' dalpha: ' num2str(dalpha) ' alpha: ' num2str(alpha*180/pi)])
+    %disp(['error: ' num2str(e) ' error_I: ' num2str(error_I) ' error_D: ' num2str(error_D) ' dalpha_beun: ' num2str(dalpha_beun) ' dalpha: ' num2str(dalpha) ' alpha: ' num2str(alpha*180/pi)])
 end
