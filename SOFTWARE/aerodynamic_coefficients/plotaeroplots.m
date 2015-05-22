@@ -26,7 +26,7 @@ disp(strcat('clalpha of isotensoid: ', num2str(aerisotensoid.getMomentGradient(a
 disp(strcat('clalpha of ballute: ', num2str(aerballute.getMomentGradient(alphasample)), ', percentage: ', num2str(aerballute.getMomentGradient(alphasample)/aerirve.getMomentGradient(alphasample))));
 
 alpha = linspace(0, deg2rad(60), 60);
-if false
+if true
     figure;
     hold on;
     plot(rad2deg(alpha), aerirve.getCLA(alpha));
@@ -131,7 +131,7 @@ if false
     plot(rad2deg(alpha), aerisotensoid.getCMCL(alpha));
     plot(rad2deg(alpha), aerballute.getCMCL(alpha));
     xlabel('$\alpha [deg]$', 'interpreter', 'latex');
-    ylabel('$\frac{C_M}{C_L} [-]$', 'interpreter', 'latex');
+    ylabel('$\frac{C_MA}{C_L} [-]$', 'interpreter', 'latex');
     legend('Stacked Toroid, Tension Cone', 'Rigid', 'Isotensoid', 'Trailing Ballute', 'Location', 'northoutside');
     grid on;
     matlab2tikz('.\plots\cmcl.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
