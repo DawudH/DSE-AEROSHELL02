@@ -282,7 +282,7 @@ In this section the effect of the angle of attack $\left(\gls{sym:alpha}\right)$
 
 In section \ref{sec:astrodec} it was found that a control system will be needed to find an orbit that meets the requirements. In this section the required performance of the control system is outlined.
 
-The control system is required to force the acceleration into a rectangular shape as much as possible. This rectangle should have a height of $3 \gls{sym:g} \left[\frac{m}{s^2}\right]$ acceleration and a width of the time the spacecraft is in the atmosphere. This shape is not even achievable with infinitely good control as the atmosphere is too thin at the outer edges. However with rounded off edges this shape is very well possible. Whether the initial rise has an overshoot, how well the upper limit can be kept and how far the sides of the rectangle are separated is dependent on the performance of the control system.
+The control system is required to force the acceleration into a rectangular shape as much as possible. This rectangle should have a height of $3 \gls{sym:g} \left[\frac{m}{s^2}\right]$ acceleration and a width of the time the spacecraft is in the atmosphere. Even with perfect control this shape is not achievable, as the atmosphere is too thin at the outer edges. However with rounded off edges this shape is very well possible. Whether the initial rise has an overshoot, how well the upper limit can be kept and how far the sides of the rectangle are separated is dependent on the performance of the control system.
 
 In section \ref{sec:tradeoffaero} of Chapter \ref{ch:aero_analysis} the aerodynamic properties that are prefered in order to get as close to an ideal trajectory as possible are shown.
 
@@ -294,8 +294,14 @@ In section \ref{sec:tradeoffaero} of Chapter \ref{ch:aero_analysis} the aerodyna
 	\caption{ CAPTION HERE!! }
 	\label{fig:orbit}
 \end{wrapfigure}
-In this section an orbit for the stacked toroid concept is shown. This is done to show which values for i.e. dynamic pressure $\left(\gls{sym:q}\right)$ are reasonable to use in the other tools. For this purpose a temporary \gls{pid} contoller is put into the simulation which has the goal to keep the acceleration under 3\gls{sym:g}. Although the controller does not always meet this objective the trajectory that is presented here comes as is close to it as currently possible. This will give results that are representable for trajectories that will later be calculated with a better controller.
 
+In this section an orbit for the stacked toroid concept is shown. This is done to show which values for i.e. dynamic pressure $\left(\gls{sym:q}\right)$ are reasonable to use in the other tools. For this purpose a temporary \gls{pid} controller is put into the simulation which has the goal to keep the acceleration under 3\gls{sym:g}. Although the controller does not always meet this objective the trajectory that is presented here comes as is close to it as currently possible. This will give results that are representable for trajectories that will later be calculated with a better controller.
 
+\begin{sidewaysfigure}[h]
+	\centering
+	\includegraphics[width=0.95\textwidth]{Figure/orbital_model/orbit_results.pdf}
+	\caption{ CAPTION HERE!! }
+	\label{fig:orbit_results}
+\end{sidewaysfigure}
 
 ***Plots of output variables for that particular trajectory***\\
