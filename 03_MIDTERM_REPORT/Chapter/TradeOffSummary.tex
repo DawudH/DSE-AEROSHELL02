@@ -1,6 +1,6 @@
 \section{Concept performance in trade-off criteria}\label{ch:tfsum}
 
- A conceptual analysis, described in previous chapters, has been performed to establish concept performance in terms of these criteria. Dialogue with the customer during the \acrfull{mtr} yields a decision for a final concept for preliminary analysis and design. This chapter treats the concept performance for all five selected concepts in terms of the trade-off criteria formulated in Chapter \ref{ch:tradeoff}, namely: decelerator mass, development risk, deceleration time and stability. Control system, \acrfull{tps} and structural masses are distinguished within decelerator mass. Subsequent sections detail concept performance in terms of each of the trade-off criteria.
+ A conceptual analysis, described in previous chapters, has been performed to establish concept performance in terms of these criteria. Dialogue with the customer during the \acrfull{mtr} yields a decision for a final concept for preliminary analysis and design. This chapter treats the concept performance for all five selected concepts in terms of the trade-off criteria formulated in Chapter \ref{ch:tradeoff}, namely: decelerator mass, development risk, deceleration time and stability. Control system, \acrfull{tps} and structural masses are distinguished within decelerator mass. Subsequent sections detail concept performance in terms of each of the trade-off criteria. A overview in the form of a trade-off table is supplied in Appendix \ref{app:trade} to be used for the final trade-off.
 
 \subsection{Decelerator mass}
 Concepts have been evaluated for the three primary components that make up and distinguish concepts: structure, \acrfull{tps} and control system. The structural mass has been estimated using parametric models in Chapter \ref{ch:strucmass}; the \gls{tps} mass via a basic thermal layer analysis in Chapter \ref{ch:thermtool}; the control system mass via the required moments to be generated in Chapter \ref{ch:astrocontrol}.  These masses are given in Table \ref{tab:cmass}. It should be noted that the structural mass excludes connection mass, not taken into account in the mass estimation and deemed equal for all concepts. Hence the summed mass consists of only 85 $\%$ of the decelerator mass. 
@@ -10,15 +10,14 @@ While structural mass has been estimated directly in [kg], the thermal and contr
 \begin{table}[h]
 \centering
 \caption{Concept mass comparison (expressed as percentage of stacked toroid mass)}\label{tab:cmass}
-\hspace{-10mm}
 \begin{tabular}{|p{0.2\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}||p{0.079\textwidth}|}
 
 \hline
                           & \textbf{Structural mass (20 \%)} & \textbf{Thermal mass (50 \%)} & \textbf{Control system mass (15 \%)} & \textbf{Total mass} \\ \hline
 \textbf{Stacked toroid}   &  100                                 & 100                          & 100                                      &\cellcolor{green!70}  100                           \\ \hline
 \textbf{Tension cone}     &  168                               & 100                               &  100                                     &\cellcolor{yellow!70} 116                                 \\ \hline
-\textbf{Trailing ballute} &  221                                 & 84                               & 86                                      &\cellcolor{yellow!70} 117 \\ \hline
-\textbf{Isotensoid}       &  110                                 & 76                               & 99                                      &\cellcolor{green!70} 88 \\ \hline \hline
+\textbf{Trailing ballute} &  221                                 & 84                               & 34                                      &\cellcolor{yellow!70} 107 \\ \hline
+\textbf{Isotensoid}       &  110                                 & 76                               & 122                                      &\cellcolor{green!70} 92 \\ \hline \hline
 \textbf{Rigid}            &  \multicolumn{4}{|p{0.762\textwidth}|}{\cellcolor{red!60} ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Far in excess of 1000 [kg] limit}    \\ \hline
 \end{tabular}
 \end{table}
@@ -47,9 +46,9 @@ The \glspl{trl} of the five selected concepts are stated in Table \ref{tab:gls_r
 The deceleration time is evaluated on the basis of the ratio of lift coefficient over drag coefficient at a selected angle of attack which reflects lift performance of the concepts best, as discussed in Chapter \ref{ch:aero_analysis}. Lift-producing capability reflects the ability of the re-entry vehicle to influence its trajectory and thereby the lift coefficient provides valuable information. The ratio of lift over drag is taken at a specific angle of attack since drag affects the altitude at which is flown and a fair comparison requires to take this into account, as discussed on page 41 of Chapter \ref{ch:aero_analysis}. The higher the lift-to-drag ratio for a concept, the better it is able to adjust its trajectory by moving further into or out of the atmosphere through lift adjustment via control actuators. The lift-to-drag ratio of the five selected concepts can be qualitatively described, as in Table \ref{tab:decel}
 
 \begin{table}[h]
+\centering
 \caption{Review of concept deceleration time}
-\hspace{-20mm}
-\begin{tabular}{|c|c|c|c|c|c|}
+\begin{tabular}{|p{2.5cm}|c|c|c|c|c|}
 \hline
 \textbf{}                          & \textbf{Stacked toroid} & \textbf{Tension cone} & \textbf{Trailing ballute} & \textbf{Isotensoid} & \textbf{Rigid} \\ \hline
 \textbf{Lift-to-drag ratio} & \cellcolor{yellow!75} -0.176  &\cellcolor{yellow!75} -0.176   &\cellcolor{yellow!75} -0.210 & \cellcolor{red!60} -0.072 &\cellcolor{green!70} -0.311              \\ \hline
@@ -60,14 +59,12 @@ The deceleration time is evaluated on the basis of the ratio of lift coefficient
 
 It can be observed from Table \ref{tab:decel} that the best deceleration performance, thus the shortest deceleration time, may be achieved by the rigid concept. It is followed upon by stacked toroid, tension cone and trailing ballute configurations. Since stacked toroid and tension cone analysis is based on the same aerodynamic model, the lift-to-drag ratio for these is the same; the trailing ballute exhibits a slightly higher lift-to-drag ratio and thereby higher deceleration performance.
 
-From Table \ref{tab:decel_time} it may be observed that the highest lift gradient is attained for the ... configuration. [ADD AERO EXPLANATION]
-
 \subsection{Stability}
 Stability of concepts is measured by the static stability, as explained in Chapter \ref{ch:aero_analysis}. A more stable concept is reflected by a more negative static stability coefficient. On the basis of this reasoning, Table \ref{tab:stab} gives an overview of concept stability.
 
 \begin{table}[h]
+\centering
 \caption{Review of concept stability}
-\hspace{-20mm}
 \begin{tabular}{|c|c|c|c|c|c|}
 \hline
 \textbf{}                          & \textbf{Stacked toroid} & \textbf{Tension cone} & \textbf{Trailing ballute} & \textbf{Isotensoid} & \textbf{Rigid} \\ \hline
