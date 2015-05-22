@@ -109,7 +109,7 @@ parent=romanletter % for sorting purposes, use romanletter or greekletter
 {
 type=symbol, % entry should be in the list of symbols!
 name={\ensuremath{V}}, % Put the symbol here in dollar signs
-description={Velocity magnitude}, % A brief description of this entry (to appear in the glossary).
+description={Velocity (magnitude)}, % A brief description of this entry (to appear in the glossary).
 symbol={$\left[\frac{m}{s}\right]$}, % put the unit here.... kind of weird, i know 
 sort=Vm, % for correct sorting type the full name of the symbol here
 parent=romanletter % for sorting purposes, use romanletter or greekletter
@@ -150,16 +150,6 @@ parent=greekletter % for sorting purposes, use romanletter or greekletter
 type=symbol, % entry should be in the list of symbols!
 name={\ensuremath{\mathbf{V}}}, % Put the symbol here in dollar signs
 description={Velocity (vector)}, % A brief description of this entry (to appear in the glossary).
-symbol={$\left[\frac{m}{s}\right]$}, % put the unit here.... kind of weird, i know 
-sort=Vv, % for correct sorting type the full name of the symbol here
-parent=romanletter % for sorting purposes, use romanletter or greekletter
-}
-
-\newglossaryentry{sym:Vvsc}
-{
-type=symbol, % entry should be in the list of symbols!
-name={\ensuremath{ \mathbf{V}_{s/c} }}, % Put the symbol here in dollar signs
-description={Velocity of the spacecraft (vector)}, % A brief description of this entry (to appear in the glossary).
 symbol={$\left[\frac{m}{s}\right]$}, % put the unit here.... kind of weird, i know 
 sort=Vv, % for correct sorting type the full name of the symbol here
 parent=romanletter % for sorting purposes, use romanletter or greekletter
@@ -239,7 +229,7 @@ parent=romanletter % for sorting purposes, use romanletter or greekletter
 {
 type=symbol, % entry should be in the list of symbols!
 name={\ensuremath{R}}, % Put the symbol here in dollar signs
-description={Radius magnitude}, % A brief description of this entry (to appear in the glossary).
+description={Radius (magnitude)}, % A brief description of this entry (to appear in the glossary).
 symbol={$\left[m\right]$}, % put the unit here.... kind of weird, i know 
 sort=Rm, % for correct sorting type the full name of the symbol here
 parent=romanletter % for sorting purposes, use romanletter or greekletter
@@ -249,7 +239,7 @@ parent=romanletter % for sorting purposes, use romanletter or greekletter
 {
 type=symbol, % entry should be in the list of symbols!
 name={\ensuremath{\mathbf{J}}}, % Put the symbol here in dollar signs
-description={Jerk of the spacecraft}, % A brief description of this entry (to appear in the glossary).
+description={Jerk of the spacecraft (vector)}, % A brief description of this entry (to appear in the glossary).
 symbol={$\left[\frac{m}{s^3}\right]$}, % put the unit here.... kind of weird, i know 
 sort=j, % for correct sorting type the full name of the symbol here
 parent=romanletter % for sorting purposes, use romanletter or greekletter
@@ -376,16 +366,6 @@ sort=mbar, % for correct sorting type the full name of the symbol here
 parent=romanletter % for sorting purposes, use romanletter or greekletter
 }
 
-\newglossaryentry{sym:mfactor}
-{
-type=symbol, % entry should be in the list of symbols!
-name={\ensuremath{m_{factor}}}, % Put the symbol here in dollar signs
-description={Mass factor}, % A brief description of this entry (to appear in the glossary).
-symbol={$\left[kg \right]$}, % put the unit here.... kind of weird, i know 
-sort=mfactor, % for correct sorting type the full name of the symbol here
-parent=romanletter % for sorting purposes, use romanletter or greekletter
-}
-
 \newglossaryentry{sym:ge}
 {
 type=symbol, % entry should be in the list of symbols!
@@ -411,7 +391,7 @@ parent=romanletter % for sorting purposes, use romanletter or greekletter
 type=symbol, % entry should be in the list of symbols!
 name={\ensuremath{\theta}}, % Put the symbol here in dollar signs
 description={Decelerator half-cone angle}, % A brief description of this entry (to appear in the glossary).
-symbol={$\left[deg \right]$}, % put the unit here.... kind of weird, i know 
+symbol={$\left[rad \right]$}, % put the unit here.... kind of weird, i know 
 sort=theta, % for correct sorting type the full name of the symbol here
 parent=greekletter % for sorting purposes, use romanletter or greekletter
 }
@@ -421,7 +401,7 @@ parent=greekletter % for sorting purposes, use romanletter or greekletter
 	type=symbol, % entry should be in the list of symbols!
 	name={\ensuremath{\beta_{cone}}}, % Put the symbol here in dollar signs
 	description={Local cross-sectional surface rotation angle}, % A brief description of this entry (to appear in the glossary).
-	symbol={$\left[deg \right]$}, % put the unit here.... kind of weird, i know 
+	symbol={$\left[rad \right]$}, % put the unit here.... kind of weird, i know 
 	sort=betacone, % for correct sorting type the full name of the symbol here
 	parent=greekletter % for sorting purposes, use romanletter or greekletter
 }
@@ -451,7 +431,7 @@ parent=greekletter % for sorting purposes, use romanletter or greekletter
 	type=symbol, % entry should be in the list of symbols!
 	name={\ensuremath{\alpha}}, % Put the symbol here in dollar signs
 	description={Angle of attack}, % A brief description of this entry (to appear in the glossary).
-	symbol={$\left[deg \right]$}, % put the unit here.... kind of weird, i know 
+	symbol={$\left[rad \right]$}, % put the unit here.... kind of weird, i know 
 	sort=alpha, % for correct sorting type the full name of the symbol here
 	parent=greekletter % for sorting purposes, use romanletter or greekletter
 }
@@ -461,7 +441,7 @@ parent=greekletter % for sorting purposes, use romanletter or greekletter
 	type=symbol, % entry should be in the list of symbols!
 	name={\ensuremath{\beta}}, % Put the symbol here in dollar signs
 	description={Angle of sideslip}, % A brief description of this entry (to appear in the glossary).
-	symbol={$\left[deg \right]$}, % put the unit here.... kind of weird, i know 
+	symbol={$\left[rad \right]$}, % put the unit here.... kind of weird, i know 
 	sort=beta, % for correct sorting type the full name of the symbol here
 	parent=greekletter % for sorting purposes, use romanletter or greekletter
 }
@@ -600,7 +580,7 @@ parent=romanletter % for sorting purposes, use romanletter or greekletter
 \newglossaryentry{sym:T0}
 {
 	type=symbol, % entry should be in the list of symbols!
-	name={\ensuremath{T0}}, % Put the symbol here in dollar signs
+	name={\ensuremath{T_0}}, % Put the symbol here in dollar signs
 	description={Stagnation temperature}, % A brief description of this entry (to appear in the glossary).
 	symbol={$\left[K\right]$}, % put the unit here.... kind of weird, i know 
 	sort=T0, % for correct sorting type the full name of the symbol here
