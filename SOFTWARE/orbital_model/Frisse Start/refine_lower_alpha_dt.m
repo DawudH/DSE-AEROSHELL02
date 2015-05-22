@@ -11,7 +11,7 @@ variables
 %files = {'orbit_alpha_dt_isotensoid_l.txt', 'orbit_alpha_dt_apollo_l.txt', 'orbit_alpha_dt_torus_l.txt', 'orbit_alpha_dt_pastille_l.txt', 'orbit_alpha_dt_irve_l.txt'};
 %names = {'isotensoid', 'apollo', 'torus', 'pastille', 'irve'};
 
-files = {'orbit_alpha_dt_irve_l.txt'};
+files = {'orbit_alpha_dt_irve_alpha_20.txt'};
 names = {'irve'};
 
 for bla = 1:length(names)
@@ -19,19 +19,19 @@ for bla = 1:length(names)
 use_control = true;
 multiple_orbits = false;
 
-alpha = 15; % deg
-dalphadt = -1.3:0.1:-0.9; %deg
+alpha = 20; % deg
+dalphadt = -1.5:0.25:-0.5; %deg
 file_name = files{bla};
 
 clear aero_coef
 aero_coef = aeroProperties(names{bla});
 
 %Initial Position
-rx = -4140000;
+rx = -4150000;
 ry = 10*R_m;
 
-accuracy = 25;
-init_step = 5000;
+accuracy = 10;
+init_step = 500;
 
 filestr = cell(length(dalphadt),1);
 parfor i = 1:length(dalphadt)
