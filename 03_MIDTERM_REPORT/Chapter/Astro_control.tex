@@ -22,8 +22,8 @@ In this section the equations on which the tool is based are shown and the reaso
  
  \paragraph{primary assumptions}
  \begin{itemize}
- \item All atmospheric properties only vary with the height above Mars Orbiter Laser Altimeter (\gls{mola}) and not with longitude, latitude or time. This assumption induces an error in the output of the tool, this is described in section \ref{sec:astroatmos}. However implementing a variable atmosphere adds a lot of complexity. For example the longitude and latitude of initial entry will also become design variables.
- \item All trajectories are assumed to only occur in the equatorial plane. This means that the latitude is always $0 \left[^\circ\right]$. Changing the latitude will have a big impact on the relative speed of the Martian atmosphere.
+ \item All atmospheric properties only vary with the height above \gls{mola} and not with longitude, latitude or time. This assumption induces an error in the output of the tool, this is described in section \ref{sec:astroatmos}. However implementing a variable atmosphere adds a lot of complexity. For example the longitude and latitude of initial entry will also become design variables.
+ \item All trajectories are assumed to only occur in the equatorial plane. This means that the latitude is always $0 \left[deg]$. Changing the latitude will have a big impact on the relative speed of the Martian atmosphere.
  \item The gravitational pull is assumed to only vary with the height above \gls{mola}. The gravitational field of Mars is however not uniform over longitude and latitude, this will induce significant errors in the trajectory as gravity is one of the major forces in the analysis.
  \end{itemize}
 
@@ -40,7 +40,7 @@ In this section the equations on which the tool is based are shown and the reaso
  \label{sec:hypkep}
 Before initial entry into the atmosphere the spacecraft follows a hyperbolic Kepler trajectory untill it reaches the atmosphere. From the initial conditions a new position, velocity and acceleration need to be found. 
 
-First the Keplerian orbit parameters need to be determined. For this calculations the known initial conditions are used. The eccentricity $\left(\gls{sym:e}\right)$ can be calculated by Kepler's second law, which is expressed in a formula in Eq. \ref{eq:kep2nd}.
+First the Keplerian orbit parameters need to be determined. For this calculations the known initial conditions are used. The eccentricity $\left(\gls{sym:e}\right)$ can be calculated by Kepler's second law, which is expressed in a formula in Equation \ref{eq:kep2nd}.
 
 \begin{equation}
 \frac{dA}{dt} = \frac{1}{2}\sqrt{a\gls{con:mu}(1-e^2)}
@@ -61,7 +61,7 @@ The semi-major axis $\left(\gls{sym:a}\right)$ can be extracted from the Vis-Viv
 \label{eq:visviva}
 \end{equation}
 
-From the initial position an angle $\left (\gls{sym:phi}\right)$ w.r.t. the hyperbolic reference frame can be calculated with equation \ref{eq:polarkep}. In the inertial reference frame the angle of the x-axis and the spacecraft can be determined. Using both angles an offset of the hyperbolic frame from the initial frame $\left (\gls{sym:phip}\right)$ is computed.
+From the initial position an angle $\left (\gls{sym:phi}\right)$ w.r.t. the hyperbolic reference frame can be calculated with equation \ref{eq:polarkep}. In the inertial reference frame, as shown in figure \ref{fig:orb}, the angle between the x-axis and the spacecraft can be determined. Substracting both angles an offset between the hyperbolic frame from the initial frame $\left (\gls{sym:phip}\right)$ is computed.
 
 
 \begin{equation}
@@ -95,20 +95,19 @@ The acceleration $\left(\gls{sym:acc}\right)$ is only the gravitational pull $\l
 \subsubsection{Trajectory in atmosphere}
  \label{sec:trajatmos}
 
-The motion of a spacecraft can be broken down in some dominant contributors. These are the gravitational pull and the aerodynamic forces. Disturbances like solar radiation or gravitational pull from other bodies are neglected in the model. Because the aerodynamic forces do have to be taken into account no Kepler orbit can be used.
+The motion of a spacecraft can be broken down in two dominant contributors. These are the gravitational pull and the aerodynamic forces. Because the aerodynamic forces do have to be taken into account no Kepler orbit can be used.
 
-To be able to fully describe the contributors, two reference frames need to be defined. The non-rotating inertial frame is defined with its origin in the centre of mass of Mars (if it would be perfectly spherical), this is the \gls{mci}. 
-Another reference frame is the \gls{mcmf}, in our first model the origin and the z-axis of both reference frames are equal (so no axis tilt is taken into account). The difference between the two is that the \gls{mcmf} is rotating around the z-axis with rotational velocity \gls{con:omegamars} compared to the \gls{mci}.
+To be able to fully describe the contributors, two reference frames need to be defined. The non-rotating inertial frame is defined with its origin in the centre of mass of Mars (if it would be perfectly spherical), this is the \gls{mci}. Another reference frame is the \gls{mcmf}, in our first model the origin and the z-axis of both reference frames are equal (so no axis tilt is taken into account). The difference between the two is that the \gls{mcmf} is rotating around the z-axis with rotational velocity \gls{con:omegamars} compared to the \gls{mci}.
 
-The gravitational pull is described by Newton's law of gravitation, together with Newton's second law, it can be written as an acceleration as in Eq. \ref{eq:grav}.
+The gravitational pull is described by Newton's law of gravitation, together with Newton's second law, it can be written as an acceleration as in Equation \ref{eq:grav}.
 
-The aerodynamic forces are described by the lift and the drag, these forces are acting in the negative direction and orthogonal to the velocity of the spacecraft with respect to the atmosphere as shown in Figure \ref{fig:orb}, this is the velocity of the spacecraft in the \gls{mcmf}. This velocity needs to be converted to \gls{mci} to be able to express the aerodynamic forces in the \gls{mci}, as in Eq. \ref{eq:Vsc_mcmf_mci}.
+The aerodynamic forces are described by the drag and the lift, these forces are acting respectively in the negative direction and orthogonal to the velocity of the spacecraft with respect to the atmosphere as shown in Figure \ref{fig:orb}, this is the velocity of the spacecraft in the \gls{mcmf}. This velocity needs to be converted to \gls{mci} to be able to express the aerodynamic forces in the \gls{mci}, as in Equation \ref{eq:Vsc_mcmf_mci}.
 
 \begin{equation} \label{eq:Vsc_mcmf_mci}
 \left.\gls{sym:Vv}_{s/c}\right|_{MCMF}^{MCI} = {\gls{sym:Vv}_{s/c}}_{,a} = \left.\gls{sym:Vv}_{s/c}\right|_{MCI} - \left(\gls{con:Omegamars} \times \gls{sym:Rv} \right)
 \end{equation}
 
-The aerodynamic accelerations due to the lift and the drag are described by Eq. \ref{eq:aL} and \ref{eq:aD} respectively \cite{AndersonJr.2007}.
+The aerodynamic accelerations due to the lift and the drag are described by Equations \ref{eq:aL} and \ref{eq:aD} respectively \cite{AndersonJr.2007}.
 
 \begin{equation} \label{eq:aL}
 \gls{sym:aL} = \frac{\gls{sym:CL}\gls{sym:rho}\gls{sym:A}}{2 \gls{sym:m}} 
@@ -122,13 +121,13 @@ The aerodynamic accelerations due to the lift and the drag are described by Eq. 
 				\left|{\gls{sym:Vv}_{s/c}}_{,a}\right|^2 \frac{{\gls{sym:Vv}_{s/c}}_{,a}}{\left|{\gls{sym:Vv}_{s/c}}_{,a}\right|}
 \end{equation}
 
-The total acceleration is now the summation of the gravitational, lift and drag acceleration as in Eq. \ref{eq:aD}.
+The total acceleration is now the summation of the gravitational, lift and drag acceleration as in Equation \ref{eq:aD}.
 
 \begin{equation} \label{eq:acc}
 \gls{sym:acc} = \gls{sym:g} + \gls{sym:aL} + \gls{sym:aD}
 \end{equation}
 
-Numerically differentiating the acceleration gives the Jerk $\left(\gls{sym:jerk}\right)$ This is done in Eq. \ref{eq:jerk}. Then the new position and velocity can be determined by discretizing the dynamic equations of motion resulting in Eq. \ref{eq:ai}, \ref{eq:Vi} and \ref{eq:Ri}.
+Numerically differentiating the acceleration using a backward scheme Taylor expansion gives the Jerk $\left(\gls{sym:jerk}\right)$ This is done in Equation \ref{eq:jerk}. Then the new position and velocity can be determined by discretizing the dynamic equations of motion resulting in Equations \ref{eq:ai}, \ref{eq:Vi} and \ref{eq:Ri}.
 
 \begin{equation} \label{eq:ai}
 \gls{sym:acc}_i = \gls{sym:g}_i + \gls{sym:aL}_i + \gls{sym:aD}_i
@@ -146,11 +145,11 @@ Numerically differentiating the acceleration gives the Jerk $\left(\gls{sym:jerk
 \gls{sym:Rv}_{i+1} = \gls{sym:Rv}_i + \gls{sym:Vv}_i \gls{sym:Dt} + \frac{1}{2}\gls{sym:acc}_i \gls{sym:Dt}^2 + \frac{1}{6}\gls{sym:jerk}_i \gls{sym:Dt}^3
 \end{equation}
 
-\subsubsection{Eliptical Kepler orbit}
+\subsubsection{Elliptic Kepler orbit}
  \label{sec:eliptickep}
-For an elliptical orbit \gls{sym:a}, \gls{sym:e} and \gls{sym:phip} can be calculated in the same way as was done in section \ref{sec:hypkep}. The point of re-entry into the atmosphere is the old location exactly mirrored in the line between the pericenter and the apocenter. The velocity $\left(\gls{sym:Vv}\right)$ and also the acceleration $\left(\gls{sym:acc}\right)$  should be mirrored in that line. The velocity should consequently be rotated 180 $\left[^\circ\right]$ to point in the correct direction. The magnitude of the location $\left(\gls{sym:R}\right)$, velocity $\left(\gls{sym:V}\right)$ and acceleration $\left(\gls{sym:acc}\right)$ are still the same due to the symmetry of Kepler orbits.
+For an elliptic Kepler orbit \gls{sym:a}, \gls{sym:e} and \gls{sym:phip} can be calculated in the same way as was done in section \ref{sec:hypkep}. The point of re-entry into the atmosphere is the location of escape exactly mirrored in the line between the pericenter and the apocenter. The velocity $\left(\gls{sym:Vv}\right)$ and  acceleration $\left(\gls{sym:acc}\right)$  should be mirrored in that line. The velocity should consequently be rotated 180 $\left[^\circ\right]$ to point in the correct direction. The magnitude of the location $\left(\gls{sym:R}\right)$, velocity $\left(\gls{sym:V}\right)$ and acceleration $\left(\gls{sym:acc}\right)$ are still the same due to the symmetry of Kepler orbits.
 
-For the elliptical orbit the duration also has to be calculated. As this time is part of the ten days in which the spacecraft is required to decelerate. As Keplers second law states: $\frac{dA}{dt}=\mbox{constant}$, the duration can be written as an area fraction of the period. This is done in Eq. \ref{eq:areatime}. Here $\gls{sym:P} = 2\pi\sqrt{\frac{\gls{sym:a}^3}{\gls{con:mu}}}$ and $\gls{sym:A}_{tot} = 2\pi \gls{sym:a} \sqrt{1-\gls{sym:e}^2}$.
+For the elliptical orbit the duration also has to be calculated. This time is part of the ten days in which the spacecraft is required to decelerate. As Keplers second law states: $\frac{dA}{dt}=\mbox{constant}$, the duration can thus be written as an area fraction of the period. This is done in Equation \ref{eq:areatime}. Here $\gls{sym:P} = 2\pi\sqrt{\frac{\gls{sym:a}^3}{\gls{con:mu}}}$ and $\gls{sym:A}_{tot} = 2\pi \gls{sym:a} \sqrt{1-\gls{sym:e}^2}$.
 
 \begin{equation}
 t = \frac{\gls{sym:A}}{\gls{sym:A}_{tot}}\gls{sym:P}
@@ -159,28 +158,28 @@ t = \frac{\gls{sym:A}}{\gls{sym:A}_{tot}}\gls{sym:P}
 
 \subsection{Working principles of the tool}
 \label{sec:astrowp}
-The tool is able to calculate the trajectory of the spacecraft and a range of important parameters at each moment in time. These parameters are among others: Acceleration $\left(\gls{sym:acc}\right)$, dynamic pressure $\left(\gls{sym:q}\right)$, speed $\left(\gls{sym:Vv}\right)$ and Mach number $\left(\gls{sym:M}\right)$. In order to calculate this the tool takes geometric and aerodynamic properties of the spacecraft and some initial conditions as input.
+The tool is able to calculate the trajectory of the spacecraft and a range of important parameters at each moment in time. These parameters are among others: Acceleration $\left(\gls{sym:acc}\right)$, dynamic pressure $\left(\gls{sym:q}\right)$, speed $\left(\gls{sym:Vv}\right)$ and Mach number $\left(\gls{sym:M}\right)$. In order to calculate this the tool takes geometric and aerodynamic properties of the spacecraft and some initial conditions as input. The overall working of the tool is shown in figure \ref{fig:astroflow}.
 
-***Flowchart + very short explanation***\\
+***Flowchart***\\
 
 \subsection{Verification \& validation}
 \label{sec:astrovv}
 
-In order to be sure the results the tool produces are correct and can safely be used in further efforts to design the \gls{cia} verification and validation is needed. This section presents the methods used to verify and validate the results produced by the tool. First a sensitivity analysis is presented in section \ref{sec:astrosens} which focusses on the sensitivity of the program to the initial conditions. In section \ref{sec:astrodisc} the discretisation error is analysed in order to ensure the results are accurate enough for it to be usefull. The numerical solution is compared to the simple case of a kepler orbit in section \ref{sec:astroverf}. In section \ref{sec:astroval} an explanation on the validation of the tool is given.
+In order to be sure the results the tool produces are correct and can safely be used in further efforts to design the \gls{cia} verification and validation is needed. This section presents the methods used to verify and validate the results produced by the tool. First a sensitivity analysis is presented in section \ref{sec:astrosens} which focusses on the sensitivity of the program to the initial conditions. In section \ref{sec:astrodisc} the discretisation error is analysed in order to ensure the results are accurate enough for them to be usefull. The numerical solution is compared to the simple case of a kepler orbit in section \ref{sec:astroverf}. In section \ref{sec:astroval} an explanation on the validation of the tool is given.
 
 \subsubsection{Sensitivity analysis}
 \label{sec:astrosens}
 
 In the sensitivity analysis the effect of a small change in input variables on the output is analysed. This effect was as expected for all variables except for the initial location. For all other variables the effect of a small change in input gave a small change in output. For the initial location however the effect of a small change in input gives a change of output orders of magnitude larger than the change in input. This large change can be explained by the long duration during which the spacecraft is attracted by a slightly different gravitational force. This force constantly increases the difference between the locations. This results in a difference in the order of kilometres in entry location for a difference in the order of millimetres in input location. It can thus be concluded that the model cannot be used as it is in this form, however this is not an error in the model. The model is correct and shows that in the future a control system should be implemented in the simulation during the initial approach to diminish the increase in difference of location. This is also what will have to happen in reality on the spacecraft.
 
-The temporary solution that was chosen to solve this problem is to take an initial location far closer to the planet. This induces an error because the initial conditions are no longer valid. The main error induced by this is the initial velocity that changes significantly between the \gls{soi} and the new initial condition which is located at ten times the Mars radius above Mars. Both have a variable distance to the left of Mars. This difference in velocity is diminished by calculating the change in velocity from \gls{soi} to $10\cdot\gls{con:rm}$ for an orbit that starts straight above Mars and using that difference in all other calculations as well.
+The temporary solution that was chosen to solve this problem is to take an initial location far closer to the planet. This induces an error because the initial conditions are no longer valid. The main error induced by this is the initial velocity that changes significantly between the \gls{soi} and the new initial condition which is located at ten times the Mars radius above the center of Mars. Both have a variable distance to the left of Mars. This difference in velocity is diminished by calculating the change in velocity from \gls{soi} to $10\cdot\gls{con:rm}$ for an orbit that starts straight above Mars and using that difference in all other calculations as well. This leads to an initial velocity of $7.1679 \left[\frac{km}{s}\right]$ at $10\cdot\gls{con:rm}$.
 
 \subsubsection{Discretisation error}
 \label{sec:astrodisc}
 
-Due to the use of a discrete timestep an error relative to the real solution is induced. By testing the tool with the same initial conditions using different time meshes the difference between the solutions can be analysed. When the smallest timestep is assumed to be exact the error of the larger timesteps can be expressed relative to that. This relative error is shown in Figure \ref{fig:atmos_disc}. Please also note these errors are calculated running the tool without control.
+Due to the use of a discrete timestep an error relative to the real solution is induced. By testing the tool with the same initial conditions using different time meshes the difference between the solutions can be analysed. When the smallest timestep is assumed to be exact the error of the larger timesteps can be expressed relative to that. This relative error is shown in Figure \ref{fig:atmos_disc}. Please also note these errors are calculated running the tool without active control.
 
-Two conclusions can be drawn from this. First the error decreases quadraticaly with decreasing timestep. This means that the system converges to a solution. Secondly the error is smaller than 1 $\left[m\right]$ for a timstep of smaller than $0.3 \left[s\right]$. This error is negligible compared to the error that will be induced by the assumptions that were made in section \ref{sec:astroassumption}.
+Two conclusions can be drawn from this. First the error decreases quadraticaly with decreasing timestep. This means that the system converges. Secondly the error is smaller than 1 $\left[m\right]$ for a timstep of smaller than $0.3 \left[s\right]$. This error is negligible compared to the error that will be induced by the assumptions that were made in section \ref{sec:astroassumption}.
 
 %Initial Position
 %rx = -4143775;
@@ -219,7 +218,7 @@ Validation for a mission as unique as this one is difficult as no reference data
 
 \subsection{Results}
 \label{sec:astrores}
-In this section the results from the astrodynamics \& control are presented. Furthermore the required performance of the control system is analysed and a conclusion is drawn on which control systems are feasible.
+In this section the results from the trajectory \& control tool are presented. Furthermore the required performance of the control system is analysed and a conclusion is drawn on which control systems are feasible.
 
 In section \ref{sec:astroatmos} the data from the atmospheric model is shown. This data is used as a primary input for the computations. Section \ref{sec:astrodec} shows the effect of angle of attack $\left(\gls{sym:alpha}\right)$ on the maximum deceleration during a trajectory for which the spacecraft goes into orbit. In section \ref{sec:astroperfomance} the required performance of the control system is analysed. In section \ref{sec:astrorestraj} one of the trajectories which was found to be feasible in section \ref{sec:astroperfomance} is shown and the important parameters, most of which will serve as input for other tools, are analysed. In section \ref{sec:conclusion} a conclusion is drawn about which control system can meet the required controler performance.
 
@@ -283,7 +282,7 @@ In this section the effect of the angle of attack $\left(\gls{sym:alpha}\right)$
 \subsubsection{Required performance of the control system}
 \label{sec:astroperfomance}
 
-In section \ref{sec:astrodec} it was found that a control system will be needed to find an orbit that meets the requirements. In this section the required performance of the control system is outlined and some important parameters with respect to this performance are explained.
+In section \ref{sec:astrodec} it was found that a control system will be needed to find an orbit that meets the requirements. In this section the required performance of the control system is outlined.
 
 The control system is required to force the acceleration into a rectangular shape as much as possible. This rectangle should have a height of $3 \gls{sym:g} \left[\frac{m}{s^2}\right]$ acceleration and a width of the time the spacecraft is in the atmosphere. This shape is not even achievable with infinitely good control as the atmosphere is too thin at the outer edges. However with rounded off edges this shape is very well possible. Whether the initial rise has an overshoot, how well the upper limit can be kept and how far the sides of the rectangle are separated is dependent on the performance of the control system.
 
