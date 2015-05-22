@@ -69,16 +69,6 @@ From the initial position an angle $\left (\gls{sym:phi}\right)$ w.r.t. the hype
 \label{eq:polarkep}
 \end{equation}
 
-\begin{wrapfigure}{r}{0.4\textwidth}
-		\vspace{0.9cm}
-		\centering
-		\includegraphics[width = 0.4\textwidth]{Figure/orbital_mechanics.pdf}
-		\caption{The kinetic diagram visualizing the governing equations of the trajectory analysis}
-		\label{fig:orb}
-		\vspace{-1cm}
-\end{wrapfigure}
-
-
 With the Keplerian orbital parameters, and \gls{sym:R} on the edge of the atmosphere, known. Using equation \ref{eq:visviva} the new magnitude of the velocity can be calculated. The direction of \gls{sym:Vv} has been determined based on the tangent to the hyperbola (computed in the hyperbolic frame) rotated over an angle \gls{sym:phip}.
 
 The direction of \gls{sym:Rv} is based on \gls{sym:phi}, which is calculated with equation \ref{eq:polarkep}, where \gls{sym:R} is known.
@@ -98,6 +88,14 @@ The acceleration $\left(\gls{sym:acc}\right)$ is only the gravitational pull $\l
 The motion of a spacecraft can be broken down in two dominant contributors. These are the gravitational pull and the aerodynamic forces. Because the aerodynamic forces do have to be taken into account no Kepler orbit can be used.
 
 To be able to fully describe the contributors, two reference frames need to be defined. The non-rotating inertial frame is defined with its origin in the centre of mass of Mars (if it would be perfectly spherical), this is the \gls{mci}. Another reference frame is the \gls{mcmf}, in our first model the origin and the z-axis of both reference frames are equal (so no axis tilt is taken into account). The difference between the two is that the \gls{mcmf} is rotating around the z-axis with rotational velocity \gls{con:omegamars} compared to the \gls{mci}.
+
+\begin{wrapfigure}{r}{0.4\textwidth}
+		\centering
+		\includegraphics[width = 0.4\textwidth]{Figure/orbital_mechanics.pdf}
+		\caption{The kinetic diagram visualizing the governing equations of the trajectory analysis}
+		\label{fig:orb}
+		\vspace{-1cm}
+\end{wrapfigure}
 
 The gravitational pull is described by Newton's law of gravitation, together with Newton's second law, it can be written as an acceleration as in Equation \ref{eq:grav}.
 
@@ -220,7 +218,7 @@ Validation for a mission as unique as this one is difficult as no reference data
 \label{sec:astrores}
 In this section the results from the trajectory \& control tool are presented. Furthermore the required performance of the control system is analysed and a conclusion is drawn on which control systems are feasible.
 
-In section \ref{sec:astroatmos} the data from the atmospheric model is shown. This data is used as a primary input for the computations. Section \ref{sec:astrodec} shows the effect of angle of attack $\left(\gls{sym:alpha}\right)$ on the maximum deceleration during a trajectory for which the spacecraft goes into orbit. In section \ref{sec:astroperfomance} the required performance of the control system is analysed. In section \ref{sec:astrorestraj} one of the trajectories which was found to be feasible in section \ref{sec:astroperfomance} is shown and the important parameters, most of which will serve as input for other tools, are analysed. In section \ref{sec:conclusion} a conclusion is drawn about which control system can meet the required controler performance.
+In section \ref{sec:astroatmos} the data from the atmospheric model is shown. This data is used as a primary input for the computations. Section \ref{sec:astrodec} shows the effect of angle of attack $\left(\gls{sym:alpha}\right)$ on the maximum deceleration during a trajectory for which the spacecraft goes into orbit. In section \ref{sec:astroperfomance} the required performance of the control system is analysed. In section \ref{sec:astrorestraj} one of the trajectories which was found to be feasible in section \ref{sec:astroperfomance} is shown and the important parameters, most of which will serve as input for other tools, are analysed.
 
 \subsubsection{Atmospheric model}
 \label{sec:astroatmos}
@@ -290,8 +288,14 @@ In section \ref{sec:tradeoffaero} of Chapter \ref{ch:aero_analysis} the aerodyna
 
 \subsubsection{A feasible trajectory and important output parameters over time}
 \label{sec:astrorestraj}
-
+\begin{wrapfigure}{r}{0.4\textwidth}
+	\centering
+	\includegraphics[width=0.35\textwidth]{Figure/orbital_model/orbit.pdf}
+	\caption{ CAPTION HERE!! }
+	\label{fig:orbit}
+\end{wrapfigure}
 In this section an orbit for the stacked toroid concept is shown. This is done to show which values for i.e. dynamic pressure $\left(\gls{sym:q}\right)$ are reasonable to use in the other tools. For this purpose a temporary \gls{pid} contoller is put into the simulation which has the goal to keep the acceleration under 3\gls{sym:g}. Although the controller does not always meet this objective the trajectory that is presented here comes as is close to it as currently possible. This will give results that are representable for trajectories that will later be calculated with a better controller.
 
-***Plot of a trajectory***\\
+
+
 ***Plots of output variables for that particular trajectory***\\
