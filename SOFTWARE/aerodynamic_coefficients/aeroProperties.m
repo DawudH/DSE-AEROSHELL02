@@ -77,7 +77,7 @@ classdef aeroProperties
         end
         
         function cmclcd = getCMCLCD(obj, alpha)
-            cmclcd = obj.getCMYA(alpha)./obj.getCLA(alpha)./obj.getCDA(alpha);
+            cmclcd = obj.getCMYA(alpha)./(obj.getCLA(alpha)./obj.getCDA(alpha));
         end
         
     end
