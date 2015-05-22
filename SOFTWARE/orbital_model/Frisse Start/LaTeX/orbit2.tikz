@@ -10,14 +10,14 @@
 \begin{tikzpicture}
 
 \begin{axis}[%
-width=0.409091\figurewidth,
+width=0.818182\figurewidth,
 height=\figureheight,
 at={(0\figurewidth,0\figureheight)},
 scale only axis,
 every outer x axis line/.append style={black},
 every x tick label/.append style={font=\color{black}},
 xmin=-4547935.13425353,
-xmax=0,
+xmax=4547935.13425353,
 every outer y axis line/.append style={black},
 every y tick label/.append style={font=\color{black}},
 ymin=-4168940.5397324,
@@ -25,8 +25,24 @@ ymax=4168940.5397324,
 hide axis,
 axis x line*=bottom,
 axis y line*=left,
-legend style={at={(0.5,1.03)},anchor=south,legend cell align=left,align=left,draw=black}
+legend style={at={(0.97,0.5)},anchor=east,legend cell align=left,align=left,draw=black}
 ]
+
+\addlegendentry{Hyperbolic Kepler};
+\addlegendentry{First pass through atmosphere};
+\addlegendentry{Elliptical Kepler};
+\addlegendentry{Second pass through atmosphere};
+\addlegendentry{Mars mean-equatorial radius};
+\addlegendentry{Mars atmosphere limit};
+
+\addlegendimage{color=mycolor1, no markers}
+\addlegendimage{color=mycolor2, mark=triangle}
+\addlegendimage{color=mycolor3, no markers}
+\addlegendimage{color=red!50!orange, mark=diamond}
+\addlegendimage{color=mycolor4, no markers}
+\addlegendimage{color=mycolor5, dash pattern=on 1pt off 3pt on 3pt off 3pt}
+
+
 \addplot [color=mycolor1,solid]
   table[row sep=crcr]{%
 -4148750.00000001	33899459.4521127\\
@@ -1225,7 +1241,7 @@ legend style={at={(0.5,1.03)},anchor=south,legend cell align=left,align=left,dra
 -3667967.91112417	960135.290366641\\
 -3667453.02398409	956082.791735158\\
 };
-\addlegendentry{Hyperbolic kepler};
+
 
 \addplot [color=mycolor2,solid]
   table[row sep=crcr]{%
@@ -1398,7 +1414,7 @@ legend style={at={(0.5,1.03)},anchor=south,legend cell align=left,align=left,dra
 -1860532.72315415	-3293454.5760217\\
 -1845290.43565415	-3308763.42260947\\
 };
-\addlegendentry{First pass through atmosphere};
+
 
 \addplot [color=mycolor2,only marks,mark=triangle,mark options={solid,rotate=180},forget plot]
   table[row sep=crcr]{%
@@ -1664,7 +1680,7 @@ legend style={at={(0.5,1.03)},anchor=south,legend cell align=left,align=left,dra
 -3594796.82348226	1269506.38974096\\
 -3598570.41352443	1190448.74462983\\
 };
-\addlegendentry{Elliptical kepler};
+
 
 \addplot [color=red!50!orange,solid]
   table[row sep=crcr]{%
@@ -1805,7 +1821,7 @@ legend style={at={(0.5,1.03)},anchor=south,legend cell align=left,align=left,dra
 -3055635.94049907	-1494842.50769966\\
 -3051899.06487223	-1498634.0606187\\
 };
-\addlegendentry{Second pass through atmosphere};
+
 
 \addplot [color=red!50!orange,only marks,mark=diamond,mark options={solid},forget plot]
   table[row sep=crcr]{%
@@ -2452,7 +2468,7 @@ legend style={at={(0.5,1.03)},anchor=south,legend cell align=left,align=left,dra
 3389651.2744876	-44696.1834942945\\
 3389928.74772184	-10798.0008979223\\
 };
-\addlegendentry{Mars mean-equatorial radius};
+
 
 \addplot [color=mycolor5,dash pattern=on 1pt off 3pt on 3pt off 3pt]
   table[row sep=crcr]{%
@@ -3086,7 +3102,7 @@ legend style={at={(0.5,1.03)},anchor=south,legend cell align=left,align=left,dra
 3789616.50452625	-49970.153547703\\
 3789926.71848719	-12072.1216151775\\
 };
-\addlegendentry{Mars atmosphere limit};
+
 
 \end{axis}
 \end{tikzpicture}%
