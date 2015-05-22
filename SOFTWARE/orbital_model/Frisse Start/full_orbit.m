@@ -75,7 +75,7 @@ end
              % determine new cl and cd param
                  % start controlling once the accel is above 1.5g
                  if use_control && out_c.use_control
-                         [aero_param] = aero_conrol_no_control(state,control,aero_coef,V(i,:),R(i,:),q(i),Omega_m,m,g_earth);
+                         [aero_param] = aero_conrol(state,control,aero_coef,dt_atmos);
                          CL(i+1) = aero_param.CLA / S;
                          CD(i+1) = aero_param.CDA / S;
                          alpha = aero_param.alpha;
@@ -100,10 +100,11 @@ end
             orbit_init.R = R(i,:);
             orbit_init.V = V(i,:);
             orbit_init.a = A(i,:);
-            [out_o] = eliptic_kepler(R(i,:),V(i,:),A(i,:),G,M_mars,dt_kep_init,orbit_init);
+            [out_e] = eliptic_kepler(R(i,:),V(i,:),A(i,:),G,M_mars,dt_kep_init,orbit_init);
+            out_o = out_e;
             round = round + 1;
             a_prev = out_o.A;
-            
+            tkep = tp(i);
             t = t + out_o.t_kep;
             CL(i+1) = CL(i);
             CD(i+1) = CD(i);
@@ -182,6 +183,13 @@ end
     out.Kp = control.Kp;
     out.Ki = control.Ki;
     out.Kd = control.Kd;
+    if exist('tkep','var')
+        out.tkep = tkep;
+        out.okep = out_e.param;
+    else
+        out.tkep = 0;
+    end
+    
     % output text
     
 

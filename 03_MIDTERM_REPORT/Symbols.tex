@@ -229,7 +229,7 @@ parent=romanletter % for sorting purposes, use romanletter or greekletter
 {
 type=symbol, % entry should be in the list of symbols!
 name={\ensuremath{\mathbf{R}}}, % Put the symbol here in dollar signs
-description={radius (vector)}, % A brief description of this entry (to appear in the glossary).
+description={Radius (vector)}, % A brief description of this entry (to appear in the glossary).
 symbol={$\left[m\right]$}, % put the unit here.... kind of weird, i know 
 sort=Rv, % for correct sorting type the full name of the symbol here
 parent=romanletter % for sorting purposes, use romanletter or greekletter
@@ -239,7 +239,7 @@ parent=romanletter % for sorting purposes, use romanletter or greekletter
 {
 type=symbol, % entry should be in the list of symbols!
 name={\ensuremath{R}}, % Put the symbol here in dollar signs
-description={radius magnitude}, % A brief description of this entry (to appear in the glossary).
+description={Radius magnitude}, % A brief description of this entry (to appear in the glossary).
 symbol={$\left[m\right]$}, % put the unit here.... kind of weird, i know 
 sort=Rm, % for correct sorting type the full name of the symbol here
 parent=romanletter % for sorting purposes, use romanletter or greekletter
@@ -611,7 +611,7 @@ parent=romanletter % for sorting purposes, use romanletter or greekletter
 {
 	type=symbol, % entry should be in the list of symbols!
 	name={\ensuremath{\dot{q}}}, % Put the symbol here in dollar signs
-	description={Stagnation heat flux}, % A brief description of this entry (to appear in the glossary).
+	description={Heat flux}, % A brief description of this entry (to appear in the glossary).
 	symbol={$\left[ \frac{W}{m^2} \right]$}, % put the unit here.... kind of weird, i know 
 	sort=qdot, % for correct sorting type the full name of the symbol here
 	parent=romanletter % for sorting purposes, use romanletter or greekletter
@@ -695,6 +695,16 @@ parent=romanletter % for sorting purposes, use romanletter or greekletter
 	description={Moment coefficient around y-axis divided by Lift coefficient}, % A brief description of this entry (to appear in the glossary).
 	symbol={$\left[-\right]$}, % put the unit here.... kind of weird, i know 
 	sort=CM, % for correct sorting type the full name of the symbol here
+	parent=romanletter % for sorting purposes, use romanletter or greekletter
+}
+
+\newglossaryentry{sym:cmclcd}
+{
+	type=symbol, % entry should be in the list of symbols!
+	name={\ensuremath{\frac{C_M}{\frac{C_L}{C_D}}}}, % Put the symbol here in dollar signs
+	description={Moment coefficient around y-axis divided by Lift to Drag ratio }, % A brief description of this entry (to appear in the glossary).
+	symbol={$\left[-\right]$}, % put the unit here.... kind of weird, i know 
+	sort=CMCLCD, % for correct sorting type the full name of the symbol here
 	parent=romanletter % for sorting purposes, use romanletter or greekletter
 }
 

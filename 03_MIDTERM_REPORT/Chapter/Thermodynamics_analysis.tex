@@ -1,6 +1,6 @@
 \section{Thermal mass estimation}
 \label{ch:thermtool}
-Decelerating an entry vehicle requires a \arcfull{tps}. This system will contribute to a large extent to the mass of the entire vehicle. Therefore, a \gls{tps} has a critical impact on the mission and should be selected properly. This section will analyse the \gls{tps} of the five trade-off concepts with the use of a thermal analysis tool. Note that for the rigid concept a mass estimate is already given in section \ref{sec:rigid} as the \gls{tps} is integrated in the structure. First the tool will be described. Afterwards it is described how the tool could not be verified and validated. In the third section, analysis of the different lay-ups for the concepts is done using a more simple approach since the tool does not function correctly. As a result, the relative \gls{tps}-masses for different concepts can be given. Lastly, the conclusions of this analysis and recommendations for future work are discussed.
+Decelerating an entry vehicle requires a \acrfull{tps}. This system will contribute to a large extent to the mass of the entire vehicle. Therefore, a \gls{tps} has a critical impact on the mission and should be selected properly. This section will analyse the \gls{tps} of the five trade-off concepts with the use of a thermal analysis tool. Note that for the rigid concept a mass estimate is already given in section \ref{sec:rigid} as the \gls{tps} is integrated in the structure. First the tool will be described. Afterwards it is described how the tool could not be verified and validated. In the third section, analysis of the different lay-ups for the concepts is done using a more simple approach since the tool does not function correctly. As a result, the relative \gls{tps}-masses for different concepts can be given. Lastly, the conclusions of this analysis and recommendations for future work are discussed.
 
 \subsection{Method of thermal analysis}
 A mass estimation of the \gls{tps} requires analysis of heat transfer from and to the heat shield. Enabling the analysis of different lay-ups in a short amount of time, it will be useful to make use of a \gls{tps} tool. In this section the working principles for this tool are explained.
@@ -142,7 +142,7 @@ Although the tool only provides time-dependent results, it is still possible to 
 \frac{q}{\gls{sym:A}} = \frac{\gls{sym:k}}{\Delta \gls{sym:x}}(\gls{sym:T}_1-\gls{sym:T}_2)
 \label{eq:therm4}
 \end{equation}
-For the transient solution one can use the analytical solution (Equation \eqref{eq:therm5}) provided by both Smith and Holman \cite{Smith2011,Holman2012}. Here $\gls{sym:T}_1$ is the wall temperature at $\gls{sym:t}=0$ and $\gls{sym:T}_2$ the back temperature at $\gls{sym:t}=\gls{sym:t}_{end}$.
+For the transient solution one can use the analytical solution (Equation \eqref{eq:therm5}) provided by both Smith and Holman \cite{Smith2011,Holman2002}. Here $\gls{sym:T}_1$ is the wall temperature at $\gls{sym:t}=0$ and $\gls{sym:T}_2$ the back temperature at $\gls{sym:t}=\gls{sym:t}_{end}$.
 \begin{equation}
 \gls{sym:T}_2-\gls{sym:T}_1 = \frac{2q\sqrt{\gls{sym:alphat}\gls{sym:t}/\pi}}{\gls{sym:k}\gls{sym:A}}\exp\left(\frac{-\gls{sym:x}^2}{4\gls{sym:alphat}\gls{sym:t}}\right)-\frac{q\gls{sym:x}}{\gls{sym:k}\gls{sym:A}}\left(1-erf\frac{\gls{sym:x}}{2\sqrt{\gls{sym:alphat}\gls{sym:t}}}\right)
 \label{eq:therm5}

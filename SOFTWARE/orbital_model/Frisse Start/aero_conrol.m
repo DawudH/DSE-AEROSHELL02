@@ -14,7 +14,7 @@ function [out] = aero_conrol(state,control,aero_coef,dt)
     
         % determine the error
         
-        e = abs(control.a - state.a);
+        e = control.a - state.a;
         error_I = control.error_I + dt * (e + control.error)/2; % trapozoidal integration
         error_D = (e - control.error) / dt; 
         dalpha = ( control.Kp * e * control.dalpha + control.Ki * error_I * control.dalpha + control.Kd * error_D * control.dalpha);

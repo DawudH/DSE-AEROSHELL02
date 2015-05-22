@@ -17,6 +17,7 @@ Omega_m = [0,0,1]*omega_m; %[rad/sec]
 %Mass
 M_mars = 0.64174*10^24; %[kg]
 %Radius of Mars
+
 R_m = 3.389945945211271e6; %[m]
 %Height of atmosphere
 h_atm = 400e3; %[m]

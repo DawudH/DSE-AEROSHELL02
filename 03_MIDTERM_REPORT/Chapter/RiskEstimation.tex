@@ -1,8 +1,9 @@
 \section{Risk assessment}
 \label{ch:riskestimation}
-In order to identify which areas and components might present a risk to the technical performance of the system or cause schedule overruns a risk map is made. 
-Development risk will be used as one of the trade-off criteria. 
+In order to identify which areas and components might present a risk to the technical performance of the system or cause schedule overruns a risk map is made. This risk map is presented in section \ref{subsec:riskmap} along with its elements. Following the concept-independent risk assessment section \ref{subsec:developrisk} will discuss the concept-specific development risks, based on the technology maturity of each concept. The assessment of these development risks will be used in chapter \ref{ch:tfsum} as one of the criteria used during the trade-off process.
 
+\subsection{Concept-independent risk assessment}
+Before the concept-specific development risks are discussed the concept-independent risks were analysed in order to determine how to allocate the resources available for the concept selection and trade-off process. To do this the concept-independent elements are first listed in table \ref{tab:riskmapelements}, after which they are placed inside a risk map. Each of these elements gets assigned a \acrfull{trl} \cite{GoddardSpaceFlightCenter2013} based on the maturity of the technology that will be used in said element. The \gls{trl}-classification is shown in table \ref{tab:trls}.
 \begin{table}[h]
 	\centering
 	\caption{Risk map elements}
@@ -19,8 +20,7 @@ Development risk will be used as one of the trade-off criteria.
 		7 & Thermal load resistance\\
 		8 & Capsule-aeroshell integration\\
 		9 & Orbit accuracy\\
-		10 & Controller accuracy \\
-		11 & \\
+		10 & Controller accuracy\\
 		\hline
 	\end{tabular}
 \end{table}
@@ -41,6 +41,7 @@ Development risk will be used as one of the trade-off criteria.
 		\gls{trl} 1& Basic principles observed \& reported \\
 		\hline
 	\end{tabular}
+	\label{tab:trls}
 \end{table}
 
 \begin{table}[H]
@@ -63,12 +64,12 @@ Development risk will be used as one of the trade-off criteria.
 \end{table}
 
 \subsection{Concept development risk}
-
+\label{subsec:developrisk}
 The classification of selected concepts in terms of technology readiness serves to aid in the selection of a final concept that features minimal development risk. Since the selection is a relative process, technology readiness levels used hereafter are primarily intended for use with respect to each other rather than by themselves. For one, none of past inflatable missions have been flown with the dimensions considered nor were they suitable for human spaceflight.
 
 Rigid concepts have long been the standard for manned (re-)entry missions and have been applied numerous times, as investigated in the Baseline Report \cite[p.2-3]{Balasooriyan2015a}. An overview of rigid (re-)entry vehicles is given by Laub et al. \cite{Laub2004} and Steinfeldt \cite{Steinfeldt2009} and were already used in the rigid concept mass estimation of section \ref{sec:rigid}. In addition, recent application in Mars missions, for example the Mars Science Laboratory \cite{Schoenenberger2009}, make the rigid concept a low development risk option. In terms of \gls{trl}, the rigid concept is therefore classified as \gls{trl} 9.
 
-Inflatable concepts are still at a low technology readiness level. Whereas research efforts have been instigated as early as in the 1960s, a lull in research efforts up to recent years make the field of inflatable aerodynamic decelerators relatively underveloped \cite{Smith2010}. Hypersonic aerodynamic decelerator technology in particular has seen little application. Past and ongoing research by \gls{nasa} in hypersonic aerodynamic decelerators has focused on the stacked toroid configuration. A research programme consisting of a series of experiments, called \acrfull{irve}, was initiated in 2003 and the IRVE-II flight has brought the development risk of the stacked toroid configuration (as applied in the IRVE vehicles) to \gls{trl} 7 \cite{Player2005}.
+Inflatable concepts are still at a low \acrlong{trl}. Whereas research efforts have been instigated as early as in the 1960s, a lull in research efforts up to recent years make the field of inflatable aerodynamic decelerators relatively underdeveloped \cite{Smith2010}. Hypersonic aerodynamic decelerator technology in particular has seen little application. Past and ongoing research by \gls{nasa} in hypersonic aerodynamic decelerators has focused on the stacked toroid configuration. A research programme consisting of a series of experiments, called \acrfull{irve}, was initiated in 2003 and the \gls{irve}-II flight has brought the development risk of the stacked toroid configuration (as applied in the \gls{irve} vehicles) to \gls{trl} 7 \cite{Player2005}.
 
 Isotensoid, tension cone and ballute configurations have been tested primarily for supersonic entry (at Mach numbers lower than 5). Research efforts concentrated thereon have taken place primarily in the 1960s \cite{Smith2010}. A lack of research programmes on these configurations in recent years and the series of laboratory tests conducted in the 1960s have led to designating these concepts with a \gls{trl} of 4.
 
