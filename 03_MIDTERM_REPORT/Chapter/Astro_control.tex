@@ -190,7 +190,7 @@ Two conclusions can be drawn from this. First the error decreases quadraticaly w
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[trim={4.25cm 10cm 3.2cm 10cm},clip,width=0.8\textwidth]{Figure/orbital_model/dicretization.pdf}
+	\includegraphics[width=0.8\textwidth]{Figure/orbital_model/dicretization.pdf}
 	\caption[Discretisation error in radius $\left(\gls{sym:R}\right)$ after one pass through the atmosphere for the rigid shape]{Discretisation error in radius $\left(\gls{sym:R}\right)$ after one pass through the atmosphere for initial position $\left[-4143775,10\cdot\gls{con:rm}\right]$ $\left[m\right]$ and initial velocity $\left[0,-7167.9\right]$ $\left[\frac{m}{s}\right]$ at $\gls{sym:alpha}=-10\left[^\circ\right]$ for the Apollo shape}
 	\label{fig:atmos_disc}
 \end{figure}
@@ -288,20 +288,21 @@ In subsection \ref{sec:tradeoffaero} of Chapter \ref{ch:aero_analysis} the aerod
 
 \subsubsection{A feasible trajectory and important output parameters over time}
 \label{sec:astrorestraj}
-\begin{wrapfigure}{r}{0.4\textwidth}
+
+In this section an orbit for the stacked toroid concept is shown (Figure \ref{fig:orbit}). This is done to show which values for i.e. dynamic pressure $\left(\gls{sym:q}\right)$ are reasonable to use in the other tools. For this purpose a temporary \gls{pid} controller is put into the simulation which has the goal to keep the acceleration under 3\gls{sym:ge}. Although the controller does not always meet this objective. The trajectory that is presented here comes as close to it as currently possible. This will give results that are representable for trajectories that will later be calculated with a better (tuned) controller.
+
+Looking at Figure \ref{fig:orbit}, the different stages of the orbit can de distinguished. The first leg is the hyperbolic Kepler described in section \ref{sec:hypkep}, this leg ends at the border of the atmosphere. The second leg is the first pass through the atmosphere, here the control system is turned on and it will try to maintain the constant acceleration of 3\gls{sym:ge} (on the astronauts). In this part of the orbit the deceleration is not sufficient to stay in the atmosphere of Mars, this is the point where this leg ends and the elliptical Kepler leg starts. In this part there are no aerodynamic forces acting on the spacecraft so the assumptions used for a Kepler orbit are valid. The next and last leg in this computed orbit is the second pass through the atmosphere. This leg slows down sufficiently to start the landing process.
+
+The results of the computed trajectory are shown Figure \ref{fig:orbit_results} for multiple relevant parameters. Note however that multiple trajectories are possible and the values in subsequent chapters do not necessarily derive from this particular trajectory. It does however provide an insight for the order of magnitude of these parameters. In Figure \ref{fig:orbit_results} the two atmospheric entries of Figure \ref{fig:orbit} can clearly be observed. Not only via parameters such as the height the atmospheric re-entries can be distinguished, but also by for example the clearly distinguishable dynamic pressure peaks.
+
+\begin{figure}[h]
 	\vspace{-0.5cm}
 	\centering
-	\includegraphics[width=0.35\textwidth]{Figure/orbital_model/orbit.pdf}
+	\includegraphics[width=0.9\textwidth]{Figure/orbital_model/orbit.pdf}
 	\caption{ The orbit of the stacked toroid without a properly tuned control system, computed with the trajectory tool.}
 	\vspace{-1cm}
 	\label{fig:orbit}
-\end{wrapfigure}
-
-In this section an orbit for the stacked toroid concept is shown (Figure \ref{fig:orbit}). This is done to show which values for i.e. dynamic pressure $\left(\gls{sym:q}\right)$ are reasonable to use in the other tools. For this purpose a temporary \gls{pid} controller is put into the simulation which has the goal to keep the acceleration under 3\gls{sym:ge}. Although the controller does not always meet this objective the trajectory that is presented here comes as is close to it as currently possible. This will give results that are representable for trajectories that will later be calculated with a better (tuned) controller.
-
-Looking at figure \ref{fig:orbit}, the different stages of the orbit can de distinguished. The first leg is the hyperbolic Kepler described in section \ref{sec:hypkep}, this leg ends at the border of the atmosphere. The second leg is the first pass through the atmosphere, here the control system is turned on and it will try to maintain the constant acceleration of 3\gls{sym:ge} (on the astronauts). In this part of the orbit the deceleration is not sufficient to stay in the atmosphere of Mars, this is the point where this leg ends and the elliptical Kepler leg starts. In this part there are no aerodynamic forces acting on the spacecraft so the assumptions used for a Kepler orbit are valid. The next and last leg in this computed orbit is the second pass through the atmosphere. This leg slows down sufficiently to start the landing process.
-
-The results of the trajectory of Figure \ref{fig:orbit} are shown Figure \ref{sec:astrorestraj} for multiple relevant parameters. Note however that multiple trajectories are possible and the values in subsequent chapters do not necessarily derive from this particular trajectory. It does however provide an insight for the order of magnitude of these parameters. In Figure \ref{fig:orbit} the two atmospheric entries of Figure \ref{fig:orbit} can clearly be observed. Not only via parameters such as the height the atmospheric re-entries can be distinguished, but also by for example the clearly distinguishable dynamic pressure peaks.
+\end{figure}
 
 \begin{sidewaysfigure}[h]
 	\centering

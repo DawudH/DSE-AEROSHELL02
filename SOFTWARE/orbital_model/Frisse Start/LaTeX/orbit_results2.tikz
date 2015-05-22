@@ -6136,8 +6136,7 @@ ymax=1.14119498343007,
 ylabel={$C_D$  $\left[-\right]$},
 ymajorgrids,
 axis x line*=bottom,
-axis y line*=left,
-/pgf/number format/precision=3
+axis y line*=left
 ]
 \addplot [color=mycolor1,solid,forget plot]
   table[row sep=crcr]{%
@@ -9192,8 +9191,7 @@ ymax=-0.197979670406509,
 ylabel={$C_L$  $\left[-\right]$},
 ymajorgrids,
 axis x line*=bottom,
-axis y line*=left,
-scaled y ticks=base 10:1
+axis y line*=left
 ]
 \addplot [color=mycolor1,solid,forget plot]
   table[row sep=crcr]{%
@@ -15308,8 +15306,7 @@ ymax=4000,
 ylabel={$\bar{q}$  $\left[Pa\right]$},
 ymajorgrids,
 axis x line*=bottom,
-axis y line*=left,
-scaled y ticks=base 10:-3
+axis y line*=left
 ]
 \addplot [color=mycolor1,solid,forget plot]
   table[row sep=crcr]{%

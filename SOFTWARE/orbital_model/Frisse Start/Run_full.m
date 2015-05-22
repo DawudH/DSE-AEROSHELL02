@@ -139,7 +139,7 @@ figure('name','Orbit')
 axis equal
 hold on
 %axis([-(R_m + h_atm)*2 (R_m + h_atm)*2 -(R_m + h_atm)*2 (R_m + h_atm)*2])
-axis([-(R_m + h_atm)*1.2 0 -(R_m + h_atm)*1.1 (R_m + h_atm)*1.1])
+axis([-(R_m + h_atm)*1.2 -(R_m + h_atm)*1.2 -(R_m + h_atm)*1.1 (R_m + h_atm)*1.1])
 
 % plot the hyperbolic part
 theta_plot = out.theta0:0.001:out.theta;
@@ -182,7 +182,7 @@ end
     set(gca,'Visible','off')
     set(gcf,'color',[1 1 1])
     if exist('L2','var')
-        legend([h1, L1, h2, L2, h3, h4],legend_str,'location','NorthOutside');
+        legend([h1, L1, h2, L2, h3, h4],legend_str,'location','east');
     else
         legend([h1, L1, h3, h4],legend_str);
     end
