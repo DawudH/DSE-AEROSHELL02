@@ -63,7 +63,7 @@ From this same theory it is furthermore known that in the stagnation point $N=0.
 C=1.83 \times 10^{-8} R^{-\frac{1}{2}}\left(1-\frac{h_{w}}{h_{0}}\right)
 \end{equation}
 Where in Equation \ref{eq:stagcoefficient} $R$ denotes the local body radius in the stagnation point and $h_{w}$ and $h_{0}$ comprise of the wall and total enthalpies respectively. An additional assumption that is made here is that $\frac{h_{w}}{h_{0}}\ll 1$. Justification for this statement can be found in the fact that the wall temperature must be smaller than the melting or decomposition temperature during the entire flight. Thus, although the temperature can become very high, the resulting wall enthalpy $h_{w}$ will still be much smaller than the total enthalpy $h_{0}$ \cite[p.347]{AndersonJr.2006}. %In addition to this the computed heat flux will increase as a result of neglecting this factor. One can see that if in later design phases the enthalpy ratio is included into the calculations this will relax the design constraints.
-Combining Equations \ref{eq:heatflux}, \ref{eq:stagdens}, \ref{eq:stagspeed}, \ref{eq:stagcoefficient} into one single Equation produces:
+Combining Equations \ref{eq:heatflux} and \ref{eq:stagcoefficient} into one single Equation produces:
 \begin{equation}
 \gls{sym:qdot}_s=1.83 \times 10^{-8}\rho_{\infty}^{0.5} V_{\infty}^{3.0} R^{-\frac{1}{2}}
 \label{eq:qstag}
@@ -214,7 +214,7 @@ The lift is defined as the component of the aerodynamic force perpendicular to t
 \end{equation}
 This $\gls{sym:CL}\gls{sym:A}$ is the lift coefficient multiplied with the reference area and as such gives insight in the lift generation of a given spacecraft, incorporating its size. For blunt vehicles with a blunt surface perpendicular to the flow, a positive angle of attack $\gls{sym:alpha}$ results in a negative lift.
 
-In Figure \ref{fig:clplots}, the lift coefficient can be seen to vary greatly for the different concepts: the stacked toroid and tension cone produce about 3 times the lift of the other concepts. This is also reflected in the lift gradient plot, which can be found in \ref{fig:claplha}. The lift gradient plot is the graph that provides the information needed for the trade-off, since the lift gradient determines how much the control system has to change the angle of attack to achieve a given lift. It is clear that the stacked toroid and tension cone have the greatest lift and lift gradient, while the trailing ballute follows closely. The other two concepts offer a significantly less lift performance. The lift and lift gradient at an angle of attack of $\gls{sym:alpha}=20^\circ$ are summarized in Table \ref{tab:clcdift}.
+In Figure \ref{fig:clplots}, the lift coefficient can be seen to vary greatly for the different concepts: the stacked toroid and tension cone produce about 3 times the lift of the other concepts. This is also reflected in the lift gradient plot, which can be found in \ref{fig:claplha}. The lift gradient plot is the graph that provides the information needed for the trade-off, since the lift gradient determines how much the control system has to change the angle of attack to achieve a given lift. It is clear that the stacked toroid and tension cone have the greatest lift and lift gradient, while the trailing ballute follows closely. The other two concepts offer a significantly less lift performance. The lift to drag ratios of the various concepts at an angle of attack of $\gls{sym:alpha}=20^\circ$ are summarized in Table \ref{tab:clcd}.
 
 
 
@@ -238,7 +238,7 @@ $\frac{\gls{sym:CL}}{\gls{sym:CD}}$ is the lift coefficient divided by the drag 
 		\caption{$\frac{\gls{sym:CM}}{\gls{sym:CL}/\gls{sym:CD}}$}
 		\label{fig:cmcl}
 	\end{subfigure}
-	\caption{Comparisons of the different concepts for $\frac{\gls{sym:CL}}{\gls{sym:CD}}$ and $\frac{\gls{sym:CM}}{\gls{sym:CL}}$. $\gls{sym:M}=20[-]$, $\gls{sym:gamma}=1.29[-]$}
+	\caption{Comparisons of the different concepts for $\frac{\gls{sym:CL}}{\gls{sym:CD}}$ and $\frac{\gls{sym:CM}}{\gls{sym:CL}/\gls{sym:CD}}$. $\gls{sym:M}=20[-]$, $\gls{sym:gamma}=1.29[-]$}
 	\label{fig:cmcl-clcd}
 \end{figure}
 
@@ -249,7 +249,7 @@ The lift over drag ratio seems to be linear up until around $\gls{sym:alpha}=20 
 	\label{tab:clcd}% LABEL HERE
 	\begin{tabular}{|p{0.36\textwidth}|p{0.23\textwidth}|p{0.31\textwidth}|}
 		\hline
-		\textbf{Concept}  				& \textbf{$\frac{\gls{sym:CL}}{\gls{sym:CD}}$}	& \textbf{Fraction of stacked toroid}	\\ \hline \hline
+		\textbf{Concept}  				& \textbf{$\mathbf{\frac{\gls{sym:CL}}{\gls{sym:CD}}}$}	& \textbf{Fraction of stacked toroid}	\\ \hline \hline
 		Stacked toroid, tension cone	& -0.176     				& 1								\\ \hline
 		Rigid  							& -0.311					& 1.764						\\ \hline
 		Isotensoid  					& -0.072					& 0.410						\\ \hline
@@ -321,7 +321,7 @@ The stability of the vehicle can be determined from $\gls{sym:CM}\gls{sym:A}$ an
 \end{figure}
 
 \subsubsection{Control system mass estimation}
-To estimate the relative control system masses the absolute value of the ratio $\frac{\gls{sym:CM}}{\gls{sym:CL}/\gls{sym:CD}}$ at $\gls{sym:alpha}=20\deg$ is determined for all concepts. The values of this parameter are shown in Table \ref{tab:controlmass}.
+To estimate the relative control system masses the absolute value of the ratio $\frac{\gls{sym:CM}\gls{sym:A}}{\gls{sym:CL}/\gls{sym:CD}}$ at $\gls{sym:alpha}=20\deg$ is determined for all concepts. The values of this parameter are shown in Table \ref{tab:controlmass}. The value of $\frac{\gls{sym:CM}\gls{sym:A}}{\gls{sym:CL}/\gls{sym:CD}}$ as a function of $\gls{sym:alpha}$ is shown in Figure \ref{fig:cmcl-clcd}.
 
 \begin{table}[h]
 	\centering
@@ -329,7 +329,7 @@ To estimate the relative control system masses the absolute value of the ratio $
 	\begin{tabular}{|c|c|c|}
 
 		\hline
-		\textbf{Concept} & $\frac{\gls{sym:CM}}{\gls{sym:CL}/\gls{sym:CD}}$ [-] & \textbf{Fraction of stacked toroid} \\ \hline \hline
+		\textbf{Concept} & $\frac{\gls{sym:CM}\gls{sym:A}}{\gls{sym:CL}/\gls{sym:CD}}$ [-] & \textbf{Fraction of stacked toroid} \\ \hline \hline
 
 		Stacked toroid, tension cone & $0.045$ & $1.00$\\
 		Rigid & $0.015$ & $0.34$ \\
@@ -340,12 +340,12 @@ To estimate the relative control system masses the absolute value of the ratio $
 	\label{tab:controlmass}
 \end{table}
 
-The $\frac{\gls{sym:CM}}{\gls{sym:CL}/\gls{sym:CD}}$-fractions shown in Table \ref{tab:controlmass} will be used in Chapter \ref{ch:tfsum} as input for the trade-off procedure. It should be noted here that the analysis methods used to predict these required control system moments do not take into account dynamic behaviour, as the analysis is carried out under the assumption of steady flow.
+The $\frac{\gls{sym:CM}\gls{sym:A}}{\gls{sym:CL}/\gls{sym:CD}}$-fractions shown in Table \ref{tab:controlmass} will be used in Chapter \ref{ch:tfsum} as input for the trade-off procedure. It should be noted here that the analysis methods used to predict these required control system moments do not take into account dynamic behaviour, as the analysis is carried out under the assumption of steady flow.
 
 \subsection{Conclusion}
 As can be seen in Table \ref{tab:clcd}, the performance of the different concepts on the trade-off criteria can now be assessed. The deceleration time performance of the rigid structure is the highest of the researched shapes, with a lift over drag ratio almost $80\%$ higher than that of the stacked toroid. The isotensoid has a performance more similar to the stacked toroid and tension cone, being around $20\%$ better. The isotensoid has the worst performance compared to the stacked toroid and tension cone, being almost $60\%$ worse.
 
 For stability, the performance can be found in Table \ref{tab:MomentCoeff}. A negative $\gls{sym:cm-alpha}\gls{sym:A}$ means the spacecraft is stable. It is clear the isotensoid has a very bad performance: it's $\gls{sym:cm-alpha}\gls{sym:A}>0$, meaning it is unstable, which is very undesirable. The rigid body is neutrally stable, which is not desirable either. The stacked toroid, tension cone and trailing ballute offer comparable performance, depending on the angle of attack that is looked at.
 
-Finally, as can be seen in Table \ref{tab:controlmass}, there are big differences in $\frac{\gls{sym:CM}}{\gls{sym:CL}/\gls{sym:CD}}$. As explained in \ref{sec:tradeoffaero}, a lower $\frac{\gls{sym:CM}}{\gls{sym:CL}/\gls{sym:CD}}$ leads to a lower control system mass. The stacked toroid and tension cone perform similarly but offer the worst performance, while the isotensoid performs very similarly, but is unstable. The trailing ballute is slightly better, but the rigid structure is by far the best option in this respect, having a $93\%$ lower $\frac{\gls{sym:CM}}{\gls{sym:CL}}$.
+Finally, as can be seen in Table \ref{tab:controlmass}, there are big differences in $\frac{\gls{sym:CM}}{\gls{sym:CL}/\gls{sym:CD}}$. As explained in \ref{sec:tradeoffaero}, a lower $\frac{\gls{sym:CM}}{\gls{sym:CL}/\gls{sym:CD}}$ leads to a lower control system mass. The rigid concept will require the lowest control system mass, as is expected considering the neutral stability behaviour shown by this concept. The stacked toroid and tension cone will require a 66\% higher control effort. The isotensoid and trailing ballute configurations will require a control effort that is respectively 22\% and 31\%  higher than the stacked toroid. 
 

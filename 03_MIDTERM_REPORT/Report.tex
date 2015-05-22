@@ -69,8 +69,12 @@
 \begin{document}
 % Titlepage
 \include{./Titlepage/Titlepage}
+% empthy page after titlepage
+\newpage
+\thispagestyle{empty}
+\mbox{}
 \pagenumbering{roman}
-
+\setcounter{page}{0}
 % Summary
 \newpage
 \include{./Preface}
@@ -79,10 +83,10 @@
 % Table of contents
 \newpage
 \tableofcontents
-\addtocontents{toc}{\protect\contentsline {section}{Acronyms}{v}{}}
-\addtocontents{toc}{\protect\contentsline {section}{List of symbols}{vi}{}}
-\addtocontents{toc}{\protect\contentsline {section}{List of Figures}{vii}{}}
-\addtocontents{toc}{\protect\contentsline {section}{List of Tables}{viii}{}}
+\addtocontents{toc}{\protect\contentsline {section}{Acronyms}{vi}{}}
+\addtocontents{toc}{\protect\contentsline {section}{List of symbols}{vii}{}}
+\addtocontents{toc}{\protect\contentsline {section}{List of Figures}{ix}{}}
+\addtocontents{toc}{\protect\contentsline {section}{List of Tables}{xi}{}}
 
 \newpage
 \printnoidxglossary[type=\acronymtype,nonumberlist]
