@@ -68,7 +68,7 @@ Recall that the first node, or the surface node, also experiences radiation and 
 	\label{fig:thermbalance2}
 \end{figure}
 
-Equation \eqref{eq:therm3} can then be altered by adding a $q^n$-term for the convective heating, or heat flux and adding  $\gls{sym:eps}\gls{con:stefanboltzmann}\left(\left(\gls{sym:T}_1^4\right)^n-\left(\gls{sym:T}_\infty^4\right)^n\right)$ to account for the radiation. In here the superscript $n$ stands for timestep $n$. For the last node a similar heat balance can be constructed. Smith states that in this node the radiation and convection terms can be omitted since they are much lower than the conductive heat rate in this part \cite{Smith2011}. In this case all heat conducted from node $i_{max}-1$ is stored into node $i_{max}$ as conduction towards node $i_{max}+1$ is not possible.
+Equation \eqref{eq:therm3} can then be altered by adding a $q^n$-term for the convective heating, or heat flux and subtracting  $\gls{sym:eps}\gls{con:stefanboltzmann}\left(\left(\gls{sym:T}_1^4\right)^n-\left(\gls{sym:T}_\infty^4\right)^n\right)$ to account for the radiation. In here the superscript $n$ stands for timestep $n$. For the last node a similar heat balance can be constructed. Smith states that in this node the radiation and convection terms can be omitted since they are much lower than the conductive heat rate in this part \cite{Smith2011}. In this case all heat conducted from node $i_{max}-1$ is stored into node $i_{max}$ as conduction towards node $i_{max}+1$ is not possible.
 
 
 \subsubsection{Input}
@@ -150,12 +150,12 @@ For the transient solution one can use the analytical solution (Equation \eqref{
 \gls{sym:T}_2-\gls{sym:T}_1 = \frac{2q\sqrt{\gls{sym:alphat}\gls{sym:t}/\pi}}{\gls{sym:k}\gls{sym:A}}\exp\left(\frac{-\gls{sym:x}^2}{4\gls{sym:alphat}\gls{sym:t}}\right)-\frac{q\gls{sym:x}}{\gls{sym:k}\gls{sym:A}}\left(1-erf\frac{\gls{sym:x}}{2\sqrt{\gls{sym:alphat}\gls{sym:t}}}\right)
 \label{eq:therm5}
 \end{equation}
-Figure \ref{fig:copperval} shows the temperature of a semi-infinite copper block, which is the same Smith uses to verify his model \cite{Smith2011}. Semi-infinite in this case means that the block only has a finite depth. In this case the constant applied heat flux is $30 \frac{W}{cm^2}$, the initial temperature is $20 ^{\circ}C$ and the time at which the temperature is reported is $120 [s]$. Using Figure \ref{fig:copperval} to compare this analytical solution with the numerical tool shows that the tool does not function correctly. It is not able to give a correct time response, which is essential for the implementation of the tool within the design of the aeroshell. The temperature increases faster in the numerical model than the analytical solution prescribes.
+Figure \ref{fig:copperval} shows the temperature of a semi-infinite copper block with a thickness of $500 [m]$, which is the same Smith uses to verify his model \cite{Smith2011}. Semi-infinite in this case means that the block only has a finite depth. In this case the constant applied heat flux is $30 \frac{W}{cm^2}$, the initial temperature is $20 ^{\circ}C$ and the time at which the temperature is reported is $120 [s]$. Using Figure \ref{fig:copperval} to compare this analytical solution with the numerical tool shows that the tool does not function correctly. It is not able to give a correct time response, which is essential for the implementation of the tool within the design of the aeroshell. The temperature increases faster in the numerical model than the analytical solution prescribes.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics{Figure/copperval.pdf}
-	\caption[Comparison of analytical and numerical solution]{Comparison of analytical and numerical solution by applying a constant heat flux for 120 seconds}
+	\caption[Comparison of analytical and numerical solution using a copper block]{Comparison of analytical and numerical solution by applying a constant heat flux for 120 seconds on a copper block with a 0.5 $[m]$ thickness.}
 	\label{fig:copperval}
 \end{figure}
 
