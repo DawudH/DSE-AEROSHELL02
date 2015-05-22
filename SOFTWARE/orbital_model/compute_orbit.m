@@ -5,7 +5,7 @@ close all
 % load constants
 constants
 
-ry = SOI; %[m]
+ry = 10*R_m; %[m]
 v = 7000; %[m/s]
 
 
