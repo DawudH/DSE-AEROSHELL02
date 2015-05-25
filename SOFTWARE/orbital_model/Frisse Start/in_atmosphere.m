@@ -39,7 +39,7 @@ end
 orbit.a = orbit.ag + orbit.ad + orbit.al;
 orbit.J = (a1 - 4*a + 3*orbit.a) / (2*dt);
 
-if (norm(R)-R_m < 100000)
+if (norm(R)-R_m < 400e3)
     orbit.speed_sound = atm.getSpeedofsound(0,180, norm(R)-R_m);
     orbit.M = norm(orbit.V) / orbit.speed_sound;
     orbit.T = atm.getTemperature(0,180,norm(R)-R_m);
