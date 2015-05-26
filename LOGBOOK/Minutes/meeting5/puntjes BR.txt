@@ -1,0 +1,32 @@
+\begin{itemize}
+\item p1.
+\begin{itemize}
+\item DD geeft aan dat de introductie de lezer niet motiveerd om het verslag te lezen. HD voegt hieraan toe dat het goed is om relevante nummers te presenteren zodat de lezer ziet waarom het project nodig is.
+\item NR zou ook graag de mission statement in de introductie zien.
+\end{itemize}
+\item p2. HD, NR en DD zeggen dat present en past missions veel te kort zijn besproken en dat het een opsomming lijkt van referenties, zonder uitleg.
+\item p3. In het raport zijn enkel voordelen van een inflatible beschreven. Er wordt geschetst dat er geen nadelen zijn, zegt DD. HD voegt hieraan toe dat de klant graag wil weten wat de risico's zijn.
+\item p6.
+\begin{itemize}
+\item De tabel op pagina 6 spreekt over een peak temparature, NR geeft aan dat het niet aangegeven is welke temperatuur dit is. B zegt dat het de temparatuur is van de outer-wall.
+\item In de tekst wordt een druk in psi weergegeven. volgens DD is het beter om SI units te gebruiken. 
+\end{itemize}
+\item p8.
+\begin{itemize}
+\item In de aerodynamics literature study kan HD niet zien of er gebruikelijke waardes voor Cl, Cd, Cp, etc. zijn gevonden. Het zou beter zijn om in een tabel deze waardes weer te geven.
+\item NR ziet dat de balistic coefficient besproken wordt, maar het zou fijn zijn als deze coefficient in een formule stond.
+\item HD geeft aan dat ook hier veel referenties staan, maar weinig uitleg. Hierdoor verliest de literatuurstudie zijn functie.
+\item De laatste paar zinnen zijn veel te lang.
+\end{itemize}
+\item p9. Er wordt op deze pagina geargumenteerd dat een groter maar dunner systeem automatisch dunner is, maar NR geeft aan dat dit niet per se het geval hoeft te zijn. Hier mist een referentie.
+\item p10. 
+\begin{itemize}
+\item Het plaatje op deze pagina is te klein.
+\item HD mist thermal coefficients. Deze zijn belangrijk om een gevoel te krijgen voor het ontwerp.
+\end{itemize}
+\item p11. 
+\begin{itemize}
+\item
+\end{itemize}
+\item p12.
+\end{itemize}

@@ -1,0 +1,71 @@
+\documentclass[12pt]{report}
+
+%USEPACKAGES
+\usepackage[margin=2.5cm]{geometry} % Change border margins.
+\usepackage[titles]{tocloft} % Table of Contents, manual add.
+%\usepackage{mcode} % Load matlab code into LaTeX.
+\usepackage[parfill]{parskip} % Removes indents
+\usepackage[hidelinks]{hyperref} % Clickable links in PDF.
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{float}
+\usepackage{amsmath,amssymb,amsthm,multirow,algorithm,algorithmic,amsfonts}
+%\usepackage{gensymb}
+%\usepackage[square,numbers,comma,sort&compress]{natbib}
+\usepackage[titletoc]{appendix}
+\usepackage[final]{pdfpages}
+\usepackage{afterpage}
+%\usepackage{mdwlist} % Compact lists (itemize*)
+\usepackage{fixltx2e}
+%\usepackage[table]{xcolor}
+%\usepackage{expl3}
+
+\usepackage{lscape}
+\usepackage{rotating}
+
+% PAGESTYLE
+\pagestyle{plain}
+
+% COMMANDS
+\newcommand{\HRule}{\rule{\linewidth}{0.04cm}}
+\renewcommand{\abstractname}{{\Large Summary}}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\setlength{\parskip}{12pt plus8pt minus6pt}
+
+% ENVIRONMENTS
+\newenvironment{drawing}
+
+
+\begin{document}
+\clearpage
+\thispagestyle{empty}
+
+\begin{center}
+
+%Upper part of the page
+\textsc{\LARGE Delft University of Technology}\\[0.3cm]
+\textsc{\Large Design Synthesis Exercise}\\[0.5cm]
+
+%Title
+\HRule \\[0.4cm]
+{\Large \bfseries Design of a Controllable Inflatable Aeroshell}\\[0.2cm]
+{\Huge \bfseries Status Meeting 6 12-05-2015 10:00}\\[0.2cm]
+\HRule \\[1.2cm]
+
+\vspace{10mm}
+Lucas Mathijssen
+\\
+\today
+\\
+
+
+\end{center}
+
+
+
+%Chapters
+\newpage
+\include{./meeting6/minutes6}
+
+\end{document}

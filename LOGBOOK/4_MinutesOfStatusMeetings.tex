@@ -1,0 +1,139 @@
+\section{Minutes of Status Meetings}
+In this section all minutes of the status meetings will be archived. For these minutes, Abbreviation will be used for the speakers. the abrivations can be found in table \ref{tab:Abb} below.
+
+\begin{table}[H]
+	\caption {Abbreviations of names}
+	\centering
+    \begin{tabular}{|l|l|}
+    \hline
+    Abbreviation for person & Full name      \\ \hline
+    HD                      & Herman Damveld \\ \hline
+    NR                      & Niels Reurings \\ \hline
+    DD                      & Dennis Dolkens \\ \hline
+    J                       & Joost          \\ \hline
+    L                       & Lucas          \\ \hline
+    A                       & Alexander      \\ \hline
+    G                       & Guido          \\ \hline
+    D                       & Dawud          \\ \hline
+    Se                      & Sebastiaan     \\ \hline
+    B                       & Bj\"{o}rn      \\ \hline
+    Su                      & Suthes         \\ \hline
+    T                       & Twan           \\ \hline
+    \end{tabular}
+    \label{tab:Abb}
+\end{table}
+
+%\subsection{Kick-off, 20-04-2015 9:00}
+
+
+\subsection{Status Meeting 1, 22-04-2015 14:00}
+Location: Fellowship Meeting room 1\\
+Time: Joost opened the meeting at 14:00\\
+SECRET CODE1: yes, there is a secret code
+
+\subsubsection{Agenda}
+J: Add a set of questions between points 5 and 6 in the agenda.\\
+J: Additional question: Should the communication be in English or in Dutch? 
+HD: As long as there is no external or formal communication, Dutch communication may be used.
+
+\subsubsection{Organizational task devision}
+D: task division is as is shown in table \ref{tab:tasks}, where the left part of the table describes the distribution of the general work division, while the right columns describe the technical task division.
+
+\begin{table}[H]
+	\caption {Task distribution}
+    \begin{tabular}{|p{0.25\textwidth}|p{0.2\textwidth}|p{0.25\textwidth}|p{0.2\textwidth}|}
+    \hline
+    General task division                 & Names      & Technical task devision & Names                    \\ \hline \hline
+    Chairman (CH)                         & Joost      & Structures              & Bj\"{o}rn; Alexander         \\ \hline
+    Secretary (S)                         & Lucas      & Aerodynamics            & Guido; Joost; Sebastiaan \\ \hline
+    Planning (Pl)                         & Alexander  & Thermodynamics                 & Suthes; Lucas            \\ \hline
+    Systems Engineer (SE)                 & Guido      & Control                 & Dawus; Twan              \\ \hline
+    Documentation and Archiving ( D \& A) & Dawud      & ~                       & ~                        \\ \hline
+    Risk manager (YOLO)                   & Sebastiaan & ~                       & ~                        \\ \hline
+    Editor (Ed)                           & Bj\"{o}rn      & ~                       & ~                        \\ \hline
+    Verification (Ver)                    & Suthes     & ~                       & ~                        \\ \hline
+    Validation (Val)                      & Twan       & ~                       & ~                        \\ \hline
+    \end{tabular}
+    \label{tab:tasks}
+\end{table}
+
+HD: You should make sure that you are able to switch between departments, because you cannot yet know how much work a department is going to have. It can be easy if you have people in multiple technical departments, such that there is not time loss in getting acquainted with a new topic if switching occurs.\\
+G: As a SE I will be responsible for the overview and make sure that this will not be a problem.\\
+HD: And who is the person that keeps a clear overview of the latest parameter numbers? Make sure that there is a clear description of the tasks and that no work is left undone. You can for instance keep the parameter values in an excel sheet.\\
+L: We could also keep the latest variables as an input file in MATLAB, that runs our tools. \\
+NR: Then keep in mind that you need time logs, such that there is no confusion about changes in the input by a person.\\
+
+\subsubsection{upcomming deadlines}
+J: We moved the deadline for the baseline review to may 1st, because of the free days after the weekend must be free and not used for checking. \\
+HD: OK.\\
+L: Since our project plan is almost finished, can we send the report today, so that you can check it tomorrow? In that way we can discuss it on Friday and we will still have time to correct the last things.\\
+HD: I don't have much time. I can see what I can do.
+NR \& DD: We can have a look. If you can get an advantage this way, I would seartenly make use of it if I were you.\\
+
+\subsubsection{Questions}
+Q1: \textit{L: The requirements state that the tutor and coaches should always be able to look at the latest version of the logbook, how shall we realise this?}\\
+HD: We can use any cloud storage, but I would prefer If you have a look at 'surfspot'.\\
+L: What should we put on the storage cloud?\\
+HD: General deliverables, like the logbook, agendas and deliverables. No large datasets. Also note that you need to print certain things. \\
+
+Q2: \textit{Se: How detailed should the risk mitigation plan be?}\\
+HD: For the baseline review the risk should be evaluated very generally. We want to see that the group understands the requirements and what the driving requirements will be. cost for example is not a requirement and hence it shouldn't be elaborated extensively, otherwise you did something wrong. Also, You don't have to write a plan for the complete mission, you must focus on the re-entry. You don't have to design the capsule, you can find data on this from similar missions. Examples are the Orion and Apollo mission from NASA.\\
+
+Q3: \textit{L:What is the starting point of the mission, will we start at launch or in the atmosphere, or somewhere in between?}\\
+HD: In general, the begin point of your mission is a speed of 7 km/s at an altitude I will provide you with on a late time.\\
+D: What about the orientation, is that free to choose?\\
+HD: You will see that there are only few options for a human flight to land on mars, so this will automatically provide you with a requirement.\\
+
+Q4: \textit{Su: How detailed should the sustainability part be, since it will determine 10\% of our symposium grade?}\\
+HD: This is not a very important part in the design, because we cannot bring extra mass just for the use of sustainable materials. This will induce a large snowball effect, such that more propellant is needed. Burning more propellant is not at all sustainable. \\
+NR: You can focus on things like space debris, materials used and how they are produced.\\
+DD: Or on life forms that you will bring to space that might cause damage, etc.\\
+HD: So in general, don't underestimate it. Treat it with respect, but don't make it a large part of your design.\\
+
+Q5:\textit{L: We had some problems with the code for the requirements, but it is solved now}\\
+HD: Now I am curious.\\
+L:described the code: Mission-Concept-number-subsystem-number.\\
+NR: It's nice that you did it, but a bit a waste of your energy.\\
+HD: By the way, you don't need two concepts in the end. That's something we did two years ago with the same project, but I wanted to remove it from the project this time. I must have forgotten it. So after the mid-term review, you have to consider only one design.\\
+
+\subsubsection{W.F.C.T.T.T}
+No comments
+SECRET CODE2: It's raining meatballs
+
+\subsubsection{Survey}
+A:-\\ 
+B:-\\
+Su:-\\
+D:-\\
+\textit{NR: For the editor, it might be very stressful to do proofreading, because a lot of people might submit their parts last minute, don't you want more than one person in this department?} \\
+B: The task division only states final responsibility, but overall more than one person will work on this.\\
+T:-\\
+Se:-\\
+\textit{J: I am a literature study right now and I see that a lot of questions in the literature are not solved yet, how should we proceed with this?}\\
+HD: You should only focus on your own design, but I want to make the problem a bit broader than it is. I want you to think of other concepts than only aero shells. You need to incorporate this in your design option tree.\\
+T: So should our mission statement change? Because we have stated that we will only look at aero shells.
+HD: No, I just want you to apply broader knowledge during the concept development, such that you will get a better understanding of the mission.\\
+\textit{G: Should we also design the landing, or where will our mission end?}\\
+HD: No, that is outside the scope of this exercise. I will later send you a final altitude with a corresponding speed that will indicate the end of your mission.\\
+
+HD: Yesterday I had contact with a very smart student who did this same project two years ago. He indicated that he was willing to help you with questions about the project. I will later send you his name and contact information. If I were you, I would not refuse this offer.\\
+
+\subsubsection{Adjournment}
+The next meeting will be Friday 24-04-2014 at 10:00 in Meeting room 1.\\
+
+Adjournment at 15:00
+
+\subsection{Status Meeting 2, 24-04-2015 14:00}
+\input{Minutes/meeting2/minutes2}
+
+\subsection{Status Meeting 3, 29-04-2015 16:00}
+\input{Minutes/meeting3/minutes3}
+
+\subsection{Status Meeting 4, 01-05-2015 10:30}
+\input{Minutes/meeting4/minutes4}
+
+\subsection{Status Meeting 5, 08-05-2015 10:00}
+\input{Minutes/meeting5/minutes5}
+
+\subsection{Status Meeting 6, 12-05-2015 10:00}
+\input{Minutes/meeting6/minutes6}
