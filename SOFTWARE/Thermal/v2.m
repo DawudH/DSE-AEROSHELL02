@@ -6,7 +6,7 @@ clear all
 close all
 
 %% inputs
-filename = 'EX42.txt';
+filename = 'VAL.txt';
 dx = 0.005;
 dt = 0.003;
 
