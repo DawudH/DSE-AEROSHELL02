@@ -1,9 +1,9 @@
 clear all
 close all
-x = [1  0 -1 0 1]; y = [0  1 0 -1 0];
+x = [0 0.5 0 -0.5 0]; y = [0 0 1 0 0];
 s45 = 1/sqrt(2); 
-w =[1 1 1 1 1];
-circle = rsmak(augknt(0:3,3,1), [w.*x;w.*y;w])
+w =[0.5 0.5  0.5];
+circle = rsmak([0 0 0 1/3 1/3 2/3 2/3 1 1 1], [w.*x;w.*y;w])
 
 fnplt(circle)
 axis equal
