@@ -25,35 +25,30 @@ Aan de agenda worden geen punten toegevoegd.
 de notulen worden goed gekeurd
 
 \subsubsection{Trade-off criteria}
+De trade-off criteria zijn ietwat nogmaals besproken door eht team en de volgende resultaten worden voorgesteld:
+
 - Decelerator mass
 - Developement risk
 - Stability (Cmalpha)
 - Deceleration time(Clalpha)
 
-J Deceleration time Clalpha, capability om slope van de trajectory aan te passen. 
+Voor het vergelijken van concepten zijn bijbehorende parameters tegewezen. Voor decelleration mass wordt gebruik gemaakt van relatieve massa's ten opzichte van de stacked torroid. Hiervoor is gekozen omdat in dit stadium nog niet voor alle concepten een speciek massa getal is te plakken op het gehele concept.  Bij de deceleration time is voor de parameter  Clalpha gekozen omdat deze aangeeft wat de capasiteit is van het voertuig om de slope van de trajectory aan te passen. \\
 
-B Massa. niet meer specifieke massa's, alleen voor structures. Daarom genoodzaakt om andere vergelijkingsmaat te vinden. 
+Op het voorstel gaat HD in en maakt de volgende vergelijking: stel, we maken geen control systeem. Dan massa control = 0. dat lijkt heel goed. waar zie je dat dit slecht is? T reageerd en zegt dat Cmalpha dit aangeeft. Dit wordt besproken en er volgt uit dat Cm/Cl een betere maatstaaf is. HD is echter nog niet overtuigd omdat hij vindt dat Cm en Cl af te kopen zijn met control massa. Maar T verteld dat het juist de andere kant op werkt: met een total massa en vorm kun je Cm en Cl krijgen. HD is het hier na een korte discussie ook mee eens en zegt dat deze redenatie ook goed naar voren moet komen tijdens de midterm review.\\
 
-HD vergelijking: stel, we maken geen control systeem. Dan massa control = 0. dat lijkt heel goed. waar zie je dat dit slecht is. T Cmalpha geeft dit aan. Cm/Cl wordt een soort van requirement. Dus het staat zowel in de trade-off als in de requirements. zelfde verhaal als met reliability. HD Je kunt Cm en Cl afkopen met control massa. T het werkt juist de andere kant op. HD: Oke, dan werkt het. goed over nagedacht. Dit moet je goed uitleggen bij je midterm review. 
+Het volgende punt wat nog vragen opwekt is de massa. HD vraagt zich af of de massa's nog worden opgesplitst in verschillende secties, omdat het nu lijkt alsof er nog iets mist. DD is het hier ook mee eens. B verteld dat er inderdaad een opsplitsing gemaakt kan worden in TPS-, structural- en control massa. Na dit te hebben besproken worden deze deel massa's aangenomen als deelkopjes onder de massa trade-off.\\
 
-HD: Nog opsplitsen van massa's? Er lijkt iets te missen. DD het is niet zo overzichtelijk. Werkt wel met goede uitleg. Echte tijd kunnen we nog niet geven, is nog te vroeg. discussie waarom geen tijd beschikbaar. Nog erg aghankelijk van PID controller. Het kan nog niet worden aangenomen dat die PID perfect werkt. kan niet constand 3g erop houden. HD: 3g constant aanhouden is niet altijd de goede manier. Wat is de ideale trajectory? Wat wil ik / wat kan ik? los van de tool. Stel dat je nog geen control system hebt. en kan niet, dan moet trade-off aanwakkeren. T wil eigenlijk zo snel mogelijk afremmen, dus continue 3g. Dat programmeren is lastig. 
+ Over de deceleration time wordt ook nog getwist. De groep kan hier nog niet echte een specifieke tijd aan geven. Er volgt een discussie waarom deze tijd er nog niet is. Het blijkt dat deze erg aghankelijk van PID controller, en die controller werkt nog niet goed. kan niet constand 3g erop houden. HD verteld dat 3g constant aanhouden niet altijd de goede manier is. Het probleem zou eens van een andere hoek beken moeten worden: bedenk eerst wat voor trajectory je wilt/ wat je moet kunnen en ga dan kijken of je dat kunt halen. Stel dat je nog geen control system hebt. en kan niet, dan moet trade-off aanwakkeren. T ziet dit anders, want je wilt eigenlijk zo snel mogelijk afremmen, dus continue 3g zou dan de ideale oplossing zijn. Dat programmeren is lastig. HD her formuleerd zijn statement: Je kunt eigenlijk beter aannemen dat je alpha direct kunt aanpassen en dan zien welke orbit je wilt hebben. Dan krijg je een totaal beeld van welk alpha verschil je nodig hebt. Dit idee wordt besproken en het blijkt mogelijk door Cl en Cd van richting te veranderen. later kan dan de PID-controller nog ingebouwd worden.\\
+ 
+Er wordt besloten dat de deceleration time parameter voorlopig wordt weergegeven door de eerder genoemde parameter. Echter, als het hierboven genoemde control systeem zonder PID-controller nog kan worden geïplementeerd voor de Midterm Review, dan zou de voorkeur veranderen naar een daadwerkelijke deceleration time.\\
 
-kunt eigenlijk beter aannemen dat je alpha direct kunt aanpassen dan zien welke orbit je wilt hebben. en dan krijg je een beeld welk totaal alpha verschil je nodig hebt. kun je moeilijk kiezen. Je kunt toch cl en cd rho en snelheid altijd aanpassen zodat je 3g hebt. Ja, dat kan. HD: dit klinkt als een goed idee. later de PID nog inbouwen.
+Na de parameter discussie volgen er nog enkele vragen. de eerste gaat over de waardes van de aerodynamische coefficienten. Zijn deze waardes wel betrouwbaar voor hoge snelheden? J legt uit dat de betrouwbaarheid van Cma en Cla schalen met het mach nummer en juist betrouwbaarder worden met hogere snelheid. De theorie kan niet meer worden toegepast onder Mach 5.\\
 
-Daarom beter trade-off criteria. Als het lukt gaan we dan voor de deceleration time. 
-
-
-B massa's samen of appart nemen? samen, maar met toelichting in de trade-off van de 3 verschillende massa's, die niet mee doen voor de echte criteria.
-
-
-Cma en Cla hangen af van M en wordt vrij betrouwbaar emt toenemende 
-
-
-Thermal andere weg op geslagen. Niet meer lay-up tool. Nu heat load vergelijken. hoe nieuwe tool werkt, waarom oude tool niet werkt.
+De tweede vraag gaat over thermal mass.L geeft aan dat de thermodynamics group een andere weg is op geslagen. Nu wordt er geen gebruik meer gemaakt van de lay-up tool, maar van een heat load. L en Su leggen uit wat voor een probleem is opgedoken in de tool en dat het gezien de korte tijd beter leek om toch maar resultaten in een andere vorm te leveren (hierbij verwijzen zij naar een eerder gesprek met NR), om zo toch nog wat nuttigs te kunnen zeggen over het systeem. De heat load geeft aan hoeveel energie het schild in totaal moet kunnen dragen en daarom is voor deze waarde gekozen als trade-off massa. De Tutors zijn het hier mee eens maar vinden eht wel jammer.\\
 
 
 \subsubsection{Validatie tool}
-T de getallen zijn heel mooi. Verificatie werkt helemaal prima, maar validatie lukt niet omdat er geen refernetie cases zijn met een vergelijkbare trajectory. HD: meer dan dat kun je nog niet doen. 
+T heeft dit punt aangevraagt op de agenda omdat hij geen referentie cases kan vinden om de tool mee te valideren. Er bestaan geen vergelijkbare uitgevoerde missie trajectories. Hd gaat hier op in en zegt dat het in dat gewoon niet mogelijk is om de tool te valideren. Dat gaat u eenmaal niet met pionier werk.
 
 \subsubsection{Andere vragen}
 Personal in het het rapport? Nee, niet nodig. Als appart document in de dropbox. met welk pagina limiet? 1 pagina it is.
