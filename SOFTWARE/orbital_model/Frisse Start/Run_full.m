@@ -6,7 +6,7 @@ close all
 variables
 
 % booleans
-use_control = true;
+use_control = false;
 multiple_orbits = true;
 
 %%function
