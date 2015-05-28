@@ -5,22 +5,22 @@ clc
 clear all
 close all
 
-nmax = 1000000;
-imax = 500;
-k = 45.0;
-rho = 7800.0;
-cp = 412.09;
+nmax = 120000;
+imax = 100;
+k = 386.0;
+rho = 8954.0;
+cp = 383.1;
 
-dx = 0.00005;
-dt = 0.00003;
+dx = 0.005;
+dt = 0.0010;
 %dt = 0.0370280375647668487;
 
 alpha = k/rho/cp;
 v = alpha*dt/dx/dx;
 
 T = zeros(imax,nmax);
-T0 = 308.15;
-T(:,1) = T0;
+T0 = 293;
+T(:,1) = 293;
 q = 300000;
 
 for n=1:nmax-1
