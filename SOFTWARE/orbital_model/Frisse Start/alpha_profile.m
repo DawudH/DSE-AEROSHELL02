@@ -1,15 +1,23 @@
-function out = alpha_profile(t,aero_coef)
+function out = alpha_profile(t,aero_coef,control,state)
 
-    Alpha = [20 15 12 10 20]*pi/180;
-    t_change = [226 240 250 260];
+    Alpha = [20 19 18 17 18 19 20 21 20 19 18 17]*pi/180;
+    t_change = [245 250 255 260 265 270 275 280 290 300 310];
     
     t_check = t_change >= t;
     if sum(t_check) == 0
-        alpha = Alpha(end);
+        check = length(Alpha);
     else
-        alpha = Alpha(find(t_check,1));
+        check = find(t_check,1);
     end
-
+    
+    if (state.alpha - control.dalpha) < Alpha(check)
+        alpha = state.alpha - control.dalpha;
+    elseif (state.alpha + control.dalpha) > Alpha(check)
+        alpha = state.alpha + control.dalpha;
+    else
+        alpha = Alpha(check);
+    end
+    alpha
     [CLA, CDA, CMYA] = aero_coef.aeroCoeffs(alpha);
 
     out.CLA = CLA;
