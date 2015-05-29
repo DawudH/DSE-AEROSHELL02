@@ -29,15 +29,16 @@ tend = 3600 * 24 *10; %[s]
 
 %Control variables
 control.a = 2.9*g_earth;
+control.h = 60e3;
 control.dalphadt = -1.0*pi/180;
 control.dalpha = control.dalphadt*dt_atmos;
-control.alpha_init = 20*pi/180; % rad
+control.alpha_init = 15*pi/180; % rad
 control.alpha_range = [-50 50]*pi/180;
-control.control_up_lim = 2; % g_earth
-control.control_low_lim = 0.5; % g_earth
-control.Kp = 1*0.005*control.dalpha; % proportional gain
-control.Ki = 1* 0.0001*control.dalpha; % integral gain
-control.Kd = 1* 2*control.dalpha; % differential gain
+control.control_up_lim = 100e3; % m
+control.control_low_lim = 90e3; % m
+control.Kp = 2*control.dalpha*10^(-6); % proportional gain
+control.Ki = 5*control.dalpha*10^(-7); % integral gain
+control.Kd = 2*control.dalpha*10^(-4); % differential gain
 control.error = 0;
 control.error_I = 0;
 

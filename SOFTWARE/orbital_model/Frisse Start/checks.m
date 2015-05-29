@@ -58,9 +58,9 @@ function [ out_c ] = checks( R, V, t, tend, R_m, h_atm, G, M_mars,g_earth, inatm
     end
     
     % check if to use control
-    if (state.a >= control.control_up_lim*g_earth)
+    if (state.h <= control.control_up_lim)
         out_c.use_control = true;
-    elseif (state.a < control.control_low_lim*g_earth)
+    elseif (state.h > control.control_low_lim)
         out_c.use_control = false;
     else
         out_c.use_control = use_control;

@@ -1,7 +1,7 @@
 function out = alpha_profile(t,aero_coef)
 
-    Alpha = [20 15 12 10 20]*pi/180;
-    t_change = [226 240 250 260];
+    Alpha = [20]*pi/180;
+    t_change = [226];
     
     t_check = t_change >= t;
     if sum(t_check) == 0
