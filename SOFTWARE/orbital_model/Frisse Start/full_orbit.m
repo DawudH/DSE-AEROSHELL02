@@ -60,6 +60,7 @@ end
     state.CL = CL(1);
     state.CD = CD(1);
     state.a = norm(A(1,:) - Ag(1,:));
+    state.h = norm(R(1,:)) - R_m;
     state.alpha = alpha;
             
     %Get initial values for conditions
@@ -90,7 +91,7 @@ end
                  end
                  
                  if use_alpha_profile && ~use_control
-                     aero_param = alpha_profile(t,aero_coef);
+                     aero_param = alpha_profile(t,aero_coef,control,state);
                      CL(i+1) = aero_param.CLA / S;
                      CD(i+1) = aero_param.CDA / S;
                      alpha = aero_param.alpha;
@@ -101,6 +102,7 @@ end
             state.CL = CL(i);
             state.CD = CD(i);
             state.a = norm(A(i,:) - Ag(i,:));
+            state.h = norm(R(i,:)) - R_m;
             state.alpha = alpha;
             a_prev = A(i,:);
             t = t + dt_atmos;
@@ -115,11 +117,11 @@ end
             a_prev = out_o.A;
             tkep = tp(i);
             t = t + out_o.t_kep;
-            CL(i+1) = CL(i);
-            CD(i+1) = CD(i);
             %readjust attitude to get back to initial alpha
             alpha = control.alpha_init;
             [CLA, CDA, CMYA] = aero_coef.aeroCoeffs(alpha);
+            CL(i+1) = CLA / S;
+            CD(i+1) = CDA / S;
             state.alpha = alpha;
             control.error = 0;
             control.error_I = 0;
