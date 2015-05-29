@@ -8,9 +8,11 @@ variables
 % booleans
 use_control = false;
 multiple_orbits = true;
+use_alpha_profile = true;
+export_figures = false;
 
 %%function
-[out] = full_orbit(R, V, A, G, M_mars, R_m, h_atm, atm, dt_kep_init, dt_atmos, m, Omega_m, S, control, tend, crash_margin, g_earth, aero_coef, use_control, multiple_orbits);
+[out] = full_orbit(R, V, A, G, M_mars, R_m, h_atm, atm, dt_kep_init, dt_atmos, m, omega_m, S, control, tend, crash_margin, g_earth, aero_coef, use_control, multiple_orbits, use_alpha_profile);
                     
 %% processing (plot/write to file)
 figure('name','parameters over time')
@@ -119,7 +121,6 @@ end
 subplot(3,3,9)
 xlim([min(t) max(t)])
 ylim([-abs(control.dalphadt)*180/pi abs(control.dalphadt)*180/pi])
-ylim([-0.05 0.32])
 grid on
 hold on
 plot(t,out.dAlpha_dt*180/pi,'color',cc(2,:))
@@ -128,7 +129,9 @@ xlabel('$t$ $\left[s\right]$','interpreter','latex')
 if isfield(out,'tkep') 
     plot([out.tkep, out.tkep],ylim,'-.','color',cc(1,:),'LineWidth',1.4); 
 end
-matlab2tikz('.\LaTeX\orbit_results2.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
+if (export_figures)
+    matlab2tikz('.\LaTeX\orbit_results2.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
+end
 
 
 % plot orbit
@@ -139,7 +142,7 @@ figure('name','Orbit')
 axis equal
 hold on
 %axis([-(R_m + h_atm)*2 (R_m + h_atm)*2 -(R_m + h_atm)*2 (R_m + h_atm)*2])
-axis([-(R_m + h_atm)*1.2 (R_m + h_atm)*1.2 -(R_m + h_atm)*1.1 (R_m + h_atm)*1.1])
+%axis([-(R_m + h_atm)*1.2 (R_m + h_atm)*1.2 -(R_m + h_atm)*1.1 (R_m + h_atm)*1.1])
 
 % plot the hyperbolic part
 theta_plot = out.theta0:0.001:out.theta;
@@ -186,4 +189,6 @@ end
     else
         legend([h1, L1, h3, h4],legend_str);
     end
-    matlab2tikz('.\LaTeX\orbit2.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
+    if (export_figures)
+        matlab2tikz('.\LaTeX\orbit2.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
+    end

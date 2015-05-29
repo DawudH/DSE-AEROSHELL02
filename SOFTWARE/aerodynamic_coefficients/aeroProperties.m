@@ -4,6 +4,9 @@ classdef aeroProperties
         cla;
         cda;
         cmya;
+        clainterpolant;
+        cdainterpolant;
+        cmyainterpolant;
     end
     methods
         function obj = aeroProperties(object)
@@ -29,28 +32,34 @@ classdef aeroProperties
             obj.cla = A(:,4);
             obj.cda = A(:,2);
             obj.cmya = A(:,6);
+            
+            
+            obj.clainterpolant = griddedInterpolant(obj.alpha, obj.cla, 'linear');
+            obj.cdainterpolant = griddedInterpolant(obj.alpha, obj.cda, 'linear');
+            obj.cmyainterpolant = griddedInterpolant(obj.alpha, obj.cmya, 'linear');
+            
         end
         
         function [cla, cda, cmya] = aeroCoeffs(obj, alpha)
 %             if sum(alpha > max(obj.alpha))>0 || sum(alpha < min(obj.alpha))>0
 %                 error('Outside measured aera!');
 %             else
-                cla = interp1(obj.alpha, obj.cla, alpha);
-                cda = interp1(obj.alpha, obj.cda, alpha);
-                cmya = interp1(obj.alpha, obj.cmya, alpha);
+                cla = obj.getCLA(alpha);
+                cda = obj.getCDA(alpha);
+                cmya = obj.getCMYA(alpha);
 %             end
         end
         
         function cla = getCLA(obj, alpha)
-            cla = interp1(obj.alpha, obj.cla, alpha);
+            cla = obj.clainterpolant(alpha);
         end
 
         function cda = getCDA(obj, alpha)
-            cda = interp1(obj.alpha, obj.cda, alpha);
+            cda = obj.cdainterpolant(alpha);
         end
         
         function cmya = getCMYA(obj, alpha)
-            cmya = interp1(obj.alpha, obj.cmya, alpha);
+            cmya = obj.cmyainterpolant(alpha);
         end
         
         function clcd = getCLCD(obj, alpha)
