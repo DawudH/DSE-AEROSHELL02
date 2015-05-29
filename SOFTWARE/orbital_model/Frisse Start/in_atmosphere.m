@@ -11,8 +11,9 @@ R = orbit.R;
 V = orbit.V;
 
 %Mars atmosphere, get density and g
-rho = atm.getCheapDensity(norm(R)-R_m);
-g = atm.getg(norm(R)-R_m);
+h = norm(R)-R_m;
+rho = atm.getCheapDensity(h);
+g = atm.getg(h);
 
 %gravitational accaleration (vector)
 orbit.ag = -g * R/norm(R);
@@ -21,10 +22,11 @@ if rho>0
     %calculate the velocity of the atmosphere
     Vatm = [-omega_m*R(2),omega_m*R(1),0];
     %calculate the direction of the velocity of the s/c wrt the atmosphere
-    vel_unit = (V - Vatm) / norm(V - Vatm);
+    v_aero = norm(V - Vatm);
+    vel_unit = (V - Vatm) / v_aero;
     %calculate Lift and Drag
 
-    orbit.q = 0.5 * rho * norm(V - Vatm)^2;
+    orbit.q = 0.5 * rho * v_aero^2;
     orbit.ad = - vel_unit * CD * orbit.q * S / m;
     orbit.al = [vel_unit(2),-vel_unit(1),0] * CL * orbit.q * S / m;
     
@@ -39,10 +41,11 @@ end
 orbit.a = orbit.ag + orbit.ad + orbit.al;
 orbit.J = (a1 - 4*a + 3*orbit.a) / (2*dt);
 
-if (norm(R)-R_m < 400e3)
-    orbit.speed_sound = atm.getCheapSpeedofsound(norm(R)-R_m);
+
+if (h < 400e3)
+    orbit.speed_sound = atm.getCheapSpeedofsound(h);
     orbit.M = norm(orbit.V) / orbit.speed_sound;
-    orbit.T = atm.getCheapTemperature(norm(R)-R_m);
+    orbit.T = atm.getCheapTemperature(h);
 else
     orbit.speed_sound = 0;
     orbit.M = 0;
