@@ -1,10 +1,15 @@
 function out = alpha_profile(t,aero_coef,control,state)
-
-
-    Alpha = [20 10 20]*pi/180;
-    t_change = [226 250];
     
+    %flyby
     Alpha = [10 17 16 15 10]*pi/180;
+    t_change = [226 234 250 270];
+    
+    %one orbit
+    Alpha = [15 10 20 -5 0 10]*pi/180;
+    t_change = [220 250 800 1100 1200 1300];
+    
+    %one time under 3g
+    Alpha = [20 18 19 15 10]*pi/180;
     t_change = [226 234 250 270];
     
     t_check = t_change >= t;
