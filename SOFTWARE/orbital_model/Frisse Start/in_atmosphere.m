@@ -1,4 +1,4 @@
-function [ out_o ] = in_atmosphere( V, R, a, a1, J, atm, CL, CD, dt, R_m, Omega_m, S, m )
+function [ out_o ] = in_atmosphere( V, R, a, a1, J, atm, CL, CD, dt, R_m, omega_m, S, m )
 %IN_ATMOSPHERE Summary of this function goes here
 %   Detailed explanation goes here
 % a1 = ai-1
@@ -19,14 +19,14 @@ orbit.ag = -g * R/norm(R);
 %if in atmosphere there is drag and lift
 if rho>0
     %calculate the velocity of the atmosphere
-    Vatm = cross(Omega_m,R);
+    Vatm = [-omega_m*R(2),omega_m*R(1),0];
     %calculate the direction of the velocity of the s/c wrt the atmosphere
     vel_unit = (V - Vatm) / norm(V - Vatm);
     %calculate Lift and Drag
 
     orbit.q = 0.5 * rho * norm(V - Vatm)^2;
     orbit.ad = - vel_unit * CD * orbit.q * S / m;
-    orbit.al = cross(vel_unit,[0,0,1]) * CL * orbit.q * S / m;
+    orbit.al = [vel_unit(2),-vel_unit(1),0] * CL * orbit.q * S / m;
     
 else
     %no lift and drag outside the atmosphere

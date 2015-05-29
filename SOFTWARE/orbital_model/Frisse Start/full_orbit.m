@@ -1,4 +1,4 @@
-function [ out ] = full_orbit(R0, V0, A0, G, M_mars, R_m, h_atm, atm, dt_kep_init, dt_atmos, m, Omega_m, S, control, tend, crash_margin, g_earth, aero_coef, use_control, multiple_orbits,use_alpha_profile,alpha_init,dalphadt)
+function [ out ] = full_orbit(R0, V0, A0, G, M_mars, R_m, h_atm, atm, dt_kep_init, dt_atmos, m, omega_m, S, control, tend, crash_margin, g_earth, aero_coef, use_control, multiple_orbits,use_alpha_profile,alpha_init,dalphadt)
 %Calculates the full orbit for selected initial conditions until sepcified
 %end time
 switch nargin
@@ -97,7 +97,7 @@ end
                      alpha = aero_param.alpha;
                  end
                 
-            [out_o] = in_atmosphere( V(i,:), R(i,:), A(i,:), a_prev, J(i,:), atm, CL(i+1), CD(i+1), dt_atmos, R_m, Omega_m, S, m );
+            [out_o] = in_atmosphere( V(i,:), R(i,:), A(i,:), a_prev, J(i,:), atm, CL(i+1), CD(i+1), dt_atmos, R_m, omega_m, S, m );
             %update state
             state.CL = CL(i);
             state.CD = CD(i);
