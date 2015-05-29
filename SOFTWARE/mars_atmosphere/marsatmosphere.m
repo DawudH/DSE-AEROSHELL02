@@ -128,6 +128,11 @@ classdef marsatmosphere
             a = sqrt(obj.gamma_mars*obj.Rm_mars*T);
         end
         
+        function a = getCheapSpeedofsound(obj, hq)
+            T = obj.getCheapTemperature(hq);
+            a = sqrt(obj.gamma_mars*obj.Rm_mars*T);
+        end        
+        
         function g = getg(obj, hq)
             g = obj.GM_mars ./ (hq+obj.r_mars).^2;
         end
