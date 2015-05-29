@@ -72,8 +72,8 @@ classdef marsatmosphere
             obj.cheaph = 0:5000:4e5;
             obj.cheaprho = obj.getDensity(obj.cheapLat*ones(size(obj.cheaph)), obj.cheapLon*ones(size(obj.cheaph)), obj.cheaph);
             obj.cheapT = obj.getTemperature(obj.cheapLat*ones(size(obj.cheaph)), obj.cheapLon*ones(size(obj.cheaph)), obj.cheaph);
-            obj.rhointerpolant = griddedInterpolant(obj.cheaph, obj.cheaprho);
-            obj.Tinterpolant = griddedInterpolant(obj.cheaph, obj.cheapT);
+            obj.rhointerpolant = griddedInterpolant(obj.cheaph, obj.cheaprho, 'cubic');
+            obj.Tinterpolant = griddedInterpolant(obj.cheaph, obj.cheapT, 'cubic');
         end
         
         function rho = getCheapDensity(obj, hq)
