@@ -21,7 +21,7 @@ A = G*M_mars/norm(R(1,:))^3*R(1,:);
 J = [0,0,0];
 
 %timesteps
-dt_atmos = 0.5; %[s]
+dt_atmos = 0.1; %[s]
 dt_kep_init = 1e-6; %[s]
 
 %time to end simulation
