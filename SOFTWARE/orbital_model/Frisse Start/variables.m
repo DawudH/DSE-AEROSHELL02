@@ -21,7 +21,7 @@ A = G*M_mars/norm(R(1,:))^3*R(1,:);
 J = [0,0,0];
 
 %timesteps
-dt_atmos = 0.5; %[s]
+dt_atmos = 0.1; %[s]
 dt_kep_init = 1e-6; %[s]
 
 %time to end simulation
@@ -30,7 +30,7 @@ tend = 3600 * 24 *10; %[s]
 %Control variables
 control.a = 2.9*g_earth;
 control.h = 60e3;
-control.dalphadt = -1.0*pi/180;
+control.dalphadt = -0.1*pi/180;
 control.dalpha = control.dalphadt*dt_atmos;
 control.alpha_init = 15*pi/180; % rad
 control.alpha_range = [-50 50]*pi/180;
