@@ -11,7 +11,7 @@ R = orbit.R;
 V = orbit.V;
 
 %Mars atmosphere, get density and g
-rho = atm.getDensity(0,/,norm(R)-R_m);
+rho = atm.getCheapDensity(norm(R)-R_m);
 g = atm.getg(norm(R)-R_m);
 
 %gravitational accaleration (vector)
@@ -40,9 +40,9 @@ orbit.a = orbit.ag + orbit.ad + orbit.al;
 orbit.J = (a1 - 4*a + 3*orbit.a) / (2*dt);
 
 if (norm(R)-R_m < 400e3)
-    orbit.speed_sound = atm.getSpeedofsound(0,180, norm(R)-R_m);
+    orbit.speed_sound = atm.getCheapSpeedofsound(norm(R)-R_m);
     orbit.M = norm(orbit.V) / orbit.speed_sound;
-    orbit.T = atm.getTemperature(0,180,norm(R)-R_m);
+    orbit.T = atm.getCheapTemperature(norm(R)-R_m);
 else
     orbit.speed_sound = 0;
     orbit.M = 0;

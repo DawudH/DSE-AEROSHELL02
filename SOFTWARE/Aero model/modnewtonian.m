@@ -242,6 +242,11 @@ classdef modnewtonian
                         plot(xarray, obj.CMA_aero_array(2,:));
                         ylabel(j);
                         xlabel(xlabeltxt);
+                    case 'cmycx'
+                        figure;
+                        plot(xarray, obj.CMA_body_array(2,:)./obj.CRA_body_array(1,:));
+                        ylabel(j);
+                        xlabel(xlabeltxt);                     
                     case 'q'
                         figure;
                         plot(xarray, obj.qmax_array);
