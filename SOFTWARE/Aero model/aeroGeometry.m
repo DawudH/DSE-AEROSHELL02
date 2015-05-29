@@ -204,6 +204,28 @@ classdef aeroGeometry
 %             quiver3(quiverx,mean(obj.coords(2,:))-quiverV(2),mean(obj.coords(3,:))-quiverV(2),quiverV(1), quiverV(2), quiverV(3));
         end
         
+        function distances = calcDistances(obj, coords)
+            %calculate distances between points.
+            combinations = nchoosek(1:size(coords,2),2);
+            distancevectors = coords(:,combinations(:,2))-coords(:,combinations(:,1));
+            directdistances = sqrt(sum(distancevectors.^2,1));
+            distances = zeros(size(directdistances));
+            parfor i = 1:size(combinations,1)
+                
+                combination = combinations(i,:);
+                halfway = coords(:,combination(1))+0.5*distancevectors(:,i);
+                pointdistances = sqrt(sum((coords-repmat(halfway,1,size(coords,2))).^2,1));
+                [~,closestmidpoint] = min(pointdistances);
+                if (closestmidpoint==combination(1))+(closestmidpoint==combination(2))>0
+                    distances(i) = directdistances(i);
+                else
+                    distance1 = directdistances(ismember(combinations,sort([combination(1),closestmidpoint]),'rows'));
+                    distance2 = directdistances(ismember(combinations,sort([combination(2),closestmidpoint]),'rows'));
+                    distances(i) = distance1 + distance2;
+                end
+            end
+        end
+        
     end
     
     
