@@ -9,20 +9,23 @@ plot(z_cg,rad2deg(phi_2-phi_1));
 xlabel('Z_{cg}');
 ylabel('\Delta \phi');
 
-theta=deg2rad(90);
 
+
+
+theta=45; % surface inclination in degrees, w.r.t. body-symmetric axis (body frame)
+alpha=0; % angle of attack
+              
 q=2000; % Dynamic pressure
 gamma=1.4;
 M=30;
-Cp_max = 2./(gamma*M^2).*((((gamma+1)^2*M^2)/(4*gamma*M^2-2*(gamma-1)))^(gamma/(gamma-1))*((1-gamma+2*gamma*M^2)/(gamma+1))-1);
 num_flaps=2;
 M_trim_deg=1717;
 flap_arm=6;
-Flap_area=1; % m^2, per flap
+flap_area=1; % m^2, per flap
+flap_centroid=[4, 0, 6] % w.r.t. C.G.
 
-flap_normal=[-cos(theta),0,sin(theta)];
-[C_x,C_y,C_z]=-Cp_max*(sin(theta)^2)*Flap_area
+Cp_max = 2/(gamma*M^2)*((((gamma+1)^2*M^2)/(4*gamma*M^2-2*(gamma-1)))^(gamma/(gamma-1))*((1-gamma+2*gamma*M^2)/(gamma+1))-1);
+flap_normal=[-cos(deg2rad(theta+alpha)),0,-sin(deg2rad(theta+alpha))]; % in body frame
+CR_A=-Cp_max*(sin(deg2rad(90+theta+alpha))^2).*flap_area*flap_normal;
 
-F_trim_deg=M_trim_deg/flap_arm;
-F_trim_deg_perflap=F_trim_deg/num_flaps;
-CD_trim_deg_flap=F_trim_deg_perflap/(q*Flap_area);
+CM_A_flap=cross(flap_centroid,CR_A)
