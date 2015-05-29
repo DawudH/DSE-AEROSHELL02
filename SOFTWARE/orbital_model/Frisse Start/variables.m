@@ -5,12 +5,14 @@ added_paths
 constants
 
 %Initial Position
-rx = -4148750;
+rx = -4148904.375000;
+rx = -4655000;
 ry = 10*R_m;
 R = [rx,ry,0];
 
 %Initial Velocity
 v = 7.1679e+03; %[m/s]
+v = 5.3757e3;
 V = [0,-v,0];
 
 %Initial acceleration
@@ -23,13 +25,13 @@ dt_atmos = 0.5; %[s]
 dt_kep_init = 1e-6; %[s]
 
 %time to end simulation
-tend = 3600 * 24 * 10; %[s]
+tend = 3600 * 24 *5; %[s]
 
 %Control variables
 control.a = 2.9*g_earth;
 control.dalphadt = -1.0*pi/180;
 control.dalpha = control.dalphadt*dt_atmos;
-control.alpha_init = 20*pi/180; % rad
+control.alpha_init = 15*pi/180; % rad
 control.alpha_range = [-50 50]*pi/180;
 control.control_up_lim = 2; % g_earth
 control.control_low_lim = 0.5; % g_earth

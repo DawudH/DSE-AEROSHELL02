@@ -1,12 +1,12 @@
 clc
 clear
-close all
+%close all
 
 %%Input constants & variables
 variables
 
 % booleans
-use_control = true;
+use_control = false;
 multiple_orbits = true;
 
 %%function
@@ -139,7 +139,7 @@ figure('name','Orbit')
 axis equal
 hold on
 %axis([-(R_m + h_atm)*2 (R_m + h_atm)*2 -(R_m + h_atm)*2 (R_m + h_atm)*2])
-axis([-(R_m + h_atm)*1.2 (R_m + h_atm)*1.2 -(R_m + h_atm)*1.1 (R_m + h_atm)*1.1])
+%axis([-(R_m + h_atm)*1.2 (R_m + h_atm)*1.2 -(R_m + h_atm)*1.1 (R_m + h_atm)*1.1])
 
 % plot the hyperbolic part
 theta_plot = out.theta0:0.001:out.theta;

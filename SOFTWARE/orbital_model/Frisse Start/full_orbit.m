@@ -86,8 +86,9 @@ end
                         control.error = 0;
                         control.error_I = 0;
                         CL(i+1) = CL(i);
-                        CD(i+1) = CD(i);    
+                        CD(i+1) = CD(i); 
                  end
+                
             [out_o] = in_atmosphere( V(i,:), R(i,:), A(i,:), a_prev, J(i,:), atm, CL(i+1), CD(i+1), dt_atmos, R_m, Omega_m, S, m );
             %update state
             state.CL = CL(i);
