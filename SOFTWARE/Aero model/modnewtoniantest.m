@@ -1,34 +1,19 @@
-
-shapetexts.horizontalplate = 'horizontalplate';
-shapetexts.verticalplate = 'verticalplate';
-shapetexts.sphere12m = 'sphere12m';
-shapetexts.pastille12m15m = 'pastille12m1.5m';
-shapetexts.deg60cone = 'deg60cone';
-shapetexts.deg30cone = 'deg30cone';
-shapetexts.irvevalidation = 'irvevalidation';
-shapetexts.apollovalidation = 'apollovalidation';
-shapetexts.torus = 'torus';
-shapetexts.concept_irve = 'concept_irve';
-shapetexts.concept_apollo = 'concept_apollo';
-shapetexts.concept_isotensoid = 'concept_isotensoid';
-shapetexts.ballute = 'ballute';
-
 a = 300;
 gamma = 1.4;
 rho = 1e-5;
 T = 150;
 q = 61;
 
-alpha0 = 0; %degrees
-dalpha = 1; %degrees
-alphaend = 40; %degrees
+alpha0 = -25; %degrees
+dalpha = 5; %degrees
+alphaend = 25; %degrees
 
-[ coords, tri, A, center ] = generategeometry( shapetexts.concept_isotensoid, q );
+[ TriGeom, A, center ] = generategeometry( q );
+geom = aeroGeometry(TriGeom, A);
+mod = modnewtonian(geom, gamma, a, center, rho, T);
+mod = mod.alphasweep(a*20, 0, deg2rad(alpha0), deg2rad(alphaend), deg2rad(dalpha));
 
-mod = modnewtonian( coords, tri, gamma, a, center, rho, T, A);
-% mod = mod.alphasweep(a*20, 0, deg2rad(alpha0), deg2rad(alphaend), deg2rad(dalpha));
-
-mod = mod.calcAeroangle(7e3,deg2rad(20),deg2rad(0));
+% mod = mod.calcAeroangle(7e3,deg2rad(20),deg2rad(0));
 
 mod.plotCp(true, false);
 % mod.CR_aero_array
