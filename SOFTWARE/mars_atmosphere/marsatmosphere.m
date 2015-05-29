@@ -13,6 +13,13 @@ classdef marsatmosphere
         CO2_base;
         gamma_mars;
         Rm_mars;
+        cheaprho;
+        cheapT;
+        cheaph;
+        cheapLat;
+        cheapLon;
+        Tinterpolant;
+        rhointerpolant;
     end
     
     methods
@@ -58,7 +65,34 @@ classdef marsatmosphere
             
             obj.gamma_mars = 1.29;
             obj.Rm_mars = 191.8;
+            
+            obj.cheapLat = 0;
+            obj.cheapLon = 180;
+            
+            obj.cheaph = 0:5000:4e5;
+            obj.cheaprho = obj.getDensity(obj.cheapLat*ones(size(obj.cheaph)), obj.cheapLon*ones(size(obj.cheaph)), obj.cheaph);
+            obj.cheapT = obj.getTemperature(obj.cheapLat*ones(size(obj.cheaph)), obj.cheapLon*ones(size(obj.cheaph)), obj.cheaph);
+            obj.rhointerpolant = griddedInterpolant(obj.cheaph, obj.cheaprho, 'cubic');
+            obj.Tinterpolant = griddedInterpolant(obj.cheaph, obj.cheapT, 'cubic');
         end
+        
+        function rho = getCheapDensity(obj, hq)
+            if hq > obj.hmax
+                rho = 0;
+            else
+                rho = obj.rhointerpolant(hq);
+%                 rho = interp1(obj.cheaph, obj.cheaprho, hq, 'linear');
+            end            
+        end
+        
+        function T = getCheapTemperature(obj, hq)
+            if hq > obj.hmax
+                T = obj.cheapT(end);
+            else
+                T = obj.Tinterpolant(hq);
+%                 T = interp1(obj.cheaph, obj.cheapT, hq, 'nearest');
+            end            
+        end        
         
         function rho = getDensity(obj, latq, lonq, hq) %only for scalars
             if latq < -90 % if latitude lower than 90 degrees
@@ -93,6 +127,11 @@ classdef marsatmosphere
             T = obj.getTemperature(latq, lonq, hq);
             a = sqrt(obj.gamma_mars*obj.Rm_mars*T);
         end
+        
+        function a = getCheapSpeedofsound(obj, hq)
+            T = obj.getCheapTemperature(hq);
+            a = sqrt(obj.gamma_mars*obj.Rm_mars*T);
+        end        
         
         function g = getg(obj, hq)
             g = obj.GM_mars ./ (hq+obj.r_mars).^2;

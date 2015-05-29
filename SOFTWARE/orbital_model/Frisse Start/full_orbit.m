@@ -1,11 +1,11 @@
-function [ out ] = full_orbit(R0, V0, A0, G, M_mars, R_m, h_atm, atm, dt_kep_init, dt_atmos, m, Omega_m, S, control, tend, crash_margin, g_earth, aero_coef, use_control, multiple_orbits,alpha_init,dalphadt)
+function [ out ] = full_orbit(R0, V0, A0, G, M_mars, R_m, h_atm, atm, dt_kep_init, dt_atmos, m, Omega_m, S, control, tend, crash_margin, g_earth, aero_coef, use_control, multiple_orbits,use_alpha_profile,alpha_init,dalphadt)
 %Calculates the full orbit for selected initial conditions until sepcified
 %end time
 switch nargin
-    case 21
+    case 22
         control.alpha_init = alpha_init;
         no_waitbar = true;
-    case 22
+    case 23
         control.alpha_init = alpha_init;
         control.dalphadt = dalphadt;
         control.Kp = control.Kp/control.dalpha*control.dalphadt*dt_atmos; % proportional gain
@@ -15,7 +15,7 @@ switch nargin
         
         no_waitbar = true;
     otherwise
-        no_waitbar = false;
+        no_waitbar = true;
 end
     
 if no_waitbar == false
@@ -60,6 +60,7 @@ end
     state.CL = CL(1);
     state.CD = CD(1);
     state.a = norm(A(1,:) - Ag(1,:));
+    state.h = norm(R(1,:)) - R_m;
     state.alpha = alpha;
             
     %Get initial values for conditions
@@ -86,13 +87,22 @@ end
                         control.error = 0;
                         control.error_I = 0;
                         CL(i+1) = CL(i);
-                        CD(i+1) = CD(i);    
+                        CD(i+1) = CD(i); 
                  end
+                 
+                 if use_alpha_profile && ~use_control
+                     aero_param = alpha_profile(t,aero_coef,control,state);
+                     CL(i+1) = aero_param.CLA / S;
+                     CD(i+1) = aero_param.CDA / S;
+                     alpha = aero_param.alpha;
+                 end
+                
             [out_o] = in_atmosphere( V(i,:), R(i,:), A(i,:), a_prev, J(i,:), atm, CL(i+1), CD(i+1), dt_atmos, R_m, Omega_m, S, m );
             %update state
             state.CL = CL(i);
             state.CD = CD(i);
             state.a = norm(A(i,:) - Ag(i,:));
+            state.h = norm(R(i,:)) - R_m;
             state.alpha = alpha;
             a_prev = A(i,:);
             t = t + dt_atmos;
@@ -107,11 +117,11 @@ end
             a_prev = out_o.A;
             tkep = tp(i);
             t = t + out_o.t_kep;
-            CL(i+1) = CL(i);
-            CD(i+1) = CD(i);
             %readjust attitude to get back to initial alpha
             alpha = control.alpha_init;
             [CLA, CDA, CMYA] = aero_coef.aeroCoeffs(alpha);
+            CL(i+1) = CLA / S;
+            CD(i+1) = CDA / S;
             state.alpha = alpha;
             control.error = 0;
             control.error_I = 0;
