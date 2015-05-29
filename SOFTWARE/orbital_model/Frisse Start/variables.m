@@ -30,7 +30,7 @@ tend = 3600 * 24 *10; %[s]
 %Control variables
 control.a = 2.9*g_earth;
 control.h = 60e3;
-control.dalphadt = -1.0*pi/180;
+control.dalphadt = -0.1*pi/180;
 control.dalpha = control.dalphadt*dt_atmos;
 control.alpha_init = 15*pi/180; % rad
 control.alpha_range = [-50 50]*pi/180;
