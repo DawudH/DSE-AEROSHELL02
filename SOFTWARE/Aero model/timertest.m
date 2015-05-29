@@ -1,0 +1,1 @@
+geom.calcDistances(geom.coords)
