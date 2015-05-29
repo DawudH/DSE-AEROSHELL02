@@ -15,7 +15,7 @@ switch nargin
         
         no_waitbar = true;
     otherwise
-        no_waitbar = false;
+        no_waitbar = true;
 end
     
 if no_waitbar == false
