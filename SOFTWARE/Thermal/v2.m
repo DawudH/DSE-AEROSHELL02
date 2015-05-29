@@ -8,14 +8,14 @@ close all
 %% inputs
 filename = 'VAL.txt';
 dx = 0.0005;
-dt = 0.0003;
+dt = 0.001;
 
 %% From aero-data
 % time = 0:dt:max(t);
 % q = interp1(t,qmax,tempt);
 % T_inf = interp1(t,T,tempt);
 % totalt = max(t)/dt+1;
-totalt = 400000;
+totalt = 120000;
 % Emissivity
 eps = 0.443; %[-]
 time = dt*(0:totalt-1);
@@ -61,7 +61,7 @@ T_inf = 1250.*sin(tt)*0+4*0;
 
 
 %% Temp-table
-T0 = 20+273.15;
+T0 = 20+273;
 T = ones(imax,totalt)*(T0); %Temp-table
 %T(:,1) = 300; %[K]
 
@@ -94,7 +94,7 @@ A = zeros(imax,1);
 
 for n=1:totalt-1
     cTrad = T(1,n)^4 - T_inf(n)^4;
-    A(1,1) =  2*v(1)*dx/k(1)*(q(n)-0*eps*sigma*cTrad);
+    A(1,1) =  v(1)*dx/k(1)*(q(n)-0*eps*sigma*cTrad);
     T(:,n+1) = F*T(:,n) + A;
 end
 
@@ -136,7 +136,7 @@ ussbana = 2*q0*sqrt(alpha*tau/pi)/k0*exp(-x^2/4/alpha/tau)-q0*x/k0*erfc(x/2/sqrt
 ussbnum = T(end,end)-T(1,1);
 output = table([ssana;ssnum;(ssnum-ssana)/ssana*100],[usssana;usssnum;(usssnum-usssana)/usssana*100],[ussbana;ussbnum;(ussbnum-ussbana)/ussbana*100],'RowNames',{'Analytical','Numerical','Difference%'},'VariableNames',{'SteadySB','UnsteadySS','UnsteadySB'})
 %q0/k0*sqrt(pi*alpha*tau)
-usssana - ussbana
+usssana - ussbana;
 
 qsb = 2*q0*sqrt(alpha*time/pi)/k0.*exp(-x^2/4/alpha./time)-q0*x/k0.*erfc(x/2./sqrt(alpha.*time));
 x=0;

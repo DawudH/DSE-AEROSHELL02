@@ -1,37 +1,58 @@
 %% Thermal tool FR
 % Suthes & Lucas
 % v1 - Successfully validated using copper-example from paper
+% v2 - Implemented FTCS-matrix
+% v3 - Implemented BTCS-matrix
+% v4 - Implemented Crank-Nicolson
 
 clc 
 clear all
 close all
 
-nmax = 120000;
-imax = 1000;
-k = 386.0;
-rho = 8954.0;
-cp = 383.1;
+nmax = 12000;
+imax = 100;%10000
+k = ones(imax,1)*386.0;
+rho = ones(imax,1)*8954.0;
+cp = ones(imax,1)*383.1;
 
-dx = 0.0005;
-dt = 0.0010;
-%dt = 0.0370280375647668487;
+dx = 0.005;%0.00005
+dt = 0.010;
 
-alpha = k/rho/cp;
+alpha = k./rho./cp;
 v = alpha*dt/dx/dx;
 
+% i is space, n is time
+% space is rows, time is columns
 T = zeros(imax,nmax);
 T0 = 293;
-T(:,1) = 293;
-q = 300000;
+T(:,1) = T0;
+q = -1*ones(1,nmax)*300000;
 
+C = diag(1+v) - 0.5*diag(v(1:end-1),1) - 0.5*diag(v(2:end),-1);
+C(1,1) = 1+0.5*v(1);
+C(imax,imax) = 1+0.5*v(imax);
+N = diag(1-v) + 0.5*diag(v(1:end-1),1) + 0.5*diag(v(2:end),-1);
+N(1,1) = 1-0.5*v(1);
+N(imax,imax) = 1-0.5*v(imax);
+
+A = zeros(imax,1);
+invC = inv(C);
+G = invC*N;
 for n=1:nmax-1
-    T(1,n+1) = (1-v)*T(1,n) + v*T(2,n) + (q/k)*v*dx;%!!!! +q/k*dx is questionable
-    for i=2:imax-1
-        T(i,n+1) = v*T(i-1,n) + (1-2*v)*T(i,n) + v*T(i+1,n);
-    % i=imax
-    T(imax,n+1) = v*T(imax-1,n) + (1-v)*T(imax,n);
-    end
+    A(1) = (q(n)/k(1))*v(1)*dx;
+    H = invC*A;
+    T(:,n+1) = G*T(:,n) + H;
+%     T(1,n+1) = (1-v)*T(1,n) + v*T(2,n) + (q/k)*v*dx;%!!!! +q/k*dx is questionable
+%     for i=2:imax-1
+%         T(i,n+1) = v*T(i-1,n) + (1-2*v)*T(i,n) + v*T(i+1,n);
+%     % i=imax
+%     T(imax,n+1) = v*T(imax-1,n) + (1-v)*T(imax,n);
+%     end
 end
+
+q = q(1);
+k = k(1);
+alpha = alpha(1);
 
 x = 0;
 t = nmax*dt;
