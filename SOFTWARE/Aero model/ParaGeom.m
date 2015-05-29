@@ -1,5 +1,6 @@
-function [TriGeom] = ParaGeom(Nr,a,r,h,poly)
+function [TriGeom, AFrontal] = ParaGeom(Nr,a,r,h,poly)
 
+AFrontal = pi*r^2;
 % Nr = 40;
 %% Polar coordinate definition
 theta = linspace (0,2*pi,Nr);
