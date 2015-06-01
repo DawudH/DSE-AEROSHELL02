@@ -1,6 +1,7 @@
 clear all
 close all
 clc
+tic
 
 %% Define input
 
@@ -23,8 +24,9 @@ Tatm  = T;
 clear('T')
 
 % time
-ttot = t(end);  % end time of the orbit [s]
-dt   = 0.5;    % time step, chooseable
+%ttot = t(end);  % end time of the orbit [s]
+ttot = 1000;  % end time of the orbit [s]
+dt   = 1;    % time step, chooseable
 nmax = (ttot/dt);  % number of time steps
 
 % change spacing of input YET TO DO!
@@ -87,6 +89,7 @@ C =( - diag(0.5*v,1)) - (diag(0.5*v,-1) );
 C(2:end-1,2:end-1) = C(2:end-1,2:end-1) + diag(1+(v(1:end-1)/2)+(v(2:end)/2)) ;
 C(1,1:2) = [ (1+0.5*v(1)) (-0.5*v(1)) ];
 C(imax,imax-1:imax) = [ (-0.5*v(imax-1)) (1+0.5*v(imax-1))];
+
 % Second scheme matrix
 N =( diag(0.5*v,1)) + (diag(0.5*v,-1) );
 N(2:end-1,2:end-1) = N(2:end-1,2:end-1) + diag(1-(v(1:end-1)/2)-(v(2:end)/2)) ;
@@ -95,17 +98,22 @@ N(imax,imax-1:imax) = [ (0.5*v(imax-1)) (1-0.5*v(imax-1))];
 
 %define matrices
 A = zeros(imax,1); 
-G = C\N;
+%Cinv = inv(Cs);
+G = full(sparse(C)\sparse(N));
 
 for n=1:nmax-1
     A(1) = (q(n)/k(1))*v(1)*dx;
-    H = C\A;
+    H = full(sparse(C)\sparse(A));
     T(:,n+1) = G*T(:,n) + H;
 end
 
 %% Hello
+% x = L;
+% y = 0:ttot:dt;
+% z = ;
+% contourf('x','y','z')
 
-    
+toc
   
     
     
