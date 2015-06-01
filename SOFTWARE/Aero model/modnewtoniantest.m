@@ -17,12 +17,12 @@ geom = aeroGeometry(TriGeom, A);
 mod = modnewtonian(geom, gamma, a, center, rho, T);
 % mod = mod.alphasweep(a*20, 0, deg2rad(alpha0), deg2rad(alphaend), deg2rad(dalpha));
 
-mod = mod.calcAeroangle(2000,deg2rad(20),deg2rad(0));
+mod = mod.calcAeroangle(7000,deg2rad(20),deg2rad(0));
 
 Tw = 500*ones(size(mod.Cpdist_array(:,end)));
 [Tmax, qmax, qw] = mod.calcStagnationHeatFlux(Tw);
 
-geom.plotValues(qw, 'qw', [0 12], true, false);
+geom.plotValues(qw, 'qw', [0 max(qw)], true, false);
 
 % mod.plotCp(true, false);
 % mod.CR_aero_array
