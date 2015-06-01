@@ -91,7 +91,7 @@ end
                  end
                  
                  if use_alpha_profile && ~use_control
-                     aero_param = alpha_profile(t,aero_coef,control,state);
+                     aero_param = alpha_profile(t,aero_coef,control,state,dt_atmos);
                      CL(i+1) = aero_param.CLA / S;
                      CD(i+1) = aero_param.CDA / S;
                      alpha = aero_param.alpha;
