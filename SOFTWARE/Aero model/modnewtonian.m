@@ -28,8 +28,9 @@ classdef modnewtonian
         CM_body_array;
         CM_aero_array;
         CLCD_array;
-        Tmax_array;
-        qmax_array;
+%         Tmax_array;
+%         qmax_array;
+%         qw_array;
     end
     
     methods
@@ -55,7 +56,7 @@ classdef modnewtonian
             obj.CMA_body_array = [obj.CMA_body_array, obj.calcMomentCoeffsBody()];
             obj.CMA_aero_array = [obj.CMA_aero_array, obj.calcMomentCoeffsAero()];
             obj.CLCD_array = obj.CRA_aero_array(3,:)./obj.CRA_aero_array(1,:);
-%             [T,q] = obj.calcHeatFlux();
+%             [T,q] = obj.calcStagnationHeatFlux();
 %             obj.Tmax_array = [obj.Tmax_array, T];
 %             obj.qmax_array = [obj.qmax_array, q];
             obj.CR_body_array = obj.CRA_body_array / obj.geom.A_frontal;
@@ -97,16 +98,21 @@ classdef modnewtonian
             sinthetas(sinthetas<0) = 0;
             Cpdist = obj.Cpmax_array(end)*sinthetas.^2;
         end
-
-        function [Tmax, qmax] = calcHeatFlux(obj)
+        
+        function [Tmax, qmax, qw] = calcStagnationHeatFlux(obj, Tw)
             % Get the stagnation heat flux and temperature
-            M = 3;
-            N = 0.5;
-            Vinf = obj.a_inf*obj.M_array(end);
-            Tmax = obj.T_inf*(obj.gamma-1)/2*obj.M_array(end)^2;
+
+            Vhat = obj.V_array(:,end)/norm(obj.V_array(:,end));
+            Vinf = norm(obj.V_array(:,end));
+            sinthetas = obj.geom.normals' * Vhat;
+            sinthetas(sinthetas<0) = 0;
+            costhetas = cos(asin(sinthetas));
             
+            Tmax = obj.T_inf*(obj.gamma-1)/2*obj.M_array(end)^2;
             [~, stagN] = max(obj.Cpdist_array(:,end));
             triangle = obj.geom.tri(stagN, :);
+            
+            %calculate radius of curvature
             if sum(triangle==[1 1 1])==0
                 opposites = zeros(1,3);
                 for i = 1:3
@@ -134,10 +140,28 @@ classdef modnewtonian
                 end
                 radii = obj.geom.calcRadiusOfCurvature(point1, point2, 1);
             end
+            
+            %stagnation point values
+            M = 3;
+            N = 0.5;
+            C = 1.83e-8*max(radii)^-.5*(1-Tw(stagN)/Tmax);
             qmax = 0;
             if max(radii) >=0
-                qmax = obj.rho_inf^N*Vinf^M*1.83e-8*max(radii)^(-0.5);
+                qmax = obj.rho_inf ^ N * Vinf ^ M * C;
             end
+            
+            %distribution values
+            xt = obj.geom.getDistances(stagN);
+            
+            N = 0.8;
+            if Vinf <= 3962
+                M = 3.37;
+                C = 3.89e-8*costhetas.^1.78.*sinthetas.^1.6.*xt.^-.2.*(Tw/556).^-.25.*(1-1.11*Tw/Tmax);
+            else
+                M = 3.7;
+                C = 2.2e-9*costhetas.^2.08.*sinthetas.^1.6.*xt.^-.2.*(1-1.11*Tw/Tmax);
+            end
+            qw = obj.rho_inf(end) ^ N * Vinf ^ M * C;
         end
 
         function obj = alphasweep(obj, Vinf, beta, alpha_start, alpha_end, dalpha)

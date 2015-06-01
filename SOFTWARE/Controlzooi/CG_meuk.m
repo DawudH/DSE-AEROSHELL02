@@ -4,7 +4,7 @@ cg=[0.3,0,1.5]; % cg location
 flap_centroid=[5, 0, 6]; % flap geometrical centroid location
 
 % Control system limitations
-phi_diff_max=deg2rad(20); % C.G. rotation system maximum rotation angle
+phi_diff_max=deg2rad(5); % C.G. rotation system maximum rotation angle
 dalpha_dt=0.2; % deg/s
 
 % Relations between trim angle and C.G. offset, gebeund uit modnewtonian
@@ -18,24 +18,28 @@ CMY_A_per_deg=CMY_A_max/alpha_max;
 %% C.G. control section
 phi_1=atan(cg(1)/cg(3)); % Default CG rotation offset angle
 z_cg_max=cg(3)*tan(phi_1+phi_diff_max);
+cg(1)=z_cg_max;
 cg_alpha_trim_max=z_cg_max/cgoffset_per_deg
 
 %% Flap control section
-alpha_trim_flaps=alpha_max-cg_alpha_trim_max;
-CMY_A_trim_flaps=CMY_A_per_deg*alpha_trim_flaps;
-alpha_flaps_range=linspace(alpha_trim_flaps,alpha_max,10);
-CMY_A_flaps_range=CMY_A_per_deg*alpha_flaps_range;
-% Flap angles
-theta=60; % surface inclination in degrees, w.r.t. body-symmetric axis (body frame)
-alpha=cg_alpha_trim_max; % angle of attack
+alpha_trim_flaps=alpha_max-cg_alpha_trim_max; % alpha_trim handled by flaps
+CMY_A_trim_flaps=CMY_A_per_deg*alpha_trim_flaps; % CMY_A handled by flaps to trim to alpha_max
+%alpha_flaps_range=linspace(cg_alpha_trim_max,alpha_max,3);
+%CMY_A_flaps_range=CMY_A_per_deg*alpha_flaps_range;
+
+% Flap anglescg_alpha_trim_max
+%theta=60; % surface inclination in degrees, w.r.t. body-symmetric axis (body frame)
+theta_range=linspace(10,60,2);
 
 q=2000; % Dynamic pressure
 gamma=1.4;
 M=30;
-num_flaps=2;
 
 Cp_max = 2/(gamma*M^2)*((((gamma+1)^2*M^2)/(4*gamma*M^2-2*(gamma-1)))^(gamma/(gamma-1))*((1-gamma+2*gamma*M^2)/(gamma+1))-1);
-flap_normal=[-cos(deg2rad(theta+alpha)),0,-sin(deg2rad(theta+alpha))]; % in body frame
-CR=-Cp_max*(sin(deg2rad(90+theta+alpha))^2).*flap_normal;
+flap_normal=[-cos(deg2rad(theta_range+alpha_max))',zeros(size(theta_range))',-sin(deg2rad(theta_range+alpha_max))'];
+CR=-Cp_max*(sin(deg2rad(90+alpha_max+diag(theta_range))).^2)*flap_normal;
+%CR=-Cp_max*(sin(deg2rad(90+theta+alpha_flaps_range)).^2)*flap_normal;
 
-CM_flap=cross(flap_centroid-cg,CR) % CM delivered per flap
+CM_flap=cross(repmat((flap_centroid-cg)',1,length(theta_range)),CR'); % CM delivered per flap
+
+plot(theta_range,CM_flap(2,:));

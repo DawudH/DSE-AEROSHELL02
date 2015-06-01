@@ -34,9 +34,9 @@ classdef aeroProperties
             obj.cmya = A(:,6);
             
             
-            obj.clainterpolant = griddedInterpolant(obj.alpha, obj.cla, 'cubic');
-            obj.cdainterpolant = griddedInterpolant(obj.alpha, obj.cda, 'cubic');
-            obj.cmyainterpolant = griddedInterpolant(obj.alpha, obj.cmya, 'cubic');
+            obj.clainterpolant = griddedInterpolant(obj.alpha, obj.cla, 'linear');
+            obj.cdainterpolant = griddedInterpolant(obj.alpha, obj.cda, 'linear');
+            obj.cmyainterpolant = griddedInterpolant(obj.alpha, obj.cmya, 'linear');
             
         end
         
