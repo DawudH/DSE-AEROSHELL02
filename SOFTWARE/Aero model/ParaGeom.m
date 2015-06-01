@@ -20,10 +20,10 @@ z = zeros(Nr);
 % this distribution will alter the unskewed shape of the aeroshell. 
 
 for i = 1:Nr
-x(i,:) = r(i).*cos(theta)-c(i)*a;
+z(i,:) = r(i).*cos(theta)-c(i)*a;
 y(i,:) = r(i).*sin(theta);
-zx = linspace((i-1)/(Nr-1),(i-1)/(Nr-1),Nr);
-z(i,:) = h*polyval(poly,zx)/sum(poly);
+zx = linspace((i-1)/Nr,(i-1)/Nr,Nr);
+x(i,:) = -h*polyval(poly,zx)/sum(poly);
 end
 
 
