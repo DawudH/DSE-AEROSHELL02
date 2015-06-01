@@ -12,6 +12,8 @@ classdef aeroGeometry
         normals;
         areas;
         centers;
+        combinations;
+        distances;
         
     end
     
@@ -23,6 +25,7 @@ classdef aeroGeometry
             obj.coords = TriGeom.Points';
             [obj.normals, obj.areas] = obj.calcNormalsAreas(obj.tri, obj.coords);
             obj.centers = obj.calcCellCenters(obj.tri, obj.coords);
+            [obj.combinations, obj.distances] = obj.calcDistances(obj.centers);
         end
         
         function [normals, areas] = calcNormalsAreas(~, tri, coords)
@@ -50,7 +53,7 @@ classdef aeroGeometry
             adjacents = obj.getAdjacentTriangles(tbase);
             temp = [3,1,2];
             for i = 1:3
-                [baseside, checkside] = adjacency(obj, tbase, adjacents(i));
+                [baseside, checkside] = obj.getAdjacency(tbase, adjacents(i));
                 if baseside == side
                     oppositePoint = obj.tri(adjacents(i),temp(checkside));
                     break;
@@ -177,6 +180,7 @@ classdef aeroGeometry
         
         
         function f = plotValues(obj, values, variablename, colorrange, plotfaces, plotnormals)
+            %f = plotValues(obj, values, variablename, colorrange, plotfaces, plotnormals)
             f = figure;
             h1 = axes;
             set(h1, 'Zdir', 'reverse');            
@@ -204,24 +208,36 @@ classdef aeroGeometry
 %             quiver3(quiverx,mean(obj.coords(2,:))-quiverV(2),mean(obj.coords(3,:))-quiverV(2),quiverV(1), quiverV(2), quiverV(3));
         end
         
-        function distances = calcDistances(obj, coords, sourcepoint)
+        function distances = getDistances(obj, triangle)
+            distances = zeros(size(obj.tri,1),1);
+            for i = 1:size(obj.tri,1)
+                distances(i) = obj.getDistance(triangle,i);
+            end
+        end
+
+        function distance = getDistance(obj, triangle1, triangle2)
+            numcombinations = size(obj.combinations,1);
+            distance = sum(obj.distances(sum(repmat(sort([triangle1, triangle2]),numcombinations,1)==obj.combinations,2)==2));
+        end
+        
+        function [combinations, distances] = calcDistances(~, centers)
             %calculate distances between points.
-            combinations = nchoosek(1:size(coords,2),2);
+            combinations = nchoosek(1:size(centers,2),2);
             numcombinations = size(combinations,1);
-            distancevectors = coords(:,combinations(:,2))-coords(:,combinations(:,1));
+            distancevectors = centers(:,combinations(:,2))-centers(:,combinations(:,1));
             directdistances = sqrt(sum(distancevectors.^2,1));
             distances = zeros(size(directdistances));
-            for i = 1:size(combinations,1)
+            parfor i = 1:size(combinations,1)
                 
                 combination = combinations(i,:);
-                halfway = coords(:,combination(1))+0.5*distancevectors(:,i);
-                pointdistances = sqrt(sum((coords-repmat(halfway,1,size(coords,2))).^2,1));
+                halfway = centers(:,combination(1))+0.5*distancevectors(:,i);
+                pointdistances = sqrt(sum((centers-repmat(halfway,1,size(centers,2))).^2,1));
                 [~,closestmidpoint] = min(pointdistances);
                 if (closestmidpoint==combination(1))+(closestmidpoint==combination(2))>0
                     distances(i) = directdistances(i);
                 else
-                    distance1 = sum(directdistances(find(sum(repmat(sort([combination(1),closestmidpoint]),numcombinations,1)==combinations,2))));
-                    distance2 = sum(directdistances(find(sum(repmat(sort([combination(2),closestmidpoint]),numcombinations,1)==combinations,2))));
+                    distance1 = sum(directdistances(sum(repmat(sort([combination(1),closestmidpoint]),numcombinations,1)==combinations,2)==2));
+                    distance2 = sum(directdistances(sum(repmat(sort([combination(2),closestmidpoint]),numcombinations,1)==combinations,2)==2));
                         
 %                     distance1 = directdistances(ismember(combinations,sort([combination(1),closestmidpoint]),'rows'));
 %                     distance2 = directdistances(ismember(combinations,sort([combination(2),closestmidpoint]),'rows'));
