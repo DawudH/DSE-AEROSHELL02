@@ -19,29 +19,42 @@ gamma = 1.4;
 center = zeros(3,1);
 rho = 1e-3;
 T = 150;
-qarray = [5:2:43,47:2:81];
-qmax = zeros(size(qarray));
+qarray = [5:2:101];
+qmaxarray = zeros(size(qarray));
 cd = zeros(size(qarray));
 cl = zeros(size(qarray));
 
 for i = 1:length(qarray)
-    q = qarray(i);
-    disp(strcat('Current q:', num2str(q)));
-    [ coords, tri, A ] = generategeometry( shapetexts.ballute, q );
+    qarray(i)
     
-    mod = modnewtonian( coords, tri, gamma, a, center, rho, T, A);
+    [ TriGeom, A, center ] = generategeometry( qarray(i) );
+    geom = aeroGeometry(TriGeom, A);
+    
+    mod = modnewtonian(geom, gamma, a, center, rho, T);
+    mod = mod.calcAeroangle(7000,deg2rad(20),deg2rad(0));
 
-    mod = mod.calcAeroangle(7e3,deg2rad(1),0);
-    qmax(i) = mod.qmax_array(1,1);
-    cd(i) = mod.CRA_aero_array(1,1);
-    cl(i) = mod.CRA_aero_array(3,1);
+    Tw = 500*ones(size(mod.Cpdist_array(:,end)));
+    [Tmax, qmax, qw] = mod.calcStagnationHeatFlux(Tw);
+    qmaxarray(i) = qmax;
+    cd(i) = mod.CRA_aero_array(1,end);
+    cl(i) = mod.CRA_aero_array(3,end);
+    
 end
 
 figure;
-plot(qarray, qmax);
+plot(qarray, qmaxarray);
+ylabel('qmax');
+
+figure;
+plot(qarray, cl);
+ylabel('cl');
+figure;
+plot(qarray, cd);
+ylabel('cd');
+
 
 disp('q:')
-ratio = qmax/qmax(end);
+ratio = qmaxarray/qmaxarray(end);
 bestarray = find((1.001>ratio) & (ratio>0.999));
 disp(strcat('q required for 99.9% convergence: ', num2str(qarray(bestarray(1)))));
 bestarray = find((1.005>ratio) & (ratio>0.995));

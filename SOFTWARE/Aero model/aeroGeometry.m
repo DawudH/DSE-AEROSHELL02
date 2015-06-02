@@ -12,7 +12,10 @@ classdef aeroGeometry
         normals;
         areas;
         centers;
+        
         combinations;
+        directdistances;
+        distancevectors;
         distances;
         
     end
@@ -25,7 +28,8 @@ classdef aeroGeometry
             obj.coords = TriGeom.Points';
             [obj.normals, obj.areas] = obj.calcNormalsAreas(obj.tri, obj.coords);
             obj.centers = obj.calcCellCenters(obj.tri, obj.coords);
-            [obj.combinations, obj.distances] = obj.calcDistances(obj.centers);
+%             [obj.distancevectors, obj.directdistances, obj.combinations, obj.distances] = obj.calcDirectDistances(obj.centers);
+
         end
         
         function [normals, areas] = calcNormalsAreas(~, tri, coords)
@@ -208,41 +212,48 @@ classdef aeroGeometry
 %             quiver3(quiverx,mean(obj.coords(2,:))-quiverV(2),mean(obj.coords(3,:))-quiverV(2),quiverV(1), quiverV(2), quiverV(3));
         end
         
-        function distances = getDistances(obj, triangle)
+        function [distances, obj] = getDistances(obj, triangle)
             distances = zeros(size(obj.tri,1),1);
             for i = 1:size(obj.tri,1)
-                distances(i) = obj.getDistance(triangle,i);
+                [distance, obj] = obj.getDistance(triangle,i);
+                distances(i) = distance;
             end
         end
 
-        function distance = getDistance(obj, triangle1, triangle2)
+        function [distance, obj] = getDistance(obj, triangle1, triangle2)
             numcombinations = size(obj.combinations,1);
-            distance = sum(obj.distances(sum(repmat(sort([triangle1, triangle2]),numcombinations,1)==obj.combinations,2)==2));
+            index = find(sum(repmat(sort([triangle1, triangle2]),numcombinations,1)==obj.combinations,2)==2);
+            if obj.distances(index) == 0
+                distance = obj.calcDistance(triangle1, triangle2);
+                obj.distances(index) = distance;
+            elseif triangle1 == triangle2
+                distance = 0;
+            else
+                distance = obj.distances(index);
+            end
         end
         
-        function [combinations, distances] = calcDistances(~, centers)
-            %calculate distances between points.
+        function [distancevectors, directdistances, combinations, distances] = calcDirectDistances(~, centers)
             combinations = nchoosek(1:size(centers,2),2);
-            numcombinations = size(combinations,1);
             distancevectors = centers(:,combinations(:,2))-centers(:,combinations(:,1));
             directdistances = sqrt(sum(distancevectors.^2,1));
-            distances = zeros(size(directdistances));
-            parfor i = 1:size(combinations,1)
-                
-                combination = combinations(i,:);
-                halfway = centers(:,combination(1))+0.5*distancevectors(:,i);
-                pointdistances = sqrt(sum((centers-repmat(halfway,1,size(centers,2))).^2,1));
-                [~,closestmidpoint] = min(pointdistances);
-                if (closestmidpoint==combination(1))+(closestmidpoint==combination(2))>0
-                    distances(i) = directdistances(i);
-                else
-                    distance1 = sum(directdistances(sum(repmat(sort([combination(1),closestmidpoint]),numcombinations,1)==combinations,2)==2));
-                    distance2 = sum(directdistances(sum(repmat(sort([combination(2),closestmidpoint]),numcombinations,1)==combinations,2)==2));
-                        
-%                     distance1 = directdistances(ismember(combinations,sort([combination(1),closestmidpoint]),'rows'));
-%                     distance2 = directdistances(ismember(combinations,sort([combination(2),closestmidpoint]),'rows'));
-                    distances(i) = distance1 + distance2;
-                end
+            distances = zeros(size(combinations,1),1);
+        end
+        
+        function distance = calcDistance(obj, triangle1, triangle2)
+            %calculate distances between points.
+            numcombinations = size(obj.combinations,1);
+            index = find(sum(repmat(sort([triangle1, triangle2]),numcombinations,1)==obj.combinations,2)==2);
+            combination = obj.combinations(index,:);
+            halfway = obj.centers(:,combination(1))+0.5*obj.distancevectors(:,index);
+            pointdistances = sqrt(sum((obj.centers-repmat(halfway,1,size(obj.centers,2))).^2,1));
+            [~,closestmidpoint] = min(pointdistances);
+            if (closestmidpoint==combination(1))+(closestmidpoint==combination(2))>0
+                distance = obj.directdistances(index);
+            else
+                distance1 = sum(obj.directdistances(sum(repmat(sort([combination(1),closestmidpoint]),numcombinations,1)==obj.combinations,2)==2));
+                distance2 = sum(obj.directdistances(sum(repmat(sort([combination(2),closestmidpoint]),numcombinations,1)==obj.combinations,2)==2));
+                distance = distance1 + distance2;
             end
         end
         
