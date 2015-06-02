@@ -1,8 +1,10 @@
-function out = alpha_profile(t,aero_coef,control,state)
+function out = alpha_profile(t,aero_coef,control,state,dt)
+
+
+    Alpha = [20 15 20]*pi/180;
+    dalpha = -[1 0.5 0.5]*pi/180*dt;
+    t_change = [226 270];
     
-    %flyby
-    Alpha = [10 17 16 15 10]*pi/180;
-    t_change = [226 234 250 270];
     
     %one orbit
     Alpha = [15 10 20 -5 0 10]*pi/180;
@@ -20,9 +22,9 @@ function out = alpha_profile(t,aero_coef,control,state)
     end
     
     if (state.alpha - control.dalpha) < Alpha(check)
-        alpha = state.alpha - control.dalpha;
+        alpha = state.alpha - dalpha(check);
     elseif (state.alpha + control.dalpha) > Alpha(check)
-        alpha = state.alpha + control.dalpha;
+        alpha = state.alpha + dalpha(check);
     else
         alpha = Alpha(check);
     end

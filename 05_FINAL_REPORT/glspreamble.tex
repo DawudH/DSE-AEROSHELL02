@@ -1,0 +1,83 @@
+% Generate the glossary
+	% create a new glossary style for the list of symbols
+	% copied (but eddited) from http://www.latex-community.org/forum/viewtopic.php?f=5&t=20797
+	\newglossarystyle{listos}{%
+	  \glossarystyle{altlongragged4col}
+	  \setlength{\glsdescwidth}{0.8\textwidth}
+	  % allow line wrap in the description column
+	  \renewenvironment{theglossary}%
+		    {\begin{longtable}{l l p{\glsdescwidth}}}%
+		    {\end{longtable}}%
+		  \renewcommand{\glsgroupskip}{}% make nothing happen between groups
+		  \renewcommand*{\glossaryheader}{%
+		  \bfseries Symbol & \bfseries Unit & \bfseries Description \\\endhead}%
+		  % No heading between groups:
+		  \renewcommand*{\glsgroupheading}[1]{}%
+		  % Main (level 0) entries displayed in a row optionally numbered:
+		  \renewcommand*{\glossentry}[2]{%
+		  \glsentryitem{##1}% Entry number if required
+		  \glstarget{##1}{\glossentryname{##1}}% Name
+			& \glossentrysymbol{##2}% Unit
+			& \glossentrydesc{##2}% Description
+			\tabularnewline % end of row
+		  }%
+		  % Similarly for sub-entries (no sub-entry numbers):
+		  \renewcommand*{\subglossentry}[3]{%
+		  % ignoring first argument (sub-level)
+		  \glstarget{##2}{\glossentryname{##2}}% Name
+			& \glossentrysymbol{##2}% Unit
+			& \glossentrydesc{##2}% Description
+			\tabularnewline % end of row
+			}%
+			% Nothing between groups:
+			\renewcommand*{\glsgroupskip}{}%
+			}
+	
+	% create a new glossary style for the list of constants
+		% copied (but eddited) from http://www.latex-community.org/forum/viewtopic.php?f=5&t=20797
+		\newglossarystyle{listoc}{%
+		  \glossarystyle{altlongragged4col}
+		  \setlength{\glsdescwidth}{0.8\textwidth}
+		  % allow line wrap in the description column
+		  \renewenvironment{theglossary}%
+		    {\begin{longtable}{lllp{\glsdescwidth}}}%
+		    {\end{longtable}}%
+		  \renewcommand{\glsgroupskip}{}% make nothing happen between groups
+		  \renewcommand*{\glossaryheader}{%
+		  \bfseries Symbol & \bfseries Value & \bfseries Unit & \bfseries Description \\\endhead}%
+		  % No heading between groups:
+		  \renewcommand*{\glsgroupheading}[1]{}%
+		  % Main (level 0) entries displayed in a row optionally numbered:
+		  \renewcommand*{\glossentry}[2]{%
+		  \glsentryitem{##1}% Entry number if required
+		  \glstarget{##1}{\glossentryname{##1}}% Name
+			& \glsentryuseri{##2}% Value
+			& \glossentrysymbol{##2}% Unit
+			& \glossentrydesc{##2}% Description
+			\tabularnewline % end of row
+		  }%
+		  % Similarly for sub-entries (no sub-entry numbers):
+		  \renewcommand*{\subglossentry}[3]{%
+		  % ignoring first argument (sub-level)
+		  \glstarget{##2}{\glossentryname{##2}}% Name
+			& \glsentryuseri{##2}% Value
+			& \glossentrysymbol{##2}% Unit
+			& \glossentrydesc{##2}% Description
+			\tabularnewline % end of row
+			}%
+			% Nothing between groups:
+			\renewcommand*{\glsgroupskip}{}%
+			}
+
+	
+\newglossary*{symbol}{List of Symbols}
+\newglossary*{constants}{List of Constants}
+\makenoidxglossaries
+\setacronymstyle{long-short}
+\loadglsentries{./Acronyms}
+\newglossaryentry{romanletter}{type=symbol,name={},description={\nopostdesc},sort=a}
+\newglossaryentry{greekletter}{type=symbol,name={},description={\nopostdesc},sort=b}
+\newglossaryentry{romanletterc}{type=constants,name={},description={\nopostdesc},sort=a}
+\newglossaryentry{greekletterc}{type=constants,name={},description={\nopostdesc},sort=b}
+\loadglsentries{./Symbols}
+\loadglsentries{./Constants}

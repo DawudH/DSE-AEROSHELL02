@@ -71,8 +71,26 @@ for i = 1:Nr-1
    TriDup3 = Tri(:,3) == i*Nr+1;
    Tri(TriDup2,2) = (i-1)*Nr+2;
    Tri(TriDup3,3) = (i-1)*Nr+2;
+   xvector(i*Nr+1) = 0 ;
+   yvector(i*Nr+1) = 0 ;
+   zvector(i*Nr+1) = 0 ;
+end
+IndDisc = find(~xvector);
+IndDisc(IndDisc==1)=[];
+xvector(IndDisc) = [];
+yvector(IndDisc) = [];
+zvector(IndDisc) = [];
+Tri1 = Tri(:,1);
+Tri2 = Tri(:,2);
+Tri3 = Tri(:,3);
+for i = 1:length(IndDisc)
+    Tri1(Tri1>IndDisc(i)) = Tri1(Tri1>IndDisc(i))-1;
+    Tri2(Tri2>IndDisc(i)) = Tri2(Tri2>IndDisc(i))-1;
+    Tri3(Tri3>IndDisc(i)) = Tri3(Tri3>IndDisc(i))-1;
+    IndDisc = IndDisc -1;
 end
 
+Tri = [Tri1 Tri2 Tri3];
 % Create triangulation around the origin point. 
 TriOrigin = [0 0 0];
 for I = 2:Nr
@@ -83,8 +101,9 @@ for I = 2:Nr
     end
 end
 Tri = [TriOrigin; Tri];
-
 TriGeom = triangulation(Tri, xvector, yvector, zvector);
+
+    
 
 
 

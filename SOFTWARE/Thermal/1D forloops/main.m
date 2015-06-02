@@ -1,6 +1,7 @@
 clear all
 close all
 clc
+tic
 
 %% Define input
 
@@ -17,14 +18,18 @@ L = layup(:,1);
 
 
 %Aero input, qsdot
-load('heatfluxinput.mat')
+load('heatfluxinput.mat','T','t','qmax')
 qearo = qmax;
-Tatm  = T;
+Tatm  = T; 
+clear('T')
 
 % time
-ttot = t(end);  % end time of the orbit [s]
-dt   = 0.01;    % time step, chooseable
+%ttot = t(end);  % end time of the orbit [s]
+ttot = 1000;  % end time of the orbit [s]
+dt   = 1;    % time step, chooseable
 nmax = (ttot/dt);  % number of time steps
+
+% change spacing of input YET TO DO!
 
 
 % spaceing
@@ -45,8 +50,8 @@ L = L/10000;
 
 
 Ltot = sum(L);      % length of the layup [m]
-N    = 10;           % multiplication factor of number of space steps.
-dx   = maxdx/N;     % length of a space step
+fact    = 10;           % multiplication factor of number of space steps.
+dx   = maxdx/fact;     % length of a space step
 imax =  Ltot/dx +1; % maximum amount of points in spaceing
 
 %Determination of radiation parameters
@@ -70,9 +75,45 @@ end
 alpha = k./rho./cp;
 v = alpha*dt/dx/dx;
 
+%% Implement Cranck-Nickelson
 
+% i is space, n is time
+% space is rows, time is columns
+T = zeros(round(imax),round(nmax));
+T0 = 293;
+T(:,1) = T0;
+q = ones(1,round(nmax))*30000;
 
-    
+% First matrix
+C =( - diag(0.5*v,1)) - (diag(0.5*v,-1) );
+C(2:end-1,2:end-1) = C(2:end-1,2:end-1) + diag(1+(v(1:end-1)/2)+(v(2:end)/2)) ;
+C(1,1:2) = [ (1+0.5*v(1)) (-0.5*v(1)) ];
+C(imax,imax-1:imax) = [ (-0.5*v(imax-1)) (1+0.5*v(imax-1))];
+
+% Second scheme matrix
+N =( diag(0.5*v,1)) + (diag(0.5*v,-1) );
+N(2:end-1,2:end-1) = N(2:end-1,2:end-1) + diag(1-(v(1:end-1)/2)-(v(2:end)/2)) ;
+N(1,1:2) = [ (1-0.5*v(1)) (0.5*v(1)) ];
+N(imax,imax-1:imax) = [ (0.5*v(imax-1)) (1-0.5*v(imax-1))];
+
+%define matrices
+A = zeros(imax,1); 
+%Cinv = inv(Cs);
+G = full(sparse(C)\sparse(N));
+
+for n=1:nmax-1
+    A(1) = (q(n)/k(1))*v(1)*dx;
+    H = full(sparse(C)\sparse(A));
+    T(:,n+1) = G*T(:,n) + H;
+end
+
+%% Hello
+% x = L;
+% y = 0:ttot:dt;
+% z = ;
+% contourf('x','y','z')
+
+toc
   
     
     

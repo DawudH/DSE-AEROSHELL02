@@ -120,7 +120,6 @@ end
 
 subplot(3,3,9)
 xlim([min(t) max(t)])
-ylim([-abs(control.dalphadt)*180/pi abs(control.dalphadt)*180/pi])
 grid on
 hold on
 plot(t,out.dAlpha_dt*180/pi,'color',cc(2,:))
@@ -142,7 +141,7 @@ figure('name','Orbit')
 axis equal
 hold on
 %axis([-(R_m + h_atm)*2 (R_m + h_atm)*2 -(R_m + h_atm)*2 (R_m + h_atm)*2])
-%axis([-(R_m + h_atm)*1.2 (R_m + h_atm)*1.2 -(R_m + h_atm)*1.1 (R_m + h_atm)*1.1])
+axis([-(R_m + h_atm)*1.2 (R_m + h_atm)*1.2 -(R_m + h_atm)*1.2 (R_m + h_atm)*1.2])
 
 % plot the hyperbolic part
 theta_plot = out.theta0:0.001:out.theta;
