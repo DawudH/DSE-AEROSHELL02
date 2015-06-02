@@ -9,14 +9,14 @@ clc
 clear all
 close all
 
-nmax = 12000;
-imax = 100;%10000
+nmax = 1000;
+imax = 1001;%10000
 k = ones(imax,1)*386.0;
 rho = ones(imax,1)*8954.0;
 cp = ones(imax,1)*383.1;
 
-dx = 0.005;%0.00005
-dt = 0.010;
+dx = 0.0005;%0.00005
+dt = 0.1;
 
 alpha = k./rho./cp;
 v = alpha*dt/dx/dx;
@@ -26,7 +26,7 @@ v = alpha*dt/dx/dx;
 T = zeros(imax,nmax);
 T0 = 293;
 T(:,1) = T0;
-q = -1*ones(1,nmax)*300000;
+q = ones(1,nmax)*300000;
 
 C = diag(1+v) - 0.5*diag(v(1:end-1),1) - 0.5*diag(v(2:end),-1);
 C(1,1) = 1+0.5*v(1);
