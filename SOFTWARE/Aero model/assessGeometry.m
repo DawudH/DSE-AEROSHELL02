@@ -47,7 +47,7 @@ function [ score, Cmalpha, CDA, failed, mod  ] = assessGeometry( radius, height,
     end
     
     % capsule fits in the outer body
-    if radius - skewness < 2.5
+    if radius - skewness < 2.5 || skewness < 0
         warning('Capsule radius criteria failure');
         failed = true;
     end
@@ -56,6 +56,11 @@ function [ score, Cmalpha, CDA, failed, mod  ] = assessGeometry( radius, height,
     helparray = mod.CLCD_array-LoverD;
     if sum(helparray>0)==0 || sum(helparray<0)==0
         warning('L over D criteria failure');
+        failed = true;
+    end
+    
+    % Height is larger than 0
+    if height < 0
         failed = true;
     end
     
