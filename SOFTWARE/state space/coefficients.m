@@ -38,6 +38,19 @@ apsigma = 0;
 aqV = (M0/(Iyy*V0))*CmM*q0*Sref*cref;
 aqalpha = (1/Iyy)*Cmalpha*q0*Sref*cref;
 
+aalphap = 0;
+aalphar = 0;
+aalphabeta = 0;
+abetaV = (g0/(V0*V0))*cos(gamma0)*sin(sigma0);
+abetagamma = (g0/V0)*sin(gamma0)*cos(gamma0);
+abetaR = 2*(g0/(R0*V0))*cos(gamma0)*sin(sigma0);
+abetap = sin(alpha0);
+abetar = -cos(alpha0);
+abetabeta = -(1/(m*V0))*CSbeta*q0*Sref;
+abetasigma = -(g0/V0)*cos(gamma0)*cos(sigma0);
+abetaq = 0;
+abetaalpha = 0;
+
 asigmaV = (tan(gamma0)*sin(sigma0)/(m*V0*V0))*(M0*CLM+CL)*q0*Sref;
 asigmagamma = (L0/(m*V0))*sin(sigma0);
 asigmap = -cos(alpha0);
