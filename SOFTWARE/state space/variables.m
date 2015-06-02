@@ -1,7 +1,6 @@
 %%%constant
 %%Sebastiaan
 g0 = 3.75; % [m/s^2]
-R0 = 400*10^3 + 3.389945945211271e6; % [m]
 
 %%Twan
 m = 10000; %[kg]
@@ -20,3 +19,8 @@ D0 = CD0A*q0;
 L0 = CL0A*q0;
 MY0 = CMY0A*q0;
 %%Sebastiaan
+R0 = 400*10^3 + 3.389945945211271e6; % [m]
+sigma0 = 0; % [-]
+Ixx = blackbox; % mass moment of inertia
+Iyy = blacbox;
+Izz = blackbox;
