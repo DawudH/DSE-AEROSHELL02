@@ -35,5 +35,15 @@ apq = 0;
 apr = 0;
 apalpha = 0;
 apsigma = 0;
-aqV=(M0/(Iyy*V0))*CmM*q0*Sref*cref;
-aqalpha=(1/Iyy)*Cmalpha*q0*Sref*cref;
+aqV = (M0/(Iyy*V0))*CmM*q0*Sref*cref;
+aqalpha = (1/Iyy)*Cmalpha*q0*Sref*cref;
+
+asigmaV = (tan(gamma0)*sin(sigma0)/(m*V0*V0))*(M0*CLM+CL)*q0*Sref;
+asigmagamma = (L0/(m*V0))*sin(sigma0);
+asigmap = -cos(alpha0);
+asigmar = -sin(alpha0);
+asigmaalpha = (tan(gamma0)*sin(sigma0)/(m*V0))*CLalpha*q0*Sref;
+asigmabeta = (tan(gamma0)*cos(sigma0)/(m*V0))*CSbeta*q0*Sref-L0/(m*V0)+(g0/V0)*cos(gamma0)*cos(sigma0);
+asigmasigma = tan(gamma0)*cos(sigma0)*L0/(m*V0);
+asigmaR = 0;
+asigmaq = 0;
