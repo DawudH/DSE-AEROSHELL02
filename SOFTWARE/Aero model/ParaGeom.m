@@ -1,4 +1,9 @@
-function [TriGeom, AFrontal] = ParaGeom(Nr,a,r,h,poly)
+function [TriGeom, AFrontal] = ParaGeom(q, skewness, radius, height, poly)
+
+Nr = q;
+a = skewness;
+r = radius;
+h = height;
 
 AFrontal = pi*r^2;
 % Nr = 40;
