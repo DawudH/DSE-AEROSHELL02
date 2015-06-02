@@ -1,4 +1,4 @@
-function [ out ] = full_orbit(R0, V0, A0, G, M_mars, R_m, h_atm, atm, dt_kep_init, dt_atmos, m, omega_m, S, control, tend, crash_margin, g_earth, aero_coef, use_control, multiple_orbits,use_alpha_profile,alpha_init,dalphadt)
+function [ out ] = full_orbit(R0, V0, A0, G, M_mars, R_m, h_atm, atm, dt_kep_init, dt_atmos, m, omega_m, S, control, tend, crash_margin, g_earth, aero_coef, use_control, multiple_orbits,use_alpha_profile,alpha_init,dalphadt,r,v,theta0,gamma,hypkep)
 %Calculates the full orbit for selected initial conditions until sepcified
 %end time
 switch nargin
@@ -35,7 +35,12 @@ end
     [CLA, CDA, CMYA] = aero_coef.aeroCoeffs(alpha);
     
     %%Functions
-    [out_hk] = hyperbolic_kepler(R0,V0,A0,G,M_mars,R_m,h_atm,dt_kep_init);
+    if hypkep
+        [out_hk] = hyperbolic_kepler(R0,V0,A0,G,M_mars,R_m,h_atm,dt_kep_init);
+    else
+        mu = G*M_mars;
+        [out_hk.end] = initial(r,v,theta0,gamma,mu);
+    end
     %%Inputs for while loop
     R(1,:) = out_hk.end.R;
     speed_sound(1,:) = out_hk.end.speed_sound;
@@ -46,11 +51,11 @@ end
     Ag(1,:) = out_hk.end.Ag;
     Ad(1,:) = out_hk.end.Ad;
     Al(1,:) = out_hk.end.Al;
-    A_aero(1,:) = [0,0,0];
     J(1,:) = out_hk.end.J;
     q(1,:) = out_hk.end.q;
     T(1,:) = out_hk.end.T;
     rho(1,:) = out_hk.end.rho;
+    A_aero(1,:) = [0,0,0];
     Alpha(1) = alpha;
     dAlpha_dt(1) = 0;
     CD(1) = CDA / S;
@@ -183,14 +188,16 @@ end
     out.tp = tp;
     out.M = M;
     out.t = t;
-    out.theta_p = out_hk.param.theta_p;
-    out.rp = out_hk.param.rp;
-    out.ra = out_hk.param.ra;
-    out.theta0 = out_hk.param.theta;
-    out.theta = out_hk.end.theta;
-    out.a = out_hk.param.a;
-    out.e = out_hk.param.e;
-    out.rc = out_hk.end.rc;
+    if hypkep
+        out.theta_p = out_hk.param.theta_p;
+        out.rp = out_hk.param.rp;
+        out.ra = out_hk.param.ra;
+        out.theta0 = out_hk.param.theta;
+        out.theta = out_hk.end.theta;
+        out.a = out_hk.param.a;
+        out.e = out_hk.param.e;
+        out.rc = out_hk.end.rc;
+    end
     out.c = out_c;
     out.speed_sound = speed_sound;
     out.T = T;
