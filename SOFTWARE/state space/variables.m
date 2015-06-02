@@ -1,3 +1,4 @@
+function [go,m,bref,Sref,V0,M0,rho0,alpha0,gamma0,gammadot0,q0,CL0A,CD0A,CM0A,D0,L0,MY0,R0,sigma0,Ixx,Iyy,Izz]=variables()
 % create aerocoef object
 aero_coef = aeroProperties('irve');
 
@@ -34,3 +35,4 @@ sigma0 = 0/180*pi; % [-]
 Ixx = blackbox; % mass moment of inertia
 Iyy = blacbox;
 Izz = blackbox;
+end
