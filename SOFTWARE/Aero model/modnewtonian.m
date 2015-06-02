@@ -166,12 +166,12 @@ classdef modnewtonian
         end
 
         function obj = alphasweep(obj, Vinf, beta, alpha_start, alpha_end, dalpha)
-            h = waitbar(0, 'Calculating...');
+%             h = waitbar(0, 'Calculating...');
             for alpha = alpha_start:dalpha:alpha_end
-                waitbar((alpha-alpha_start)/(alpha_end-alpha_start));
+%                 waitbar((alpha-alpha_start)/(alpha_end-alpha_start));
                 obj = obj.calcAeroangle(Vinf, alpha, beta);
             end
-            close(h);
+%             close(h);
         end
         
         function obj = betasweep(obj, Vinf, alpha, beta_start, beta_end, dbeta)
