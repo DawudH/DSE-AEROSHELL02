@@ -6,19 +6,14 @@
 \begin{tikzpicture}
 
 \begin{axis}[%
-width=0.918712\figurewidth,
+width=0.956134\figurewidth,
 height=\figureheight,
 at={(0\figurewidth,0\figureheight)},
 scale only axis,
-separate axis lines,
-every outer x axis line/.append style={black},
-every x tick label/.append style={font=\color{black}},
 xmin=115,
 xmax=210,
 xlabel={Temperature $\left[K\right]$},
 xmajorgrids,
-every outer y axis line/.append style={black},
-every y tick label/.append style={font=\color{black}},
 ymin=0,
 ymax=400,
 ylabel={Height $\left[km\right]$},

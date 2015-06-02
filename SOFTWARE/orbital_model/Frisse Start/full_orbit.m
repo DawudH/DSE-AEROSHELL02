@@ -46,6 +46,7 @@ end
     Ag(1,:) = out_hk.end.Ag;
     Ad(1,:) = out_hk.end.Ad;
     Al(1,:) = out_hk.end.Al;
+    A_aero(1,:) = [0,0,0];
     J(1,:) = out_hk.end.J;
     q(1,:) = out_hk.end.q;
     T(1,:) = out_hk.end.T;
@@ -59,12 +60,12 @@ end
     
     state.CL = CL(1);
     state.CD = CD(1);
-    state.a = norm(A(1,:) - Ag(1,:));
-    state.h = norm(R(1,:)) - R_m;
+    state.a = A_aero(1,:);
+    state.h = norm(R(1,1:2)) - R_m;
     state.alpha = alpha;
             
     %Get initial values for conditions
-    [out_c] = checks( R(1,:), V(1,:), t, tend, R_m, h_atm, G, M_mars,g_earth, false, crash_margin, false, round, state, control );
+    [out_c] = checks( R(1,1:2), V(1,:), t, tend, R_m, h_atm, G, M_mars,g_earth, false, crash_margin, false, round, state, control );
     out_c.in_atmos = true;
     
     
@@ -97,12 +98,13 @@ end
                      CD(i+1) = aero_param.CDA / S;
                      alpha = aero_param.alpha;
                  end
-                
-            [out_o] = in_atmosphere( V(i,:), R(i,:), A(i,:), a_prev, J(i,:), atm, CL(i+1), CD(i+1), dt_atmos, R_m, omega_m, S, m );
+            
+            phi = phi_profile(t);     
+            [out_o] = in_atmosphere( V(i,:), R(i,:), A(i,:), a_prev, J(i,:), atm, CL(i+1), CD(i+1), dt_atmos, R_m, omega_m, S, m , phi);
             %update state
             state.CL = CL(i);
             state.CD = CD(i);
-            state.a = norm(A(i,:) - Ag(i,:));
+            state.a = A_aero(i);
             state.h = norm(R(i,:)) - R_m;
             state.alpha = alpha;
             a_prev = A(i,:);
@@ -143,11 +145,13 @@ end
         Ag(i+1,:) = out_o.Ag;
         Ad(i+1,:) = out_o.Ad;
         Al(i+1,:) = out_o.Al;
+        A_aero(i+1,:) = out_o.A_aero;
         J(i+1,:) = out_o.J;
         q(i+1,:) = out_o.q;
         T(i+1,:) = out_o.T;
         rho(i+1,:) = out_o.rho;
         Alpha(i+1) = state.alpha;
+        
         if i < 1
                dAlpha_dt(i+1) = 0;
         else
@@ -173,6 +177,7 @@ end
     out.Ag = Ag;
     out.Ad = Ad;
     out.Al = Al;
+    out.A_aero = A_aero;
     out.J = J;
     out.q = q;
     out.tp = tp;
@@ -191,7 +196,7 @@ end
     out.T = T;
     out.rho = rho;
     out.alpha = Alpha;
-        a_human_mag = sqrt((out.Ad(:,1)+out.Al(:,1)).^2 + (out.Ad(:,2)+out.Al(:,2)).^2 + (out.Ad(:,3)+out.Al(:,3)).^2);
+        a_human_mag = norm(A_aero);
         maxaccel = max(a_human_mag)/g_earth;
     out.a_human_mag = a_human_mag;
     out.maxaccel = maxaccel;
