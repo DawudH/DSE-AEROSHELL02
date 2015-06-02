@@ -14,7 +14,9 @@ V0 = 7000; %[m/s]
 M0 = 50; %[-]
 rho0 = 1e-15; %[kg/m^3]
 q0 = rho0*V0^2/2; %[kg/(m*s^2)]
-CD0 = ??; %[-]
-D0 = CD0*q0*Sref;
-
+alpha0 = 0; %[rad]
+[CL0A, CD0A, CMY0A] = aero_coef.aeroCoeffs(alpha0);
+D0 = CD0A*q0;
+L0 = CL0A*q0;
+MY0 = CMY0A*q0;
 %%Sebastiaan
