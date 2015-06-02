@@ -1,0 +1,121 @@
+\documentclass[12pt]{article}
+
+% USEPACKAGES
+\usepackage[table]{xcolor}
+\usepackage[margin=2.5cm]{geometry} % Change border margins.
+\usepackage[titles]{tocloft} % Table of Contents, manual add.
+\usepackage{mcode} % Load matlab code into LaTeX.
+\usepackage[parfill]{parskip} % Removes indents
+\usepackage[hidelinks]{hyperref} % Clickable links in PDF.
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{float}
+\usepackage{amsmath,amssymb,amsthm,multirow,algorithm,algorithmic,amsfonts}
+\usepackage{gensymb}
+\usepackage[square,numbers,comma,sort&compress]{natbib}
+\usepackage[titletoc]{appendix}
+\usepackage[final]{pdfpages}
+\usepackage{afterpage}
+\usepackage{mdwlist} % Compact lists (itemize*)
+\usepackage{fixltx2e}
+\usepackage{expl3}
+\usepackage{datatool}
+\usepackage[nogroupskip,acronyms,symbols]{glossaries}
+\usepackage{glossary-longragged}
+\usepackage{wrapfig}
+\usepackage{caption}
+\usepackage{multicol}
+\usepackage{subcaption}
+\usepackage{pgfplots}
+
+\usepackage{lscape}
+\usepackage{rotating}
+\usepackage{pdflscape}
+
+
+\usepackage{pifont}
+
+\usepackage{array}
+
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+
+%\usepackage{setspace}
+
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+\newlength\figureheight 
+\newlength\figurewidth
+\pgfplotsset{compat=1.3}
+
+% PAGESTYLE
+\pagestyle{plain}
+
+\input{glspreamble}
+
+
+
+% COMMANDS
+\newcommand{\HRule}{\rule{\linewidth}{0.04cm}}
+\renewcommand{\abstractname}{{\Large Summary}}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\setlength{\parskip}{6pt plus4pt minus2pt}
+\setcounter{tocdepth}{2}
+% ENVIRONMENTS
+\newenvironment{drawing}
+
+
+\begin{document}
+% Titlepage
+\include{./Titlepage/Titlepage}
+% empthy page after titlepage
+\newpage
+\thispagestyle{empty}
+\mbox{}
+\pagenumbering{roman}
+\setcounter{page}{0}
+% Summary
+\newpage
+\include{./Preface}
+\include{./Summary}
+
+% Table of contents
+\newpage
+\tableofcontents
+\addtocontents{toc}{\protect\contentsline {section}{Acronyms}{vi}{}}
+\addtocontents{toc}{\protect\contentsline {section}{List of symbols}{vii}{}}
+\addtocontents{toc}{\protect\contentsline {section}{List of Figures}{ix}{}}
+\addtocontents{toc}{\protect\contentsline {section}{List of Tables}{xi}{}}
+
+\newpage
+\printnoidxglossary[type=\acronymtype,nonumberlist]
+\newpage
+\renewcommand{\arraystretch}{1.1}
+\printnoidxglossary[type=symbol,nonumberlist,style=listos]
+\printnoidxglossary[type=constants,style=listoc]
+\setcounter{table}{0}
+\newpage
+\listoffigures
+\newpage
+\listoftables
+
+% Chapters
+\newpage
+\pagenumbering{arabic}
+
+\include{./Chapter/Introduction}
+\include{./Chapter/StructuralAnalysis}
+\include{./Chapter/Conclusion}
+
+
+% Bibliography
+\newpage
+\bibliography{./Bibliography/Bibliography}
+\bibliographystyle{ieeetr}
+% Appendix
+\newpage
+\appendix
+\include{./AppendixA}
+
+\end{document}

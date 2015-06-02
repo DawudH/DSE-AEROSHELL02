@@ -23,8 +23,9 @@ Tatm  = T;
 clear('T')
 
 % time
-ttot = t(end);  % end time of the orbit [s]
-dt   = 0.5;    % time step, chooseable
+%ttot = t(end);  % end time of the orbit [s]
+ttot = 1000;  % end time of the orbit [s]
+dt   = 1;    % time step, chooseable
 nmax = (ttot/dt);  % number of time steps
 
 % change spacing of input YET TO DO!
@@ -82,30 +83,29 @@ T0 = 293;
 T(:,1) = T0;
 q = ones(1,round(nmax))*30000;
 
-% First matrix
-C =( - diag(0.5*v,1)) - (diag(0.5*v,-1) );
-C(2:end-1,2:end-1) = C(2:end-1,2:end-1) + diag(1+(v(1:end-1)/2)+(v(2:end)/2)) ;
-C(1,1:2) = [ (1+0.5*v(1)) (-0.5*v(1)) ];
-C(imax,imax-1:imax) = [ (-0.5*v(imax-1)) (1+0.5*v(imax-1))];
-% Second scheme matrix
-N =( diag(0.5*v,1)) + (diag(0.5*v,-1) );
-N(2:end-1,2:end-1) = N(2:end-1,2:end-1) + diag(1-(v(1:end-1)/2)-(v(2:end)/2)) ;
-N(1,1:2) = [ (1-0.5*v(1)) (0.5*v(1)) ];
-N(imax,imax-1:imax) = [ (0.5*v(imax-1)) (1-0.5*v(imax-1))];
+w = zeros(imax,1);
+w(1:end-1) = v/2;
+w(2:end) = w(2:end) + v/2;
+C = diag(1+w) - diag(0.5*v,1) - diag(0.5*v,-1);
+N = diag(1-w) + diag(0.5*v,1) + diag(0.5*v,-1);
 
 %define matrices
 A = zeros(imax,1); 
-G = C\N;
+Cinv = inv(sparse(C));
+G = full(Cinv*sparse(N));
 
 for n=1:nmax-1
     A(1) = (q(n)/k(1))*v(1)*dx;
-    H = C\A;
+    H = full(Cinv*sparse(A));
     T(:,n+1) = G*T(:,n) + H;
 end
 
 %% Hello
+% x = L;
+% y = 0:ttot:dt;
+% z = ;
+% contourf('x','y','z')
 
-    
   
     
     
