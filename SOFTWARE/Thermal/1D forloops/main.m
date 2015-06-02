@@ -9,7 +9,7 @@ clc
 %% Define input
 
 %lay-up (t[mm], k[w/m/K], rho[kg/m3], cp[J/kg/K])
-filename   = 'VAL3.txt';
+filename   = 'IRVE4.txt';
 layupin    = dlmread(filename);
 % SI units
 layup      = zeros(size(layupin));
@@ -22,18 +22,19 @@ L = layup(:,1);
 
 %Aero input, qsdot
 load('heatfluxinput.mat','T','t','qmax')
-qearo = qmax;
-Tatm  = T; 
-clear('T')
+qaero = qmax(1261:4206);
+Tatm  = T(1261:4206); 
+timeq = t(1261:4206)-t(1261);
+clear('T','t')
 
-% time
+% time and aeroheat
 %ttot = t(end);  % end time of the orbit [s]
-ttot = 100;  % end time of the orbit [s]
-dt   = 0.001;    % time step, chooseable
+ttot = timeq(end);  % end time of the orbit [s]
+dt   = 0.1;    % time step, chooseable
 nmax = int32(ttot/dt);  % number of time steps
-
-% change spacing of input YET TO DO!
-
+t = [0:double(nmax-1)]*dt;
+qs = interp1(timeq,qaero,[t,t(end)+dt])*10000;
+Tamb = interp1(timeq,Tatm,[t,t(end)+dt]);
 
 % spaceing
 L = int32(round(L*10000));
@@ -54,7 +55,7 @@ L = double(L)/10000;
 
 
 Ltot = sum(L);      % length of the layup [m]
-fact    = 10;           % multiplication factor of number of space steps.
+fact    = 1;           % multiplication factor of number of space steps.
 dx   = maxdx/fact;     % length of a space step
 imax =  int32(Ltot/dx + 1); % maximum amount of points in spaceing
 
@@ -79,6 +80,8 @@ end
 alpha = k./rho./cp;
 v = alpha*dt/dx/dx;
 
+
+
 %% Implement Cranck-Nickelson
 
 % i is space, n is time
@@ -86,7 +89,6 @@ v = alpha*dt/dx/dx;
 T = zeros(imax,nmax);
 T0 = 293;
 T(:,1) = T0;
-q = ones(1,nmax)*30000;
 
 w = zeros(imax,1);
 w(1:end-1) = v/2;
@@ -100,12 +102,14 @@ Cinv = inv(sparse(C));
 G = full(Cinv*sparse(N));
 
 for n=1:nmax-1
-    A(1) = (q(n)/k(1))*v(1)*dx;
+    qr = -emiss*sig*(T(1,n)^4-Tamb(n)^4);
+    A(1) = ((qs(n)+qr)/k(1))*v(1)*dx;
     H = full(Cinv*sparse(A));
     T(:,n+1) = G*T(:,n) + H;
 end
-%% Hello
-t = [0:double(nmax-1)]*dt;
+
+%% Contour-Plot
+% t = [0:double(nmax-1)]*dt;
 x = [0:double(imax-1)]*dx;
 figure;
 hold on
@@ -119,10 +123,17 @@ colorbar
 for j = 2:length(indexx)-1
     plot([0,nmax*dt],[indexx(j)*dx,indexx(j)*dx],'--','Color', [255.0/256.0,130.0/256.0,28.0/256.0])
 end
-% x = L;
-% y = 0:ttot:dt;
-% z = ;
-% contourf('x','y','z')
+
+%% Layer analysis output
+results = zeros(length(indexx)-1,1);
+layernames = cell(length(indexx)-1,1);
+for j=1:length(indexx)-1
+    results(j) = max(T(indexx(j)+1,:));
+    layernames{j} = strcat('Layer',int2str(j));
+end
+output = table(L*1000,results,layup(:,2),layup(:,3),layup(:,4),'RowNames',layernames,'VariableNames',{'Thickness','maxT','k','rho','cp'});
+    
+    
     
     
     

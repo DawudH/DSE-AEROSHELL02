@@ -6,14 +6,14 @@ clc
 clear all
 close all
 
-nmax = 1000/5e-5;
+nmax = 1000/5;
 imax = 100;%10000
 k = ones(imax,1)*0.146;
 rho = ones(imax,1)*1362;
 cp = ones(imax,1)*1130.0;
 
-dx = 1e-5;%0.00005
-dt = 5e-5;
+dx = 5e-4;%0.00005
+dt = 5;
 
 alpha = k./rho./cp;
 v = alpha*dt/dx/dx;

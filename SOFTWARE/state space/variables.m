@@ -1,3 +1,4 @@
+function [g0,m,bref,Sref,V0,M0,rho0,alpha0,gamma0,gammadot0,q0,CL0A,CD0A,CMY0A,D0,L0,MY0,R0,sigma0,Ixx,Iyy,Izz]=variables()
 % create aerocoef object
 aero_coef = aeroProperties('irve');
 
@@ -8,7 +9,7 @@ g0 = 3.75; % [m/s^2]
 %%Twan
 m = 10000; %[kg]
 bref = 12; %[m]
-Sref = pi/4*bref^2; %[m^2]
+Sref = (pi/4)*bref^2; %[m^2]
 
 
 %%%variable
@@ -31,6 +32,7 @@ MY0 = CMY0A*q0;
 %%Sebastiaan
 R0 = 400e3 + 3.389945945211271e6; % [m]
 sigma0 = 0/180*pi; % [-]
-Ixx = blackbox; % mass moment of inertia
-Iyy = blacbox;
-Izz = blackbox;
+Ixx = 10e3; % mass moment of inertia
+Iyy = 10e3; % wild guesses
+Izz = 10e3;
+end
