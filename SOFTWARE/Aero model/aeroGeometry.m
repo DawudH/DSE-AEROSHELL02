@@ -28,7 +28,7 @@ classdef aeroGeometry
             obj.coords = TriGeom.Points';
             [obj.normals, obj.areas] = obj.calcNormalsAreas(obj.tri, obj.coords);
             obj.centers = obj.calcCellCenters(obj.tri, obj.coords);
-            [obj.distancevectors, obj.directdistances, obj.combinations, obj.distances] = obj.calcDirectDistances(obj.centers);
+%             [obj.distancevectors, obj.directdistances, obj.combinations, obj.distances] = obj.calcDirectDistances(obj.centers);
 
         end
         
@@ -226,6 +226,8 @@ classdef aeroGeometry
             if obj.distances(index) == 0
                 distance = obj.calcDistance(triangle1, triangle2);
                 obj.distances(index) = distance;
+            elseif triangle1 == triangle2
+                distance = 0;
             else
                 distance = obj.distances(index);
             end

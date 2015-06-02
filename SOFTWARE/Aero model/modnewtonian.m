@@ -150,17 +150,17 @@ classdef modnewtonian
                 qmax = obj.rho_inf ^ N * Vinf ^ M * C;
             end
             
-            %distribution values
-            xt = obj.geom.getDistances(stagN);
-            
-            N = 0.8;
-            if Vinf <= 3962
-                M = 3.37;
-                C = (3.89e-8)*(costhetas.^1.78).*(sinthetas.^1.6).*(xt.^-.2).*(Tw/556).^(-.25).*(1-1.11*Tw/Tmax);
-            else
-                M = 3.7;
-                C = (2.2e-9)*(costhetas.^2.08).*(sinthetas.^1.6).*(xt.^-.2).*(1-1.11*Tw/Tmax);
-            end
+%             %distribution values
+%             xt = obj.geom.getDistances(stagN);
+%             
+%             N = 0.8;
+%             if Vinf <= 3962
+%                 M = 3.37;
+%                 C = (3.89e-8)*(costhetas.^1.78).*(sinthetas.^1.6).*(xt.^-.2).*(Tw/556).^(-.25).*(1-1.11*Tw/Tmax);
+%             else
+%                 M = 3.7;
+%                 C = (2.2e-9)*(costhetas.^2.08).*(sinthetas.^1.6).*(xt.^-.2).*(1-1.11*Tw/Tmax);
+%             end
 %             qw = obj.rho_inf(end) ^ N * Vinf ^ M * C;
             qw = sinthetas*qmax;
         end
