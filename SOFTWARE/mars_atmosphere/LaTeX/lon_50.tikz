@@ -11,9 +11,6 @@ width=0.95092\figurewidth,
 height=\figureheight,
 at={(0\figurewidth,0\figureheight)},
 scale only axis,
-unbounded coords=jump,
-every outer x axis line/.append style={black},
-every x tick label/.append style={font=\color{black}},
 xmin=0,
 xmax=360,
 xtick={\empty},
@@ -23,7 +20,6 @@ ymin=130,
 ymax=150,
 ytick={130, 135, 140, 145, 150},
 ylabel={Temperature $\left[K\right]$},
-ylabel shift={\figurewidth}
 axis x line*=bottom,
 axis y line*=right
 ]
@@ -380,16 +376,6 @@ axis y line*=right
 348	133.012\\
 349	132.9555\\
 350	132.9\\
-351	nan\\
-352	nan\\
-353	nan\\
-354	nan\\
-355	nan\\
-356	nan\\
-357	nan\\
-358	nan\\
-359	nan\\
-360	132.6\\
 };
 \end{axis}
 
@@ -398,14 +384,11 @@ width=0.95092\figurewidth,
 height=\figureheight,
 at={(0\figurewidth,0\figureheight)},
 scale only axis,
-unbounded coords=jump,
-separate axis lines,
-every outer x axis line/.append style={black},
-every x tick label/.append style={font=\color{black}},
 xmin=0,
 xmax=360,
 xlabel={Longitude $\left[^\circ\right]$},
 xmajorgrids,
+separate axis lines,
 every outer y axis line/.append style={mycolor2},
 every y tick label/.append style={font=\color{mycolor2}},
 ymin=4e-05,
@@ -767,16 +750,6 @@ ymajorgrids
 348	5.79072e-05\\
 349	5.791955e-05\\
 350	5.793e-05\\
-351	nan\\
-352	nan\\
-353	nan\\
-354	nan\\
-355	nan\\
-356	nan\\
-357	nan\\
-358	nan\\
-359	nan\\
-360	5.791e-05\\
 };
 \end{axis}
 \end{tikzpicture}%

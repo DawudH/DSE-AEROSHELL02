@@ -1,4 +1,4 @@
-function [ out_o ] = in_atmosphere( V, R, a, a1, J, atm, CL, CD, dt, R_m, omega_m, S, m )
+function [ out_o ] = in_atmosphere( V, R, a, a1, J, atm, CL, CD, dt, R_m, omega_m, S, m, phi )
 %IN_ATMOSPHERE Summary of this function goes here
 %   Detailed explanation goes here
 % a1 = ai-1
@@ -28,14 +28,19 @@ if rho>0
 
     orbit.q = 0.5 * rho * v_aero^2;
     orbit.ad = - vel_unit * CD * orbit.q * S / m;
-    orbit.al = [vel_unit(2),-vel_unit(1),0] * CL * orbit.q * S / m;
+    orbit.aly = CL * orbit.q * S / m*cos(phi);
+    orbit.alz = CL * orbit.q * S / m*sin(phi);
+    orbit.al = [vel_unit(2),-vel_unit(1),0] * orbit.aly;
+    orbit.a_aero = [vel_unit(2),-vel_unit(1),0]* CL * orbit.q * S / m + orbit.ad;
     
 else
     %no lift and drag outside the atmosphere
     orbit.ad = [0,0,0];
     orbit.al = [0,0,0];
+    orbit.a_aero = [0,0,0];
     orbit.q = 0;
 end
+
 
 %calculate total accaleration
 orbit.a = orbit.ag + orbit.ad + orbit.al;
@@ -61,6 +66,7 @@ out_o.A = orbit.a;
 out_o.Ag = orbit.ag;
 out_o.Ad = orbit.ad;
 out_o.Al = orbit.al;
+out_o.A_aero = orbit.a_aero;
 out_o.J = orbit.J;
 out_o.q = orbit.q;
 out_o.T = orbit.T;
