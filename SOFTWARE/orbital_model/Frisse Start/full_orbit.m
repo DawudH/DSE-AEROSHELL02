@@ -213,6 +213,7 @@ end
     out.Ki = control.Ki;
     out.Kd = control.Kd;
     out.dAlpha_dt = dAlpha_dt;
+    out.Vm = sqrt(out.V(:,1).^2 + out.V(:,3).^2 + out.V(:,2).^2);
     
     if exist('tkep','var')
         out.tkep = tkep;
