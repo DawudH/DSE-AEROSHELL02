@@ -1,6 +1,5 @@
 variables
 
-%%Twan
 aVV = -(2*D0)/(m*V0);
 aVgamma = -g0*cos(gamma0);
 aVR = 2*g0/R0*sin(gamma0);
@@ -11,31 +10,6 @@ aVq = 0;
 aVr = 0;
 aVbeta = 0;
 aVsigma = 0;
-%sebastiaan deel 1
-aqgamma = 0;
-aqR = 0;
-aqp = 0;
-aqq = 0;
-aqr = 0;
-aqbeta = 0;
-aqsigma = 0;
-arbeta = CNbeta*q0*Sref*bref;
-arV = 0;
-argamma = 0;
-arR = 0;
-arp = 0;
-arq = 0;
-arr = 0;
-aralpha = 0;
-arsigma = 0;
-aalphaV = -g0/V0^2*cos(gamma0)*cos(sigma0)-L0/(m*V0^2);
-aalphagamma = -g0/V0*sin(gamma0)*cos(sigma0);
-aalphaR = -2*g0/(R0*V0)*cos(gamma0)*cos(sigma0);
-aalphaq = 1;
-aalphaalpha = 1/(m*V0)*CLalpha*q0*Sref;
-aalphasigma = -g0/V0*cos(gamma0)*sin(sigma0);
-
-%%Sebastiaan
 agammagamma = -((V0/R0)-(g0/V0))*sin(gamma0);
 agammaR = ((2*g0/V0)-(V0/R0))*cos(gamma0)/R0;
 agammaalpha = (cos(sigma0)/(m*V0))*CLalpha*q0*Sref;
@@ -64,7 +38,28 @@ apalpha = 0;
 apsigma = 0;
 aqV = (M0/(Iyy*V0))*CmM*q0*Sref*cref;
 aqalpha = (1/Iyy)*Cmalpha*q0*Sref*cref;
-
+aqgamma = 0;
+aqR = 0;
+aqp = 0;
+aqq = 0;
+aqr = 0;
+aqbeta = 0;
+aqsigma = 0;
+arbeta = CNbeta*q0*Sref*bref;
+arV = 0;
+argamma = 0;
+arR = 0;
+arp = 0;
+arq = 0;
+arr = 0;
+aralpha = 0;
+arsigma = 0;
+aalphaV = -g0/V0^2*cos(gamma0)*cos(sigma0)-L0/(m*V0^2);
+aalphagamma = -g0/V0*sin(gamma0)*cos(sigma0);
+aalphaR = -2*g0/(R0*V0)*cos(gamma0)*cos(sigma0);
+aalphaq = 1;
+aalphaalpha = 1/(m*V0)*CLalpha*q0*Sref;
+aalphasigma = -g0/V0*cos(gamma0)*sin(sigma0);
 aalphap = 0;
 aalphar = 0;
 aalphabeta = 0;
@@ -77,7 +72,6 @@ abetabeta = -(1/(m*V0))*CSbeta*q0*Sref;
 abetasigma = -(g0/V0)*cos(gamma0)*cos(sigma0);
 abetaq = 0;
 abetaalpha = 0;
-
 asigmaV = (tan(gamma0)*sin(sigma0)/(m*V0*V0))*(M0*CLM+CL)*q0*Sref;
 asigmagamma = (L0/(m*V0))*sin(sigma0);
 asigmap = -cos(alpha0);
@@ -87,3 +81,14 @@ asigmabeta = (tan(gamma0)*cos(sigma0)/(m*V0))*CSbeta*q0*Sref-L0/(m*V0)+(g0/V0)*c
 asigmasigma = tan(gamma0)*cos(sigma0)*L0/(m*V0);
 asigmaR = 0;
 asigmaq = 0;
+
+
+A = [aVV, aVgamma, aVR, aVp, aVq, aVr, aValpha, aVbeta, aVsigma;...
+     agammaV, agammagamma, agammaR, agammap, agammaq, agammar, agammaalpha, agammabeta, agammasigma;...
+     aRV, aRgamma, aRR, aRp, aRq, aRr, aRalpha, aRbeta, aRsigma;...
+     apV, apgamma, apR, app, apq, apr, apalpha, apbeta, apsigma;...
+     aqV, aqgamma, aqR, aqp, aqq, aqr, aqalpha, aqbeta, aqsigma;...
+     arV, argamma, arR, arp, arq, arr, aralpha, arbeta, arsigma;...
+     aalphaV, aalphagamma, aalphaR, aalphap, aalphaq, aalphar, aalphaalpha, aalphabeta, aalphasigma;...
+     abetaV, abetagamma, abetaR, abetap, abetaq, abetar, abetaalpha, abetabeta, abetasigma;...
+     asigmaV, asigmagamma, asigmaR, asigmap, asigmaq, asigmar, asigmaalpha, asigmabeta, asigmasigma];
