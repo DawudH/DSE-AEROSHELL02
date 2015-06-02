@@ -1,4 +1,5 @@
-variables
+% Load variables
+[go,m,bref,Sref,V0,M0,rho0,alpha0,gamma0,gammadot0,q0,CL0A,CD0A,CM0A,D0,L0,MY0,R0,sigma0,Ixx,Iyy,Izz]=variables()
 
 aVV = -(2*D0)/(m*V0);
 aVgamma = -g0*cos(gamma0);
