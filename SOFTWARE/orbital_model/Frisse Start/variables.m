@@ -5,8 +5,8 @@ added_paths
 constants
 
 %initial angles
-theta0 = 150/180*pi;
-gamma = 21.9;
+theta0 = 135/180*pi;%3.016549;%150/180*pi;
+gamma = 21.87;
 
 %Initial Position
 rx = -4148904.375000;
