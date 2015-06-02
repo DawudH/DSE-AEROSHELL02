@@ -10,9 +10,10 @@ use_control = false;
 multiple_orbits = true;
 use_alpha_profile = true;
 export_figures = false;
+hypkep = false;
 
 %%function
-[out] = full_orbit(R, V, A, G, M_mars, R_m, h_atm, atm, dt_kep_init, dt_atmos, m, omega_m, S, control, tend, crash_margin, g_earth, aero_coef, use_control, multiple_orbits, use_alpha_profile);
+[out] = full_orbit(R, V, A, G, M_mars, R_m, h_atm, atm, dt_kep_init, dt_atmos, m, omega_m, S, control, tend, crash_margin, g_earth, aero_coef, use_control, multiple_orbits, use_alpha_profile,control.alpha_init,control.dalphadt,r,v,theta0,gamma,hypkep);
                     
 %% processing (plot/write to file)
 figure('name','parameters over time')
@@ -151,13 +152,14 @@ axis equal
 hold on
 %axis([-(R_m + h_atm)*2 (R_m + h_atm)*2 -(R_m + h_atm)*2 (R_m + h_atm)*2])
 axis([-(R_m + h_atm)*1.2 (R_m + h_atm)*1.2 -(R_m + h_atm)*1.2 (R_m + h_atm)*1.2])
-
-% plot the hyperbolic part
-theta_plot = out.theta0:0.001:out.theta;
-rk = out.a * (1- out.e^2) ./ (1 + out.e * cos(theta_plot));
-h1 = polar(theta_plot+out.theta_p,rk); 
-set(h1,'color',cc(4,:))
-legend_str{1} = 'Hyperbolic kepler';
+if hypkep
+    % plot the hyperbolic part
+    theta_plot = out.theta0:0.001:out.theta;
+    rk = out.a * (1- out.e^2) ./ (1 + out.e * cos(theta_plot));
+    h1 = polar(theta_plot+out.theta_p,rk); 
+    set(h1,'color',cc(4,:))
+    legend_str{1} = 'Hyperbolic kepler';
+end
 if isfield(out,'tkep')
     ccc = autumn(5);
     %first atmos section
@@ -193,9 +195,17 @@ end
     set(gca,'Visible','off')
     set(gcf,'color',[1 1 1])
     if exist('L2','var')
-        legend([h1, L1, h2, L2, h3, h4],legend_str,'location','east');
+        if hypkep
+            legend([h1, L1, h2, L2, h3, h4],legend_str,'location','east');
+        else
+            legend([L1, h2, L2, h3, h4],legend_str(2:end),'location','east');
+        end
     else
-        legend([h1, L1, h3, h4],legend_str);
+        if hypkep
+            legend([h1, L1, h3, h4],legend_str);
+        else
+            legend([L1, h3, h4],legend_str(2:end));
+        end
     end
     if (export_figures)
         matlab2tikz('.\LaTeX\orbit2.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
