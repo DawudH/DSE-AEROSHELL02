@@ -1,7 +1,6 @@
 clear all
 close all
 clc
-tic
 
 %% Define input
 
@@ -84,26 +83,20 @@ T0 = 293;
 T(:,1) = T0;
 q = ones(1,round(nmax))*30000;
 
-% First matrix
-C =( - diag(0.5*v,1)) - (diag(0.5*v,-1) );
-C(2:end-1,2:end-1) = C(2:end-1,2:end-1) + diag(1+(v(1:end-1)/2)+(v(2:end)/2)) ;
-C(1,1:2) = [ (1+0.5*v(1)) (-0.5*v(1)) ];
-C(imax,imax-1:imax) = [ (-0.5*v(imax-1)) (1+0.5*v(imax-1))];
-
-% Second scheme matrix
-N =( diag(0.5*v,1)) + (diag(0.5*v,-1) );
-N(2:end-1,2:end-1) = N(2:end-1,2:end-1) + diag(1-(v(1:end-1)/2)-(v(2:end)/2)) ;
-N(1,1:2) = [ (1-0.5*v(1)) (0.5*v(1)) ];
-N(imax,imax-1:imax) = [ (0.5*v(imax-1)) (1-0.5*v(imax-1))];
+w = zeros(imax,1);
+w(1:end-1) = v/2;
+w(2:end) = w(2:end) + v/2;
+C = diag(1+w) - diag(0.5*v,1) - diag(0.5*v,-1);
+N = diag(1-w) + diag(0.5*v,1) + diag(0.5*v,-1);
 
 %define matrices
 A = zeros(imax,1); 
-%Cinv = inv(Cs);
-G = full(sparse(C)\sparse(N));
+Cinv = inv(sparse(C));
+G = full(Cinv*sparse(N));
 
 for n=1:nmax-1
     A(1) = (q(n)/k(1))*v(1)*dx;
-    H = full(sparse(C)\sparse(A));
+    H = full(Cinv*sparse(A));
     T(:,n+1) = G*T(:,n) + H;
 end
 
@@ -113,7 +106,6 @@ end
 % z = ;
 % contourf('x','y','z')
 
-toc
   
     
     
