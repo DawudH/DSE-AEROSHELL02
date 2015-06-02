@@ -12,7 +12,7 @@ classdef aeroGeometry
         normals;
         areas;
         centers;
-        
+        centroid;
         combinations;
         directdistances;
         distancevectors;
@@ -28,6 +28,7 @@ classdef aeroGeometry
             obj.coords = TriGeom.Points';
             [obj.normals, obj.areas] = obj.calcNormalsAreas(obj.tri, obj.coords);
             obj.centers = obj.calcCellCenters(obj.tri, obj.coords);
+            obj.centroid = obj.calcCentroid();
 %             [obj.distancevectors, obj.directdistances, obj.combinations, obj.distances] = obj.calcDirectDistances(obj.centers);
 
         end
@@ -51,6 +52,10 @@ classdef aeroGeometry
                 vectors = [coords(:,tri(i,1)),coords(:,tri(i,2)), coords(:,tri(i,3))];
                 centers(:,i) = mean(vectors,2);
             end
+        end
+        
+        function centroid =  calcCentroid(obj)
+           centroid = obj.centers*obj.areas/sum(obj.areas);
         end
         
         function oppositePoint = getOpposite(obj, tbase, side)

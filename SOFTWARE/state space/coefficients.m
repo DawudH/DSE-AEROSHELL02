@@ -1,6 +1,14 @@
 % Load variables
-[go,m,bref,Sref,V0,M0,rho0,alpha0,gamma0,gammadot0,q0,CL0A,CD0A,CM0A,D0,L0,MY0,R0,sigma0,Ixx,Iyy,Izz]=variables()
+[g0,m,bref,Sref,V0,M0,rho0,alpha0,gamma0,gammadot0,q0,CL0A,CD0A,CMY0A,CL,CLalpha,CDalpha,Cmalpha,D0,L0,MY0,R0,sigma0,Ixx,Iyy,Izz]=variables();
 
+CSbeta = CDalpha;
+CLbeta = CLalpha;
+CmM = 0;
+cref = 1;
+CNbeta = CLbeta;
+CLM = 0;
+
+%% A matrix elements
 aVV = -(2*D0)/(m*V0);
 aVgamma = -g0*cos(gamma0);
 aVR = 2*g0/R0*sin(gamma0);
@@ -93,3 +101,34 @@ A = [aVV, aVgamma, aVR, aVp, aVq, aVr, aValpha, aVbeta, aVsigma;...
      aalphaV, aalphagamma, aalphaR, aalphap, aalphaq, aalphar, aalphaalpha, aalphabeta, aalphasigma;...
      abetaV, abetagamma, abetaR, abetap, abetaq, abetar, abetaalpha, abetabeta, abetasigma;...
      asigmaV, asigmagamma, asigmaR, asigmap, asigmaq, asigmar, asigmaalpha, asigmabeta, asigmasigma];
+ 
+ 
+%% B matrix elements
+B = [0, 0, 0, 0, 0, 0, 0, 0, 0;...
+    0, 0, 0, 0, 0, 0, 0, 0, 0;...
+    0, 0, 0, 0, 0, 0, 0, 0, 0;...
+    0, 0, 0, 0, 0, 0, 0, 0, 0;...
+    0, 0, 0, 0, 0, 0, 0, 0, 0;...
+    0, 0, 0, 0, 0, 0, 0, 0, 0;...
+    0, 0, 0, 0, 0, 0, 0, 0, 0;...
+    0, 0, 0, 0, 0, 0, 0, 0, 0;...
+    0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+
+%% Definition of C & D, null matrices
+C = diag(ones(1,9));
+
+D = 0;
+%% Inputs & statespace initialization:
+t = linspace(0,100,500);
+statespace = ss(A,B,C,D);
+
+U = zeros(length(t),9);
+initial = [V0,gamma0,0,0,0,0,alpha0,0,sigma0];
+response = lsim(statespace,U,t,initial);
+
+%figure 1
+
+%subplot(1,1,1)
+plot(t,response(:,1),t,response(:,2),t,response(:,3),t,response(:,4),t,response(:,5),t,response(:,6),t,response(:,7),t,response(:,8),t,response(:,9))
+title('Random zooi')

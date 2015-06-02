@@ -22,7 +22,7 @@ function [ score, Cmalpha, CDA, failed, mod  ] = assessGeometry( radius, height,
     CoGheight = 3;
     r_capsule = 2.5;
     skewnessz = skewness * r_capsule/radius;
-    xcog = CoGheight + max(polyval(poly, r_capsule+skewnessz), polyval(poly, r_capsule-skewnessz));
+    xcog = CoGheight + max(polyval(poly, (r_capsule+skewnessz)/radius)/sum(poly)*height, polyval(poly, (r_capsule-skewnessz)/radius)/sum(poly)*height);
     center = [xcog, 0, 0];
 
     % Calculate aerodynamic properties
@@ -47,7 +47,7 @@ function [ score, Cmalpha, CDA, failed, mod  ] = assessGeometry( radius, height,
     end
     
     % capsule fits in the outer body
-    if radius - skewness < 2.5
+    if radius - skewness < 2.5 || skewness < 0
         warning('Capsule radius criteria failure');
         failed = true;
     end
@@ -56,6 +56,11 @@ function [ score, Cmalpha, CDA, failed, mod  ] = assessGeometry( radius, height,
     helparray = mod.CLCD_array-LoverD;
     if sum(helparray>0)==0 || sum(helparray<0)==0
         warning('L over D criteria failure');
+        failed = true;
+    end
+    
+    % Height is larger than 0
+    if height < 0
         failed = true;
     end
     
@@ -87,5 +92,4 @@ function [ score, Cmalpha, CDA, failed, mod  ] = assessGeometry( radius, height,
     penaltyfactor = +1e10;
     
     score = (Cmalphafactor * Cmalpha) + (CDAfactor * CDA) + (penaltyfactor * failed);
-    clear mod;
 end
