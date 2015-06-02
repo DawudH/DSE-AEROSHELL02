@@ -33,8 +33,8 @@ ttot = timeq(end);  % end time of the orbit [s]
 dt   = 0.1;    % time step, chooseable
 nmax = int32(ttot/dt);  % number of time steps
 t = [0:double(nmax-1)]*dt;
-q = interp1(timeq,qaero,[t,t(end)+dt])*10000;
-
+qs = interp1(timeq,qaero,[t,t(end)+dt])*10000;
+Tamb = interp1(timeq,Tatm,[t,t(end)+dt]);
 
 % spaceing
 L = int32(round(L*10000));
@@ -80,6 +80,8 @@ end
 alpha = k./rho./cp;
 v = alpha*dt/dx/dx;
 
+
+
 %% Implement Cranck-Nickelson
 
 % i is space, n is time
@@ -100,7 +102,8 @@ Cinv = inv(sparse(C));
 G = full(Cinv*sparse(N));
 
 for n=1:nmax-1
-    A(1) = (q(n)/k(1))*v(1)*dx;
+    qr = -emiss*sig*(T(1,n)^4-Tamb(n)^4);
+    A(1) = ((qs(n)+qr)/k(1))*v(1)*dx;
     H = full(Cinv*sparse(A));
     T(:,n+1) = G*T(:,n) + H;
 end
