@@ -9,11 +9,12 @@ addpath('.\..\matlab2tikz')
 atm = marsatmosphere();
 
 lat = 0;
-lon = 0:1:360;
+lon = 0:1:350;
+lat2 = -80:1:80;
 lon_fixed = 180;
 
 h = 0:1000:400e3;
-h_fixed = 25e3;
+h_fixed = 300e3;
 h_fixed2 = 50e3;
 
 rho = atm.getDensity(lat,lon,h_fixed);
@@ -91,4 +92,11 @@ ylabel('Height $\left[km\right]$','interpreter','latex','fontsize',fontsize)
 xlabel('Temperature $\left[K\right]$','interpreter','latex','fontsize',fontsize)
 matlab2tikz('.\LaTeX\T_h_180_0.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
 
-
+rho = atm.getDensity(lat2,lon,h_fixed);
+[X,Y] = meshgrid(lon,lat2);
+figure('name', 'Atmospheric density model dependency longitude and latitude')
+contourf(X,Y,rho','ShowText','on')
+grid on
+ylabel('latitude $\left[^\circ\right]$','interpreter','latex','fontsize',fontsize)
+xlabel('Longitude $\left[^\circ\right]$','interpreter','latex','fontsize',fontsize)
+%matlab2tikz('.\LaTeX\T_h_180_0.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
