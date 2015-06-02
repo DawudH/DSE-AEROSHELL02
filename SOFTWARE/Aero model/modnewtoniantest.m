@@ -16,10 +16,7 @@ geom = aeroGeometry(TriGeom, A);
 % tic
 % geom.calcDistances(geom.coords);
 % toc
-mod = modnewtonian(geom, gamma, a, center, rho, T);
-% mod = mod.alphasweep(a*20, 0, deg2rad(alpha0), deg2rad(alphaend), deg2rad(dalpha));
 
-mod = mod.calcAeroangle(7000,deg2rad(20),deg2rad(0));
 
 Tw = 500*ones(size(mod.Cpdist_array(:,end)));
 [Tmax, qmax, qw] = mod.calcStagnationHeatFlux(Tw);
