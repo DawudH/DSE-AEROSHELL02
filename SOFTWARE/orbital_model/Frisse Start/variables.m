@@ -4,15 +4,21 @@ added_paths
 %Add sources & explanation per constant
 constants
 
+%initial angles
+theta0 = 150/180*pi;
+gamma = 21.9;
+
 %Initial Position
 rx = -4148904.375000;
 rx = -4655000;
 ry = 10*R_m;
 R = [rx,ry,0];
+r = h_atm+R_m;
 
 %Initial Velocity
-v = 7.1679e+03; %[m/s]
-v = 5.3757e3;
+v = 7.1679e+03; %[m/s] at 10Rm for 7km/s at SOI
+v = 5.3757e3; %[m/s] at 10Rm for 7km/s at atmos
+v = 7000; %[m/s] at atmos for 7km/s at atmos
 V = [0,-v,0];
 
 %Initial acceleration
