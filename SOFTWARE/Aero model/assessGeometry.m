@@ -63,10 +63,12 @@ function [ score, Cmalpha, CDA, failed, mod  ] = assessGeometry( radius, height,
     if height < 0
         failed = true;
     end
-    
+    radius
+    height
+    skewness
+    poly
     %% Calculate trim angle and function values iff no failure criterion was met
     if ~failed
-        
         for i = 1:length(helparray)-1
             if mod.CLCD_array(i+1)<LoverD
                 alphatrimindex = i;
