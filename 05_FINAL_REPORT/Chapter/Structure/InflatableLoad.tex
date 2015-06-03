@@ -5,6 +5,7 @@ Structural assessment of the inflatable configuration has been performed by an e
 \item Yields the loads at the structural interface between the inflatable aeroshell and the rigid centerbody
 \item Gives an impression of the effect of changing design parameters on concept structural performance
 \end{itemize}
+
 Forces are estimated for an inflatable structure that is aerodynamically loaded, as follows from vehicle trajectory analysis in Chapter \ref{ch:XXX}, in its deployed condition. An interface with the aerodynamic analysis, performed in Chapter \ref{ch:XXX}, yields the optimized aeroshell shape as a baseline for the structural model used.
 
 \subsubsection{Approach outline}
@@ -12,7 +13,26 @@ To meet the purposes of structural assessment of the inflatable configuration, f
 
 Adjoining toroids are connected at three locations: by a radial strap along the forward side of the aeroshell (impinged by the flow), a radial strap running along the aft side of the aeroshell and at their direct contact surface. In reality, as in the stacked toroid configuration used for NASAs \gls{irve} \cite{Lindell2006}, the contact surface of adjoining toroids is a straight wall, while top and bottom surfaces are of circular shape. This shape is the result of the internally applied pressure: equal but oppositely directed pressures effect a straight interface between toroids and toroids adapt to the unbalanced pressure in top and bottom surfaces through energy minimization by taking a circular shape.
 
-Simplification was performed to realize a structurally determinate problem results by modelling toroids as diamonds. The orientation of the diamonds is defined by the half-cone angle \gls{sym:theta}, allowed to vary over its radius and circumference per toroid, and their shape by a fixed width \gls{sym:w} and varying height \gls{sym:h}, to allow for a tapered structure. Nodes are designated as the corners of each diamond and connecting members have been numbered. The numbering convention and dimensions are illustrated in Figure \ref{fig:strucshape}. 
+Simplification was performed to realize a structurally determinate problem results by modelling toroids as diamonds. The orientation of the diamonds is defined by the half-cone angle \gls{sym:theta}, allowed to vary over its radius and circumference per toroid, and their shape by a fixed width \gls{sym:w} and varying height \gls{sym:h}, to allow for a tapered structure. Nodes are designated as the corners of each diamond and connecting members have been numbered. The numbering convention and dimensions are illustrated in Figure \ref{fig:TC}. 
+
+
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}[b]{0.49\textwidth}
+	\centering
+	\includegraphics[width=1.0\textwidth]{./Figure/Structure/ToroidConfig.png}
+	\caption{Actual toroid layout} 
+	\label{fig:TC1}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.49\textwidth}
+	\centering
+	\includegraphics[width=1.0\textwidth]{./Figure/Structure/ToroidConfig2.png}
+	\caption{Simplified truss model} 
+	\label{fig:TC2}
+	\end{subfigure}
+	\caption{}
+	\label{fig:TC}
+\end{figure}
 
 Force estimation is performed in a two-dimensional plane representing a cross-sectional slice, of an infinitesimal angle, of the sphere cone. Each toroid is loaded externally by an aerodynamic force applied perpendicular to its width \gls{sym:w} at its forward node (placed directly in the flow). The aerodynamic force is the resultant of the limit aerodynamic pressure $\gls{sym:q}_{limit}$, assumed constant for each toroid, multiplied by toroid width \gls{sym:w} to represent its working area. The limit aerodynamic pressure is determined from the peak dynamic pressure by multiplying with a \acrfull{fos}, thereby taking into account a contingency for structural design. The \gls{fos} is XXX????XXX??XXX. 
 
