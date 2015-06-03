@@ -21,10 +21,10 @@ L = layup(:,1);
 
 
 %Aero input, qsdot
-load('heatfluxinput.mat','T','t','qmax')
-qaero = qmax(1261:4206);
-Tatm  = T(1261:4206); 
-timeq = t(1261:4206)-t(1261);
+load('heatflux.mat','T','t','qmax_array')
+qaero = qmax_array(1223:5602);
+Tatm  = T(1223:5602); 
+timeq = t(1223:5602)-t(1223);
 clear('T','t')
 
 % time and aeroheat
