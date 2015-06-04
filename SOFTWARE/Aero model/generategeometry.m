@@ -1,4 +1,4 @@
-function [ TriGeom, A, center ] = generategeometry(q )
+function [ TriGeom, A, center ] = generategeometry(q, r )
 %[ coords, tri, A ] = generategeometry( type, q )
 %   Generate used geometries
 
@@ -16,8 +16,7 @@ function [ TriGeom, A, center ] = generategeometry(q )
     
     Nr = q;
     a = 0;
-    r = 6;
-    h = 3;
+    h = 0.5*r;
     poly = [1 0 0];
     [TriGeom, A] = ParaGeom(Nr, a, r, h, poly);
     center = [0 0 0];
