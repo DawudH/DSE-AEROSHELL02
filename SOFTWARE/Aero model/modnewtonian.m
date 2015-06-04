@@ -101,10 +101,18 @@ classdef modnewtonian
             Cpdist = obj.Cpmax_array(end)*sinthetas.^2;
         end
         
+        function CmyAalpha = calcCmyAalpha(obj)
+            CmyAalpha = diff(obj.CMA_body_array(2,:))./diff(obj.alpha_array);
+        end
+        
+        function Cmyalpha = calcCmyalpha(obj)
+            Cmyalpha = diff(obj.CM_body_array(2,:))./diff(obj.alpha_array);
+        end
+        
         function [Tmax, qmax] = calcStagnationHeatFlux(obj)%, Tw)
             % Get the stagnation heat flux and temperature
 
-            Vhat = obj.V_array(:,end)/norm(obj.V_array(:,end));
+%             Vhat = obj.V_array(:,end)/norm(obj.V_array(:,end));
             Vinf = norm(obj.V_array(:,end));
 %             sinthetas = obj.geom.normals' * Vhat;
 %             sinthetas(sinthetas<0) = 0;

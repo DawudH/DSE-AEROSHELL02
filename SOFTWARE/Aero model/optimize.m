@@ -30,4 +30,4 @@ opts = gaoptimset(opts, 'PopulationSize', 50);
 [x,Fval,exitFlag,Output, population, scores] = ga(@optimizationWrapper,xlength,A,b,[],[],[],[],[],opts);
 
 [ score, mod, Cmalpha, CDA, failed ] = optimizationWrapper( x );
-save('outputfiles/optimizationoutput_try');
+save('aeroshapes/optimizationoutput_maxmoment');
