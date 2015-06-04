@@ -14,6 +14,7 @@ classdef modnewtonian
         V_array;
         alpha_array;
         beta_array;
+        phi_array;
         M_array;
         
         % Calculated properties
@@ -65,11 +66,12 @@ classdef modnewtonian
             obj.CM_aero_array = obj.CMA_aero_array / obj.geom.A_frontal;
         end
         
-        function obj = calcAeroangle(obj, Vinf, alpha, beta)
+        function obj = calcAeroangle(obj, Vinf, alpha, beta, phi)
             % Calculate aerodynamic properties with aoa and sideslip and V
-            V = obj.Tba(alpha, beta)*[Vinf;0;0];
+            V = obj.Tba(alpha, beta, phi)*[Vinf;0;0];
             obj.alpha_array = [obj.alpha_array, alpha];
             obj.beta_array = [obj.beta_array, beta];
+            obj.phi_array = [obj.phi_array, phi];
             obj = obj.calcAero(V);
         end
         
@@ -79,7 +81,7 @@ classdef modnewtonian
         end
         
         function CRAaero = calcForceCoeffsAero(obj)
-            CRAaero = diag([-1 1 -1])*(obj.Tab(obj.alpha_array(end), obj.beta_array(end))*obj.CRA_body_array(:,end));
+            CRAaero = diag([-1 1 -1])*(obj.Tab(obj.alpha_array(end), obj.beta_array(end), obj.phi_array(end))*obj.CRA_body_array(:,end));
         end
         
         function CMAbody = calcMomentCoeffsBody(obj)
@@ -88,7 +90,7 @@ classdef modnewtonian
         end
         
         function CMAaero = calcMomentCoeffsAero(obj)
-            CMAaero = obj.Tab(obj.alpha_array(end), obj.beta_array(end))*obj.CMA_body_array(:,end);
+            CMAaero = obj.Tab(obj.alpha_array(end), obj.beta_array(end), obj.phi_array(end))*obj.CMA_body_array(:,end);
         end
         
         function Cpdist = calcCpdist(obj)
@@ -165,30 +167,36 @@ classdef modnewtonian
             qw = sinthetas*qmax;
         end
 
-        function obj = alphasweep(obj, Vinf, beta, alpha_start, alpha_end, dalpha)
+        function obj = alphasweep(obj, Vinf, beta, phi, alpha_start, alpha_end, dalpha)
 %             h = waitbar(0, 'Calculating...');
             for alpha = alpha_start:dalpha:alpha_end
 %                 waitbar((alpha-alpha_start)/(alpha_end-alpha_start));
-                obj = obj.calcAeroangle(Vinf, alpha, beta);
+                obj = obj.calcAeroangle(Vinf, alpha, beta, phi);
             end
 %             close(h);
         end
         
-        function obj = betasweep(obj, Vinf, alpha, beta_start, beta_end, dbeta)
+        function obj = betasweep(obj, Vinf, alpha, phi, beta_start, beta_end, dbeta)
             for beta = beta_start:dbeta:beta_end
-                obj = obj.calcAeroAngle(Vinf, alpha, beta);
+                obj = obj.calcAeroAngle(Vinf, alpha, beta, phi);
             end
         end
         
-        function obj = Msweep(obj, alpha, beta, M_start, M_end, dM)
+        function obj = phisweep(obj, Vinf, alpha, beta, phi_start, phi_end, dphi)
+            for phi = phi_start:dphi:phi_end
+                obj = obj.calcAeroAngle(Vinf, alpha, beta, phi);
+            end
+        end
+        
+        function obj = Msweep(obj, alpha, beta, phi, M_start, M_end, dM)
             for M = M_start:M_end:dM
-                obj = obj.calcAeroangle(obj.a_inf*M, alpha, beta);
+                obj = obj.calcAeroangle(obj.a_inf*M, alpha, beta, phi);
             end
         end
         
-        function obj = Vsweep(obj, alpha, beta, V_start, V_end, dV)
+        function obj = Vsweep(obj, alpha, beta, phi, V_start, V_end, dV)
             for M = V_start:V_end:dV
-                obj = obj.calcAeroangle(V, alpha, beta);
+                obj = obj.calcAeroangle(V, alpha, beta, phi);
             end
         end
         
@@ -202,8 +210,12 @@ classdef modnewtonian
             cp = mean(obj.Cpdist_array(triangles, end));
         end
 
-        function T = Tab(~, alpha, beta)
+        function T = Tab(~, alpha, beta, phi)
             % Get the transformation matrix for angle of attack
+            Tx = [[1,           0,          0           ];
+                  [0,           cos(phi),   sin(phi)    ];
+                  [0,           -sin(phi),  cos(phi)    ]];
+              
             Ty = [[cos(-alpha), 0,          -sin(-alpha)];
                   [0,           1,          0           ];
                   [sin(-alpha), 0,          cos(-alpha) ]];
@@ -211,11 +223,11 @@ classdef modnewtonian
             Tz = [[cos(beta),   sin(beta),  0           ];
                   [-sin(beta),  cos(beta),  0           ];
                   [0,           0,          1           ]];
-            T = Tz*Ty;
+            T = Tz*Ty*Tx;
         end
 
-        function T = Tba(obj, alpha, beta)
-            T = inv(obj.Tab(alpha, beta));
+        function T = Tba(obj, alpha, beta, phi)
+            T = inv(obj.Tab(alpha, beta, phi));
         end
         
         function obj = plotCp(obj, plotfaces, plotnormals)
