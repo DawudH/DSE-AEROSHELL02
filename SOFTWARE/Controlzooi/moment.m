@@ -12,9 +12,9 @@ x = 300;
 y = 1;
 z = 100;
 
-Mx = 0;
-My = 0;
-Mz = 0;
+Mx = 10; % 1/1
+My = 0; % 1/300
+Mz = 0; % 1/3
 
 Mxcg = zeros(n,n,n);
 Mycg = zeros(n,n,n);
