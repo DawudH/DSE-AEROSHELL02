@@ -1,9 +1,12 @@
 clear
+close all
+clc
 
 n = 10;
-vali = ones(n,n,n);
-vali(1,1,1) = 0;
-go = 0;
+vali = zeros(n,n,n);
+vali(1,1,1) = 1;
+round = 0;
+
 dx = linspace(-5,5,n);
 dz = linspace(-5,5,n);
 dy = linspace(-5,5,n);
@@ -47,7 +50,7 @@ while (max(max(max(vali)))-min(min(min(vali))))>0.001
          dy = linspace(dy(loc(2)-1),dy(loc(2)),n);
          dz = linspace(dz(loc(3)-1),dz(loc(3)),n);
      end
-     go = go+1
+     round = round+1
 end
  dxv = dx(n/2)
  dyv = dy(n/2)

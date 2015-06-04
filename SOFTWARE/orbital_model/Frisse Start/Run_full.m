@@ -1,6 +1,6 @@
 clc
 clear
-%close all
+close all
 
 %%Input constants & variables
 variables
@@ -23,7 +23,7 @@ cc = parula(7);
 
 subplot(3,3,1)
 xlim([min(t) max(t)])
-xlim([0 2500])
+%xlim([0 2500])
 grid on
 hold on
 Rm = sqrt(out.R(:,1).^2 + out.R(:,3).^2 + out.R(:,2).^2) - R_m;
@@ -37,7 +37,7 @@ end
 
 subplot(3,3,4)
 xlim([min(t) max(t)])
-xlim([0 2500])
+%xlim([0 2500])
 grid on
 hold on
 Vm = sqrt(out.V(:,1).^2 + out.V(:,3).^2 + out.V(:,2).^2);
@@ -51,7 +51,7 @@ end
 
 subplot(3,3,7)
 xlim([min(t) max(t)])
-xlim([0 2500])
+%xlim([0 2500])
 grid on
 hold on
 am = sqrt((out.A(:,1) - out.Ag(:,1)).^2 + (out.A(:,2) - out.Ag(:,2)).^2 + (out.A(:,3) - out.Ag(:,3)).^2) / g_earth;
@@ -65,7 +65,7 @@ end
 
 subplot(3,3,3)
 xlim([min(t) max(t)])
-xlim([0 2500])
+%xlim([0 2500])
 grid on
 hold on
 plot(t,out.q,'color',cc(2,:))
@@ -77,7 +77,7 @@ end
 
 subplot(3,3,6)
 xlim([min(t) max(t)])
-xlim([0 2500])
+%xlim([0 2500])
 grid on
 hold on
 plot(t,out.M,'color',cc(2,:))
@@ -90,7 +90,7 @@ end
 
 subplot(3,3,2)
 xlim([min(t) max(t)])
-xlim([0 2500])
+%xlim([0 2500])
 ylim([min(out.CL)-0.005*abs(min(out.CL)) max(out.CL)+0.005*abs(max(out.CL))])
 grid on
 hold on
@@ -103,7 +103,7 @@ end
 
 subplot(3,3,5)
 xlim([min(t) max(t)])
-xlim([0 2500])
+%xlim([0 2500])
 ylim([min(out.CD)-0.001*abs(min(out.CD)) max(out.CD)+0.001*abs(max(out.CD))])
 grid on
 hold on
@@ -116,7 +116,7 @@ end
 
 subplot(3,3,8)
 xlim([min(t) max(t)])
-xlim([0 2500])
+%xlim([0 2500])
 grid on
 hold on
 plot(t,out.alpha*180/pi,'color',cc(2,:))
@@ -129,7 +129,7 @@ end
 
 subplot(3,3,9)
 xlim([min(t) max(t)])
-xlim([0 2500])
+%xlim([0 2500])
 grid on
 hold on
 plot(t,out.dAlpha_dt*180/pi,'color',cc(2,:))
