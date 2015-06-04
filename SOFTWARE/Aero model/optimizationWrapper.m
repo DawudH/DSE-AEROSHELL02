@@ -7,9 +7,9 @@ q = 40;
 radius = x(3);
 height = x(2);
 
-skewness = x(1);
+skewness = 0;%x(1);
 poly = [x(4:end),0,0];
-[ score, Cmalpha, CDA, failed, mod  ] = assessGeometry( radius, height, skewness, poly, q, LoverD );
+[ score, Cmalpha, CDA, failed, mod  ] = assessGeometry( skewness, height, radius, poly, q, LoverD );
 
 % disp('Score:strcat(num2str(score))
 
