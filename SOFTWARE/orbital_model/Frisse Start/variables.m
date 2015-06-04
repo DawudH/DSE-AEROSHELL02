@@ -6,7 +6,7 @@ constants
 
 %initial angles
 theta0 = 135/180*pi;%3.016549;%150/180*pi;
-gamma = 21.87;
+gamma = 21.74105;
 
 %Initial Position
 rx = -4148904.375000;

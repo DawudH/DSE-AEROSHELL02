@@ -1,6 +1,6 @@
 clc
 clear
-%close all
+close all
 
 %%Input constants & variables
 variables
