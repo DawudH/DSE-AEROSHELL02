@@ -126,9 +126,9 @@ classdef aeroGeometry
             points = find(obj.coords(1,:)>x-epsilon & obj.coords(1,:)<x+epsilon);
         end
         
-        function points = getPointsOnXYPlane(obj, x)
+        function points = getPointsOnXYPlane(obj, z)
             epsilon = 1e-10;            
-            points = find(obj.coords(3,:)>x-epsilon & obj.coords(3,:)<x+epsilon);
+            points = find(obj.coords(3,:)>z-epsilon & obj.coords(3,:)<z+epsilon);
         end    
         
         function unconnectedTriangles = getUnconnectedTriangles(obj)

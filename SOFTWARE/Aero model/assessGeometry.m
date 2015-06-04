@@ -70,7 +70,8 @@ function [ score, Cmalpha, CDA, failed, mod  ] = assessGeometry( skewness, heigh
         r_capsule = 2.5;
         skewnessz = skewness * r_capsule/radius;
         xcog = CoGheight + max(polyval(poly, (r_capsule+skewnessz)/radius)/sum(poly)*height, polyval(poly, (r_capsule-skewnessz)/radius)/sum(poly)*height);
-        center = [xcog, 0, 0];
+%         center = [xcog, 0, 0];
+        center = [0, 0, 0];
 
         % Calculate aerodynamic properties
         [TriGeom, A] = ParaGeom(q, skewness, radius, height, poly);
@@ -114,8 +115,8 @@ function [ score, Cmalpha, CDA, failed, mod  ] = assessGeometry( skewness, heigh
         
     end
     %% Calculate score
-    Cmalphafactor = 1;
-    CDAfactor = -1;
+    Cmalphafactor = 0;
+    CDAfactor = 0;
     Cmatrimfactor = 1;
     penaltyfactor = +1e4;
     x = [skewness, height/radius, poly(1:end-2)]
