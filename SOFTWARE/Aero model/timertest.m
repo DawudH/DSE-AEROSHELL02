@@ -1,1 +1,0 @@
-tic;geom.calcDistances(geom.coords);toc;

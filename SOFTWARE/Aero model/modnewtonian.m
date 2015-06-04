@@ -101,14 +101,14 @@ classdef modnewtonian
             Cpdist = obj.Cpmax_array(end)*sinthetas.^2;
         end
         
-        function [Tmax, qmax, qw] = calcStagnationHeatFlux(obj, Tw)
+        function [Tmax, qmax] = calcStagnationHeatFlux(obj)%, Tw)
             % Get the stagnation heat flux and temperature
 
             Vhat = obj.V_array(:,end)/norm(obj.V_array(:,end));
             Vinf = norm(obj.V_array(:,end));
-            sinthetas = obj.geom.normals' * Vhat;
-            sinthetas(sinthetas<0) = 0;
-            costhetas = cos(asin(sinthetas));
+%             sinthetas = obj.geom.normals' * Vhat;
+%             sinthetas(sinthetas<0) = 0;
+%             costhetas = cos(asin(sinthetas));
             
             Tmax = obj.T_inf*(obj.gamma-1)/2*obj.M_array(end)^2;
             [~, stagN] = max(obj.Cpdist_array(:,end));
@@ -129,6 +129,7 @@ classdef modnewtonian
                 for i = 1:length(radii)
                     radii(i) = obj.geom.calcRadiusOfCurvature(checkMatrix(i,1), checkMatrix(i,2), checkMatrix(i,3));
                 end
+                radius = max(radii);
             else %If point on centerpoint fuck
                 trianglesincircle = sum(sum(obj.geom.tri == ones(size(obj.geom.tri))));
                 point1 = triangle(1);
@@ -140,15 +141,16 @@ classdef modnewtonian
                 if obj.geom.coords(2, point1) - obj.geom.coords(2,point2) < 1e-12
                     point2 = point2 + 1;
                 end
-                radii = obj.geom.calcRadiusOfCurvature(point1, point2, 1);
+                radius = obj.geom.calcRadiusOfCurvature(point1, point2, 1);
             end
             
             %stagnation point values
-            M = 3;
-            N = 0.5;
-            C = 1.83e-8*max(radii)^-.5*(1-Tw(stagN)/Tmax);
+
             qmax = 0;
-            if max(radii) >=0
+            if radius >=0
+                M = 3;
+                N = 0.5;
+                C = 1.83e-8*max(radius)^-.5;                
                 qmax = obj.rho_inf ^ N * Vinf ^ M * C;
             end
             
@@ -164,7 +166,7 @@ classdef modnewtonian
 %                 C = (2.2e-9)*(costhetas.^2.08).*(sinthetas.^1.6).*(xt.^-.2).*(1-1.11*Tw/Tmax);
 %             end
 %             qw = obj.rho_inf(end) ^ N * Vinf ^ M * C;
-            qw = sinthetas*qmax;
+%             qw = sinthetas*qmax;
         end
 
         function obj = alphasweep(obj, Vinf, beta, phi, alpha_start, alpha_end, dalpha)
