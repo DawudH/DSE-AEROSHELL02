@@ -1,8 +1,8 @@
 function out = alpha_profile(t,aero_coef,control,state,dt)
     
     %one time under 3g
-    Alpha = [18 18 18 18]*pi/180;
-    t_change = [226 250 270];
+    Alpha = [18 18]*pi/180;
+    t_change = [280];
     dalpha = -[1 0.5 0.5 0.5 0.5]*pi/180*dt;
     
     t_check = t_change >= t;
