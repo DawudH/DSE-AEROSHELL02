@@ -1,7 +1,7 @@
 function [ score, Cmalpha, CDA, failed, mod  ] = assessGeometry( skewness, height, radius, poly, q, LoverD )
 %ASSESSGEOMETRY Assess a geometry for it's performance
 
-    
+
     %% Initialise
     
     % Angle of attack values
@@ -48,13 +48,13 @@ function [ score, Cmalpha, CDA, failed, mod  ] = assessGeometry( skewness, heigh
     end
     
     % Height is larger than 0, smaller than 2*radius
-    if height < 0
+    if height <= 0
         warning('height < 0');
         failed = true;
     end
     
-    if height < height > 2*radius
-        warning('height < 0');
+    if height > 3*radius
+        warning('height > 3*radius');
         failed = true;
     end    
     
@@ -118,6 +118,6 @@ function [ score, Cmalpha, CDA, failed, mod  ] = assessGeometry( skewness, heigh
     CDAfactor = -1;
     Cmatrimfactor = 1;
     penaltyfactor = +1e4;
-    
+    x = [skewness, height/radius, poly(1:end-2)]
     score = (Cmalphafactor * Cmalpha) + (CDAfactor * CDA) + (Cmatrimfactor * abs(CmAtrim)) + (penaltyfactor * failed);
 end
