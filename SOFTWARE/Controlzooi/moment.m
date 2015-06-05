@@ -7,17 +7,17 @@ vali = zeros(n,n,n);
 vali(1,1,1) = 1;
 round = 0;
 
-dx = linspace(-5,5,n);
-dz = linspace(-5,5,n);
-dy = linspace(-5,5,n);
+dx = linspace(0,1000,n);
+dz = linspace(0,1000,n);
+dy = linspace(0,1000,n);
 
-x = 300;
+x = 1;
 y = 1;
-z = 100;
+z = 1;
 
-Mx = 10; % 1/1
-My = 0; % 1/300
-Mz = 0; % 1/3
+Mx = 1; % 1/1
+My = 1; % 1/300
+Mz = 1; % 1/3
 
 Mxcg = zeros(n,n,n);
 Mycg = zeros(n,n,n);

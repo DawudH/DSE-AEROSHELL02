@@ -1,0 +1,110 @@
+\subsubsection{Opening}
+Locatie: Fellowship Instruction room 1\\
+Aanwezig: HD, NR, DD, J, L, G, A, B, T, D, Su, Se\\
+Verontschuldigd: - \\
+Afwezig: - \\
+Tijd: Dawud opent de vergadering om 13:35\\
+
+\subsubsection{Agenda}
+De agenda van de vergadering bestaat oorspronkelijk uit de volgende punten:
+\begin{enumerate}
+\item Opening
+\item Agenda
+\item Goedkeuring van de notulen
+\item Mid-term grading
+\item Status update huidig werk
+\item Plan van aanpak toekomstig werk
+\item Andere vragen
+\item W.V.T.T.K.
+\item Rondvraag
+\item Sluiting
+\end{enumerate}
+
+Aan de agenda zijn verder geen punten toegevoegd.
+
+\subsubsection{Goedkeuring van de notulen}
+Opmerking over notulen van 27 mei: actiepunt over Joris Melkert was niet nodig, dit was verkeerd begrepen door Su (notulist).
+Opmerking over notulen algemeen: De conclusie van discussies moet meer naar voren komen. Het is niet van belang om te notuleren wie wat precies gezegd heeft.
+Verder geen op- of aanmerkingen.
+
+\subsubsection{Mid-term grading}
+Voorlopig groepscijfer 6. Met kanttekening dat dit cijfer een beetje vertekend is en dat de groep eigenlijk op een hoger cijfer zit, maar dit kan niet naar voren komen met het gegeven gradingsheet. Het groepscijfer is opgedeeld in drie onderdelen: Design, Process en Communication. De weging per onderdeel is niet gelijk, design weegt het zwaarst (ongeveer 40\%).
+\newline\newline
+%%%%%%%%
+Ontwerp, communicatie en proces. Weegt niet allemaal even zwaar, design het zwaarst (40\%?).
+
+Bij design te veel focus op tools, er is geen daadwerkelijk ontwerp. Dit wordt ook zo gegrade. 
+Subsystemen kan verbeterd worden. Control system mist bijv. volledig. Sensitivity analysis en V\&V is dan weer goed. Bij V\&V kunnen afwijkingen beter beschreven worden.
+Market en cost analysis kan iets uitgebreider (voor relatief makkelijk meer punten).
+Requirements flowdown ontbreekt een beetje.
+
+Proces is best aardig/goed. Use of (external) resources. Kennis die je niet hebt moet je van buiten halen. Betrek anderen bij ons werk.
+
+Communication rond de goed. Communication with external staff nog steeds missend. Meetings zijn goed, terminologie, referenties zijn goed. Ability to answer staff questions is minder. We moeten meer met feedback doen. Trekken af en toe een muur op en lijken niet open voor commentaar.
+
+Group component voor 40\% en individual op 60\%. Gemiddeld rond 6-6.5, er is nog veel ruimte om makkelijk omhoog te gaan. Als groep zijn de tutor en coaches tevreden.
+Individual algemeen: tussen RV en G. Eén punt waar iedereen als individu kan winnen is het begrip van de tools (understanding of subject matter). Attitude is goed. Job performance/initiative/communication goed. 
+
+Vraag B: Tot nu toe bij structures alleen load/ truss-analysis gedaan. Dit is enkel analysis, maar moeten we dan nog designen. HD: Ja in principe moet je wel designen zodat we een idee hebben hoe het eruit gaat zien.
+Vraag L: Zijn er ook nog extreem negatieve punten? HD: Nee.
+
+Conclusie: cijfer wat laag, maar er zijn ook verbeterpuntjes.
+\subsubsection{Status update huidig werk}
+D: We zijn bezig met de uitwerking van tools, moet vrijdag af zijn. Discussies gehad wat uit tools moeten komen en hoe we die interfacen met andere tools. We gaan even de alle departments langs.
+
+G: Zelfde tool als bij MR, dus modified newtonian tool. Nu bezig met zoeken naar EEN optimale vorm. EEN optimale vorm, omdat het nog niet bekend is welke parameter je design optimaal maakt. Werkt in principe nu wel. Zal volgende week bekeken worden wat het beste is.
+NR: Gaat dit automatisch of worden datasets overgedragen.
+J: Legt uit hoe data overgedragen wordt tussen de tools. (q van orbit naar aero en qs dan van aero naar thermo).
+HD: Zorg dat je weet wat de relatie is tussen je design parameters en performance parameters.
+G: Die kennis heb je bijvoorbeeld nodig om gewichten aan je optimalisatietool te geven.
+HD: Nu is er nog geen sprake van een optimaal punt. Het is beter om een initiële waarde te hebben. Zonder optimalistietool zou je moeten kunnen zeggen welke richting je op wil gaan om een bepaald iets te verbeteren.
+
+T: Bank-control geïmplementeerd. 
+D: Lift-vector aan het pointen, de manier waarop is niet gegeven. Die moet extern geregeld worden. Voordeel is minder afhankelijkheid van density zoals bij alpha-control. 
+NR: Dus een rotationally asymmetric flow?
+T: Dat idd, of sideslip. Dat dus geïmplementeerd, werkt beter. We sturen 
+NR: Stuurt op een hoogte?
+T: Ja hij stuurt op een hoogte m.b.v. alpha en sideslip-angle. 
+
+Se: BEzig met augmented static stability. Problemen met het oplossen van 3 eqn.
+T: Momenten hoeken etc. bekijken.
+% Even vragen zo
+NR: Hoe worden control-surfaces gedimensioneerd?
+D: Dat zal daaruit moeten komen.
+
+L: 1D-tool verbeterd. Eerst FTCS-scheme, nu Crank-Nicolson scheme (altijd stabiel). Eerst wilden we een 3D-tool. Dat is echter niet de prioriteit. Prioriteit is design. Design op stagnation point. Als eerste laag faalt, heb je of een andere laag nodig, of andere orbit. 1D-tool verbeteren, zodat we een goede tool hebben, ipv twee halve. Ook radiation gaan we bekijken.
+HD: Ik denk dat TPS de missie gaat definieren.
+L: Focus meer op design, dan op een mooie 3D tool.
+
+A: Structures minder een tool. Alle elementen inflatables, centerbody, inflation system. Load analysis met een truss-structure. Die gebruiken om mass-model uit MR te verbeteren. Interne stressen niet gaan bekijken, meer systemen.
+B: Inflatables vorm is al vastgezet. Straps etc. Voornaamste reden om de load te bekijken om te zeggen of iets feasible is of niet. 
+G: Een minimum zal er wel zijn door de vorm.
+NR: Wat doe je bij de lege voids?
+B: Dat is allemaal geregeld.
+A: Bij te weinig zul je misschien problemen krijgen.
+
+HD: Is de diameter al bekend?
+G: Nee, dat gaan we volgende week doen.
+HD: Denk ook buiten de opgegeven 12m.
+
+\subsubsection{Plan van aanpak toekomstig werk}
+Gisteren (dinsdag 2 juni) een poging gewaagd om alle subsystemen die we gaan behandelen op een lijstje te zetten. Hierop staan welke subsystemen wij denken nodig te hebben, ook vanuit de deliverables gezien. Het is opgedeeld in delen over de decelerator, crew module en mission phase.
+\newline
+B vertelt dat we tot nu toe vooral bezig geweest met de tools voor de decelerator subsystems. Het ontwerp met deze tools zal uiteindelijk afdoende zijn voor het Final Report. Voor de subsystemen in de crew module is het plan om het volume, gewicht en eventueel locatie en power van de subsystems te bepalen/schatten om zo een completer beeld van het ontwerp te kunnen schetsen. We hadden al een hoofdstuk gewijd aan de mission phases in het Mid Term Report. We willen dit uitgebreider gaan doen, dus meer over de launch en meer over de interplanetary transfer. En dan vooral benadrukken wat voor invloed deze fases hebben op ons deel van de missie. (dit was ook een puntje van kritiek in de bespreking van het Mid Term Report).
+
+\subsubsection{Andere vragen}
+G vraagt of mogen aannemen dat we, zoals ook het plan is voor de Orion, met een transport capsule de interplanetary transfer doen. De transport capsule biedt dan een leefomgeving tijdens de langdurige transfer voor de astronauten. Dit verlaagt de eisen voor bijvoorbeeld lifesupport enorm. Nadelen zijn bijvoorbeeld een extra launch voor de transport capsule (naast het re-entry vehicle) en docking-requirements. HD zegt dat de groep daarover eerst een analyse moet doen en vervolgens met voorstellen moet komen. NR hint ook om te kijken naar de sterke punten van een aeroshell.
+\newline
+NR merkt vervolgens op dat dit soort vragen eigenlijk veel eerder hadden moeten komen. Als groep zijn we een beetje verkeerd om bezig. We zijn volgens HD iets te vroeg en te diep in de tools gedoken. Dit soort vragen zijn eigenlijk key drivers voor je design. Zo zal het veel uitmaken voor je design of je zo'n transport capsule mee krijgt of niet. Voorlopig mag er wel aangenomen worden dat er op Mars al spul aanwezig is, wel moeten de astronauten terug naar Aarde kunnen gaan.
+
+\subsubsection{W.V.T.T.K.}
+
+\textbf{1.} NR geeft aan vrijdag niet aanwezig te kunnen zijn bij de vergadering. Vrijdag komt Chris Mockel, die twee jaar geleden de DSE heeft gedaan. Chris Mockel is op dit moment bezig met zijn master en is vooral bezig met astrodynamica.
+
+\subsubsection{Rondvraag}
+Er zijn verder geen vragen.
+
+\subsubsection{Sluiting}
+De volgende vergadering zal plaatsvinden op 05-06-2015 om 11:00 in Fellowship Meeting room 2.
+\newline\newline
+Dawud sluit de vergadering om 15:00.
