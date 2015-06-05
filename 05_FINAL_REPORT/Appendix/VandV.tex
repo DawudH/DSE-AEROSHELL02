@@ -3,31 +3,3 @@
 \subsection{Structure} \label{sec:VandVstruc}
 \input{./Appendix/VandV/Structure}
 
-Verification for the simplified truss model is performed on the basis of simplified load cases. Significant errors were not observed and remained below 3\% for various geometries and halve cone angles with a minimum of 5 tori. The small verification errors followed from the discrete application of the dynamic pressure. Taking the discrete application into account as well the errors disappear.
-
-Validation is performed for the inner root section of the inflatable on the basis of the results presented by Lindell et al. \cite{Lindell2006}. Lindell presents results for the root section of the first \gls{irve} design by means of \gls{fem} analysis. Table \ref{tab:struc_val} presents the results of this validation effort presenting moreover the results of closed form equations valid for solely the root section of the inflatable. Errors considering solely the 2D model are significant causing unacceptable results for the basis of structural analysis. These errors can be attributed to the neglection of the three dimensional effects. 
-
-In the real, three dimensional, structure lateral loads can be carried in circumferential direction. In the two dimensional model these loads are however carried through the root section of the inflatable causing steep increases in the loadings of the restraint wrap. This explains the errors as observed in table \ref{tab:struc_val}. A second model taking into account these three dimensional effects shows better results. Lateral loads are assumed to be carried in circumferential direction at each of the outside nodes. 
-
-\begin{table}[h]
-\centering
-\caption{Verification data of the inflatable structural model}
-\label{tab:struc_val} 
-\begin{tabular}{|l|l|l|l|l|} \hline
-Method                            & FEM \cite{Lindell2006} & Closed form \cite{Lindell2006} & Truss model 2D & Truss model 3D \\ \hline \hline
-Spar [$kN/m$]                 & 4.69                     & 4.57(-2.6\%)                     & -4.59(2.2\%)   & 3.97(15.4\%)   \\ \hline
-Front restraint wrap [$kN/m$] & 3.85                     & 4.34(12.7\%)                     & 24.1(455\%)    & 4.30(11.7\%)   \\ \hline
-Aft restraint wrap [$kN/m$]   & 5.03                     & 4.34(-13.6\%)                    & -64.4(1584\%)  & 4.72(-6.16\%) \\ \hline
-\end{tabular}
-\end{table}
-
-The results of table \ref{tab:struc_val} show that the 3D model can serve as rough estimates of the structural loads through the inflatable structure. This is in contrast to the closed form equations as provided by Lindell\cite{Lindell2006} which provide estimates only at the root of the inflatable. 
-
-It is important to consider that actual local loading may be significantly higher and should be properly accounted for in possible further detailed design phases. For now this accounted for by the use of contingency factors. Moreover it is assumed that the dynamic pressure acts a equal pressure over the inflatable surface. This is also an assumption that is used in the FEM validation data. This distribution is however only a rough estimation of the reality. Figure \ref{fig:struc_pres} shows the pressure distribution over the \gls{hiad} for...??... design. It can be noted that the actual pressure is significantly lower at the outside of the inflatable increasing towards the centre. Since the centre, featuring the highest pressure, is not inflated but rather rigid this assumption can be justified for the inflatable part is it will cause a conservative estimation. Usage of a more detailed pressure distribution is not required if the impact of the remaining assumptions is considered as well. 
-
-\begin{figure}[b]
-\centering
-\includegraphics[width=1.0\textwidth]{./Figure/Structure/temp.png}
-\caption{Pressure distribution at a zero angle off attack} 
-\label{fig:struc_pres}
-\end{figure}
