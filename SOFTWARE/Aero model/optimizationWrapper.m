@@ -1,15 +1,19 @@
 function [ score, mod, Cmalpha, CDA, failed ] = optimizationWrapper( x )
 %OPTIMIZATIONWRAPPER Wrapper for the assessGeometry function
-radiusglobal = 6;
-LoverDglobal = -0.3;
-qglobal = 30;
+params = globalParams();
+
+if params.allowskewness
+    skewness = x(1);
+else
+    skewness = 0;
+end
 
 heightfactor = x(2);
-height = radiusglobal * heightfactor;
+height = params.radius * heightfactor;
 
-skewness = 0; %x(1);
 poly = [x(3:end),0,0];
-[ score, Cmalpha, CDA, failed, mod  ] = assessGeometry( skewness, height, radiusglobal, poly, qglobal, LoverDglobal );
+
+[ score, Cmalpha, CDA, failed, mod  ] = assessGeometry( skewness, height, params.radius, poly, params.q, params.LoverD );
 
 % disp('Score:strcat(num2str(score))
 

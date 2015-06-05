@@ -1,5 +1,21 @@
+\subsubsubsection{Assumptions}
+ \label{sec:astroassumption}
+ In this subsection all assumptions used to create the tool are stated and justified. Some of the assumptions have a big impact and should be taken into account in next versions of the program. These are the primary assumptions. There are, however, also some assumptions that have a negligible effect on the results. These are the secondary assumptions. The list of assumptions below is subdivided in these categories.
+ 
+ \paragraph{primary assumptions}
+ \begin{itemize}
+ \item All atmospheric properties only vary with the height above \gls{mola} and not with longitude, latitude or time. This assumption induces an error in the output of the tool, this is described in section \ref{sec:astroatmos}. However implementing a variable atmosphere adds a lot of complexity. For example the longitude and latitude of initial entry will also become design variables.
+ \item All trajectories are assumed to only occur in the equatorial plane. This means that the latitude is always $0 \left[deg\right]$. Changing the latitude will have a big impact on the relative speed of the Martian atmosphere.
+ \item The gravitational pull is assumed to only vary with the height above \gls{mola}. The gravitational field of Mars is however not uniform over longitude and latitude, this will induce significant errors in the trajectory as gravity is one of the major forces in the analysis.
+ \end{itemize}
 
+ \paragraph{secondary assumptions}
+ \begin{itemize}
+ \item The spacecraft is assumed to only feel a gravitational pull from Mars. It is thus assumed that there is no gravitational pull from the sun, any other planet or the Martian moons.
+ \item The atmosphere stops at a height of 400 $\left[km\right]$. At this point the atmosphere is negligibly thin (see Figure \ref{fig:atmos_height_rho}),  expanding the atmospheric model would not contribute to the results.
+ \item The effect of other disturbances i.e. solar radiation is neglected.
 
+ \end{itemize}
 
 
 

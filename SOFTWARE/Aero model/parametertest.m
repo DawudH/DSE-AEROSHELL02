@@ -1,4 +1,4 @@
-clear; clc;
+clear; clc; close all;
 
 
 %% Get the minimum and maximum dynamic pressure
@@ -67,12 +67,16 @@ d12_just_orbit
 d6_just_orbit
 
 clear;
-x = [4.8627   10.8197   22.6692   -9.3661   -8.5449   31.2249  -23.2111   -6.7477    9.3702   25.7382    0.0021];
+%flat:
+% x = [0.0    0.01   -0.1556    0.5029    2.6577   -0.5685    0.3564    2.1639   -0.7676    2.4901];
+
+%rounder:
+x = [0   3   -9.3661   -8.5449   31.2249  -23.2111   -6.7477    9.3702   25.7382    0.0021];
 radiusglobal = 1;
 LoverDglobal = -0.3;
 qglobal = 30;
 
-heightfactor = 3;%x(2);
+heightfactor = x(2);
 height = radiusglobal * heightfactor;
 
 skewness = 0; %x(1);
@@ -82,9 +86,8 @@ poly = [x(3:end),0,0];
 gamma = 1.29; %gamma
 rho = 1e-5; %Density
 T = 150; %Temperatuure
-q = 40; % Maat voor aantal elementen
-
 beta = 0; %Sideslip
+q = 30;
 
 phi = 0;
 V = 7500;
@@ -106,20 +109,54 @@ phi = 0;
 mod = mod.alphasweep(V, beta, phi, deg2rad(alpha0), deg2rad(alphaend), deg2rad(dalpha));
 
 beta0data.alpha = mod.alpha_array;
+beta0data.CRAX =  mod.CRA_body_array(1,:);
+beta0data.CRAY =  mod.CRA_body_array(2,:);
+beta0data.CRAZ =  mod.CRA_body_array(3,:);
+beta0data.CRAD =  mod.CRA_aero_array(1,:);
+beta0data.CRAS =  mod.CRA_aero_array(2,:);
+beta0data.CRAL =  mod.CRA_aero_array(3,:);
 beta0data.CMAX =  mod.CMA_body_array(1,:);
 beta0data.CMAY =  mod.CMA_body_array(2,:);
 beta0data.CMAZ =  mod.CMA_body_array(3,:);
+beta0data.CRX =  mod.CR_body_array(1,:);
+beta0data.CRY =  mod.CR_body_array(2,:);
+beta0data.CRZ =  mod.CR_body_array(3,:);
+beta0data.CRD =  mod.CR_aero_array(1,:);
+beta0data.CRS =  mod.CR_aero_array(2,:);
+beta0data.CRL =  mod.CR_aero_array(3,:);
+beta0data.CMX =  mod.CM_body_array(1,:);
+beta0data.CMY =  mod.CM_body_array(2,:);
+beta0data.CMZ =  mod.CM_body_array(3,:);
 
 figure;
 hold on;
-plot(rad2deg(mod.alpha_array), mod.CMA_body_array(1,:));
-plot(rad2deg(mod.alpha_array), mod.CMA_body_array(2,:));
-plot(rad2deg(mod.alpha_array), mod.CMA_body_array(3,:));
+plot(rad2deg(mod.alpha_array), mod.CM_body_array(1,:));
+plot(rad2deg(mod.alpha_array), mod.CM_body_array(2,:));
+plot(rad2deg(mod.alpha_array), mod.CM_body_array(3,:));
 xlabel('$\alpha [deg]$', 'interpreter', 'latex');
-ylabel('$C_m [-]$', 'interpreter', 'latex');
-legend('C_{m_x} [-]', 'C_{m_y} [-]', 'C_{m_z} [-]', 'interpreter', 'latex');
-title('beta=0deg');
+ylabel('$C_M [-]$', 'interpreter', 'latex');
+legend('C_{M_x} [-]', 'C_{M_y} [-]', 'C_{M_z} [-]', 'interpreter', 'latex');
+title('Moment, Beta=0deg');
 
+figure;
+hold on;
+plot(rad2deg(mod.alpha_array), mod.CR_body_array(1,:));
+plot(rad2deg(mod.alpha_array), mod.CR_body_array(2,:));
+plot(rad2deg(mod.alpha_array), mod.CR_body_array(3,:));
+xlabel('$\alpha [deg]$', 'interpreter', 'latex');
+ylabel('$C_{R_body} [-]$', 'interpreter', 'latex');
+legend('C_{X} [-]', 'C_{Y} [-]', 'C_{Z} [-]', 'interpreter', 'latex');
+title('Force, body frame, beta=0deg');
+
+figure;
+hold on;
+plot(rad2deg(mod.alpha_array), mod.CR_aero_array(1,:));
+plot(rad2deg(mod.alpha_array), mod.CR_aero_array(2,:));
+plot(rad2deg(mod.alpha_array), mod.CR_aero_array(3,:));
+xlabel('$\alpha [deg]$', 'interpreter', 'latex');
+ylabel('$C_{R_aerodynamic} [-]$', 'interpreter', 'latex');
+legend('C_{D} [-]', 'C_{S} [-]', 'C_{L} [-]', 'interpreter', 'latex');
+title('Force, aero frame, beta=0deg');
 
 
 %% Angle of attack sweep, beta=30 deg
@@ -134,19 +171,55 @@ phi = 0;
 mod = mod.alphasweep(V, beta, phi, deg2rad(alpha0), deg2rad(alphaend), deg2rad(dalpha));
 
 beta30data.alpha = mod.alpha_array;
+beta30data.CRAX =  mod.CRA_body_array(1,:);
+beta30data.CRAY =  mod.CRA_body_array(2,:);
+beta30data.CRAZ =  mod.CRA_body_array(3,:);
+beta30data.CRAD =  mod.CRA_aero_array(1,:);
+beta30data.CRAS =  mod.CRA_aero_array(2,:);
+beta30data.CRAL =  mod.CRA_aero_array(3,:);
 beta30data.CMAX =  mod.CMA_body_array(1,:);
 beta30data.CMAY =  mod.CMA_body_array(2,:);
 beta30data.CMAZ =  mod.CMA_body_array(3,:);
-
+beta30data.CRX =  mod.CR_body_array(1,:);
+beta30data.CRY =  mod.CR_body_array(2,:);
+beta30data.CRZ =  mod.CR_body_array(3,:);
+beta30data.CRD =  mod.CR_aero_array(1,:);
+beta30data.CRS =  mod.CR_aero_array(2,:);
+beta30data.CRL =  mod.CR_aero_array(3,:);
+beta30data.CMX =  mod.CM_body_array(1,:);
+beta30data.CMY =  mod.CM_body_array(2,:);
+beta30data.CMZ =  mod.CM_body_array(3,:);
 
 figure;
 hold on;
-plot(rad2deg(mod.alpha_array), mod.CMA_body_array(1,:));
-plot(rad2deg(mod.alpha_array), mod.CMA_body_array(2,:));
-plot(rad2deg(mod.alpha_array), mod.CMA_body_array(3,:));
+plot(rad2deg(mod.alpha_array), mod.CM_body_array(1,:));
+plot(rad2deg(mod.alpha_array), mod.CM_body_array(2,:));
+plot(rad2deg(mod.alpha_array), mod.CM_body_array(3,:));
 xlabel('$\alpha [deg]$', 'interpreter', 'latex');
-ylabel('$C_m [-]$', 'interpreter', 'latex');
-legend('C_{m_x} [-]', 'C_{m_y} [-]', 'C_{m_z} [-]', 'interpreter', 'latex');
-title('beta=30deg');
+ylabel('$C_M [-]$', 'interpreter', 'latex');
+legend('C_{M_x} [-]', 'C_{M_y} [-]', 'C_{M_z} [-]', 'interpreter', 'latex');
+title('Moment, Beta=30deg');
 
-save('outputfiles/stability.mat', 'x', 'mod', 'beta0data', 'beta30data');
+figure;
+hold on;
+plot(rad2deg(mod.alpha_array), mod.CR_body_array(1,:));
+plot(rad2deg(mod.alpha_array), mod.CR_body_array(2,:));
+plot(rad2deg(mod.alpha_array), mod.CR_body_array(3,:));
+xlabel('$\alpha [deg]$', 'interpreter', 'latex');
+ylabel('$C_{R_body} [-]$', 'interpreter', 'latex');
+legend('C_{X} [-]', 'C_{Y} [-]', 'C_{Z} [-]', 'interpreter', 'latex');
+title('Force, body frame, beta=30deg');
+
+figure;
+hold on;
+plot(rad2deg(mod.alpha_array), mod.CR_aero_array(1,:));
+plot(rad2deg(mod.alpha_array), mod.CR_aero_array(2,:));
+plot(rad2deg(mod.alpha_array), mod.CR_aero_array(3,:));
+xlabel('$\alpha [deg]$', 'interpreter', 'latex');
+ylabel('$C_{R_aerodynamic} [-]$', 'interpreter', 'latex');
+legend('C_{D} [-]', 'C_{S} [-]', 'C_{L} [-]', 'interpreter', 'latex');
+title('Force, aero frame, beta=30deg');
+
+save('outputfiles/stability_round.mat', 'x', 'mod', 'beta0data', 'beta30data');
+
+mod.geom.plotGeometry(true, false);
