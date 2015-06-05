@@ -1,7 +1,7 @@
 clear;
 close all;
 clc;
-casename = 'out_d12_one_time';
+casename = 'out_d6_one_time';
 load(strcat('orbits\',casename,'.mat'));
 
 range = 1:length(out.tp);

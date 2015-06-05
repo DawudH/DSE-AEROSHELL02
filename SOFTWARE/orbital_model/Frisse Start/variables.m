@@ -11,7 +11,6 @@ gamma = 21.87;
 %d=6
 gamma = 22.2;
 
->>>>>>> a6d29cd9675fcec743e8a269ff6230f73836b5b1
 %Initial Position
 rx = -4148904.375000;
 rx = -4655000;
