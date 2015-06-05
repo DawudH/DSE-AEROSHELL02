@@ -1,3 +1,4 @@
+% function [ score, mod ] = assessGeometry( skewness, height, radius, poly, q, LoverD )
 function [ score, Cmalpha, CDA, failed, mod  ] = assessGeometry( skewness, height, radius, poly, q, LoverD )
 %ASSESSGEOMETRY Assess a geometry for it's performance
     params = globalParams();
@@ -121,5 +122,9 @@ function [ score, Cmalpha, CDA, failed, mod  ] = assessGeometry( skewness, heigh
         disp('failed');
         disp(x)
     end
-    score = (Cmalphafactor * Cmalpha) + (CDAfactor * CDA) + (Cmatrimfactor * abs(CmAtrim)) + (penaltyfactor * failed);
+%     score = (Cmalphafactor * Cmalpha) + (CDAfactor * CDA) + (Cmatrimfactor * abs(CmAtrim)) + (penaltyfactor * failed);
+
+    CDA = -CDA; % Optimize for maximum CDA
+    
+    score = [Cmalpha;CDA];
 end

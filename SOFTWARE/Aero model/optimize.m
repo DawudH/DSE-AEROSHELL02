@@ -25,10 +25,11 @@ b(3) = 0;
 A(4,2) = 1;
 b(4) = 3;
 
-opts = gaoptimset('PlotFcns',{@gaplotbestf,@gaplotstopping, @gaplotbestindiv});
+% opts = gaoptimset('PlotFcns',{@gaplotbestf,@gaplotstopping, @gaplotbestindiv, @gaplotpareto});
+opts = gaoptimset('PlotFcns',{@gaplotstopping, @gaplotpareto});
 opts = gaoptimset(opts, 'UseParallel', true);
 opts = gaoptimset(opts, 'PopulationSize', 48);
-[x,Fval,exitFlag,Output, population, scores] = ga(@optimizationWrapper,xlength,A,b,[],[],[],[],[],opts);
+[x,Fval,exitFlag,Output, population, scores] = gamultiobj(@optimizationWrapper,xlength,A,b,[],[],[],[],[],opts);
 
 [ score, mod, Cmalpha, CDA, failed ] = optimizationWrapper( x );
 mod.geom.plotGeometry(true, false);
