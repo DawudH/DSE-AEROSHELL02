@@ -71,9 +71,20 @@ Centerbody and deployed diameter  &                                   \\ \hline
 \end{table}
 
 The approach is based on the following assumptions:
+
+
 \begin{itemize}
-\item Bananas
-\end{itemize}
+\item Small deformations. In reality deformations can be significant changing the orientation and magnitude of forces in the structure.
+\item No three dimensional effects. Neglecting the three dimensional effects impacts the stiffness, and the ability to carry lateral loads of the structure. The former is not considered as also mentioned above. The latter causes a over estimation of the horizontal loads (as per figure \ref{fig:TC}).  
+\item Constant dynamic pressure. A constant dynamic pressure is not in line with the actual loading, errors are however small and irrelevant as compared the other assumptions.
+\item The loading is applied discrete at the outer nodes. The effects of a continuous distribution are neglected since they do not fit within the truss model. This assumptions neglects a bending load within the forward radial strap.
+\item Structural mass is neglected. Neglecting the structural mass causes a small error within the computed loads. These errors are however insignificant as compared to the other assumptions.
+\end{itemize} 
+
+The effects of these assumptions is in total quite significant. The method relies heavily on the first and second assumption. Considering the foldable nature of the structure, stiffness is limited and actual deformations may become significant. This assumptions is partly taken into account by requiring a inflation pressure which prevents any compressive loading. Still tough further stiffness consideration are not taken into account. Based on the significance of these assumptions actual stress distributions can not be considered. However the applied model is reliable for a more general analysis of the structure and the loads.
+
+The significance of the second assumption is illustrated in Appendix \ref{sec:VandVstruc} discussing the verification and validation of the model. Validation is performed on the basis of \gls{fem} results presented by Lindell et al.. A modified two dimensional method taking into account some of the three dimensional effects yields acceptable results for initial force estimations with a maximum error of \15.4\%. The full verification and validation results can be found in Appendix \ref{sec:VandVstruc}.
+
 
 \textbf{Mass estimation method}
 
