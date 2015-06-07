@@ -14,7 +14,7 @@ lat2 = -80:1:80;
 lon_fixed = 180;
 
 h = 0:1000:400e3;
-h_fixed = 300e3;
+h_fixed = 30e3;
 h_fixed2 = 50e3;
 
 rho = atm.getDensity(lat,lon,h_fixed);

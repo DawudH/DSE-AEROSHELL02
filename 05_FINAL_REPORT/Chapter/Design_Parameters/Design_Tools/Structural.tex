@@ -52,7 +52,9 @@ The decreasing circumference over which forces act going from outboard to inboar
 %\label{eq:pressureforce}
 %\end{equation}
 %TDimension \gls{sym:w} is used for all toroids, as it is smaller than \gls{sym:h} and therefore a more conservative estimate for the inflation pressure results. For the outer toroid, the inflation pressure is predominantly carried by the radial straps and this leads to the first requirement that the radial straps are loaded in tension. For all other toroids, the inflation pressure internally balances itself and is thereby not carried through the structure (and radial straps), since cells are symmetric and adjoining cells have the same inflation pressure. This leads to the second requirement that all toroid walls are in tension. Based hereupon, the second iteration proceeds by setting the pressure equal to the value that satisfies the second requirement. Subsequent iterations continue to increase the inflation pressure until the first requirement is met. 
+The three-dimensional effects are partially taken into account by assuming that all lateral loads are carried circumferentially rather than in the considered two-dimensional plane. Therefore lateral loads are set to zero at each of the truss nodes. In reality this will, to a large extent, be true as the circular and stacked structure will be the primary contributor to bending stiffness. These lateral loads are primarily those induced by bending moments, such that neglecting them in the two-dimensional plane implies that the bending moment is taken up by the three-dimensional structure. 
 
+The validity of this adjustment is expanded upon in Appendix \ref{sec:VandVstruc} where the verification and validation of the model is discussed. Validation is performed on the basis of \gls{fem} results presented by Lindell et al. \cite{Lindell2006}. The modified two-dimensional method yields acceptable results for force estimations on \gls{irve}-II with a maximum error of 15.4\%, rather than the severe errors induced by not taking into account the three-dimensional bendings stiffness. The full verification and validation results can be found in Appendix \ref{sec:VandVstruc}.
 
 The inputs and outputs of the structural model are tabulated in Table \ref{tab:infl}.
 \begin{table}[h]
@@ -71,41 +73,46 @@ Centerbody and deployed diameter  &                                   \\ \hline
 \end{table}
 
 The approach is based on the following assumptions:
-
-
 \begin{itemize}
 \item Small deformations. In reality deformations can be significant changing the orientation and magnitude of forces in the structure.
-\item No three dimensional effects. Neglecting the three dimensional effects impacts the stiffness, and the ability to carry lateral loads of the structure. The former is not considered as also mentioned above. The latter causes a over estimation of the horizontal loads (as per figure \ref{fig:TC}).  
-\item Constant dynamic pressure. A constant dynamic pressure is not in line with the actual loading, errors are however small and irrelevant as compared the other assumptions.
-\item The loading is applied discrete at the outer nodes. The effects of a continuous distribution are neglected since they do not fit within the truss model. This assumptions neglects a bending load within the forward radial strap.
-\item Structural mass is neglected. Neglecting the structural mass causes a small error within the computed loads. These errors are however insignificant as compared to the other assumptions.
+\item Three-dimensional effects are taken into account by setting the lateral loads to zero. See the previous discussion.
+\item Constant dynamic pressure. A constant dynamic pressure is not in line with the actual loading. Based on the discussion in Appendix \ref{sec:VandVstruc}, errors introduced are deemed acceptable.
+\item The aerodynamic loading is applied discretely at the outer nodes. The effects of a continuous distribution are neglected since they do not fit within the truss model. This assumptions neglects a bending load within the forward radial strap. 
+\item Structural mass is neglected. Neglecting the structural mass causes a small error within the computed loads, varying with the ratio of structural mass and dynamic pressure.
 \end{itemize} 
-
-The effects of these assumptions is in total quite significant. The method relies heavily on the first and second assumption. Considering the foldable nature of the structure, stiffness is limited and actual deformations may become significant. This assumptions is partly taken into account by requiring a inflation pressure which prevents any compressive loading. Still tough further stiffness consideration are not taken into account. Based on the significance of these assumptions actual stress distributions can not be considered. However the applied model is reliable for a more general analysis of the structure and the loads.
-
-The significance of the second assumption is illustrated in Appendix \ref{sec:VandVstruc} discussing the verification and validation of the model. Validation is performed on the basis of \gls{fem} results presented by Lindell et al.. A modified two dimensional method taking into account some of the three dimensional effects yields acceptable results for initial force estimations with a maximum error of 15.4\%. The full verification and validation results can be found in Appendix \ref{sec:VandVstruc}.
+The consequence of these assumptions and their impact, primarily the first two, make the model suitable for a preliminary load analysis of the inflatable structure and the loads at its attachment points, but unsuitable for detailed analysis and structural design and sizing. To this end, a more detailed model is proposed, namely expanding upon the current model by a \gls{fea}.
 
 
-\textbf{Mass estimation method}
+%The effects of these assumptions is in total quite significant. The method relies heavily on the first and second assumptions. Considering the foldable nature of the structure, stiffness is limited and actual deformations may become significant. This assumptions is partly taken into account by requiring a inflation pressure which prevents any compressive loading. Still though further stiffness consideration are not taken into account. Based on the significance of these assumptions actual stress distributions can not be considered. However the applied model is reliable for a more general analysis of the structure and the loads.
 
-Mass estimation for the inflatable structure is performed on the basis of a parametric mass model proposed by Samareh \cite{Samareh2011}. The mass model is based on a number of stress equations and cone deformation to compute:
-\begin{itemize}
-\item Flexible material mass
-\item Inflation gas mass
-\item Inflation system mass
-\end{itemize}
-on the basis of the following input
-\begin{itemize}
-\item Geometry parameters (centerbody and deployed diameter, half-cone angle, toroid dimensions)
-\item The number of toroids
-\item External loading
-\item Vehicle drag coefficient
-\item Inflation gas properties
-\item Material properties
-\end{itemize}
+%The significance of the second assumption is illustrated in Appendix \ref{sec:VandVstruc} discussing the verification and validation of the model. Validation is performed on the basis of \gls{fem} results presented by Lindell et al.. A modified two dimensional method taking into account some of the three dimensional effects yields acceptable results for initial force estimations with a maximum error of 15.4\%. The full verification and validation results can be found in Appendix \ref{sec:VandVstruc}.
+
+
+\textbf{Inflatable mass estimation method}
+
+Mass estimation for the inflatable structure is performed on the basis of a parametric mass model proposed by Samareh \cite{Samareh2011}. The mass model is based on a number of stress equations and cone deformation to compute outputs listed in Table \ref{tab:inflmass}.
+\begin{table}[h]
+\caption{Inflatable mass analysis tool in- and output}
+\centering
+\begin{tabular}{|l||l|}
+\hline
+\multicolumn{1}{|c||}{{\bf Input}} & \multicolumn{1}{c|}{{\bf Output}} \\ \hline \hline
+Toroid inclination         & Flexible material mass            \\ \hline
+Centerbody and deployed diameter        & Inflation gas mass                 \\ \hline
+Number of toroids                 & Inflation system mass                \\ \hline
+Inflation gas properties              &              \\ \hline
+Aerodynamic loading               &                                   \\ \hline
+Material properties  &                                   \\ \hline
+\end{tabular}
+\label{tab:inflmass}
+\end{table}
 Moreover, the model calculates inflation gas pressure based on the premise that work done by inflation gas and aerodynamic pressure should be equal, in line with relations established by Brown \cite{Brown2009}. The model is based on the assumption that the inflatable is an axisymmetric sphere cone of constant half-cone angle, thereby treating a simplified model of the shape determined by aerodynamic optimization in Chapter \ref{ch:XXX}. 
 
-Mass estimation for the centerbody structure is performed on the basis of the basic sizing performed in section \label{sec:struc_Centerbody} as the amount of material required to withstand buckling and yielding failure criteria at the ultimate load. Connections are taken into account in the form of a mass margin. [ADD MASS MARGIN] 
+Primary assumptions in this model are a symmetric sphere cone and a constant half-cone angle. Verification and validation efforts have been summarized in Appendix \ref{sec:VandVstruc} and have yielded the conclusion that the mass model is suitable for preliminary design.
+
+%Verification has been performed by confirming results reached by Samareh \cite[p.16]{Samareh2011} for nine sample cases, with observed maximum errors of 3 $\%$. Validation has been performed indirectly. The method has been applied in the \gls{edlsa} \cite{Cianciolo2010}, where results showed to be in conformance with high-fidelity \gls{fea} results that have been validated.
+
+%Mass estimation for the centerbody structure is performed on the basis of the basic sizing performed in section \label{sec:struc_Centerbody} as the amount of material required to withstand buckling and yielding failure criteria at the ultimate load. Connections are taken into account in the form of a mass margin. [ADD MASS MARGIN] 
 
 
 

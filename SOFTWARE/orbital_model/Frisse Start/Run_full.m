@@ -132,8 +132,8 @@ xlim([min(t) max(t)])
 %xlim([0 2500])
 grid on
 hold on
-plot(t,out.dAlpha_dt*180/pi,'color',cc(2,:))
-ylabel('$\frac{d \alpha}{dt}$  $\left[\frac{^\circ}{s}\right]$','interpreter','latex')
+plot(t,out.phi*180/pi,'color',cc(2,:))
+ylabel('$\phi$  $\left[^\circ\right]$','interpreter','latex')
 xlabel('$t$ $\left[s\right]$','interpreter','latex')
 if isfield(out,'tkep') 
     plot([out.tkep, out.tkep],ylim,'-.','color',cc(1,:),'LineWidth',1.4); 
@@ -207,6 +207,8 @@ end
             legend([L1, h3, h4],legend_str(2:end));
         end
     end
+    % plot location of start landing phase:
+    plot(-3.3637e6, 0.4950e6,'x','color','k','markers',12)
     if (export_figures)
         matlab2tikz('.\LaTeX\orbit2.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
     end

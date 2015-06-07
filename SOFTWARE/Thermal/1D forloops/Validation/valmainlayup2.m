@@ -9,7 +9,7 @@ clc
 %% Define input
 
 %lay-up (t[mm], k[w/m/K], rho[kg/m3], cp[J/kg/K])
-filename   = 'layup1.txt';
+filename   = 'layup2.txt';
 layupin    = dlmread(filename);
 % SI units
 layup      = zeros(size(layupin));
@@ -20,7 +20,7 @@ L = layup(:,1);
 
 % time and aeroheat
 %ttot = t(end);  % end time of the orbit [s]
-ttot = 600;  % end time of the orbit [s]
+ttot = 200;  % end time of the orbit [s]
 tdur = 90;
 dt   = 0.1;    % time step, chooseable
 T0 = 293;
@@ -194,19 +194,19 @@ valid = 1;
 %     plot(t,T(3,:),'r--')
 % end
 if valid
-    valres = dlmread('layup1res.txt');
+    valres = dlmread('layup2res.txt');
     figure;
     hold on
-    plot(t,S(1,:),'--')
+    %plot(t,S(1,:),'--')
     for j = 2:length(indexx)-1
         plot(t,S(indexx(j)+j-3,:),'--')
         plot(t,S(indexx(j)+j-1,:),'--')
     end
-    plot(t,S(end,:),'--')
+    %plot(t,S(end,:),'--')
     ax = gca;
     ax.ColorOrderIndex = 1;
-    for j = 2:length(valres(1,:))
-        plot(valres(:,1),valres(:,j))
+    for j = 5:length(valres(1,:))
+        plot(valres(1:end-1,1),valres(1:end-1,j))
     end
 end
     

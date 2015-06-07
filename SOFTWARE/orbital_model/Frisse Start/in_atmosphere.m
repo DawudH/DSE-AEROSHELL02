@@ -12,7 +12,7 @@ V = orbit.V;
 
 %Mars atmosphere, get density and g
 h = norm(R)-R_m;
-rho = atm.getCheapDensity(h);
+rho = atm.getCheapDensity(h)*1.1;
 g = atm.getg(h);
 
 %gravitational accaleration (vector)
