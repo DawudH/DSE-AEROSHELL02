@@ -9,7 +9,7 @@ clc
 %% Define input
 
 %lay-up (t[mm], k[w/m/K], rho[kg/m3], cp[J/kg/K])
-filename   = 'IRVE4.txt';
+filename   = 'layup4.txt';
 layupin    = dlmread(filename);
 % SI units
 layup      = zeros(size(layupin));
@@ -33,7 +33,7 @@ ttot = timeq(end);  % end time of the orbit [s]
 dt   = 0.1;    % time step, chooseable
 nmax = int32(ttot/dt);  % number of time steps
 t = [0:double(nmax-1)]*dt;
-qs = interp1(timeq,qaero,[t,t(end)+dt])*10000;
+qs = interp1(timeq,qaero,[t,t(end)+dt])*10000; %[W/m2]
 Tamb = interp1(timeq,Tatm,[t,t(end)+dt]);
 
 % spaceing
@@ -80,6 +80,41 @@ end
 alpha = k./rho./cp;
 v = alpha*dt/dx/dx;
 
+%% Determine the initial tmperature distribution
+
+
+% Temperature boundaries
+Tbegin = 4;   %[K]
+Tend   = 273+20; %[K]
+dT     = Tbegin-Tend;
+
+% Define the wanted vector
+Tinitial = zeros(imax,1);
+Tinitial(1) = Tbegin;
+
+% Total material prop
+R      = layup(:,1)./layup(:,2);
+Req    = sum(R);
+
+% The steady heatflux
+qsteady = dT/Req; %[W/m2]
+
+% Find the temperatures
+Tlayer  = zeros(length(L)+1,1);
+Tlayer(1) = Tbegin;
+
+for m = 1:length(L)
+    %Find all temps
+    teller = indexx(m)+1;
+    while teller <= indexx(m+1)
+        teller = teller + 1;
+        Tinitial(teller) = Tinitial(teller-1) - (qsteady*(dx/layup(m,2)));
+    end
+end
+
+%x = linspace(0,Ltot,imax);
+%figure(1)
+%plot(x,Tinitial)
 
 
 %% Implement Cranck-Nickelson
@@ -88,7 +123,7 @@ v = alpha*dt/dx/dx;
 % space is rows, time is columns
 T = zeros(imax,nmax);
 T0 = 293;
-T(:,1) = T0;
+T(:,1) = Tinitial;
 
 w = zeros(imax,1);
 w(1:end-1) = v/2;
