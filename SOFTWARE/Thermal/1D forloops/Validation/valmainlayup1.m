@@ -210,7 +210,9 @@ if valid
     end
 end
     
-    
+%% Determine the errors for the different layes
+
+
     
     
     
