@@ -51,6 +51,7 @@ control.Kd = 2*control.dalpha*10^(-4); % differential gain
 control.error = 0;
 control.error_I = 0;
 
+Crho = 1.0;
 
 % create atmosphere object
 atm = marsatmosphere();
