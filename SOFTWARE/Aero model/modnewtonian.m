@@ -29,6 +29,7 @@ classdef modnewtonian
         CM_body_array;
         CM_aero_array;
         CLCD_array;
+        CG_offset;
 %         Tmax_array;
 %         qmax_array;
 %         qw_array;
@@ -64,6 +65,7 @@ classdef modnewtonian
             obj.CR_aero_array = obj.CRA_aero_array / obj.geom.A_frontal;
             obj.CM_body_array = obj.CMA_body_array / obj.geom.A_frontal;
             obj.CM_aero_array = obj.CMA_aero_array / obj.geom.A_frontal;
+            obj.CG_offset = obj.CM_body_array(2,:)./obj.CR_body_array(1,:);
         end
         
         function obj = calcAeroangle(obj, Vinf, alpha, beta, phi)
@@ -244,70 +246,44 @@ classdef modnewtonian
             obj.geom.plotValues(obj.Cpdist_array(:,end), '$C_p$', [0, 2], plotfaces, plotnormals);
         end
 
-        function obj = plots(obj, xarray, xlabeltxt, plotboolarray)
-            % plotboolarray: ['cx', 'cy', 'cz', 'cd', 'cl', 'cs']
-            for i = plotboolarray
-                j = cell2mat(i{1});
-                switch j
-                    case 'cla'
-                        figure;
-                        plot(xarray, obj.CRA_aero_array(3,:));
-                        ylabel(j);
-                        xlabel(xlabeltxt);
-                    case 'csa'
-                        figure;
-                        plot(xarray, obj.CRA_aero_array(2,:));
-                        ylabel(j);
-                        xlabel(xlabeltxt);
-                    case 'cda'
-                        figure;
-                        plot(xarray, obj.CRA_aero_array(1,:));
-                        ylabel(j);
-                        xlabel(xlabeltxt);
-                    case 'cxa'
-                        figure;
-                        plot(xarray, obj.CRA_body_array(1,:));
-                        ylabel(j);
-                        xlabel(xlabeltxt);
-                    case 'cya'
-                        figure;
-                        plot(xarray, obj.CRA_body_array(2,:));
-                        ylabel(j);
-                        xlabel(xlabeltxt);
-                    case 'cza'
-                        figure;
-                        plot(xarray, obj.CRA_body_array(3,:));
-                        ylabel(j);
-                        xlabel(xlabeltxt);
-                    case 'clcd'
-                        figure;
-                        plot(xarray, obj.CLCD_array);
-                        ylabel(j);
-                        xlabel(xlabeltxt);
-                    case 'cmya'
-                        figure;
-                        plot(xarray, obj.CMA_aero_array(2,:));
-                        ylabel(j);
-                        xlabel(xlabeltxt);
-                    case 'cmycx'
-                        figure;
-                        plot(xarray, obj.CMA_body_array(2,:)./obj.CRA_body_array(1,:));
-                        ylabel(j);
-                        xlabel(xlabeltxt);                     
-                    case 'q'
-                        figure;
-                        plot(xarray, obj.qmax_array);
-                        ylabel(j);
-                        xlabel(xlabeltxt);
-                    case 'T'
-                        figure;
-                        plot(xarray, obj.Tmax_array);
-                        ylabel(j);
-                        xlabel(xlabeltxt);
-                    otherwise
-                        disp(strcat('Not a valid input for plotting: ', num2str(i)));
-                end
-            end
+        function obj = plots(obj)
+            obj.geom.plotGeometry(true, false);
+            figure;
+            plot(obj.alpha_array, obj.CR_aero_array');
+            xlabel('alpha')
+            ylabel('CR');
+            legend('CD', 'CS', 'CL');
+            
+            figure;
+            plot(obj.alpha_array, obj.CR_body_array');
+            xlabel('alpha')
+            ylabel('CR');
+            legend('CX', 'CY', 'CZ');
+            
+            figure;
+            plot(obj.alpha_array, obj.CM_aero_array');
+            xlabel('alpha')
+            ylabel('CM');
+            legend('CMx', 'CMy', 'CMZ');
+            
+            figure; %L over D
+            plot(obj.alpha_array, obj.CLCD_array);
+            xlabel('alpha');
+            ylabel('CL/CD');
+            legend('CL/CD');
+            
+            figure;
+            plot(obj.alpha_array, obj.CM_body_array(2,:)./obj.CR_body_array(1,:));
+            xlabel('alpha');
+            ylabel('CG offset [m]');
+            legend('CG offset [m]');
+            
+            figure;
+            plot(obj.CLCD_array, obj.CM_body_array(2,:)./obj.CR_body_array(1,:));
+            xlabel('CL/CD');
+            ylabel('CG offset [m]');
+            legend('CG offset [m]');
+            
         end
     end
 end

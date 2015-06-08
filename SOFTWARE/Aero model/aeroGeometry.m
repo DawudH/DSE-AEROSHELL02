@@ -7,6 +7,7 @@ classdef aeroGeometry
         coords;
         tri;
         A_frontal;
+        poly;
         
         %Calculated properties
         normals;
@@ -21,7 +22,7 @@ classdef aeroGeometry
     end
     
     methods
-        function obj = aeroGeometry(TriGeom, A_frontal)
+        function obj = aeroGeometry(TriGeom, A_frontal, poly)
             obj.TriGeom = TriGeom;
             obj.A_frontal = A_frontal;
             obj.tri = TriGeom.ConnectivityList;
@@ -29,6 +30,7 @@ classdef aeroGeometry
             [obj.normals, obj.areas] = obj.calcNormalsAreas(obj.tri, obj.coords);
             obj.centers = obj.calcCellCenters(obj.tri, obj.coords);
             obj.centroid = obj.calcCentroid();
+            obj.poly = poly;
 %             [obj.distancevectors, obj.directdistances, obj.combinations, obj.distances] = obj.calcDirectDistances(obj.centers);
 
         end
@@ -45,6 +47,11 @@ classdef aeroGeometry
             end
         end
         
+        function [] = plotPoly(obj)
+            x = 0:0.01:1;
+            plot(x, polyval(obj.poly, x)/sum(obj.poly));
+        end
+        
         function centers = calcCellCenters(~, tri, coords)
             % Calculate the cell centers of the given geometry
             centers = zeros(size(tri'));
@@ -54,7 +61,7 @@ classdef aeroGeometry
             end
         end
         
-        function centroid =  calcCentroid(obj)
+        function centroid = calcCentroid(obj)
            centroid = obj.centers*obj.areas/sum(obj.areas);
         end
         
