@@ -33,4 +33,4 @@ opts = gaoptimset(opts, 'PopulationSize', 48);
 
 [ score, mod, Cmalpha, CDA, failed ] = optimizationWrapper( x );
 mod.geom.plotGeometry(true, false);
-save('aeroshapes/optimizationoutput_maxmoment');
+save('aeroshapes/optimizationoutput_maxmoment_CDA01CMalpha1');

@@ -9,7 +9,7 @@ clc
 %% Define input
 
 %lay-up (t[mm], k[w/m/K], rho[kg/m3], cp[J/kg/K])
-filename   = 'layup1.txt';
+filename   = 'layup4.txt';
 layupin    = dlmread(filename);
 % SI units
 layup      = zeros(size(layupin));
@@ -20,15 +20,17 @@ L = layup(:,1);
 
 % time and aeroheat
 %ttot = t(end);  % end time of the orbit [s]
-ttot = 600;  % end time of the orbit [s]
+ttot = 110;  % end time of the orbit [s]
 tdur = 90;
 dt   = 0.1;    % time step, chooseable
 T0 = 293;
-q0 = 31000;
+q0 = 200000;
 nmax = int32(ttot/dt);  % number of time steps
 t = [0:double(nmax-1)]*dt;
 fact    = 1;           % multiplication factor of number of space steps.
-kfact = [2.5e-5/fact;2.5e-5/fact;2.5e-4/fact];
+%kfact = [2.5e-5/fact;2.5e-5/fact;2.5e-4/fact];
+kfact = [2.5e-5/fact;2.5e-5/fact;2.5e-4/fact;2.5e-4/fact;2.5e-4/fact];
+%kfact = [2.5e-5/fact;2.5e-5/fact;2.5e-5/fact;2.5e-5/fact;2.5e-4/fact];
 
 
 % spaceing
@@ -152,24 +154,24 @@ for n=1:nmax-1
 end
 
 % 
-% %% Contour-Plot
-% contourplot = 0;
-% if contourplot
-%     % t = [0:double(nmax-1)]*dt;
-%     x = [0:double(imax-1)]*dx;
-%     figure;
-%     hold on
-%     contourf(t,x,T);
-%     colormap parula
-%     colorbar
-%     % title('Temperature over time and distance','Interpreter','LaTex','FontSize',13)
-%     % xlabel('Time [s]','Interpreter','LaTex','FontSize',14)
-%     % ylabel('Depth [m]','Interpreter','LaTex','FontSize',14)
-% 
-%     for j = 2:length(indexx)-1
-%         plot([0,nmax*dt],[indexx(j)*dx,indexx(j)*dx],'--','Color', [255.0/256.0,130.0/256.0,28.0/256.0])
-%     end
-% end
+%% Contour-Plot
+contourplot = 1;
+if contourplot
+    % t = [0:double(nmax-1)]*dt;
+    x = [0:double(imax-1)]*dx;
+    figure;
+    hold on
+    contourf(t,x,T);
+    colormap parula
+    colorbar
+    % title('Temperature over time and distance','Interpreter','LaTex','FontSize',13)
+    % xlabel('Time [s]','Interpreter','LaTex','FontSize',14)
+    % ylabel('Depth [m]','Interpreter','LaTex','FontSize',14)
+
+    for j = 2:length(indexx)-1
+        plot([0,nmax*dt],[indexx(j)*dx,indexx(j)*dx],'--','Color', [255.0/256.0,130.0/256.0,28.0/256.0])
+    end
+end
 % %% Layer analysis output
 % results = zeros(length(indexx)-1,1);
 % layernames = cell(length(indexx)-1,1);
@@ -194,7 +196,7 @@ valid = 1;
 %     plot(t,T(3,:),'r--')
 % end
 if valid
-    valres = dlmread('layup1res.txt');
+    valres = dlmread('layup4res.txt');
     figure;
     hold on
     plot(t,S(1,:),'--')
@@ -205,9 +207,6 @@ if valid
     plot(t,S(end,:),'--')
     ax = gca;
     ax.ColorOrderIndex = 1;
-    for j = 2:length(valres(1,:))
-        plot(valres(:,1),valres(:,j))
-    end
 end
     
     
