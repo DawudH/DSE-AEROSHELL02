@@ -9,7 +9,7 @@ clc
 %% input
 
 %lay-up (t[mm], k[w/m/K], rho[kg/m3], cp[J/kg/K])
-filename   = 'tempbegin.txt';
+filename   = 'IRVE4.txt';
 layupin    = dlmread(filename);
 % SI units
 layup      = zeros(size(layupin));
