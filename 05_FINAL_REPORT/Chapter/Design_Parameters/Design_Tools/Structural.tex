@@ -10,7 +10,7 @@ Forces are estimated for an inflatable structure that is aerodynamically loaded,
 
 Moreover, it is essential that mass contributions of centerbody, inflatable structure and connections are estimated in order to verify that decelerator mass is below the 1000 [kg] limit imposed. Moreover, the parametric mass model for the inflatable structure allows identification of design venues to minimize structural mass of the decelerator, such that decelerator mass can be minimized and thereby payload mass maximized. 
 
-\textbf{Force estimation method}
+\subsubsection{Force estimation method}
 
 To meet the purposes of structural assessment of the inflatable configuration, force estimation is performed by a two-dimensional truss analysis on a simplified geometry. This geometry relies on the aerodynamic aeroshell shape as its outer shape. This shape is effected by a number of toroids \gls{sym:N}, held together by radial straps, running along the surface of the inflatable. 
 
@@ -73,6 +73,7 @@ Centerbody and deployed diameter  &                                   \\ \hline
 \end{table}
 
 The approach is based on the following assumptions:
+
 \begin{itemize}
 \item Small deformations. In reality deformations can be significant changing the orientation and magnitude of forces in the structure.
 \item Three-dimensional effects are taken into account by setting the lateral loads to zero. See the previous discussion.
@@ -88,7 +89,7 @@ The consequence of these assumptions and their impact, primarily the first two, 
 %The significance of the second assumption is illustrated in Appendix \ref{sec:VandVstruc} discussing the verification and validation of the model. Validation is performed on the basis of \gls{fem} results presented by Lindell et al.. A modified two dimensional method taking into account some of the three dimensional effects yields acceptable results for initial force estimations with a maximum error of 15.4\%. The full verification and validation results can be found in Appendix \ref{sec:VandVstruc}.
 
 
-\textbf{Inflatable mass estimation method}
+\subsubsection{Inflatable mass estimation method}
 
 Mass estimation for the inflatable structure is performed on the basis of a parametric mass model proposed by Samareh \cite{Samareh2011}. The mass model is based on a number of stress equations and cone deformation to compute outputs listed in Table \ref{tab:inflmass}.
 \begin{table}[h]

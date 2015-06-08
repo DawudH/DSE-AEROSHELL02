@@ -1,4 +1,5 @@
-\textbf{Force estimation method}
+\subsubsection{Force estimation method}
+
 Verification for the simplified truss model is performed on the basis of simplified load cases. Significant errors were not observed and remained below 3\% for various geometries and half cone angles with a minimum of five toroids. The small verification errors followed from the discrete application of the dynamic pressure. Taking the discrete application into account as well the errors disappear.
 
 Validation is performed for the inner root section of the inflatable on the basis of the results presented by Lindell et al. \cite{Lindell2006}. Lindell presents results for the root section of the first \gls{irve} design by means of \gls{fem} analysis. Table \ref{tab:struc_val} presents the results of this validation effort presenting moreover the results of closed form equations valid for solely the root section of the inflatable. Errors considering solely the 2D model are significant causing unacceptable results for the basis of structural analysis. These errors can be attributed to the neglection of the three-dimensional effects. 
@@ -28,10 +29,11 @@ It is important to consider that actual local loading may be significantly highe
 \label{fig:struc_pres}
 \end{figure}
 
-\textbf{Mass estimation method}
+\subsubsection{Mass estimation method}
 
 In order to verify that the mass estimation method described in Ref.\cite{Samareh2011} has been correctly implemented, results for the nine sample cases presented on page 16 of Ref.\cite{Samareh2011} have been checked. These nine sample cases were implemented by choosing the input parameters as given in tabular form (Tables 4 and 5) on page 16 of Ref.\cite{Samareh2011} and the output parameters, primarily component masses and geometric quantities, were compared. A maximum error of 3 $\%$ in terms of total mass was obtained; a maximum error of 2 $\%$ in component masses. These errors are deemed sufficiently small to verify successful implementation of the mass estimation method.
 
 Validation is performed indirectly: the method \cite{Samareh2011} has been applied in the \gls{edlsa} project \cite{Cianciolo2010}, where it was shown to yield results conforming well to the outcomes of high-fidelity \gls{fea}. The used \gls{fea} is a validated tool \cite{Cianciolo2010} and thereby the method outlined in Ref.\cite{Samareh2011} has been validated through comparison with a high-fidelity validated model. Moreover, the expression for minimum inflation pressure obtained by Samareh has been found to be in correspondence with Yamada et al \cite{Yamada2009}, Clark \cite{Clark2009} and Brown \cite{Brown2009}.
+
 
 
