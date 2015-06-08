@@ -1,11 +1,11 @@
-function [ out ] = full_orbit(R0, V0, A0, G, M_mars, R_m, h_atm, atm, dt_kep_init, dt_atmos, m, omega_m, S, control, tend, crash_margin, g_earth, aero_coef, use_control, multiple_orbits,use_alpha_profile,alpha_init,dalphadt,r,v,theta0,gamma,hypkep)
+function [ out ] = full_orbit(R0, V0, A0, G, M_mars, R_m, h_atm, atm, dt_kep_init, dt_atmos, m, omega_m, S, control, tend, crash_margin, g_earth, aero_coef, use_control, multiple_orbits,use_alpha_profile,r,v,theta0,gamma,hypkep,Crho,alpha_init,dalphadt)
 %Calculates the full orbit for selected initial conditions until sepcified
 %end time
 switch nargin
-    case 22
+    case 28
         control.alpha_init = alpha_init;
         no_waitbar = true;
-    case 23
+    case 29
         control.alpha_init = alpha_init;
         control.dalphadt = dalphadt;
         control.Kp = control.Kp/control.dalpha*control.dalphadt*dt_atmos; % proportional gain
@@ -99,7 +99,7 @@ end
                  end
                  
                  if use_alpha_profile && ~use_control
-                     aero_param = alpha_profile(t,aero_coef,control,state,dt_atmos);
+                     aero_param = alpha_profile(tp(end),aero_coef,control,state,dt_atmos);
                      
                      CL(i+1) = aero_param.CLA / (12^2*pi/4);
                      CD(i+1) = aero_param.CDA / (12^2*pi/4);
@@ -107,7 +107,7 @@ end
                  end
             
             state.phi = phi_profile(tp(end));     
-            [out_o] = in_atmosphere( V(i,:), R(i,:), A(i,:), a_prev, J(i,:), atm, CL(i+1), CD(i+1), dt_atmos, R_m, omega_m, S, m , state.phi);
+            [out_o] = in_atmosphere( V(i,:), R(i,:), A(i,:), a_prev, J(i,:), atm, CL(i+1), CD(i+1), dt_atmos, R_m, omega_m, S, m , state.phi, Crho);
             %update state
             state.CL = CL(i);
             state.CD = CD(i);

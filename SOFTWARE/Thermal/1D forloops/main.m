@@ -21,11 +21,13 @@ L = layup(:,1);
 
 
 %Aero input, qsdot
-load('heatflux.mat','T','t','qmax_array')
+load('heatflux.mat','T','t','qmax_array','V','Tboundary')
 qaero = qmax_array(1223:5602);
 Tatm  = T(1223:5602); 
+Tbound = Tboundary(1223:5602);
 timeq = t(1223:5602)-t(1223);
 clear('T','t')
+
 
 % time and aeroheat
 %ttot = t(end);  % end time of the orbit [s]
@@ -35,6 +37,7 @@ nmax = int32(ttot/dt);  % number of time steps
 t = [0:double(nmax-1)]*dt;
 qs = interp1(timeq,qaero,[t,t(end)+dt])*10000; %[W/m2]
 Tamb = interp1(timeq,Tatm,[t,t(end)+dt]);
+Tbou = interp1(timeq,Tbound,[t,t(end)+dt]);
 
 % spaceing
 L = int32(round(L*10000000));
@@ -136,7 +139,17 @@ A = zeros(imax,1);
 Cinv = inv(sparse(C));
 G = full(Cinv*sparse(N));
 
+% coefficients for heatflux correction
+Cpwall  = layup(1,4);
+Cpstag  = 5000.0;
+
 for n=1:nmax-1
+    if qs(n) ~= 0
+        qs(n) = qs(n)*(1-((Cpwall*T(1,n))/(Cpstag*Tbou(n))));
+        %qs(n) = qs(n);
+    else
+        qs(n) = 0;
+    end
     qr = -emiss*sig*(T(1,n)^4-Tamb(n)^4);
     A(1) = ((qs(n)+qr)/k(1))*v(1)*dx;
     H = full(Cinv*sparse(A));

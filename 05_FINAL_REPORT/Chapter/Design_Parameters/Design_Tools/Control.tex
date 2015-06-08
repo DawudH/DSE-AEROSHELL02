@@ -1,25 +1,41 @@
-In this section the methods used for determining appropriate control systems are explained. These systems should be able to keep the spacecraft on the trajectory as defined by the astrodynamics tool in section \ref{subsec:orbittool}. First the assumptions used and their effects on the accuracy of the analysis are explained. Than a point is determined
+In this section the methods used for determining appropriate control systems are explained. These systems should be able to keep the spacecraft on the trajectory as defined by the astrodynamics tool in section \ref{subsec:orbittool}. First the assumptions used and their effects on the accuracy of the analysis are explained in section \ref{control:assumptions}. Than, in section \ref{control:trim}, a point is determined in which the center of gravity should lie in order for the spacecraft to be trimmed at an angle of attack of *** as determined in section  \ref{subsec:orbittool}. The stability of the spacecraft is anaysed in section \ref{control:stab}. In section \ref{control:system} the available control systems that can be used to follow the chosen angle of attack and bank angle profiles are weighed off.
 
 \paragraph{Assumptions}
-
+\label{control:assumptions}
 **Primary and Secondary assumptions**
 
 \paragraph{Trim point}
+\label{control:trim}
+The aerodynamic forces acting on the spacecraft work on the center of pressure of the aeroshell. The center of gravity of the spacecraft has a certain offset in x,y and z direction wrt this center of pressure. Thus moments are induced around the center of gravity. These moments can be described as shown in equations \ref{eq:momx} - \ref{eq:momz} which follow from figures \ref{fig:momx} - \ref{fig:momz}.
 
-**Moment equilibrium figures/equations**
-**CG-location plot(s)  with conclusion on CG for AoA~20 and sideslip angle=0**
+\begin{equation}
+\label{eq:momx}
+M_x = F_y \cdot dz - F_z \cdot dy
+\end{equation}
+\begin{equation}
+\label{eq:momy}
+M_y = F_x \cdot dz - F_z \cdot dx
+\end{equation}
+\begin{equation}
+\label{eq:momz}
+M_z = F_x \cdot dy - F_y \cdot dx
+\end{equation}
+
+**figures**
+
+These equations result in a line in three dimentional space for which the moments are 0 around each axis. This line is different for different combinations of forces which follow from different combinations of angle of attack, sideslip angle and bank angle.
 
 \paragraph{Stability}
-
-**From E.Mooij**
+\label{control:stab}
+The aerodynamic tool determines the static stability around all axis in the aerodynamic frame. If the spacecraft is stable around a certain axis all pertubations around that axis are automatically counteracted. However if an attitude change around that axis is required a larger moment has to be counteracted to control the spacecraft.  If the spacecraft is unstable around a certain axis pertubations around that axis have to be counteracted by active control. However if an attitude change around that axis is required a smaller moment has to be counteracted to control the spacecraft. It is thus prefered to perform control about the axis that are unstable and axis about which no control is needed are prefered to be stable.
 
 \paragraph{Available control systems}
-
-**Intro**
+\label{control:system}
+In this section three available control systems, a way of analysing their sizing and their application is explained. The control systems that are considered are \gls{cg} offset, thrusters and aerodynamic surfaces respectively.
 
 \subparagraph{\acrfull{cg} offset}
 
-**Not nessesary for AoA, not feasible for sideslip**
+**Not nessesary for AoA, not feasible for bank**
 
 \subparagraph{Thrusters}
 
