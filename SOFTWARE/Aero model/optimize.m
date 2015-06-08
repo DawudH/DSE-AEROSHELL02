@@ -1,5 +1,5 @@
 clear; clc;
-
+saveflag = false;
 params = globalParams();
 
 order = 12;
@@ -34,4 +34,6 @@ opts = gaoptimset(opts, 'PopulationSize', 48);
 
 [ score, mod, Cmalpha, CDA, failed ] = optimizationWrapper( x );
 mod.geom.plotGeometry(true, false);
-% save('aeroshapes/optimizationoutput_maxmoment');
+if saveflag
+    save('aeroshapes/optimizationoutputoutput');
+end

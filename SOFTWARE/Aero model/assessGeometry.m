@@ -111,7 +111,7 @@ function [ score, Cmalpha, CDA, failed, mod  ] = assessGeometry( skewness, heigh
     end
     %% Calculate score
     Cmalphafactor = 1;
-    CDAfactor = 0;
+    CDAfactor = 0.1;
     Cmatrimfactor = 0;
     penaltyfactor = +1e4;
     if failed
@@ -120,7 +120,8 @@ function [ score, Cmalpha, CDA, failed, mod  ] = assessGeometry( skewness, heigh
     end
 %     score = (Cmalphafactor * Cmalpha) + (CDAfactor * CDA) + (Cmatrimfactor * abs(CmAtrim)) + (penaltyfactor * failed);
 
-    CDA = -CDA; % Optimize for maximum CDA
+    CDA = -CDAfactor*CDA; % Optimize for maximum CDA
+    Cmalpha = Cmalphafactor*Cmalpha;
     
     score = [Cmalpha;CDA;CmAtrim;absoluteLoverD];
 end

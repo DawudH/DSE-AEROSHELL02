@@ -1,4 +1,4 @@
-function [ out_o ] = in_atmosphere( V, R, a, a1, J, atm, CL, CD, dt, R_m, omega_m, S, m, phi )
+function [ out_o ] = in_atmosphere( V, R, a, a1, J, atm, CL, CD, dt, R_m, omega_m, S, m, phi, Crho )
 %IN_ATMOSPHERE Summary of this function goes here
 %   Detailed explanation goes here
 % a1 = ai-1
@@ -12,7 +12,7 @@ V = orbit.V;
 
 %Mars atmosphere, get density and g
 h = norm(R)-R_m;
-rho = atm.getCheapDensity(h);
+rho = atm.getCheapDensity(h)*Crho;
 g = atm.getg(h);
 
 %gravitational accaleration (vector)

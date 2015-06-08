@@ -13,7 +13,7 @@ export_figures = false;
 hypkep = false;
 
 %%function
-[out] = full_orbit(R, V, A, G, M_mars, R_m, h_atm, atm, dt_kep_init, dt_atmos, m, omega_m, S, control, tend, crash_margin, g_earth, aero_coef, use_control, multiple_orbits, use_alpha_profile,control.alpha_init,control.dalphadt,r,v,theta0,gamma,hypkep);
+[out] = full_orbit(R, V, A, G, M_mars, R_m, h_atm, atm, dt_kep_init, dt_atmos, m, omega_m, S, control, tend, crash_margin, g_earth, aero_coef, use_control, multiple_orbits, use_alpha_profile,r,v,theta0,gamma,hypkep,Crho,control.alpha_init,control.dalphadt);
                     
 %% processing (plot/write to file)
 figure('name','parameters over time')
@@ -132,8 +132,8 @@ xlim([min(t) max(t)])
 %xlim([0 2500])
 grid on
 hold on
-plot(t,out.dAlpha_dt*180/pi,'color',cc(2,:))
-ylabel('$\frac{d \alpha}{dt}$  $\left[\frac{^\circ}{s}\right]$','interpreter','latex')
+plot(t,out.phi*180/pi,'color',cc(2,:))
+ylabel('$\phi$  $\left[^\circ\right]$','interpreter','latex')
 xlabel('$t$ $\left[s\right]$','interpreter','latex')
 if isfield(out,'tkep') 
     plot([out.tkep, out.tkep],ylim,'-.','color',cc(1,:),'LineWidth',1.4); 
@@ -207,6 +207,8 @@ end
             legend([L1, h3, h4],legend_str(2:end));
         end
     end
+    % plot location of start landing phase:
+    plot(-3.3637e6, 0.4950e6,'x','color','k','markers',12)
     if (export_figures)
         matlab2tikz('.\LaTeX\orbit2.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
     end

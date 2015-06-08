@@ -1,14 +1,14 @@
 function out = alpha_profile(t,aero_coef,control,state,dt)
     %something else
     Alpha = [18 5 10 10]*pi/180;
-    Alpha = [35 35 35 35]*pi/180;
+    Alpha = [20 20 20 20]*pi/180;
     t_change = [1000 1100 1300];
     dalpha = -[0.5 0.5 0.5 0.5]*pi/180*dt;
     
     %one time under 3g
-    Alpha = [18 18]*pi/180;
-    t_change = [280];
-    dalpha = -[1 0.5 0.5 0.5 0.5]*pi/180*dt;
+    Alpha = [10 10 30 0]*pi/180;
+    t_change = [1000 1290 1385];
+    dalpha = -[0.5 0.5 0.5 0.5 0.5]*pi/180*dt;
     
     t_check = t_change >= t;
     if sum(t_check) == 0
