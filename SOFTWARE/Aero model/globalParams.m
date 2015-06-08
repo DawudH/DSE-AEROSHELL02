@@ -3,9 +3,9 @@ function [ out ] = globalParams()
 
 out.radius = 6;
 out.LoverD = 0.5;
-out.q = 30;
+out.q = 31;
 out.r_capsule = 2.5;
 out.allowskewness = false;
-out.maxheightfactor = 2;
+out.maxheightfactor = 3;
 
 end
