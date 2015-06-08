@@ -47,5 +47,29 @@ The number of toroids was observed to have no significant effect on structural m
 Material selection has a significant effect on inflatable structural mass, as illustrated by Figure \ref{fig:mat}. Materials with a higher specific strength perform better in terms of structural mass. Flexible material is fully loaded in tension by the inflation pressure is required not to fail under tension, dictated by ultimate strength. To this end, a certain thickness with a corresponding mass is required. Mass performance is directly linked to specific strength and this is confirmed by Figure \ref{fig:mat}. Aramid fibers Kevlar and Technora have the lowest specific strenghts, approximately 2 [$MNm/kg$]. A notably higher specific strength of 3.44 and 3.77 [$MNm/kg$] is attained by Spectra 2000 and PBO Zylon respectively. This confirms the choice for PBO Zylon for its weight advantages over Kevlar in \gls{irve}-3 \cite{Dillman2012a}. Spectra 2000 is capable of achieving a lower mass than PBO Zylon despite its lower specific strength, due to its low density. At low loads, a certain minimum thickness limits the mass-reducing capability. Below this minimum thickness, performance is dictated by density rather than specific strength. Due to the significantly lower density of Spectra 2000, 970 [$kg/m^{3}$], versus that of PBO Zylon, 1540 [$kg/m^{3}$], Spectra 2000 offers weight advantages at low dynamic pressures. All materials are selected based on their operating temperature since these are required to operate in an environment with significant thermal loading. A summary of material properties is given in the Mid-Term Report \cite[p.64]{Balasooriyan2015b}.
 
 
+\paragraph{Forces}
+
+Using the force estimation tool for the inflatable structure the sensitivity for the scaling of loads can be determined. Figure \ref{fig:forces} displays the estimated structural loads throughout the inflatable for a total of 9 tori and a set outer diameter of 12 [m]. This sensitivity analysis is performed to evaluate the scalability of the \gls{hiad} design. Previous \gls{hiad} designs, most predominantly the \gls{irve} missions, feature smaller mission payloads and corresponding smaller diameters. Up to this point the highest diameter stacked toroid design flown is featured in the second and third \gls{irve} mission with an outer diameter of 2.93 [m]. 
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{./Figure/Structure/forces_test.eps}
+	\caption{Force estimation }
+	\label{fig:forces}
+\end{figure}
+
+Corresponding to the validation results of the stacked toroid design lateral loads are all carried in circumferential direction. This is in line with the high stiffness of the three dimensional stacked toroid shape. The loads as displayed in Figure \ref{fig:forces} can be observed to be small. That is, in comparison with the pressure forces required to prevent wrinkling as given by \cite{Brown2009}. 
+
+\begin{equation}
+\label{eq:Pmin}
+\gls{sym:pinfl}_{min} = F \frac{4}{3 \pi} \frac{tan(\gls{sym:theta})sin(\gls{sym:theta}) }{\gls{sym:Do}\gls{sym:h}}
+\end{equation}
+
+Equating \ref{eq:Pmin} for the same outer diameter and corresponding width yields forces of a similar order as the highest compression loads of Figure \ref{fig:forces} at the inside of the inflatable. Pressure loads are significantly higher moving words the end of the inflatable. Tension within this model is not necessarily preserved due to the made assumptions, specifically the discrete application of the loads. For the outside tori the loads are primary pressure induced which is in line with the results presented by \ref{Young2002}. These conclusions are also valid for different number of tori, outer diameters and other shape parameters but are not explicitly included. 
+
+Concluding from figure \label{fig:forces} is an absence of bending loads indicating no direct problems with the scalability of the diameter. Computing the thickness for typical values such as for example Kevlar 49 from a yielding perspective yields a thickness below 0.01[mm] posing no danger to the deployment of the inflatable even if the thickness is increasing from other considerations. Minimum thickness considerations are already included in the structural mass estimation mdoel and are thus not considered here.
+
+
+iets over het toepassen van flaps??
 
 
