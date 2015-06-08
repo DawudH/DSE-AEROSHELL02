@@ -1,3 +1,11 @@
+clear
+clc
+%close all
+
+constants
+
+open('results.mat');
+results = ans.results;
 figure('name','under 3g')
 hold on
 for k = 1:length(results.A)

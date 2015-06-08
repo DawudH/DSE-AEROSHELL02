@@ -13,10 +13,16 @@ export_figures = false;
 hypkep = false;
 
 
-alpha = -10:2.5:20; 
-gamma_range = 21.8:0.01:24;
+alpha = -4:1:25;
+gamma_range1 = 21.75:0.005:24;
+gamma_range2 = 21.89:0.005:24;
 k = 1;
 for j = 1:length(alpha)
+    if alpha(j) <= 5
+        gamma_range = gamma_range2;
+    else
+        gamma_range = gamma_range1;
+    end
     for i = 1:length(gamma_range)
         
         control.alpha_init = alpha(j)*pi/180; % rad
