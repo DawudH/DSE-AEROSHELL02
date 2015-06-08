@@ -28,7 +28,7 @@ for j = 1:length(alpha)
         if out.c.orbit
             results.ALPHA(k) = control.alpha_init;
             results.GAMMA(k) = gamma;
-            results.A(k) = norm(out.A_aero);
+            results.A(k) = norm(max(out.A_aero));
             k = k+1;
         elseif  out.c.crash
             break;
