@@ -28,7 +28,7 @@ q0 = 31000;
 nmax = int32(ttot/dt);  % number of time steps
 t = [0:double(nmax-1)]*dt;
 fact    = 1;           % multiplication factor of number of space steps.
-kfact = [2.5e-5/fact;2.5e-5/fact;2.5e-4/fact];
+kfact = [5e-6/fact;2.5e-1/fact;2.5e-1/fact];
 
 
 % spaceing
@@ -143,8 +143,8 @@ Cinv = inv(sparse(C));
 G = full(Cinv*sparse(N));
 
 for n=1:nmax-1
-    qrs = -emiss*sig*(T(1,n)^4-Tamb(n)^4);
-    qrb = -emiss*sig*(T(end,n)^4-Tamb(n)^4);
+    qrs = -emiss*sig*(S(1,n)^4-Tamb(n)^4);
+    qrb = -emiss*sig*(S(end,n)^4-Tamb(n)^4);
     A(1) = ((qs(n)+qrs)/kvoid(1))*vvoid(1)*dx;
     A(end) = (qrb/kvoid(end))*vvoid(end)*dx;
     H = full(Cinv*sparse(A));
@@ -197,20 +197,30 @@ if valid
     valres = dlmread('layup1res.txt');
     figure;
     hold on
-    plot(t,S(1,:),'--')
+    plotS = zeros(nmax,8);
+    plotS(:,1) = S(1,:).';
     for j = 2:length(indexx)-1
-        plot(t,S(indexx(j)+j-3,:),'--')
-        plot(t,S(indexx(j)+j-1,:),'--')
+        plotS(:,2*j-2:2*j-1) = [S(indexx(j)+j-3,:).',S(indexx(j)+j-1,:).'];
     end
-    plot(t,S(end,:),'--')
+    plotS(:,8) = S(end,:).';
+    plotVAL = zeros(nmax,8);
+    for j = 2:length(valres(1,:))
+        plotVAL(:,j-1) = interp1(valres(:,1),valres(:,j),t).';
+    end
+    
+    
+    plot(t,plotS,'--')
     ax = gca;
     ax.ColorOrderIndex = 1;
-    for j = 2:length(valres(1,:))
-        plot(valres(:,1),valres(:,j))
-    end
+    plot(t,plotVAL)
+    figure;
+    plot(t,abs(plotS-plotVAL)./plotVAL)
+    mean(abs(plotS-plotVAL)./plotVAL)
 end
     
-    
+%% Determine the errors for the different layes
+
+
     
     
     

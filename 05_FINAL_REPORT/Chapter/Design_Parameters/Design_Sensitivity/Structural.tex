@@ -49,7 +49,7 @@ Material selection has a significant effect on inflatable structural mass, as il
 
 \paragraph{Forces}
 
-Using the force estimation tool for the inflatable structure the sensitivity for the scaling of loads can be determined. Figure \ref{fig:forces} displays the estimated structural loads throughout the inflatable for a total of 9 tori and a set outer diameter of 12 [m]. This sensitivity analysis is performed to evaluate the scalability of the \gls{hiad} design. Previous \gls{hiad} designs, most predominantly the \gls{irve} missions, feature smaller mission payloads and corresponding smaller diameters. Up to this point the highest diameter stacked toroid design flown is featured in the second and third \gls{irve} mission with an outer diameter of 2.93 [m]. 
+Using the force estimation tool for the inflatable structure the sensitivity for the scaling of loads can be determined. Figure \ref{fig:forces} displays the estimated structural loads throughout the inflatable for a total of 9 toroids and a set outer diameter of 12 [m]. This sensitivity analysis is performed to evaluate the scalability of the \gls{hiad} design. Previous \gls{hiad} designs, most predominantly the \gls{irve} missions, feature smaller mission payloads and corresponding smaller diameters. Up to this point the highest diameter stacked toroid design flown is featured in the second and third \gls{irve} mission with an outer diameter of 2.93 [m]. 
 
 \begin{figure}[h]
 	\centering
@@ -58,18 +58,21 @@ Using the force estimation tool for the inflatable structure the sensitivity for
 	\label{fig:forces}
 \end{figure}
 
-Corresponding to the validation results of the stacked toroid design lateral loads are all carried in circumferential direction. This is in line with the high stiffness of the three dimensional stacked toroid shape. The loads as displayed in Figure \ref{fig:forces} can be observed to be small. That is, in comparison with the pressure forces required to prevent wrinkling as given by \cite{Brown2009}. 
+[REWRITE THIS]
+
+Corresponding to the validation results of the stacked toroid design lateral loads are all carried in circumferential direction. This is in line with the high stiffness of the three-dimensional stacked toroid shape. %The loads as displayed in Figure \ref{fig:forces} can be observed to be small. 
+The internal pressure required to prevent wrinkling is approximately \cite{Brown2009}. 
 
 \begin{equation}
 \label{eq:Pmin}
-\gls{sym:pinfl}_{min} = F \frac{4}{3 \pi} \frac{tan(\gls{sym:theta})sin(\gls{sym:theta}) }{\gls{sym:Do}\gls{sym:h}}
+\gls{sym:pinfl}_{,min} = F_{aerodynamic} \frac{4}{3 \pi} \frac{tan(\gls{sym:theta})sin(\gls{sym:theta}) }{\gls{sym:Do}\gls{sym:h}}
 \end{equation}
 
-Equating \ref{eq:Pmin} for the same outer diameter and corresponding width yields forces of a similar order as the highest compression loads of Figure \ref{fig:forces} at the inside of the inflatable. Pressure loads are significantly higher moving words the end of the inflatable. Tension within this model is not necessarily preserved due to the made assumptions, specifically the discrete application of the loads. For the outside tori the loads are primary pressure induced which is in line with the results presented by \ref{Young2002}. These conclusions are also valid for different number of tori, outer diameters and other shape parameters but are not explicitly included. 
-
-Concluding from figure \label{fig:forces} is an absence of bending loads indicating no direct problems with the scalability of the diameter. Computing the thickness for typical values such as for example Kevlar 49 from a yielding perspective yields a thickness below 0.01[mm] posing no danger to the deployment of the inflatable even if the thickness is increasing from other considerations. Minimum thickness considerations are already included in the structural mass estimation mdoel and are thus not considered here.
+Computing the minimum inflation pressure as per Equation \ref{eq:Pmin} for the same outer diameter and corresponding width yields forces of a similar order as the highest compression loads of Figure \ref{fig:forces} at the inside of the inflatable. The forces induced are calculated as:
 
 
-iets over het toepassen van flaps??
+ Internal pressure loads are significantly higher moving towards the end of the inflatable. Tension within this model is not necessarily preserved due to the made assumptions, specifically the discrete application of the loads and shape assumptions. For the outside toroids the loads are primarily inflation pressure induced which is in line with the results presented by Young et al. \ref{Young2002}. Similar conclusions were reached for different number of tori, outer diameters and other shape parameters. No direct problems with the scalability of the diameter are present, since bending loads are carried laterally and thereby absent in the structural model. 
 
+[UP TO HERE]
 
+%Computing the thickness for typical values, such as for example Kevlar 49, from a yielding perspective yields a thickness below 0.01 [$mm$] posing no danger to the deployment of the inflatable even if the thickness is increasing from other considerations. Minimum thickness considerations are already included in the structural mass estimation mdoel and are thus not considered here.

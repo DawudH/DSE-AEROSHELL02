@@ -29,6 +29,7 @@ classdef modnewtonian
         CM_body_array;
         CM_aero_array;
         CLCD_array;
+        CG_offset;
 %         Tmax_array;
 %         qmax_array;
 %         qw_array;
@@ -64,6 +65,7 @@ classdef modnewtonian
             obj.CR_aero_array = obj.CRA_aero_array / obj.geom.A_frontal;
             obj.CM_body_array = obj.CMA_body_array / obj.geom.A_frontal;
             obj.CM_aero_array = obj.CMA_aero_array / obj.geom.A_frontal;
+            obj.CG_offset = obj.CM_body_array(2,:)./obj.CR_body_array(1,:);
         end
         
         function obj = calcAeroangle(obj, Vinf, alpha, beta, phi)
@@ -109,72 +111,80 @@ classdef modnewtonian
             Cmyalpha = diff(obj.CM_body_array(2,:))./diff(obj.alpha_array);
         end
         
-        function [Tmax, qmax] = calcStagnationHeatFlux(obj)%, Tw)
+        
+        
+        function [Tmax_array, qmax_array] = calcStagnationHeatFluxes(obj)
+            Tmax_array = zeros(size(obj.alpha_array));
+            qmax_array = zeros(size(obj.alpha_array));
+                        
             % Get the stagnation heat flux and temperature
-
+            for j = 1:length(obj.alpha_array)
 %             Vhat = obj.V_array(:,end)/norm(obj.V_array(:,end));
-            Vinf = norm(obj.V_array(:,end));
-%             sinthetas = obj.geom.normals' * Vhat;
-%             sinthetas(sinthetas<0) = 0;
-%             costhetas = cos(asin(sinthetas));
-            
-            Tmax = obj.T_inf*(obj.gamma-1)/2*obj.M_array(end)^2;
-            [~, stagN] = max(obj.Cpdist_array(:,end));
-            triangle = obj.geom.tri(stagN, :);
-            
-            %calculate radius of curvature
-            if sum(triangle==[1 1 1])==0
-                opposites = zeros(1,3);
-                for i = 1:3
-                    opposites(i) = obj.geom.getOpposite(stagN, i);
+                Vinf = norm(obj.V_array(:,j));
+    %             sinthetas = obj.geom.normals' * Vhat;
+    %             sinthetas(sinthetas<0) = 0;
+    %             costhetas = cos(asin(sinthetas));
+
+                Tmax = obj.T_inf*(obj.gamma-1)/2*obj.M_array(j)^2;
+                [~, stagN] = max(obj.Cpdist_array(:,j));
+                triangle = obj.geom.tri(stagN, :);
+
+                %calculate radius of curvature
+                if sum(triangle==[1 1 1])==0
+                    opposites = zeros(1,3);
+                    for i = 1:3
+                        opposites(i) = obj.geom.getOpposite(stagN, i);
+                    end
+
+                    checkMatrix = [opposites(3),triangle(1), opposites(1); ...
+                                    opposites(1), triangle(2), opposites(2); ...
+                                    opposites(2), triangle(3), opposites(3)];
+
+                    radii = zeros(3,1);
+                    for i = 1:length(radii)
+                        radii(i) = obj.geom.calcRadiusOfCurvature(checkMatrix(i,1), checkMatrix(i,2), checkMatrix(i,3));
+                    end
+                    radius = max(radii);
+                else %If point on centerpoint fuck
+                    trianglesincircle = sum(sum(obj.geom.tri == ones(size(obj.geom.tri))));
+                    point1 = triangle(1);
+                    if point1 == 1
+                        point1 = triangle(2);
+                    end
+                    overflowvector = [0.5*trianglesincircle+1:trianglesincircle, 1:0.5*trianglesincircle];
+                    point2 = overflowvector(point1);
+                    if obj.geom.coords(2, point1) - obj.geom.coords(2,point2) < 1e-12
+                        point2 = point2 + 1;
+                    end
+                    radius = obj.geom.calcRadiusOfCurvature(point1, point2, 1);
                 end
 
-                checkMatrix = [opposites(3),triangle(1), opposites(1); ...
-                                opposites(1), triangle(2), opposites(2); ...
-                                opposites(2), triangle(3), opposites(3)];
+                %stagnation point values
 
-                radii = zeros(3,1);
-                for i = 1:length(radii)
-                    radii(i) = obj.geom.calcRadiusOfCurvature(checkMatrix(i,1), checkMatrix(i,2), checkMatrix(i,3));
+                qmax = 0;
+                if radius >=0
+                    M = 3;
+                    N = 0.5;
+                    C = 1.83e-8*max(radius)^-.5;                
+                    qmax = obj.rho_inf ^ N * Vinf ^ M * C;
                 end
-                radius = max(radii);
-            else %If point on centerpoint fuck
-                trianglesincircle = sum(sum(obj.geom.tri == ones(size(obj.geom.tri))));
-                point1 = triangle(1);
-                if point1 == 1
-                    point1 = triangle(2);
-                end
-                overflowvector = [0.5*trianglesincircle+1:trianglesincircle, 1:0.5*trianglesincircle];
-                point2 = overflowvector(point1);
-                if obj.geom.coords(2, point1) - obj.geom.coords(2,point2) < 1e-12
-                    point2 = point2 + 1;
-                end
-                radius = obj.geom.calcRadiusOfCurvature(point1, point2, 1);
+                qmax_array(j) = qmax;
+                Tmax_array(j) = Tmax;
             end
-            
-            %stagnation point values
 
-            qmax = 0;
-            if radius >=0
-                M = 3;
-                N = 0.5;
-                C = 1.83e-8*max(radius)^-.5;                
-                qmax = obj.rho_inf ^ N * Vinf ^ M * C;
-            end
-            
-%             %distribution values
-%             xt = obj.geom.getDistances(stagN);
-%             
-%             N = 0.8;
-%             if Vinf <= 3962
-%                 M = 3.37;
-%                 C = (3.89e-8)*(costhetas.^1.78).*(sinthetas.^1.6).*(xt.^-.2).*(Tw/556).^(-.25).*(1-1.11*Tw/Tmax);
-%             else
-%                 M = 3.7;
-%                 C = (2.2e-9)*(costhetas.^2.08).*(sinthetas.^1.6).*(xt.^-.2).*(1-1.11*Tw/Tmax);
-%             end
-%             qw = obj.rho_inf(end) ^ N * Vinf ^ M * C;
-%             qw = sinthetas*qmax;
+    %             %distribution values
+    %             xt = obj.geom.getDistances(stagN);
+    %             
+    %             N = 0.8;
+    %             if Vinf <= 3962
+    %                 M = 3.37;
+    %                 C = (3.89e-8)*(costhetas.^1.78).*(sinthetas.^1.6).*(xt.^-.2).*(Tw/556).^(-.25).*(1-1.11*Tw/Tmax);
+    %             else
+    %                 M = 3.7;
+    %                 C = (2.2e-9)*(costhetas.^2.08).*(sinthetas.^1.6).*(xt.^-.2).*(1-1.11*Tw/Tmax);
+    %             end
+    %             qw = obj.rho_inf(end) ^ N * Vinf ^ M * C;
+    %             qw = sinthetas*qmax;
         end
 
         function obj = alphasweep(obj, Vinf, beta, phi, alpha_start, alpha_end, dalpha)
@@ -244,70 +254,44 @@ classdef modnewtonian
             obj.geom.plotValues(obj.Cpdist_array(:,end), '$C_p$', [0, 2], plotfaces, plotnormals);
         end
 
-        function obj = plots(obj, xarray, xlabeltxt, plotboolarray)
-            % plotboolarray: ['cx', 'cy', 'cz', 'cd', 'cl', 'cs']
-            for i = plotboolarray
-                j = cell2mat(i{1});
-                switch j
-                    case 'cla'
-                        figure;
-                        plot(xarray, obj.CRA_aero_array(3,:));
-                        ylabel(j);
-                        xlabel(xlabeltxt);
-                    case 'csa'
-                        figure;
-                        plot(xarray, obj.CRA_aero_array(2,:));
-                        ylabel(j);
-                        xlabel(xlabeltxt);
-                    case 'cda'
-                        figure;
-                        plot(xarray, obj.CRA_aero_array(1,:));
-                        ylabel(j);
-                        xlabel(xlabeltxt);
-                    case 'cxa'
-                        figure;
-                        plot(xarray, obj.CRA_body_array(1,:));
-                        ylabel(j);
-                        xlabel(xlabeltxt);
-                    case 'cya'
-                        figure;
-                        plot(xarray, obj.CRA_body_array(2,:));
-                        ylabel(j);
-                        xlabel(xlabeltxt);
-                    case 'cza'
-                        figure;
-                        plot(xarray, obj.CRA_body_array(3,:));
-                        ylabel(j);
-                        xlabel(xlabeltxt);
-                    case 'clcd'
-                        figure;
-                        plot(xarray, obj.CLCD_array);
-                        ylabel(j);
-                        xlabel(xlabeltxt);
-                    case 'cmya'
-                        figure;
-                        plot(xarray, obj.CMA_aero_array(2,:));
-                        ylabel(j);
-                        xlabel(xlabeltxt);
-                    case 'cmycx'
-                        figure;
-                        plot(xarray, obj.CMA_body_array(2,:)./obj.CRA_body_array(1,:));
-                        ylabel(j);
-                        xlabel(xlabeltxt);                     
-                    case 'q'
-                        figure;
-                        plot(xarray, obj.qmax_array);
-                        ylabel(j);
-                        xlabel(xlabeltxt);
-                    case 'T'
-                        figure;
-                        plot(xarray, obj.Tmax_array);
-                        ylabel(j);
-                        xlabel(xlabeltxt);
-                    otherwise
-                        disp(strcat('Not a valid input for plotting: ', num2str(i)));
-                end
-            end
+        function obj = plots(obj)
+            obj.geom.plotGeometry(true, false);
+            figure;
+            plot(rad2deg(obj.alpha_array), obj.CR_aero_array');
+            xlabel('alpha')
+            ylabel('CR');
+            legend('CD', 'CS', 'CL');
+            
+            figure;
+            plot(rad2deg(obj.alpha_array), obj.CR_body_array');
+            xlabel('alpha')
+            ylabel('CR');
+            legend('CX', 'CY', 'CZ');
+            
+            figure;
+            plot(rad2deg(obj.alpha_array), obj.CM_aero_array');
+            xlabel('alpha')
+            ylabel('CM');
+            legend('CMx', 'CMy', 'CMZ');
+            
+            figure; %L over D
+            plot(rad2deg(obj.alpha_array), obj.CLCD_array);
+            xlabel('alpha');
+            ylabel('CL/CD');
+            legend('CL/CD');
+            
+            figure;
+            plot(rad2deg(obj.alpha_array), obj.CM_body_array(2,:)./obj.CR_body_array(1,:));
+            xlabel('alpha');
+            ylabel('CG offset [m]');
+            legend('CG offset [m]');
+            
+            figure;
+            plot(obj.CLCD_array, obj.CM_body_array(2,:)./obj.CR_body_array(1,:));
+            xlabel('CL/CD');
+            ylabel('CG offset [m]');
+            legend('CG offset [m]');
+            
         end
     end
 end

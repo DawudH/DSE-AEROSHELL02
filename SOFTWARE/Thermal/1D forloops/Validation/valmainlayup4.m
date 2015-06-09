@@ -2,6 +2,8 @@
 % Suthes & Lucas
 %% Log:
 % 2-6 10:48 -- Validated correctly with 1-layer copper
+% layup4 = 20W/cm2 for t = 90s
+
 clear all
 close all
 clc
@@ -29,7 +31,12 @@ nmax = int32(ttot/dt);  % number of time steps
 t = [0:double(nmax-1)]*dt;
 fact    = 1;           % multiplication factor of number of space steps.
 %kfact = [2.5e-5/fact;2.5e-5/fact;2.5e-4/fact];
-kfact = [2.5e-5/fact;2.5e-5/fact;2.5e-4/fact;2.5e-4/fact;2.5e-4/fact];
+     kfact = [1e-3 ;
+              3 ;
+              1.0 ;
+              1.0 ;
+              0.0];
+kfact'
 %kfact = [2.5e-5/fact;2.5e-5/fact;2.5e-5/fact;2.5e-5/fact;2.5e-4/fact];
 
 
@@ -145,8 +152,8 @@ Cinv = inv(sparse(C));
 G = full(Cinv*sparse(N));
 
 for n=1:nmax-1
-    qrs = -emiss*sig*(T(1,n)^4-Tamb(n)^4);
-    qrb = -emiss*sig*(T(end,n)^4-Tamb(n)^4);
+    qrs = -emiss*sig*(S(1,n)^4-Tamb(n)^4);
+    qrb = -emiss*sig*(S(end,n)^4-Tamb(n)^4);
     A(1) = ((qs(n)+qrs)/kvoid(1))*vvoid(1)*dx;
     A(end) = (qrb/kvoid(end))*vvoid(end)*dx;
     H = full(Cinv*sparse(A));
@@ -155,7 +162,7 @@ end
 
 % 
 %% Contour-Plot
-contourplot = 1;
+contourplot = 0;
 if contourplot
     % t = [0:double(nmax-1)]*dt;
     x = [0:double(imax-1)]*dx;
@@ -199,14 +206,30 @@ if valid
     valres = dlmread('layup4res.txt');
     figure;
     hold on
-    plot(t,S(1,:),'--')
-    for j = 2:length(indexx)-1
-        plot(t,S(indexx(j)+j-3,:),'--')
-        plot(t,S(indexx(j)+j-1,:),'--')
+    plotS = zeros(nmax,4);
+    for j = 2:length(indexx)-2
+        plotS(:,j-1) = (S(indexx(j)+j-3,:).'+S(indexx(j)+j-1,:).')/2;
     end
-    plot(t,S(end,:),'--')
+    plotVAL = zeros(nmax,4);
+    for j = 6:length(valres(1,:))
+        plotVAL(:,j-5) = interp1(valres(:,1),valres(:,j),t).';
+    end
+    
+    figure(1)
+    subplot(1,2,1)
+    plot(t,plotS,'--')
+    hold on
+    grid minor
+    grid on
     ax = gca;
     ax.ColorOrderIndex = 1;
+    plot(t,plotVAL)
+    subplot(1,2,2)
+    plot(t,abs(plotS-plotVAL)./plotVAL)
+    max(abs(plotS-plotVAL)./plotVAL)
+    grid minor
+    grid on
+    
 end
     
     
