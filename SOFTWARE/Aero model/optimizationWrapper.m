@@ -14,7 +14,7 @@ height = params.radius * heightfactor;
 poly = [x(3:end),0,0];
 
 [ score, Cmalpha, CDA, failed, mod  ] = assessGeometry( skewness, height, params.radius, poly, params.q, params.LoverD );
-score = score(5);
+score = score(1);
 % disp('Score:strcat(num2str(score))
 
 end
