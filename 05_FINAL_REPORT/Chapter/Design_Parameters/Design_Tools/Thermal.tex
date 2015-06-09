@@ -1,6 +1,33 @@
+This section discusses the method used to perform the thermal analysis of the \acrfull{tps}. First the required input and output are explained, then the analysis method is briefly described. The limitations of the model and concluding remarks will conclude this section.
 
+\paragraph{Input and output}
+To perform the thermal analysis the following input is needed. A given layup that consists of different materials with variable thicknesses. From the aerodynamic analysis a heat flux (${sym:qdot}$) is found. The chosen trajectory, which results from the orbit analysis, determines the atmospheric temperature ($\gls{sym:T}_{atm}$). Using the given layup, the heat flux and atmospheric trajectory as input in the upcoming analysis method, the temperature distribution through the layup and over time is found. This distribution can be used to check whether the given layup will properly function in the chosen trajectory.
 
+\paragraph{Assumption}
+sdfsd
 
+\paragraph{Analysis method}
+Since the temperature needs to be analysed through the layup and over time, a relation is needed between temperature, space and time. Figure \textcolor{red}{XX} is used to model the problem. It consists of an incoming heat flux due to aerodynamic heating at the surface and outgoing radiation at the surface and back. In between the surface and the back the different layers are implemented separated by a layer with varying conductivity that models the contact resistance.
+
+%FIGUREEEEE
+
+Since a one-dimensional thermal model is used to analyse the problem, Equation \ref{eq:therm1} or the one-dimensional heat equation relates the required temperature, space and time using the thermal diffusivity ($\gls{sym:alphat}$). The thermal diffusivity is a function of the thermal conductivity, density and specific heat capacity as shown in Equation \ref{eq:thermdif} \cite{Holman2002}.
+
+\begin{multicols}{2}
+\begin{equation}
+\frac{\partial \gls{sym:T}}{\partial \gls{sym:t}} = \gls{sym:alphat}\frac{\partial^2\gls{sym:T}}{\partial \gls{sym:x}^2}
+\label{eq:heat}
+\end{equation}\break
+\begin{equation}
+\gls{sym:alphat} = \frac{\gls{sym:k}}{\gls{sym:rho}\gls{sym:cp}}
+\label{eq:thermdif}
+\end{equation}
+\end{multicols}
+
+A Crank-Nicolson scheme is used to implement the heat equation. 
+
+\paragraph{Limitations}
+sfdsg
 
 
 
