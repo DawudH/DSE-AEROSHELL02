@@ -1,9 +1,10 @@
 clear 
-%close all
+close all
 clc
 
 % open the file
-load('alpha_gamma_phi_0.mat');
+load('alpha_gamma_phi_60.mat');
+
 
 variables
 
@@ -80,7 +81,7 @@ variables
     
     
 %% make plot
-figure(1)
+figure('name','fitted to datapoints')
 hold on
 plot(flyby.gamma,polyval(flyby.polyfit,flyby.gamma)*180/pi)
 plot(accel.gamma,polyval(accel.polyfit,accel.gamma)*180/pi)
@@ -88,10 +89,16 @@ plot(crash.gamma,polyval(crash.polyfit,crash.gamma)*180/pi)
 grid on
 
 % extrapolated
-figure(2)
+figure('name','fitted to datapoints and extrapolated')
 hold on
-plot([flyby.gamma; accel.gamma; crash.gamma],[flyby.alpha; accel.alpha; crash.alpha]*180/pi,'o')
-plot(21.75:0.001:22,polyval(flyby.polyfit,21.75:0.001:22)*180/pi)
+%plot([flyby.gamma; accel.gamma; crash.gamma],[flyby.alpha; accel.alpha; crash.alpha]*180/pi,'o')
+plot(21.74:0.001:22,polyval(flyby.polyfit,21.74:0.001:22)*180/pi)
 plot(21.85:0.001:22,polyval(accel.polyfit,21.85:0.001:22)*180/pi)
-plot(21.75:0.001:21.93,polyval(crash.polyfit,21.75:0.001:21.93)*180/pi)
+plot(21.74:0.001:21.93,polyval(crash.polyfit,21.74:0.001:21.93)*180/pi)
 grid on
+
+phi_60.crash.polyfit = crash.polyfit;
+phi_60.accel.polyfit = crash.polyfit;
+phi_60.flyby.polyfit = crash.polyfit;
+save('phi_60.mat','phi_60')
+
