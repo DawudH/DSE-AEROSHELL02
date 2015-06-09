@@ -124,6 +124,107 @@ for c=70:1:80
             H = full(Cinv*sparse(A));
             T(:,n+1) = G*T(:,n) + H;
         end
+<<<<<<< HEAD
+=======
+    end
+end
+maxdx = double(gcd_old)/10000000;
+L = double(L)/10000000;
+
+
+Ltot = sum(L);      % length of the layup [m]
+dx   = maxdx/fact;     % length of a space step
+imax =  int32(Ltot/dx + 1); % maximum amount of points in spaceing
+
+% Radiation parameters
+emiss = layup(1,5);
+sig   = 5.670373e-8; %[W/m2/K4]
+
+%% Material properties
+layers = length(L)-1;
+k = zeros(imax+layers-1,1);
+rho = zeros(imax+layers-1,1);
+cp = zeros(imax+layers-1,1);
+x = zeros(imax+layers,1);
+
+%determine material layer thicknesses
+indexx = zeros(length(L)+1,1);
+indexx(1) = 1;
+indexx(2:end) = int32(cumsum(L/dx))+1;
+for j = 1:length(L);
+    k(indexx(j)+j-1:indexx(j+1)+j-2) = layup(j,2);
+    rho(indexx(j)+j-1:indexx(j+1)+j-2) = layup(j,3);
+    cp(indexx(j)+j-1:indexx(j+1)+j-2) = layup(j,4);
+    x(indexx(j)+j-1:indexx(j+1)+j-1) = dx*[indexx(j)-1:indexx(j+1)-1];
+end
+for j = 1:layers
+    k(indexx(j+1)+j-1) = kfact(j)*(k(indexx(j+1)+j-2)+k(indexx(j+1)+j))/(k(indexx(j+1)+j-2)*k(indexx(j+1)+j));
+    rho(indexx(j+1)+j-1) = (rho(indexx(j+1)+j-2)+rho(indexx(j+1)+j))/2;
+    cp(indexx(j+1)+j-1) = (cp(indexx(j+1)+j-2)+cp(indexx(j+1)+j))/2;
+end
+alpha = k./rho./cp;
+v = alpha*dt/dx/dx;
+
+%% Temperature boundaries
+
+Tbegin = 4;   %[K]
+Tend   = 273+20; %[K]
+dT     = Tbegin-Tend;
+
+% Define the wanted vector
+Tinitial = zeros(imax,1);
+Tinitial(1) = Tbegin;
+
+% Total material prop
+R      = layup(:,1)./layup(:,2);
+Req    = sum(R);
+
+% The steady heatflux
+qsteady = dT/Req; %[W/m2]
+
+% Find the temperatures
+Tlayer  = zeros(length(L)+1,1);
+Tlayer(1) = Tbegin;
+
+for m = 1:length(L)
+    %Find all temps
+    teller = indexx(m)+1;
+    while teller <= indexx(m+1)
+        teller = teller + 1;
+        Tinitial(teller) = Tinitial(teller-1) - (qsteady*(dx/layup(m,2)));
+    end
+end
+
+%% Implement Cranck-Nickelson with voids
+
+% i is space, n is time
+% space is rows, time is columns
+T = zeros(imax+layers,nmax);
+T(:,1) = T0;
+qs = interp1(timeq,qaero,t)*10000;
+Tamb = interp1(timeq,Tatm,t);
+
+% Define matrices for Crank-Nicolson
+w = zeros(imax+layers,1);
+w(1:end-1) = v/2;
+w(2:end) = w(2:end) + v/2;
+C = diag(1+w) - diag(0.5*v,1) - diag(0.5*v,-1);
+N = diag(1-w) + diag(0.5*v,1) + diag(0.5*v,-1);
+
+A = zeros(imax+layers,1); 
+Cinv = inv(sparse(C));
+G = full(Cinv*sparse(N));
+
+% Perform scheme over time
+for n=1:nmax-1
+    qrs = -emiss*sig*(T(1,n)^4-Tamb(n)^4); % Radiation front
+    qrb = -emiss*sig*(T(end,n)^4-T0^4); % Radiation back
+    A(1) = ((qs(n)+qrs)/k(1))*v(1)*dx;
+    A(end) = (qrb/k(end))*v(end)*dx;
+    H = full(Cinv*sparse(A));
+    T(:,n+1) = G*T(:,n) + H;
+end
+>>>>>>> 60186c9c6dd1af01f3a577c83eed205c1f8e2b53
 
         %% Output
         % Contour plots
