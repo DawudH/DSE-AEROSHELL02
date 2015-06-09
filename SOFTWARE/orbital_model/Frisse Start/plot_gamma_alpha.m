@@ -4,8 +4,7 @@ clc
 
 constants
 
-open('results.mat');
-results = ans.results;
+load('results.mat');
 figure('name','under 3g')
 hold on
 for k = 1:length(results.A)
