@@ -113,7 +113,7 @@ classdef modnewtonian
         
         
         
-        function [Tmax_array, qmax_array] = calcStagnationHeatFluxes(obj)%, Tw)
+        function [Tmax_array, qmax_array] = calcStagnationHeatFluxes(obj)
             Tmax_array = zeros(size(obj.alpha_array));
             qmax_array = zeros(size(obj.alpha_array));
                         
@@ -130,7 +130,7 @@ classdef modnewtonian
                 triangle = obj.geom.tri(stagN, :);
 
                 %calculate radius of curvature
-%                 if sum(triangle==[1 1 1])==0
+                if sum(triangle==[1 1 1])==0
                     opposites = zeros(1,3);
                     for i = 1:3
                         opposites(i) = obj.geom.getOpposite(stagN, i);
@@ -144,20 +144,20 @@ classdef modnewtonian
                     for i = 1:length(radii)
                         radii(i) = obj.geom.calcRadiusOfCurvature(checkMatrix(i,1), checkMatrix(i,2), checkMatrix(i,3));
                     end
-                    radius = min(radii);
-%                 else %If point on centerpoint fuck
-%                     trianglesincircle = sum(sum(obj.geom.tri == ones(size(obj.geom.tri))));
-%                     point1 = triangle(1);
-%                     if point1 == 1
-%                         point1 = triangle(2);
-%                     end
-%                     overflowvector = [0.5*trianglesincircle+1:trianglesincircle, 1:0.5*trianglesincircle];
-%                     point2 = overflowvector(point1);
-%                     if obj.geom.coords(2, point1) - obj.geom.coords(2,point2) < 1e-12
-%                         point2 = point2 + 1;
-%                     end
-%                     radius = obj.geom.calcRadiusOfCurvature(point1, point2, 1);
-%                 end
+                    radius = max(radii);
+                else %If point on centerpoint fuck
+                    trianglesincircle = sum(sum(obj.geom.tri == ones(size(obj.geom.tri))));
+                    point1 = triangle(1);
+                    if point1 == 1
+                        point1 = triangle(2);
+                    end
+                    overflowvector = [0.5*trianglesincircle+1:trianglesincircle, 1:0.5*trianglesincircle];
+                    point2 = overflowvector(point1);
+                    if obj.geom.coords(2, point1) - obj.geom.coords(2,point2) < 1e-12
+                        point2 = point2 + 1;
+                    end
+                    radius = obj.geom.calcRadiusOfCurvature(point1, point2, 1);
+                end
 
                 %stagnation point values
 
