@@ -47,5 +47,9 @@ cc = parula(7);
 
 figure('name','radius')
 hold on
+xlabel('$r$ $\left[m\right]$','interpreter','latex')
+ylabel('$q$ $\left[\frac{N}{m^2}\right]$','interpreter','latex')
 plot([6,9,12,15,18],[max(outj6.q),max(outj9.q),max(outj12.q),max(outj15.q),max(outj18.q)],'-o','color',cc(1,:),'MarkerEdgeColor',cc(1,:))
 plot([6,9,12,15,18],[max(outo6.q),max(outo9.q),max(outo12.q),max(outo15.q),max(outo18.q)],'-d','color',cc(3,:),'MarkerEdgeColor',cc(3,:))
+
+matlab2tikz('.\LaTeX\radius.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
