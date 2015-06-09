@@ -2,8 +2,6 @@
 % Suthes & Lucas
 %% Log:
 % 2-6 10:48 -- Validated correctly with 1-layer copper
-% layup4 = 20W/cm2 for t = 90s
-
 clear all
 close all
 clc
@@ -11,7 +9,7 @@ clc
 %% Define input
 
 %lay-up (t[mm], k[w/m/K], rho[kg/m3], cp[J/kg/K])
-filename   = 'layup4.txt';
+filename   = 'layup3.txt';
 layupin    = dlmread(filename);
 % SI units
 layup      = zeros(size(layupin));
@@ -22,16 +20,16 @@ L = layup(:,1);
 
 % time and aeroheat
 %ttot = t(end);  % end time of the orbit [s]
-ttot = 110;  % end time of the orbit [s]
+ttot = 226;  % end time of the orbit [s]
 tdur = 90;
 dt   = 0.1;    % time step, chooseable
 T0 = 293;
-q0 = 200000;
+q0 = 160000;
 nmax = int32(ttot/dt);  % number of time steps
 t = [0:double(nmax-1)]*dt;
 fact    = 1;           % multiplication factor of number of space steps.
 %kfact = [2.5e-5/fact;2.5e-5/fact;2.5e-4/fact];
-kfact = [2.5e-2;2.5e-2;2.5e-5;2.5e-5;2.5e-1];
+kfact = [2.5e-4;2.5e-4;2.5e-5;2.5e-5;2.5e-5];
 %kfact = [2.5e-5/fact;2.5e-5/fact;2.5e-5/fact;2.5e-5/fact;2.5e-4/fact];
 
 
@@ -198,7 +196,7 @@ valid = 1;
 %     plot(t,T(3,:),'r--')
 % end
 if valid
-    valres = dlmread('layup4res.txt');
+    valres = dlmread('layup3res.txt');
     figure;
     hold on
     plotS = zeros(nmax,4);
@@ -215,8 +213,8 @@ if valid
     ax.ColorOrderIndex = 1;
     plot(t,plotVAL)
     figure;
-    plot(t,abs(plotS-plotVAL)./plotVAL)
-    max(abs(plotS-plotVAL)./plotVAL)
+    plot(t(1:1500),abs(plotS(1:1500,:)-plotVAL(1:1500,:))./plotVAL(1:1500,:))
+    max(abs(plotS(1:1500,:)-plotVAL(1:1500,:))./plotVAL(1:1500,:))
     
 end
     

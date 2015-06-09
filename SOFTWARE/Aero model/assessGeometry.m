@@ -2,7 +2,7 @@
 function [ score, Cmalpha, CDA, failed, mod  ] = assessGeometry( skewness, height, radius, poly, q, LoverD )
 %ASSESSGEOMETRY Assess a geometry for it's performance
     params = globalParams();
-    x = [skewness, height/params.radius, poly(1:end-2)];
+    x = [skewness, height/radius, poly(1:end-2)];
 
     %% Initialise
     
@@ -17,9 +17,6 @@ function [ score, Cmalpha, CDA, failed, mod  ] = assessGeometry( skewness, heigh
     a = 150;
     M = 40;
     V = a*M;
-    gamma = 1.29;
-    rho = 1e-5;
-    T = 150;
     mod = NaN;
     
 
@@ -28,69 +25,65 @@ function [ score, Cmalpha, CDA, failed, mod  ] = assessGeometry( skewness, heigh
     % Initialise objective functions
     Cmalpha = 0;
     CDA = 0;
+    CLA = 1000;
     CmAtrim = 0;
+    absoluteLoverD = 0;
     failed = false;    
     
-%     % derivative is bigger than zero everywhere
-%     xtest = 0:0.01:1;
-%     if sum(polyval(polyder(poly), xtest)<0)>0
-%         warning('Derivative criteria failure');
-%         failed = true;
-%     end
-%     
-%     % capsule fits in the outer body
-%     if params.radius - skewness <= 2.5
-%         warning('radius - skewness < 2.5');
-%         failed = true;
-%     end
-%     
-%     if skewness < 0
-%         warning('skewness < 0');
-%         failed = true;
-%     end
-%     
-    % Height is larger than 0, smaller than 2*radius
-    if height <= 0
-        warning('height < 0');
+    % derivative is bigger than zero everywhere
+    xtest = 0:0.01:1;
+    if sum(polyval(polyder(poly), xtest)<0)>0
+        disp('Warning: Derivative criteria failure');
         failed = true;
     end
-%     
-%     if height > 3*radius
-%         warning('height > 3*radius');
-%         failed = true;
-%     end    
+    
+    % capsule fits in the outer body
+    if radius - skewness <= 2.5
+        disp('Warning: radius - skewness < 2.5');
+        failed = true;
+    end
+    
+    if skewness < 0
+        disp('Warning: skewness < 0');
+        failed = true;
+    end
+    
+    % Height is larger than 0, smaller than 2*radius
+    if height <= 0.1*radius
+        disp('Warning: height < 0.1*radius');
+        failed = true;
+    end
+    
+    if height > params.maxheightfactor*radius
+        warning(strcat('height>',num2str(params.maxheightfactor),'*radius'));
+        failed = true;
+    end    
     
     
     %% If not failed
     if ~failed
-        CoGheight = 3;
-        skewnessz = skewness * params.r_capsule/params.radius;
-        xcog = CoGheight + max(polyval(poly, (params.r_capsule+skewnessz)/radius)/sum(poly)*height, polyval(poly, (params.r_capsule-skewnessz)/params.radius)/sum(poly)*height);
-%         center = [xcog, 0, 0];
-        center = [0, 0, 0];
+
 
         % Calculate aerodynamic properties
-        [TriGeom, A] = ParaGeom(q, skewness, params.radius, height, poly);
-        geom = aeroGeometry(TriGeom, A);
-        mod = modnewtonian(geom, gamma, a, center, rho, T);
+        [mod, center] = generateGeometry(poly, q, skewness, radius, height);
         mod = mod.alphasweep(V, beta, phi, deg2rad(alpha0), deg2rad(alphaend), deg2rad(dalpha));
 
         %% Assess performance failure criteria
 
         %CLCD is achieved
         helparray = mod.CLCD_array-LoverD;
-        if sum(helparray>0)==0 || sum(helparray<0)==0
-            warning('L over D criteria failure in assessgeometry!');
-            failed = true;
-        end
+%         if sum(helparray>0)==0 || sum(helparray<0)==0
+%             disp('Warning: L over D criteria failure in assessgeometry!');
+%             failed = true;
+%         end
         
 
 
         %% Calculate trim angle and function values iff no failure criterion was met
         if ~failed
-            alphatrimindex = -1;
+            alphatrimindex = 1;
             for i = 1:length(helparray)-1
-                if mod.CLCD_array(i+1)<LoverD
+                if abs(mod.CLCD_array(i+1))>LoverD
                     alphatrimindex = i;
                     break;
                 end
@@ -99,10 +92,13 @@ function [ score, Cmalpha, CDA, failed, mod  ] = assessGeometry( skewness, heigh
                 disp('alphatrimindex==-1');
                 disp(x);
             end
+            
 
             dCLCDdalpha = (mod.CLCD_array(alphatrimindex+1)-mod.CLCD_array(alphatrimindex))/(mod.alpha_array(alphatrimindex+1)-mod.alpha_array(alphatrimindex));
             realalphatrim = (LoverD-mod.CLCD_array(alphatrimindex))/dCLCDdalpha + mod.alpha_array(alphatrimindex);
-
+            
+            realalphatrim = 0;
+            
             mod = mod.calcAeroangle(V, realalphatrim, beta, phi);
             mod = mod.calcAeroangle(V, realalphatrim+0.001, beta, phi);
 
@@ -110,12 +106,14 @@ function [ score, Cmalpha, CDA, failed, mod  ] = assessGeometry( skewness, heigh
             Cmalpha = (mod.CMA_aero_array(2,end)-mod.CMA_aero_array(2, end-1))/(mod.alpha_array(end)-mod.alpha_array(end-1));
             CDA = mod.CRA_aero_array(1,end-1);
             CmAtrim = mod.CMA_aero_array(2,end-1);
+            absoluteLoverD = abs(max(mod.CLCD_array));
+            CLA = max(abs(mod.CRA_aero_array(3,:)));
         end
         
     end
     %% Calculate score
     Cmalphafactor = 1;
-    CDAfactor = 0.1;
+    CDAfactor = 1;
     Cmatrimfactor = 0;
     penaltyfactor = +1e4;
     if failed
@@ -124,8 +122,8 @@ function [ score, Cmalpha, CDA, failed, mod  ] = assessGeometry( skewness, heigh
     end
 %     score = (Cmalphafactor * Cmalpha) + (CDAfactor * CDA) + (Cmatrimfactor * abs(CmAtrim)) + (penaltyfactor * failed);
 
-    CDA = -CDAfactor*CDA; % Optimize for maximum CDA
+%     CDA = -CDAfactor*CDA; % Optimize for maximum CDA
     Cmalpha = Cmalphafactor*Cmalpha;
     
-    score = [Cmalpha;CDA];
+    score = [Cmalpha;CDA;CmAtrim;absoluteLoverD;CLA];
 end

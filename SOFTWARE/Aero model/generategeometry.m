@@ -1,23 +1,46 @@
-function [ TriGeom, A, center ] = generategeometry(q, r )
-%[ coords, tri, A ] = generategeometry( type, q )
-%   Generate used geometries
+function [ mod, center ] = generateGeometry(poly, q, skewness, radius, height, a, gamma, rho, T)
+    %Specify either 0, 1, 5, or 9 variables
+switch nargin
+    %Specified only polynomial
+    case 1
+        q = 30;
+        skewness = 0;
+        radius = 6;
+        height = 3;
+        a = 150;
+        T = 150;
+        gamma = 1.29;
+        rho = 1e-5;        
 
-%     t = 60;
-%     R = 6;
-%     r = 2;
-%     TriGeom = TriMeshGen(q, R, 2, t, 'c');
-%     coords = TriGeom.Points';
-%     tri = TriGeom.ConnectivityList;
-%     A = pi*6^2;
-%     t = 90-t;
-%     t = tand(t)*r;            
-%     center = [-((5/3+t/(2.5*r)+(2.5-r)*t/r)*9000+3/5*(t/R/r+(R-r)*t/r)*1000)/10000, 0, 0];
-    %t gradient, r half dome radius, R is max radius            
+    %Specified only geometry
+    case 5
+        a = 150;
+        T = 150;
+        gamma = 1.29;
+        rho = 1e-5;
+        
+    case 9
+
+    otherwise
+        disp('Not all arguments given')
+        q = 30;
+        skewness = 0;
+        poly = [1 0 0];
+        radius = 6;
+        height = 3;
+end
+
+    params = globalParams();
+
+    [TriGeom, A] = ParaGeom(q, skewness, radius, height, poly);
+    geom = aeroGeometry(TriGeom, A, poly);
     
-    Nr = q;
-    a = 0;
-    h = 0.5*r;
-    poly = [1 0 0];
-    [TriGeom, A] = ParaGeom(Nr, a, r, h, poly);
-    center = [0 0 0];
+    CoGcapsuleheight = 3;
+    skewnessz = skewness * params.r_capsule/radius;
+    radiusheight1 = polyval(poly, (params.r_capsule+skewnessz)/radius)/sum(poly)*height;
+    radiusheight2 = polyval(poly, (params.r_capsule-skewnessz)/radius)/sum(poly)*height;
+    capsuleCoGHeight = CoGcapsuleheight + max(radiusheight1, radiusheight2);        
+    xcog = (1000*geom.centroid(1)-9000*capsuleCoGHeight)/10000;
+    center = [xcog, 0, 0];
+    mod = modnewtonian(geom, gamma, a, center, rho, T);
 end
