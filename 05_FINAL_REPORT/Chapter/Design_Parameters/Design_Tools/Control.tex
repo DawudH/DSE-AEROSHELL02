@@ -23,26 +23,26 @@ M_z = F_x \cdot dy - F_y \cdot dx
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.95\textwidth]{./Figure/Nyan}
+	\includegraphics[width=0.75\textwidth]{./Figure/Nyan}
 	\caption{nyan nyan om de X-as}
 	\label{fig:momx}
 \end{figure}
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.95\textwidth]{./Figure/Nyan}
+	\includegraphics[width=0.75\textwidth]{./Figure/Nyan}
 	\caption{nyan nyan om de Y-as}
 	\label{fig:momy}
 \end{figure}
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.95\textwidth]{./Figure/Nyan}
+	\includegraphics[width=0.75\textwidth]{./Figure/Nyan}
 	\caption{nyan nyan om de Z-as}
 	\label{fig:momz}
 \end{figure}
 
-These equations result in a line in three dimentional space for which the moments are 0 around each axis. This line is different for different combinations of forces which follow from different combinations of angle of attack, sideslip angle and bank angle.
+These equations result in a line in three-dimensional space for which the moments are 0 around each axis. This line is different for different combinations of forces which follow from different combinations of angle of attack, sideslip angle and bank angle.
 
 \paragraph{Stability}
 \label{control:stab}
@@ -57,14 +57,12 @@ In this section three available control systems, a way of analysing their sizing
 **Not necessary for AoA, not feasible for bank**
 
 \subparagraph{Thrusters}
-From the specific impulse of a thruster $I_{sp}$ and its mass flow $\dot{m}$ follows the amount of thrust it can generate:
+By dividing the required reaction control moment around a certain axis with the length of the thruster moment arm the required thruster control force $F_{req}$ can be determined. From the specific impulse of a thruster $I_{sp}$ and its propellant mass flow $\dot{m}$ follows the amount of thrust it can generate:
 \begin{equation}
 F_{thrust}=I_{sp}g_{0}\dot{m}
+\label{eq:Fthrust}
 \end{equation}
-Where $g_{0}$ always is the gravitational acceleration on earth. By 
+Where $g_{0}$ is the gravitational acceleration on earth. One can see from the preceding that for moment equilibrium $F_{req}=F_{thrust}$. By summing the thruster control force required over time the total propellant mass can be obtained. To arrive at a specific thruster design the specific impulse and maximum mass flow of available thrusters can be taken from literature. From this also follows the thruster dry mass, which can be added to the propellant mass to arrive at the total thruster control system mass.
 \subparagraph{Aerodynamic surfaces}
 
 **Guido**
-
-
-
