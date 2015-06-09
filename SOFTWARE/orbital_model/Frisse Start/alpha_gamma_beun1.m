@@ -14,8 +14,8 @@ hypkep = false;
 
 % to what limit to search?
 % only one of them can be true
-flybylimit = true;
-orbitlimit = false;
+flybylimit = false;
+orbitlimit = true;
 accellimit = false;
 
 alpha = -5:1:25;
@@ -98,7 +98,7 @@ save('alpha_gamma.mat','results')
 figure(1)
 hold on
 grid on
-xlim([21.0 22.5])
+xlim([21.8 22.1])
 plot(results.GAMMA(find(results.flyby == true)),results.ALPHA(find(results.flyby == true))*180/pi,'o','color','c')
 plot(results.GAMMA(find(results.orbit == true)),results.ALPHA(find(results.orbit == true))*180/pi,'x','color','b')
 plot(results.GAMMA(find(results.crash == true)),results.ALPHA(find(results.crash == true))*180/pi,'x','color','g')
