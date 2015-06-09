@@ -3,7 +3,7 @@ clear
 clc
 
 % open the file
-load('alpha_gamma_phi_0.mat');
+load('alpha_gamma_phi_30.mat');
 
 variables
 

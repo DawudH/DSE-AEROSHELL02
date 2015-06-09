@@ -7,20 +7,136 @@
 \begin{tikzpicture}
 
 \begin{axis}[%
-width=0.95092\figurewidth,
+width=0.192207\figurewidth,
+height=\figureheight,
+at={(0.505809\figurewidth,0\figureheight)},
+scale only axis,
+every outer x axis line/.append style={black},
+every x tick label/.append style={font=\color{black}},
+xmin=0,
+xmax=20,
+xlabel={$r$ $\left[m\right]$},
+xmajorgrids,
+every outer y axis line/.append style={black},
+every y tick label/.append style={font=\color{black}},
+ymin=399.5,
+ymax=400.5,
+ylabel={$h$ $\left[m\right]$},
+ymajorgrids,
+axis x line*=bottom,
+axis y line*=left
+]
+\addplot [color=mycolor1,solid,mark=o,mark options={solid,draw=mycolor1},forget plot]
+  table[row sep=crcr]{%
+6	400.127926743779\\
+9	400.144443583266\\
+12	400.20742964763\\
+15	400.113726107658\\
+18	400.217430258993\\
+};
+\addplot [color=mycolor2,solid,mark=diamond,mark options={solid,draw=mycolor2},forget plot]
+  table[row sep=crcr]{%
+6	400\\
+9	400\\
+12	400\\
+15	400\\
+18	400\\
+};
+\end{axis}
+
+\begin{axis}[%
+width=0.192207\figurewidth,
+height=\figureheight,
+at={(0.758713\figurewidth,0\figureheight)},
+scale only axis,
+every outer x axis line/.append style={black},
+every x tick label/.append style={font=\color{black}},
+xmin=0,
+xmax=20,
+xlabel={$r$ $\left[m\right]$},
+xmajorgrids,
+every outer y axis line/.append style={black},
+every y tick label/.append style={font=\color{black}},
+ymin=40,
+ymax=45,
+ylabel={$M$ $\left[-\right]$},
+ymajorgrids,
+axis x line*=bottom,
+axis y line*=left
+]
+\addplot [color=mycolor1,solid,mark=o,mark options={solid,draw=mycolor1},forget plot]
+  table[row sep=crcr]{%
+6	41.6847342823255\\
+9	41.6843989798392\\
+12	41.6841514265243\\
+15	41.6834060160913\\
+18	41.6826843682071\\
+};
+\addplot [color=mycolor2,solid,mark=diamond,mark options={solid,draw=mycolor2},forget plot]
+  table[row sep=crcr]{%
+6	41.6846851621392\\
+9	41.6844024450804\\
+12	41.684020754104\\
+15	41.6834605155275\\
+18	41.6827156303311\\
+};
+\end{axis}
+
+\begin{axis}[%
+width=0.192207\figurewidth,
+height=\figureheight,
+at={(0.252904\figurewidth,0\figureheight)},
+scale only axis,
+every outer x axis line/.append style={black},
+every x tick label/.append style={font=\color{black}},
+xmin=0,
+xmax=20,
+xlabel={$r$ $\left[m\right]$},
+xmajorgrids,
+every outer y axis line/.append style={black},
+every y tick label/.append style={font=\color{black}},
+ymin=0,
+ymax=0.006,
+ylabel={$\rho$ $\left[kg\cdot m^{-3}\right]$},
+ymajorgrids,
+axis x line*=bottom,
+axis y line*=left
+]
+\addplot [color=mycolor1,solid,mark=o,mark options={solid,draw=mycolor1},forget plot]
+  table[row sep=crcr]{%
+6	0.00035765270845363\\
+9	0.000188759464169256\\
+12	9.04886750945137e-05\\
+15	6.43100809660723e-05\\
+18	4.22651677420687e-05\\
+};
+\addplot [color=mycolor2,solid,mark=diamond,mark options={solid,draw=mycolor2},forget plot]
+  table[row sep=crcr]{%
+6	0.00567163610579254\\
+9	0.00567508637508938\\
+12	0.00567006000541443\\
+15	0.00566353092873238\\
+18	0.00565974303523753\\
+};
+\end{axis}
+
+\begin{axis}[%
+width=0.192207\figurewidth,
 height=\figureheight,
 at={(0\figurewidth,0\figureheight)},
 scale only axis,
 every outer x axis line/.append style={black},
 every x tick label/.append style={font=\color{black}},
-xmin=6,
-xmax=18,
+xmin=0,
+xmax=20,
 xlabel={$r$ $\left[m\right]$},
+xmajorgrids,
 every outer y axis line/.append style={black},
 every y tick label/.append style={font=\color{black}},
 ymin=0,
 ymax=9000,
-ylabel={$q$ $\left[\frac{N}{m^2}\right]$},
+ylabel={$q$ $\left[Pa\right]$},
+ymajorgrids,
 axis x line*=bottom,
 axis y line*=left
 ]

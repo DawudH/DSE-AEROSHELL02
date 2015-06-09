@@ -6,7 +6,7 @@ G = 6.67384*10^-11; %[N*(m/kg)^2]
 %Mass
 m = 10000; %[kg]
 %Diameter of the heatshield
-d =12; %[m]
+d = 12; %[m]
 %Area of the heatshield
 S = d^2*pi/4; %[m^2]
 
