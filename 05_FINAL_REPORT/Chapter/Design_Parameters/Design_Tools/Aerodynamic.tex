@@ -1,25 +1,43 @@
 This section will provide a brief overview of the aerodynamic analysis methods used in the design of the hypersonic decelerator. It will begin with a brief description of the inputs and outputs required from the aerodynamic analysis, followed by the methods used to determine these input and output parameters. It will then briefly discuss the limitations of the analysis method. 
 
 \paragraph{Input and Output}
-The aerodynamic analysis provides aerodynamic characteristics for the orbital analysis and the stability and control analysis of the re-entry vehicle. It also calculates the heat flux in the stagnation point for a given flight condition and vehicle shape. The heat flux is required for the analysis of the thermal protection system. For a given shape and atmospheric entry profile, the analysis provides the following items:
-
-\begin{itemize}
-	\item{Lift, drag and moment coefficients}
-	\item{Lift, drag and moment derivatives with respect to angle of attack}
-	\item{Lift, drag and moment derivatives with respect to side slip angle}
-	\item{Heat flux variation in the stagnation point during the atmospheric entry }
-\end{itemize}
+For a given external shape, the aerodynamic analysis provides aerodynamic lift, drag and moment coefficients for ranges of angles of attack and angles of side slip. This is used in the orbital analysis and the stability and control analysis of the re-entry vehicle. It also calculates the heat flux in the stagnation point for a given flight condition and vehicle shape. The heat flux is required for the analysis of the thermal protection system. For a given shape and atmospheric entry profile, the analysis provides the heat flux in the stagnation point.
 
 \paragraph{Analysis method}
-The aerodynamic analysis is based on modified Newtonian flow theory. This theory relates the pressure coefficient on a given surface with the incidence angle this surface has with respect to the free stream. These pressure coefficients can then be integrated to find the force and moment coefficients acting on the vehicle. This method provides reasonable accuracy in determining the pressure coefficient distribution over blunt bodies for a low computational cost. It is therefore well suited for initial design studies such as the one performed in this report. \cite{AndersonJr.2006}. 
-The heat flux in the stagnation point is calculated using the method developed by Tauber et al \cite{Tauber1986}. !!Hier nog iets verder over uitwijden, ik weet niet precies waar deze theorie op gebaseerd is!!
-Using this method, the heat flux in the stagnation point can be calculated at every point of a given atmospheric entry trajectory.
+The aerodynamic analysis is based on modified Newtonian flow theory. This theory relates the pressure coefficient on a given surface with the incidence angle this surface has with respect to the free stream. The equation for pressure coefficient is given in Equation \ref{eq:modnewtoniancp}, while the maximum pressure coefficient can be calculated using Equation \ref{eq:cpmaxfinal}
+
+\begin{multicols}{2}
+	\begin{equation}
+		\gls{sym:CP}=\gls{sym:CP}_{,max}sin^{2}(\gls{sym:chi})
+		\label{eq:modnewtoniancp}
+	\end{equation} \break
+	\begin{equation}
+		\gls{sym:CP}_{,max} = \frac{2}{\gls{sym:gamma} \gls{sym:M}_{\infty}^{2}}\left(\frac{\gls{sym:p}_{O_{2}}}{\gls{sym:p}_{\infty}}-1\right)
+		\label{eq:cpmaxfinal}
+	\end{equation}
+\end{multicols}
+
+These pressure coefficients can then be integrated to find the force and moment coefficients acting on the vehicle. The local change in static pressure due to the aerodynamic effects can be found by multiplying \gls{sym:CP} by the dynamic pressure $\gls{sym:q}=\frac{1}{2}\rho_{\infty}V_{\infty}^{2}$. This method provides reasonable accuracy in determining the pressure coefficient distribution over blunt bodies for a low computational cost. It is therefore well suited for initial design studies such as the one performed in this report\cite{AndersonJr.2006}.
+The heat flux in the stagnation point is calculated using the method developed by Tauber et al. Equation \ref{eq:modnewtonianqw} gives the heat flux in the stagnation point. This equation uses the ratio between the wall temperature and the temperature in the stagnation point in the flow, which can be calculated using Equation \ref{eq:stagnationtemperature}\cite{AndersonJr.2006}.
+
+%\begin{multicols}{2}
+	\begin{equation} \label{eq:modnewtonianqw}
+		\gls{sym:qw}_{,0} = 1.83 \times 10^{-8} \gls{sym:rho}^{0.5} \gls{sym:V}_{\infty}^3  \gls{sym:rcurvature}^{-0.5} \left(1-\frac{\gls{sym:Tw}}{\gls{sym:T}_0}\right)
+	\end{equation} \break
+	\begin{equation}
+		\gls{sym:T}_0 = \gls{sym:T}_\infty \frac{\gls{sym:gamma}-1}{2}\gls{sym:M}_\infty
+		\label{eq:stagnationtemperature}
+	\end{equation}
+%\end{multicols}
+	
+
 
 \paragraph{Limitations}
-The modified Newtonian flow method has several limitations. The method is more accurate for high incidence angles with respect to the flow.\cite{AndersonJr.2006} As described in chapter \ref{cha:conceptselection}, the body to be analysed is a blunt body, which limits the impact of this loss of accuracy since the majority of the body is at a very high incidence angle to the flow. The method will not produce accurate results below Mach five.\cite{AndersonJr.2006} At lower Mach numbers, the forces on the entry vehicle will no longer be dominated by  pressure drag. This will invalidate the modified Newtonian theory. Since the part of the mission that is analysed in depth in this report ends at Mach five, the analysis will not be influenced. 
+The modified Newtonian flow method is more accurate for high incidence angles with respect to the flow\cite{AndersonJr.2006}. As described in Chapter \ref{cha:conceptselection}, the body to be analysed is a blunt body, which limits the impact of this loss of accuracy since the majority of the body is at a very high incidence angle to the flow. The method will not produce accurate results below Mach five since at lower Mach numbers, the forces on the entry vehicle will no longer be dominated by pressure drag. This will invalidate the modified Newtonian theory\cite{AndersonJr.2006}.
+Since the part of the mission that is analysed in depth in this report ends at Mach five, the analysis will not be influenced. 
 
 \paragraph{Concluding remarks}
-The aerodynamic analysis is capable of calculating the lift, drag and moment coefficents of an arbitrary body as well as their derivatives with respect to angle of attack and side slip. It is also capable of calculating the heat flux in the stagnation point. Verification and validation has been performed to ensure the consistency and accuracy of the method. Details on this can be found in Appendix \ref{app:VandV}.
+The aerodynamic analysis is capable of calculating the pressure distribution on the surface, the lift, drag and moment coefficients of an arbitrary body as well as their derivatives with respect to angle of attack and side slip. It is also capable of calculating the heat flux in the stagnation point. Verification and validation has been performed to ensure the consistency and accuracy of the method. Details on this can be found in Appendix \ref{app:VandV}.
 
 
 
