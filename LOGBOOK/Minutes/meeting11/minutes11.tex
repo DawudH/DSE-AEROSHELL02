@@ -1,6 +1,6 @@
 \subsubsection{Opening}
 Locatie: Fellowship Meeting room 2\\
-Aanwezig: HD, DD, J, L, G, A, B, T, D, Su, Se, Chris Mockel\\
+Aanwezig: HD, DD, J, L, G, A, B, T, D, Su, Se, Chris Mockel (CM)\\
 Verontschuldigd: NR \\
 Afwezig: - \\
 Tijd: Dawud opent de vergadering om 11:03\\
@@ -18,28 +18,29 @@ De agenda van de vergadering bestaat oorspronkelijk uit de volgende punten:
 \item Sluiting
 \end{enumerate}
 
-In de agenda worden \texit{Bespreking met Chris Mockel} en \textit{Control system} samengevoegd.
+In de agenda worden \textit{Bespreking met Chris Mockel} en \textit{Control system} samengevoegd.
 
 \subsubsection{Goedkeuring van de notulen}
-%%%
 Er waren geen op- of aanmerkingen.
 
 \subsubsection{Bespreking met Chris Mockel \& Control System}
-Voordat we beginnen vatten we het designproces tot nu toe samen voor Chris Mockel. Vijf concepten teruggebracht naar 1. Groep opgedeeld in vijf departments: zoals bekend. Er volgt een uitleg per department. Chris is vooral ge\"{i}nteresseerd in de orbit en vraagt of we aerobreaking of aerocapture doen. Het is dus aerobreaking met een entryvelocity van 7km/sec. Ook vraagt hij wat de peak heat load, welke tussen 20-50 W/cm2 ligt. Ook de diameter wordt behandeld, waarin naar voren komt dat de groep een onorthodoxe aanpak heeft wat betreft het ontwerp. Zo zijn eerst complexe tools gemaakt, voordat er benaderingswaardes waren. Bij de aerodynamics maakt CM een opmerking over de validity van newtonian. Ook vraagt hij in hoeverre de vorm van te maken valt. Wordt de temperatuur meegenomen in de structural analysis? In principe niet, met als verklaring dat de TPS de structural layers de temperatuur onder de 200C houdt. Bij control wordt er waarschijnlijk geen c.g. offset gebruikt voor control, enkel een initial offset om alpha te trimmen. Control lift vector met bank vector. Dit is gevaarlijk door density variations. Bank reversal duurt 30-40sec. Is constant cg the best option? Apollo moest in de ocean landen, wij in een range van 500m. Banken zal wel werken, maar misschien niet accuraat genoeg. Laat zien dat nieuwe dingen feasible zijn, oude concepten refereren. IRVE zou je niet kunnen upscalen toch, daarmee zou cg offset verplaatsen heel zwaar worden. Voor 2deg alpha, cg moest 20cm veranderen. Kijk hoeveel apollo deed... HD: benieuwd of atmosfeer varieteit combineren met S-descend (banking). Laat zien dat het werkt als het nog niet eerder is gedaan. Chris Mockel wil graag vragen beantwoorden als we dat willen.
-
-Bank control heeft de voorkeur boven alpha control, doordat bij alpha de hoogte sterk verandert wanneer de lift vector gecontroleerd moet worden. Er is onduidelijkheid over waar het eindpunt is. Het klopt dat dit op 10km hoog en Mach 5 is. Het verschil is dat er een bepaald punt zijn waar uiteindelijk moeten komen. Dit punt moeten we kunnen bereiken met de uitgezette trajectory wat op het eindpunt eindigt. Maximale uitwijking mag dan 500m zijn. Uiteindelijk bedoelen we hetzelfde, maar de bwoording van Dawud was niet goed. HD vraagt zich af of dit lukt met bank. Nadeel van bank dat je doel halen lastig wordt. Te snelle draaiing zorgt voor hoge g-krachten, wat dus nadelig is bij banking. Kijk of het feasible voordat je verder kijkt. Heeft het al gevlogen op Mars?? Dit is iets waar we veel op moeten gaan zitten. Plan A: bank, plan B: bank en alpha, plan C: alpha. Voor de volgende keer eventueel wat resultaten laten zien. HD benadrukt dat er een tweede plan moet zijn, en dat er daadwerkelijk al mensen aan het tweede plan moeten werken. Niet op een paard wedden.
+Voordat we beginnen is het designproces samengevat voor Chris Mockel. Voor de Mid Term hebben we vijf concepten geanalyseerd en zijn we terug gegaan naar \'{e}\'{e}n concept: de stacked toroid. Voor de analyse is de groep opgedeeld in vijf departments: Aerodynamics, Thermodynamics, Structures, Astrodynamics en control. Per department volgt een uitleg. Chris is met name ge\"{i}nteresseerd in de orbit en vraagt of we aerobreaking of aerocapture doen om op Mars te landen. We maken dus gebruik van aerobreaking met een entryvelocity van 7$km\cdot s^{-1}$. Ook vraagt hij wat de peak heat load is. Deze ligt tussen 20-50 $W\cdot cm^{-2}$. Ook de diameter wordt behandeld, waarin naar voren komt dat de groep een onorthodoxe aanpak heeft wat betreft het designproces. Zo zijn eerst complexe tools gemaakt, voordat er benaderingswaardes waren. Deze waardes zouden met simpele berekeningen benaderd moeten worden. Normaal gesproken zou het dus andersom moeten. Bij de aerodynamics maakt CM een opmerking over de validity van Newtonian flow theory bij verschillende Mach-numbers. Ook vraagt hij in hoeverre de vorm te produceren valt, omdat het wordt gedefinieerd door de opblaasbare toroids. Verder vraagt CM of de temperatuur meegenomen wordt in de structural analysis. In principe niet, met als verklaring dat de TPS er voor zorgt dat de structural layers de temperatuur onder de 200 $^{\circ}C$ zal houden.
+\newline\newline
+Bij de control wordt er waarschijnlijk geen c.g. offset gebruikt om actief te controllen, enkel een initial offset om de $\alpha$ te trimmen. De lift vector wordt gecontroleerd met banking. Volgens CM is dit gevaarlijk door density variations in de atmosfeer van Mars. Ook duurt bank-reversal 30-40sec. Verder vraagt hij of een constant c.g. de beste optie is. Apollo moest namelijk in de ocean landen, onze missie in een range van 500m. Banken zal waarschijnlijk wel werken, maar is misschien niet accuraat genoeg. Hij adviseert ons de feasibility van nieuwe concepten aan te tonen en voor de feasibility van oude concepten te refereren naar papers. HD is benieuwd hoe de atmosfeer varieteit te combineren valt met S-descend (banking). We moeten laten zien dat het werkt als het nog niet eerder is gedaan. Chris Mockel wil graag vragen beantwoorden als we dat willen.
+\newline\newline
+Bank control heeft op dit moment de voorkeur boven alpha control, omdat bij alpha de hoogte sterk verandert wanneer de lift vector gecontroleerd moet worden. Er was nog even onduidelijkheid over waar het eindpunt is. Het klopt dat dit op 10km hoog en Mach 5 is. Het verschil is dat er een bepaald eindpunt is waar we uiteindelijk terecht moeten komen. Dit punt moeten we met een eventuele afwijking kunnen bereiken met de uitgezette trajectory. De maximale uitwijking mag dan 500m zijn. Uiteindelijk blijkt dat hetzelfde bedoeld werd, maar de woorden van Dawud waren niet goed gekozen. HD vraagt zich af of dit gaat lukken met banking. Nadeel van banking is dat je doel halen lastig wordt. Te snelle draaiing zorgt voor hoge g-krachten, wat dus nadelig is bij banking. Kijk of het feasible is voordat je verder gaat. Dit is iets waar we veel tijd in moeten gaan steken. Zorg voor eventuele back-up plans. Plan A is enkel bank control, plan B bank en alpha control en plan C dan enkel alpha control. Voor de volgende keer is het misschien een idee om wat resultaten laten zien van een trajectory/orbit. HD benadrukt dat er een tweede plan moet zijn, en dat er daadwerkelijk al mensen aan het tweede plan moeten werken.
 
 \subsubsection{Andere vragen}
-A: final report deadline is dinsdag 30 juni. Vrijdag erna is de grading al. HD heeft het report liefst voor de final review. Mag evt. een complete prelimanry report zijn. CM geeft als tip hoe beter deze versie is, hoe beter de final edit voor dinsdag 30 juni. Liefst dinsdagavond 23 juni.
+Volgens de planning is de deadline voor het final report op 30 juni. De vrijdag erna is de grading al, wat dus best snel op elkaar volgt. HD geeft aan het report het liefst voor de final review te hebben (25 juni). \underline{Deadline voor het Final Report wordt gezet op dinsdagavond 23 juni.} Eventuele kleine verbeteringen kunnen dan nog doorgevoerd worden voor 30 juni.
 
 \subsubsection{W.V.T.T.K.}
 
-\textbf{1.} Toc-depth of 3 levels staat in DID. DD geeft aan dat chapter,section,subsection goed genoeg is. Vier nummers op een rij is nogal veel. HD vertelt dat teveel pagina's wss op een ander probleem zal duiden. 
+\textbf{1.} In de DID voor de table of contents staat er een toc-depth van 3 levels. Dit lijkt nogal veel. DD geeft aan dat chapter, section, subsection goed genoeg is (dus toc-depth van 2 levels). HD zegt dat  wanneer er hierdoor problemen met de pagelimit ontstaan er waarschijnlijk ergens anders onnodig teveel pagina's geschreven zijn. 
 
 \subsubsection{Rondvraag}
-L vraagt aan Chris of hij een conferentie doet. Hoe hij dat aanpakt. Hij presenteert wat ze gedaan hebben 2j geleden. Hij vertelt de design drivers, trade-offs etc. Voor volgend jaar is de deadline rond april.
+L vraagt aan CM wat hij precies bij zijn conferentie gaat doen en hoe hij dat gaat aanpakken. CM antwoordt dat hij zal presenteren wat zijn DSE-groep twee jaar geleden heeft gedaan. Hij zal ook vertellen over de design drivers, de gemaakte trade-offs etc. Voor ge\"{i}nteresseerden zegt hij dat de deadline van volgend jaar rond april is. 
 
 \subsubsection{Sluiting}
-De volgende vergadering zal plaatsvinden op 17-06-2015 om 11:00 in Fellowship Meeting room 2.
+De volgende vergadering zal plaatsvinden op 10-06-2015 om 11:00 in Fellowship Meeting room 2.
 \newline\newline
 Dawud sluit de vergadering om 12:01.
