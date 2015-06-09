@@ -25,7 +25,7 @@ function [ score, Cmalpha, CDA, failed, mod  ] = assessGeometry( skewness, heigh
     % Initialise objective functions
     Cmalpha = 0;
     CDA = 0;
-    CLA = 1000;
+    CLA = 0;
     CmAtrim = 0;
     absoluteLoverD = 0;
     failed = false;    
@@ -49,8 +49,8 @@ function [ score, Cmalpha, CDA, failed, mod  ] = assessGeometry( skewness, heigh
     end
     
     % Height is larger than 0, smaller than 2*radius
-    if height <= 0.1*radius
-        disp('Warning: height < 0.1*radius');
+    if height <= -params.minheightfactor*radius
+        disp('Warning: height < 0.0001*radius');
         failed = true;
     end
     
@@ -92,8 +92,10 @@ function [ score, Cmalpha, CDA, failed, mod  ] = assessGeometry( skewness, heigh
                 disp('alphatrimindex==-1');
                 disp(x);
             end
+            alphatrimindex = 1;
             
-
+            
+            
             dCLCDdalpha = (mod.CLCD_array(alphatrimindex+1)-mod.CLCD_array(alphatrimindex))/(mod.alpha_array(alphatrimindex+1)-mod.alpha_array(alphatrimindex));
             realalphatrim = (LoverD-mod.CLCD_array(alphatrimindex))/dCLCDdalpha + mod.alpha_array(alphatrimindex);
             
@@ -103,10 +105,10 @@ function [ score, Cmalpha, CDA, failed, mod  ] = assessGeometry( skewness, heigh
             mod = mod.calcAeroangle(V, realalphatrim+0.001, beta, phi);
 
             %Calculate performance
-            Cmalpha = (mod.CMA_aero_array(2,end)-mod.CMA_aero_array(2, end-1))/(mod.alpha_array(end)-mod.alpha_array(end-1));
-            CDA = mod.CRA_aero_array(1,end-1);
+            Cmalpha = (mod.CM_aero_array(2,end)-mod.CM_aero_array(2, end-1))/(mod.alpha_array(end)-mod.alpha_array(end-1));
+            CDA = mod.CRA_aero_array(1,1);
             CmAtrim = mod.CMA_aero_array(2,end-1);
-            absoluteLoverD = abs(max(mod.CLCD_array));
+            absoluteLoverD = max(abs(mod.CLCD_array));
             CLA = max(abs(mod.CRA_aero_array(3,:)));
         end
         

@@ -5,6 +5,7 @@ clc
 % open the file
 load('alpha_gamma_phi_60.mat');
 
+
 variables
 
 
