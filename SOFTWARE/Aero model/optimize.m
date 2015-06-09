@@ -33,7 +33,7 @@ opts = gaoptimset(opts, 'PopulationSize', 48);
 % [x,Fval,exitFlag,Output, population, scores] = gamultiobj(@optimizationWrapper,xlength,A,b,[],[],[],[],[],opts);
 
 [ score, mod, Cmalpha, CDA, failed ] = optimizationWrapper( x );
-mod.geom.plotGeometry(true, false);
+mod.geom.plotCp(true, false);
 if saveflag
     save('aeroshapes/optimizationoutputoutput');
 end
