@@ -1,4 +1,4 @@
-In this section the methods used for determining appropriate control systems are explained. These systems should be able to keep the spacecraft on the trajectory as defined by the astrodynamics tool in section \ref{subsec:orbittool}. First the assumptions used and their effects on the accuracy of the analysis are explained in section \ref{control:assumptions}. Than, in section \ref{control:trim}, a point is determined in which the centre of gravity should lie in order for the spacecraft to be trimmed at an angle of attack of *** as determined in section  \ref{subsec:orbittool}. The stability of the spacecraft is analysed in section \ref{control:stab}. In section \ref{control:system} the available control systems that can be used to follow the chosen angle of attack and bank angle profiles are weighed off.
+In this section the methods used for determining appropriate control systems are explained. These systems should be able to keep the spacecraft on the trajectory as defined by the astrodynamics tool in section \ref{subsec:orbittool}. First the assumptions used and their effects on the accuracy of the analysis are explained in section \ref{control:assumptions}. Than, in section \ref{control:trim}, a point is determined in which the \gls{cg} should lie in order for the spacecraft to be trimmed at an angle of attack of *** as determined in section  \ref{subsec:orbittool}. The stability of the spacecraft is analysed in section \ref{control:stab}. In section \ref{control:system} the available control systems that can be used to follow the chosen angle of attack and bank angle profiles are weighed off.
 
 \paragraph{Assumptions}
 \label{control:assumptions}
@@ -6,7 +6,7 @@ In this section the methods used for determining appropriate control systems are
 
 \paragraph{Trim point}
 \label{control:trim}
-The aerodynamic forces acting on the spacecraft work on the centre of pressure of the aeroshell. The centre of gravity of the spacecraft has a certain offset in x,y and z direction with respect to this centre of pressure. Thus moments are induced around the center of gravity. These moments can be described as shown in equations \ref{eq:momx} - \ref{eq:momz} which follow from figures \ref{fig:momx} - \ref{fig:momz}.
+The aerodynamic forces acting on the spacecraft work on the centre of pressure of the aeroshell. The \gls{cg} of the spacecraft has a certain offset in x,y and z direction with respect to this centre of pressure. Thus moments are induced around the center of gravity. These moments can be described as shown in equations \ref{eq:momx} - \ref{eq:momz} which follow from figures \ref{fig:momx} - \ref{fig:momz}.
 
 \begin{equation}
 \label{eq:momx}
@@ -21,23 +21,21 @@ M_y = F_x \cdot dz - F_z \cdot dx
 M_z = F_x \cdot dy - F_y \cdot dx
 \end{equation}
 
-\begin{figure}
+\begin{figure}[h]
 	\centering
-	\includegraphics[width=0.75\textwidth]{./Figure/Nyan}
+	\includegraphics[width=0.65\textwidth]{./Figure/Nyan}
 	\caption{nyan nyan om de X-as}
 	\label{fig:momx}
 \end{figure}
-
-\begin{figure}
+\begin{figure}[h]
 	\centering
-	\includegraphics[width=0.75\textwidth]{./Figure/Nyan}
+	\includegraphics[width=0.65\textwidth]{./Figure/Nyan}
 	\caption{nyan nyan om de Y-as}
 	\label{fig:momy}
 \end{figure}
-
-\begin{figure}
+\begin{figure}[h]
 	\centering
-	\includegraphics[width=0.75\textwidth]{./Figure/Nyan}
+	\includegraphics[width=0.65\textwidth]{./Figure/Nyan}
 	\caption{nyan nyan om de Z-as}
 	\label{fig:momz}
 \end{figure}
@@ -52,17 +50,24 @@ The aerodynamic tool determines the static stability around all axis in the aero
 \label{control:system}
 In this section three available control systems, a way of analysing their sizing and their application is explained. The control systems that are considered are \gls{cg} offset, thrusters and aerodynamic surfaces respectively.
 
-\subparagraph{\acrfull{cg} offset}
+\subparagraph{\acrlong{cg} offset}
+In order to be able to trim the spacecraft at a certain angle of attack \gls{sym:alpha} a constant control moment has to be delivered by the combined control systems. To achieve this an active \gls{cg} offset control system is considered. By changing the location of the capsule \gls{cg} with respect to the aeroshell the magnitude of the resultant moments changes \cite{Mulqueen1991}.\\
+%From the stability analysis 
 
-**Not necessary for AoA, not feasible for bank**
+%**Not necessary for AoA, not feasible for bank**
 
 \subparagraph{Thrusters}
-By dividing the required reaction control moment around a certain axis with the length of the thruster moment arm the required thruster control force $F_{req}$ can be determined. From the specific impulse of a thruster $I_{sp}$ and its propellant mass flow $\dot{m}$ follows the amount of thrust it can generate:
+\label{subpar:thrusters}
+By dividing the required reaction control moment around a certain axis \gls{sym:Maero} with the length of the thruster moment arm \gls{sym:d} the required thruster control force $\gls{sym:F}_{req}$ can be determined. From the specific impulse of a thruster \gls{sym:Isp} and its propellant mass flow \gls{sym:mdot} follows the amount of thrust it can generate \cite{Allen2012}:
 \begin{equation}
-F_{thrust}=I_{sp}g_{0}\dot{m}
+\gls{sym:F}_{thrust}=\gls{sym:Isp}\gls{sym:ge}\gls{sym:mdot}
 \label{eq:Fthrust}
 \end{equation}
-Where $g_{0}$ is the gravitational acceleration on earth. One can see from the preceding that for moment equilibrium $F_{req}=F_{thrust}$. By summing the thruster control force required over time the total propellant mass can be obtained. To arrive at a specific thruster design the specific impulse and maximum mass flow of available thrusters can be taken from literature. From this also follows the thruster dry mass, which can be added to the propellant mass to arrive at the total thruster control system mass.
-\subparagraph{Aerodynamic surfaces}
+Where \gls{sym:ge} is the gravitational acceleration on earth. One can see from the preceding that for moment equilibrium $\gls{sym:F}_{req}=\gls{sym:F}_{thrust}$. By summing the thruster control force required over time the total propellant mass can be obtained. To arrive at a specific thruster design the specific impulse and maximum mass flow of available thrusters can be taken from literature. From this also follows the thruster dry mass, which can be added to the propellant mass to arrive at the total thruster control system mass. 
 
-**Guido**
+
+Since a constant mass flow is needed to be able to deliver a continuous control moment thrusters are not considered to be used to trim the spacecraft at a certain angle of attack. Doing so would result in an excessively high propellant mass.
+
+\subparagraph{Aerodynamic surfaces}
+Using the modified Newtonian flow theory discussed in section \ref{subsec:aerotool} the force and moment contributions of a surface with a certain orientation to the freestream flow can be computed. For an aerodynamic surface (also known as a flap) the freestream inclination angle can be varied by using actuators. This directly influences the forces and moments exerted by the actuated surface, thereby allowing active control.\\
+The required control moments can be determined in a manner similar to section \ref{subpar:thrusters}. By comparing the required and delivered control moments the flap size can be computed. A relation can be found between the maximum flap inclination angle and required flap size. 

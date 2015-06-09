@@ -19,11 +19,11 @@ b(2) = 0;
 
 % height > 0
 A(3,2) = -1;
-b(3) = 0;
+b(3) = -params.minheightfactor;
 
-%heightfactor < 3
+%heightfactor < maxheightfactor
 A(4,2) = 1;
-b(4) = 3;
+b(4) = params.maxheightfactor;
 
 opts = gaoptimset('PlotFcns',{@gaplotbestf,@gaplotstopping, @gaplotbestindiv});
 % opts = gaoptimset('PlotFcns',{@gaplotstopping, @gaplotpareto});
@@ -33,7 +33,7 @@ opts = gaoptimset(opts, 'PopulationSize', 48);
 % [x,Fval,exitFlag,Output, population, scores] = gamultiobj(@optimizationWrapper,xlength,A,b,[],[],[],[],[],opts);
 
 [ score, mod, Cmalpha, CDA, failed ] = optimizationWrapper( x );
-mod.geom.plotCp(true, false);
+mod.plotCp(true, false);
 if saveflag
     save('aeroshapes/optimizationoutputoutput');
 end

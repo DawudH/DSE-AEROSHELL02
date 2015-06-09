@@ -8,21 +8,18 @@ clc
 %% Define input
 
 % lay-up (t[mm], k[w/m/K], rho[kg/m3], cp[J/kg/K], emis[-], allowT[K])
-filename   = 'layup2.txt';
+filename   = 'layup4.txt';
 layupin    = dlmread(filename);
 % SI units
-thicks = dlmread('thick.txt');
-layupin(1,1) = thicks(76);
-layupin(2,1) = thicks(340);
 layup      = zeros(size(layupin));
 layup(:,1) = layupin(:,1)./1000;
 layup(:,2:6) = layupin(:,2:6);
 L = layup(:,1);
-qfact = 1.4;
+
 % Aero input, qsdot
 load('heatflux.mat','T','t','qmax_array')
 tq = find(not(qmax_array==0));
-qaero = qmax_array(tq(1):tq(end))*qfact;
+qaero = qmax_array(tq(1):tq(end));
 Tatm  = T(tq(1):tq(end)); 
 timeq = t(tq(1):tq(end))-t(tq(1));
 clear('T','t')
@@ -31,11 +28,15 @@ clear('T','t')
 ttot = timeq(end);  % end time of the orbit [s]
 dt   = 0.1;    % time step, chooseable
 T0 = 293;
-q0 = qaero*10000*qfact;
+q0 = qaero*10000;
 nmax = int32(ttot/dt);  % number of time steps
 t = [0:double(nmax-1)]*dt;
 fact    = 1;           % multiplication factor of number of space steps
-kfact = [2.5e-5/fact;2.5e-6/fact;2.5e-2/fact]; % Conductivity factors
+     kfact = [1.0 ;
+              1.0 ;
+              1.0 ;
+              1.0 ;
+              1.0]; % Conductivity factors
 
 
 % spacing
@@ -89,6 +90,36 @@ end
 alpha = k./rho./cp;
 v = alpha*dt/dx/dx;
 
+%% Temperature boundaries
+
+Tbegin = 4;   %[K]
+Tend   = 273+20; %[K]
+dT     = Tbegin-Tend;
+
+% Define the wanted vector
+Tinitial = zeros(imax,1);
+Tinitial(1) = Tbegin;
+
+% Total material prop
+R      = layup(:,1)./layup(:,2);
+Req    = sum(R);
+
+% The steady heatflux
+qsteady = dT/Req; %[W/m2]
+
+% Find the temperatures
+Tlayer  = zeros(length(L)+1,1);
+Tlayer(1) = Tbegin;
+
+for m = 1:length(L)
+    %Find all temps
+    teller = indexx(m)+1;
+    while teller <= indexx(m+1)
+        teller = teller + 1;
+        Tinitial(teller) = Tinitial(teller-1) - (qsteady*(dx/layup(m,2)));
+    end
+end
+
 
 %% Implement Cranck-Nickelson with voids
 
@@ -96,7 +127,8 @@ v = alpha*dt/dx/dx;
 % space is rows, time is columns
 T = zeros(imax+layers,nmax);
 T(:,1) = T0;
-qs = interp1(timeq,qaero,t)*10000;
+fluxfactor = 1;
+qs = fluxfactor*interp1(timeq,qaero,t)*10000;
 Tamb = interp1(timeq,Tatm,t);
 
 % Define matrices for Crank-Nicolson
@@ -132,7 +164,7 @@ if contourplot
     hold on
     contourf(t,xcont,T)
     colormap parula
-    colorbar
+	colorbar
     title('Temperature over time and distance')
     xlabel('Time [s]')
     ylabel('Depth [m]')
@@ -150,7 +182,7 @@ for j=1:length(L)
     layernames{j} = strcat('Layer',int2str(j));
 end
 output = table(layup(:,1)*1000,results,layup(:,6),layup(:,2),layup(:,3),layup(:,4),'RowNames',layernames,'VariableNames',{'Thickness','maxT','allowT','k','rho','cp'});
-
+    
 disp(output)    
 disp(['m/A = ',num2str(sum(layup(:,1).*layup(:,3))),' [kg/m3]'])  
     
