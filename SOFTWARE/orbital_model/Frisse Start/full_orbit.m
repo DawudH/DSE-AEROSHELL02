@@ -32,9 +32,12 @@ end
     
     % give initial control state
     alpha = control.alpha_init;
-    %[CLA, CDA, CMYA] = aero_coef.aeroCoeffs(alpha);
-    CLA = aero_coef.cla;
-    CDA = aero_coef.cda;
+    [CLA, CDA, CMYA] = aero_coef.aeroCoeffs(alpha);
+    
+    %%for L/D vs. acceleration profile
+    %CLA = aero_coef.cla;
+    %CDA = aero_coef.cda;
+    
     %%Functions
     if hypkep
         [out_hk] = hyperbolic_kepler(R0,V0,A0,G,M_mars,R_m,h_atm,dt_kep_init);
