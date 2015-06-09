@@ -6,6 +6,7 @@ out.LoverD = 0.5;
 out.q = 31;
 out.r_capsule = 2.5;
 out.allowskewness = false;
-out.maxheightfactor = 3;
+out.maxheightfactor = 1;
+out.minheightfactor = 0.2;
 
 end
