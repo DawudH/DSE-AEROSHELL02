@@ -213,8 +213,8 @@ if valid
     ax = gca;
     ax.ColorOrderIndex = 1;
     plot(t,plotVAL)
-    %figure;
-    %plot(t,abs(plotS-plotVAL)./plotVAL)
+    figure;
+    plot(t,abs(plotS-plotVAL)./plotVAL)
     mean(abs(plotS-plotVAL)./plotVAL)
 end
     
