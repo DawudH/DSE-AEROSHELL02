@@ -37,12 +37,7 @@ Simplification was performed to realize a structurally determinate problem resul
 	\label{fig:TC}
 \end{figure}
 
-Force estimation is performed in a two-dimensional plane representing a cross-sectional slice, of an infinitesimal angle, of the sphere cone. Each toroid is loaded externally by an aerodynamic force applied perpendicular to its width \gls{sym:w} at its forward node. The aerodynamic force is the resultant of the limit aerodynamic pressure $\gls{sym:q}_{limit}$, assumed constant for each toroid, multiplied by toroid width \gls{sym:w} to represent its working area. The internal pressure required to prevent wrinkling is given by \ref{eq:Pmin} \cite{Brown2009}. 
-
-\begin{equation}
-\label{eq:Pmin}
-\gls{sym:pinfl}_{,min} = F_{aerodynamic} \frac{4}{3 \pi} \frac{tan(\gls{sym:theta})sin(\gls{sym:theta}) }{\gls{sym:Do}\gls{sym:h}}
-\end{equation}
+Force estimation is performed in a two-dimensional plane representing a cross-sectional slice, of an infinitesimal angle, of the sphere cone. Each toroid is loaded externally by an aerodynamic force applied perpendicular to its width \gls{sym:w} at its forward node. The aerodynamic force is the resultant of the limit aerodynamic pressure $\gls{sym:q}_{limit}$, assumed constant for each toroid, multiplied by toroid width \gls{sym:w} to represent its working area. 
 %The limit aerodynamic pressure is determined from the peak dynamic pressure by multiplying with a \acrfull{fos}, thereby taking into account a contingency for structural design. For composite structures, NASA dictates a \gls{fos} of 1.5 for uniform material and 2.0 for a discontinuity area \cite{Technical2014}. As the inflatable comprises a large amount of component interaction and discontinuity, the ultimate load is calculated as twice the limit aerodynamic pressure that follows from the trajectory analysis in Chapter \ref{ch:XXX}.
 
 In addition to the aerodynamic pressure acting on the inflatable forward surface, movables (e.g. flaps) at the edge of the aeroshell are taken into account, where present, as a point load directed perpendicular to the flap deployed surface.
@@ -62,6 +57,18 @@ The decreasing circumference over which forces act going from outboard to inboar
 The three-dimensional effects are partially taken into account by assuming that all lateral loads are carried circumferentially rather than in the considered two-dimensional plane. Therefore lateral loads are set to zero at each of the truss nodes. In reality this will, to a large extent, be true as the circular and stacked structure will be the primary contributor to bending stiffness. These lateral loads are primarily those induced by bending moments, such that neglecting them in the two-dimensional plane implies that the bending moment is taken up by the three-dimensional structure. 
 
 The validity of this adjustment is expanded upon in Appendix \ref{sec:VandVstruc} where the verification and validation of the model is discussed. Validation is performed on the basis of \gls{fem} results presented by Lindell et al. \cite{Lindell2006}. The modified two-dimensional method yields acceptable results for force estimations on \gls{irve}-II with a maximum error of 15.4\%, rather than the severe errors induced by not taking into account the three-dimensional bendings stiffness. The full verification and validation results can be found in Appendix \ref{sec:VandVstruc}.
+
+The minimum internal pressure required to prevent wrinkling is approximated by Equation \ref{eq:Pmin} \cite{Brown2009, Samareh2011}, based on the premise that the work done by the aerodynamic force $F_{aerodynamic}$ is counteracted by the internal inflation pressure. In this approximation \gls{sym:theta} denotes the mean half-cone angle.
+\begin{equation}
+\label{eq:Pmin}
+\gls{sym:pinfl}_{,min} = F_{aerodynamic} \frac{4}{3 \pi} \frac{tan(\gls{sym:theta})sin(\gls{sym:theta}) }{\gls{sym:Do}\gls{sym:h}}
+\end{equation}
+This pressure induces a tensile running load $\gls{sym:Q}_{infl}$ in the members of magnitude \cite{Megson2012}
+\begin{equation}
+\label{eq:Q}
+\gls{sym:Q}_{infl} =\frac{\gls{sym:pinfl}_{,min}w}{2}
+\end{equation}
+Dimension \gls{sym:w} rather than \gls{sym:h} is used as it is the smaller dimension, hence an overestimation of the inflation pressure results. As the pressure calculated by Equation \ref{eq:Pmin} is an approximate minimum inflation pressure for a general stacked toroid case, this value is not necessarily sufficient to bring all members into tension. To this end, inflation pressure is increased to a value that effects tension in all flexible material.
 
 The inputs and outputs of the structural model are tabulated in Table \ref{tab:infl}.
 \begin{table}[h]
