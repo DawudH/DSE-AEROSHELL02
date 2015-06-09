@@ -10,6 +10,8 @@ function out = alpha_profile(t,aero_coef,control,state,dt)
     t_change = [1000 1290 1385];
     dalpha = -[0.5 0.5 0.5 0.5 0.5]*pi/180*dt;
     
+    Alpha = [10 10 10 10]*pi/180;
+    
     t_check = t_change >= t;
     if sum(t_check) == 0
         check = length(Alpha);

@@ -13,8 +13,8 @@ function out = phi_profile(t)
 %     
 
 	%something else
-    phi = [0 60 60 0]*pi/180;
-    t_change = [250 760 1100];    
+    phi = [0 32 32 0]*pi/180;
+    t_change = [200 760 1100];    
 
     t_check = t_change >= t;
     if sum(t_check) == 0
