@@ -13,6 +13,8 @@ Chemical gas-generation systems similarly feature a higher level of complexity a
 
 Tanked-gas systems are the preferred choice, featuring a significantly higher level of reliability and past application. Most notably, these have seen application in the \gls{irve} missions in the form of a nitrogen blow-down system \cite{Smith2010}. Blow-down systems offer controllable gas flow at low development and hardware cost \cite{Freeland1998}. Moreover, these are excellently suited for high-pressure applications in inflatable structures \cite{Jenkins2001}.
 
+
+
 \subsubsection{Gas generator design and sizing}
 A nitrogen tank is used for storage and supply of nitrogen gas. The minimum inflation pressure in the toroids is based on the premise that it should counteract the aerodynamic force exerted to bring flexible material into tension, formulated in Equation \ref{eq:Pmin}. The volume that is inflated may be approximated and follows from Equation \ref{eq:volume}.
 
@@ -28,6 +30,16 @@ This yields the total gas that is to be held within the pressure tank. An additi
 \subsubsection{Inflation system integration}
 
 
+Figure \ref{fig:infsys} shows a schematic representation of the inflation system. Moving from left to right the inflation gas is stored in a the nitrogen tank. Pressure and temperature sensors are included to monitor the storage conditions. A separate valve is included for filling purposes of the tank, and a release valve is included for emptying the tank outside normal mission operations. A electromechanical valve release the pressure. A electromechanical valve is used since it allows for multiple uses as opposed to for example pyrotechnical valves. From the high pressure within the storage tank the controlled the pressure is reduced and more precisely controlled by a set of two pressure regulators (including internal release valves). A set of check valves, allowing flow only in one direction, connects to the toroid. The toroids are grouped together and not connected all at once. This allows for partial function if a leakage occurs in of the groups. The check valves prevent the flow from equilibrating over the toroids in this case.
+
+A final set of check valves is included to connect the toroids to the vent. This allows for reducing the pressure in case it becomes to high. The conditions within the tank are measured by a set of pressure and temperature transducers. If the pressure becomes to high, for example due to the thermal heating the vent functions to lower the pressure. Pressure transducer however are also important for making sure the minimum pressure is maintained since the pressure can drop due to leakage. 
+
+\begin{figure}[h]
+		\centering
+		\includegraphics[width=1.0\textwidth]{./Figure/Structure/infsys.pdf}
+		\caption{Schematic view of the inflation system (adapted from \cite{Hughes2005})}
+		\label{fig:infsys}
+\end{figure}
 
 
 

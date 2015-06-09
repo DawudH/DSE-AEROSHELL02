@@ -51,7 +51,7 @@ load('v_gamma.mat');
 V_esc = sqrt(G*M_mars * 2 / r);
 
 v_range = V_esc:100:7500;
-k = length(results.V) + 1;
+k = length(results.GAMMA) + 1;
 
 for j = 1:length(v_range)
     notdone = true;
