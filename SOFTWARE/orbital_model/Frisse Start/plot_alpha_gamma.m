@@ -98,7 +98,7 @@ plot(21.74:0.001:21.93,polyval(crash.polyfit,21.74:0.001:21.93)*180/pi)
 grid on
 
 phi_60.crash.polyfit = crash.polyfit;
-phi_60.accel.polyfit = crash.polyfit;
-phi_60.flyby.polyfit = crash.polyfit;
+phi_60.accel.polyfit = accel.polyfit;
+phi_60.flyby.polyfit = flyby.polyfit;
 save('phi_60.mat','phi_60')
 
