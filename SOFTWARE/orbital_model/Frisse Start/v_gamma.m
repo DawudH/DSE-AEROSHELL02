@@ -40,9 +40,9 @@ hypkep = false;
 % plot(results.GAMMA,results.ALPHA*180/pi,'x')
 
 %%
-flybylimit = false;
+flybylimit = true;
 orbitlimit = false;
-accellimit = true;
+accellimit = false;
 
 gamma_accuracy = 0.005;
 
@@ -50,12 +50,12 @@ load('v_gamma.mat');
 
 V_esc = sqrt(G*M_mars * 2 / r);
 
-v_range = V_esc:100:7500;
+v_range = 6500:100:7500;
 k = length(results.GAMMA) + 1;
 
 for j = 1:length(v_range)
     notdone = true;
-    gamma_range = [14, 22.5];
+    gamma_range = [21.5, 22.5];
     n = 1;
     while notdone
         
