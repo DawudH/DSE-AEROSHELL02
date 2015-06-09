@@ -18,7 +18,7 @@ flybylimit = true;
 orbitlimit = false;
 accellimit = false;
 
-alpha = -5:1:25;
+alpha = -5:2.5:25;
 gamma_range = [21, 22];
 
 
