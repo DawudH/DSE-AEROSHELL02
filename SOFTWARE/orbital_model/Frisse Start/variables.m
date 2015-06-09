@@ -10,6 +10,8 @@ theta0 = 135/180*pi;%3.016549;%150/180*pi;
 gamma = 21.87;
 % %d=6
 % gamma = 22.2;
+%d=18
+gamma = 21.74;
 
 %Initial Position
 rx = -4148904.375000;

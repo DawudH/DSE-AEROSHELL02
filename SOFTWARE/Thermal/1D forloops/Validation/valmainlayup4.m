@@ -2,6 +2,8 @@
 % Suthes & Lucas
 %% Log:
 % 2-6 10:48 -- Validated correctly with 1-layer copper
+% layup4 = 20W/cm2 for t = 90s
+
 clear all
 close all
 clc

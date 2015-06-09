@@ -4,9 +4,10 @@ clc
 
 constants
 
-open('results.mat');
-results = ans.results;
+load('results.mat');
 figure('name','under 3g')
+xlabel('Flight path angle')
+ylabel('Angle of attack')
 hold on
 for k = 1:length(results.A)
     if results.A(k)<3*g_earth

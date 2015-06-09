@@ -218,7 +218,9 @@ if valid
     mean(abs(plotS-plotVAL)./plotVAL)
 end
     
-    
+%% Determine the errors for the different layes
+
+
     
     
     
