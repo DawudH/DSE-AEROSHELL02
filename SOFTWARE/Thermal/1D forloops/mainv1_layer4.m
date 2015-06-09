@@ -8,7 +8,7 @@ clc
 %% Define input
 
 % lay-up (t[mm], k[w/m/K], rho[kg/m3], cp[J/kg/K], emis[-], allowT[K])
-filename   = 'layup2.txt';
+filename   = 'layup4.txt';
 layupin    = dlmread(filename);
 % SI units
 layup      = zeros(size(layupin));
@@ -32,7 +32,11 @@ q0 = qaero*10000;
 nmax = int32(ttot/dt);  % number of time steps
 t = [0:double(nmax-1)]*dt;
 fact    = 1;           % multiplication factor of number of space steps
-kfact = [2.5e-5/fact;2.5e-6/fact;2.5e-2/fact]; % Conductivity factors
+     kfact = [1.0 ;
+              1.0 ;
+              1.0 ;
+              1.0 ;
+              1.0]; % Conductivity factors
 
 
 % spacing
@@ -116,13 +120,15 @@ for m = 1:length(L)
     end
 end
 
+
 %% Implement Cranck-Nickelson with voids
 
 % i is space, n is time
 % space is rows, time is columns
 T = zeros(imax+layers,nmax);
 T(:,1) = T0;
-qs = interp1(timeq,qaero,t)*10000;
+fluxfactor = 1;
+qs = fluxfactor*interp1(timeq,qaero,t)*10000;
 Tamb = interp1(timeq,Tatm,t);
 
 % Define matrices for Crank-Nicolson

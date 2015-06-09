@@ -37,15 +37,10 @@ Simplification was performed to realize a structurally determinate problem resul
 	\label{fig:TC}
 \end{figure}
 
-Force estimation is performed in a two-dimensional plane representing a cross-sectional slice, of an infinitesimal angle, of the sphere cone. Each toroid is loaded externally by an aerodynamic force applied perpendicular to its width \gls{sym:w} at its forward node. The aerodynamic force is the resultant of the limit aerodynamic pressure $\gls{sym:q}_{limit}$, assumed constant for each toroid, multiplied by toroid width \gls{sym:w} to represent its working area. The internal pressure required to prevent wrinkling is given by \ref{eq:Pmin} \cite{Brown2009}. 
-
-\begin{equation}
-\label{eq:Pmin}
-\gls{sym:pinfl}_{,min} = F_{aerodynamic} \frac{4}{3 \pi} \frac{tan(\gls{sym:theta})sin(\gls{sym:theta}) }{\gls{sym:Do}\gls{sym:h}}
-\end{equation}
+Force estimation is performed in a two-dimensional plane representing a cross-sectional slice, of an infinitesimal angle, of the sphere cone. Each toroid is loaded externally by an aerodynamic force applied perpendicular to its width \gls{sym:w} at its forward node. The aerodynamic force is the resultant of the limit aerodynamic pressure $\gls{sym:q}_{limit}$, assumed constant for each toroid, multiplied by toroid width \gls{sym:w} to represent its working area. 
 %The limit aerodynamic pressure is determined from the peak dynamic pressure by multiplying with a \acrfull{fos}, thereby taking into account a contingency for structural design. For composite structures, NASA dictates a \gls{fos} of 1.5 for uniform material and 2.0 for a discontinuity area \cite{Technical2014}. As the inflatable comprises a large amount of component interaction and discontinuity, the ultimate load is calculated as twice the limit aerodynamic pressure that follows from the trajectory analysis in Chapter \ref{ch:XXX}.
 
-In addition to the aerodynamic pressure acting on the inflatable forward surface, movables (e.g. flaps) at the edge of the aeroshell are taken into account, where present, as a point load directed perpendicular to the flap deployed surface.
+%In addition to the aerodynamic pressure acting on the inflatable forward surface, movables (e.g. flaps) at the edge of the aeroshell are taken into account, where present, as a point load directed perpendicular to the flap deployed surface.
 
 As input forces are in Newtons per meter, being the product of a pressure over a length, forces should technically be designated as forces per unit length or running loads. Hereafter, all references to forces in this section are in fact references to running loads. To calculate forces from running loads, these should be multiplied with the circumference over which they act.
 
@@ -59,9 +54,21 @@ The decreasing circumference over which forces act going from outboard to inboar
 %\label{eq:pressureforce}
 %\end{equation}
 %TDimension \gls{sym:w} is used for all toroids, as it is smaller than \gls{sym:h} and therefore a more conservative estimate for the inflation pressure results. For the outer toroid, the inflation pressure is predominantly carried by the radial straps and this leads to the first requirement that the radial straps are loaded in tension. For all other toroids, the inflation pressure internally balances itself and is thereby not carried through the structure (and radial straps), since cells are symmetric and adjoining cells have the same inflation pressure. This leads to the second requirement that all toroid walls are in tension. Based hereupon, the second iteration proceeds by setting the pressure equal to the value that satisfies the second requirement. Subsequent iterations continue to increase the inflation pressure until the first requirement is met. 
-The three-dimensional effects are partially taken into account by assuming that all lateral loads are carried circumferentially rather than in the considered two-dimensional plane. Therefore lateral loads are set to zero at each of the truss nodes. In reality this will, to a large extent, be true as the circular and stacked structure will be the primary contributor to bending stiffness. These lateral loads are primarily those induced by bending moments, such that neglecting them in the two-dimensional plane implies that the bending moment is taken up by the three-dimensional structure. 
+The three-dimensional effects are partially taken into account by assuming that all lateral loads are carried circumferentially rather than in the considered two-dimensional plane. Therefore lateral loads are set to zero at each of the outer (forward and aft) truss nodes. In reality this will, to a large extent, be true as the circular and stacked structure will be the primary contributor to bending stiffness. These lateral loads are primarily those induced by bending moments, such that neglecting them in the two-dimensional plane implies that the bending moment is taken up by the three-dimensional structure. 
 
 The validity of this adjustment is expanded upon in Appendix \ref{sec:VandVstruc} where the verification and validation of the model is discussed. Validation is performed on the basis of \gls{fem} results presented by Lindell et al. \cite{Lindell2006}. The modified two-dimensional method yields acceptable results for force estimations on \gls{irve}-II with a maximum error of 15.4\%, rather than the severe errors induced by not taking into account the three-dimensional bendings stiffness. The full verification and validation results can be found in Appendix \ref{sec:VandVstruc}.
+
+The minimum internal pressure required to prevent wrinkling is approximated by Equation \ref{eq:Pmin} \cite{Brown2009, Samareh2011}, based on the premise that the work done by the aerodynamic force $F_{aerodynamic}$ is counteracted by the internal inflation pressure. In this approximation \gls{sym:theta} denotes the mean half-cone angle.
+\begin{equation}
+\label{eq:Pmin}
+\gls{sym:pinfl}_{,min} = F_{aerodynamic} \frac{4}{3 \pi} \frac{tan(\gls{sym:theta})sin(\gls{sym:theta}) }{\gls{sym:Do}\gls{sym:h}}
+\end{equation}
+This pressure induces a tensile running load $\gls{sym:Q}_{infl}$ in the members of magnitude \cite{Megson2012}
+\begin{equation}
+\label{eq:Q}
+\gls{sym:Q}_{infl} =\frac{\gls{sym:pinfl}_{,min}w}{2}
+\end{equation}
+Dimension \gls{sym:w} rather than \gls{sym:h} is used as it is the smaller dimension, hence an overestimation of the inflation pressure results. As the pressure calculated by Equation \ref{eq:Pmin} is an approximate minimum inflation pressure for a general stacked toroid case, this value is not necessarily sufficient to bring all members into tension. To this end, inflation pressure is increased to a value that effects tension in all flexible material.
 
 The inputs and outputs of the structural model are tabulated in Table \ref{tab:infl}.
 \begin{table}[h]
@@ -88,7 +95,7 @@ The approach is based on the following assumptions:
 \item The aerodynamic loading is applied discretely at the outer nodes. The effects of a continuous distribution are neglected since they do not fit within the truss model. This assumptions neglects a bending load within the forward radial strap. 
 \item Structural mass is neglected. Neglecting the structural mass causes a small error within the computed loads, varying with the ratio of structural mass and dynamic pressure.
 \end{itemize} 
-The consequence of these assumptions and their impact, primarily the first two, make the model suitable for a preliminary load analysis of the inflatable structure and the loads at its attachment points, but unsuitable for detailed analysis and structural design and sizing. To this end, a more detailed model is proposed, namely expanding upon the current model by a \gls{fea}.
+The consequence of these assumptions and their impact, primarily the first two, make the model suitable for a preliminary load analysis of the inflatable structure and the loads at its attachment points, but unsuitable for detailed analysis and structural design and sizing. %To this end, a more detailed model is proposed, namely expanding upon the current model by a \gls{fea}.
 
 
 %The effects of these assumptions is in total quite significant. The method relies heavily on the first and second assumptions. Considering the foldable nature of the structure, stiffness is limited and actual deformations may become significant. This assumptions is partly taken into account by requiring a inflation pressure which prevents any compressive loading. Still though further stiffness consideration are not taken into account. Based on the significance of these assumptions actual stress distributions can not be considered. However the applied model is reliable for a more general analysis of the structure and the loads.
@@ -114,7 +121,7 @@ Material properties  &                                   \\ \hline
 \end{tabular}
 \label{tab:inflmass}
 \end{table}
-Moreover, the model calculates inflation gas pressure based on the premise that work done by inflation gas and aerodynamic pressure should be equal, in line with relations established by Brown \cite{Brown2009}. The model is based on the assumption that the inflatable is an axisymmetric sphere cone of constant half-cone angle, thereby treating a simplified model of the shape determined by aerodynamic optimization in Chapter \ref{ch:XXX}. 
+Moreover, the model calculates inflation gas pressure based on the premise that work done by inflation gas and aerodynamic pressure should be equal and members are in tension, in line with relations established by Brown \cite{Brown2009}. The model is based on the assumption that the inflatable is an axisymmetric sphere cone of constant half-cone angle, thereby treating a simplified model of the shape determined by aerodynamic optimization in Chapter \ref{ch:XXX}. 
 
 Primary assumptions in this model are a symmetric sphere cone and a constant half-cone angle. Verification and validation efforts have been summarized in Appendix \ref{sec:VandVstruc} and have yielded the conclusion that the mass model is suitable for preliminary design.
 
