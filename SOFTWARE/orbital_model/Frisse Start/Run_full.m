@@ -8,7 +8,7 @@ variables
 % booleans
 use_control = false;
 multiple_orbits = true;
-use_alpha_profile = true;
+use_alpha_profile = false;
 export_figures = false;
 hypkep = false;
 
