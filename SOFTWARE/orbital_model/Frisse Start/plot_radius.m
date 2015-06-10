@@ -62,7 +62,7 @@ figure('name','radius')
 subplot(1,3,1)
 hold on
 grid on
-xlabel('$r$ $\left[m\right]$','interpreter','latex')
+xlabel('$d$ $\left[m\right]$','interpreter','latex')
 xlim([6,18])
 ylabel('$q$ $\left[Pa\right]$','interpreter','latex')
 plot([6,9,12,15,18],[max(outj6.q),max(outj9.q),max(outj12.q),max(outj15.q),max(outj18.q)],'-o','color',cc(1,:),'MarkerEdgeColor',cc(1,:))
@@ -79,7 +79,7 @@ plot([6,9,12,15,18],[max(outo6.q),max(outo9.q),max(outo12.q),max(outo15.q),max(o
 subplot(1,3,3)
 hold on
 grid on
-xlabel('$r$ $\left[m\right]$','interpreter','latex')
+xlabel('$d$ $\left[m\right]$','interpreter','latex')
 ylabel('$M$ $\left[-\right]$','interpreter','latex')
 xlim([6,18])
 ylim([40,45])
@@ -89,7 +89,7 @@ plot([6,9,12,15,18],[max(outo6.M),max(outo9.M),max(outo12.M),max(outo15.M),max(o
 subplot(1,3,2)
 hold on
 grid on
-xlabel('$r$ $\left[m\right]$','interpreter','latex')
+xlabel('$d$ $\left[m\right]$','interpreter','latex')
 xlim([6,18])
 ylabel('$h$ $\left[km\right]$','interpreter','latex')
 %ylim([399.5,400.5])
