@@ -28,8 +28,8 @@ q0 = 31000;
 nmax = int32(ttot/dt);  % number of time steps
 t = [0:double(nmax-1)]*dt;
 fact    = 1;           % multiplication factor of number of space steps.
-kfact = [5e-6/fact;2.5e-1/fact;2.5e-1/fact];
-
+kfact = [5e-6;1;1];
+xfact = [1;1000;1];
 
 % spaceing
 L = int32(round(L*10000000));
@@ -65,6 +65,10 @@ cpvoid = zeros(imax+voidlayers-1,1);
 k     = zeros(imax-1,1); 
 rho   = zeros(imax-1,1);
 cp    = zeros(imax-1,1);
+kv = zeros(imax+sum(xfact)-1,1);
+rhov = zeros(imax+sum(xfact)-1,1);
+cpv = zeros(imax+sum(xfact)-1,1);
+xfact = [0;xfact];
 
 %determine material layer thicknesses
 indexx = zeros(length(L)+1,1);
@@ -77,15 +81,24 @@ for j = 1:length(L);
     k(indexx(j):indexx(j+1)-1) = layup(j,2);
     rho(indexx(j):indexx(j+1)-1) = layup(j,3);
     cp(indexx(j):indexx(j+1)-1) = layup(j,4);
+    kv(indexx(j)+sum(xfact(1:j)):indexx(j+1)+sum(xfact(1:j))-1) = layup(j,2);
+    rhov(indexx(j)+sum(xfact(1:j)):indexx(j+1)+sum(xfact(1:j))-1) = layup(j,3);
+    cpv(indexx(j)+sum(xfact(1:j)):indexx(j+1)+sum(xfact(1:j))-1) = layup(j,4);
 end
 for j = 1:voidlayers
+    
     kvoid(indexx(j+1)+j-1) = kfact(j)*(kvoid(indexx(j+1)+j-2)+kvoid(indexx(j+1)+j))/(kvoid(indexx(j+1)+j-2)*kvoid(indexx(j+1)+j));
     rhovoid(indexx(j+1)+j-1) = (rhovoid(indexx(j+1)+j-2)+rhovoid(indexx(j+1)+j))/2;
     cpvoid(indexx(j+1)+j-1) = (cpvoid(indexx(j+1)+j-2)+cpvoid(indexx(j+1)+j))/2;
+    kv(indexx(j+1)+sum(xfact(1:j)):indexx(j+1)+sum(xfact(1:j+1))-1) = kfact(j)*(kvoid(indexx(j+1)+j-2)+kvoid(indexx(j+1)+j))/(kvoid(indexx(j+1)+j-2)*kvoid(indexx(j+1)+j));
+    rhov(indexx(j+1)+sum(xfact(1:j)):indexx(j+1)+sum(xfact(1:j+1))-1) = (rhovoid(indexx(j+1)+j-2)+rhovoid(indexx(j+1)+j))/2;
+    cpv(indexx(j+1)+sum(xfact(1:j)):indexx(j+1)+sum(xfact(1:j+1))-1) = (cpvoid(indexx(j+1)+j-2)+cpvoid(indexx(j+1)+j))/2;
+    
 end
 alphavoid = kvoid./rhovoid./cpvoid;
 vvoid = alphavoid*dt/dx/dx;
-
+alphav = kv./rhov./cpv;
+vv = alphav*dt/dx/dx;
 alpha = k./rho./cp;
 v = alpha*dt/dx/dx;
 
@@ -151,6 +164,37 @@ for n=1:nmax-1
     S(:,n+1) = G*S(:,n) + H;
 end
 
+%% Implement Cranck-Nickelson with spaceairvoids
+
+% i is space, n is time
+% space is rows, time is columns
+U = zeros(imax+sum(xfact),nmax);
+U(:,1) = T0;
+Tamb = ones(nmax,1)*T0;
+qs = ones(nmax,1)*q0;
+qs(tdur/dt:end) = 0;
+
+
+wv = zeros(imax+sum(xfact),1);
+wv(1:end-1) = vv/2;
+wv(2:end) = wv(2:end) + vv/2;
+C = diag(1+wv) - diag(0.5*vv,1) - diag(0.5*vv,-1);
+N = diag(1-wv) + diag(0.5*vv,1) + diag(0.5*vv,-1);
+
+%define matrices
+A = zeros(imax+sum(xfact),1); 
+Cinv = inv(sparse(C));
+G = full(Cinv*sparse(N));
+
+for n=1:nmax-1
+    qrs = -emiss*sig*(U(1,n)^4-Tamb(n)^4);
+    qrb = -emiss*sig*(U(end,n)^4-Tamb(n)^4);
+    A(1) = ((qs(n)+qrs)/kv(1))*vv(1)*dx;
+    A(end) = (qrb/kv(end))*vv(end)*dx;
+    H = full(Cinv*sparse(A));
+    U(:,n+1) = G*U(:,n) + H;
+end
+
 % 
 % %% Contour-Plot
 % contourplot = 0;
@@ -193,6 +237,37 @@ valid = 1;
 %     plot(t,T(1,:),'b--')
 %     plot(t,T(3,:),'r--')
 % end
+V = zeros(imax+voidlayers,nmax);
+for j=1:voidlayers
+    V(indexx(j)+j-1:indexx(j+1)+j-1,:) = U(indexx(j)+sum(xfact(1:j)):indexx(j+1)+sum(xfact(1:j)),:);
+end
+
+
+if valid
+    valres = dlmread('layup1res.txt');
+    figure;
+    hold on
+    plotS = zeros(nmax,8);
+    plotS(:,1) = S(1,:).';
+    for j = 2:length(indexx)-1
+        plotS(:,2*j-2:2*j-1) = [S(indexx(j)+j-3,:).',S(indexx(j)+j-1,:).'];
+    end
+    plotS(:,8) = S(end,:).';
+    plotVAL = zeros(nmax,8);
+    for j = 2:length(valres(1,:))
+        plotVAL(:,j-1) = interp1(valres(:,1),valres(:,j),t).';
+    end
+    
+    
+    plot(t,plotS,'--')
+    ax = gca;
+    ax.ColorOrderIndex = 1;
+    plot(t,plotVAL)
+    figure;
+    plot(t,abs(plotS-plotVAL)./plotVAL)
+    mean(abs(plotS-plotVAL)./plotVAL)
+end
+S=V;
 if valid
     valres = dlmread('layup1res.txt');
     figure;
