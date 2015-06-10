@@ -3,7 +3,7 @@ close all
 clc
 
 % open the file
-load('alpha_gamma_phi_60.mat');
+load('alpha_gamma_phi_0_CL_15.mat');
 
 
 variables
@@ -97,8 +97,8 @@ plot(21.85:0.001:22,polyval(accel.polyfit,21.85:0.001:22)*180/pi)
 plot(21.74:0.001:21.93,polyval(crash.polyfit,21.74:0.001:21.93)*180/pi)
 grid on
 
-phi_60.crash.polyfit = crash.polyfit;
-phi_60.accel.polyfit = accel.polyfit;
-phi_60.flyby.polyfit = flyby.polyfit;
-save('phi_60.mat','phi_60')
+phi_0_CL_15.crash.polyfit = crash.polyfit;
+phi_0_CL_15.accel.polyfit = accel.polyfit;
+phi_0_CL_15.flyby.polyfit = flyby.polyfit;
+save('phi_0_CL_15.mat','phi_0_CL_15')
 
