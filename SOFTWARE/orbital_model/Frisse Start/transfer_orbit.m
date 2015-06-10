@@ -68,6 +68,7 @@ ax2.YLabel.String = 'V_{s/c} [km/s]';
 %         'Vs/c at boundary of atmosphere of Mars',...
 %         '7 km/s at atmosphere boundary',...
 %         'location','north')
+%plotyy((delta_V+V_esc_earth)/1000,t,(delta_V(index)+V_esc_earth)/1000,V_sc_m_atmos(index)/1000)
 grid on
 matlab2tikz('.\LaTeX\transfer_time.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
 
