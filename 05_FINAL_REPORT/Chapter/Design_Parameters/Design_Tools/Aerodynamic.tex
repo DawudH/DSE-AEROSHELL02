@@ -34,7 +34,10 @@ The heat flux in the stagnation point is calculated using the method developed b
 
 \paragraph{Limitations}
 The modified Newtonian flow method is more accurate for high incidence angles with respect to the flow\cite{AndersonJr.2006}. As described in Chapter \ref{cha:conceptselection}, the body to be analysed is a blunt body, which limits the impact of this loss of accuracy since the majority of the body is at a very high incidence angle to the flow. The method will not produce accurate results below Mach five since at lower Mach numbers, the forces on the entry vehicle will no longer be dominated by pressure drag. This will invalidate the modified Newtonian theory\cite{AndersonJr.2006}.
-Since the part of the mission that is analysed in depth in this report ends at Mach five, the analysis will not be influenced. 
+Since the part of the mission that is analysed in depth in this report ends at Mach five, the analysis will not be influenced.
+
+\paragraph{Optimisation}
+Another feature of the software is an optimisation algorithm that allows for a single or multiple objective shape optimisation. To this end, the aerodynamic shape is parametrised to allow optimisation using genetic algorithms as implemented in MATLAB. This parametrisation is done using a polynomial, of which the coefficients determine the external shape of the aeroshell. Furthermore, the height and skewness are optimisation parameters as well. Optimisation can be used to efficiently search the design space for global optima, given an objective such as a maximum drag or minimum heat flux. Multiple objective functions are implemented such that a Pareto front is shown for the two objective functions.
 
 \paragraph{Concluding remarks}
 The aerodynamic analysis is capable of calculating the pressure distribution on the surface, the lift, drag and moment coefficients of an arbitrary body as well as their derivatives with respect to angle of attack and side slip. It is also capable of calculating the heat flux in the stagnation point. Verification and validation has been performed to ensure the consistency and accuracy of the method. Details on this can be found in Appendix \ref{app:VandV}.

@@ -1,15 +1,15 @@
-load('aeroshapes/sombrero_maxCMalpha_order12_fixedheight.mat');
+load('aeroshapes/vingerhoed_maxLoverD_order12_varheight.mat');
 clearvars -except x mod;
 
 params = globalParams();
  
-heightfactor = x(2);
+heightfactor = 6;%x(2);
 poly = x(3:end);
 poly = mod.geom.poly;
 
 
-skewnessarray = 0:0.5:3;
-
+% skewnessarray = 0:0.5:3;
+skewnessarray = 1.5;
 modarray = {};
 
 for i = 1:length(skewnessarray);
@@ -17,10 +17,12 @@ for i = 1:length(skewnessarray);
     modarray{i} = mod;
 end
 
-figure;
-hold on;
-for i = 1:7
-    mod = modarray{i};
-    plot(mod.CLCD_array(1:end-2), mod.CG_offset(1:end-2));
-end
+% figure;
+% hold on;
+mod.geom.plotGeometry(true, false)
+
+% for i = 1:7
+%     mod = modarray{i};
+%     plot(mod.CLCD_array(1:end-2), mod.CG_offset(1:end-2));
+% end
 
