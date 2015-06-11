@@ -14,7 +14,7 @@ Taking this into account the mass has been divided into two components. A basic 
 afasasfasf
 \paragraph{Results}
 By using the methods from section \ref{par:operationalest} the results of table \ref{tab:operationalest} were obtained.
-The masses associated with operational items 
+The masses associated with operational items can be split up into two sections: Basic system mass and consumables mass. Basic system mass consists of the systems concerning crew well-being and life support, such as: Oxygen scrubbers (not including oxygen), atmospheric control systems and food preparation systems. Consumables mass is concerned with items such as oxygen, food, water and personal provisions.
 \begin{table}[h]
 	\centering
 	\caption{Obtained masses and volumes of basic system \& consumable items}
@@ -27,4 +27,20 @@ The masses associated with operational items
 		\hline
 	\end{tabular}
 	\label{tab:operationalest}
+\end{table}
+It can be seen from table \ref{tab:operationalest} that both the basic system and consumables mass scale with the number of crew members. By using linear extrapolation the mass and volume associated with crew members higher than three can be determined. These are shown in table \ref{tab:crewmemberops} for a mission time of $100$ days.\\
+
+\begin{table}[h]
+	\caption{Total mass and volume associated with operational items for varying crew numbers}
+	\begin{tabular}{|c|c|c|}
+		\hline
+		\textbf{Crew members} & \textbf{Operational items mass $[kg]$} & \textbf{Operational items volume $[m^{3}]$}\\ \hline \hline
+		1 & 2,120 & 6.69\\
+		2 & 3,140 & 10.40\\
+		3 & 4,160 & 14.11\\
+		4 & 5,180 & 17.82\\
+		5 & 6,200 & 21.53\\
+		6 & 7,220 & 25.24\\ \hline
+	\end{tabular}
+	\label{tab:crewmemberops}
 \end{table}
