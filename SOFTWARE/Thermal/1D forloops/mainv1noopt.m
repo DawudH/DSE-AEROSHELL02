@@ -12,16 +12,17 @@ filename   = 'layup2.txt';
 layupin    = dlmread(filename);
 % SI units
 thicks = dlmread('thick.txt');
-layupin(1,1) = thicks(76);
-layupin(2,1) = thicks(340);
+layupin(1,1) = thicks(10);
+layupin(2,1) = thicks(164);
 layup      = zeros(size(layupin));
 layup(:,1) = layupin(:,1)./1000;
 layup(:,2:6) = layupin(:,2:6);
 L = layup(:,1);
-qfact = 1.4;
+qfact = 1.0;
 % Aero input, qsdot
-load('heatflux.mat','T','t','qmax_array')
-tq = find(not(qmax_array==0));
+load('heatflux_out_d12_just_orbit','T','t','qmax_array')
+plot(qmax_array);
+tq = find(not(qmax_array<0.01));
 qaero = qmax_array(tq(1):tq(end))*qfact;
 Tatm  = T(tq(1):tq(end)); 
 timeq = t(tq(1):tq(end))-t(tq(1));
