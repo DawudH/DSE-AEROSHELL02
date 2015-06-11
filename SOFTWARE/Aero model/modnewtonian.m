@@ -30,9 +30,7 @@ classdef modnewtonian
         CM_aero_array;
         CLCD_array;
         CG_offset;
-%         Tmax_array;
-%         qmax_array;
-%         qw_array;
+        Cmyalpha
     end
     
     methods
@@ -57,15 +55,17 @@ classdef modnewtonian
             obj.CRA_aero_array = [obj.CRA_aero_array, obj.calcForceCoeffsAero()];
             obj.CMA_body_array = [obj.CMA_body_array, obj.calcMomentCoeffsBody()];
             obj.CMA_aero_array = [obj.CMA_aero_array, obj.calcMomentCoeffsAero()];
+            obj = obj.calcPostCalculations();
+        end
+        
+        function obj = calcPostCalculations(obj)
             obj.CLCD_array = obj.CRA_aero_array(3,:)./obj.CRA_aero_array(1,:);
-%             [T,q] = obj.calcStagnationHeatFlux();
-%             obj.Tmax_array = [obj.Tmax_array, T];
-%             obj.qmax_array = [obj.qmax_array, q];
             obj.CR_body_array = obj.CRA_body_array / obj.geom.A_frontal;
             obj.CR_aero_array = obj.CRA_aero_array / obj.geom.A_frontal;
             obj.CM_body_array = obj.CMA_body_array / obj.geom.A_frontal;
             obj.CM_aero_array = obj.CMA_aero_array / obj.geom.A_frontal;
             obj.CG_offset = obj.CM_body_array(2,:)./obj.CR_body_array(1,:);
+            obj.Cmyalpha = obj.calcCmyalpha();
         end
         
         function obj = calcAeroangle(obj, Vinf, alpha, beta, phi)
@@ -191,9 +191,14 @@ classdef modnewtonian
 %             h = waitbar(0, 'Calculating...');
             for alpha = alpha_start:dalpha:alpha_end
 %                 waitbar((alpha-alpha_start)/(alpha_end-alpha_start));
-                obj = obj.calcAeroangle(Vinf, alpha, beta, phi);
+                V = obj.Tba(alpha, beta, phi)*[Vinf;0;0];
+                obj.alpha_array = [obj.alpha_array, alpha];
+                obj.beta_array = [obj.beta_array, beta];
+                obj.phi_array = [obj.phi_array, phi];
+                obj = obj.calcAero(V);
             end
 %             close(h);
+            obj.calcPostCalculations();
         end
         
         function obj = betasweep(obj, Vinf, alpha, phi, beta_start, beta_end, dbeta)
