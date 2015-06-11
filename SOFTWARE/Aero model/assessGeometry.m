@@ -71,19 +71,25 @@ function [ score, Cmalpha, CDA, failed, mod  ] = assessGeometry( skewness, heigh
         %% Assess performance failure criteria
 
         %CLCD is achieved
-        helparray = mod.CLCD_array-LoverD;
-%         if sum(helparray>0)==0 || sum(helparray<0)==0
-%             disp('Warning: L over D criteria failure in assessgeometry!');
-%             failed = true;
-%         end
+        helparray = abs(mod.CLCD_array)-abs(LoverD);
+        if sum(helparray>0)==0 || sum(helparray<0)==0
+            disp('Warning: L over D criteria failure in assessgeometry!');
+            failed = true;
+        end
         
+        %Stability is achieved
+        if sum(mod.Cmyalpha - params.Cmalpharequired<=0)==0
+            disp('Warning: Cmalpha criteria failure in assessgeometry!');
+            failed = true;
+        end        
 
 
         %% Calculate trim angle and function values iff no failure criterion was met
         if ~failed
-            alphatrimindex = 1;
+            alphatrimindex = -1;
             for i = 1:length(helparray)-1
-                if abs(mod.CLCD_array(i+1))>LoverD
+                if (((abs(mod.CLCD_array(i+1))>abs(LoverD)) && (abs(mod.CLCD_array(i))<abs(LoverD))) || ...
+                    ((abs(mod.CLCD_array(i))>abs(LoverD)) && (abs(mod.CLCD_array(i+1))<abs(LoverD))))
                     alphatrimindex = i;
                     break;
                 end
@@ -91,41 +97,37 @@ function [ score, Cmalpha, CDA, failed, mod  ] = assessGeometry( skewness, heigh
             if alphatrimindex == -1
                 disp('alphatrimindex==-1');
                 disp(x);
-            end
-            alphatrimindex = 1;
+            end    
+%             alphatrimindex = 1;
+
+            dCLCDdalpha = (abs(mod.CLCD_array(alphatrimindex+1)-mod.CLCD_array(alphatrimindex)))/(mod.alpha_array(alphatrimindex+1)-mod.alpha_array(alphatrimindex));
+            realalphatrim = (abs(LoverD)-abs(mod.CLCD_array(alphatrimindex)))/dCLCDdalpha + mod.alpha_array(alphatrimindex);
             
-            
-            
-            dCLCDdalpha = (mod.CLCD_array(alphatrimindex+1)-mod.CLCD_array(alphatrimindex))/(mod.alpha_array(alphatrimindex+1)-mod.alpha_array(alphatrimindex));
-            realalphatrim = (LoverD-mod.CLCD_array(alphatrimindex))/dCLCDdalpha + mod.alpha_array(alphatrimindex);
-            
-            realalphatrim = 0;
+%             realalphatrim = 0;
             
             mod = mod.calcAeroangle(V, realalphatrim, beta, phi);
             mod = mod.calcAeroangle(V, realalphatrim+0.001, beta, phi);
-
+            if mod.Cmyalpha(end) < params.Cmalpharequired
+                Cmalpha = mod.Cmyalpha(end);
+            else
+                failed = true;
+            end
             %Calculate performance
-            Cmalpha = (mod.CM_aero_array(2,end)-mod.CM_aero_array(2, end-1))/(mod.alpha_array(end)-mod.alpha_array(end-1));
             CDA = mod.CRA_aero_array(1,1);
             CmAtrim = mod.CMA_aero_array(2,end-1);
             absoluteLoverD = max(abs(mod.CLCD_array));
-            CLA = max(abs(mod.CRA_aero_array(3,:)));
+            absoluteCLA = max(abs(mod.CRA_aero_array(3,:)));
+            CoGshift = abs(mod.CG_offset(end-1));
         end
         
     end
     %% Calculate score
-    Cmalphafactor = 1;
-    CDAfactor = 1;
-    Cmatrimfactor = 0;
-    penaltyfactor = +1e4;
     if failed
         disp('failed');
         disp(x)
+        score = [1000, -1000, 1000, -1000, -10000, 1000];
+    else
+        score = [Cmalpha;CDA;CmAtrim;absoluteLoverD;absoluteCLA;CoGshift];
     end
-%     score = (Cmalphafactor * Cmalpha) + (CDAfactor * CDA) + (Cmatrimfactor * abs(CmAtrim)) + (penaltyfactor * failed);
 
-%     CDA = -CDAfactor*CDA; % Optimize for maximum CDA
-    Cmalpha = Cmalphafactor*Cmalpha;
-    
-    score = [Cmalpha;CDA;CmAtrim;absoluteLoverD;CLA];
 end
