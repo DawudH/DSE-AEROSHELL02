@@ -77,8 +77,9 @@ hold on
 axis equal
 theta_plot = 0:0.01:2*pi;
 index_orbit = 112;
-r_sc = a(index_orbit) * (1-e(index_orbit)^2) ./ (1 + e(index_orbit) * cos(theta_plot) );
 theta_mars = acos(a(index_orbit)* (1-e(index_orbit)^2) / (e(index_orbit) * r_m) - 1/e(index_orbit));
+theta_plot_sc = 0:0.01:theta_mars;
+r_sc = a(index_orbit) * (1-e(index_orbit)^2) ./ (1 + e(index_orbit) * cos(theta_plot_sc) );
 r_mars = ones(1,length(theta_plot)) * r_m;
 r_earth = ones(1,length(theta_plot)) * r_e;
 R_sun = ones(1,length(theta_plot)) * 10e9;
@@ -89,9 +90,9 @@ hre = polar(theta_plot,r_earth,'--');
 hre.Color = [30 144 255]/255;
 hrm = polar(theta_plot,r_mars,'--');
 hrm.Color = [161 37 27]/255;
-hsc = polar(theta_plot,r_sc,'-.'); 
+hsc = polar(theta_plot_sc,r_sc,'-.'); 
 hsc.Color = 'k';
 set(gca,'Visible','off')
 set(gcf,'color',[1 1 1])
-legend('Sun','Earth','Mars','Earth trajectory','Mars trajectory','Interplanetary trajectory','location','west')
+legend('Sun','Earth','Mars','Earth trajectory','Mars trajectory','Interplanetary trajectory','location','westoutside')
 matlab2tikz('.\LaTeX\transfer_orbit.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);

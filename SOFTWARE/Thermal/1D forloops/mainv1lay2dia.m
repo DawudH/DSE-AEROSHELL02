@@ -14,8 +14,8 @@ layupin    = dlmread(filename);
 thicks = dlmread('thick.txt');
 m = [5.0,0,0];
 qfact = 1.0;
-for c=10:1:15
-    for d=160:1:180
+for c=10:1:10
+    for d=220:1:240
         disp([num2str(c),', ',num2str(d)])
         layupin(1,1) = thicks(c);
         layupin(2,1) = thicks(d);
@@ -25,7 +25,7 @@ for c=10:1:15
         L = layup(:,1);
 
         % Aero input, qsdot
-        load('heatflux_out_d18_just_orbit','T','t','qmax_array')
+        load('heatflux_out_d15_just_orbit','T','t','qmax_array')
         tq = find(not(qmax_array<0.01));
         qaero = qmax_array(tq(1):tq(end))*qfact;
         Tatm  = T(tq(1):tq(end)); 

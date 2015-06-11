@@ -4,6 +4,8 @@ During the interplanetary flight the \gls{adcs} keeps the attitude as required t
 
 During the Mars approach phase the \gls{adcs} should adjust the attitude to the entry attitude, and compensate for possible disturbances (i.e. inflation of the \gls{hiad})
 
+
+
 \paragraph{Sensors} Sensors are needed to determine the attitude. How accurate the sensors need to be depends on the required accuracy from different subsystems, for instance a high gain antenna requires a higher accuracy. 
 
 \subparagraph{Star trackers}
@@ -12,3 +14,9 @@ Star trackers work by taking pictures of the stars and comparing them to an inte
 The mass of star trackers is in the order of a 100 $\left[g\right]$. The required operating temperature range is -30 $\left[^\circ C\right]$ to +50 $\left[^\circ C\right]$. The average power consumption is 0.5 $\left[W\right]$.\footnote{\label{ftn:star_tracker}http://www.sinclairinterplanetary.com/startrackers Accessed: 11-06-2015}
 
 \subparagraph{Gyroscope}
+                        
+Gyroscopes can be used to provide the attitude determination for the initial stabilization. There are different kinds of gyroscopes, mechanical, optical and the so called \gls{mems}. The latter one is relatively new, and is widely used in mobile phones. 
+
+
+\paragraph{Attitude control}
+During the interplanetary flight the space craft will encounter disturbance torques. To prevent attitude changes, these disturbances must be counter acted. Although the thrusters used during the re entry stage of the mission could be used for this, these are only capable of providing bursts of angular momentum. Instead, reaction wheels will be used. These momentum wheels continuously store the disturbance torques. Once they are spun up to their rated angular speeds, they must be unloaded using thrusters. Taking the Mars reconnaissance orbiter \cite{You2007} as a reference case for the required momentum storage and unloading, and scaling these values to be more representative of crew module during interplanetary flight, an angular momentum storage capacity of $\gls{sym:l} = 1000 Nms^{-1} $ and a momentum unloading $\Delta \gls{sym:V}$ of $5 ms^{-1}$ is needed. Assuming the reaction wheels have a diameter of $0.5 m$ and spin to a maximum of $500 rads^{-1}$ each wheel will have a mass of roughly $65 kg$. For a $10000kg$ crew module using MR-104G thrusters, a $\Delta \gls{sym:V}$ of $5 ms^{-1}$ corresponds to a propellant mass of roughly $20kg$ per Tsiolkovsky's rocket equation. 
