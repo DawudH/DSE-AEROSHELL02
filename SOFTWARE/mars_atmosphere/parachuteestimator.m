@@ -6,9 +6,10 @@ aer = marsatmosphere();
 %Initial parameters
 m0 = 10000;
 h0 = 10000;
-M0 = 5;
-V0 = aer.getCheapSpeedofsound(0)*M0;
-q0 = 0.5*aer.getCheapDensity(h0)*V0^2;
+M0 = 4.55;
+rho0 = aer.getCheapDensity(h0);
+V0 = aer.getCheapSpeedofsound(h0)*M0;
+q0 = 0.5*rho0*V0^2;
 
 %Energy calculation
 Epot0 = m0*aer.getg(0)*h0;
@@ -29,6 +30,18 @@ disp(strcat('Velocity at surface without deceleration:', num2str(Vnodeceleration
 disp(strcat('Fuel mass fraction when only retropropulsion is used:', num2str(fuelfraction)));
 disp(strcat('Total fuel mass when only retropropulsion is used:', num2str(fuelmass)));
 disp(strcat('Dynamic pressure at start (10km):', num2str(q0)));
+
+R = 2.5;
+CDA = pi*R^2;
+D = 0.5*rho0*V0^2*CDA;
+a = D/m0;
+a_g = a/9.81;
+
+deceleration_gload = 5;
+deceleration = deceleration_gload * 9.81;
+t_descent = V0/deceleration;
+d_3g = V0*t_descent-0.5*deceleration*t_descent^2;
+flightpathangle = acosd(h0/d_3g)
 
 % h = 0:10000;
 % speedofsound = aer.getCheapSpeedofsound(h);
