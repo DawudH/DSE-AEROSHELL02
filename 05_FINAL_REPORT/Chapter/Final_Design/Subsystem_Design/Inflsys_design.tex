@@ -32,7 +32,7 @@ The ratio of tank and inflatable volume is obtained via the ideal gas law as:
 
 To account for pressure losses following from a drop in temperature, as observed in the \gls{irve}-II mission \cite{Dillman2012}, a heater is used to heat the tank after partial usage of the inflation gas. The total mass of the inflation gas can be estimated on the basis of the required operating pressure. From a functional perspective the minimum required inflation pressure should be reached at all phases of the deceleration. Thermal loading of the aeroshell will increase the temperature of the inflation gas and cause a proportional increase in pressure. Pressure increases above the minimum inflation pressure are beneficial as this will increase the stiffness of the aeroshell. This works up to some point as structural loading has to be taken into account as well. If the pressure increases to much venting may be performed to reduce the pressure, which will be further discussed in the subsequent paragraph. Pressure decreases below the minimum required pressure are however dangerous as the stiffness of the aeroshell will be lost.
 
-For this reason a minimum operational temperature is considered. Figure \ref{fig:tanktemp} shows the temperature range in kelvins for a cylindrical body emitted by the sun from the side around Mars. The temperature is based on heat flow equilibrium, not considering any of the atmospheric entry effects \cite{Wertz2011}. A range of absorptivity over emissivity values is considered. This value is dependent on the outer coating of the spacecraft and is an large extend left free to be chosen. Nevertheless a conservative value of 0.5 is chosen which yields a temperature of 202[$K$]. Lower temperature increases are not envisioned for a threefold of reasons:
+For this reason a minimum operational temperature is considered. Figure \ref{fig:tanktemp} shows the temperature range in Kelvin for a cylindrical body emitted by the sun from the side around Mars. The temperature is based on heat flow equilibrium, not considering any of the atmospheric entry effects \cite{Wertz2011}. A range of absorptivity over emissivity values is considered. This value is dependent on the outer coating of the spacecraft and is an large extend left free to be chosen. Nevertheless a conservative value of 0.5 is chosen which yields a temperature of 202 [$K$]. Lower temperature increases are not envisioned for a threefold of reasons:
 
 \begin{itemize}
 \item The Martian atmospheric temperature ranges between 100 and 200 [$K$], but conduction is low and only for the short period within the Martian atmosphere
@@ -47,7 +47,13 @@ For this reason a minimum operational temperature is considered. Figure \ref{fig
 		\label{fig:tanktemp}
 \end{figure}
 
-Using a temperature of 202[$K$] inside the inflatable yields a total gas volume of ??? [$m^{3}$] that is to be held within the pressure tank. An additional contingency of 25 $\%$ is taken into account for leakage, which requires additional gas to make up for the lost volume, so called make up gas \cite{Jenkins2001}. 
+Using a temperature of 202 [$K$] inside the inflatable yields a total gas mass of ??? [$kg$] that is to be held within the pressure tank. An additional contingency of 50 $\%$. This contingency is so large because leakage requires additional gas to make up for the lost volume, so called make up gas \cite{Jenkins2001}.
+
+An initial estimate for the tank pressure and temperature are 27.6 [$MPa$] and 323 [$K$] \cite[p.545]{Wertz2011}. Based on the required pressure and a temperature of 202 [$K$] in the inflatable, by use of the ideal gas law, a total pressure tank volume of ... [$m^{3}$] follows. Corresponding to this tank volume is a required tank mass, dependent on the material used. Composite overwrapped pressure vessels offer significant weight advantages with respect to metallic tanks and therefore such a pressure vessel is selected. Tank mass is estimated from empirical relations established by Zakrwski \cite[p.546]{Wertz2011} to be … [$kg$] for the selected tank pressure and volume via Equation \ref{eq:tmass}.
+\begin{equation}
+m_{tank} = 0.7266 \cdot (P_{tank} \cdot Volume_{tank})^{2} + 2.5119 \cdot (P_{tank} \cdot Volume_{tank}) + 2.9826
+\label{eq:tmass}
+\end{equation}
 
 \paragraph{Inflation system integration}
 
@@ -65,6 +71,7 @@ A final set of check valves is included to connect the toroids to the vent. This
 		\label{fig:infsys}
 \end{figure}
 
+This mass estimate is consistent with the estimate using the parametric mass model described in section \ref{subsec:structool}, where inflation system mass is estimated to be … [$kg$]. Including a contingency of 25 $\%$ for valves and feed lines yields a total inflation system mass of … [$kg$]. 
 
 
 
