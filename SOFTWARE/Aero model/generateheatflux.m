@@ -1,7 +1,7 @@
 clear;
 close all;
 clc;
-casename = 'out_d18_just_orbit';
+casename = 'out_d15_just_orbit';
 load(strcat('orbits\',casename,'.mat'));
 
 range = 1:length(out.tp);
@@ -18,7 +18,7 @@ alpha = out.alpha;
 beta = 0;
 phi = 0;
 q = 31;
-radius = 18;
+radius = 15;
 qmax_array = zeros(size(t));
 Tboundary = zeros(size(t));
 
