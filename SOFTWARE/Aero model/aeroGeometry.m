@@ -180,7 +180,7 @@ classdef aeroGeometry
             hold on;
             caxis([0,2]);
             if plotfaces
-                trisurf(obj.tri,obj.coords(1,:),obj.coords(2,:),obj.coords(3,:), zeros(size(obj.tri(:,1))), 'EdgeColor', 'none');
+                trisurf(obj.tri,obj.coords(1,:),obj.coords(2,:),obj.coords(3,:), rand(size(obj.tri(:,1))), 'EdgeColor', 'none');
             end
             axis equal;
             xlabel('x')
