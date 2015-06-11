@@ -1,4 +1,15 @@
+The general objectives for the \gls{adcs} is to monitor the attitude of the spacecraft and perform corrections if needed. The operation period of the \gls{adcs} can be divided into two phases, the interplanetary phase and the Mars approach phase.
 
+During the interplanetary flight the \gls{adcs} keeps the attitude as required to point the solar arrays toward the sun, point the thrusters in the desired direction etc.
 
+During the Mars approach phase the \gls{adcs} should adjust the attitude to the entry attitude, and compensate for possible disturbances (i.e. inflation of the \gls{hiad})
 
+\paragraph{Sensors} Sensors are needed to determine the attitude. How accurate the sensors need to be depends on the required accuracy from different subsystems, for instance a high gain antenna requires a higher accuracy. 
 
+\subparagraph{Star trackers}
+Star trackers work by taking pictures of the stars and comparing them to an internal catalogue. They are the most accurate for pointing \cite{CarlChristianLiebe1995}. However they do not work if the spacecraft is rotating to fast, so an additional rough estimate is needed \cite[p. 584]{Wertz2011}. 
+
+The mass of star trackers is in the order of a 100 $\left[g\right]$. The required operating temperature range is -30 $\left[^\circ C\right]$ to +50 $\left[^\circ C\right]$. The average power consumption is 0.5 $\left[W\right]$.\footnote{\label{ftn:star_tracker}http://www.sinclairinterplanetary.com/startrackers Accessed: 11-06-2015}
+
+\subparagraph{Gyroscope}
+Gyroscopes can be used to provide the attitude determination for the initial stabilization. There are different kinds of gyroscopes, mechanical, optical and the so called \gls{mems}. The latter one is relatively new, and is widely used in mobile phones. 
