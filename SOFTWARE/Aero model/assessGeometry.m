@@ -8,8 +8,8 @@ function [ score, CoGshift, CDA, failed, mod  ] = assessGeometry( skewness, heig
     
     % Angle of attack values
     alpha0 = 0; %degrees
-    dalpha = 5; %degrees
-    alphaend = 40; %degrees
+    dalpha = 2; %degrees
+    alphaend = params.alphamax; %degrees
     beta = 0;
     phi = 0;
     

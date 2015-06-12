@@ -9,6 +9,6 @@ out.allowskewness = true;
 out.maxheightfactor = 2;
 out.minheightfactor = 0.01;
 out.Cmalpharequired = -0.1;
-out.thetamax = 50;
+out.thetamin = 50;
 out.alphamax = 10;
 end
