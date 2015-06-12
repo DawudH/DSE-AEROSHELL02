@@ -119,6 +119,17 @@ classdef modnewtonian
                         
             % Get the stagnation heat flux and temperature
             for j = 1:length(obj.alpha_array)
+                [Tmax, qmax] = obj.calcStagnationHeatFluxAtAlphaIndex(j);
+                qmax_array(j) = qmax;
+                Tmax_array(j) = Tmax;
+            end
+        end
+        
+        function [Tmax, qmax] = calcStagnationHeatFlux(obj)
+            [Tmax, qmax] = obj.calcStagnationHeatFluxAtAlphaIndex(length(obj.alpha_array));
+        end
+        
+        function [Tmax, qmax] = calcStagnationHeatFluxAtAlphaIndex(obj, j)
 %             Vhat = obj.V_array(:,end)/norm(obj.V_array(:,end));
                 Vinf = norm(obj.V_array(:,j));
     %             sinthetas = obj.geom.normals' * Vhat;
@@ -168,10 +179,7 @@ classdef modnewtonian
                     C = 1.83e-8*max(radius)^-.5;                
                     qmax = obj.rho_inf ^ N * Vinf ^ M * C;
                 end
-                qmax_array(j) = qmax;
-                Tmax_array(j) = Tmax;
-            end
-
+        end            
     %             %distribution values
     %             xt = obj.geom.getDistances(stagN);
     %             
@@ -184,8 +192,7 @@ classdef modnewtonian
     %                 C = (2.2e-9)*(costhetas.^2.08).*(sinthetas.^1.6).*(xt.^-.2).*(1-1.11*Tw/Tmax);
     %             end
     %             qw = obj.rho_inf(end) ^ N * Vinf ^ M * C;
-    %             qw = sinthetas*qmax;
-        end
+    %             qw = sinthetas*qmax;            
 
         function obj = alphasweep(obj, Vinf, beta, phi, alpha_start, alpha_end, dalpha)
 %             h = waitbar(0, 'Calculating...');
