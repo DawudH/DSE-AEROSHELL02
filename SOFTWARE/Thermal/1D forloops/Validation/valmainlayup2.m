@@ -28,8 +28,8 @@ q0 = 62000;
 nmax = int32(ttot/dt);  % number of time steps
 t = [0:double(nmax-1)]*dt;
 fact    = 1;           % multiplication factor of number of space steps.
-kfact = [2.5e-5/fact;2.5e-6/fact;2.5e-2/fact];
-
+%kfact = [2.5e-5/fact;2.5e-6/fact;2.5e-2/fact];
+kfact = [2.5e-5;1;1];
 
 % spaceing
 L = int32(round(L*10000000));
