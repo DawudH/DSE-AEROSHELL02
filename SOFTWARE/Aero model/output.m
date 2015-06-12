@@ -1,40 +1,20 @@
-% close all;
-clear
+q = 61;
 
-shapetexts.horizontalplate = 'horizontalplate';
-shapetexts.verticalplate = 'verticalplate';
-shapetexts.sphere12m = 'sphere12m';
-shapetexts.pastille12m15m = 'pastille12m1.5m';
-shapetexts.deg60cone = 'deg60cone';
-shapetexts.deg30cone = 'deg30cone';
-shapetexts.irvevalidation = 'irvevalidation';
-shapetexts.apollovalidation = 'apollovalidation';
-shapetexts.torus = 'torus';
-shapetexts.concept_irve = 'concept_irve';
-shapetexts.concept_apollo = 'concept_apollo';
-shapetexts.concept_isotensoid = 'concept_isotensoid';
-shapetexts.ballute = 'ballute';
+params = globalParams();
 
-a = 180;
-gamma = 1.29;
-rho = 9e-5;
-T = 130;
-q = 37;
+skewness = x(1);
 
-alpha0 = -60; %degrees
-dalpha = 1; %degrees
-alphaend = 60; %degrees
-shape = shapetexts.concept_isotensoid;
-disp(shape);
-disp('Generating geometry...');
-[ coords, tri, A, center ] = generategeometry( shape, q );
+heightfactor = x(2);
+height = params.radius * heightfactor;
 
-disp('Initialising...');
-mod = modnewtonian( coords, tri, gamma, a, center, rho, T, A);
-disp('Calculating...');
-mod = mod.alphasweep(a*20, 0, deg2rad(alpha0), deg2rad(alphaend), deg2rad(dalpha));
+poly = [x(3:end),0,0];
 
-disp('Writing to file...');
-dlmwrite('outputfiles/isotensoid.txt', [mod.alpha_array', mod.CRA_aero_array', mod.CMA_aero_array', mod.qmax_array']);
-disp('Done!');
+alpha0 = -40;
+dalpha = 1;
+alphaend = 40;
+V = 7000;
+beta = 0;
+phi = 0;
 
+[mod, center] = generateGeometry(poly, q, skewness, params.radius, height);
+mod = mod.alphasweep(V, beta, phi, deg2rad(alpha0), deg2rad(alphaend), deg2rad(dalpha));
