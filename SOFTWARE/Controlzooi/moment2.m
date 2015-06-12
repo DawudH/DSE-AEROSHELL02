@@ -3,20 +3,24 @@ close all
 clc
 
 addpath('..\aerodynamic_coefficients')
+addpath('..\matlab2tikz')
 aero_coef = aeroProperties();
 alpha = [0:20]*pi / 180;
 
+CXA = aero_coef.getCXA(alpha);
+CZA = aero_coef.getCZA(alpha);
 [CLA, CDA, CMYA] = aero_coef.aeroCoeffs(alpha);
 
-x = CDA;
+
+x = CXA;
 y = 0;
-z = CLA;
+z = CZA;
 
 Mx = 0; % 1/1
 My = CMYA; % 1/300
 Mz = 0; % 1/3
 
-dx = [1,3,5];
+dx = [-1,-3,-5];
 cc = parula(7);
 figure('name','dz over alpha')
 hold on
