@@ -6,8 +6,7 @@ In this section the methods used for determining appropriate control systems are
 
 \paragraph{Trim point}
 \label{control:trim}
-The aerodynamic forces acting on the spacecraft work on the centre of pressure of the aeroshell. The \gls{cg} of the spacecraft has a certain offset in x,y and z direction with respect to this centre of pressure. Thus moments are induced around the center of gravity. These moments can be described as shown in equations \ref{eq:momx} - \ref{eq:momz} which follow from figures \ref{fig:momx} - \ref{fig:momz}.
-
+The aerodynamic forces acting on the spacecraft work on the centre of pressure of the aeroshell. The \gls{cg} of the spacecraft has a certain offset in x,y and z direction with respect to this centre of pressure. Thus moments are induced around the center of gravity. These moments can be described as shown in equations \ref{eq:momx} - \ref{eq:momz}.
 \begin{equation}
 \label{eq:momx}
 M_x = F_y \cdot dz - F_z \cdot dy
@@ -20,25 +19,34 @@ M_y = F_x \cdot dz - F_z \cdot dx
 \label{eq:momz}
 M_z = F_x \cdot dy - F_y \cdot dx
 \end{equation}
+Solving these equations such that $M_{x}$, $M_{y}$ and $M_{z}$ are zero results in figure \ref{}. From this figure it can be seen that the neutral location of the \gls{cg} 
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.65\textwidth]{./Figure/Nyan}
-	\caption{nyan nyan om de X-as}
-	\label{fig:momx}
+	\setlength\figureheight{0.7\textwidth} 
+	\setlength\figurewidth{0.95\textwidth}
+	%\input{./Figure/Nyan.jpeg}
+	\caption{1}
+	\label{fig:}
 \end{figure}
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.65\textwidth]{./Figure/Nyan}
-	\caption{nyan nyan om de Y-as}
-	\label{fig:momy}
-\end{figure}
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.65\textwidth]{./Figure/Nyan}
-	\caption{nyan nyan om de Z-as}
-	\label{fig:momz}
-\end{figure}
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics[width=0.65\textwidth]{./Figure/Nyan}
+%	\caption{nyan nyan om de X-as}
+%	\label{fig:momx}
+%\end{figure}
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics[width=0.65\textwidth]{./Figure/Nyan}
+%	\caption{nyan nyan om de Y-as}
+%	\label{fig:momy}
+%\end{figure}
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics[width=0.65\textwidth]{./Figure/Nyan}
+%	\caption{nyan nyan om de Z-as}
+%	\label{fig:momz}
+%\end{figure}
 
 These equations result in a line in three-dimensional space for which the moments are 0 around each axis. This line is different for different combinations of forces which follow from different combinations of angle of attack, sideslip angle and bank angle.
 
@@ -83,5 +91,6 @@ To arrive at a thruster design the specific impulse and maximum mass flow of ava
 
 \subparagraph{Aerodynamic surfaces}
 Using the modified Newtonian flow theory discussed in section \ref{subsec:aerotool} the force and moment contributions of a surface with a certain orientation to the freestream flow can be computed. For an aerodynamic surface (essentially a flap) the freestream inclination angle can be varied by using rotational actuators. Alternatively the flap area exposed to the freestream flow can be varied by using linear actuation. Both of these options directly influence \gls{sym:CD}\gls{sym:A} exerted on the actuated surface, thereby allowing active control.\\
-The required control moments can be determined in a manner similar to section \ref{subpar:thrusters}. By comparing the required and delivered control moments the required force per flap can be computed. From this required force follows \gls{sym:CD}\gls{sym:A}. This depends on the flap area but also on the flap inclination angle.\\
+The required control moments can be determined in a manner similar to section \ref{subpar:thrusters}. By comparing the required and delivered control moments the required force per flap can be computed. From this required force follows \gls{sym:CD}\gls{sym:A}. This depends on the flap area but also on the flap inclination angle. Using this \gls{sym:CD}\gls{sym:A} then forms the basis for computing the resultant flap drag corresponding to the aforementioned inclination angle.\\
 In order to allow for control around three axes multiple flaps will have to be used, spaced in circumferential direction.
+One major disadvantage of using flaps is the coupling between the force exerted by the flaps and the local structural deflection angle. The control force delivered by the flap causes the inflatable structure to deflect rearward, which causes the flap force to decrease. This in turn commences a decrease in structural deflection angle which will again increase the force exerted by the flaps. One can see from this that using flaps on the inflatable structure would induce oscillations in the spacecraft, whose effects on stability are unknown. This poses a risk and has to be taken into account during the design phase.
