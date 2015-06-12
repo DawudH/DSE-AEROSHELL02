@@ -47,6 +47,7 @@ else
     orbit.speed_sound = 0;
     orbit.M = 0;
     orbit.T = 0;
+    v_aero = 0;
 end
 
 

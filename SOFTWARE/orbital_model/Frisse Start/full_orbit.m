@@ -32,7 +32,7 @@ end
     
     % give initial control state
     alpha = control.alpha_init;
-    [CLA, CDA, CMYA] = aero_coef.aeroCoeffs(alpha);
+    [CL, CD, CMY] = aero_coef.aeroCoeffs(alpha);
     
     %%for L/D vs. acceleration profile
     %CLA = aero_coef.cla;
@@ -62,8 +62,8 @@ end
     A_aero(1,:) = [0,0,0];
     Alpha(1) = alpha;
     dAlpha_dt(1) = 0;
-    CD(1) = CDA / S;
-    CL(1) = CLA / S * 1.5;
+    CD(1) = CD;
+    CL(1) = CL;
     phi(1) = phi_profile(0);
     
     a_prev = A(1,:);
@@ -105,8 +105,8 @@ end
                  if use_alpha_profile && ~use_control
                      aero_param = alpha_profile(tp(end),aero_coef,control,state,dt_atmos);
                      
-                     CL(i+1) = aero_param.CLA / (12^2*pi/4);
-                     CD(i+1) = aero_param.CDA / (12^2*pi/4);
+                     CL(i+1) = aero_param.CL;
+                     CD(i+1) = aero_param.CD;
                      alpha = aero_param.alpha;
                  end
             
@@ -134,9 +134,9 @@ end
             t = t + out_o.t_kep;
             %readjust attitude to get back to initial alpha
             alpha = control.alpha_init;
-            [CLA, CDA, CMYA] = aero_coef.aeroCoeffs(alpha);
-            CL(i+1) = CLA / S;
-            CD(i+1) = CDA / S;
+            [CL, CD, CMY] = aero_coef.aeroCoeffs(alpha);
+            CL(i+1) = CL;
+            CD(i+1) = CD;
             state.alpha = alpha;
             control.error = 0;
             control.error_I = 0;
