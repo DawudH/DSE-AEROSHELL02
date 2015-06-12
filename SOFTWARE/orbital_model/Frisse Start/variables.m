@@ -7,7 +7,7 @@ constants
 %initial angles
 theta0 = 135/180*pi;%3.016549;%150/180*pi;
 %d=12
-gamma = 21.829;
+gamma = 21.82;
 % %d=6
 % gamma = 22.2;
 %d=18
@@ -43,7 +43,7 @@ control.a = 2.9*g_earth;
 control.h = 60e3;
 control.dalphadt = -0.1*pi/180;
 control.dalpha = control.dalphadt*dt_atmos;
-control.alpha_init = 10*pi/180; % rad
+control.alpha_init = 30*pi/180; % rad
 control.alpha_range = [-50 50]*pi/180;
 control.control_up_lim = 100e3; % m
 control.control_low_lim = 90e3; % m
