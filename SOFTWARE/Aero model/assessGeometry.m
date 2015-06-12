@@ -1,5 +1,5 @@
 % function [ score, mod ] = assessGeometry( skewness, height, radius, poly, q, LoverD )
-function [ score, Cmalpha, CDA, failed, mod  ] = assessGeometry( skewness, height, radius, poly, q, LoverD )
+function [ score, CoGshift, CDA, failed, mod  ] = assessGeometry( skewness, height, radius, poly, q, LoverD )
 %ASSESSGEOMETRY Assess a geometry for it's performance
     params = globalParams();
     x = [skewness, height/radius, poly(1:end-2)];
@@ -28,6 +28,7 @@ function [ score, Cmalpha, CDA, failed, mod  ] = assessGeometry( skewness, heigh
     CLA = 0;
     CmAtrim = 0;
     absoluteLoverD = 0;
+    CoGshift = 0;
     failed = false;    
     
     % derivative is bigger than zero everywhere
