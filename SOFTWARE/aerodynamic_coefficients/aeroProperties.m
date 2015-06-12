@@ -61,6 +61,23 @@ classdef aeroProperties
             cd = obj.cdinterpolant(alpha);
         end
         
+        
+        function cd = getCX(obj, alpha)
+            cd = obj.cxinterpolant(alpha);
+        end
+        
+        function cd = getCZ(obj, alpha)
+            cd = obj.czinterpolant(alpha);
+        end
+        
+        function cd = getCXA(obj, alpha)
+            cd = obj.cxainterpolant(alpha);
+        end
+        
+        function cd = getCZA(obj, alpha)
+            cd = obj.czainterpolant(alpha);
+        end
+        
         function cmy = getCML(obj, alpha)
             cmy = obj.cmlinterpolant(alpha);
         end        
