@@ -1,52 +1,43 @@
 classdef aeroProperties
+    
     properties
-        alpha;
-        cla;
-        cda;
-        cmya;
         clainterpolant;
         cdainterpolant;
-        cmyainterpolant;
+        cmlainterpolant;
+        cxainterpolant;
+        czainterpolant;
+        
+        clinterpolant;
+        cdinterpolant;
+        cmlinterpolant;
+        cxinterpolant;
+        czinterpolant;        
     end
     methods
-        function obj = aeroProperties(object)
-            switch object
-                case 'apollo'
-                    filestring = 'apollo.txt';
-                case 'irve'
-                    filestring = 'irve.txt';                    
-                case 'isotensoid'
-                    filestring = 'isotensoid.txt';
-                case 'pastille'
-                    filestring = 'pastille.txt';
-                case 'torus'
-                    filestring = 'torus.txt';    
-                case 'ballute'
-                    filestring = 'ballute.txt';                    
-                otherwise
-                    warning(strcat('Case: ', object, ' does not exist'));
-                    filestring = 'torus.txt';   
-            end
-            A = dlmread(filestring);
-            obj.alpha = A(:,1);
-            obj.cla = A(:,4);
-            obj.cda = A(:,2);
-            obj.cmya = A(:,6);
+        function obj = aeroProperties(name)
+            addpath '..\Aero model';
+            load('iteration0_output.mat');
             
-            
-            obj.clainterpolant = griddedInterpolant(obj.alpha, obj.cla, 'linear');
-            obj.cdainterpolant = griddedInterpolant(obj.alpha, obj.cda, 'linear');
-            obj.cmyainterpolant = griddedInterpolant(obj.alpha, obj.cmya, 'linear');
-            
+            obj.clainterpolant = griddedInterpolant(mod.alpha_array(1:end-2), mod.CRA_aero_array(3,1:end-2), 'linear');
+            obj.cdainterpolant = griddedInterpolant(mod.alpha_array(1:end-2), mod.CRA_aero_array(1,1:end-2), 'linear');
+            obj.cmlainterpolant = griddedInterpolant(mod.alpha_array(1:end-2), mod.CMA_aero_array(2,1:end-2), 'linear');
+            obj.cxainterpolant = griddedInterpolant(mod.alpha_array(1:end-2), mod.CRA_body_array(1,1:end-2), 'linear');
+            obj.czainterpolant = griddedInterpolant(mod.alpha_array(1:end-2), mod.CRA_body_array(3,1:end-2), 'linear');
+
+            obj.clinterpolant = griddedInterpolant(mod.alpha_array(1:end-2), mod.CR_aero_array(3,1:end-2), 'linear');
+            obj.cdinterpolant = griddedInterpolant(mod.alpha_array(1:end-2), mod.CR_aero_array(1,1:end-2), 'linear');
+            obj.cmlinterpolant = griddedInterpolant(mod.alpha_array(1:end-2), mod.CM_aero_array(2,1:end-2), 'linear');
+            obj.cxinterpolant = griddedInterpolant(mod.alpha_array(1:end-2), mod.CR_body_array(1,1:end-2), 'linear');
+            obj.czinterpolant = griddedInterpolant(mod.alpha_array(1:end-2), mod.CR_body_array(3,1:end-2), 'linear');
         end
         
-        function [cla, cda, cmya] = aeroCoeffs(obj, alpha)
+        function [cl, cd, cml] = aeroCoeffs(obj, alpha)
 %             if sum(alpha > max(obj.alpha))>0 || sum(alpha < min(obj.alpha))>0
 %                 error('Outside measured aera!');
 %             else
-                cla = obj.getCLA(alpha);
-                cda = obj.getCDA(alpha);
-                cmya = obj.getCMYA(alpha);
+                cl = obj.getCL(alpha);
+                cd = obj.getCD(alpha);
+                cml = obj.getCML(alpha);
 %             end
         end
         
@@ -58,9 +49,21 @@ classdef aeroProperties
             cda = obj.cdainterpolant(alpha);
         end
         
-        function cmya = getCMYA(obj, alpha)
-            cmya = obj.cmyainterpolant(alpha);
+        function cmya = getCMLA(obj, alpha)
+            cmya = obj.cmlainterpolant(alpha);
         end
+        
+        function cl = getCL(obj, alpha)
+            cl = obj.clinterpolant(alpha);
+        end
+
+        function cd = getCD(obj, alpha)
+            cd = obj.cdinterpolant(alpha);
+        end
+        
+        function cmy = getCML(obj, alpha)
+            cmy = obj.cmlinterpolant(alpha);
+        end        
         
         function clcd = getCLCD(obj, alpha)
             clcd = obj.getCLA(alpha)./obj.getCDA(alpha);

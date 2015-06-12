@@ -32,7 +32,7 @@ end
     
     % give initial control state
     alpha = control.alpha_init;
-    [CLA, CDA, CMYA] = aero_coef.aeroCoeffs(alpha);
+    [CL(1), CD(1), CMY] = aero_coef.aeroCoeffs(alpha);
     
     %%for L/D vs. acceleration profile
     %CLA = aero_coef.cla;
@@ -105,13 +105,14 @@ end
                  if use_alpha_profile && ~use_control
                      aero_param = alpha_profile(tp(end),aero_coef,control,state,dt_atmos);
                      
-                     CL(i+1) = aero_param.CLA / (12^2*pi/4);
-                     CD(i+1) = aero_param.CDA / (12^2*pi/4);
+                     CL(i+1) = aero_param.CL;
+                     CD(i+1) = aero_param.CD;
                      alpha = aero_param.alpha;
                  end
             
             state.phi = phi_profile(tp(end));     
             [out_o] = in_atmosphere( V(i,:), R(i,:), A(i,:), a_prev, J(i,:), atm, CL(i+1), CD(i+1), dt_atmos, R_m, omega_m, S, m , state.phi, Crho);
+            
             %update state
             state.CL = CL(i);
             state.CD = CD(i);
@@ -133,9 +134,7 @@ end
             t = t + out_o.t_kep;
             %readjust attitude to get back to initial alpha
             alpha = control.alpha_init;
-            [CLA, CDA, CMYA] = aero_coef.aeroCoeffs(alpha);
-            CL(i+1) = CLA / S;
-            CD(i+1) = CDA / S;
+            [CL(i+1), CD(i+1), CMY] = aero_coef.aeroCoeffs(alpha);
             state.alpha = alpha;
             control.error = 0;
             control.error_I = 0;
@@ -231,7 +230,7 @@ end
     % output text
     
 
-    disp(['rx = ' num2str(R0(1)) ' [m], CD = ' num2str(CDA / S) ' [-], CL = ' num2str(CLA / S) ' [-], in atmosphere: ' num2str(out_c.in_atmos) ', crashed: ' num2str(out_c.crash) ', in orbit: ' num2str(out_c.orbit) ', flyby: ' num2str(out_c.flyby) ', acceleration: ' num2str(maxaccel) ', time pased: ' num2str(t/(3600)) ' hours' ])
+    disp(['rx = ' num2str(R0(1)) ' [m], CD = ' num2str(CD(1)) ' [-], CL = ' num2str(CL(1)) ' [-], in atmosphere: ' num2str(out_c.in_atmos) ', crashed: ' num2str(out_c.crash) ', in orbit: ' num2str(out_c.orbit) ', flyby: ' num2str(out_c.flyby) ', acceleration: ' num2str(maxaccel) ', time pased: ' num2str(t/(3600)) ' hours' ])
     
     if no_waitbar == false
         %close waitbar

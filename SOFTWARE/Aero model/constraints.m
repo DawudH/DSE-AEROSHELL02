@@ -7,8 +7,8 @@ function [ failure, mod ] = constraints( skewness, height, radius, poly, q, Love
     
     % Angle of attack values
     alpha0 = 0; %degrees
-    dalpha = 5; %degrees
-    alphaend = 30; %degrees
+    dalpha = 2; %degrees
+    alphaend = alphamax; %degrees
     beta = 0;
     phi = 0;
     

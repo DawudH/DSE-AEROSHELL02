@@ -3,7 +3,7 @@ addpath('../matlab2tikz');
 % clear; clc;
 aer = marsatmosphere();
 
-garray = 1;%0.7:0.1:4;
+garray = 3;%0.7:0.1:4;
 totalmassarray = zeros(size(garray));
 flightpathanglearray = totalmassarray;
 groundtrackdistancearray = totalmassarray;
@@ -12,7 +12,7 @@ for i = 1:length(garray);
     g = garray(i);
     %Initial parameters
     m0 = 10000;
-    h0 = 13500;
+    h0 = 10000;
     M0 = 5;
     rho0 = aer.getCheapDensity(h0);
     V0 = aer.getCheapSpeedofsound(h0)*M0;
@@ -81,7 +81,7 @@ for i = 1:length(garray);
 end
 
 % figure;
-% plot(garray, thrustermassarray);
+% plot(garray, totalmassarray);
 % xlabel('g_load');
 % ylabel('mp');
 % hold on;

@@ -41,14 +41,14 @@ function [out] = aero_conrol(state,control,aero_coef,dt)
              alpha = max(control.alpha_range);
         end
         
-        [CLA, CDA, CMYA] = aero_coef.aeroCoeffs(alpha);
+        [CL, CD, CMY] = aero_coef.aeroCoeffs(alpha);
         
     
     
     % generate output
-    out.CLA = CLA;
-    out.CDA = CDA;
-    out.CMYA = CMYA;
+    out.CL = CL;
+    out.CD = CD;
+    out.CMY = CMY;
     out.alpha = alpha;
     out.error = e;
     out.error_I = error_I;
