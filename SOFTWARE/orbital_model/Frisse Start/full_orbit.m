@@ -63,7 +63,7 @@ end
     Alpha(1) = alpha;
     dAlpha_dt(1) = 0;
     CD(1) = CDA / S;
-    CL(1) = CLA / S * 1.5;
+    CL(1) = CLA / S;
     phi(1) = phi_profile(0);
     
     a_prev = A(1,:);
