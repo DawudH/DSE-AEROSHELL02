@@ -58,6 +58,6 @@ Crho = 1.0;
 % create atmosphere object
 atm = marsatmosphere();
 % create aerocoef object
-aero_coef = aeroProperties('irve');
+aero_coef = aeroProperties();
 
 
