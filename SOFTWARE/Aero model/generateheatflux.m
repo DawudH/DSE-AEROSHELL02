@@ -1,9 +1,9 @@
-% clear;
+clear;
 close all;
 clc;
-casename = 'orbit_iteration_0';
+casename = 'orbit_iteration_0_2';
 load(strcat('orbits\',casename,'.mat'));
-% load('aeroshapes\iteration0_output.mat');
+load('aeroshapes\iteration0_output.mat');
 
 range = 1:length(out.tp);
 
@@ -38,7 +38,7 @@ parfor i = range
     if rho(i) > 1e-14
         mod = modnewtonian(geom, gamma, speed_sound(i), center, rho(i), T(i));
         mod = mod.calcAeroangle(V(i),deg2rad(alpha(i)), beta, phi);
-        [Tmax, qmax] = mod.calcStagnationHeatFluxes();
+        [Tmax, qmax] = mod.calcStagnationHeatFlux();
         Tmax = Tmax(end);
         qmax = qmax(end);
         qmax_array(i) = qmax;
@@ -49,4 +49,4 @@ end
 
 disp('Finished!');
 save(strcat('heatflux/heatflux_',casename,'.mat'));
-plot(qmax_array);
+plot(t, qmax_array);
