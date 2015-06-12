@@ -1,8 +1,9 @@
 clear;
 close all;
 clc;
-casename = 'out_d15_just_orbit';
+casename = 'orbit_iteration_0_2';
 load(strcat('orbits\',casename,'.mat'));
+load('aeroshapes\iteration0_output.mat');
 
 range = 1:length(out.tp);
 
@@ -26,18 +27,18 @@ Nr = q;
 a = 0;
 h = 0.5*radius;
 poly = [1 0 0];
-[TriGeom, A] = ParaGeom(Nr, a, radius, h, poly);
 center = [0 0 0];
 
 % [ TriGeom, A, center ] = generategeometry( q, radius );
-geom = aeroGeometry(TriGeom, A, poly);
-mod = modnewtonian(geom, gamma, a, center, rho, T);
+% geom = aeroGeometry(TriGeom, A, poly);
+% mod = modnewtonian(geom, gamma, a, center, rho, T);
+geom = mod.geom;
 
 parfor i = range
     if rho(i) > 1e-14
         mod = modnewtonian(geom, gamma, speed_sound(i), center, rho(i), T(i));
         mod = mod.calcAeroangle(V(i),deg2rad(alpha(i)), beta, phi);
-        [Tmax, qmax] = mod.calcStagnationHeatFluxes();
+        [Tmax, qmax] = mod.calcStagnationHeatFlux();
         Tmax = Tmax(end);
         qmax = qmax(end);
         qmax_array(i) = qmax;
@@ -48,4 +49,4 @@ end
 
 disp('Finished!');
 save(strcat('heatflux/heatflux_',casename,'.mat'));
-plot(qmax_array);
+plot(t, qmax_array);
