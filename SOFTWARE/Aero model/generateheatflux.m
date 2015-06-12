@@ -1,8 +1,9 @@
-clear;
+% clear;
 close all;
 clc;
-casename = 'out_d15_just_orbit';
+casename = 'orbit_iteration_0';
 load(strcat('orbits\',casename,'.mat'));
+% load('aeroshapes\iteration0_output.mat');
 
 range = 1:length(out.tp);
 
@@ -26,12 +27,12 @@ Nr = q;
 a = 0;
 h = 0.5*radius;
 poly = [1 0 0];
-[TriGeom, A] = ParaGeom(Nr, a, radius, h, poly);
 center = [0 0 0];
 
 % [ TriGeom, A, center ] = generategeometry( q, radius );
-geom = aeroGeometry(TriGeom, A, poly);
-mod = modnewtonian(geom, gamma, a, center, rho, T);
+% geom = aeroGeometry(TriGeom, A, poly);
+% mod = modnewtonian(geom, gamma, a, center, rho, T);
+geom = mod.geom;
 
 parfor i = range
     if rho(i) > 1e-14

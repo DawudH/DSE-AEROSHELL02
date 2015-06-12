@@ -1,4 +1,4 @@
-q = 61;
+q = 31;
 
 params = globalParams();
 
