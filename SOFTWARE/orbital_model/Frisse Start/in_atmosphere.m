@@ -33,12 +33,20 @@ if rho>0
     orbit.al = [vel_unit(2),-vel_unit(1),0] * orbit.aly;
     orbit.a_aero = [vel_unit(2),-vel_unit(1),0]* CL * orbit.q * S / m + orbit.ad;
     
+    orbit.speed_sound = atm.getCheapSpeedofsound(h);
+    orbit.M = v_aero / orbit.speed_sound;
+    orbit.T = atm.getCheapTemperature(h);
+    
 else
     %no lift and drag outside the atmosphere
     orbit.ad = [0,0,0];
     orbit.al = [0,0,0];
     orbit.a_aero = [0,0,0];
     orbit.q = 0;
+    
+    orbit.speed_sound = 0;
+    orbit.M = 0;
+    orbit.T = 0;
 end
 
 
@@ -46,21 +54,11 @@ end
 orbit.a = orbit.ag + orbit.ad + orbit.al;
 orbit.J = (a1 - 4*a + 3*orbit.a) / (2*dt);
 
-
-if (h < 400e3)
-    orbit.speed_sound = atm.getCheapSpeedofsound(h);
-    orbit.M = norm(orbit.V) / orbit.speed_sound;
-    orbit.T = atm.getCheapTemperature(h);
-else
-    orbit.speed_sound = 0;
-    orbit.M = 0;
-    orbit.T = 0;
-end
-
 % output
 out_o.speed_sound = orbit.speed_sound;
 out_o.R = orbit.R;
 out_o.V = orbit.V;
+out_o.V_aero = v_aero;
 out_o.M = orbit.M;
 out_o.A = orbit.a;
 out_o.Ag = orbit.ag;

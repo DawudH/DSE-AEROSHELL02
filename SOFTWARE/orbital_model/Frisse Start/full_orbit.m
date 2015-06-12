@@ -112,6 +112,7 @@ end
             
             state.phi = phi_profile(tp(end));     
             [out_o] = in_atmosphere( V(i,:), R(i,:), A(i,:), a_prev, J(i,:), atm, CL(i+1), CD(i+1), dt_atmos, R_m, omega_m, S, m , state.phi, Crho);
+            
             %update state
             state.CL = CL(i);
             state.CD = CD(i);
