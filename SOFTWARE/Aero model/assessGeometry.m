@@ -136,10 +136,13 @@ function [ score, CoGshift, CD, failed, mod  ] = assessGeometry( skewness, heigh
         
     end
     %% Calculate score
+    if abs(CoGshift) > 0.5
+        failed = true;
+    end
     if failed
         disp('failed');
         disp(x)
-        score = [1000, -1000, 1000, -1000, -10000, 1000];
+        score = [1000, -10, 1000, -1000, -10000, 1000];
     else
         score = [Cmalpha;CD;CmAtrim;absoluteLoverD;absoluteCLA;CoGshift];
     end
