@@ -54,10 +54,23 @@ function [ score, Cmalpha, CDA, failed, mod  ] = assessGeometry( skewness, heigh
         failed = true;
     end
     
+    % Height factor greater than max height factor
     if height > params.maxheightfactor*radius
         warning(strcat('height>',num2str(params.maxheightfactor),'*radius'));
         failed = true;
     end    
+%     
+%     % Half-cone angle smaller than allowed
+%     z = 2.5:0.1:radius;
+%     xshape = polyval(poly, (z+abs(skewness))/radius)/sum(poly)*height;
+%     dz = z(2:end)-z(1:end-1);
+%     dx = xshape(2:end)-xshape(1:end-1);
+%     theta = atand(dx./dz);
+%     if any(theta<out.thetamin)
+%         disp('Warning: derivative < thetamin');
+%         failed = true;
+%     end
+%     
     
     
     %% If not failed
