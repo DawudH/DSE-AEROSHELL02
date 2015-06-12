@@ -7,7 +7,7 @@ constants
 %initial angles
 theta0 = 135/180*pi;%3.016549;%150/180*pi;
 %d=12
-gamma = 21.87;
+gamma = 21.81;
 % %d=6
 % gamma = 22.2;
 %d=18
@@ -58,6 +58,6 @@ Crho = 1.0;
 % create atmosphere object
 atm = marsatmosphere();
 % create aerocoef object
-aero_coef = aeroProperties('irve');
+aero_coef = aeroProperties();
 
 
