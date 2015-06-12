@@ -32,7 +32,7 @@ end
     
     % give initial control state
     alpha = control.alpha_init;
-    [CL, CD, CMY] = aero_coef.aeroCoeffs(alpha);
+    [CL(1), CD(1), CMY] = aero_coef.aeroCoeffs(alpha);
     
     %%for L/D vs. acceleration profile
     %CLA = aero_coef.cla;
@@ -62,8 +62,6 @@ end
     A_aero(1,:) = [0,0,0];
     Alpha(1) = alpha;
     dAlpha_dt(1) = 0;
-    CD(1) = CD;
-    CL(1) = CL;
     phi(1) = phi_profile(0);
     
     a_prev = A(1,:);
@@ -134,9 +132,7 @@ end
             t = t + out_o.t_kep;
             %readjust attitude to get back to initial alpha
             alpha = control.alpha_init;
-            [CL, CD, CMY] = aero_coef.aeroCoeffs(alpha);
-            CL(i+1) = CL;
-            CD(i+1) = CD;
+            [CL(i+1), CD(i+1), CMY] = aero_coef.aeroCoeffs(alpha);
             state.alpha = alpha;
             control.error = 0;
             control.error_I = 0;
@@ -232,7 +228,7 @@ end
     % output text
     
 
-    disp(['rx = ' num2str(R0(1)) ' [m], CD = ' num2str(CDA / S) ' [-], CL = ' num2str(CLA / S) ' [-], in atmosphere: ' num2str(out_c.in_atmos) ', crashed: ' num2str(out_c.crash) ', in orbit: ' num2str(out_c.orbit) ', flyby: ' num2str(out_c.flyby) ', acceleration: ' num2str(maxaccel) ', time pased: ' num2str(t/(3600)) ' hours' ])
+    disp(['rx = ' num2str(R0(1)) ' [m], CD = ' num2str(CD(1)) ' [-], CL = ' num2str(CL(1)) ' [-], in atmosphere: ' num2str(out_c.in_atmos) ', crashed: ' num2str(out_c.crash) ', in orbit: ' num2str(out_c.orbit) ', flyby: ' num2str(out_c.flyby) ', acceleration: ' num2str(maxaccel) ', time pased: ' num2str(t/(3600)) ' hours' ])
     
     if no_waitbar == false
         %close waitbar
