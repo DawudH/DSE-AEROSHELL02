@@ -26,11 +26,11 @@ function out = alpha_profile(t,aero_coef,control,state,dt)
     else
         alpha = Alpha(check);
     end
-    [CLA, CDA, CMYA] = aero_coef.aeroCoeffs(alpha);
+    [CL, CD, CMY] = aero_coef.aeroCoeffs(alpha);
 
-    out.CLA = CLA;
-    out.CDA = CDA;
-    out.CMYA = CMYA;
+    out.CL = CL;
+    out.CD = CD;
+    out.CMY = CMY;
     out.alpha = alpha;
     out.error = 0;
     out.error_I = 0;
