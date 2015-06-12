@@ -6,8 +6,7 @@ In this section the methods used for determining appropriate control systems are
 
 \paragraph{Trim point}
 \label{control:trim}
-The aerodynamic forces acting on the spacecraft work on the centre of pressure of the aeroshell. The \gls{cg} of the spacecraft has a certain offset in x,y and z direction with respect to this centre of pressure. Thus moments are induced around the center of gravity. These moments can be described as shown in equations \ref{eq:momx} - \ref{eq:momz} which follow from figures \ref{fig:momx} - \ref{fig:momz}.
-
+The aerodynamic forces acting on the spacecraft work on the centre of pressure of the aeroshell. The \gls{cg} of the spacecraft has a certain offset in x,y and z direction with respect to this centre of pressure. Thus moments are induced around the center of gravity. These moments can be described as shown in equations \ref{eq:momx} - \ref{eq:momz}.
 \begin{equation}
 \label{eq:momx}
 M_x = F_y \cdot dz - F_z \cdot dy
@@ -20,25 +19,34 @@ M_y = F_x \cdot dz - F_z \cdot dx
 \label{eq:momz}
 M_z = F_x \cdot dy - F_y \cdot dx
 \end{equation}
+Solving these equations such that $M_{x}$, $M_{y}$ and $M_{z}$ are zero results in figure \ref{}. From this figure it can be seen that the neutral location of the \gls{cg} 
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.65\textwidth]{./Figure/Nyan}
-	\caption{nyan nyan om de X-as}
-	\label{fig:momx}
+	\setlength\figureheight{0.7\textwidth} 
+	\setlength\figurewidth{0.95\textwidth}
+	%\input{./Figure/Nyan.jpeg}
+	\caption{1}
+	\label{fig:}
 \end{figure}
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.65\textwidth]{./Figure/Nyan}
-	\caption{nyan nyan om de Y-as}
-	\label{fig:momy}
-\end{figure}
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.65\textwidth]{./Figure/Nyan}
-	\caption{nyan nyan om de Z-as}
-	\label{fig:momz}
-\end{figure}
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics[width=0.65\textwidth]{./Figure/Nyan}
+%	\caption{nyan nyan om de X-as}
+%	\label{fig:momx}
+%\end{figure}
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics[width=0.65\textwidth]{./Figure/Nyan}
+%	\caption{nyan nyan om de Y-as}
+%	\label{fig:momy}
+%\end{figure}
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics[width=0.65\textwidth]{./Figure/Nyan}
+%	\caption{nyan nyan om de Z-as}
+%	\label{fig:momz}
+%\end{figure}
 
 These equations result in a line in three-dimensional space for which the moments are 0 around each axis. This line is different for different combinations of forces which follow from different combinations of angle of attack, sideslip angle and bank angle.
 
