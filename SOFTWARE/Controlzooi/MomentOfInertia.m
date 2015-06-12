@@ -1,5 +1,6 @@
 addpath('..\aerodynamic_coefficients');
 aerocoef=aeroProperties('irve');
+aerocoef.getCML(alpha);
 
 Di=4.5;
 Do=12;
