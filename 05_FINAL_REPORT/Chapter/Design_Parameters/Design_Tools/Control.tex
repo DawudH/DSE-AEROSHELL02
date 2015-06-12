@@ -81,6 +81,30 @@ m_{prop}=\int_{0}^{t} \frac{\gls{sym:F}_{thrust}}{\gls{sym:Isp}\gls{sym:ge}} dt 
 Since a constant mass flow is needed to be able to deliver a continuous control moment thrusters are not considered to be used to trim the spacecraft at a certain angle of attack. Doing so would result in an excessively high propellant mass. \\
 To arrive at a thruster design the specific impulse and maximum mass flow of available thrusters can be taken from literature. From this also follows the dry mass per thruster, which can be added to the propellant mass to arrive at the total thruster control system mass.
 
+Thruster allow for very versatile operations but with varying efficiency. The effectiveness of attitude changes depends on the stability of the vehicle. If the re-entry vehicle is stable around a certain axis than large amounts of propellant are required to maintain a certain attitude.
+
+Following from the aerodynamic analysis the stability around all three axis can be considered. For pitch and sideslip the re-entry vehicle was found to be stable whereas for roll the vehicle is neutrally stable. 
+
+This neutral stability can be used relatively efficiently for bank control. Bank control is the conventional solution for re-entry and is commonly employed. The use of thrusters implies a high control system reliability \cite{Wertz2011} as they are not only frequently employed but also allow for redundant placement. As such a high control system reliability can be achieved in line with the mission requirements. Moreover the use of thrusters allows for a relativity fast control system.
+
+The use of bank control for a Martian landings have previously been investigated \cite{Davis2010} achieving accuracies of up to 10[$m$] at final landing featuring \gls{hiad} with a combined mass of over 10000[$kg$].
+
+Outside the Martian atmosphere thruster feature the additional advantage that unlike a \gls{cg} offset control system or bodyflaps control is system possible since the presence of an atmosphere is not a perquisite.
+
+The main disadvantage of thrusters over bodyflaps or a \gls{cg}-offset control system is a increasing mass fraction over usage. If the thrusters are employed frequently mass fraction can become significant negating the aforementioned advantages.
+
+\begin{itemize}
+\item[+] 
+\item[+]
+\item[-]
+
+\end{itemize}
+...WIP...
+
+
+
+
+
 \subparagraph{Aerodynamic surfaces}
 Using the modified Newtonian flow theory discussed in section \ref{subsec:aerotool} the force and moment contributions of a surface with a certain orientation to the freestream flow can be computed. For an aerodynamic surface (essentially a flap) the freestream inclination angle can be varied by using rotational actuators. Alternatively the flap area exposed to the freestream flow can be varied by using linear actuation. Both of these options directly influence \gls{sym:CD}\gls{sym:A} exerted on the actuated surface, thereby allowing active control.\\
 The required control moments can be determined in a manner similar to section \ref{subpar:thrusters}. By comparing the required and delivered control moments the required force per flap can be computed. From this required force follows \gls{sym:CD}\gls{sym:A}. This depends on the flap area but also on the flap inclination angle. Using this \gls{sym:CD}\gls{sym:A} then forms the basis for computing the resultant flap drag corresponding to the aforementioned inclination angle.\\
