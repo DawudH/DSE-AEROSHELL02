@@ -18,7 +18,7 @@ geom = aeroGeometry(TriGeom, A);
 mod = modnewtonian(geom, gamma, a, center, rho, T);
 % mod = mod.calcAeroangle(V, alpha, beta, phi);
 mod = mod.alphasweep(V, beta, phi, 0,0.5*pi,0.1);
-plot(mod.alpha_array, mod.CRA_aero_array(1,:))
+% plot(mod.alpha_array, mod.CRA_aero_array(1,:))
 
 
 

@@ -1,5 +1,5 @@
 % function [ score, mod ] = assessGeometry( skewness, height, radius, poly, q, LoverD )
-function [ score, Cmalpha, CDA, failed, mod  ] = assessGeometry( skewness, height, radius, poly, q, LoverD )
+function [ score, CoGshift, CD, failed, mod  ] = assessGeometry( skewness, height, radius, poly, q, LoverD )
 %ASSESSGEOMETRY Assess a geometry for it's performance
     params = globalParams();
     x = [skewness, height/radius, poly(1:end-2)];
@@ -8,8 +8,8 @@ function [ score, Cmalpha, CDA, failed, mod  ] = assessGeometry( skewness, heigh
     
     % Angle of attack values
     alpha0 = 0; %degrees
-    dalpha = 5; %degrees
-    alphaend = 40; %degrees
+    dalpha = 2; %degrees
+    alphaend = params.alphamax; %degrees
     beta = 0;
     phi = 0;
     
@@ -24,10 +24,11 @@ function [ score, Cmalpha, CDA, failed, mod  ] = assessGeometry( skewness, heigh
     
     % Initialise objective functions
     Cmalpha = 0;
-    CDA = 0;
+    CD = 0;
     CLA = 0;
     CmAtrim = 0;
     absoluteLoverD = 0;
+    CoGshift = 0;
     failed = false;    
     
     % derivative is bigger than zero everywhere
@@ -54,10 +55,23 @@ function [ score, Cmalpha, CDA, failed, mod  ] = assessGeometry( skewness, heigh
         failed = true;
     end
     
+    % Height factor greater than max height factor
     if height > params.maxheightfactor*radius
         warning(strcat('height>',num2str(params.maxheightfactor),'*radius'));
         failed = true;
     end    
+    
+    % Half-cone angle smaller than allowed
+    z = 2.5:0.1:radius;
+    xshape = polyval(poly, (z+abs(skewness))/radius)/sum(poly)*height;
+    dz = z(2:end)-z(1:end-1);
+    dx = xshape(2:end)-xshape(1:end-1);
+    ourtheta = atand(dx./dz);
+    if any(ourtheta < 90-params.thetamin)
+        disp('Warning: derivative < thetamin');
+        failed = true;
+    end
+    
     
     
     %% If not failed
@@ -113,7 +127,7 @@ function [ score, Cmalpha, CDA, failed, mod  ] = assessGeometry( skewness, heigh
                 failed = true;
             end
             %Calculate performance
-            CDA = mod.CRA_aero_array(1,1);
+            CD = mod.CR_aero_array(1,end-1);
             CmAtrim = mod.CMA_aero_array(2,end-1);
             absoluteLoverD = max(abs(mod.CLCD_array));
             absoluteCLA = max(abs(mod.CRA_aero_array(3,:)));
@@ -127,7 +141,7 @@ function [ score, Cmalpha, CDA, failed, mod  ] = assessGeometry( skewness, heigh
         disp(x)
         score = [1000, -1000, 1000, -1000, -10000, 1000];
     else
-        score = [Cmalpha;CDA;CmAtrim;absoluteLoverD;absoluteCLA;CoGshift];
+        score = [Cmalpha;CD;CmAtrim;absoluteLoverD;absoluteCLA;CoGshift];
     end
 
 end
