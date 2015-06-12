@@ -1,4 +1,5 @@
-addpath('..\aerodynamic_coeeficients')
+addpath('..\aerodynamic_coefficients');
+aerocoef=aeroProperties('irve');
 
 Di=4.5;
 Do=12;
