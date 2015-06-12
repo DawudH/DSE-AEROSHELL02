@@ -22,7 +22,7 @@ layup(:,2:6) = layupin(:,2:6);
 L = layup(:,1);
 qfact = 1.0;
 % Aero input, qsdot
-load('heatflux_orbit_iteration_0','T','t','qmax_array')
+load('heatflux_orbit_iteration_0_1','T','t','qmax_array')
 tq = find(not(qmax_array<0.01));
 qaero = qmax_array(tq(1):tq(end))*qfact;
 Tatm  = T(tq(1):tq(end)); 
