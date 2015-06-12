@@ -6,9 +6,9 @@ out.LoverD = 0.4;
 out.q = 31;
 out.r_capsule = 2.5;
 out.allowskewness = true;
-out.maxheightfactor = 2;
+out.maxheightfactor = 1;
 out.minheightfactor = 0.01;
 out.Cmalpharequired = -0.1;
 out.thetamin = 50;
-out.alphamax = 10;
+out.alphamax = 40;
 end
