@@ -23,7 +23,11 @@ As output the trajectory tool can generate important parameters at each moment i
  \end{itemize}
 
 \paragraph{Analysis method}
+The orbit can be divided into two different parts, the first part is the pass through the atmosphere and the second part is outside of the atmosphere. In the first part, there are three forces working on the spacecraft: lift, drag and gravitation. In the second part there is only the gravitation, therefore this part is simplified to use Kepler equations of motion to determine the position of the spacecraft.
 
+The atmospheric properties are determined using the NASA software \gls{marsgram}. The software generates data based on equations for atmosphere properties and incorporates the high amount of dust on Mars, which has a big effect on the absorbed radiation heat from the sun. From this model the average atmospheric properties are used to determine the aerodynamic forces.
+
+% % SOMETHING ABOUT HOW THE IN ATMOS PHASE IS DONE
 
 \paragraph{Limitations}
 
