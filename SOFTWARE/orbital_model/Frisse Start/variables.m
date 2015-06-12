@@ -7,7 +7,7 @@ constants
 %initial angles
 theta0 = 135/180*pi;%3.016549;%150/180*pi;
 %d=12
-gamma = 21.865;
+gamma = 21.84;
 % %d=6
 % gamma = 22.2;
 %d=18
