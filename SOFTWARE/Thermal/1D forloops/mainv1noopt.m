@@ -12,17 +12,17 @@ filename   = 'layup4.txt';
 layupin    = dlmread(filename);
 % SI units
 thicks = dlmread('thick.txt');
-layupin(1,1) = thicks(21);
-layupin(2,1) = thicks(21);
-layupin(3,1) = thicks(221);
-layupin(4,1) = thicks(221);
+layupin(1,1) = thicks(500);
+layupin(2,1) = thicks(500);
+layupin(3,1) = thicks(500);
+layupin(4,1) = thicks(500);
 layup      = zeros(size(layupin));
 layup(:,1) = layupin(:,1)./1000;
 layup(:,2:6) = layupin(:,2:6);
 L = layup(:,1);
 qfact = 1.0;
 % Aero input, qsdot
-load('heatflux_out_d6_one_time','T','t','qmax_array')
+load('heatflux_orbit_iteration_0','T','t','qmax_array')
 tq = find(not(qmax_array<0.01));
 qaero = qmax_array(tq(1):tq(end))*qfact;
 Tatm  = T(tq(1):tq(end)); 
