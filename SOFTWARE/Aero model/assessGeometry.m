@@ -67,7 +67,7 @@ function [ score, CoGshift, CD, failed, mod  ] = assessGeometry( skewness, heigh
     dz = z(2:end)-z(1:end-1);
     dx = xshape(2:end)-xshape(1:end-1);
     ourtheta = atand(dx./dz);
-    if any(ourtheta > 90-params.thetamin)
+    if any(ourtheta < 90-params.thetamin)
         disp('Warning: derivative < thetamin');
         failed = true;
     end
