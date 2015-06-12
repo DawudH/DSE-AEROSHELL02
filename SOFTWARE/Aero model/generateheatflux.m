@@ -1,7 +1,7 @@
 clear;
 close all;
 clc;
-casename = 'orbit_iteration_0_2';
+casename = 'orbit_iteration_0_4';
 load(strcat('orbits\',casename,'.mat'));
 load('aeroshapes\iteration0_output.mat');
 
