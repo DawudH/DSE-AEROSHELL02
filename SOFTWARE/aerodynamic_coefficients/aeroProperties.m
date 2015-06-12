@@ -31,13 +31,13 @@ classdef aeroProperties
             obj.czinterpolant = griddedInterpolant(mod.alpha_array(1:end-2), mod.CR_body_array(3,1:end-2), 'linear');
         end
         
-        function [cl, cd, cmy] = aeroCoeffs(obj, alpha)
+        function [cl, cd, cml] = aeroCoeffs(obj, alpha)
 %             if sum(alpha > max(obj.alpha))>0 || sum(alpha < min(obj.alpha))>0
 %                 error('Outside measured aera!');
 %             else
                 cl = obj.getCL(alpha);
                 cd = obj.getCD(alpha);
-                cmy = obj.getCMY(alpha);
+                cml = obj.getCML(alpha);
 %             end
         end
         
@@ -49,7 +49,7 @@ classdef aeroProperties
             cda = obj.cdainterpolant(alpha);
         end
         
-        function cmya = getCMYA(obj, alpha)
+        function cmya = getCMLA(obj, alpha)
             cmya = obj.cmlainterpolant(alpha);
         end
         
@@ -61,7 +61,7 @@ classdef aeroProperties
             cd = obj.cdinterpolant(alpha);
         end
         
-        function cmy = getCMY(obj, alpha)
+        function cmy = getCML(obj, alpha)
             cmy = obj.cmlinterpolant(alpha);
         end        
         
