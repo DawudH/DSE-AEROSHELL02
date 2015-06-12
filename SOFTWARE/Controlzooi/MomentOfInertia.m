@@ -1,6 +1,6 @@
 addpath('..\aerodynamic_coefficients');
 aerocoef=aeroProperties('irve');
-aerocoef.getCML(alpha);
+aerocoef.getCML(2);
 
 Di=4.5;
 Do=12;
@@ -16,14 +16,24 @@ Isp=234;
 g0=9.81;
 
 mu_dd=5;
-mu=45;
+mu=54;
 alpha_dd=5;
-alpha=5;
+alpha_trim=5;
+alpha_dive=0;
+alpha=abs(alpha_trim-alpha_dive)
+
+mu_dd=mu_dd/180*pi;
+alpha_dd=alpha_dd/180*pi;
+mu=mu/180*pi;
+alpha=alpha/180*pi;
+
+alpha_trim=alpha_trim/180*pi;
+alpha_dive=alpha_dive/180*pi;
 
 q=1000;
 
-CM_alphaAL=1.5
-Myy_turn=CM_alphaAL*alpha*q;
+CM_AL=abs(aerocoef.getCMLA(alpha_trim)-aerocoef.getCMLA(alpha_dive))
+Myy_turn=CM_AL*q;
 t_turn=5;
 
 m_cbh=m_h-m_inf;
@@ -32,11 +42,6 @@ t_cb=Di-Ds_cb;
 Ixx=1/4 * (0.5*m_cb*((Ds_cb+t_cb)^2+(Ds_cb+t_cb)^2) + 0.5*m_cbh*Di^2  +  0.5*m_inf+Do^2);
 Iyy=1/12*(m_cb+m_h)*(3/4*((Ds_cb+t_cb)^2+(Ds_cb+t_cb)^2) +L^2);
 
-
-mu_dd=mu_dd/180*pi;
-alpha_dd=alpha_dd/180*pi;
-mu=mu/180*pi;
-alpha=alpha/180*pi;
 
 Mxx=Ixx*mu_dd*2;
 Myy=Iyy*alpha_dd*2;
@@ -66,4 +71,5 @@ M_p=M0-M0/(exp(delta_V/(Isp*g0)))
 F=Isp*g0*M_p/t_burn
 M_p=M_p*2
 
-M_tot=Massx+Massy+Massy_turn+M_p
+M_tot=Massx+Massy+M_p
+M_tot=Massy_turn+M_tot
