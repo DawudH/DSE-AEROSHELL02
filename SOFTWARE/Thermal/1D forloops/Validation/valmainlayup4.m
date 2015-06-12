@@ -30,14 +30,14 @@ q0 = 200000;
 nmax = int32(ttot/dt);  % number of time steps
 t = [0:double(nmax-1)]*dt;
 fact    = 1;           % multiplication factor of number of space steps.
-%kfact = [2.5e-5/fact;2.5e-5/fact;2.5e-4/fact];
+% %kfact = [2.5e-5/fact;2.5e-5/fact;2.5e-4/fact];
      kfact = [1.0 ;
               1.0 ;
               1.0 ;
               1.0 ;
               0.0];
 
-%kfact = [2.5e-5/fact;2.5e-5/fact;2.5e-5/fact;2.5e-5/fact;2.5e-4/fact];
+%kfact = [2.5e-3/fact;2.5e-5/fact;2.5e-2/fact;2.5e-2/fact;2.5e-2/fact];
 kfact'
 
 % spaceing
