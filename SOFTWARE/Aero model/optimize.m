@@ -29,10 +29,10 @@ opts = gaoptimset('PlotFcns',{@gaplotbestf,@gaplotstopping, @gaplotbestindiv});
 opts = gaoptimset('PlotFcns',{@gaplotstopping, @gaplotpareto});
 % opts = gaoptimset(opts, 'UseParallel', false);
 opts = gaoptimset(opts, 'PopulationSize', 48);
-[x,Fval,exitFlag,Output, population, scores] = ga(@optimizationWrapper,xlength,A,b,[],[],[],[],[],opts);
-% [x,Fval,exitFlag,Output, population, scores] = gamultiobj(@optimizationWrapper,xlength,A,b,[],[],[],[],[],opts);
+% [x,Fval,exitFlag,Output, population, scores] = ga(@optimizationWrapper,xlength,A,b,[],[],[],[],[],opts);
+[x,Fval,exitFlag,Output, population, scores] = gamultiobj(@optimizationWrapper,xlength,A,b,[],[],[],[],[],opts);
 
-[ score, mod, CoGshift, CDA, failed ] = optimizationWrapper( x );
+[ score, mod, CoGshift, CD, failed ] = optimizationWrapper( x );
 mod.plotCp(true, false);
 if saveflag
     save('aeroshapes/optimizationoutputoutput');

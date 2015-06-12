@@ -1,5 +1,5 @@
 % function [ score, mod ] = assessGeometry( skewness, height, radius, poly, q, LoverD )
-function [ score, CoGshift, CDA, failed, mod  ] = assessGeometry( skewness, height, radius, poly, q, LoverD )
+function [ score, CoGshift, CD, failed, mod  ] = assessGeometry( skewness, height, radius, poly, q, LoverD )
 %ASSESSGEOMETRY Assess a geometry for it's performance
     params = globalParams();
     x = [skewness, height/radius, poly(1:end-2)];
@@ -24,7 +24,7 @@ function [ score, CoGshift, CDA, failed, mod  ] = assessGeometry( skewness, heig
     
     % Initialise objective functions
     Cmalpha = 0;
-    CDA = 0;
+    CD = 0;
     CLA = 0;
     CmAtrim = 0;
     absoluteLoverD = 0;
@@ -114,7 +114,7 @@ function [ score, CoGshift, CDA, failed, mod  ] = assessGeometry( skewness, heig
                 failed = true;
             end
             %Calculate performance
-            CDA = mod.CRA_aero_array(1,1);
+            CD = mod.CR_aero_array(1,end-1);
             CmAtrim = mod.CMA_aero_array(2,end-1);
             absoluteLoverD = max(abs(mod.CLCD_array));
             absoluteCLA = max(abs(mod.CRA_aero_array(3,:)));
@@ -128,7 +128,7 @@ function [ score, CoGshift, CDA, failed, mod  ] = assessGeometry( skewness, heig
         disp(x)
         score = [1000, -1000, 1000, -1000, -10000, 1000];
     else
-        score = [Cmalpha;CDA;CmAtrim;absoluteLoverD;absoluteCLA;CoGshift];
+        score = [Cmalpha;CD;CmAtrim;absoluteLoverD;absoluteCLA;CoGshift];
     end
 
 end

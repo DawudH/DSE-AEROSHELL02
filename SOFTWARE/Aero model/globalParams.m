@@ -10,5 +10,5 @@ out.maxheightfactor = 2;
 out.minheightfactor = 0.01;
 out.Cmalpharequired = -0.1;
 out.thetamin = 50;
-out.alphamax = 10;
+out.alphamax = 30;
 end
