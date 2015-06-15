@@ -62,7 +62,6 @@ imax =  int32(Ltot/dx + 1); % maximum amount of points in spaceing
 
 %Determination of radiation parameters
 emiss = layup(1,5);
-emiss = 0.93;
 sig   = 5.670373e-8; %[W/m2/K4]
 
 %% Material properties
