@@ -8,7 +8,7 @@ clc
 %% Define input
 
 % lay-up (t[mm], k[w/m/K], rho[kg/m3], cp[J/kg/K], emis[-], allowT[K])
-filename   = 'layup4.txt';
+filename   = 'layup9.txt';
 layupin    = dlmread(filename);
 % SI units
 layup      = zeros(size(layupin));
@@ -17,26 +17,27 @@ layup(:,2:6) = layupin(:,2:6);
 %L = layup(:,1);
 
 % Aero input, qsdot
-load('heatflux_orbit_iteration_0_2.mat','T','t','qmax_array')
+load('heatflux_orbit_iteration_0_4.mat','T','t','qmax_array')
 tq = find(not(qmax_array==0));
-fluxfactor = 1.0;
+fluxfactor = 1.2;
 qaero = fluxfactor*qmax_array(tq(1):tq(end));
 Tatm  = T(tq(1):tq(end)); 
 timeq = t(tq(1):tq(end))-t(tq(1));
 clear('T','t')
 
-%Optimization
-Tallow  =  layup(:,6);
-results =  [1.6125    1.4849    1.3841    0.7614    0.6310    0.6302]*1e3';
-
-for i = 1
-    if results(1) > Tallow(1)
-        X = 'No Go';
-        disp(X)
-    else
-        while results(3) > Tallow(3)  %Nextel(1643 623) harnessedsatin()
-
-layup(2*i-1:2*i,1) =  layup(2*i-1:2*i,1) + 1.0*2.54e-5;
+% %Optimization
+% Tallow  =  layup(:,6);
+% results =  [1.2908    1.2524    1.2195    0.8216    0.8168]*1e3';
+% %1.2908    1.2524    1.2195    0.8216    0.8168
+% 
+% for i = 1
+%     if results(1) > Tallow(1)
+%         X = 'No Go';
+%         disp(X)
+%     else
+%         while results(3) > Tallow(3)  %Nextel(1643 623) harnessedsatin()
+% 
+% layup(2*i-1:2*i,1) =  layup(2*i-1:2*i,1) + 1.0*2.54e-5;
 
      L = layup(:,1);
         % time and aeroheat
@@ -200,6 +201,6 @@ layup(2*i-1:2*i,1) =  layup(2*i-1:2*i,1) + 1.0*2.54e-5;
         disp(output)    
         disp(['m/A = ',num2str(sum(layup(:,1).*layup(:,3))),' [kg/m3]'])  
 
-        end
-    end
-end
+%         end
+%     end
+% end
