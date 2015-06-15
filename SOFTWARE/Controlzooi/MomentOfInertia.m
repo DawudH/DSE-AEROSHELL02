@@ -21,7 +21,7 @@ g0=9.81;
 mu_dd=5;
 mu=41;
 alpha_dd=5;
-alpha_trim=5;
+alpha_trim=10;
 alpha_dive=0;
 alpha=abs(alpha_trim-alpha_dive)
 
@@ -37,7 +37,7 @@ q=1000;
 
 CM_AL=abs(aerocoef.getCMLA(alpha_trim)-aerocoef.getCMLA(alpha_dive))
 Myy_turn=CM_AL*q;
-t_turn=5;
+t_turn=20;
 
 m_cbh=m_h-m_inf;
 t_cb=Di-Ds_cb;
@@ -53,13 +53,13 @@ Myy=Iyy*alpha_dd*2;
 txx=2*sqrt(2*mu/mu_dd);
 tyy=2*sqrt(2*alpha/alpha_dd);
 
-Txx=Mxx/Di;
-Tyy=Myy/Di;
+Txx=Mxx/Di*2;
+Tyy=Myy/Di*2;
 Tyy_turn=Myy_turn/Di;
 
 Massx=Txx*txx/Isp/g0*12
-Massy=Tyy*tyy/Isp/g0*12
-Massy_turn=Tyy_turn*t_turn/Isp/g0*12
+Massy=Tyy*tyy/Isp/g0
+Massy_turn=Tyy_turn*t_turn/Isp/g0
 
 
 %%%% Delta V orbit
@@ -74,10 +74,20 @@ M_p=M0-M0/(exp(delta_V/(Isp*g0)));
 F=Isp*g0*M_p/t_burn
 M_p=M_p*2
 
-M_tot=Massx+Massy+M_p
+M_tot=Massx+M_p
 
-V=M_tot/1.002*1.2
-M_tank=2.7086*10^-8 *V^3 -6.1703*10^-5 *V^2 +6.66290*10^-2 *V +1.3192
-M_thruster=8*1.6
+V=M_tot/1.002*1.2;
+M_tank=2.7086*10^-8 *V^3 -6.1703*10^-5 *V^2 +6.66290*10^-2 *V +1.3192;
+M_thruster=8*1.6;
+
+Mtank_fuel=M_tot+M_tank+M_thruster
+
+%Alternative
+
+M_tot=Massx+M_p+Massy+Massy_turn
+
+V=M_tot/1.002*1.2;
+M_tank=2.7086*10^-8 *V^3 -6.1703*10^-5 *V^2 +6.66290*10^-2 *V +1.3192;
+M_thruster=8*1.6;
 
 Mtank_fuel=M_tot+M_tank+M_thruster

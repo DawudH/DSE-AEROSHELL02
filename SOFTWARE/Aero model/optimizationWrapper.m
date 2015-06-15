@@ -16,7 +16,7 @@ poly = [x(3:end),0,0];
 [ score, CoGshift, CD, failed, mod  ] = assessGeometry( skewness, height, params.radius, poly, params.q, params.LoverD );
 % score =[ score(6) -score(2)];
 % score = [Cmalpha;CDA;CmAtrim;absoluteLoverD;absoluteCLA;CoGshift];
-score = score(6);
+score = -score(2);
 disp(score);
 % disp('Score:strcat(num2str(score))
 
