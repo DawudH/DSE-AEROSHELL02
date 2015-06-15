@@ -1,7 +1,9 @@
 % load('aeroshapes\iteration1_0_simplified.mat');
 clearvars -except x
 
+
 q = 61;
+
 
 params = globalParams();
 
