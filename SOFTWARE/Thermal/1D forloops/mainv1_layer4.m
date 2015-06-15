@@ -48,7 +48,7 @@ clear('T','t')
         nmax = int32(ttot/dt);  % number of time steps
         t = (0:double(nmax-1))*dt;
         fact    = 1;           % multiplication factor of number of space steps
-        kfact = [1.0 ;
+        kfact = [1e-4 ;
                  1.0 ;
                  1.0 ;
                  1.0 ;
