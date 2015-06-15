@@ -1,8 +1,10 @@
 clear; clc;
-saveflag = false;
+% load('aeroshapes\iteration1_0.mat');
+% clearvars -except x;
+saveflag = true;
 params = globalParams();
 
-order = 12;
+order = 8;
 xlength = order+2;
 
 
@@ -29,7 +31,8 @@ b(4) = params.maxheightfactor;
 opts = gaoptimset('PlotFcns',{@gaplotbestf,@gaplotstopping, @gaplotbestindiv});
 % opts = gaoptimset('PlotFcns',{@gaplotstopping, @gaplotpareto});
 opts = gaoptimset(opts, 'UseParallel', true);
-opts = gaoptimset(opts, 'PopulationSize', 100);
+opts = gaoptimset(opts, 'PopulationSize', 200);
+% opts = gaoptimset(opts, 'InitialPopulation', x);
 [x,Fval,exitFlag,Output, population, scores] = ga(@optimizationWrapper,xlength,A,b,[],[],[],[],[],opts);
 % [x,Fval,exitFlag,Output, population, scores] = gamultiobj(@optimizationWrapper,xlength,A,b,[],[],[],[],[],opts);
 

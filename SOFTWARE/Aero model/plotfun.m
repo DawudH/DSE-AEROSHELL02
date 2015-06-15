@@ -1,5 +1,6 @@
 function state = plotfun(options, state, flag)
-    x = state.Population;
+    x = state.Population(1,:);
+    
     
     params = globalParams();
 
@@ -11,7 +12,7 @@ function state = plotfun(options, state, flag)
 
     poly = [x(3:end),0,0];
     
-    [TriGeom, A] = ParaGeom(21, skewness, radius, height, poly);
+    [TriGeom, A] = ParaGeom(31, skewness, params.radius, height, poly);
     geom = aeroGeometry(TriGeom, A, poly);
-    geom.plotGeometr(true, false);
+    geom.plotGeometry(true, false);
 end
