@@ -25,12 +25,12 @@ h_atm = 400e3; %[m]
 SOI = 0.576e9; %[m]
 
 % crash margin above the surface
-crash_margin = 10000; %[m]
+crash_margin = 15000; %[m]
 
 
 %Earth gravitational accaleration
 g_earth = 9.81; %[m/s^2]
 
 %Height of end of mission
-height_EOM = 10000; %[m]
+height_EOM = 15000; %[m]
 
