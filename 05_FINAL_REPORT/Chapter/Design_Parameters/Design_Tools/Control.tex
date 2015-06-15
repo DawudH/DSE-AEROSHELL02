@@ -1,11 +1,24 @@
-In this section the methods used for determining appropriate control systems are explained. These systems should be able to keep the spacecraft on the trajectory as defined by the astrodynamics tool in section \ref{subsec:orbittool}. First the assumptions used and their effects on the accuracy of the analysis are explained in section \ref{control:assumptions}. Than, in section \ref{control:trim}, a point is determined in which the \gls{cg} should lie in order for the spacecraft to be trimmed at an angle of attack of *** as determined in section  \ref{subsec:orbittool}. The stability of the spacecraft is analysed in section \ref{control:stab}. In section \ref{control:system} the available control systems that can be used to follow the chosen angle of attack and bank angle profiles are weighed off.
+In this section the methods used for determining appropriate control systems are explained. These systems should be able to keep the spacecraft on the trajectory as defined by the astrodynamics tool in section \ref{subsec:orbittool}. First the assumptions used and their effects on the accuracy of the analysis are explained in section \ref{control:assumptions}. The stability of the spacecraft is analysed in section \ref{control:stab}. In section \ref{control:system} the available control systems that can be used to follow the chosen angle of attack and bank angle profiles are weighed off.
 
 \paragraph{Assumptions}
 \label{control:assumptions}
+
 **Primary and Secondary assumptions**
 
-\paragraph{Trim point}
-\label{control:trim}
+\paragraph{Stability}
+\label{control:stab}
+
+The aerodynamic tool determines the static stability around all axis in the aerodynamic frame. If the spacecraft is stable around a certain axis all perturbations around that axis are automatically counteracted. However if an attitude change around that axis is required a larger moment has to be counteracted to control the spacecraft.  If the spacecraft is unstable around a certain axis perturbations around that axis have to be counteracted by active control. However if an attitude change around that axis is required a smaller moment has to be counteracted to control the spacecraft. It is thus preferred to perform control about the axis that are unstable and axis about which no control is needed are preferred to be stable.
+
+\paragraph{Available control systems}
+\label{control:system}
+
+In this section three available control systems, a way of analysing their sizing and their application is explained. The control systems that are considered are \gls{cg} offset, thrusters and aerodynamic surfaces respectively.
+
+\subparagraph{\acrlong{cg} offset}
+
+In order to be able to trim the spacecraft at a certain angle of attack \gls{sym:alpha} a constant control moment has to be delivered by the combined control systems. To achieve this an active \gls{cg} offset control system is considered. By changing the location of the capsule \gls{cg} with respect to the aeroshell the magnitude of the resultant moments changes \cite{Mulqueen1991}. 
+
 The aerodynamic forces acting on the spacecraft work on the centre of pressure of the aeroshell. The \gls{cg} of the spacecraft has a certain offset in x,y and z direction with respect to this centre of pressure. Thus moments are induced around the center of gravity. These moments can be described as shown in equations \ref{eq:momx} - \ref{eq:momz}.
 \begin{equation}
 \label{eq:momx}
@@ -19,56 +32,11 @@ M_y = F_x \cdot dz - F_z \cdot dx
 \label{eq:momz}
 M_z = F_x \cdot dy - F_y \cdot dx
 \end{equation}
-Solving these equations such that $M_{x}$, $M_{y}$ and $M_{z}$ are zero results in figure \ref{}. From this figure it can be seen that the neutral location of the \gls{cg} 
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.8\textwidth]{./Figure/control/moment}
-	\caption{1}
-	\label{fig:}
-\end{figure}
-%\begin{figure}[h]
-%	\centering
-%	\includegraphics[width=0.65\textwidth]{./Figure/Nyan}
-%	\caption{nyan nyan om de X-as}
-%	\label{fig:momx}
-%\end{figure}
-%\begin{figure}[h]
-%	\centering
-%	\includegraphics[width=0.65\textwidth]{./Figure/Nyan}
-%	\caption{nyan nyan om de Y-as}
-%	\label{fig:momy}
-%\end{figure}
-%\begin{figure}[h]
-%	\centering
-%	\includegraphics[width=0.65\textwidth]{./Figure/Nyan}
-%	\caption{nyan nyan om de Z-as}
-%	\label{fig:momz}
-%\end{figure}
-
-These equations result in a line in three-dimensional space for which the moments are 0 around each axis. This line is different for different combinations of forces which follow from different combinations of angle of attack, sideslip angle and bank angle.
-
-\paragraph{Stability}
-\label{control:stab}
-The aerodynamic tool determines the static stability around all axis in the aerodynamic frame. If the spacecraft is stable around a certain axis all perturbations around that axis are automatically counteracted. However if an attitude change around that axis is required a larger moment has to be counteracted to control the spacecraft.  If the spacecraft is unstable around a certain axis perturbations around that axis have to be counteracted by active control. However if an attitude change around that axis is required a smaller moment has to be counteracted to control the spacecraft. It is thus preferred to perform control about the axis that are unstable and axis about which no control is needed are preferred to be stable.
-
-\paragraph{Available control systems}
-\label{control:system}
-In this section three available control systems, a way of analysing their sizing and their application is explained. The control systems that are considered are \gls{cg} offset, thrusters and aerodynamic surfaces respectively.
-
-\subparagraph{\acrlong{cg} offset}
-In order to be able to trim the spacecraft at a certain angle of attack \gls{sym:alpha} a constant control moment has to be delivered by the combined control systems. To achieve this an active \gls{cg} offset control system is considered. By changing the location of the capsule \gls{cg} with respect to the aeroshell the magnitude of the resultant moments changes \cite{Mulqueen1991}. 
-%This change can be computed with:
-%\begin{equation}
-%=
-%\end{equation}
-
-%From the stability analysis 
-
-%**Not necessary for AoA, not feasible for bank**
+Solving these equations such that $M_{x}$, $M_{y}$ and $M_{z}$ are zero results in a line in three-dimensional space for which the moments are 0 around each axis. This line is different for different combinations of forces which follow from different combinations of angle of attack, sideslip angle and bank angle.
 
 \subparagraph{Thrusters}
 \label{subpar:thrusters}
+
 By dividing the required reaction control moment around a certain axis \gls{sym:Maero} with the length of the thruster moment arm \gls{sym:d} the required thruster control force $\gls{sym:F}_{req}$ can be determined. From the specific impulse of a thruster \gls{sym:Isp} and its propellant mass flow \gls{sym:mdot} follows the amount of thrust and control moment each thruster can generate \cite{Allen2012}:
 \begin{multicols}{2}
 \begin{equation}
@@ -101,6 +69,7 @@ The main disadvantage of thrusters over bodyflaps or a \gls{cg}-offset control s
 
 
 \subparagraph{Aerodynamic surfaces}
+
 Using the modified Newtonian flow theory discussed in section \ref{subsec:aerotool} the force and moment contributions of a surface with a certain orientation to the freestream flow can be computed. For an aerodynamic surface (essentially a flap) the freestream inclination angle can be varied by using rotational actuators. Alternatively the flap area exposed to the freestream flow can be varied by using linear actuation. Both of these options directly influence \gls{sym:CD}\gls{sym:A} exerted on the actuated surface, thereby allowing active control.\\
 The required control moments can be determined in a manner similar to section \ref{subpar:thrusters}. By comparing the required and delivered control moments the required force per flap can be computed. From this required force follows \gls{sym:CD}\gls{sym:A}. This depends on the flap area but also on the flap inclination angle. Using this \gls{sym:CD}\gls{sym:A} then forms the basis for computing the resultant flap drag corresponding to the aforementioned inclination angle.\\
 An advantage of flaps is the possibility of having a low control system mass. This is possible because of the option to lock each flap in a certain orientation. This would require a minimum amount of power and would provide a stable source of control force coming from the aerodynamic forces exerted on it without requiring a constant mass flow, unlike thrusters.\\
