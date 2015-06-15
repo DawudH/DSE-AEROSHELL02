@@ -112,12 +112,10 @@ function [ score, CoGshift, CD, failed, mod  ] = assessGeometry( skewness, heigh
                 disp('alphatrimindex==-1');
                 disp(x);
             end    
-%             alphatrimindex = 1;
 
             dCLCDdalpha = (abs(mod.CLCD_array(alphatrimindex+1)-mod.CLCD_array(alphatrimindex)))/(mod.alpha_array(alphatrimindex+1)-mod.alpha_array(alphatrimindex));
             realalphatrim = (abs(LoverD)-abs(mod.CLCD_array(alphatrimindex)))/dCLCDdalpha + mod.alpha_array(alphatrimindex);
             
-%             realalphatrim = 0;
             
             mod = mod.calcAeroangle(V, realalphatrim, beta, phi);
             mod = mod.calcAeroangle(V, realalphatrim+0.001, beta, phi);

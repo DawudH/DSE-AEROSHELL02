@@ -46,7 +46,7 @@ parfor i = range
         disp(strcat('current number: (', num2str(i), '/', num2str(max(range)), '), qmax: ', num2str(qmax_array(i))));  
     end
 end
-
+A_whetted = sum(geom.areas);
 disp('Finished!');
 save(strcat('heatflux/heatflux_',casename,'.mat'));
 plot(t, qmax_array);
