@@ -12,12 +12,13 @@ function out = phi_profile(t)
 %     t_change = [160 270 400];
 %     
 
-	%something else
-    %phi = [0 30 30 0]*pi/180;
-    %phi = [0 43.75 50 0]*pi/180;
-    %t_change = [190 1000 1100];   
-    phi = [0 0 0 0]*pi/180;
-    t_change = [500 900 1100];   
+	% Aero capture
+%     phi = [0 17 0 0]*pi/180;
+%     t_change = [240 1000 1100];   
+    
+    % second orbit
+    phi = [130 60 30]*pi/180;
+    t_change = [500 700];   
 
     t_check = t_change >= t;
     if sum(t_check) == 0

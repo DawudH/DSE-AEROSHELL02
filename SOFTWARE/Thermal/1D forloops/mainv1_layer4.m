@@ -8,7 +8,7 @@ clc
 %% Define input
 
 % lay-up (t[mm], k[w/m/K], rho[kg/m3], cp[J/kg/K], emis[-], allowT[K])
-filename   = 'layup9.txt';
+filename   = 'layup10.txt';
 layupin    = dlmread(filename);
 % SI units
 layup      = zeros(size(layupin));
@@ -17,27 +17,27 @@ layup(:,2:6) = layupin(:,2:6);
 %L = layup(:,1);
 
 % Aero input, qsdot
-load('heatflux_orbit_iteration_0_4.mat','T','t','qmax_array')
-tq = find(not(qmax_array==0));
+load('heatflux_orbit_iteration_1_0.mat','T','t','qmax_array','A_whetted')
+tq = find(not(qmax_array<0.01));
 fluxfactor = 1.2;
 qaero = fluxfactor*qmax_array(tq(1):tq(end));
 Tatm  = T(tq(1):tq(end)); 
 timeq = t(tq(1):tq(end))-t(tq(1));
 clear('T','t')
 
-% %Optimization
-% Tallow  =  layup(:,6);
-% results =  [1.2908    1.2524    1.2195    0.8216    0.8168]*1e3';
-% %1.2908    1.2524    1.2195    0.8216    0.8168
-% 
-% for i = 1
-%     if results(1) > Tallow(1)
-%         X = 'No Go';
-%         disp(X)
-%     else
-%         while results(3) > Tallow(3)  %Nextel(1643 623) harnessedsatin()
-% 
-% layup(2*i-1:2*i,1) =  layup(2*i-1:2*i,1) + 1.0*2.54e-5;
+%Optimization
+Tallow  =  layup(:,6);
+results =  [1.467499298281395   0.708193056490933   0.668448711109366   0.666741919249321]*1e3';
+
+
+
+    if results(1) > Tallow(1)
+        X = 'No Go';
+        disp(X)
+    else
+        while results(2) > Tallow(2)  %Nextel(1643 623) harnessedsatin(2073 1373 623)
+
+layup(2,1) =  layup(2,1) + 1.0*2.54e-5;
 
      L = layup(:,1);
         % time and aeroheat
@@ -48,11 +48,10 @@ clear('T','t')
         nmax = int32(ttot/dt);  % number of time steps
         t = (0:double(nmax-1))*dt;
         fact    = 1;           % multiplication factor of number of space steps
-        kfact = [1e-4 ;
-                 1.0 ;
-                 1.0 ;
-                 1.0 ;
-                 1.0]; % Conductivity factors
+        % K9 = [9.0e-6 ; 1.0 ; 1.0 ; 1.0 ; 1.0];
+        % K4 = [2.5e-4 ; 1.0 ; 1.0];
+        kfact = [9.0e-6 ; 1.0 ; 1.0 ];
+
 
 
         % spacing
@@ -199,8 +198,7 @@ clear('T','t')
         output = table(layup(:,1)*1000,results,layup(:,6),layup(:,2),layup(:,3),layup(:,4),'RowNames',layernames,'VariableNames',{'Thickness','maxT','allowT','k','rho','cp'});
 
         disp(output)    
-        disp(['m/A = ',num2str(sum(layup(:,1).*layup(:,3))),' [kg/m3]'])  
+        disp(['m/A = ',num2str(sum(layup(:,1).*layup(:,3))),' [kg/m2]'])  
 
-%         end
-%     end
-% end
+        end
+    end
