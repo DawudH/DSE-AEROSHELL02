@@ -20,7 +20,7 @@ m_inf=150;
 %Thruster parameters
 Isp=234;
 g0=9.81;
-n=24
+n=12
 
 %Rotatian angles
 mu_dd=5;
@@ -82,7 +82,8 @@ Massy_turn=Ty_turn*t_turn/Isp/g0;
 % Delta V orbit
 Isp=235;
 t_burn=600;
-delta_V=19.8;
+delta_V=8.7;
+delta_V_clean=3.49*3;
 M0=10000;
 g0=9.81;
 
@@ -91,8 +92,12 @@ M_p=M0-M0/(exp(delta_V/(Isp*g0)));
 F=Isp*g0*M_p/t_burn
 M_p_apo=M_p*2;
 
+M_p_clean=M0-M0/(exp(delta_V_clean/(Isp*g0)));
+F=Isp*g0*M_p_clean/t_burn
+
+
 %Total mass without alpha control
-M_tot=Massx+M_p_apo;
+M_tot=Massx+M_p_apo+M_p_clean;
 V=M_tot/1.002*1.2;
 M_tank=2.7086*10^-8 *V^3 -6.1703*10^-5 *V^2 +6.66290*10^-2 *V +1.3192;
 M_thruster=8*1.6;
@@ -101,12 +106,12 @@ Mtank_fuel=M_tot+M_tank+M_thruster;
 
 %Alternative
 %Total mass with alpha control
-M_tot_apo=Massx+M_p_apo+Massy+Massy_turn;
+M_tot_alpha=Massx+M_p_apo+Massy+Massy_turn+M_p_clean;
 
 V=M_tot/1.002*1.2;
 M_tank=2.7086*10^-8 *V^3 -6.1703*10^-5 *V^2 +6.66290*10^-2 *V +1.3192;
 M_thruster=8*1.6;
 
-Mtank_fuel_apo=M_tot_apo+M_tank+M_thruster;
+Mtank_fuel_alpha=M_tot_alpha+M_tank+M_thruster;
 
-table(M_p_apo,M_tot,Mtank_fuel,Massy+Massy_turn,M_tot_apo,Mtank_fuel_apo)
+table(M_p_apo,M_p_clean,M_tot,Mtank_fuel,Massy+Massy_turn,M_tot_alpha,Mtank_fuel_alpha)
