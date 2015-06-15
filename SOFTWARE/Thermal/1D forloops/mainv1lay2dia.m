@@ -8,14 +8,14 @@ clc
 %% Define input
 
 % lay-up (t[mm], k[w/m/K], rho[kg/m3], cp[J/kg/K], emis[-], allowT[K])
-filename   = 'layup2.txt';
+filename   = 'layup9.txt';
 layupin    = dlmread(filename);
 % SI units
 thicks = dlmread('thick.txt');
 m = [5.0,0,0];
-qfact = 1.0;
-for c=1:100:401
-    for d=1:100:401
+qfact = 1.2;
+for c=20:1:20
+    for d=60:1:80
         disp([num2str(c),', ',num2str(d)])
         layupin(1,1) = thicks(c);
         layupin(2,1) = thicks(d);
@@ -25,7 +25,7 @@ for c=1:100:401
         L = layup(:,1);
 
         % Aero input, qsdot
-        load('heatflux_orbit_iteration_0','T','t','qmax_array')
+        load('heatflux_orbit_iteration_1_0','T','t','qmax_array')
         tq = find(not(qmax_array<0.01));
         qaero = qmax_array(tq(1):tq(end))*qfact;
         Tatm  = T(tq(1):tq(end)); 
@@ -40,7 +40,8 @@ for c=1:100:401
         nmax = int32(ttot/dt);  % number of time steps
         t = [0:double(nmax-1)]*dt;
         fact    = 1;           % multiplication factor of number of space steps
-        kfact = [2.5e-5/fact;2.5e-6/fact;2.5e-2/fact]; % Conductivity factors
+        %kfact = [2.5e-5/fact;2.5e-6/fact;2.5e-2/fact]; % Conductivity factors - lay2
+        kfact = [9.0e-6;1;1];
 
 
         % spacing
@@ -156,7 +157,7 @@ for c=1:100:401
         end
         output = table(layup(:,1)*1000,results,layup(:,6),layup(:,2),layup(:,3),layup(:,4),'RowNames',layernames,'VariableNames',{'Thickness','maxT','allowT','k','rho','cp'});
 
-        if sum(results<layup(:,6))==4
+        if sum(results<layup(:,6))==length(layup(:,1))
             if sum(layup(:,1).*layup(:,3))<m(1)
                 m = [sum(layup(:,1).*layup(:,3)),c,d];
             end
