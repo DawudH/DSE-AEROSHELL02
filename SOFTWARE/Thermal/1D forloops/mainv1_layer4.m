@@ -17,7 +17,7 @@ layup(:,2:6) = layupin(:,2:6);
 %L = layup(:,1);
 
 % Aero input, qsdot
-load('heatflux_orbit_iteration_0.mat','T','t','qmax_array')
+load('heatflux_orbit_iteration_0_2.mat','T','t','qmax_array')
 tq = find(not(qmax_array==0));
 fluxfactor = 1.0;
 qaero = fluxfactor*qmax_array(tq(1):tq(end));
@@ -26,15 +26,15 @@ timeq = t(tq(1):tq(end))-t(tq(1));
 clear('T','t')
 
 %Optimization
-%Tallow  =  layup(:,6);
+Tallow  =  layup(:,6);
 results =  [1.6125    1.4849    1.3841    0.7614    0.6310    0.6302]*1e3';
 
 for i = 1
-    if results(1) > 1643
+    if results(1) > Tallow(1)
         X = 'No Go';
         disp(X)
     else
-        while results(3) > 623  %Nextel(1623 623) harnessedsatin()
+        while results(3) > Tallow(3)  %Nextel(1643 623) harnessedsatin()
 
 layup(2*i-1:2*i,1) =  layup(2*i-1:2*i,1) + 1.0*2.54e-5;
 
