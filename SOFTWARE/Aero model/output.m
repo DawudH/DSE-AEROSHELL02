@@ -1,3 +1,5 @@
+clearvars -except x
+
 q = 31;
 
 params = globalParams();
