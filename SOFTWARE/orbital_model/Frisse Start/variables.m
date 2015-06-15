@@ -7,13 +7,13 @@ constants
 %initial angles
 theta0 = 135/180*pi;%3.016549;%150/180*pi;
 %d=12
-gamma = 21.77;
+%gamma = 21.65;
 % %d=6
 % gamma = 22.2;
 %d=18
 %gamma = 21.74;
 % 2nd entry
-gamma = 16.63;
+gamma = 17.2;
 
 %Initial Position
 rx = -4148904.375000;
@@ -26,6 +26,7 @@ r = h_atm+R_m;
 % v = 7.1679e+03; %[m/s] at 10Rm for 7km/s at SOI
 % v = 5.3757e3; %[m/s] at 10Rm for 7km/s at atmos
 v = 7000; %[m/s] at atmos for 7km/s at atmos
+v = 4525;
 V = [0,-v,0];
 
 %Initial acceleration
@@ -45,7 +46,7 @@ control.a = 2.9*g_earth;
 control.h = 60e3;
 control.dalphadt = -0.1*pi/180;
 control.dalpha = control.dalphadt*dt_atmos;
-control.alpha_init = 13.2*pi/180; % rad
+control.alpha_init = 22.5*pi/180; % rad
 control.alpha_range = [-50 50]*pi/180;
 control.control_up_lim = 100e3; % m
 control.control_low_lim = 90e3; % m
