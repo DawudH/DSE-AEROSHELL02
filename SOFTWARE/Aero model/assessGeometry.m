@@ -3,7 +3,7 @@ function [ score, CoGshift, CD, failed, mod  ] = assessGeometry( skewness, heigh
 %ASSESSGEOMETRY Assess a geometry for it's performance
     params = globalParams();
     x = [skewness, height/radius, poly(1:end-2)];
-
+    
     %% Initialise
     
     % Angle of attack values
@@ -91,6 +91,13 @@ function [ score, CoGshift, CD, failed, mod  ] = assessGeometry( skewness, heigh
             failed = true;
         end
         
+        %CD is achieved
+%         helparray = abs(mod.CR_aero_array(1,:))-abs(params.CDrequired);
+%         if sum(helparray>0)==0 || sum(helparray<0)==0
+%             disp('Warning: CD criteria failure in assessgeometry!');
+%             failed = true;
+%         end        
+        
         %Stability is achieved
         if sum(mod.Cmyalpha - params.Cmalpharequired<=0)==0
             disp('Warning: Cmalpha criteria failure in assessgeometry!');
@@ -108,6 +115,15 @@ function [ score, CoGshift, CD, failed, mod  ] = assessGeometry( skewness, heigh
                     break;
                 end
             end
+
+%             for i = 1:length(helparray)-1
+%                 if (((abs(mod.CR_aero_array(1,i+1))>abs(params.CDrequired)) && (abs(mod.CR_aero_array(1,i))<abs(params.CDrequired))) || ...
+%                     ((abs(mod.CR_aero_array(1,i))>abs(params.CDrequired)) && (abs(mod.CR_aero_array(1,i+1))<abs(params.CDrequired))))
+%                     alphatrimindex = i;
+%                     break;
+%                 end
+%             end
+            
             if alphatrimindex == -1
                 disp('alphatrimindex==-1');
                 disp(x);
@@ -115,7 +131,11 @@ function [ score, CoGshift, CD, failed, mod  ] = assessGeometry( skewness, heigh
 
             dCLCDdalpha = (abs(mod.CLCD_array(alphatrimindex+1)-mod.CLCD_array(alphatrimindex)))/(mod.alpha_array(alphatrimindex+1)-mod.alpha_array(alphatrimindex));
             realalphatrim = (abs(LoverD)-abs(mod.CLCD_array(alphatrimindex)))/dCLCDdalpha + mod.alpha_array(alphatrimindex);
-            
+    
+
+%             dCDdalpha = (abs(mod.CR_aero_array(1,alphatrimindex+1)-mod.CR_aero_array(1,alphatrimindex)))/(mod.alpha_array(alphatrimindex+1)-mod.alpha_array(alphatrimindex));
+%             realalphatrim = (abs(params.CDrequired)-abs(mod.CR_aero_array(1,alphatrimindex)))/dCDdalpha + mod.alpha_array(alphatrimindex);
+              
             
             mod = mod.calcAeroangle(V, realalphatrim, beta, phi);
             mod = mod.calcAeroangle(V, realalphatrim+0.001, beta, phi);
@@ -127,8 +147,8 @@ function [ score, CoGshift, CD, failed, mod  ] = assessGeometry( skewness, heigh
             %Calculate performance
             CD = mod.CR_aero_array(1,end-1);
             CmAtrim = mod.CMA_aero_array(2,end-1);
-            absoluteLoverD = max(abs(mod.CLCD_array));
-            absoluteCLA = max(abs(mod.CRA_aero_array(3,:)));
+            absoluteLoverD = abs(mod.CLCD_array(end-1));
+            absoluteCLA =abs(mod.CRA_aero_array(3,end-1));
             CoGshift = abs(mod.CG_offset(end-1));
         end
         
@@ -140,7 +160,7 @@ function [ score, CoGshift, CD, failed, mod  ] = assessGeometry( skewness, heigh
     if failed
         disp('failed');
         disp(x)
-        score = [1000, -10, 1000, -1000, -10000, 1000];
+        score = [1000, -10, 1000, -1, -10000, 1000];
     else
         score = [Cmalpha;CD;CmAtrim;absoluteLoverD;absoluteCLA;CoGshift];
     end
