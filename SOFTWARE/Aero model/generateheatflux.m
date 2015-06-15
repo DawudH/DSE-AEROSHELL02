@@ -1,7 +1,7 @@
 clear;
 close all;
 clc;
-casename = 'orbit_iteration_1_1';
+casename = 'orbit_iteration_1_1_entry';
 load(strcat('orbits\',casename,'.mat'));
 load('aeroshapes\iteration1_1_heatflux.mat');
 
