@@ -12,11 +12,14 @@ filename   = 'layup9.txt';
 layupin    = dlmread(filename);
 % SI units
 thicks = dlmread('thick.txt');
-layupin(1,1) = thicks(20);
-layupin(2,1) = thicks(41);
+layupin(1,1) = thicks(10);
+layupin(2,1) = thicks(200);
 layup      = zeros(size(layupin));
 layup(:,1) = layupin(:,1)./1000;
 layup(:,2:6) = layupin(:,2:6);
+layup(1,2) = 12.5;
+layup(1,3) = 2900;
+layup(1,5) = 0.443;
 L = layup(:,1);
 qfact = 1.2;
 % Aero input, qsdot
