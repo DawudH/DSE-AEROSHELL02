@@ -12,6 +12,8 @@ gamma = 21.77;
 % gamma = 22.2;
 %d=18
 %gamma = 21.74;
+% 2nd entry
+gamma = 16.63;
 
 %Initial Position
 rx = -4148904.375000;
@@ -21,8 +23,8 @@ R = [rx,ry,0];
 r = h_atm+R_m;
 
 %Initial Velocity
-v = 7.1679e+03; %[m/s] at 10Rm for 7km/s at SOI
-v = 5.3757e3; %[m/s] at 10Rm for 7km/s at atmos
+% v = 7.1679e+03; %[m/s] at 10Rm for 7km/s at SOI
+% v = 5.3757e3; %[m/s] at 10Rm for 7km/s at atmos
 v = 7000; %[m/s] at atmos for 7km/s at atmos
 V = [0,-v,0];
 
