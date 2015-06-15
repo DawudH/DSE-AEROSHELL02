@@ -25,7 +25,7 @@ n=12
 %Rotatian angles
 mu_dd=5;
 mu_d=20;
-mu=43;
+mu=17;
 alpha_dd=5;
 alpha_d=20;
 alpha_trim=10;
@@ -33,7 +33,7 @@ alpha_dive=0;
 alpha=abs(alpha_trim-alpha_dive);
 
 q=1000;
-t_turn=20;
+t_turn=10;
 
 %Convert to radians
 mu_dd=mu_dd/180*pi;
@@ -80,9 +80,9 @@ Massy_turn=Ty_turn*t_turn/Isp/g0;
 
 
 % Delta V orbit
-Isp=235;
+Isp=321;
 t_burn=600;
-delta_V=8.7;
+delta_V=8.49;
 delta_V_clean=3.49*3;
 M0=10000;
 g0=9.81;
