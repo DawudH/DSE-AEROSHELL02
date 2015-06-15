@@ -160,7 +160,7 @@ xlabel('wall temperature [K]')
 ylabel('Heat load fraction [-]')
 legend('ballute','isotensoid','stacked torroid','tension cone')
 axis([min mout 0.55 1.25  ])   
-matlab2tikz('.\LaTeX\heatload.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
+
     
 %% Input figures
 
