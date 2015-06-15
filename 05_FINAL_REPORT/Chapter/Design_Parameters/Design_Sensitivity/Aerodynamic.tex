@@ -44,7 +44,7 @@ Finally, the heat flux is given in Equation \ref{eq:modnewtonianqw} and is direc
 
 \begin{figure}[h]
 	\centering
-	\begin{minipage}[b]{0.48\textwidth}
+	\begin{minipage}[b]{0.48\textwidth} \label{fig:CLCD-incidence}
 			\centering
 		\setlength\figureheight{0.48\textwidth} 
 		\setlength\figurewidth{0.48\textwidth}
@@ -76,14 +76,16 @@ To illustrate the characteristics of different aerodynamic shapes, an optimisati
 	
 
 \paragraph{Various shapes} \label{sec:aeroshapes}
-Several large groups of varying shapes can be identified. Every aeroshell shape can be categorized in one of these groups.  Each group of shapes has advantages and disadvantages. The relative performance of each group can be qualitatively assessed by looking at the variations of the shape with respect to the optimal shapes for the various parameters. The et of asymmetric cross-sections will be ignored in this assessment, and will be investigated separately. In figure \ref{fig:aeroshapes} representative cross sections of the groups can be seen. Group A represents simple concave surfaces. Group B has a concave centre section with a flat ring around it. Group C has an approximately flat central section, with steep edges around the outer radius. Group D represents the half cone shapes, with relatively straight sides and a blunt ffecnose. 
+Several large groups of varying shapes can be identified. Every aeroshell shape can be categorized in one of these groups.  Each group of shapes has advantages and disadvantages. The relative performance of each group can be qualitatively assessed by looking at the variations of the shape with respect to the optimal shapes for the various parameters. The et of asymmetric cross-sections will be ignored in this assessment, and will be investigated separately. In figure \ref{fig:aeroshapes} representative cross sections of the groups can be seen. Group A represents simple concave surfaces. Group B has a concave centre section with a flat ring around it. Group C has an approximately flat central section, with steep edges around the outer radius. Group D represents the half cone shapes, with relatively straight sides and a blunt nose. 
 
-As was discussed in section \ref{sec:aerooptima}, a flat plate will generate the most lift and the most drag, albeit at different angles of attack. Since Group C closely mimics a flat plate in the majority of its cross-section, it will have the best lift and drag performance. Group B also has a significant flat section and will therefore also have good performance in terms of lift and drag. Groups A and D will both have significant portions of their cross-sections at sub-optimal incidence angles for maximum lift or drag, and will therefore have lower lift and drag performance.
+As was discussed in section \ref{sec:aerooptima}, a flat plate will generate the most lift and the most drag, albeit at different angles of incidence. Since Group C closely mimics a flat plate in the majority of its cross-section, it will have the best lift and drag performance. Group B also has a significant flat section and will therefore also have good performance in terms of lift and drag. Groups A and D will both have significant portions of their cross-sections at sub-optimal incidence angles for maximum lift or drag, and will therefore have lower lift and drag performance.
+
+The \gls{sym:cm-alpha} of a given shape is a measure of stability. Shapes which require large moments to change the angle of attack have a higher stability. As can be seen in figure \ref{fig:CLCD-incidence}, surfaces at incidence angles of $40\deg-60\deg$ provide large changes in force for small changes in angle of incidence. Sections at these incidence angles will therefore stabilize the vehicle, since a change in angle of attack will cause one side of cross section to generate a greater moment than the other. This is visualized in figure \ref{fig:StabMom}. Cross sections B and C have parts of their cross section at such angles. Since the sections in C are on the outside of the cross section, it will be significantly more stable than type B due to the moment arm these parts have. A and D will have significant portions of their cross sections contribute to the vehicle moment. Although these section are likely to be at sub optimal angles of incidence for high stability, the large area contributing to the stability of the vehicle will ensure that both types of cross section are stable. 
 
 
 
 \paragraph{Asymmetry}
-
+An asymmetric body will ensure that even at zero degrees angle of attack, the vehicle generates lift. As explained in section \ref{subsec:orbitsens}, this allows for greater control of the vehicle during re-entry and is therefore desirable. 
 
 
 

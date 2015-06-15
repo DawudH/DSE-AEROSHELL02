@@ -304,6 +304,12 @@ classdef modnewtonian
             ylabel('CG offset [m]');
             legend('CG offset [m]');
             
+            figure;
+            plot(obj.CLCD_array, obj.CR_aero_array(1,:));
+            xlabel('CL/CD');
+            ylabel('CD');
+            legend('CD');            
+            
         end
     end
 end
