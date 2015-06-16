@@ -5,7 +5,7 @@ close all
 clc
 
 % For plotting in LaTeX style
-addpath('..\matlab2tikz')
+addpath('..\..\..\matlab2tikz')
 
 %% Reading in the sensitivity data
 
@@ -50,8 +50,7 @@ plot(fluxfactor,L4qj,'+-','color',cc(2,:))
 grid on
 xlabel('Heat flux ratio [-]')
 ylabel('Areal mass [kg/m^2 ]')
-legend('Layup 2','Layup 4')
-
+legend('Layup 2','Layup 4','Location','northwest')
 matlab2tikz('.\LaTeX\fluxsensitivity.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
 
 

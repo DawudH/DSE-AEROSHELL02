@@ -1,0 +1,91 @@
+% This file was created by matlab2tikz.
+% Minimal pgfplots version: 1.3
+%
+\definecolor{mycolor1}{rgb}{0.00000,0.44700,0.74100}%
+\definecolor{mycolor2}{rgb}{0.85000,0.32500,0.09800}%
+\definecolor{mycolor3}{rgb}{0.92900,0.69400,0.12500}%
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=0.95092\figurewidth,
+height=\figureheight,
+at={(0\figurewidth,0\figureheight)},
+scale only axis,
+xmin=0,
+xmax=30,
+xlabel={Angle of attack ($\alpha$) [deg]},
+xmajorgrids,
+ymin=-0.15,
+ymax=0.35,
+ylabel={$\frac{C_{L}}{C_{D}}$},
+ymajorgrids,
+axis x line*=bottom,
+axis y line*=left,
+legend style={at={(0.97,0.03)},anchor=south east,legend cell align=left,align=left,draw=white!15!black}
+]
+\addplot [color=mycolor1,solid,mark=o,mark options={solid}]
+  table[row sep=crcr]{%
+0	1.26094385922412e-17\\
+2	0.0395405402450798\\
+4	0.0779899124918854\\
+6	0.114319913835098\\
+8	0.147620504638086\\
+10	0.177235350023893\\
+12	0.203257638937849\\
+14	0.225991996846658\\
+16	0.245617444430692\\
+18	0.26223479420303\\
+20	0.275896123288116\\
+22	0.286651621881913\\
+24	0.294570931546881\\
+26	0.299729799268\\
+28	0.302231536464886\\
+30	0.302204123246455\\
+};
+\addlegendentry{No offset};
+
+\addplot [color=mycolor2,solid,mark=x,mark options={solid}]
+  table[row sep=crcr]{%
+0	-0.0505442578968786\\
+2	-0.010908908786318\\
+4	0.0287751265729913\\
+6	0.0674099593729983\\
+8	0.103957065099537\\
+10	0.137513794873839\\
+12	0.16776210082367\\
+14	0.194878229468861\\
+16	0.218959394358296\\
+18	0.240034752841934\\
+20	0.25808896829057\\
+22	0.273098027245511\\
+24	0.285067019697774\\
+26	0.294038660268007\\
+28	0.300080004510776\\
+30	0.303284023570337\\
+};
+\addlegendentry{0.5m offset};
+
+\addplot [color=mycolor3,solid,mark=+,mark options={solid}]
+  table[row sep=crcr]{%
+0	-0.100446163188453\\
+2	-0.0616773622746114\\
+4	-0.0217075707700435\\
+6	0.0183578049973597\\
+8	0.0574049079690369\\
+10	0.0943766978896083\\
+12	0.128565074676198\\
+14	0.159920062149137\\
+16	0.188454578335884\\
+18	0.214099506186019\\
+20	0.236748420814563\\
+22	0.25629134130744\\
+24	0.272655710167272\\
+26	0.285805184380441\\
+28	0.295757339316704\\
+30	0.302577564508289\\
+};
+\addlegendentry{1m offset};
+
+\end{axis}
+\end{tikzpicture}%
