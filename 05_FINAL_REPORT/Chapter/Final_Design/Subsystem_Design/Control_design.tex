@@ -46,12 +46,15 @@ The inertial moments are based on a homogeneous mass distribution and a simplifi
 
 \subparagraph{Control outside the atmosphere}
 
-Control outside the Martian atmosphere 
+Control outside the Martian atmosphere is required fro two purposes. Clean-up corrections and orbit (de)-raising. The latter allows for a controlled entry time into the Martian atmosphere for the final \gls{edl} operations. The former makes sure that the desired orbit can be reached after the aerobraking.
 
+For the purpose of orbit raising it is desired that the consequential orbit no longer covers the Martian atmosphere and that the orbital period fits within a Martian SOL. For practical purposes and considering the relatively short period in space (i.e days) after the initial aero braking the pericenter limit is set at 200 [$km$]. 
 
-\subparagraph{Thruster}
+Clean-up corrections are estimated on the basis of results presented by Cianciolo et al. \cite{Cianciolo2010}. The most representative shapes are the 23m \gls{hiad} and in lesser extend the rigid aeroshell. On the basis of the former the clean-up velocity are estimated to be 10.47[$m/s$] ($3\sigma$) \cite[p.37]{Cianciolo2010}. Not that Cianciolo et al. include the orbit raising within the clean-up estimates whereas this report considers them as two different entities.
 
-Inertial moments combined with rotational rates deliver the required control moments via Equation \ref{eq:mcontrol}. For the most efficient performance the thruster are placed on the outside of the Centerbody. Although thrusters placed on the outside of the inflatable are able to generate higher torques, multiple disadvantages hinder this placement:
+\subparagraph{Thrusters}
+
+Inertial moments combined with rotational rates deliver the required control moments via Equation \ref{eq:mcontrol}. For the most efficient performance the thruster are placed on the outside of the crew module. Although thrusters placed on the outside of the inflatable are able to generate higher torques, multiple disadvantages hinder this placement:
 
 \begin{itemize}
 \item Thruster place on the inflatable will difficult the deployment
@@ -65,9 +68,18 @@ Thruster performance requirements are primarily based on the bank control speed.
  
 Specific preference lies in the use of hydrazine as propellant such that it is interchangeable with the remaining propellent requiring systems. The use of a single propellant allows for lower fuel fractions as propellants margins required for the different mission phases can be combined.
 
-Additionally thrusters for the velocity increments in the apocenter are required. These are considered in the mass estimate of the crewmodule as these can already be used for the more intensive injection from \gls{leo} to the transfer orbit. Again hydrazine thrusters are considered for interchangeability throughout the various mission stages. This is however combined with a second propellent as for bi-propellant thrusters as this yields significant performance increase (in terms of \gls{sym:Isp})\cite{Wertz2011}. 
+Additionally thrusters for the velocity increments in the apocenter are required. Again hydrazine thrusters are considered for interchangeability throughout the various mission stages. This is however combined with a second propellent as for bi-propellant thrusters as this yields significant performance increase (in terms of \gls{sym:Isp})\cite{Wertz2011}. 
 
-A thruster suitable for such a purpose is the unified propulsion system by Japan IHI at a weight of 15.7 [$kg$] and a specific impulse of 321.4 [$s$]. As secondary propellant NTO is required.
+A thruster suitable for such a purpose is the unified propulsion system by Japan IHI at a weight of 15.7 [$kg$] and a specific impulse of 321.4 [$s$]. As secondary propellant NTO is required. As such a thruster can only be used if placed aft of the re-entry vehicle, since the front is covered by the \gls{hiad} additional pointing by the crewmodule ADCS system may be required.
+
+Table 
+
+
+
+\paragraph{Control system method}
+
+?? Mogelijk iets over predictor corrector schemes
+
 
 
 
