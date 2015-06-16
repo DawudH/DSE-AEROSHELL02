@@ -40,8 +40,10 @@ It can be seen from Table \ref{tab:operationalest} that both the basic system an
 Furthermore Rudisill et al mention the spacecraft volume required for crew operations per crew member \cite{Rudisill2008}. This volume can take on three different values depending on the mission length. The resultant habitable volumes are shown in figure \ref{fig:crewvolume}.
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=1.0]{./Figure/CrewModule/Crewvolume}
-	\caption{Habitable volume per crew member as a function of mission duration \cite{Rudisill2008}}
+	\setlength\figureheight{0.4\textwidth} 
+	\setlength\figurewidth{0.95\textwidth}
+	\input{Figure/CrewModule/crewvolume.tikz}
+	\caption[Habitable volume per crew member as a function of mission duration]{Habitable volume per crew member as a function of mission duration \cite{Rudisill2008}}
 	\label{fig:crewvolume}
 \end{figure}
 In the remainder of this report the crew habitable volume will be sized to the 'performance limit' indicated in figure \ref{fig:crewvolume}.
