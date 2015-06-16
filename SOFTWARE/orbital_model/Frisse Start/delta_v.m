@@ -5,6 +5,7 @@ close all
 %%Input constants & variables
 variables
 h = 200e3;
+dv2 = -8;
 
 % booleans
 use_control = false;
@@ -25,20 +26,28 @@ e_n = 1-rp/a_n;
 T_n = 2*pi * sqrt(a_n^3 / mu)/3600
 v_n = sqrt(mu*(2/ra-1/a_n));
 dv1 = v_n - v
-r0 = R_m + h_atm;
-gamma = 17.2/180*pi;
-theta = (2*pi-out.okep.theta);
+r_e = R_m + h_atm;
+v_e = v_n + dv2;
+a_e = (2/ra-v_e^2/mu)^-1
+e_e = ra/a_e-1
+v_entry = sqrt(mu*(2/r_e-1/a_e))
+theta_entry = acos((a_e*(1-e_e^2)-r_e)/(r_e*e_e))
+theta0 = theta_entry + out.okep.theta_p
+b_e = a_e*sqrt(1-e_e^2);
+x = r_e*cos(theta0);
+rc_e = b_e^2*(a_e*e_e+x)/(a_e^2*sqrt(b_e^2-b_e^2*(a_e*e_e+x)^2/a_e^2))
+
+%gamma = 17.2/180*pi;
+%theta = (2*pi-out.okep.theta);
 % theta_p = acos((cos(theta0)*cos(gamma)-sin(theta0)*sin(gamma)+rc_e*(sin(gamma)*cos(theta0)+cos(gamma)*sin(theta0)))/sqrt(1+rc_e^2))
 % theta = theta0-theta_p
-e_e = -(1/2)*(cos(theta)*r0+sqrt(cos(theta)^2*r0^2-2*cos(theta)*r0^2+4*cos(theta)*r0*ra+r0^2+4*r0*ra-4*ra^2)+r0)/(cos(theta)*r0-ra)
-e_e = (1/2)*(-cos(theta)*r0-r0+sqrt(cos(theta)^2*r0^2-2*cos(theta)*r0^2+4*cos(theta)*r0*ra+r0^2+4*r0*ra-4*ra^2))/(cos(theta)*r0-ra)
+%e_e = -(1/2)*(cos(theta)*r0+sqrt(cos(theta)^2*r0^2-2*cos(theta)*r0^2+4*cos(theta)*r0*ra+r0^2+4*r0*ra-4*ra^2)+r0)/(cos(theta)*r0-ra)
+%e_e = (1/2)*(-cos(theta)*r0-r0+sqrt(cos(theta)^2*r0^2-2*cos(theta)*r0^2+4*cos(theta)*r0*ra+r0^2+4*r0*ra-4*ra^2))/(cos(theta)*r0-ra)
 %v_entry = sqrt(mu*(2/r_e-1/a_e));
 %a_e = (2/r_e-v_entry^2/mu)^-1
 %e_e = ra/a_e-1
 %v_e = sqrt(mu*(2/ra-1/a_e));
 %b_e = a_e*sqrt(1-e_e^2);
-%x = r_e*cos(theta0);
-%rc_e = b_e^2*(a_e*e_e+x)/(a_e^2*sqrt(b_e^2-b_e^2*(a_e*e_e+x)^2/a_e^2))
 %V_unit = [1,rc_e,0]/norm([1,rc_e,0]);
 %V_unit = (rotz(-theta_p)*V_unit')'
 %theta_e = acos( (a_e*(1-e_e^2)-r) / (e_e*r) );
