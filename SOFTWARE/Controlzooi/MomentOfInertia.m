@@ -25,7 +25,7 @@ n=12
 %Rotatian angles
 mu_dd=5;
 mu_d=20;
-mu=60*ones(1,n);
+mu=[20*ones(1,n/2), 60*ones(1,n/2)];
 alpha_dd=5;
 alpha_d=20;
 alpha_trim=10;
@@ -101,7 +101,7 @@ F=Isp*g0*M_p_clean/t_burn
 M_tot=Massx+M_p_apo+M_p_clean;
 V=M_tot/1.002*1.2;
 M_tank=2.7086*10^-8 *V^3 -6.1703*10^-5 *V^2 +6.66290*10^-2 *V +1.3192;
-M_thruster=8*1.6;
+M_thruster=8*1.6 +2*15.7;
 
 Mtank_fuel=M_tot+M_tank+M_thruster;
 
@@ -110,9 +110,9 @@ Mtank_fuel=M_tot+M_tank+M_thruster;
 M_tot_alpha=Massx+M_p_apo+Massy+Massy_turn+M_p_clean;
 
 V=M_tot/1.002*1.2;
-M_tank=2.7086*10^-8 *V^3 -6.1703*10^-5 *V^2 +6.66290*10^-2 *V +1.3192;
-M_thruster=8*1.6;
+M_tank_alpha=2.7086*10^-8 *V^3 -6.1703*10^-5 *V^2 +6.66290*10^-2 *V +1.3192;
+M_thruster=8*1.6 +2*15.7;
 
-Mtank_fuel_alpha=M_tot_alpha+M_tank+M_thruster;
+Mtank_fuel_alpha=M_tot_alpha+M_tank_alpha+M_thruster;
 
 table(M_p_apo,M_p_clean,M_tot,Mtank_fuel,Massy+Massy_turn,M_tot_alpha,Mtank_fuel_alpha)
