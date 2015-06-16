@@ -6,11 +6,18 @@ constants
 
 %initial angles
 theta0 = 135/180*pi;%3.016549;%150/180*pi;
+    % second entry
+    theta0 = -3.7638+2*pi;
+        % rho * 0.9
+        theta0 = -3.7384+2*pi;
 
+        theta0 = -3.7494+2*pi;
 % aero capture
 gamma = 21.672;
 % 2nd entry
 gamma = 17.2;
+
+gamma = 12.5;
 
 %Initial Position
 rx = -4148904.375000;
