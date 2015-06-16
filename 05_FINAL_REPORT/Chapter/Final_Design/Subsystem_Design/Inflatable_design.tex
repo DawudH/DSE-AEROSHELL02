@@ -1,5 +1,12 @@
 \paragraph{Trajectory} \label{sec:TrajectoryDesign}
 
+\begin{sidewaysfigure}[h!]
+	\centering
+	\includegraphics[width=0.95\textwidth]{Figure/Orbit/sensitivity_aerocapture.pdf}
+	\caption{ BLBLBLBLBLALALBLALAL }
+	\label{fig:orbit_aerocapture_data}
+\end{sidewaysfigure}
+
 
 \paragraph{Aerodynamic shape} \label{sec:AeroDesign}
  The aeroshell will have a shape similar to configuration D described in section \ref{sec:aeroshapes}, with a radius of 6 meters and a half cone angle of approximately $\gls{sym:theta} = XX\deg$. The curved nose will have an outer radius of $2.5m$. The cross section offset at the rear of the body is approximately $0.91m$. At an angle of attack of $\gls{sym:alpha} = 22.5\deg$, it has a lift to drag ratio of $\gls{sym:L}/\gls{sym:D} = 0.35$ and a drag coefficient of $\gls{sym:CD} = 1.3$. At this angle of attack, a \gls{cg} offset of $\gls{sym:CML}/\gls{sym:CX} = 0.5m$ is required to trim the vehicle around the pitch axis. It has a moment derivative of $\gls{sym:cm-alpha} = -0.21$. 
@@ -26,20 +33,20 @@ Based on the parametric mass model and the inherent stress equations, the minimu
 
 The structural feasibility thereof is ascertained by the truss-based analysis model. The truss-based analysis model uses the representation in Figure \ref{fig:strucreps}. Cross-sections that displayed the most extreme loading are the short side, defined at the inflatable minimum diameter, and the long side, defined at the inflatable maximum diameter. Due to the skewness, load asymmetry is introduced which is thereby evaluated by some extent through evaluation of multiple cross-sections.
 
-\begin{figure}[h]
+\begin{figure}[h!]
 	\centering
 
-	\begin{subfigure}[b]{0.49\textwidth}
+	\begin{subfigure}[b]{0.45\textwidth}
 		\includegraphics[width=0.96\textwidth]{./Figure/Structure/shape_long.eps}
 		\caption{Cross-sectional view at maximum diameter}
 		\label{fig:shapel}
 	\end{subfigure}
-	\begin{subfigure}[b]{0.49\textwidth}
+	\begin{subfigure}[b]{0.45\textwidth}
 		\includegraphics[width=0.96\textwidth]{./Figure/Structure/shape_short.eps}
 		\caption{Cross-sectional view at minimum diameter}
 		\label{fig:shapes}
 	\end{subfigure}
-\begin{subfigure}[c]{0.7\textwidth}
+\begin{subfigure}[c]{0.5\textwidth}
 		\includegraphics[width=0.96\textwidth]{./Figure/Structure/struc_rep.eps}
 		\caption{Isometric view}
 		\label{fig:iso}
@@ -48,13 +55,13 @@ The structural feasibility thereof is ascertained by the truss-based analysis mo
 \label{fig:strucreps}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[h!]
 		\hspace{-16mm}
 		\includegraphics[width=1.2\textwidth]{./Figure/Structure/loads_long.eps}
 		\caption{Cross-sectional running loads inflatable at maximum diameter}
 		\label{fig:strucl}
 \end{figure}
-\begin{figure}[h]
+\begin{figure}[h!]
 		\hspace{-16mm}
 		\includegraphics[width=1.2\textwidth]{./Figure/Structure/loads_short.eps}
 		\caption{Cross-sectional running loads inflatable at minimum diameter}
@@ -67,7 +74,7 @@ Stitching of the fabrics making up the toroids is used for the joints of the inf
 
 For the load analysis, the ultimate load is calculated by multiplying with a \acrfull{fos} of 1.5. This \gls{fos} respects NASA standards for composite structures and accounts for uncertainties in the maximum external loading applied \cite{Technical2014}. 
 
-To prevent Nitrogen gas from leaking, the structural Kevlar layers are coated with a gas barrier in the form of a 50 [$\mu m$] Upilex-25S layer. This uniform thickness coating adds an estimated 25 [$kg$]. The thickness of this coating is feasible, in line with findings by Samareh and Miller \cite{Samareh2011,Miller2014} and available Upilex-25S grades of 12.5, 25, 50, 75 and 125 [$\mu m$]\footnote{URL:\url{https://www.ube.com/content.php?pageid=81}. Accessed: 16-06-2015}$^{,}$\footnote{URL:\url{http://dasp.mem.odu.edu:8080/~deorbit_sp12/ref/UPILEXS\%20Data\%20sheet.pdf}. Accessed: 16-06-2015}
+To prevent Nitrogen gas from leaking, the structural Kevlar layers are coated with a gas barrier in the form of a 50 [$\mu m$] Upilex layer. This uniform thickness coating adds an estimated 25 [$kg$]. The thickness of this coating is feasible, in line with findings by Samareh and Miller \cite{Samareh2011,Miller2014} and available Upilex grades of 12.5, 25, 50, 75 and 125 [$\mu m$]\footnote{URL:\url{https://www.ube.com/content.php?pageid=81}. Accessed: 16-06-2015}$^{,}$\footnote{URL:\url{http://dasp.mem.odu.edu:8080/~deorbit_sp12/ref/UPILEXS\%20Data\%20sheet.pdf}. Accessed: 16-06-2015}.
 
 %Typical driver for the use of fibres are the high mechanical properties, hence the application of Kevlar in the \gls{irve} missions \cite{Hughes2011}. Structural analyses proved the weight advantage of fibres over films in the case of \gls{irve}. In this case, however, density is leading and the mechanical properties of fibres are excessively high: their application would lead to an overdesign. This is reflected by Table \ref{tab:matfinal}. The flexible material mass achieved by Spectra 2000, expected to perform best of all fibres given its low density of 970 [$kg \cdot m^{-3}$], compared to Kevlar's 1440 [$kg \cdot m^{-3}$], is 20 [$kg$] lower than that achieved by Kevlar 49. 
 
