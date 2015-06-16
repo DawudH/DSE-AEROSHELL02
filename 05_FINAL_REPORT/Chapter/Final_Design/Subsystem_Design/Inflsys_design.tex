@@ -21,14 +21,7 @@ Using helium rather than nitrogen would be infeasible. Due to the small size of 
 \paragraph{Gas generator design and sizing}
 A nitrogen tank is used for storage and supply of nitrogen gas. The minimum inflation pressure in the toroids is based on the premise that it should counteract the aerodynamic force exerted to bring flexible material into tension, formulated in Equation \ref{eq:Pmin}. The volume that is inflated may be approximated as the sum of the volumes of separate toroids summated over the entire sphere cone.
 
-From the structural analysis it followed that a pressure of  ??? [$Pa$] over a total volume of ??? [$m^{3}$] is required in the inflatable bladders. The temperature at which these conditions hold is chosen to be 100 [$K$], the temperature at the start of the mission at which the inflatable is required to be deployed. This yields the highest gas mass over the mission duration via the ideal gas law. The total nitrogen mass is then calculated as ??? [$kg$] given a molar mass of 22 [$g/mole$] for nitrogen gas \cite{Samareh2011}.
-
-The ratio of tank and inflatable volume is obtained via the ideal gas law as:
-
-\begin{equation}
-\frac{Volume_{tank}}{Volume_{inflatable}} = \frac{P_{infl}T_{tank}}{P_{tank}T_{infl}}
-\label{eq:volratio}
-\end{equation}
+From the structural analysis it followed that a pressure of 3.9 [$kPa$] over a total volume of 68 [$m^{3}$] is required in the inflatable bladders. This minimum inflation pressure is smaller than that required in \gls{irve}-3 \cite{Jurewicz2011}, hence it induces smaller loads, which make up most of the flexible wall loading and the structural lay-up can consequently be thinner than in the case of \gls{irve}-3. The inflation pressure brings all members into tension, as illustrated by Figures \ref{fig:strucl} and \ref{fig:strucs}.
 
 To account for pressure losses following from a drop in temperature, as observed in the \gls{irve}-II mission \cite{Dillman2012}, a heater is used to heat the tank after partial usage of the inflation gas. The total mass of the inflation gas can be estimated on the basis of the required operating pressure. From a functional perspective the minimum required inflation pressure should be reached at all phases of the deceleration. Thermal loading of the aeroshell will increase the temperature of the inflation gas and cause a proportional increase in pressure. Pressure increases above the minimum inflation pressure are beneficial as this will increase the stiffness of the aeroshell. This works up to some point as structural loading has to be taken into account as well. If the pressure increases to much venting may be performed to reduce the pressure, which will be further discussed in the subsequent paragraph. Pressure decreases below the minimum required pressure are however dangerous as the stiffness of the aeroshell will be lost.
 
@@ -47,9 +40,16 @@ For this reason a minimum operational temperature is considered. Figure \ref{fig
 		\label{fig:tanktemp}
 \end{figure}
 
-Using a temperature of 202 [$K$] inside the inflatable yields a total gas mass of ??? [$kg$] that is to be held within the pressure tank. An additional contingency of 50 $\%$. This contingency is so large because leakage requires additional gas to make up for the lost volume, so called make up gas \cite{Jenkins2001}.
+Using a temperature of 202 [$K$] inside the inflatable yields a total gas mass of 90 [$kg$] that is to be held within the pressure tank, given a molar mass of 22 [$g/mole$] for nitrogen gas \cite{Samareh2011}. An additional contingency of 20 $\%$ is included. This contingency accounts for leakage, which requires additional gas to make up for the lost volume, so called make up gas \cite{Jenkins2001}.
 
-An initial estimate for the tank pressure and temperature are 27.6 [$MPa$] and 323 [$K$] \cite[p.545]{Wertz2011}. Based on the required pressure and a temperature of 202 [$K$] in the inflatable, by use of the ideal gas law, a total pressure tank volume of ... [$m^{3}$] follows. Corresponding to this tank volume is a required tank mass, dependent on the material used. Composite overwrapped pressure vessels offer significant weight advantages with respect to metallic tanks and therefore such a pressure vessel is selected. Tank mass is estimated from empirical relations established by Zakrwski \cite[p.546]{Wertz2011} to be … [$kg$] for the selected tank pressure and volume via Equation \ref{eq:tmass}.
+The ratio of tank and inflatable volume is obtained via the ideal gas law as:
+
+\begin{equation}
+\frac{Volume_{tank}}{Volume_{inflatable}} = \frac{P_{infl}T_{tank}}{P_{tank}T_{infl}}
+\label{eq:volratio}
+\end{equation}
+
+Initial estimates for the tank pressure and temperature are 27.6 [$MPa$] and 323 [$K$] \cite[p.545]{Wertz2011}. Based on the required pressure and a temperature of 202 [$K$] in the inflatable, by use of the ideal gas law, a total pressure tank volume of 0.27 [$m^{3}$] follows. Corresponding to this tank volume is a required tank mass, dependent on the material used. Composite overwrapped pressure vessels offer significant weight advantages with respect to metallic tanks and therefore such a pressure vessel is selected. Tank mass is estimated from empirical relations established by Zakrwski \cite[p.546]{Wertz2011} to be 61 [$kg$] for the selected tank pressure and volume via Equation \ref{eq:tmass}.
 \begin{equation}
 m_{tank} = 0.7266 \cdot (P_{tank} \cdot Volume_{tank})^{2} + 2.5119 \cdot (P_{tank} \cdot Volume_{tank}) + 2.9826
 \label{eq:tmass}
@@ -71,7 +71,9 @@ A final set of check valves is included to connect the toroids to the vent. This
 		\label{fig:infsys}
 \end{figure}
 
-This mass estimate is consistent with the estimate using the parametric mass model described in section \ref{subsec:structool}, where inflation system mass is estimated to be … [$kg$]. Including a contingency of 25 $\%$ for valves and feed lines yields a total inflation system mass of … [$kg$]. 
+A contingency of 25 $\%$ of tank mass is included to account for the blow-down system that transfers gas from the tank to the inflatable volumes. For a tank mass of 61 [$kg$], total inflation system mass is 76 [$kg$] to support a gas mass of 90 [$kg$].
+
+%This mass estimate is consistent with the estimate using the parametric mass model described in section \ref{subsec:structool}, where inflation system mass is estimated to be … [$kg$]. Including a contingency of 25 $\%$ for valves and feed lines yields a total inflation system mass of … [$kg$]. 
 
 
 
