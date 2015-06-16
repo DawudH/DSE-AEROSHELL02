@@ -45,7 +45,7 @@ legend style={legend cell align=left,align=left,draw=white!15!black}
 };
 \addlegendentry{Relative Lift};
 
-\addplot [color=mycolor2,solid,mark=x,mark options={solid}]
+\addplot [color=mycolor2,solid,mark=triangle,mark options={solid}]
   table[row sep=crcr]{%
 0	1\\
 5.72957795130823	0.985087246239921\\
@@ -66,7 +66,7 @@ legend style={legend cell align=left,align=left,draw=white!15!black}
 };
 \addlegendentry{Relative Drag};
 
-\addplot [color=mycolor3,solid,mark=+,mark options={solid}]
+\addplot [color=mycolor3,solid,mark=square,mark options={solid}]
   table[row sep=crcr]{%
 0	0\\
 5.72957795130823	0.100334672085451\\
