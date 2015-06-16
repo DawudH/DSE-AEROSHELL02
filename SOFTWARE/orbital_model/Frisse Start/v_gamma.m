@@ -40,19 +40,19 @@ hypkep = false;
 % plot(results.GAMMA,results.ALPHA*180/pi,'x')
 
 %%
-flybylimit = true;
+flybylimit = false;
 orbitlimit = false;
-accellimit = false;
+accellimit = true;
 
 gamma_accuracy = 0.005;
 
-load('v_gamma.mat');
+load('v_gamma_final.mat');
 
 V_esc = sqrt(G*M_mars * 2 / r);
 
-v_range = 6500:100:7500;
+v_range = 6500:250:7500;
 k = length(results.GAMMA) + 1;
-
+k = 1;
 for j = 1:length(v_range)
     notdone = true;
     gamma_range = [21.5, 22.5];
@@ -120,7 +120,7 @@ for j = 1:length(v_range)
     end
 end
 %%
-save('v_gamma.mat','results')
+save('v_gamma_final.mat','results')
 figure(1)
 hold on
 grid on
