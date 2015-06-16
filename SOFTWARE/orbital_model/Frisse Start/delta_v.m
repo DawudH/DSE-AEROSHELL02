@@ -4,8 +4,8 @@ close all
 
 %%Input constants & variables
 variables
-h = 200e3;
-dv2 = -8;
+h = 400e3;
+dv2 = +0
 
 % booleans
 use_control = false;
@@ -16,7 +16,7 @@ hypkep = false;
 
 %%function
 %[out] = full_orbit(R, V, A, G, M_mars, R_m, h_atm, atm, dt_kep_init, dt_atmos, m, omega_m, S, control, tend, crash_margin, g_earth, aero_coef, use_control, multiple_orbits, use_alpha_profile,r,v,theta0,gamma,hypkep,Crho,control.alpha_init,control.dalphadt);
-load('../../Aero model/orbits/orbit_iteration_1_1.mat')
+load('../../Aero model/orbits/aerocapture_rho_1.mat')
 mu = G*M_mars;
 ra = out.okep.a*(1-out.okep.e^2)/(1-out.okep.e);
 v = sqrt(mu*(2/ra-1/out.okep.a));
@@ -28,15 +28,20 @@ v_n = sqrt(mu*(2/ra-1/a_n));
 dv1 = v_n - v
 r_e = R_m + h_atm;
 v_e = v_n + dv2;
-a_e = (2/ra-v_e^2/mu)^-1
-e_e = ra/a_e-1
+a_e = (2/ra-v_e^2/mu)^-1;
+e_e = ra/a_e-1;
 v_entry = sqrt(mu*(2/r_e-1/a_e))
-theta_entry = acos((a_e*(1-e_e^2)-r_e)/(r_e*e_e))
+theta_entry = -acos((a_e*(1-e_e^2)-r_e)/(r_e*e_e));
 theta0 = theta_entry + out.okep.theta_p
 b_e = a_e*sqrt(1-e_e^2);
-x = r_e*cos(theta0);
-rc_e = b_e^2*(a_e*e_e+x)/(a_e^2*sqrt(b_e^2-b_e^2*(a_e*e_e+x)^2/a_e^2))
-
+R = r_e*[cos(theta0),sin(theta0),0];
+x = R(1);
+rc_e = - b_e^2*(x-a_e*e_e)/(a_e^2*sqrt(b_e^2-b_e^2*(x-a_e*e_e)^2/a_e^2));
+V_unit = [1,rc_e,0]/norm([1,rc_e,0]);
+%V_unit = -(rotz(-out.okep.theta_p)*V_unit')';
+V = v_entry*V_unit;
+gamma = acos(dot(R,V)/(norm(R)*norm(V)))-pi/2;
+gammadeg = gamma*180/pi
 %gamma = 17.2/180*pi;
 %theta = (2*pi-out.okep.theta);
 % theta_p = acos((cos(theta0)*cos(gamma)-sin(theta0)*sin(gamma)+rc_e*(sin(gamma)*cos(theta0)+cos(gamma)*sin(theta0)))/sqrt(1+rc_e^2))
@@ -48,25 +53,24 @@ rc_e = b_e^2*(a_e*e_e+x)/(a_e^2*sqrt(b_e^2-b_e^2*(a_e*e_e+x)^2/a_e^2))
 %e_e = ra/a_e-1
 %v_e = sqrt(mu*(2/ra-1/a_e));
 %b_e = a_e*sqrt(1-e_e^2);
-%V_unit = [1,rc_e,0]/norm([1,rc_e,0]);
-%V_unit = (rotz(-theta_p)*V_unit')'
 %theta_e = acos( (a_e*(1-e_e^2)-r) / (e_e*r) );
+
 ccc = jet(8);
 figure('name','eliptic orbit')
 axis equal
 hold on
 %axis([-(R_m + h_atm)*2 (R_m + h_atm)*2 -(R_m + h_atm)*2 (R_m + h_atm)*2])
 %axis([-(R_m + h_atm)*1.2 (R_m + h_atm)*1.2 -(R_m + h_atm)*1.2 (R_m + h_atm)*1.2])
-theta_plot = out.okep.theta:0.02:(pi);
+theta_plot = out.okep.theta:0.001:(pi);
 rk = out.okep.a * (1- out.okep.e^2) ./ (1 + out.okep.e .* cos(theta_plot));
 h2 = polar(theta_plot+out.okep.theta_p,rk); 
 set(h2,'color',ccc(3,:))
 %legend_str{3} = 'Elliptical kepler';
-theta_plot = 0:0.02:2*pi;
+theta_plot = 0:0.001:2*pi;
 rk = a_n * (1- e_n^2) ./ (1 + e_n .* cos(theta_plot));
 hn = polar(theta_plot+out.okep.theta_p,rk); 
 set(hn,'color',ccc(1,:))
-theta_plot = pi:0.02:2*pi;
+theta_plot = pi:0.001:(2*pi-out.okep.theta);
 rk = a_e * (1- e_e^2) ./ (1 + e_e .* cos(theta_plot));
 he = polar(theta_plot+out.okep.theta_p,rk); 
 set(he,'color',ccc(4,:))
