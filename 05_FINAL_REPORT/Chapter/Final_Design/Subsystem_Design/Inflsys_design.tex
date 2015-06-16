@@ -44,23 +44,18 @@ Using a temperature of 202 [$K$] inside the inflatable yields a total gas mass o
 
 The ratio of tank and inflatable volume is obtained via the ideal gas law as:
 
-<<<<<<< HEAD
 \begin{equation}
 \frac{Volume_{tank}}{Volume_{inflatable}} = \frac{P_{infl}T_{tank}}{P_{tank}T_{infl}}
 \label{eq:volratio}
 \end{equation}
 
 Initial estimates for the tank pressure and temperature are 27.6 [$MPa$] and 323 [$K$] \cite[p.545]{Wertz2011}. Based on the required pressure and a temperature of 202 [$K$] in the inflatable, by use of the ideal gas law, a total pressure tank volume of 0.27 [$m^{3}$] follows. Corresponding to this tank volume is a required tank mass, dependent on the material used. Composite overwrapped pressure vessels offer significant weight advantages with respect to metallic tanks and therefore such a pressure vessel is selected. Tank mass is estimated from empirical relations established by Zakrwski \cite[p.546]{Wertz2011} to be 61 [$kg$] for the selected tank pressure and volume via Equation \ref{eq:tmass}.
-=======
-An initial estimate for the tank pressure and temperature are 27.6 [$MPa$] and 323 [$K$] \cite[p.545]{Wertz2011}. Based on the required pressure and a temperature of 202 [$K$] in the inflatable, by use of the ideal gas law, a total pressure tank volume of ... [$m^{3}$] follows. Corresponding to this tank volume is a required tank mass, dependent on the material used. Composite overwrapped pressure vessels offer significant mass advantages with respect to metallic tanks and therefore such a pressure vessel is selected. Tank mass is estimated from empirical relations established by Zakrwski \cite[p.546]{Wertz2011} to be … [$kg$] for the selected tank pressure and volume via Equation \ref{eq:tmass}.
->>>>>>> 23f6449d8964ff8243435e11588c3e3abfcfe15e
 \begin{equation}
 m_{tank} = 0.7266 \cdot (P_{tank} \cdot \gls{sym:vol}_{tank})^{2} + 2.5119 \cdot (P_{tank} \cdot \gls{sym:vol}_{tank}) + 2.9826
 \label{eq:tmass}
 \end{equation}
 
 \paragraph{Inflation system integration}
-
 
 Figure \ref{fig:infsys} shows a schematic representation of the inflation system. The inflation gas is stored in a nitrogen tank. Pressure and temperature sensors are included to monitor the storage conditions. A separate valve is included for filling purposes of the tank, and a release valve is included for emptying the tank outside normal mission operations. A electromechanical valve releases the pressure. A electromechanical valve is used since it allows for multiple uses as opposed to one-time use pyrotechnical valves, used in early \gls{irve} installments \cite{Hughes2005}. From the high pressure within the storage tank the controlled the pressure is reduced and more precisely controlled by a set of two pressure regulators (including internal release valves). One of the pressure regulators is located in the high-pressure part of the inflation system in the centerbody, the other in the low-pressure part. Duality of pressure regulators accounts for flow adjustment while also taking into account feed losses. A set of check valves, allowing flow only in one direction, connects to the toroid. Purpose thereof is to prevent flow from exiting the bladder volumes. 
 
@@ -75,13 +70,9 @@ A final set of check valves is included to connect the toroids to the vent. This
 		\label{fig:infsys}
 \end{figure}
 
-<<<<<<< HEAD
+
 A contingency of 25 $\%$ of tank mass is included to account for the blow-down system that transfers gas from the tank to the inflatable volumes. For a tank mass of 61 [$kg$], total inflation system mass is 76 [$kg$] to support a gas mass of 90 [$kg$].
 
-%This mass estimate is consistent with the estimate using the parametric mass model described in section \ref{subsec:structool}, where inflation system mass is estimated to be … [$kg$]. Including a contingency of 25 $\%$ for valves and feed lines yields a total inflation system mass of … [$kg$]. 
-=======
-This mass estimate is consistent with the estimate using the parametric mass model described in section \ref{subsec:structool}, where inflation system mass is estimated to be … $[kg]$. Including a contingency of $25\%$ for valves and feed lines yields a total inflation system mass of … $[kg]$. 
->>>>>>> 23f6449d8964ff8243435e11588c3e3abfcfe15e
 
 
 
