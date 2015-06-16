@@ -20,7 +20,7 @@ layup(:,2:6) = layupin(:,2:6);
 
 load('./DesignData/heatflux_orbit_iteration_1_1.mat','T','t','qmax_array','A_whetted')
 tq = find(not(qmax_array<0.01));
-fluxfactor = 1.5;
+fluxfactor = 1.2;
 qaero = fluxfactor*qmax_array(tq(1):tq(end));
 Tatm  = T(tq(1):tq(end)); 
 timeq = t(tq(1):tq(end))-t(tq(1));

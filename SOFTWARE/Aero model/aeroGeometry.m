@@ -134,7 +134,7 @@ classdef aeroGeometry
         end
         
         function points = getPointsOnXYPlane(obj, z)
-            epsilon = 1e-10;            
+            epsilon = 1e-2;            
             points = find(obj.coords(3,:)>z-epsilon & obj.coords(3,:)<z+epsilon);
         end    
         
@@ -157,7 +157,7 @@ classdef aeroGeometry
         
         function [] = plotPoint(obj, n)
         %PLOTPOINT Plot a point on the 3d plot
-            plot3(obj.coords(1,n), obj.coords(2,n), obj.coords(3,n), 'o');
+            plot3(obj.coords(1,n), obj.coords(2,n), obj.coords(3,n), '-k');
         end
         
         function [] = plotTriangle(obj, n)
@@ -267,6 +267,72 @@ classdef aeroGeometry
                 distance2 = sum(obj.directdistances(sum(repmat(sort([combination(2),closestmidpoint]),numcombinations,1)==obj.combinations,2)==2));
                 distance = distance1 + distance2;
             end
+        end
+        
+        function plotView(obj, save)
+            addpath('..\matlab2tikz');
+            if nargin == 1
+                save = false;
+            end
+            xvalues = unique(obj.coords(1,:));            
+            sifted = xvalues(int16(linspace(1, length(xvalues), 10)));
+            
+            % Side view
+            sideviewpoints = obj.getPointsOnXZPlane(0);
+            coordinates1 = obj.coords([1,3], sideviewpoints);
+            coordinates1 = sortrows(coordinates1', 2)';
+            
+            figure;
+            hold on;
+            for i = 1:length(sifted)
+                coordinates = obj.coords(:, obj.coords(1,:)==sifted(i));
+                plot([coordinates(1,:), coordinates(1,1)], [coordinates(3,:), coordinates(3,1)]);
+            end                     
+            plot(coordinates1(1,:), coordinates1(2,:));            
+            xlabel('$x$ [m]', 'interpreter', 'latex');
+            ylabel('$z$ [m]', 'interpreter', 'latex');
+            grid on;
+            axis equal;
+            if save
+                matlab2tikz('plots/sideview.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
+            end
+            
+            % Top view
+            topviewpoints = obj.getPointsOnXYPlane(0);
+            coordinates1 = obj.coords([1,2], topviewpoints);
+            coordinates1 = sortrows(coordinates1', 2)';
+            figure;
+            hold on;
+            for i = 1:length(sifted)
+                coordinates = obj.coords(:, obj.coords(1,:)==sifted(i));
+                plot([coordinates(2,:), coordinates(2,1)], [coordinates(1,:), coordinates(1,1)]);
+            end            
+            plot(coordinates1(2,:), coordinates1(1,:));
+            xlabel('$y$ [m]', 'interpreter', 'latex');
+            ylabel('$x$ [m]', 'interpreter', 'latex');
+            grid on;
+            axis equal;
+            if save
+                matlab2tikz('plots/topview.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
+            end            
+            
+            % Front view
+            figure;
+            hold on;
+            for i = 1:length(sifted)
+                coordinates = obj.coords(:, obj.coords(1,:)==sifted(i));
+                plot([coordinates(2,:), coordinates(2,1)], [coordinates(3,:), coordinates(3,1)]);
+            end
+            xlabel('$y$ [m]', 'interpreter', 'latex');
+            ylabel('$z$ [m]', 'interpreter', 'latex');
+            grid on;
+            axis equal;   
+            if save
+                matlab2tikz('plots/frontview.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
+            end            
+            
+            figure;
+
         end
         
     end
