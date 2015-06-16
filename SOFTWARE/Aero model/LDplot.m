@@ -14,8 +14,8 @@ ylabel('Relative value', 'interpreter', 'latex')
 xlabel('Incidence angle [deg]', 'interpreter', 'latex')
 
 plot(rad2deg(x),L,'-o')
-plot(rad2deg(x),D,'-x')
-plot(rad2deg(x),LD,'-+')
+plot(rad2deg(x),D,'-^')
+plot(rad2deg(x),LD,'-s')
 
 h = legend('Relative Lift', 'Relative Drag', 'Relative Lift/Drag');
 h.Interpreter = 'latex';
