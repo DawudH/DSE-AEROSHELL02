@@ -11,7 +11,7 @@ Di=4.5;
 Do=12;
 L=6;
 
-Ds_cb=3.5;
+Ds_cb=4;
 m_cb=9000;
 
 m_h=1000;
@@ -25,7 +25,7 @@ n=12
 %Rotatian angles
 mu_dd=5;
 mu_d=20;
-mu=17;
+mu=60;
 alpha_dd=5;
 alpha_d=20;
 alpha_trim=10;
@@ -57,8 +57,8 @@ m_cbh=m_h-m_inf;
 t_cb=Di-Ds_cb;
 
 % %Compute MMOI
-Ixx=1/4 * (0.5*m_cb*((Ds_cb+t_cb)^2+(Ds_cb+t_cb)^2) + 0.5*m_cbh*Di^2  +  0.5*m_inf+Do^2);
-Iyy=1/12*(m_cb+m_h)*(3/4*((Ds_cb+t_cb)^2+(Ds_cb+t_cb)^2) +L^2);
+Ixx=1/4 * (0.5*m_cb*((Ds_cb+t_cb)^2+(Ds_cb-t_cb)^2) + 0.5*m_cbh*Di^2  +  0.5*m_inf+Do^2);
+Iyy=1/12*(m_cb+m_h)*(3/4*((Ds_cb+t_cb)^2+(Ds_cb-t_cb)^2) +L^2);
 
 %Rotational moment
 Mxx=Ixx*mu_dd;
