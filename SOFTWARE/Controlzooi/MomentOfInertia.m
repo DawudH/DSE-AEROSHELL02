@@ -25,7 +25,7 @@ n=12
 %Rotatian angles
 mu_dd=5;
 mu_d=20;
-mu=60;
+mu=60*ones(1,n);
 alpha_dd=5;
 alpha_d=20;
 alpha_trim=10;
@@ -74,7 +74,8 @@ Ty=Myy/Di*2;
 Ty_turn=Myy_turn/Di*2;
 
 %Compute requried fuel
-Massx=Tx*tx/Isp/g0*n;
+Massx=Tx*tx/Isp/g0;
+Massx=sum(Massx)
 Massy=Ty*ty/Isp/g0;
 Massy_turn=Ty_turn*t_turn/Isp/g0;
 
