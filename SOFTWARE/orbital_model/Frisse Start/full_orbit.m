@@ -59,10 +59,12 @@ end
     q(1,:) = out_hk.end.q;
     T(1,:) = out_hk.end.T;
     rho(1,:) = out_hk.end.rho;
+    Gamma(1) = gamma;
     A_aero(1,:) = [0,0,0];
     Alpha(1) = alpha;
     dAlpha_dt(1) = 0;
     phi(1) = phi_profile(0);
+    theta(1) = atan2(R(1,2),R(1,1)) *180/pi;
     
     a_prev = A(1,:);
     
@@ -160,6 +162,11 @@ end
         rho(i+1,:) = out_o.rho;
         Alpha(i+1) = state.alpha;
         phi(i+1) = state.phi;
+        Gamma(i+1) = acosd(dot(R(i+1,:),V(i+1,:)) / (norm(R(i+1,:)) * norm(V(i+1,:)))) - 90;
+        theta(i+1) = atan2(R(i+1,2),R(i+1,1)) *180/pi;
+        if theta(i+1) < 0
+            theta(i+1) = theta(i+1) + 360;
+        end
         
         if i < 1
                dAlpha_dt(i+1) = 0;
@@ -219,6 +226,8 @@ end
     out.dAlpha_dt = dAlpha_dt;
     out.Vm = sqrt(out.V(:,1).^2 + out.V(:,3).^2 + out.V(:,2).^2);
     out.phi = phi;
+    out.gamma = Gamma;
+    out.theta = theta;
     
     if exist('tkep','var')
         out.tkep = tkep;

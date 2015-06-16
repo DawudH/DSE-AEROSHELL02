@@ -4,7 +4,7 @@ The aerodynamic shape is chosen such that certain aerodynamic properties are ach
 When a suitable design is chosen, the resulting aerodynamic characteristics are used in determining a trajectory that complies with the initial and final velocity and height requirements. This is done by choosing a bank angle profile, choosing the bank angle as a function of time to arrive at the required location and velocity. 
 The trajectory data containing velocity, density, Mach number and dynamic pressure is used for the inflation structure sizing, \gls{tps} lay-up and control system mass estimation. The shape and maximum dynamic pressure in the trajectory is used in determining the inflation structure, for which a parametric mass model is used to estimate the decelerator mass. 
 Also, a representative truss structure is used to determine whether the loads don't exceed the material maximum loads. The heat flux into the system, which in turn amounts to a temperature distribution through the structure and through time, is calculated with the trajectory data. Numerically integrating the 1D heat equation with as input the heat flux data yields a temperature distribution for a given lay-up. The lay-up is then iterated until no layer temperature exceeds its maximum temperature while having the smallest thickness possible such that the \gls{tps} has the lowest possible mass. 
-The control system mass is finally estimated using the aerodynamic moment coefficients and required trajectory.
+The control system mass is finally estimated using the required bank angle through the trajectory and moments of inertia.
 
 When the technical analysis of the concept is done, the iteration is completed by analysing the results and assessing points where improvement can be made. When not all requirements are met, changes have to be made tot he design. Several problems have been identified during the design phase:
 \begin{itemize}
@@ -17,8 +17,7 @@ When the technical analysis of the concept is done, the iteration is completed b
 	
 \end{itemize}
 
-The iteration strategy is visualised as a flow-chart in Figure \ref{fig:iterativedesignflowchart}. In this figure the solid lines represent design information flowing towards the areas that still need analysis. In the `Design within requirements?' decision box, the check is made whether the mass is within budget and the temperature does not exceed the maximum temperature of the material.
-
+The iteration strategy is visualised as a flow-chart in Figure \ref{fig:iterativedesignflowchart}. In this figure the solid lines represent design information flowing towards the areas that still need analysis. In the `Design within requirements?' decision box, the check is made whether the mass is within budget and the temperature does not exceed the maximum temperature of the material. If this is the case, the design meets the requirements and is thus the acceptable choice.
 
 
 
