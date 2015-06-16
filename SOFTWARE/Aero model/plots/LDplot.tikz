@@ -1,9 +1,9 @@
 % This file was created by matlab2tikz.
 % Minimal pgfplots version: 1.3
 %
-\definecolor{mycolor1}{rgb}{0.00000,0.44700,0.74100}%
-\definecolor{mycolor2}{rgb}{0.85000,0.32500,0.09800}%
-\definecolor{mycolor3}{rgb}{0.92900,0.69400,0.12500}%
+\definecolor{mycolor1}{rgb}{0.20810,0.16630,0.52920}%
+\definecolor{mycolor2}{rgb}{0.07947,0.51590,0.83283}%
+\definecolor{mycolor3}{rgb}{0.19855,0.72140,0.63095}%
 %
 \begin{tikzpicture}
 
@@ -45,7 +45,7 @@ legend style={legend cell align=left,align=left,draw=white!15!black}
 };
 \addlegendentry{Relative Lift};
 
-\addplot [color=mycolor2,solid,mark=x,mark options={solid}]
+\addplot [color=mycolor2,solid,mark=triangle,mark options={solid}]
   table[row sep=crcr]{%
 0	1\\
 5.72957795130823	0.985087246239921\\
@@ -66,7 +66,7 @@ legend style={legend cell align=left,align=left,draw=white!15!black}
 };
 \addlegendentry{Relative Drag};
 
-\addplot [color=mycolor3,solid,mark=+,mark options={solid}]
+\addplot [color=mycolor3,solid,mark=square,mark options={solid}]
   table[row sep=crcr]{%
 0	0\\
 5.72957795130823	0.100334672085451\\

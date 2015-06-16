@@ -15,7 +15,9 @@ classdef aeroProperties
     end
     methods
         function obj = aeroProperties(name)
-            addpath '..\Aero model';
+            if isdir('.\..\Aero model')
+                addpath('..\Aero model');
+            end
             load('iteration1_1_orbit.mat');
             
             obj.clainterpolant = griddedInterpolant(mod.alpha_array(1:end-2), mod.CRA_aero_array(3,1:end-2), 'linear');

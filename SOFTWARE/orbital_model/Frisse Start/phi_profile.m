@@ -13,12 +13,28 @@ function out = phi_profile(t)
 %     
 
 	% Aero capture
-%     phi = [0 17 0 0]*pi/180;
+%     phi = [0 38.471 0 0]*pi/180;
 %     t_change = [240 1000 1100];   
+            
+            % density * 1.1
+%             phi = [0 52.73 0 0]*pi/180;
+%             t_change = [240 1000 1100];   
+
+            % density * 0.90
+%             phi = [0 7.2 0 0]*pi/180;
+%             t_change = [240 1000 1100];   
     
     % second orbit
     phi = [130 60 30]*pi/180;
-    t_change = [500 700];   
+    t_change = [500 700]; 
+    
+            % density * 1.1
+%             phi = [130 80 30]*pi/180;
+%             t_change = [500 700]; 
+
+            % density * 0.90
+%             phi = [130 0 30]*pi/180;
+%             t_change = [500 700];   
 
     t_check = t_change >= t;
     if sum(t_check) == 0
