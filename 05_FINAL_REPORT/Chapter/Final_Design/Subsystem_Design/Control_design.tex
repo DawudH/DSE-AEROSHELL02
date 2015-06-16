@@ -17,19 +17,19 @@ Based on the arguments for and against certain control system concepts given in 
 From figure \ref{fig:cgoffset} it can be seen that the required \gls{cg} Z-offset grows as the X-offset grows. For an angle of attack change of $2$ degrees corresponding to an X-\gls{cg} located at $-5$ meters a \gls{cg} shift of $0.2$ meters is required. Angle of attack-based trajectory control was found to require trimmed \gls{sym:alpha}-shifts of $5$ degrees that have to be adjusted with a rate of $1$ $deg \cdot s^{-1}$. To pull this off would require the actuation system to produce a \gls{cg} displacement of $0.5$ meters with a required rate of $0.1$ $m \cdot s^{-1}$. This would require excessively heavy actuators that would also have to be able to operate under 3-g loads. Not only has this never been done before in space, the reliability of such a system would be questionable. Based on these arguments a decision was made against active \gls{cg} control.\\
 Following the decision to discontinue the consideration of active \gls{cg} control a selection had to be made between the other two control system design options: Body flaps and thrusters. Regarding body flaps some of the same arguments can be made as were used against active \gls{cg} control. Body flaps can require excessively large actuators that are very heavy. In addition to this the dynamic behaviour of the inflatable structure is difficult to compute and can be very unpredictable. Furthermore the use of body flaps on inflatable structures has a very low \acrlong{trl}, which poses an additional development risk. Based on these and other downsides pertaining to aerodynamic control surfaces mentioned in section \ref{subsec:controltool} it was decided to employ thrusters as control system.
 
-\paragraph{Control system results}
+\paragraph{Control system components}
 
-The results of the control system can be subdivided into two components. The control system mass and its corresponding accuracy.
+The components of the control system can  globally be subdivided into two components. The control system mass and its corresponding accuracy.
 
 Mass estimates are based on the required propellant mass, thruster mass and fuel tank mass. The propellant mass can be subdivided into a further two categories: the control within the atmosphere and the control outside of the atmosphere. General equation were previously discussed within section \ref{subsec:controltool}.
 
 \subparagraph{Control within the atmosphere} 
 
-Within the Martian atmosphere control is performed on the basis of banking. A control system featuring a single bank control reversal is always able to derive at the destination with a average accuracy of 1.009 [$km$]\cite{Lu2007} at Mars. The control system accuracy can further be significantly reduced by using multiple bank reversals, reducing mainly the dispersions observed. 
+Within the Martian atmosphere control is performed on the basis of banking. A control system featuring a single bank control reversal manoeuvre is always able to derive at the destination with a average accuracy of 1.009 [$km$]\cite{Lu2007} at Mars. The control system accuracy can further be significantly reduced by using multiple bank reversals, reducing mainly the dispersions observed. 
 
 Accuracies where obtained using dispersions with a \gls{sym:CL} of $\pm 0.03 $, \gls{sym:CD}  of $\pm 0.06 $ and mass and atmospheric dispersion of 5\% and 30\% respectively \cite{Lu2007}. Accuracies up of 10[$m$] are achieved if the staging and final descent are included \cite{Davis2010}. 
 
-It is argued that with an increasing amount of bank reversals, complemented with additional control measures higher accuracies can be obtained. The trajectories are budgeted for a total of six bank reversals for both the initial aero-capture and the final \gls{edl}. Six bank reversals are typical values for single orbit \cite{Lu2007, Cianciolo2010}. A very qualitative definition of six bank reversels as defined within the control system analysis is displayed in Figure \ref{fig:bankdef}
+It is argued that with an increasing amount of bank reversals, complemented with additional control measures higher accuracies can be obtained. The trajectories are budgeted for a total of six bank reversals for both the initial aero-capture and the final \gls{edl}. Six bank reversals are typical values for single orbit \cite{Lu2007, Cianciolo2010}. A very qualitative definition of six bank reversals as defined within the control system analysis is displayed in Figure \ref{fig:bankdef}
 
 \begin{figure}[h]
 	\centering
@@ -38,26 +38,23 @@ It is argued that with an increasing amount of bank reversals, complemented with
 	\label{fig:bankdef}
 \end{figure}
 
-
-The mass estimates are moreover based on peak rotational rates of 20 [$deg\cdot s^{-1}$] and 5 [$deg \cdot s^{-2}$] as used by Davis et al. \cite{Davis2010}.
+The mass estimates of the propellant within the Martian atmosphere are based on peak rotational rates of 20 [$deg\cdot s^{-1}$] and 5 [$deg \cdot s^{-2}$] as used by Davis et al. \cite{Davis2010}.
 
 The inertial moments are based on a homogeneous mass distribution and a simplified geometric shape. The crew module is assumed to be a hollow cylinder with the structural components attached to the in and outside of this cylinder. The inflatable structure is assumed to be of a circular disk shape, again with a homogeneous mass distribution. Within this shape the mass is assumed to be primarily situated on the outside of the spacecraft such that conservative mass estimates will be achieved.
 
-
 \subparagraph{Control outside the atmosphere}
-
 Control outside the Martian atmosphere is required fro two purposes. Clean-up corrections and orbit (de)-raising. The latter allows for a controlled entry time into the Martian atmosphere for the final \gls{edl} operations. The former makes sure that the desired orbit can be reached after the aerobraking.
 
 For the purpose of orbit raising it is desired that the consequential orbit no longer covers the Martian atmosphere and that the orbital period fits within a Martian SOL. For practical purposes and considering the relatively short period in space (i.e days) after the initial aero braking the pericenter limit is set at 200 [$km$]. 
 
 Clean-up corrections are estimated on the basis of results presented by Cianciolo et al. \cite{Cianciolo2010}. The most representative shapes are the 23m \gls{hiad} and in lesser extend the rigid aeroshell. On the basis of the former the clean-up velocity are estimated to be 10.47[$m/s$] ($3\sigma$) \cite[p.37]{Cianciolo2010}. Not that Cianciolo et al. include the orbit raising within the clean-up estimates whereas this report considers them as two different entities.
 
-\subparagraph{Thrusters}
 
+\subparagraph{Thrusters}
 Inertial moments combined with rotational rates deliver the required control moments via Equation \ref{eq:mcontrol}. For the most efficient performance the thruster are placed on the outside of the crew module. Although thrusters placed on the outside of the inflatable are able to generate higher torques, multiple disadvantages hinder this placement:
 
 \begin{itemize}
-\item Thruster place on the inflatable will difficult the deployment
+\item Thruster placed on the inflatable will difficult the deployment
 \item Deformation of the inflatable, and thus the thrusters performance is difficult to predict.
 \item Placement of thrusters on the inflatable may induce disadvantageous vibrations or aeroelastic effects.  
 \end{itemize} 
@@ -70,11 +67,35 @@ Specific preference lies in the use of hydrazine as propellant such that it is i
 
 Additionally thrusters for the velocity increments in the apocenter are required. Again hydrazine thrusters are considered for interchangeability throughout the various mission stages. This is however combined with a second propellent as for bi-propellant thrusters as this yields significant performance increase (in terms of \gls{sym:Isp})\cite{Wertz2011}. 
 
-A thruster suitable for such a purpose is the unified propulsion system by Japan IHI at a weight of 15.7 [$kg$] and a specific impulse of 321.4 [$s$]. As secondary propellant NTO is required. As such a thruster can only be used if placed aft of the re-entry vehicle, since the front is covered by the \gls{hiad} additional pointing by the crewmodule ADCS system may be required.
+A thruster suitable for such a purpose is the unified propulsion system by Japan IHI at a weight of 15.7 [$kg$] and a specific impulse of 321.4 [$s$]. As secondary propellant NTO is required \cite[p.538]{Wertz2011}. As such a thruster can only be used if placed aft of the re-entry vehicle, since the front is covered by the \gls{hiad} additional pointing by the crewmodule ADCS system may be required. TO ensure a sufficient control system reliability two of these thrusters are considered such that no single point of failure can occur. 
 
-Table 
+\begin{table}[h]
+\centering
+\caption{Overview of thruster properties}
+\label{tab:thrusters}
+\begin{tabular}{|l|l|l|l|l|l|l|l|} \hline
+Engine              & Manufacturer          & Quantity & Mass       & Length  & Propellants   & Nominal Thrust & \gls{sym:Isp} \\ \hline
+MONARC 445          & MOOG                  & 8        & 1.6[$kg$]  & 0.41[m] & Hydrazine     & 445[N]         & 321.4[s]      \\ \hline
+Clean-up Propellant & Japan IHI company ltd & 2        & 15.7[$kg$] & 1.03[m] & NTO/Hydrazine & 1700[N]        & 235[$s$]     \\ \hline
+\end{tabular}
+\end{table}
 
+Table \ref{tab:controlmassbreakdown} provides an overview
 
+\begin{table}[h]
+\centering
+\caption{Control system mass components}
+\label{tab:controlmassbreakdown}
+\begin{tabular}{|l|c|} \hline
+\textbf{Component}                 & \textbf{Mass[$kg$]} \\ \hline
+Bank Control Propellant      &     54       \\ \hline
+Clean-up Propellant          &     33       \\ \hline
+Orbit (de)raising Propellant &     54       \\ \hline
+Fuel tank              		 &     11      \\ \hline
+Thrusters                	 &     44     \\ \hline \hline
+Total                        &     196      \\ \hline
+\end{tabular}
+\end{table}
 
 \paragraph{Control system method}
 
