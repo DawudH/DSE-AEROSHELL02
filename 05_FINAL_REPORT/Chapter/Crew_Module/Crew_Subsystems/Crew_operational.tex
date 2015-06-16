@@ -11,9 +11,9 @@ By using the method described in the previous paragraph the results of Table \re
 \begin{table}[h]
 	\centering
 	\caption{Obtained masses and volumes of basic system \& consumable items}
-	\begin{tabular}{|p{1.9cm}|p{2.7cm}|p{2.7cm}|p{3.5cm}|p{3.6cm}|}
+	\begin{tabular}{|p{1.87cm}|p{2.625cm}|p{2.65cm}|p{3.6cm}|p{3.6cm}|}
 		\hline
-		\textbf{Crew members} & \textbf{Basic system mass $[kg]$} & \textbf{Basic system volume $[m^{3}]$} & \textbf{Consumables mass per day $[kg]$} & \textbf{Consumables volume per day $[m^{3}]$} \\ \hline \hline
+		\textbf{Crew members} & \textbf{Basic system mass $\mathbf{[kg]}$} & \textbf{Basic system volume $\mathbf{[m^{3}]}$} & \textbf{Consumables mass per day $\mathbf{[kg]}$} & \textbf{Consumables volume per day $\mathbf{[m^{3}]}$} \\ \hline \hline
 		1 & 1,800 & 4.88 & 3.2 & 0.018 \\
 		2 & 2,500 & 6.78 & 6.4 & 0.036 \\
 		3 & 3,200 & 8.68 & 9.6 & 0.054 \\
@@ -27,7 +27,7 @@ It can be seen from Table \ref{tab:operationalest} that both the basic system an
 	\caption{Total mass and volume associated with operational items for varying crew numbers}
 	\begin{tabular}{|c|c|c|}
 		\hline
-		\textbf{Crew members} & \textbf{Operational items mass $[kg]$} & \textbf{Operational items volume $[m^{3}]$}\\ \hline \hline
+		\textbf{Crew members} & \textbf{Operational items mass $\mathbf{[kg]}$} & \textbf{Operational items volume $\mathbf{[m^{3}]}$}\\ \hline \hline
 		1 & 2,120 & 6.69\\
 		2 & 3,140 & 10.40\\
 		3 & 4,160 & 14.11\\
@@ -37,11 +37,13 @@ It can be seen from Table \ref{tab:operationalest} that both the basic system an
 	\end{tabular}
 	\label{tab:crewmemberops}
 \end{table}
-Furthermore Rudisill et al mention the spacecraft volume required for crew operations per crew member \cite{Rudisill2008}. This volume can take on three different values depending on the mission length. The resultant habitable volumes are shown in figure \ref{fig:crewvolume}.
+Furthermore Rudisill et al. mention the spacecraft volume required for crew operations per crew member \cite{Rudisill2008}. This volume can take on three different values depending on the mission length. The resultant habitable volumes are shown in figure \ref{fig:crewvolume}.
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=1.0]{./Figure/CrewModule/Crewvolume}
-	\caption{Habitable volume per crew member as a function of mission duration \cite{Rudisill2008}}
+	\setlength\figureheight{0.4\textwidth} 
+	\setlength\figurewidth{0.95\textwidth}
+	\input{Figure/CrewModule/crewvolume.tikz}
+	\caption[Habitable volume per crew member as a function of mission duration]{Habitable volume per crew member as a function of mission duration \cite{Rudisill2008}}
 	\label{fig:crewvolume}
 \end{figure}
 In the remainder of this report the crew habitable volume will be sized to the 'performance limit' indicated in figure \ref{fig:crewvolume}.
