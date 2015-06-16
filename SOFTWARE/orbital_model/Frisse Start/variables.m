@@ -10,7 +10,7 @@ theta0 = 135/180*pi;%3.016549;%150/180*pi;
 % aero capture
 gamma = 21.672;
 % 2nd entry
- gamma = 17.2;
+gamma = 17.2;
 
 %Initial Position
 rx = -4148904.375000;

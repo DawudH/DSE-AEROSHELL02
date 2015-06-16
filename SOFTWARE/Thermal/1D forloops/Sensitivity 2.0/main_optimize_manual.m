@@ -18,9 +18,9 @@ layup(:,2:6) = layupin(:,2:6);
 
 % Aero input, qsdot
 A_whetted = 12;
-load('./SensitivityData/heatflux_out_d12_just_orbit.mat','T','t','qmax_array','A_whetted')
+load('./SensitivityData/heatflux_out_d6_one_time.mat','T','t','qmax_array','A_whetted')
 tq = find(not(qmax_array<0.01));
-fluxfactor = 0.5;
+fluxfactor = 1.0;
 qaero = fluxfactor*qmax_array(tq(1):tq(end));
 Tatm  = T(tq(1):tq(end)); 
 timeq = t(tq(1):tq(end))-t(tq(1));
