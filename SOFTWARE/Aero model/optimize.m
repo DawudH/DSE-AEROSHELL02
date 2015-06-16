@@ -32,6 +32,7 @@ opts = gaoptimset('PlotFcns',{@gaplotbestf,@gaplotstopping, @gaplotbestindiv});
 % opts = gaoptimset('PlotFcns',{@gaplotstopping, @gaplotpareto});
 opts = gaoptimset(opts, 'UseParallel', true);
 opts = gaoptimset(opts, 'PopulationSize', 200);
+
 % opts = gaoptimset(opts, 'InitialPopulation', x);
 [x,Fval,exitFlag,Output, population, scores] = ga(@optimizationWrapper,xlength,A,b,[],[],[],[],[],opts);
 % [x,Fval,exitFlag,Output, population, scores] = gamultiobj(@optimizationWrapper,xlength,A,b,[],[],[],[],[],opts);

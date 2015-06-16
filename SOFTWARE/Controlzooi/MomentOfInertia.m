@@ -11,7 +11,7 @@ Di=4.5;
 Do=12;
 L=6;
 
-Ds_cb=3.5;
+Ds_cb=4;
 m_cb=9000;
 
 m_h=1000;
@@ -25,7 +25,7 @@ n=12
 %Rotatian angles
 mu_dd=5;
 mu_d=20;
-mu=43;
+mu=[20*ones(1,n/2), 60*ones(1,n/2)];
 alpha_dd=5;
 alpha_d=20;
 alpha_trim=10;
@@ -33,7 +33,7 @@ alpha_dive=0;
 alpha=abs(alpha_trim-alpha_dive);
 
 q=1000;
-t_turn=20;
+t_turn=10;
 
 %Convert to radians
 mu_dd=mu_dd/180*pi;
@@ -57,8 +57,8 @@ m_cbh=m_h-m_inf;
 t_cb=Di-Ds_cb;
 
 % %Compute MMOI
-Ixx=1/4 * (0.5*m_cb*((Ds_cb+t_cb)^2+(Ds_cb+t_cb)^2) + 0.5*m_cbh*Di^2  +  0.5*m_inf+Do^2);
-Iyy=1/12*(m_cb+m_h)*(3/4*((Ds_cb+t_cb)^2+(Ds_cb+t_cb)^2) +L^2);
+Ixx=1/4 * (0.5*m_cb*((Ds_cb+t_cb)^2+(Ds_cb-t_cb)^2) + 0.5*m_cbh*Di^2  +  0.5*m_inf+Do^2);
+Iyy=1/12*(m_cb+m_h)*(3/4*((Ds_cb+t_cb)^2+(Ds_cb-t_cb)^2) +L^2);
 
 %Rotational moment
 Mxx=Ixx*mu_dd;
@@ -74,15 +74,16 @@ Ty=Myy/Di*2;
 Ty_turn=Myy_turn/Di*2;
 
 %Compute requried fuel
-Massx=Tx*tx/Isp/g0*n;
+Massx=Tx*tx/Isp/g0;
+Massx=sum(Massx)
 Massy=Ty*ty/Isp/g0;
 Massy_turn=Ty_turn*t_turn/Isp/g0;
 
 
 % Delta V orbit
-Isp=235;
+Isp=321;
 t_burn=600;
-delta_V=8.7;
+delta_V=8.49;
 delta_V_clean=3.49*3;
 M0=10000;
 g0=9.81;
@@ -100,7 +101,7 @@ F=Isp*g0*M_p_clean/t_burn
 M_tot=Massx+M_p_apo+M_p_clean;
 V=M_tot/1.002*1.2;
 M_tank=2.7086*10^-8 *V^3 -6.1703*10^-5 *V^2 +6.66290*10^-2 *V +1.3192;
-M_thruster=8*1.6;
+M_thruster=8*1.6 +2*15.7;
 
 Mtank_fuel=M_tot+M_tank+M_thruster;
 
@@ -109,9 +110,9 @@ Mtank_fuel=M_tot+M_tank+M_thruster;
 M_tot_alpha=Massx+M_p_apo+Massy+Massy_turn+M_p_clean;
 
 V=M_tot/1.002*1.2;
-M_tank=2.7086*10^-8 *V^3 -6.1703*10^-5 *V^2 +6.66290*10^-2 *V +1.3192;
-M_thruster=8*1.6;
+M_tank_alpha=2.7086*10^-8 *V^3 -6.1703*10^-5 *V^2 +6.66290*10^-2 *V +1.3192;
+M_thruster=8*1.6 +2*15.7;
 
-Mtank_fuel_alpha=M_tot_alpha+M_tank+M_thruster;
+Mtank_fuel_alpha=M_tot_alpha+M_tank_alpha+M_thruster;
 
 table(M_p_apo,M_p_clean,M_tot,Mtank_fuel,Massy+Massy_turn,M_tot_alpha,Mtank_fuel_alpha)

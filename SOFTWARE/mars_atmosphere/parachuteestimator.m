@@ -32,7 +32,7 @@ for i = 1:length(garray);
     fuelmass = m0*fuelfraction;
 
     R = 6;
-    CD = 1.22;
+    CD = 1.307;
     CDA = CD*pi*R^2;
     D0 = 0.5*rho0*V0^2*CDA;
     a0 = D0/m0;
