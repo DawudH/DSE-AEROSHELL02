@@ -8,19 +8,19 @@ clc
 %% Define input
 
 % lay-up (t[mm], k[w/m/K], rho[kg/m3], cp[J/kg/K], emis[-], allowT[K])
-filename   = 'layup9.txt';
+filename   = 'layup2.txt';
 layupin    = dlmread(filename);
 % SI units
 thicks = dlmread('thick.txt');
-layupin(1,1) = thicks(20);
-layupin(2,1) = thicks(41);
+layupin(1,1) = thicks(500);
+layupin(2,1) = thicks(500);
 layup      = zeros(size(layupin));
 layup(:,1) = layupin(:,1)./1000;
 layup(:,2:6) = layupin(:,2:6);
 L = layup(:,1);
-qfact = 1.2;
+qfact = 1.1;
 % Aero input, qsdot
-load('heatflux_orbit_iteration_1_0','T','t','qmax_array','A_whetted')
+load('heatflux_out_d12_just_orbit','T','t','qmax_array','A_whetted')
 tq = find(not(qmax_array<0.01));
 qaero = qmax_array(tq(1):tq(end))*qfact;
 Tatm  = T(tq(1):tq(end)); 
@@ -35,9 +35,9 @@ q0 = qaero*10000*qfact;
 nmax = int32(ttot/dt);  % number of time steps
 t = [0:double(nmax-1)]*dt;
 fact    = 1;           % multiplication factor of number of space steps
-%kfact = [2.5e-5/fact;2.5e-6/fact;2.5e-2/fact]; % Conductivity factorslay2
+kfact = [2.5e-5/fact;2.5e-6/fact;2.5e-2/fact]; % Conductivity factorslay2
 %kfact = [1.0;1.0;1.0;1.0;1.0]; %lay4
-kfact = [9.0e-6;1;1];
+%kfact = [9.0e-6;1;1];
 
 
 % spacing
