@@ -8,41 +8,39 @@ clc
 %% Define input
 
 % lay-up (t[mm], k[w/m/K], rho[kg/m3], cp[J/kg/K], emis[-], allowT[K])
-filename   = 'layup2.txt';
+filename   = 'layup3.txt';
 layupin    = dlmread(filename);
 % SI units
-thicks = dlmread('thick.txt');
-layupin(1,1) = thicks(500);
-layupin(2,1) = thicks(500);
 layup      = zeros(size(layupin));
 layup(:,1) = layupin(:,1)./1000;
 layup(:,2:6) = layupin(:,2:6);
-L = layup(:,1);
-qfact = 1.1;
+%L = layup(:,1);
+
 % Aero input, qsdot
-load('heatflux_out_d12_just_orbit','T','t','qmax_array','A_whetted')
+A_whetted = 12;
+load('./SensitivityData/heatflux_out_d12_just_orbit.mat','T','t','qmax_array','A_whetted')
 tq = find(not(qmax_array<0.01));
-qaero = qmax_array(tq(1):tq(end))*qfact;
+fluxfactor = 0.5;
+qaero = fluxfactor*qmax_array(tq(1):tq(end));
 Tatm  = T(tq(1):tq(end)); 
 timeq = t(tq(1):tq(end))-t(tq(1));
 clear('T','t')
 
+L = layup(:,1);
 % time and aeroheat
 ttot = timeq(end);  % end time of the orbit [s]
 dt   = 0.1;    % time step, chooseable
 T0 = 293;
-q0 = qaero*10000*qfact;
+q0 = qaero*10000;
 nmax = int32(ttot/dt);  % number of time steps
-t = [0:double(nmax-1)]*dt;
+t = (0:double(nmax-1))*dt;
 fact    = 1;           % multiplication factor of number of space steps
-kfact = [2.5e-5/fact;2.5e-6/fact;2.5e-2/fact]; % Conductivity factorslay2
-%kfact = [1.0;1.0;1.0;1.0;1.0]; %lay4
-%kfact = [9.0e-6;1;1];
-
+% K9 = [9.0e-6 ; 1.0 ; 1.0 ; 1.0 ; 1.0];
+% K4 = [2.5e-4 ; 1.0 ; 1.0];
+kfact = [9.0e-6 ; 1.0 ; 1.0 ; 1.0 ; 1.0 ];
 
 % spacing
 L = int32(round(L*10000000));
-
 
 if length(L)==1
     gcd_old = L(1);
@@ -90,6 +88,36 @@ for j = 1:layers
 end
 alpha = k./rho./cp;
 v = alpha*dt/dx/dx;
+
+%% Temperature boundaries
+
+Tbegin = 4;   %[K]
+Tend   = 273+20; %[K]
+dT     = Tbegin-Tend;
+
+% Define the wanted vector
+Tinitial = zeros(imax,1);
+Tinitial(1) = Tbegin;
+
+% Total material prop
+R      = layup(:,1)./layup(:,2);
+Req    = sum(R);
+
+% The steady heatflux
+qsteady = dT/Req; %[W/m2]
+
+% Find the temperatures
+Tlayer  = zeros(length(L)+1,1);
+Tlayer(1) = Tbegin;
+
+for m = 1:length(L)
+    %Find all temps
+    teller = indexx(m)+1;
+    while teller <= indexx(m+1)
+        teller = teller + 1;
+        Tinitial(teller) = Tinitial(teller-1) - (qsteady*(dx/layup(m,2)));
+    end
+end
 
 
 %% Implement Cranck-Nickelson with voids
@@ -152,9 +180,10 @@ for j=1:length(L)
     layernames{j} = strcat('Layer',int2str(j));
 end
 output = table(layup(:,1)*1000,results,layup(:,6),layup(:,2),layup(:,3),layup(:,4),'RowNames',layernames,'VariableNames',{'Thickness','maxT','allowT','k','rho','cp'});
+disp(output)
+Tallow = layup(:,6);
 
-disp(output)    
-disp(['m/A = ',num2str(sum(layup(:,1).*layup(:,3))),' [kg/m2]'])
-disp(['m = ',num2str(A_whetted*sum(layup(:,1).*layup(:,3))),' [kg]'])
-    
-    
+  
+
+  disp('the manual thicknisses are: ')
+  disp([L(1)/2 L(1)/2 L(2) L(3)/2 L(3)/2]*1000)
