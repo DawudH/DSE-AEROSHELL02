@@ -35,7 +35,7 @@ The aerodynamic shape required for static stability can be argued based on the l
 In order to trim the aeroshell at a certain angle of attack, a \gls{cg} offset is used: the \gls{cg} does not lie directly on the most forward point of the spacecraft. In order to minimise the impact, the required \gls{cg} offset is calculated using Equation \ref{eq:reqcgoffset}. A large offset may be unrealistic and more difficult to implement.
 
 \begin{equation} \label{eq:reqcgoffset}
-z_{\gls{cg}} = \frac{\gls{sym:CML}}{\gls{sym:CL}}.
+z_{\gls{cg}} = \frac{\gls{sym:CML}}{\gls{sym:CL}}
 \end{equation}
 In general the relation between required \gls{cg} offset for a certain lift over drag ratio is a good indicator for the performance of a design, since this relates the performance to the cost of the performance.
 
@@ -44,21 +44,21 @@ Finally, the heat flux is given in Equation \ref{eq:modnewtonianqw} and is direc
 
 \begin{figure}[h]
 	\centering
-	\begin{minipage}[b]{0.48\textwidth}
-			\centering
-		\setlength\figureheight{0.48\textwidth} 
-		\setlength\figurewidth{0.48\textwidth}
+	\begin{subfigure}[b]{0.48\textwidth}
+		\centering
+		\setlength\figureheight{0.88\textwidth} 
+		\setlength\figurewidth{0.88\textwidth}
 		\input{Figure/Aerodynamics/LDplot.tikz}
 		\caption{Lift, drag and lift over drag ratio for a flat plate versus incidence angle}
 		\label{fig:CLCD-incidence}
-	\end{minipage}
-
-	\begin{minipage}[b]{0.48\textwidth}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.48\textwidth}
 		\centering
 		\includegraphics[width=0.9\textwidth]{./Figure/Aerodynamics/skewness.eps}
 		\caption{Side-view of a skewed aerodynamic shape. The lower part generates a moment around the frontal part of the aeroshell when under an angle of attack}
 		\label{fig:skewnessplot}
-	\end{minipage}
+	\end{subfigure}
+	\caption{Blabla}
 \end{figure}
 
 To illustrate the characteristics of different aerodynamic shapes, an optimisation has been performed towards certain aerodynamic coefficients, as explained in Paragraph \ref{par:Optimisation}. These shapes serve to enlarge understanding of how certain shape aspects correspond to certain aerodynamic properties. For the following parameters has been optimised:
@@ -105,7 +105,7 @@ An asymmetric body will ensure that even at zero degrees angle of attack, the ve
 \begin{figure} 
 	\centering
 	\setlength\figureheight{0.48\textwidth} 
-	\setlength\figurewidth{0.48\textwidth}
+	\setlength\figurewidth{0.88\textwidth}
 	\input{./Figure/Aerodynamics/LoverDplot.tikz}
 	\caption{Effect of asymmetric shape on Lift over Drag ratio }
 	\label{fig:LDSkew}
