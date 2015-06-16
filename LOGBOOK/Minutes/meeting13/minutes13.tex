@@ -24,53 +24,46 @@ Aan de agenda worden verder geen punten toegevoegd.
 Er waren geen op- of aanmerkingen.
 
 \subsubsection{Status update}
-Afgelopen twee dagen bezig met subsystems in de crew module en de rest van de missie.
-
-A: Launch naar LEO, daar evt. docken. Van LEO naar transfer orbit. Launch vibrations, diameter en max. volume bekeken. HD komen er nog extra reqs bij? We hebben nu een maximale volume (dus maximale hoogte). Wordt 5dia bij 10hoog. Saturn V was niet toereikend.
-
-D: Interplanetary flight, hoelang het duurt. dV-budget, orbits die gebruikt worden.
-
-G: Heenweg geen habitatcapsule. Je hebt een earth-return vehicle nodig voor de terugweg naar Aarde. HD: hoeveel SLS heb je nodig? In principe 2, maar voor de andere heb je niet per se SLS nodig (je kan langere orbits). Wordt 2 lanceringen. Schrijf het zo op dat het geene xtra vragen oproept. Buiten de scope, maar wel over nadenken.
-
- 
-
-HD kunnen we evt. terug naar Aarde? Nee, we gaan voor een parking orbit om een goede landings mogelijkheid te oakken.  Eerst een aerocapture en dan ong. 100kg brandstof om de parking orbit te bereiken. HD vraagt welke thrusters we hiervoor gebruiken.
-launch windows elke 2jaar. Hoe wil je density gaan meten? Dat doen we tijdens de aerocapture.
-
-Landing: Terminal descent. Gebruik van parachute loont niet, beter om thruster fuel mee te nemen (200kg tegen 280kg). Aeroshell naar beneden, met kleine parachute voor stabiliteit. Afremmen met thruster, aeroshell afwerpen. Je hebt sowieso een thruster nodig. Vergeet motoren niet.
-
-Raket vanaf Mars, dan een terugtransferhabitatmodule. 
-
-D": Verder zijn we bezig geweest de subsystems van de crewmodule. 
-ADCS
-Power, solar arrays ipv nuclear. Power requirements per subsystem lastig te vinden. Uiteindelijk massa uit paper gehaald. Ong. 300 kg.
-NR: massa die budget overschrijdt? Dat gaan we vandaag bekijken bij de packaging.
-Structures: vergelijking Orion en Apollo. Heatshield erafgehaald. 1700kg ong.
-Maximale AoA door te lengte van bus. Geen backshield nodig als dit gebeurt.
-Communicatie: Deep space network. K-band voor veel data. Massaschatting was lastig, opschaling van Mars Odyssee. Wordt power meegenomen? L: dit gaat voor verschillende subsystemen lastig te bekijken zijn. 
-Thermal, wordt 1080kg, 480 uit paper, 600 uit SMAD.
-
-c.g. offset benodigt hele grote actuators (zeker bij enkel $\alpha$-control). Alleen de pompen waren 120kg/stuk en die konden minder massa verplaatsen. Dit zijn alleen pompen, wordt uiteindelijk veel te zwaar omdat het binnen die 1000kg moet zijn. c.g. offset bij bank kleiner, omdat bank neutrally stable is, dus minder groot moment benodigd is. 40cm cg, voor 2graden in 1 sec is flink. Hoe krijg een lift vector? Of asymmetrische vorm, of c.g. offset. Huidige aerodynamische skewed vorm zorgt voor L/D 0.3-0.5. Met de straps kun je asymmetrische vormen maken. We hebben nog niet gekeken naar cg-shift door andere massa-verdeling. 
-
-Bodyflaps werken niet buiten de atmosfeer (netzoals cgoffset). Je hebt dus sowieso thrusters nodig. Als ze gelocked zijn, zijn ze gratis. Lastig te maken aan het einde van inflatable. 
-Trillingen bij asymmetric al bekeken? Eventuele intabiliteit bij die vorm? Limit cycle oscillation bijna niks over te zeggen met simpele analyses. Symmetrisch minder last van. Dat kan evt. met een vaste cg offset, maar asymmetric geeft meer vrijheid. (LCO tegengaan met thrusters? Vorm van flutter zonder divergentie. Van te voren niets over te zeggen)
-
-Thrusters werken buiten atmosfeer, al gebruikt. Nadeel is massaverbruik per tijd. Meestal hydrazine thrusters, zitten ook op Orion. Niet continu te gebruiken, dus lastig voor $\alpha$. 
-HD: is er al gekozen? Neigt naar fixed c.g. offset met thrusters. Dus zonder skewed? Nee met skewed. Cg offset als het nodig is. Kritisch cg locatie bij launch?
-
+Afgelopen twee dagen zijn we bezig geweest met de subsystems in de crew module en de rest van de missie.
+\newline
+Voor de launch gaan we eerst naar LEO, waar evt. gedocked wordt. Van LEO naar een transfer orbit. Verder is er gekeken naar launch vibrations, diameter en maximale volume voor in de launcher. Dat wordt inderdaad vijf meter diameter en 10 meter hoog.
+\newline
+Bij de interplanetary flight is naar verschillende transfer orbits gekeken welke verschillende duur hebben en verschillende deltaV-budget vereisen.
+\newline
+G vertelt dat voor de heenweg geen habitatcapsule nodig is. Je hebt wel een earth-return vehicle nodig voor de terugweg naar Aarde. Dit betekent minimaal twee launches. De eerste voor de heenweg moet met SLS (Saturn V niet toereikend) om de juiste snelle transfer orbit te kunnen pakken. De tweede kan met een kleinere, omdat de earth-return vehicle niet per se supersnel bij Mars moet aankomen. HD geeft als tip alles zo op te schrijven zodat het zodat het geen extra vragen oproept. Misschien een beetje buiten de scope, maar er moet wel over nagedacht zijn.
+\newline
+We kunnen bij problemen niet terug naar Aarde. De entry-vehicle wordt in een parking orbit gezet om een goede landingsmogelijkheid te vinden. Eerst een aerocapture en dan ongeveer 100kg aan brandstof om een deltaV te krijgen voor de parking orbit. We weten nog niet precies welke thrusters we hiervoor willen gebruiken.
+\newline
+Voor de landing (of terminal descent) loont het gebruik van een parachute niet. Het is lichter om thruster fuel mee te nemen (200kg tegen 280kg). De aeroshell is gewoon naar beneden gericht met een kleine parachute (drogue) voor de stabiliteit. De aeroshell wordt afgeworpen. Ook hier is het nog niet duidelijk welke thrusters gebruikt gaan worden. Hier moeten we wel op gaan letten.
+\newline
+Voor de terugkeer is aangenomen dat er een raket op Mars de astronauten naar het earth-return vehicle, die al om Mars cirkelt.
+\newline\newline
+Verder zijn we bezig geweest met de subsystems van de crewmodule. We hebben zoveel mogelijk massa en volume toegekend aan ADCS, Power, Structures, C\&DH (communications and data handling), operational items en Thermal control. Veel is uit referenties gehaald. NR vraagt of er subsystems zijn met een te hoge massa. Voroalsnog niet, vandaag zal de packaging van alle subsystems in de cre module plaats vinden.
+\newline\newline
+Vervolg van de control-opties van woensdag 10 juni:
+\newline
+Control met vari\"{e}rende offset benodigt hele grote actuators (zeker bij enkel $\alpha$-control). Alleen de pompen in Apollo waren al 120kg/stuk en die konden minder massa verplaatsen. Dit zijn dan alleen de pompen en we moeten onder de 1000 kg blijven. CG offset benodigd bij bank is kleiner, omdat bank neutrally stable is, dus een minder groot moment is nodig. We willen wel een initial offset voor $\alpha$-trim. We hebben nog niet gekeken naar cg-shift door andere massa-verdeling. 
+\newline
+Bodyflaps werken niet buiten de atmosfeer (netzoals cgoffset). Je hebt dus sowieso thrusters nodig. Voordeel is dat ze niets kosten als ze gelocked zijn. Wel lastig te maken aan het einde van inflatable.
+\newline
+Thrusters werken buiten atmosfeer en is proven concepts. Nadeel is massaverbruik over tijd. Meestal hydrazine thrusters wat niet fijn is als het misgaat. Deze zitten echter ook op Orion, dus het kan wel gewoon.
+\newline\newline
+Er is in principe nog niet gekozen voor een control system, maar we neigen naar een skewed shape, fixed c.g. offset met thrusters.
+\newline\newline
+Er wordt even gepraat over Limit Cycle Oscillation, welke voor ongewenste vibraties kunnen zorgen. Is voor ons vrijwel niet te analyseren
 
 \subsubsection{Andere vragen}
 Er waren geen vragen ingediend.
 
 \subsubsection{W.V.T.T.K.}
-NR is sowieso woensdag er niet bij, vrijdag misschien niet.
+NR geeft aan sowieso woensdag er niet bij te zijn en vrijdag misschien niet bij kan zijn.
 
-We hebben liever vrijdag geen vergadering. HD kan dan niet. Verplaatsen naar 22-06-2015. Liefst zelfde tijd (11:00-12:30)
+D groep geeft aan vrijdag (19 juni) liever geen vergadering te plannen. HD kon dan sowieso niet, dus komt goed uit. Deze meeting zal verplaatst worden naar maandag 22-06-2015. Liefst zelfde tijd (11:00-12:30)
 
-Voorkant mag je zelf bepalen, rest in zwart-wit leesbaar.
+Voorkant van het final report mag je zelf bepalen, de rest moet in zwart-wit leesbaar zijn.
 
 \subsubsection{Rondvraag}
-HD woensdag 17 juni C\&S barbecue. 
+- HD vertelt dat er woensdag 17 juni een C\&S barbecue is - 
 
 \subsubsection{Sluiting}
 De volgende vergadering zal plaatsvinden op 17-06-2015 om 11:00 in Fellowship Meeting room 2.

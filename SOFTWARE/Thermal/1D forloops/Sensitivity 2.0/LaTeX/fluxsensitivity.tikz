@@ -14,13 +14,13 @@ at={(0\figurewidth,0\figureheight)},
 scale only axis,
 xmin=0,
 xmax=3,
-xlabel={Heat flux ratio [-]},
+xlabel={Heat flux ratio $\left[-\right]$},
 xmajorgrids,
 ymin=1,
 ymax=4,
-ylabel={$\text{Area Density [kg/m}^\text{2}\text{ ]}$},
+ylabel={Area density $\left[ kg \cdot m^{-2}\right]$},
 ymajorgrids,
-legend style={at={(0.03,0.97)},anchor=north west,legend cell align=left,align=left,draw=white!15!black}
+legend style={legend cell align=left,align=left,draw=white!15!black}
 ]
 \addplot [color=mycolor1,solid,mark=diamond,mark options={solid}]
   table[row sep=crcr]{%
@@ -46,18 +46,18 @@ legend style={at={(0.03,0.97)},anchor=north west,legend cell align=left,align=le
 
 \addplot [color=mycolor3,solid,mark=square,mark options={solid}]
   table[row sep=crcr]{%
-0.25	1.6037\\
-0.5	1.6651\\
-0.75	1.7266\\
-0.9	1.7601\\
-1	1.7769\\
-1.1	1.7936\\
-1.25	1.8216\\
-1.4	1.8439\\
-1.5	1.8607\\
-2	1.9222\\
-2.5	1.9725\\
-3	2.0116\\
+0.25	1.6341\\
+0.5	1.7896\\
+0.75	1.9019\\
+0.9	1.9537\\
+1	1.9796\\
+1.1	2.0141\\
+1.25	2.0573\\
+1.4	2.0918\\
+1.5	2.1178\\
+2	2.2127\\
+2.5	2.2905\\
+3	2.3596\\
 };
 \addlegendentry{Layup 3};
 
