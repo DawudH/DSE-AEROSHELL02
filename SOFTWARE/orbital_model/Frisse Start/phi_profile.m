@@ -29,8 +29,8 @@ function out = phi_profile(t)
     t_change = [500 700]; 
     
             % density * 1.1
-            phi = [130 80 30]*pi/180;
-            t_change = [500 700]; 
+%             phi = [130 80 30]*pi/180;
+%             t_change = [500 700]; 
 
             % density * 0.90
 %             phi = [129 0 30]*pi/180;
