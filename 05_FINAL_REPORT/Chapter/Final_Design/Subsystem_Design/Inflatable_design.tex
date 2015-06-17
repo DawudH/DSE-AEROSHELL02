@@ -8,27 +8,27 @@
  \begin{figure}[h]
  	\centering
  	
- 	\begin{subfigure}[b]{0.45\textwidth}
- 		\includegraphics[width=0.95\textwidth]{./Figure/Aerodynamics/CDCSCLAlpha.pdf}
- 		\caption{Force coefficients in the aerodynamic frame versus angle of attack}
+ 	\begin{subfigure}[b]{0.49\textwidth}
+ 		\includegraphics[width=0.99\textwidth]{./Figure/Aerodynamics/CDCSCLAlpha.pdf}
+ 		\caption{Force coefficients in the aerodynamic frame versus angle of attack.}
  		\label{fig:CLCDCSAlpha}
  	\end{subfigure}
- 	\begin{subfigure}[b]{0.45\textwidth}
- 		\includegraphics[width=0.95\textwidth]{./Figure/Aerodynamics/CMXCMYCMZAlpha.pdf}
- 		\caption{Moment coefficients in the body frame versus angle of attack}
+ 	\begin{subfigure}[b]{0.49\textwidth}
+ 		\includegraphics[width=0.99\textwidth]{./Figure/Aerodynamics/CMXCMYCMZAlpha.pdf}
+ 		\caption{Moment coefficients in the body frame versus angle of attack.}
  		\label{fig:CMxCMyCMzAlpha}
  	\end{subfigure}
- 	\begin{subfigure}[b]{0.45\textwidth}
- 		\includegraphics[width=0.95\textwidth]{./Figure/Aerodynamics/CLCDAlpha.pdf}
- 		\caption{Lift to drag ratio versus angle of attack}
+ 	\begin{subfigure}[b]{0.49\textwidth}
+ 		\includegraphics[width=0.99\textwidth]{./Figure/Aerodynamics/CLCDAlpha.pdf}
+ 		\caption{Lift over drag ratio versus angle of attack.}
  		\label{fig:CLCDAlpha}
  	\end{subfigure}
- 	\begin{subfigure}[b]{0.45\textwidth}
- 		\includegraphics[width=0.95\textwidth]{./Figure/Aerodynamics/CGoAlpha.pdf}
- 		\caption{Required centre of gravity offset versus angle of attack}
+ 	\begin{subfigure}[b]{0.49\textwidth}
+ 		\includegraphics[width=0.99\textwidth]{./Figure/Aerodynamics/CGoAlpha.pdf}
+ 		\caption{Required \gls{cg} offset versus angle of attack.}
  		\label{fig:CGOAlpha}
  	\end{subfigure}
- 	\caption{Inflatable structural mass and inflation pressure as a function of design parameters}
+ 	\caption{Various aerodynamic characteristics of the aeroshell over the angle of attack range $0<\alpha<30$}
  \end{figure}
 
 
@@ -121,3 +121,21 @@ To prevent Nitrogen gas from leaking, the structural PBO Zylon layers are coated
 %Stitching of the fabrics making up the toroids is used for the joints of the inflatable, on one hand to join the toroids to each other and on the other hand to join the toroids to the radial straps. This is a method excellently suited, applied, tested and proven in the \gls{irve} missions \cite{Lindell2006,Hughes2011,Dillman2012}. Joints are thereby proven high-strength and suitable for space application and a stacked-toroid configuration.
 
 %Structural integrity is provided by PBO Zylon AS, capable of retaining its strength at high temperature and able to withstand the required loads\footnote{URL:\url{http://www.toyobo-global.com/seihin/kc/pbo/zylon-p/bussei-p/technical.pdf}. Accessed: 15-06-2015}}. It has high specific properties, leading to a low structural mass, as follows from Figure \ref{fig:mat}. It performs only slightly worse than Spectra 2000 in the parametric mass model, but differences are slight (below 5 $\%$) and 
+
+\paragraph{\acrfull{tps} design}
+For a given trajectory and lay-up it is possible to check the temperature distribution for failure. From the sensitivity analysis in Section \ref{subsec:thermalsens} it is deducted that a Nextel BF-20 layer with Pyrogel 6650 as insulator is preferable for weight reduction purposes. However, due to the relatively low emissivity of Nextel the wall temperature exceeds the limit as high aerodynamic heating can not be radiated away efficiently. For this reason a slightly heavier alternative, Nicalon, is needed. Nicalon is a type of silicon continuous fiber that can withstand temperatures up to 2073 $\left[K\right]$. Furthermore it has a much higher emissivity, which greatly reduces the wall temperature. It performs comparable or even better on its ability fold and impact toughness compared with Nextel BF-20 \textcolor{red}{Verify impacttoughness?} \cite{Corso2011}. The sensitivity analysis has shown that for a diameter of 12 $\left[m\right]$ it was not possible to find a viable thickness for the Nextel lay-ups. Several iterations have been performed to reduce the heat flux such that Nextel BF-20 became viablle, however these attempts remained unsuccessful. Therefore Nicalon is chosen as \gls{tps}-layer and Pyrogel 6650 as insulation layer.
+
+The incoming heat flux, or aerodynamic heating of the chosen trajectory is shown in Figure \ref{fig:heatfluxes}. In here three fluxes are shown. 
+
+\begin{figure}[h]
+	\centering
+	\includegraphics{./Figure/Thermal/heatfluxes.pdf}
+	\caption{Heat flux for trajectories for different density levels}
+	\label{fig:heatfluxes}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics{./Figure/Thermal/finallayup.pdf}
+	\caption{Final design for the lay-ups}
+	\label{fig:finallayup}
+\end{figure}

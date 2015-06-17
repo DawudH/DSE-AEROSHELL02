@@ -10,5 +10,5 @@ function [ out ] = eliptic_kepler(R0,V0,A0,G,M,dt_kep_init,orbit_init)
 %%Output
 out = out_end;
 out.param = out_param;
-
+out.V_aero = 0;
 end

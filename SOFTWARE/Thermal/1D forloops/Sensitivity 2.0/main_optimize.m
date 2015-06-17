@@ -19,7 +19,7 @@ layup(:,2:6) = layupin(:,2:6);
 % Aero input, qsdot
 %diameter = 12; %[m]
 %A_whetted = pi*(diameter/2)^2;
-load('./SensitivityData/heatflux_out_d12_just_orbit.mat','T','t','qmax_array','A_whetted')
+load('./SensitivityData/aerocapture_rho_1.mat','T','t','qmax_array','A_whetted')
 tq = find(not(qmax_array<0.01));
 fluxfactor = 1.0;
 qaero = fluxfactor*qmax_array(tq(1):tq(end));
@@ -39,7 +39,7 @@ fact    = 1;           % multiplication factor of number of space steps
 % K1 = [2.5e-5 ; 2.5e-6 ; 2.5e-2 ]
 % K2 = [2.5e-4 ; 1.0 ; 1.0];
 % K3 = [9.0e-6 ; 1.0 ; 1.0 ];
-kfact = [9.0e-6 ; 1.0 ; 1.0 ];
+kfact = [2.5e-5 ; 2.5e-6 ; 2.5e-2 ];
 
 % spacing
 L = int32(round(L*10000000));
@@ -340,7 +340,7 @@ Tallow = layup(:,6);
                 end
                 output = table(layup(:,1)*1000,results,layup(:,6),layup(:,2),layup(:,3),layup(:,4),'RowNames',layernames,'VariableNames',{'Thickness','maxT','allowT','k','rho','cp'});
             end    
-            disp(['hij dacht dat laag ' num2str(z+1) ' te warm werd, laag' num2str(z) ' moet dikker' ])
+            disp(['hij dacht dat laag ' num2str(z+1) ' te warm werd, laag ' num2str(z) ' moet dikker' ])
         elseif ((results(z+1) < Tallow(z+1)) && (layup(1,1) > 0.508/1000))
             while ((results(z+1) < Tallow(z+1)) && (layup(1,1) > 0.508/1000) && (results(z) < Tallow(z)+2)) %Nextel(1643 623 473) harnessedsatin(2073 1373 623 473)
                 layup(z,1) =  layup(z,1) - 1.0*2.54e-5;

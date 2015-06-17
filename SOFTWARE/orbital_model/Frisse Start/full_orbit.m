@@ -149,6 +149,7 @@ end
         R(i+1,:) = out_o.R;
         speed_sound(i+1,:) = out_o.speed_sound;
         V(i+1,:) = out_o.V;
+        V_aero(i+1,:) = out_o.V_aero;
         speed_sound(i+1,:) = out_o.speed_sound;
         M(i+1,:) = out_o.M;
         A(i+1,:) = out_o.A;
@@ -189,6 +190,7 @@ end
     %%Output
     out.R = R;
     out.V = V;
+    out.V_aero = V_aero;
     out.A = A;
     out.Ag = Ag;
     out.Ad = Ad;
