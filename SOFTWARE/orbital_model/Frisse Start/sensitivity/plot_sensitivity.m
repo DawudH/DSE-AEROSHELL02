@@ -12,6 +12,7 @@ export_figures = false;
  out_1_1 = load('aerocapture_rho_1_1.mat');
  out_0_9 = load('aerocapture_rho_0_9.mat');
 
+c_m = [161 37 27]/255;
 
 %% processing for the aerocapture
 figure('name','parameters over time for the aerocapture')
@@ -25,6 +26,7 @@ c2 = cc(3,:);
 c3 = cc(5,:);
 
 xlimits = [0 max(t_1_1)];
+
 
 if export_figures
     index1 = 1:50:length(t_1);
@@ -184,9 +186,9 @@ out_0_9 = load('entry_rho_0_9.mat');
 
 
 figure('name','parameters over time for the entry')
-t_1 = out_1.out.tp(1:end-1);
-t_1_1 = out_1_1.out.tp(1:end-1);
-t_0_9 = out_0_9.out.tp(1:end-1);
+t_1 = out_1.out.tp;
+t_1_1 = out_1_1.out.tp;
+t_0_9 = out_0_9.out.tp;
 
 xlimits = [0 max(t_1_1)];
 
@@ -194,10 +196,16 @@ if export_figures
     index1 = 1:50:length(t_1);
     index2 = 1:50:length(t_1_1);
     index3 = 1:50:length(t_0_9);
+    index1o = 1:10:length(t_1);
+    index2o = 1:10:length(t_1_1);
+    index3o = 1:10:length(t_0_9);
 else
     index1 = 1:1:length(t_1);
     index2 = 1:1:length(t_1_1);
     index3 = 1:1:length(t_0_9);
+    index1o = 1:1:length(t_1);
+    index2o = 1:1:length(t_1_1);
+    index3o = 1:1:length(t_0_9);
 end
 
 
@@ -211,13 +219,13 @@ subplot(3,3,1)
 xlim(xlimits)
 grid on
 hold on
-Rm_1 = sqrt(out_1.out.R((1:end-1),1).^2 + out_1.out.R((1:end-1),3).^2 + out_1.out.R((1:end-1),2).^2) - R_m;
+Rm_1 = sqrt(out_1.out.R(:,1).^2 + out_1.out.R(:,3).^2 + out_1.out.R(:,2).^2) - R_m;
 plot(t_1(index1),Rm_1(index1),'color',c1)
 plot(t_1(markerspace1),Rm_1(markerspace1),linespec{1},'color',c1)
-Rm_1_1 = sqrt(out_1_1.out.R((1:end-1),1).^2 + out_1_1.out.R((1:end-1),3).^2 + out_1_1.out.R((1:end-1),2).^2) - R_m;
+Rm_1_1 = sqrt(out_1_1.out.R(:,1).^2 + out_1_1.out.R(:,3).^2 + out_1_1.out.R(:,2).^2) - R_m;
 plot(t_1_1(index2),Rm_1_1(index2),'color',c2)
 plot(t_1_1(markerspace2),Rm_1_1(markerspace2),linespec{2},'color',c2)
-Rm_0_9 = sqrt(out_0_9.out.R((1:end-1),1).^2 + out_0_9.out.R((1:end-1),3).^2 + out_0_9.out.R((1:end-1),2).^2) - R_m;
+Rm_0_9 = sqrt(out_0_9.out.R(:,1).^2 + out_0_9.out.R(:,3).^2 + out_0_9.out.R(:,2).^2) - R_m;
 plot(t_0_9(index3),Rm_0_9(index3),'color',c3)
 plot(t_0_9(markerspace3),Rm_0_9(markerspace3),linespec{3},'color',c3)
 ylabel('$h$ $\left[m\right]$','interpreter','latex')
@@ -337,7 +345,7 @@ end
 
 
 %% Plot entry orbit at mars
-figure('name','Orbit')
+figure('name','Entry orbit')
 axis equal
 hold on
 axis([-(R_m + h_atm)*1.2 (R_m + h_atm)*1.2 -(R_m + h_atm)*1.2 (R_m + h_atm)*1.2])
@@ -347,7 +355,59 @@ axis([-(R_m + h_atm)*1.2 (R_m + h_atm)*1.2 -(R_m + h_atm)*1.2 (R_m + h_atm)*1.2]
     radius_mars = ones(1,length(theta_plot)) * R_m;
     radius_mars_atmos = ones(1,length(theta_plot)) * (R_m + h_atm);
     h3 = polar(theta_plot,radius_mars); 
-    set(h3,'color',cc(6,:))
+    set(h3,'color',c_m)
+    %legend_str{end+1} = 'Mars mean-equatorial radius';
+    h4 = polar(theta_plot,radius_mars_atmos,'-.'); 
+    set(h4,'color',cc(5,:))
+    %legend_str{end+1} = 'Mars atmosphere limit';
+    set(gca,'Visible','off')
+    set(gcf,'color',[1 1 1])
+ 
+% plot trajcetories
+L1 = plot(out_1.out.R(index1o,1),out_1.out.R(index1o,2),'color',c1);
+L2 = plot(out_1_1.out.R(index2o,1),out_1_1.out.R(index2o,2),'color',c2);
+L3 = plot(out_0_9.out.R(index3o,1),out_0_9.out.R(index3o,2),'color',c3);
+
+% determine the three landing locations
+point1 = out_1.out.R(end,:);
+dt2 = (out_1_1_c.out.tp(end) + out_1_1.out.tp(end)) - (out_1_c.out.tp(end) + out_1.out.tp(end));
+dt3 = (out_0_9_c.out.tp(end) + out_0_9.out.tp(end)) - (out_1_c.out.tp(end) + out_1.out.tp(end));
+point2 = rotz(dt2*omega_m*180/pi)*point1';
+point3 = rotz(dt3*omega_m*180/pi)*point1';
+
+plot(point1(1),point1(2),'x','color',c1,'markers',12)
+plot(point2(1),point2(2),'x','color',c2,'markers',12)
+plot(point3(1),point3(2),'x','color',c3,'markers',12)
+
+if (export_figures)
+    matlab2tikz('.\orbit_sensitivity_entry_mars.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
+end
+
+
+
+%% Plot the complete orbit! :D
+out_p   = load('parking.mat');
+t1 = out_1_c.out.tp(1:end-1); % aerocapture
+t2 = out_1.out.tp; % entry
+
+if export_figures
+    index1 = 1:50:length(t1);
+    index2 = 1:50:length(t2);
+else
+    index1 = 1:1:length(t1);
+    index2 = 1:1:length(t2);
+end
+figure('name','Complete orbit')
+axis equal
+hold on
+%axis([-(R_m + h_atm)*1.2 (R_m + h_atm)*1.2 -(R_m + h_atm)*1.2 (R_m + h_atm)*1.2])
+
+% planet and atmosphere
+    theta_plot = 0:0.01:2*pi;
+    radius_mars = ones(1,length(theta_plot)) * R_m;
+    radius_mars_atmos = ones(1,length(theta_plot)) * (R_m + h_atm);
+    h3 = polar(theta_plot,radius_mars); 
+    set(h3,'color',c_m)
     %legend_str{end+1} = 'Mars mean-equatorial radius';
     h4 = polar(theta_plot,radius_mars_atmos,'-.'); 
     set(h4,'color',cc(5,:))
@@ -355,49 +415,22 @@ axis([-(R_m + h_atm)*1.2 (R_m + h_atm)*1.2 -(R_m + h_atm)*1.2 (R_m + h_atm)*1.2]
     set(gca,'Visible','off')
     set(gcf,'color',[1 1 1])
     
-    
+% plot aerocapture trajcetories
+%L1 = plot(out_1_c.out.R(index1,1),out_1_c.out.R(index1,2),'color',c1);
 
-% if isfield(out,'tkep')
-%     ccc = autumn(5);
-%     %first atmos section
-%     index = find(t == out.tkep);
-%     L1 = plot(out.R(1:10:index,1),out.R(1:10:index,2),'color',cc(1,:));
-%     legend_str{2} = 'First pass through atmosphere';
-%     plot(out.R(1:150:index,1),out.R(1:150:index,2),'v','color',cc(1,:));
-%     % plot kepler eliptical part
-%     theta_plot = out.okep.theta:0.02:(2*pi-out.okep.theta);
-%     rk = out.okep.a * (1- out.okep.e^2) ./ (1 + out.okep.e .* cos(theta_plot));
-%     h2 = polar(theta_plot+out.okep.theta_p,rk); 
-%     set(h2,'color',cc(3,:))
-%     legend_str{3} = 'Elliptical kepler';
-%     % plot second atmos section
-%     L2 = plot(out.R(index+1:10:end,1),out.R(index+1:10:end,2),'color',ccc(2,:)); 
-%     plot(out.R(index+1:150:end,1),out.R(index+1:150:end,2),'d','color',ccc(2,:)); 
-%     legend_str{4} = 'Second pass through atmosphere';
-% else
-%     % just plot the atmos part
-%     L1 = plot(out.R(:,1),out.R(:,2),'color',cc(1,:),'LineWidth',1.2);
-%     legend_str{2} = 'Pass through atmosphere';
-% end
-% 
-%     if exist('L2','var')
-%         if hypkep
-%             legend([h1, L1, h2, L2, h3, h4],legend_str,'location','east');
-%         else
-%             legend([L1, h2, L2, h3, h4],legend_str(2:end),'location','east');
-%         end
-%     else
-%         if hypkep
-%             legend([h1, L1, h3, h4],legend_str);
-%         else
-%             legend([L1, h3, h4],legend_str(2:end));
-%         end
-%     end
-%     % plot location of start landing phase:
-%     point1 = 1.0e+06 * [-3.274898658418613, -1.907769574406631, 0];
-%     point = 1.0e+06 * [-3.393522184766882,  -0.278472149680601,  0];;
-%     plot(point(1),point(2),'x','color','k','markers',12)
-%     plot(point1(1),point1(2),'x','color','k','markers',12)
-%     if (export_figures)
-%         matlab2tikz('.\orbit_sensitivity_entry_mars.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
-%     end
+% plot kepler (till theta = pi)
+theta_kep = out_1_c.out.okep.theta:0.02:pi;
+rk = out_1_c.out.okep.a * (1- out_1_c.out.okep.e^2) ./ (1 + out_1_c.out.okep.e .* cos(theta_kep));
+h2 = polar(theta_kep+out_1_c.out.okep.theta_p,rk); 
+
+% plot parking orbit
+
+% plot reentry kepler
+ 
+% plot entry trajcetories
+L2 = plot(out_1.out.R(index2,1),out_1.out.R(index2,2),'color',c1);
+
+
+if (export_figures)
+    matlab2tikz('.\orbit_sensitivity_entry_mars.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
+end

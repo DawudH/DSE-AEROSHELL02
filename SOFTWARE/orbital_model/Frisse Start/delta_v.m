@@ -8,9 +8,9 @@ h = 200e3;
 %rho0.9
 %dv2 = -9.63
 %rho1
-% dv2 = -9.56
+dv2 = -9.56;
 %rho1.1
-dv2 = -9.55
+% dv2 = -9.55;
 
 % booleans
 use_control = false;
@@ -21,24 +21,24 @@ hypkep = false;
 
 %%function
 %[out] = full_orbit(R, V, A, G, M_mars, R_m, h_atm, atm, dt_kep_init, dt_atmos, m, omega_m, S, control, tend, crash_margin, g_earth, aero_coef, use_control, multiple_orbits, use_alpha_profile,r,v,theta0,gamma,hypkep,Crho,control.alpha_init,control.dalphadt);
-load('../../Aero model/orbits/aerocapture_rho_1_1.mat')
+load('../../Aero model/orbits/aerocapture_rho_1.mat')
 mu = G*M_mars;
 ra = out.okep.ra;
 v = sqrt(mu*(2/ra-1/out.okep.a));
 rp = R_m + h;
 a_n = (rp+ra)/2;
 e_n = 1-rp/a_n;
-T_n = 2*pi * sqrt(a_n^3 / mu)/3600
+T_n = 2*pi * sqrt(a_n^3 / mu)/3600;
 v_n = sqrt(mu*(2/ra-1/a_n));
-dv1 = v_n - v
+dv1 = v_n - v;
 r_e = R_m + h_atm;
 v_e = v_n + dv2;
 a_e = (2/ra-v_e^2/mu)^-1;
 e_e = ra/a_e-1;
 
-v_entry = sqrt(mu*(2/r_e-1/a_e))
+v_entry = sqrt(mu*(2/r_e-1/a_e));
 theta_entry = -acos((a_e*(1-e_e^2)-r_e)/(r_e*e_e));
-theta0 = theta_entry + out.okep.theta_p
+theta0 = theta_entry + out.okep.theta_p;
 b_e = a_e*sqrt(1-e_e^2);
 R = r_e*[cos(theta0),sin(theta0),0];
 dtheta = 1e-9;
@@ -51,7 +51,7 @@ rc_e = dR(2)/dR(1);
 V_unit = [1,rc_e,0]/norm([1,rc_e,0]);
 %V_unit = -(rotz(-out.okep.theta_p)*V_unit')';
 V = -v_entry*V_unit;
-gamma = acosd(dot(R,V)/(norm(R)*norm(V)))-90
+gamma = acosd(dot(R,V)/(norm(R)*norm(V)))-90;
 %gamma = 17.2/180*pi;
 %theta = (2*pi-out.okep.theta);
 % theta_p = acos((cos(theta0)*cos(gamma)-sin(theta0)*sin(gamma)+rc_e*(sin(gamma)*cos(theta0)+cos(gamma)*sin(theta0)))/sqrt(1+rc_e^2))
@@ -95,3 +95,13 @@ h4 = polar(theta_plot,radius_mars_atmos,'-.');
 %legend_str{end+1} = 'Mars atmosphere limit';
 set(gca,'Visible','off')
 set(gcf,'color',[1 1 1])
+
+
+%% generate output
+clear out
+out.a_n = a_n;
+out.e_n = e_n;
+out.a_e = a_e;
+out.e_e = e_e;
+out.theta_entry = theta_entry;
+

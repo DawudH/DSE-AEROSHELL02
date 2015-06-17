@@ -8,7 +8,7 @@ clc
 %% Define input
 
 % lay-up (t[mm], k[w/m/K], rho[kg/m3], cp[J/kg/K], emis[-], allowT[K])
-filename   = 'layup3.txt';
+filename   = 'layup1.txt';
 layupin    = dlmread(filename);
 % SI units
 layup      = zeros(size(layupin));
@@ -18,9 +18,9 @@ layup(:,2:6) = layupin(:,2:6);
 
 % Aero input, qsdot
 
-load('./DesignData/heatflux_orbit_iteration_1_1.mat','T','t','qmax_array','A_whetted')
+load('./DesignData/aerocapture_rho_1.mat','T','t','qmax_array','A_whetted')
 tq = find(not(qmax_array<0.01));
-fluxfactor = 1.2;
+fluxfactor = 1.0;
 qaero = fluxfactor*qmax_array(tq(1):tq(end));
 Tatm  = T(tq(1):tq(end)); 
 timeq = t(tq(1):tq(end))-t(tq(1));
@@ -38,7 +38,7 @@ fact    = 1;           % multiplication factor of number of space steps
 % K1 = [2.5e-5 ; 2.5e-6 ; 2.5e-2 ]
 % K2 = [2.5e-4 ; 1.0 ; 1.0];
 % K3 = [9.0e-6 ; 1.0 ; 1.0 ];
-kfact = [9.0e-6 ; 1.0 ; 1.0 ];
+kfact = [2.5e-5 ; 2.5e-6 ; 2.5e-2 ];
 
 % spacing
 L = int32(round(L*10000000));
