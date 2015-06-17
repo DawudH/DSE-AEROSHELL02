@@ -198,7 +198,7 @@ end
     end
     % plot location of start landing phase:
     point1 = 1.0e+06 * [-3.274898658418613, -1.907769574406631, 0];
-    point = 1.0e+06 * [-3.393522184766882,  -0.278472149680601,  0];;
+    point = 1.0e+06 * [-3.393522184766882,  -0.278472149680601,  0];
     plot(point(1),point(2),'x','color','k','markers',12)
     plot(point1(1),point1(2),'x','color','k','markers',12)
     if (export_figures)
