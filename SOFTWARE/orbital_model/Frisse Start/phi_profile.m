@@ -25,16 +25,16 @@ function out = phi_profile(t)
 %             t_change = [240 1000 1100];   
     
     % second orbit
-%     phi = [130 60 30]*pi/180;
-%     t_change = [500 700]; 
+    phi = [129 60 30]*pi/180;
+    t_change = [500 700]; 
     
             % density * 1.1
-%             phi = [130 80 30]*pi/180;
-%             t_change = [500 700]; 
+            phi = [130 80 30]*pi/180;
+            t_change = [500 700]; 
 
             % density * 0.90
-            phi = [130 0 30]*pi/180;
-            t_change = [500 700];   
+%             phi = [129 0 30]*pi/180;
+%             t_change = [500 700];   
 
     t_check = t_change >= t;
     if sum(t_check) == 0
