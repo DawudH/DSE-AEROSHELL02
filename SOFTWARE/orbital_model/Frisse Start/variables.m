@@ -9,9 +9,9 @@ theta0 = 135/180*pi;%3.016549;%150/180*pi;
     % second entry
     theta0 = -3.9249+2*pi;
         % rho * 0.9
-        theta0 = -3.8797+2*pi;
-        % rho * 1.1
-        theta0 = -3.9628+2*pi;
+%         theta0 = -3.8797+2*pi;
+%         % rho * 1.1
+%         theta0 = -3.9628+2*pi;
 
 % aero capture
 gamma = 21.672;

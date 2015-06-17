@@ -83,15 +83,19 @@ Massy_turn=Ty_turn*t_turn/Isp/g0;
 % Delta V orbit
 Isp=321;
 t_burn=600;
-delta_V=8.49;
+delta_V1=8.49;
+delta_V2=9.63;
 delta_V_clean=3.49*3;
 M0=10000;
 g0=9.81;
 
 %Massburn apocenter
-M_p=M0-M0/(exp(delta_V/(Isp*g0)));
-F=Isp*g0*M_p/t_burn
-M_p_apo=M_p*2;
+M_p1=M0-M0/(exp(delta_V1/(Isp*g0)));
+F=Isp*g0*M_p1/t_burn
+
+M_p2=M0-M0/(exp(delta_V2/(Isp*g0)));
+F=Isp*g0*M_p2/t_burn
+M_p_apo=M_p1+M_p2
 
 M_p_clean=M0-M0/(exp(delta_V_clean/(Isp*g0)));
 F=Isp*g0*M_p_clean/t_burn
