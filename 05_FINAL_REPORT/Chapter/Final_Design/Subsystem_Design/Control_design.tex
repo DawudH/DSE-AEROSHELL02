@@ -92,35 +92,39 @@ Table \ref{tab:controlmassbreakdown} provides an overview of the individual mass
 \centering
 \caption{Control system mass components}
 \label{tab:controlmassbreakdown}
-\begin{tabular}{|l|c|} \hline
-\textbf{Component}                 & \textbf{Mass $\mathbf{[kg]}$} \\ \hline \hline
-Bank Control Propellant      &     54       \\ \hline
-Clean-up Propellant          &     33       \\ \hline
-Orbit (de)raising Propellant &     54       \\ \hline
-Fuel tank              		 &     11      \\ \hline
-Thrusters                	 &     44     \\ \hline \hline
-\textbf{Total}               &     196      \\ \hline
+\begin{tabular}{|l|l|c|} \hline
+\textbf{Component}           &\textbf{$\Delta V$}  & \textbf{Mass $\mathbf{[kg]}$} \\ \hline \hline
+Bank Control    &  - &			 54       \\ \hline
+Clean-up         & 10.47  &		  33       \\ \hline
+Orbit (de)raising& 18.12  &		  54       \\ \hline
+Fuel tank              		 & -  &  11      \\ \hline
+Thrusters                	 & -  &  44     \\ \hline \hline
+\textbf{Total}               & -  &  196      \\ \hline
 \end{tabular}
 \end{table}
 
 \paragraph{Control system method}
 
-For achieving mission success it is essential that required accuracy can be obtained even under non nominal conditions. For this purpose a control system is required such that the bank reversal angels and timing can be properly chosen such that mission succeeds.
+For achieving mission success it is essential that required accuracy can be obtained even under non nominal conditions. For this purpose a control system is required such that the bank reversal angles and timing can be properly chosen such that a reference trajectory can be followed and the mission succeeds.
 
 Similar to the mass estimates the control system can  also be subdivided into part within and a part outside of the Martian atmosphere.
 
 \subparagraph{Control within the atmosphere}
 
-Control within the atmosphere is required in two phases of the mission. The initial aero capture phase and the final \gls{edl}. Due to small uncertainness in the \glspl{hiad} performance, but more importantly atmospheric disturbances cause definitions from the nominal trajectory. These deviations are accounted for in the trajectory discussed in Section ?? but also need to be recognized such that they can be acted upon. 
+Control within the atmosphere is required in two phases of the mission. The initial aero capture phase and the final \gls{edl}. Due to small uncertainties in the \glspl{hiad} performance, but more importantly atmospheric disturbances, definitions from the nominal trajectory can be observed. These deviations are accounted for in the trajectory discussed in Section ?? but also need to be recognized during mission operations such that they can be acted upon. 
 
-Typical implementations for a control system involve a \gls{npc} or \gls{apc} method and use sensed accelerations to determine the atmospheric properties \cite{Davis2010}. These values are used to update the control models such that the terminal point is reached. For this purpose a set of three gyroscopes and three accelerators is required. 
+Typical implementations for a control system involve a \gls{npc} or \gls{apc} method and use sensed accelerations to determine the atmospheric properties \cite{Davis2010}. These values are used to update the control models such that the same terminal point is reached each time. For this purpose a set of three gyroscopes and three accelerators is required \cite{Dutta2013}. 
 
-The former is already included in the ADCS subsystem as discussed in Chapter \ref{subsec:adcs}. Recent advances in accelerometers make even the high accuracy sensors a low mass component. The accelerometers are included in the ADCS subsystem mass budget as they are also required for the terminal descent phase. 
+The former is already included in the \gls{adcs} as discussed in Chapter \ref{subsec:adcs}. Recent advances in accelerometers make even the high accuracy sensors a low mass component. The accelerometers are included in the ADCS subsystem mass budget as they are also required for the terminal descent phase. 
 
-For achieving the high required accuracy it is advised that next to sensed accelerations to determine the control model parameters pressure sensors are included as well.  \gls{npc} and \gls{apc} methods for bank control on Mars do normally not include these sensors and merely rely on sensed acceleration data \cite{Lu2007, Davis2010}. 
+For achieving the high required landing accuracy it is advised that next to sensed accelerations to determine the control model parameters pressure sensors are included as well.  \gls{npc} and \gls{apc} methods for bank control on Mars do normally not include these sensors and merely rely on sensed acceleration data \cite{Lu2007, Davis2010}. 
  
-Such sensors are demonstrated in hypersonic flight in the \gls{msl} in 2012 \cite{Dutta2013}. The use of separate sensors for determining the atmospheric properties will allow for easier determination of the atmospheric properties and allow for a higher accuracy. 
+Such sensors are demonstrated in hypersonic flight in the \gls{msl} in 2012 \cite{Dutta2013}. The use of separate sensors for determining the atmospheric properties will allow for easier determination of the atmospheric properties and allow for a higher landing accuracy. 
 
 \subparagraph{Control outside the atmosphere}
+
+Outside the Martian atmosphere no additional sensors are required apart form those provided by the \gls{adcs}. The period outside the Martian atmosphere however serves as an aid for the final \gls{edl}. Unlike the initial aero capture phase, for which no timing is possible, the period outside the Martian atmosphere in between the two entries allows for additional measurements and control model updates. Moreover the timing of the second re-entry in the Martian atmosphere can be controlled in intervals of single Martian days.
+
+Controlling this entry allows for entries at favourable atmospheric conditions and reduces the risk of the mission. Atmospheric conditions can for example be transmitted via pre-existing base stations. Controlling the timing of the mission allows for much more certainty on the atmospheric conditions which is crucial for the precision of the re-entry. High variations in the atmospheric properties, such as may be the case due to dust storms me be prevented \cite{Justh2012}.
 
 
