@@ -6,7 +6,7 @@ addpath('../')
 addpath('../../../matlab2tikz')
 constants 
 
-export_figures = false;
+export_figures = true;
 
  out_1   = load('aerocapture_rho_1.mat');
  out_1_1 = load('aerocapture_rho_1_1.mat');
@@ -416,16 +416,23 @@ hold on
     set(gcf,'color',[1 1 1])
     
 % plot aerocapture trajcetories
-%L1 = plot(out_1_c.out.R(index1,1),out_1_c.out.R(index1,2),'color',c1);
+L1 = plot(out_1_c.out.R(index1,1),out_1_c.out.R(index1,2),'color',c1);
 
 % plot kepler (till theta = pi)
-theta_kep = out_1_c.out.okep.theta:0.02:pi;
+theta_kep = [out_1_c.out.okep.theta:0.02:pi-0.01 pi-0.01:0.0002:pi];
 rk = out_1_c.out.okep.a * (1- out_1_c.out.okep.e^2) ./ (1 + out_1_c.out.okep.e .* cos(theta_kep));
 h2 = polar(theta_kep+out_1_c.out.okep.theta_p,rk); 
 
+
 % plot parking orbit
+theta_park = 0:0.02:2*pi;
+rp = out_p.out.a_n * (1- out_p.out.e_n^2) ./ (1 + out_p.out.e_n .* cos(theta_park));
+h2 = polar(theta_park+out_1_c.out.okep.theta_p,rp); 
 
 % plot reentry kepler
+theta_e = [pi:0.02:2*pi+out_p.out.theta_entry-0.1 2*pi+out_p.out.theta_entry-0.1:0.0002:2*pi+out_p.out.theta_entry];
+rkepe = out_p.out.a_e * (1- out_p.out.e_e^2) ./ (1 + out_p.out.e_e .* cos(theta_e));
+h3 = polar(theta_e+out_1_c.out.okep.theta_p,rkepe); 
  
 % plot entry trajcetories
 L2 = plot(out_1.out.R(index2,1),out_1.out.R(index2,2),'color',c1);
