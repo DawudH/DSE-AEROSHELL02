@@ -8,7 +8,7 @@ clc
 %% Define input
 
 % lay-up (t[mm], k[w/m/K], rho[kg/m3], cp[J/kg/K], emis[-], allowT[K])
-filename   = 'layup3.txt';
+filename   = 'layup1.txt';
 layupin    = dlmread(filename);
 % SI units
 layup      = zeros(size(layupin));
@@ -19,7 +19,7 @@ layup(:,2:6) = layupin(:,2:6);
 % Aero input, qsdot
 %diameter = 12; %[m]
 %A_whetted = pi*(diameter/2)^2;
-load('./SensitivityData/heatflux_out_d18_just_orbit.mat','T','t','qmax_array','A_whetted')
+load('./SensitivityData/heatflux_out_d12_just_orbit.mat','T','t','qmax_array','A_whetted')
 tq = find(not(qmax_array<0.01));
 fluxfactor = 1.0;
 qaero = fluxfactor*qmax_array(tq(1):tq(end));
