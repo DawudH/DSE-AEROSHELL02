@@ -268,17 +268,22 @@ classdef modnewtonian
 
         function obj = plots(obj)
             obj.geom.plotGeometry(true, false);
+                        
             figure;
-            plot(rad2deg(obj.alpha_array), obj.CR_aero_array');
-            xlabel('alpha')
+            hold on
+            plot(rad2deg(obj.alpha_array), obj.CR_aero_array')
+            xlabel('Angle of attack ')
             ylabel('CR');
-            legend('CD', 'CS', 'CL');
-            
+            h = legend('CD', '$CS$', '$CL$');
+                        
+                                 
             figure;
-            plot(rad2deg(obj.alpha_array), obj.CR_body_array');
+            hold on
+            plot(rad2deg(obj.alpha_array), obj.CR_body_array')            
             xlabel('alpha')
             ylabel('CR');
             legend('CX', 'CY', 'CZ');
+            hold off
             
             figure;
             plot(rad2deg(obj.alpha_array), obj.CM_aero_array');
@@ -311,6 +316,97 @@ classdef modnewtonian
             legend('CD');            
             
         end
+        
+        function obj = plotsReport(obj)
+            obj.geom.plotGeometry(true, false);
+            addpath('../matlab2tikz')
+            cc = parula(5);
+            
+            figure;
+            grid on
+            hold on
+            plot(rad2deg(obj.alpha_array), obj.CR_aero_array(1,:)','-o','color',cc(1,:));
+            plot(rad2deg(obj.alpha_array), obj.CR_aero_array(2,:)','-s','color',cc(2,:));
+            plot(rad2deg(obj.alpha_array), obj.CR_aero_array(3,:)','-^','color',cc(3,:));
+            xlabel('Angle of attack $(\alpha) [deg]$','interpreter', 'latex')
+            ylabel('$C_R$','interpreter', 'latex');
+            h = legend('$C_D$', '$C_S$', '$C_L$');
+            h.Interpreter = 'latex';
+            hold off         
+            matlab2tikz('plots/CDCSCLAlpha.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);          
+            
+            figure;
+            grid on
+            hold on
+            plot(rad2deg(obj.alpha_array), obj.CR_body_array(1,:)','-o','color',cc(1,:));
+            plot(rad2deg(obj.alpha_array), obj.CR_body_array(2,:)','-s','color',cc(2,:));
+            plot(rad2deg(obj.alpha_array), obj.CR_body_array(3,:)','-^','color',cc(3,:));
+            xlabel('Angle of attack $(\alpha) [deg]$','interpreter', 'latex')
+            ylabel('$C_R$','interpreter', 'latex');
+            h = legend('$C_X$', '$C_Y$', '$C_Z$');
+            h.Interpreter = 'latex';
+            hold off 
+            matlab2tikz('plots/CXCYCZAlpha.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
+            
+            figure;
+            hold on 
+            grid on
+            plot(rad2deg(obj.alpha_array), obj.CM_aero_array(1,:)','-o','color',cc(1,:));
+            plot(rad2deg(obj.alpha_array), obj.CM_aero_array(2,:)','-s','color',cc(2,:));
+            plot(rad2deg(obj.alpha_array), obj.CM_aero_array(3,:)','-^','color',cc(3,:));
+            xlabel('Angle of attack $(\alpha) [deg]$','interpreter', 'latex')
+            ylabel('$C_M$','interpreter', 'latex');
+            h = legend('$C_{M_{x}}$', '$C_{M_{y}}$', '$C_{M_{z}}$');
+            h.Interpreter = 'latex';
+            hold off 
+            matlab2tikz('plots/CMXCMYCMZAlpha.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
+            
+            figure; %L over D
+            hold on
+            grid on
+            plot(rad2deg(obj.alpha_array), obj.CLCD_array,'-o','color',cc(1,:));
+            xlabel('Angle of attack $(\alpha) [deg]$','interpreter', 'latex')
+            ylabel('$C_{L}C_{D}^{-1}$','interpreter', 'latex');
+            h = legend('$C_{L}C_{D}^{-1}$');
+            h.Interpreter = 'latex';
+            matlab2tikz('plots/CLCDAlpha.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
+            hold off
+            
+            figure;
+            grid on
+            hold on
+            plot(rad2deg(obj.alpha_array), obj.CM_body_array(2,:)./obj.CR_body_array(1,:),'-o','color',cc(1,:));
+            xlabel('Angle of attack $(\alpha) [deg]$','interpreter', 'latex')
+            ylabel('CG offset [m]','interpreter', 'latex');
+            h = legend('CG offset [m]');
+            h.Interpreter = 'latex';
+            matlab2tikz('plots/CGoAlpha.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
+            hold off
+            
+            figure;
+            grid on
+            hold on
+            plot(obj.CLCD_array, obj.CM_body_array(2,:)./obj.CR_body_array(1,:),'-o','color',cc(1,:));
+            xlabel('$C_{L}C_{D}^{-1} [-]$','interpreter', 'latex')
+            ylabel('CG offset [m]','interpreter', 'latex');
+            h = legend('CG offset [m]');
+            h.Interpreter = 'latex';
+            matlab2tikz('plots/CGoCLCD.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
+            hold off
+            
+            figure;
+            grid on
+            hold on
+            plot(obj.CLCD_array, obj.CR_aero_array(1,:),'-o','color',cc(1,:));
+            xlabel('$C_{L}C_{D}^{-1} [-]$','interpreter', 'latex')
+            ylabel('$C_{D}$','interpreter', 'latex');
+            h = legend('$C_{D}$');
+            h.Interpreter = 'latex';
+            matlab2tikz('plots/CLCDCD.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
+            hold off
+                      
+        end
+        
     end
 end
 

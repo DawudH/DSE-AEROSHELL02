@@ -19,7 +19,7 @@ orbitlimit = false;
 accellimit = false;
 
 alpha = -5:2.5:25;
-gamma_range = [21, 22];
+gamma_range = [17, 21];
 
 
 gamma_accuracy = 0.0005;
@@ -98,7 +98,7 @@ save('alpha_gamma_final.mat','results')
 figure(1)
 hold on
 grid on
-xlim([21.0 22.5])
+xlim([19.0 22.5])
 plot(results.GAMMA(find(results.flyby == true)),results.ALPHA(find(results.flyby == true))*180/pi,'o','color','c')
 plot(results.GAMMA(find(results.orbit == true)),results.ALPHA(find(results.orbit == true))*180/pi,'x','color','b')
 plot(results.GAMMA(find(results.crash == true)),results.ALPHA(find(results.crash == true))*180/pi,'x','color','g')

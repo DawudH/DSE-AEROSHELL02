@@ -7,17 +7,17 @@ constants
 %initial angles
 theta0 = 135/180*pi;%3.016549;%150/180*pi;
     % second entry
-    theta0 = -3.7638+2*pi;
+    theta0 = -3.9249+2*pi;
         % rho * 0.9
-        theta0 = -3.7384+2*pi;
+        theta0 = -3.8797+2*pi;
+        % rho * 1.1
+        theta0 = -3.9628+2*pi;
 
-        theta0 = -3.7494+2*pi;
 % aero capture
 gamma = 21.672;
 % 2nd entry
 gamma = 17.2;
 
-gamma = 12.5;
 
 %Initial Position
 rx = -4148904.375000;
@@ -30,7 +30,7 @@ r = h_atm+R_m;
 % v = 7.1679e+03; %[m/s] at 10Rm for 7km/s at SOI
 % v = 5.3757e3; %[m/s] at 10Rm for 7km/s at atmos
 v = 7000; %[m/s] at atmos for 7km/s at atmos
- v = 4525; % second entry
+ v = 4527.6; % second entry
 V = [0,-v,0];
 
 %Initial acceleration
@@ -60,7 +60,7 @@ control.Kd = 2*control.dalpha*10^(-4); % differential gain
 control.error = 0;
 control.error_I = 0;
 
-Crho = 1.0;
+Crho = 0.9;
 
 % create atmosphere object
 atm = marsatmosphere();

@@ -19,7 +19,7 @@ orbitlimit = false;
 accellimit = true;
 
 alpha = -5:2.5:25;
-gamma_range = [21, 22];
+gamma_range = [17, 21];
 
 
 gamma_accuracy = 0.0005;

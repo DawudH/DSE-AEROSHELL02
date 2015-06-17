@@ -17,7 +17,7 @@ This section will investigate the influence of the shape of the re-entry vehicle
 \paragraph{Shape sensitivity} \label{sec:aerooptima}
 Obtaining favourable characteristics of the aerodynamic shapes requires understanding of the influence of shape parameters on the performance of the design. To this end, firstly an analytical approach is taken. After that, conclusions can be made about different aerodynamic shapes. The optimisation tool is used afterwards to generate shapes that are optimised for certain design parameters, such that the conclusions based on the analytical knowledge can be verified.
 
-In Figure \ref{fig:ldplot}, the lift and drag performance as well as the lift over drag ratio of a flat plate in a free stream is given. Since Newtonian flow theory is based on the assumption that pressure only depends on the local body incidence angle, this plot can be used to deduce performance of a given shape. As can be seen in the plot, a vehicle with a high drag has most of it's surface perpendicular of the flow.
+In Figure \ref{fig:CLCD-incidence}, the lift and drag performance as well as the lift over drag ratio of a flat plate in a free stream is given. Since Newtonian flow theory is based on the assumption that pressure only depends on the local body incidence angle, this plot can be used to deduce performance of a given shape. As can be seen in the plot, a vehicle with a high drag has most of it's surface perpendicular of the flow.
 
 \paragraph{Lift}
 A high lift is achieved by having large parts of the shape under an incidence angle of $35 [^\circ]$. An axisymmetric shape doesn't create lift at zero angle of attack, since every radial part of the shape cancels all non-drag forces out. Skewness of the shape, such as portrayed in Figure \ref{fig:skewnessplot}, can be used to create lift at zero angle of attack: a larger part of the surface is inclined upwards than downwards, meaning the skewed shape generates a downward lift. Using skewness instead of an axisymmetric body at a high angle of attack may help to prevent the shock wave from hitting the payload module.
@@ -41,7 +41,7 @@ In general the relation between required \gls{cg} offset for a certain lift over
 
 Finally, the heat flux is given in Equation \ref{eq:modnewtonianqw} and is directly dependent on the density and velocity as well as the local radius of curvature. A less curved body in the stagnation point thus leads to a lower heat flux.
 
-\begin{figure}
+\begin{figure}[h]
 	\centering
 	\setlength\figureheight{0.4\textwidth} 
 	\setlength\figurewidth{0.95\textwidth}
@@ -49,7 +49,7 @@ Finally, the heat flux is given in Equation \ref{eq:modnewtonianqw} and is direc
 	\caption{Lift, drag and lift over drag ratio for a flat plate versus incidence angle}
 	\label{fig:CLCD-incidence}
 \end{figure}
-\begin{figure}
+\begin{figure}[h]
 	\centering
 	\includegraphics[width=0.9\textwidth]{./Figure/Aerodynamics/skewness.eps}
 	\caption{Side-view of a skewed aerodynamic shape. The lower part generates a moment around the frontal part of the aeroshell when under an angle of attack}
@@ -66,7 +66,7 @@ To illustrate the characteristics of different aerodynamic shapes, an optimisati
 \end{itemize}
 
 
-\begin{figure}
+\begin{figure}[h]
 	\includegraphics[width=0.9\textwidth]{./Figure/Aerodynamics/cmalphamax.eps}
 	\caption{Optimised shape resulting in high static stability}
 	\label{fig:highcmalphashape}
@@ -76,7 +76,7 @@ To illustrate the characteristics of different aerodynamic shapes, an optimisati
 \paragraph{Various shapes} \label{sec:aeroshapes}
 Several large groups of varying shapes can be identified. Every aeroshell shape can be categorized in one of these groups.  Each group of shapes has advantages and disadvantages. The relative performance of each group can be qualitatively assessed by looking at the variations of the shape with respect to the optimal shapes for the various parameters. The effect of asymmetric cross-sections will be ignored in this assessment, and will be investigated separately. In figure \ref{fig:aeroshapes} representative cross sections of the groups can be seen. Group A represents simple concave surfaces. Group B has a concave centre section with a flat ring around it. Group C has an approximately flat central section, with steep edges around the outer radius. Group D represents the half cone shapes, with relatively straight sides and a blunt nose. 
 
-\begin{figure} 
+\begin{figure}[h]
 	\centering
 	\includegraphics[width=0.5\textwidth]{./Figure/Aerodynamics/AeroShapes.pdf}
 	\caption{Various schematic aerodynamic configurations}
@@ -87,7 +87,7 @@ As was discussed in section \ref{sec:aerooptima}, a flat plate will generate the
 
 The \gls{sym:cm-alpha} of a given shape is a measure of stability. Shapes which require large moments to change the angle of attack have a higher stability. As can be seen in figure \ref{fig:CLCD-incidence}, surfaces at incidence angles of $40\deg-60\deg$ provide large changes in force for small changes in angle of incidence. Sections at these incidence angles will therefore stabilize the vehicle, since a change in angle of attack will cause one side of cross section to generate a greater moment than the other. This is visualized in figure \ref{fig:StabMom}. Cross sections B and C have parts of their cross section at such angles. Since the sections in C are on the outside of the cross section, it will be significantly more stable than type B due to the moment arm these parts have. A and D will have significant portions of their cross sections contribute to the vehicle moment. Although these section are likely to be at sub optimal angles of incidence for high stability, the large area contributing to the stability of the vehicle will ensure that both types of cross section are stable. 
 
-\begin{figure} 
+\begin{figure}[h]
 	\centering
 	\includegraphics[width=0.5\textwidth]{./Figure/Aerodynamics/StabilizeMoment.pdf}
 	\caption{Stabilizing effect of reduced incidence angle sections. }
@@ -97,10 +97,10 @@ The \gls{sym:cm-alpha} of a given shape is a measure of stability. Shapes which 
 \paragraph{Asymmetry}
 An asymmetric body will ensure that even at zero degrees angle of attack, the vehicle generates lift. As explained in section \ref{subsec:orbitsens}, this allows for greater control of the vehicle during re-entry and is therefore desirable. Since the angle of attack that can be attained is limited by, among others, the crew module extending into the flow around the body, achieving high lift at a low angle of attack is a desirable property. The level of asymmetry is also limited by the crew module extending into the flow. If the shape is heavily offset to one edge of the body, the crew module will extend into the flow at very low angles of attack. Figure \ref{fig:LDSkew} shows the effect of asymmetry on the lift to drag ratio by transforming a given symmetric shape into an asymmetric shape. The asymmetric shapes are created by a linearly shifting the cross sections of the body in the $zy$-plane along the $y$-axis, with no shift at $x=0$ and maximum shift at $x=x_{max}$. 
 
-\begin{figure} 
+\begin{figure}[h] 
 	\centering
-	\setlength\figureheight{0.48\textwidth} 
-	\setlength\figurewidth{0.48\textwidth}
+	\setlength\figureheight{0.4\textwidth} 
+	\setlength\figurewidth{0.95\textwidth}
 	\input{./Figure/Aerodynamics/LoverDplot.tikz}
 	\caption{Effect of asymmetric shape on Lift over Drag ratio }
 	\label{fig:LDSkew}
