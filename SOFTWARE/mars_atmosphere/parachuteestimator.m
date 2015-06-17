@@ -11,8 +11,8 @@ groundtrackdistancearray = totalmassarray;
 for i = 1:length(garray);
     g = garray(i);
     %Initial parameters
-    m0 = 10000;
-    h0 = 10000;
+    m0 = 9500;
+    h0 = 15000;
     M0 = 5;
     rho0 = aer.getCheapDensity(h0);
     V0 = aer.getCheapSpeedofsound(h0)*M0;
@@ -32,7 +32,7 @@ for i = 1:length(garray);
     fuelmass = m0*fuelfraction;
 
     R = 6;
-    CD = 1.307;
+    CD = 1.6;
     CDA = CD*pi*R^2;
     D0 = 0.5*rho0*V0^2*CDA;
     a0 = D0/m0;
@@ -51,7 +51,7 @@ for i = 1:length(garray);
     rho = aer.getCheapDensity(h);
     V = V0*(1-t/t_descent);
     q = 0.5*rho.*V.^2;
-    CDA_parachute = 0.3*pi*15^2;
+    CDA_parachute = 0.0*pi*15^2;
     D = q*CDA;
     D = D+(q*CDA_parachute).*(((D+q*CDA_parachute)/m0) < deceleration);
     a_gnothrust = D/m0/9.81;
@@ -95,6 +95,8 @@ end
 % xlabel('g_load');
 % ylabel('d ground');
 
+disp(' ');
+disp(' ');
 disp(strcat('Mach at start (10km): ', num2str(M0)));
 disp(strcat('Velocity at start (10km): ', num2str(V0)));
 disp(strcat('Velocity at surface without deceleration:', num2str(Vnodeceleration)));
@@ -103,10 +105,13 @@ disp(strcat('Total fuel mass when only retropropulsion is used:', num2str(fuelma
 disp(strcat('Dynamic pressure at start (10km):', num2str(q0)));
 disp(strcat('Flight path angle required:', num2str(flightpathangle)));
 disp(strcat('Fuel mass (kg):', num2str(thrustermass)));
+disp(strcat('Fuel mass/2 (interaction) (kg):', num2str(thrustermass/2)));
 disp(strcat('Engine mass (kg):', num2str(enginemass)));
 disp(strcat('Total mass, excluding parachute (kg):', num2str(totalmassarray(end))));
+disp(strcat('Total mass/2 (interaction) (kg):', num2str(thrustermass/2+enginemass)));
 disp(strcat('Deceleration at start (g):', num2str(a_g0)));
 disp(strcat('Ground track distance (km):', num2str(groundtrackdistance/1000)));
+disp(strcat('Maximum thrust delivered by the engine (N):', num2str(max(F_thrust))));
 
 
 

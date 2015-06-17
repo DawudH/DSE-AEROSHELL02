@@ -1,0 +1,76 @@
+% This file was created by matlab2tikz.
+% Minimal pgfplots version: 1.3
+%
+\definecolor{mycolor1}{rgb}{0.20810,0.16630,0.52920}%
+\definecolor{mycolor2}{rgb}{0.02650,0.61370,0.81350}%
+\definecolor{mycolor3}{rgb}{0.64730,0.74560,0.41880}%
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=0.95092\figurewidth,
+height=\figureheight,
+at={(0\figurewidth,0\figureheight)},
+scale only axis,
+xmin=0,
+xmax=26,
+xlabel={Diameter $\left[ m \right]$},
+xmajorgrids,
+ymin=0,
+ymax=650,
+ylabel={Frontal TPS mass $\left[ kg \right]$},
+ymajorgrids,
+axis x line*=bottom,
+axis y line*=left,
+legend style={at={(0.97,0.03)},anchor=south east,legend cell align=left,align=left,draw=white!15!black}
+]
+\addplot [color=mycolor1,solid,mark=diamond,mark options={solid}]
+  table[row sep=crcr]{%
+15	327.6\\
+18	432.1565\\
+};
+\addlegendentry{Layup 1 orbit};
+
+\addplot [color=mycolor1,dashed,mark=diamond,mark options={solid}]
+  table[row sep=crcr]{%
+15	355.0455\\
+18	482.3108\\
+};
+\addlegendentry{Layup 1 direct};
+
+\addplot [color=mycolor2,solid,mark=+,mark options={solid}]
+  table[row sep=crcr]{%
+15	411.2801\\
+18	547.5253\\
+};
+\addlegendentry{Layup 2 orbit};
+
+\addplot [color=mycolor2,dashed,mark=+,mark options={solid}]
+  table[row sep=crcr]{%
+15	439.0135\\
+18	603.8972\\
+};
+\addlegendentry{Layup 2 direct};
+
+\addplot [color=mycolor3,solid,mark=square,mark options={solid}]
+  table[row sep=crcr]{%
+6	526.9782\\
+9	146.5003\\
+12	256.1059\\
+15	354.3738\\
+18	489.081\\
+};
+\addlegendentry{Layup 3 orbit};
+
+\addplot [color=mycolor3,dashed,mark=square,mark options={solid}]
+  table[row sep=crcr]{%
+6	585.3384\\
+9	157.669\\
+12	250.884\\
+15	367.4248\\
+18	503.1739\\
+};
+\addlegendentry{Layup 3 direct};
+
+\end{axis}
+\end{tikzpicture}%
