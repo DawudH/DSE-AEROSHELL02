@@ -1,19 +1,19 @@
 Where the \acrfull{tps} is used to protect the crew module from excessive heating during re-entry, the \acrfull{tcs} is used to keep other subsystems in the crew module within their operating temperature limits. It is assumed that re-entry phase does not impose extra requirements on the \gls{tcs} as it is completely covered by the \gls{tps}. Note that this only holds when the angle of attack ($\alpha$) is low enough such that the crew module stays out of the wake. Furthermore, the paper by Tito used in the mass estimation for the operational items already assigns a mass for the thermal control within the living compartments of the crew module \cite{Tito2013}. The paper calculates a mass of 480 $[kg]$ for a crew module suitable for the life support of two astronauts. Therefore this part only focuses on the thermal control of components that are not placed within the living compartments.
 
-Examples of these components that need to operate at the edge or outside of the crew module are star trackers from the \gls{adcs} or the antennas from the telecommunications. To provide typical temperature limits, Table 22-9 from SMAD is provided in Table \ref{tab:cmtherm} \cite{Wertz2011}. In here there is a distinction between operational and surviving temperatures. From this table it is evident that components that operate outside the spacecraft can typically handle a wider temperature range than components that operate within the crew module.
+Examples of these components that need to operate at the edge or outside of the crew module are star trackers from the \gls{adcs} or the antennas from the telecommunications. To provide typical temperature limits, Table 22-9 \textcolor{red}{from SMAD} is provided in Table \ref{tab:cmtherm} \cite{Wertz2011}. In here there is a distinction between operational and surviving temperatures. From this table it is evident that components that operate outside the spacecraft can typically handle a wider temperature range than components that operate within the crew module.
 
 \begin{table}[h]
 	\centering
 	\caption{Typical temperature requirements for different components}
-	\begin{tabular}{|l|ll|}
+	\begin{tabular}{|l||l|l|}
 		\hline
-		\textbf{Equipment} & \textbf{Operational} & \textbf{Survival}\\ \hline \hline
-		Avionics Baseplates & -20 to 60 & -40 to 75 \\
-		Batteries & 10 to 30 & 0 to 40 \\
-		Hydrazine Fuel & 15 to 40 & 5 to 50 \\
-		Solar Arrays & -150 to 110 & -200 to 130 \\
-		Antennas & -100 to 100 & -120 to 120 \\
-		Reaction Wheels & -10 to 40 & -20 to 50 \\
+		\textbf{Equipment} & \textbf{Operational range $\mathbf{[^{\circ}C]}$} & \textbf{Survival range $\mathbf{[^{\circ}C]}$}\\ \hline \hline
+		Avionics Baseplates & -20 $-$ 60 & -40 $-$ 75 \\
+		Batteries & 10 $-$ 30 & 0 $-$ 40 \\
+		Hydrazine Fuel & 15 $-$ 40 & 5 $-$ 50 \\
+		Solar Arrays & -150 $-$ 110 & -200 $-$ 130 \\
+		Antennas & -100 $-$ 100 & -120 $-$ 120 \\
+		Reaction Wheels & -10 $-$ 40 & -20 $-$ 50 \\
 		\hline
 	\end{tabular}
 	\label{tab:cmtherm}
@@ -21,4 +21,4 @@ Examples of these components that need to operate at the edge or outside of the 
 
 In order to keep the subsystems within their operative temperature range the \gls{tcs} uses different tools and techniques. According to Karam the most commonly used are coatings, insulators and isolators, heaters, louvers and heat pipes \cite{Karam1998}. For this stage of design of the crew module it is deemed sufficient to only provide a mass estimate for the \gls{tcs}-mass.
 
-According to SMAD the \gls{tcs}-mass ranges from 3\% to 10\% with an average of 6\% for the dry mass of a interplanetary spacecraft \cite{Wertz2011}. Note that these spacecraft are not aimed to carry astronauts, therefore it is assumed that this 6\% adds on top of the 480 $[kg]$ calculated in Section \ref{subsec:crewop}. This would add an extra 600 $[kg]$ dedicated to the \gls{tcs}.
+\textcolor{red}{According to SMAD} the \gls{tcs}-mass ranges from 3\% to 10\% with an average of 6\% for the dry mass of a interplanetary spacecraft \cite{Wertz2011}. Note that these spacecraft are not aimed to carry astronauts, therefore it is assumed that this 6\% adds on top of the 480 $[kg]$ calculated in Section \ref{subsec:crewop}. This would add an extra 600 $[kg]$ dedicated to the \gls{tcs}.

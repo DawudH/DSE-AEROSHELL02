@@ -19,11 +19,10 @@ orbitlimit = true;
 accellimit = false;
 
 alpha = -5:2.5:25;
-gamma_range = [21, 22];
-
+gamma_range = [17, 21];
 
 gamma_accuracy = 0.0005;
-load('alpha_gamma_phi_0_CL_15.mat');
+load('alpha_gamma_final.mat');
 k = length(results.GAMMA) + 1;
 
 for j = 1:length(alpha)
@@ -94,7 +93,7 @@ for j = 1:length(alpha)
 end
 
 %%
-save('alpha_gamma_phi_0_CL_15.mat','results')
+save('alpha_gamma_final.mat','results')
 figure(1)
 hold on
 grid on
