@@ -43,8 +43,26 @@ ylabel('Area density $\left[ kg \cdot m^{-2}\right]$','interpreter','latex')
 legend('Layup 1','Layup 2','Layup 3','Location','northeast')
 matlab2tikz('.\LaTeX\fluxsensitivity.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
 
-cc = parula(4);
 figure(2)
+subplot(1,2,1)
+cc = parula(4);
+hold on
+plot(Lay1Aj(:,1),Lay1Aj(:,2),'d-','color',cc(1,:))
+plot(Lay1Ao(:,1),Lay1Ao(:,2),'d--','color',cc(1,:))
+plot(Lay2Aj(:,1),Lay2Aj(:,2),'+-','color',cc(2,:))
+plot(Lay2Ao(:,1),Lay2Ao(:,2),'+--','color',cc(2,:))
+plot(Lay3Aj(:,1),Lay3Aj(:,2),'s-','color',cc(3,:))
+plot(Lay3Ao(:,1),Lay3Ao(:,2),'s--','color',cc(3,:))
+axis([0 26 0 20])
+grid on
+xlabel('Diameter $\left[ m \right]$','Interpreter','LaTeX')
+ylabel('Areal density $\left[ kg \cdot m^{-2} \right]$','interpreter','latex')
+%legend('Layup 1 orbit ','Layup 1 direct','Layup 2 orbit','Layup 2 direct','Layup 3 orbit','Layup 3 direct','Location','northeast','Orientation','horizontal')
+axis([7 19 0 20])
+%matlab2tikz('.\LaTeX\Areasensitivity.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
+cc = parula(4);
+subplot(1,2,2)
+%figure(2)
 hold on
 plot(Lay1Aj(:,1),Lay1Aj(:,3),'d-','color',cc(1,:))
 plot(Lay1Ao(:,1),Lay1Ao(:,3),'d--','color',cc(1,:))
@@ -54,13 +72,10 @@ plot(Lay3Aj(:,1),Lay3Aj(:,3),'s-','color',cc(3,:))
 plot(Lay3Ao(:,1),Lay3Ao(:,3),'s--','color',cc(3,:))
 grid on
 xlabel('Diameter $\left[ m \right]$','Interpreter','LaTeX')
-ylabel('Frontal TPS mass $\left[ kg \right]$','interpreter','latex')
-legend('Layup 1 orbit ','Layup 1 direct','Layup 2 orbit','Layup 2 direct','Layup 3 orbit','Layup 3 direct','Location','southeast')
-axis([0 26 0 650])
+ylabel('Frontal TPS-mass $\left[ kg \right]$','interpreter','latex')
+legend('Layup 1 orbit ','Layup 1 direct','Layup 2 orbit','Layup 2 direct','Layup 3 orbit','Layup 3 direct','Location','northeast','Orientation','horizontal')
+axis([0 20 0 1000])
 matlab2tikz('.\LaTeX\Areasensitivity.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
-
-
-
 
 
 
