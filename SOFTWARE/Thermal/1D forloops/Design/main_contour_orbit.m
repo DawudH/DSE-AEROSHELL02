@@ -164,6 +164,7 @@ if contourplot
     hold on
     contourf(t(1:100:end),xcont.*1000,T(:,1:100:end)) %(1:20:end),(:,1:20:end)
     colormap parula
+    caxis([250 1300])
     colorbar
     xlabel('Time $ \left[ s \right] $','Interpreter','LaTeX')
     ylabel('Depth $ \left[ mm \right] $','Interpreter','LaTeX')
@@ -249,7 +250,7 @@ layup(:,2:6) = layupin(:,2:6);
 
 % Aero input, qsdot
 A_whetted = 12;
-load('./DesignData/entry_rho_0_9.mat','T','t','qmax_array','A_whetted')
+load('./DesignData/entry_rho_1_1.mat','T','t','qmax_array','A_whetted')
 tq = find(not(qmax_array<0.01));
 fluxfactor = 1.0;
 qaero = fluxfactor*qmax_array(tq(1):tq(end));
@@ -393,7 +394,7 @@ if contourplot
     hold on
     contourf(t(1:100:end),xcont.*1000,T(:,1:100:end)) %(1:20:end),(:,1:20:end)
     colormap parula
-    caxis([300 1300])
+    caxis([250 1300])
     colorbar
     xlabel('Time $ \left[ s \right] $','Interpreter','LaTeX')
     ylabel('Depth $ \left[ mm \right] $','Interpreter','LaTeX')
