@@ -25,7 +25,7 @@ c1 = cc(1,:);
 c2 = cc(3,:);
 c3 = cc(5,:);
 
-xlimits = [0 max(t_1_1)];
+xlimits = [0 max(t_0_9)];
 
 
 if export_figures

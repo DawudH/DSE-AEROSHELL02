@@ -8,7 +8,7 @@ clc
 %% Define input
 
 % lay-up (t[mm], k[w/m/K], rho[kg/m3], cp[J/kg/K], emis[-], allowT[K])
-filename   = 'layup3.txt';
+filename   = 'layup4.txt';
 layupin    = dlmread(filename);
 % SI units
 layup      = zeros(size(layupin));
@@ -18,9 +18,9 @@ layup(:,2:6) = layupin(:,2:6);
 
 % Aero input, qsdot
 A_whetted = 12;
-load('./SensitivityData/heatflux_out_d12_just_orbit.mat','T','t','qmax_array','A_whetted')
+load('./DesignData/aerocapture_rho_0_9.mat','T','t','qmax_array','A_whetted')
 tq = find(not(qmax_array<0.01));
-fluxfactor = 0.5;
+fluxfactor = 1.0;
 qaero = fluxfactor*qmax_array(tq(1):tq(end));
 Tatm  = T(tq(1):tq(end)); 
 timeq = t(tq(1):tq(end))-t(tq(1));
@@ -152,7 +152,7 @@ end
 
 %% Output
 % Contour plots
-contourplot = 0;
+contourplot = 1;
 if contourplot
     xcont = x;
     for j = 1:length(L)-1
@@ -167,6 +167,7 @@ if contourplot
     xlabel('Time [s]')
     ylabel('Depth [m]')
     for j = 1:length(L)-1
+        p(j).LineWidth = 10;
         plot([0,nmax*dt],[x(indexx(j+1)+j),x(indexx(j+1)+j)],'--','Color', [255.0/256.0,130.0/256.0,28.0/256.0])
     end
     axis ij   
