@@ -1,18 +1,25 @@
 addpath('../matlab2tikz');
+% load('TILL_GROUND_DO_NOT_USE_FOR_OTHER_PURPOSES_THAN_TD.mat');
+% R_mars = 3.389945945211271e6; %[m]
+% h = sqrt(sum(out.R.^2,2))-R_mars;
+% n = out.Vm.^2./(2*h*g0);
+% plot(h,n);
+% axis([0, 15000, -30, 30]);
+
 % close all;
 % clear; clc;
 aer = marsatmosphere();
 
-garray = 3;%0.7:0.1:4;
-totalmassarray = zeros(size(garray));
+narray = 3;%0.7:0.1:4;
+totalmassarray = zeros(size(narray));
 flightpathanglearray = totalmassarray;
 groundtrackdistancearray = totalmassarray;
 
-for i = 1:length(garray);
-    g = garray(i);
+for i = 1:length(narray);
+    n = narray(i);
     %Initial parameters
-    m0 = 9500;
-    h0 = 15000;
+    m0 = 9400;
+    h0 = 15000;    
     M0 = 5;
     rho0 = aer.getCheapDensity(h0);
     V0 = aer.getCheapSpeedofsound(h0)*M0;
@@ -27,19 +34,21 @@ for i = 1:length(garray);
     Vnodeceleration = sqrt(2*Etot0/m0);
 
     %Just retropropulsion
-    Ve = 4400;
+    Isp = 451;
+    g0 = 9.81;
+    Ve = Isp * g0;
     fuelfraction = 1-exp(-Vnodeceleration/Ve);
     fuelmass = m0*fuelfraction;
 
     R = 6;
-    CD = 1.6;
+    CD = 1.307;
     CDA = CD*pi*R^2;
     D0 = 0.5*rho0*V0^2*CDA;
     a0 = D0/m0;
-    a_g0 = a0/9.81;
+    a_g0 = a0/g0;
 
-    deceleration_gload = g;
-    deceleration = deceleration_gload * 9.81;
+    deceleration_gload = n;
+    deceleration = deceleration_gload * g0;
     t_descent = V0/deceleration;
     d_3g = V0*t_descent-0.5*deceleration*t_descent^2;
     flightpathangle = acosd(h0/d_3g);
@@ -54,44 +63,61 @@ for i = 1:length(garray);
     CDA_parachute = 0.0*pi*15^2;
     D = q*CDA;
     D = D+(q*CDA_parachute).*(((D+q*CDA_parachute)/m0) < deceleration);
-    a_gnothrust = D/m0/9.81;
+    a_gnothrust = D/m0/g0;
     F_thrust = (deceleration*m0-D+m0*aer.getg(h));
     F_thrust = F_thrust .* (F_thrust>0);
+    mdot = F_thrust/Ve;
+    
     M = V./aer.getCheapSpeedofsound(h);
     
     figure;
-    plot(t, F_thrust);
-    ylabel('F_thrust');
-    figure;
-    plot(t, M);
-    ylabel('M');
-    figure;
-    plot(t,a_gnothrust);
-    ylabel('g-force without thrust');
+    hold on;
+    skipframes = 30;
+    plot(t(1:skipframes:end), (n*g0*m0+m0*aer.getg(h(1:skipframes:end)))/1000, '-o');
+    plot(t(1:skipframes:end), D(1:skipframes:end)/1000, '-d');
+    plot(t(1:skipframes:end), F_thrust(1:skipframes:end)/1000, '-s');
+    xlabel('$t [s]$', 'interpreter', 'latex');
+    ylabel('$F [kN]$', 'interpreter', 'latex');
+    legend('Required force', 'Drag', 'Thrust', 'Location', 'east');
+    axis([0, max(t), 0, 1.05*(max([D, F_thrust])/1000)]);
+    grid on;
+    matlab2tikz('plots/TDthrust.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
+    
+%     figure;
+%     plot(t, M);
+%     ylabel('M');
+%     figure;
+%     plot(t,a_gnothrust);
+%     ylabel('g-force without thrust');
 
     SFC = 0.225e-3; %kg/N/s http://en.wikipedia.org/wiki/Specific_impulse
-    thrustermass = SFC*0.1*sum(F_thrust(F_thrust>0));
+    thrustermass = sum(dt*mdot);
+    thrusterdensity = 1; %kg/m3
+    thrustervolume = thrustermass/thrusterdensity; %m^3
+    tankmass = 2.7086e-8*thrustervolume^3-6.1703e-5*thrustervolume^2+6.629e-2*thrustervolume+1.3192;
     enginemass = 0.00144*max(F_thrust)+49.6;
     
-    totalmassarray(i) = thrustermass+enginemass;
-    
+    totalmassarray(i) = thrustermass+enginemass+tankmass;
+    totalmassinteraction = thrustermass/2+enginemass+tankmass;
     groundtrackdistancearray(i) = groundtrackdistance;
     flightpathanglearray(i) = flightpathangle;
     
 end
 
+
+
 % figure;
-% plot(garray, totalmassarray);
+% plot(narray, totalmassarray);
 % xlabel('g_load');
 % ylabel('mp');
 % hold on;
 % figure;
-% plot(garray, flightpathanglearray);
+% plot(narray, flightpathanglearray);
 % xlabel('g_load');
 % ylabel('flight path angle');
 % 
 % figure;
-% plot(garray, groundtrackdistancearray);
+% plot(narray, groundtrackdistancearray);
 % xlabel('g_load');
 % ylabel('d ground');
 
@@ -107,8 +133,9 @@ disp(strcat('Flight path angle required:', num2str(flightpathangle)));
 disp(strcat('Fuel mass (kg):', num2str(thrustermass)));
 disp(strcat('Fuel mass/2 (interaction) (kg):', num2str(thrustermass/2)));
 disp(strcat('Engine mass (kg):', num2str(enginemass)));
+disp(strcat('Tank mass (kg):', num2str(tankmass)));
 disp(strcat('Total mass, excluding parachute (kg):', num2str(totalmassarray(end))));
-disp(strcat('Total mass/2 (interaction) (kg):', num2str(thrustermass/2+enginemass)));
+disp(strcat('Total mass/2 (interaction) (kg):', num2str(totalmassinteraction)));
 disp(strcat('Deceleration at start (g):', num2str(a_g0)));
 disp(strcat('Ground track distance (km):', num2str(groundtrackdistance/1000)));
 disp(strcat('Maximum thrust delivered by the engine (N):', num2str(max(F_thrust))));
