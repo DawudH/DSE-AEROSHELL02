@@ -10,14 +10,14 @@ The first option for the flight is to use retro-propulsion for every part of the
 
 The fuel mass is estimated assuming a constant deceleration of 3 [g]. This condition in combination with the initial conditions of the terminal descent, leads to a specified flight path angle of 38 [deg] and a velocity at each height. Using this velocity, the drag was calculated assuming the same drag coefficient throughout the supersonic regime. This analysis is known to be incorrect to a certain level, but since it is preliminary analysis this is taken for granted. The drag at every height leads to a deceleration lower than 3 [g], and thrust is delivered at a level such that this deceleration is achieved, incorporating the gravitational force. The drag, thrust and total required force are plotted in Figure \ref{fig:TDforce}. This requires the rocket engines to be sized such that, a total thrust of 312 [kN] is achieved. To this end, 3 RL 10A-4 rocket engines are placed at the front of the centerbody. The mass of these rockets is 504 [kg] combined. The thruster fuel flow is calculated using the specific impulse of the engine, 451 [s], and integrated over time to find the total fuel, estimated to be 680 [kg] \cite{Wertz2011}. The tank mass is estimated using an empirical relation, at 45 [kg] and assuming a density of 1 [kg/l] for the fuel \cite{Wertz2011}.
 
-\begin{wrapfigure}{l}{0.75\textwidth}
+\begin{figure}
 	\centering
 	\setlength\figureheight{0.4\textwidth} 
 	\setlength\figurewidth{0.7\textwidth}
 	\input{./Figure/TerminalDescent/TDthrust.tikz}
 	\caption{Thrust, drag and required force for 3 [g] deceleration starting from 15 [km] height at $M=5$}
 	\label{fig:TDforce}
-\end{wrapfigure}
+\end{figure}
 
 
 The other option is to use a large parachute to decelerate. Since a parachute's performance decreases quadratically with lower velocities, the final landing still requires thrusters to bring the velocity down to an acceptable value for landing \cite{Braun2007}. The difference in fuel mass was estimated by using 

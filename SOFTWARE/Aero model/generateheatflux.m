@@ -1,17 +1,16 @@
 clear;
 close all;
-clc;
+% clc;
 casename = 'iteration1_1_heatflux';
-orbitname = 'aerocapture_rho_1_1';
+orbitname = 'entry_rho_1_1';
 load(strcat('aeroshapes\',casename,'.mat'));
+load(strcat('orbits\', orbitname, '.mat'));    
 skewnessoriginal = x(1);
 heightfactor = x(2);
 
-poly = [x(3:end),0,0];   
 
 % for diameter = 18
 %     diameter = 12;
-    load(strcat('orbits\', orbitname, '.mat'));    
 
     range = 1:length(out.tp);
 
