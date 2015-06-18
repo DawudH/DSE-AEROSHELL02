@@ -3,7 +3,7 @@
 %
 \definecolor{mycolor1}{rgb}{0.63137,0.14510,0.10588}%
 \definecolor{mycolor2}{rgb}{0.64730,0.74560,0.41880}%
-\definecolor{mycolor3}{rgb}{0.02820,0.66630,0.75740}%
+\definecolor{mycolor3}{rgb}{0.05820,0.46770,0.85890}%
 %
 \begin{tikzpicture}
 
@@ -1601,6 +1601,10 @@ axis y line*=left
 -3543902.2946398	582525.121314271\\
 -3553777.10714881	511381.881476657\\
 -3562868.70009868	440156.345766631\\
+};
+\addplot [color=black,only marks,mark=*,mark options={solid,fill=black,draw=black},forget plot]
+  table[row sep=crcr]{%
+37063574.227714	-4459015.29072922\\
 };
 \end{axis}
 \end{tikzpicture}%

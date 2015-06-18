@@ -1,0 +1,82 @@
+% This file was created by matlab2tikz.
+% Minimal pgfplots version: 1.3
+%
+\definecolor{mycolor1}{rgb}{0.00000,0.44700,0.74100}%
+\definecolor{mycolor2}{rgb}{0.85000,0.32500,0.09800}%
+\definecolor{mycolor3}{rgb}{0.92900,0.69400,0.12500}%
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=0.95092\figurewidth,
+height=\figureheight,
+at={(0\figurewidth,0\figureheight)},
+scale only axis,
+xmin=0,
+xmax=36.2,
+xlabel={$t [s]$},
+xmajorgrids,
+ymin=0,
+ymax=327.127499399344,
+ylabel={$F [kN]$},
+ymajorgrids,
+axis x line*=bottom,
+axis y line*=left,
+legend style={at={(0.97,0.5)},anchor=east,legend cell align=left,align=left,draw=white!15!black}
+]
+\addplot [color=mycolor1,solid,mark=o,mark options={solid}]
+  table[row sep=crcr]{%
+0	311.243849696306\\
+3	311.2690765018\\
+6	311.294330905114\\
+9	311.31961294652\\
+12	311.344922666362\\
+15	311.370260105056\\
+18	311.395625303094\\
+21	311.421018301041\\
+24	311.446439139536\\
+27	311.471887859293\\
+30	311.4973645011\\
+33	311.52286910582\\
+36	311.548401714389\\
+};
+\addlegendentry{Required force};
+
+\addplot [color=mycolor2,solid,mark=diamond,mark options={solid}]
+  table[row sep=crcr]{%
+0	291.174450058233\\
+3	277.302732528785\\
+6	258.852292042653\\
+9	236.781994493662\\
+12	211.655388803588\\
+15	182.707467963119\\
+18	150.782315705625\\
+21	118.023689876921\\
+24	85.8538439967556\\
+27	55.3620239309924\\
+30	28.4892892980397\\
+33	8.59563822808\\
+36	0.0416064994811875\\
+};
+\addlegendentry{Drag};
+
+\addplot [color=mycolor3,solid,mark=square,mark options={solid}]
+  table[row sep=crcr]{%
+0	20.0693996380731\\
+3	33.9663439730147\\
+6	52.442038862461\\
+9	74.5376184528585\\
+12	99.6895338627736\\
+15	128.662792141937\\
+18	160.613309597469\\
+21	193.397328424119\\
+24	225.59259514278\\
+27	256.109863928301\\
+30	283.00807520306\\
+33	302.927230877739\\
+36	311.506795214908\\
+};
+\addlegendentry{Thrust};
+
+\end{axis}
+\end{tikzpicture}%
