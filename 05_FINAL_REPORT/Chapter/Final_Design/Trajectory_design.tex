@@ -1,15 +1,19 @@
-In this section the design of the trajectory is presented. Also the motivation behind it, its sensitivity to changing atmospheric properties and the possibility to correct for these changes are explained. The main input with which the trajectory is calculated is the shape of the aeroshell. This shape and the reasoning behind it is presented in Section \ref{sec:AeroDesign}.
+In this section the design of the trajectory followed by the spacecraft during the mission is presented. Also the motivation behind it, its sensitivity to changing atmospheric properties and the possibility to correct for these changes are explained. The main input with which the trajectory is calculated is the shape of the decelerator. This shape and the reasoning behind it is presented in Section \ref{sec:AeroDesign}.
 
 \paragraph{Aerocapture}
-The first phase of the trajectory is aerocapture, in this phase the objective is to loose enough energy to get in a mars synchronous orbit. The velocity that has to be obtained at the end of aerocapture is $4.53 \left[km \cdot s^{-1}\right]$. 
-***Trajectory so we come in a Mars synchronous orbit***\\
-***As high through the atosphere as possible to facilitate themodynamics and structural masses***\\
+The first phase of the trajectory is aerocapture, in this phase the objective is to loose enough energy to get in a mars synchronous orbit. The velocity that has to be obtained at the end of aerocapture in order to get in such an orbit is $4.53 \left[km \cdot s^{-1}\right]$. In figure \ref{fig:orbit_aerocapture_data} it can be seen from the velocity profiles that they all end at this velocity.
+
+Furthermore the trajectory was chosen as high through the atosphere as possible to facilitate \gls{tps} and structural masses. A pass higher through the atomsphere deacreases both the heat flux and peak dynamic pressure which are used to design the \gls{tps} and inflatable structure respectively.
 
 ***Sensitivity to density change +-10\% and possibility to correct for it***\\
 \begin{sidewaysfigure}
 	\centering
 	\includegraphics[width=0.99\textwidth]{Figure/Orbit/sensitivity_aerocapture.pdf}
-	\caption{ Results of the re-entry trajectory for three different density profiles. The trajectories with modified density are corrected to maintain the same exit velocity. The horizontal dashed lines are design limits (for the \gls{sym:M} and \gls{sym:acc} plots) }
+<<<<<<< HEAD
+	\caption{Results of the re-entry trajectory for three different density profiles. The trajectories with modified density are corrected to maintain the same exit velocity. The horizontal dashed lines are design limits (for the \gls{sym:M} and \gls{sym:acc} plots) }
+=======
+	\caption{ Results of the aerocapture trajectory for three different density profiles. The trajectories with modified density are corrected (changed \gls{sym:mu} profile) to maintain the same exit velocity. The horizontal dashed lines are design limits (for the \gls{sym:M} and \gls{sym:acc} plots) }
+>>>>>>> 27eee46aafcd1cf6d52f46cdb67c43337d17e131
 	\label{fig:orbit_aerocapture_data}
 \end{sidewaysfigure}
 
@@ -25,7 +29,7 @@ The first phase of the trajectory is aerocapture, in this phase the objective is
 ***Sensitivity to density change +-10\% and possibility to correct for it***\\
 \begin{sidewaysfigure}
 	\centering
-	\includegraphics[width=0.99\textwidth]{Figure/Orbit/sensitivity_aerocapture.pdf}
-	\caption{Results of the re-entry trajectory for three different density profiles. The trajectories with modified density are corrected to show the ability to reach the desired landing location. The horizontal dashed lines are design limits (for the \gls{sym:M} and \gls{sym:acc} plots)*******************Change this figure***************** }
+	\includegraphics[width=0.99\textwidth]{Figure/Orbit/sensitivity_entry.pdf}
+	\caption{Results of the re-entry trajectory for three different density profiles. The trajectories with modified density are corrected (changed \gls{sym:mu} profile) to show the ability to reach the desired landing location. The horizontal dashed lines are design limits (for the \gls{sym:M} and \gls{sym:acc} plots)}
 	\label{fig:orbit_entry_data}
 \end{sidewaysfigure}
