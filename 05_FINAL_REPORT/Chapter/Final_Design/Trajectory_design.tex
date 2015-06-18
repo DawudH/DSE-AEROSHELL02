@@ -1,4 +1,4 @@
-In this section the design of the trajectory followed by the spacecraft during the mission is presented. Also the motivation behind it, its sensitivity to changing atmospheric properties and the possibility to correct for these changes are explained. The main input with which the trajectory is calculated is the shape of the decelerator. This shape and the reasoning behind it is presented in Section \ref{sec:AeroDesign}.
+In this section the design of the trajectory followed by the spacecraft during the mission is presented. Also the motivation behind it, its sensitivity to changing atmospheric properties and the possibility to correct for these changes are explained. The main input with which the trajectory is calculated is the shape of the decelerator. This shape and the reasoning behind it is presented in Section \ref{sec:AeroDesign}. %An overview of the mission trajectory is given in Figures \ref{fig:capture_trajectory}, \ref{fig:capture_trajectory} and \ref{fig:capture_trajectory}.
 
 \paragraph{Aerocapture}
 The first phase of the trajectory is aerocapture, in this phase the objective is to loose enough energy to get in a mars synchronous orbit. The velocity that has to be obtained at the end of aerocapture in order to get in such an orbit is $4.53 \left[km \cdot s^{-1}\right]$. In Figure \ref{fig:orbit_aerocapture_data} it can be seen from the velocity profiles that they all end at this velocity.
@@ -18,8 +18,11 @@ The bank control for the trajectories is changed to attain the same exit velocit
 \end{sidewaysfigure}
 
 \paragraph{Parking orbit}
-***Use of orbit, extension of time***\\
-***Orbital period, 1 sol***\\
+After aerocapture the spacecraft goes into an eliptic orbit. In the apoareion (apocenter of an orbit around mars) a boost is given to raise the periareion to $200 \left[km\right]$ above \gls{mola}. In this parking orbit the vehicle can wait for dust storms to vanish and can observe the entry conditions it wil be subjected to. Because the parking orbit is mars synchronous the point observed is the same and changes can be accurately observed at the entry location. 
+
+The first entry opportunity is after approximately two earth days from the start of the mission. From that moment every sol an opportunity for entry arises. This gives in total eight opportunites for entry in little over nine earth days. This is the maximum that can be achieved within the ten days that are available for the mission. In principle the spacecraft could stay in the parking orbit much longer if it would be necessary. However the current mission is fully designed for an entry of at most 10 days. i.e. crew operational items are insufficient to sustain a longer mission.
+
+For every entry opportunity the decision to start entry has to be made approximately half a sol before the entry. In the apoareion a boost opposite to the flight direction should be given to lower periareion of the orbit.  When the vehicle reaches the atmosphere in this lower orbit the entry and descent pahse begins. 
 
 \paragraph{Entry and descent}
 ***Entry conditions imposed by aerocapture and parking orbit***
@@ -39,4 +42,32 @@ The bank control for the trajectories is changed to attain the same exit velocit
 	\includegraphics[width=0.99\textwidth]{Figure/Orbit/entry_mars.pdf}
 	\caption{The re-entry trajectory for three different density profiles. The trajectories with modified density are corrected (changed \gls{sym:mu} profile) to show the ability to reach the desired landing location.}
 	\label{fig:entry_mars}
+\end{figure}
+
+\begin{figure}
+	\centering
+
+	\begin{subfigure}[b]{0.7\textwidth}
+		\vspace{-22mm}
+		\includegraphics[width=\textwidth]{./Figure/Orbit/aerocapture_trajectory.pdf}
+		\vspace{-25mm}
+		\caption{The aerocapture trajectory visualized.}
+		\label{fig:capture_trajectory}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.7\textwidth}
+		\vspace{-10mm}
+		\includegraphics[width=\textwidth]{./Figure/Orbit/parking_trajectory.pdf}
+		\vspace{-15mm}
+		\caption{The parking orbit after the orbit raise}
+		\label{fig:parking_trajectory}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.7\textwidth}
+		\vspace{-22mm}
+		\includegraphics[width=\textwidth]{./Figure/Orbit/re-entry_trajectory.pdf}
+		\vspace{-25mm}
+		\caption{The re-entry trajectory after lowering the orbit.}
+		\label{fig:re_entry_trajectory}
+	\end{subfigure}
+	\caption{The trajcetory of the spacecraft visualized. The apoareion is shown with a black dot.}
+	\label{fig:dep}
 \end{figure}

@@ -24,6 +24,7 @@ cc = parula(7);
 c1 = cc(1,:);
 c2 = cc(3,:);
 c3 = cc(5,:);
+c_atmos = c3;
 
 xlimits = [0 max(t_0_9)];
 
@@ -406,6 +407,13 @@ out_p   = load('parking.mat');
 t1 = out_1_c.out.tp(1:end-1); % aerocapture
 t2 = out_1.out.tp; % entry
 
+cc = parula(11);
+c1 = cc(1,:);
+c2 = cc(3,:);
+c3 = cc(5,:);
+c4 = cc(7,:);
+c5 = cc(9,:);
+
 if export_figures
     index1 = 1:50:length(t1);
     index2 = 1:50:length(t2);
@@ -413,7 +421,10 @@ else
     index1 = 1:1:length(t1);
     index2 = 1:1:length(t2);
 end
-figure('name','Complete orbit')
+markerspace1 = 3:1500:length(t1)-3;
+markerspace2 = 3:500:length(t2)-3;
+
+figure('name','Aerocapture trajectory')
 axis equal
 hold on
 %axis([-(R_m + h_atm)*1.2 (R_m + h_atm)*1.2 -(R_m + h_atm)*1.2 (R_m + h_atm)*1.2])
@@ -426,7 +437,7 @@ hold on
     set(h3,'color',c_m)
     %legend_str{end+1} = 'Mars mean-equatorial radius';
     h4 = polar(theta_plot,radius_mars_atmos,'-.'); 
-    set(h4,'color',cc(5,:))
+    set(h4,'color',c_atmos)
     %legend_str{end+1} = 'Mars atmosphere limit';
     set(gca,'Visible','off')
     set(gcf,'color',[1 1 1])
@@ -437,23 +448,79 @@ L1 = plot(out_1_c.out.R(index1,1),out_1_c.out.R(index1,2),'color',c1);
 % plot kepler (till theta = pi)
 theta_kep = [out_1_c.out.okep.theta:0.02:pi-0.01 pi-0.01:0.0002:pi];
 rk = out_1_c.out.okep.a * (1- out_1_c.out.okep.e^2) ./ (1 + out_1_c.out.okep.e .* cos(theta_kep));
-h2 = polar(theta_kep+out_1_c.out.okep.theta_p,rk); 
+h4 = polar(theta_kep+out_1_c.out.okep.theta_p,rk); 
+h4.Color = c1;
+ap = polar(theta_kep(end)+out_1_c.out.okep.theta_p,rk(end),'o');
+ap.Color = 'k';
+ap.MarkerFaceColor = 'k';
+ap.MarkerEdgeColor = 'k';
+    
+if (export_figures)
+    matlab2tikz('.\aerocapture_trajectory.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
+end
 
+figure('name','Parking orbit')
+axis equal
+hold on
+%axis([-(R_m + h_atm)*1.2 (R_m + h_atm)*1.2 -(R_m + h_atm)*1.2 (R_m + h_atm)*1.2])
 
+% planet and atmosphere
+    theta_plot = 0:0.01:2*pi;
+    radius_mars = ones(1,length(theta_plot)) * R_m;
+    radius_mars_atmos = ones(1,length(theta_plot)) * (R_m + h_atm);
+    h3 = polar(theta_plot,radius_mars); 
+    set(h3,'color',c_m)
+    %legend_str{end+1} = 'Mars mean-equatorial radius';
+    h4 = polar(theta_plot,radius_mars_atmos,'-.'); 
+    set(h4,'color',c_atmos)
+    %legend_str{end+1} = 'Mars atmosphere limit';
+    set(gca,'Visible','off')
+    set(gcf,'color',[1 1 1])
 % plot parking orbit
 theta_park = 0:0.02:2*pi;
 rp = out_p.out.a_n * (1- out_p.out.e_n^2) ./ (1 + out_p.out.e_n .* cos(theta_park));
-h2 = polar(theta_park+out_1_c.out.okep.theta_p,rp); 
+h2 = polar(theta_park+out_1_c.out.okep.theta_p,rp,'--'); 
+h2.Color = c2;
+ap = polar(theta_kep(end)+out_1_c.out.okep.theta_p,rk(end),'o');
+ap.Color = 'k';
+ap.MarkerFaceColor = 'k';
+ap.MarkerEdgeColor = 'k';
 
+if (export_figures)
+    matlab2tikz('.\parking_orbit.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
+end
+
+figure('name','Re-entry trajectory')
+axis equal
+hold on
+%axis([-(R_m + h_atm)*1.2 (R_m + h_atm)*1.2 -(R_m + h_atm)*1.2 (R_m + h_atm)*1.2])
+
+% planet and atmosphere
+    theta_plot = 0:0.01:2*pi;
+    radius_mars = ones(1,length(theta_plot)) * R_m;
+    radius_mars_atmos = ones(1,length(theta_plot)) * (R_m + h_atm);
+    h3 = polar(theta_plot,radius_mars); 
+    set(h3,'color',c_m)
+    %legend_str{end+1} = 'Mars mean-equatorial radius';
+    h4 = polar(theta_plot,radius_mars_atmos,'-.'); 
+    set(h4,'color',c_atmos)
+    %legend_str{end+1} = 'Mars atmosphere limit';
+    set(gca,'Visible','off')
+    set(gcf,'color',[1 1 1])
 % plot reentry kepler
-theta_e = [pi:0.02:2*pi+out_p.out.theta_entry-0.1 2*pi+out_p.out.theta_entry-0.1:0.0002:2*pi+out_p.out.theta_entry];
+theta_e = [pi:0.02:2*pi+out_p.out.theta_entry-0.1 2*pi+out_p.out.theta_entry-0.1:0.002:2*pi+out_p.out.theta_entry];
 rkepe = out_p.out.a_e * (1- out_p.out.e_e^2) ./ (1 + out_p.out.e_e .* cos(theta_e));
 h3 = polar(theta_e+out_1_c.out.okep.theta_p,rkepe); 
+h3.Color = c3;
+ap = polar(theta_kep(end)+out_1_c.out.okep.theta_p,rk(end),'o');
+ap.Color = 'k';
+ap.MarkerFaceColor = 'k';
+ap.MarkerEdgeColor = 'k';
  
 % plot entry trajcetories
-L2 = plot(out_1.out.R(index2,1),out_1.out.R(index2,2),'color',c1);
+L2 = plot(out_1.out.R(index2,1),out_1.out.R(index2,2),'color',c3);
 
 
 if (export_figures)
-    matlab2tikz('.\total_orbit.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
+    matlab2tikz('.\re-entry_trajectory.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
 end
