@@ -17,9 +17,8 @@ layup(:,2:6) = layupin(:,2:6);
 %L = layup(:,1);
 
 % Aero input, qsdot
-%diameter = 12; %[m]
-%A_whetted = pi*(diameter/2)^2;
-load('./SensitivityData/aerocapture_rho_1.mat','T','t','qmax_array','A_whetted')
+A_whetted = 12;
+load('./SensitivityData/heatflux_out_d15_one_time.mat','T','t','qmax_array','A_whetted')
 tq = find(not(qmax_array<0.01));
 fluxfactor = 1.0;
 qaero = fluxfactor*qmax_array(tq(1):tq(end));
@@ -36,10 +35,9 @@ q0 = qaero*10000;
 nmax = int32(ttot/dt);  % number of time steps
 t = (0:double(nmax-1))*dt;
 fact    = 1;           % multiplication factor of number of space steps
-% K1 = [2.5e-5 ; 2.5e-6 ; 2.5e-2 ]
+% K3 = [9.0e-6 ; 1.0 ; 1.0 ; 1.0 ; 1.0];
 % K2 = [2.5e-4 ; 1.0 ; 1.0];
-% K3 = [9.0e-6 ; 1.0 ; 1.0 ];
-kfact = [2.5e-5 ; 2.5e-6 ; 2.5e-2 ];
+kfact = [2.5e-5 ; 2.5e-6 ; 2.5e-2  ];
 
 % spacing
 L = int32(round(L*10000000));
