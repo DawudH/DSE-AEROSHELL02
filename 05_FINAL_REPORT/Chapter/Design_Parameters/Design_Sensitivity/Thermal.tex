@@ -1,4 +1,4 @@
-To investigate the influence of certain design parameters on the \gls{tps} a sensitivity analysis is performed. First different materials are tested using multiple lay-ups. The different lay-ups are then used to test the influence of heat flux variations on aere density. Lastly, the variations in mass due to changing radii is investigated. This investigation is done by using the tool described in Section \ref{subsec:thermaltool}.
+To investigate the influence of layup materials on the \gls{tps} a sensitivity analysis is performed. First different materials are tested using multiple lay-ups. The different lay-ups are then used to test the influence of heat flux variations on area density. Lastly, the variations in mass due to changing radii is investigated. This investigation is done by using the tool described in Section \ref{subsec:thermaltool}.
 
 \paragraph{\gls{tps} materials}
 Table \ref{tab:tpsmatprop} shows some promising materials that can be used in the inflatable heat shield \cite{Corso2009,Corso2011,DuPont2011,Smith2011}. These materials have been proposed during the design of multiple inflatable decelerator concepts. For each material the thermal conductivity, the density, the specific heat, the maximum operative temperature and if applicable, the emissivity are given. The latter is only applicable to the top  thermal protection layers, because these layers will radiate heat into the surroundings.
@@ -9,17 +9,17 @@ Table \ref{tab:tpsmatprop} shows some promising materials that can be used in th
 	\begin{tabular}{|l|l|l|l|l|l|l|}
 		\hline
 		\textbf{Material}         & \textbf{ $\mathbf{k}$ $\mathbf{\left[\frac{W}{m\cdot K}\right]} $} & \textbf{ $\mathbf{ \rho }$ $\mathbf{ \left[ \frac{kg}{m^3} \right] }$} & \textbf{  $\mathbf{ c_{p} }$ $\mathbf{ \left[ \frac{J}{kg \cdot K} \right] }$ }& \textbf{ $\mathbf{ T_{max} }$ $\mathbf{ [ K ] }$} &\textbf{ $\mathbf{ \varepsilon }$ $\mathbf{ [ - ] }$} & \textbf{Function} \\[1.6ex]   \hline \hline
-		Viton       & 0.202 & 1842 & 1654 & N/A	 & 0.85 & radiation coating
+		Viton       & 0.202 & 1842 & 1654 & N/A	 & 0.85 & rad. coating
 		\\ \hline
-		Nextel AF14       & 0.150                                                 & 858                                        & 1050                                            & 1373	 & 0.443    & rad. and heat barrier                                 \\ \hline
+		Nextel AF14       & 0.150                                                 & 858                                        & 1050                                            & 1373	 & 0.443    & rad. \& barrier                                 \\ \hline
 		Nextel BF20       & 0.146 
 		& 1362                                        & 1130 
-		& 1643	 & 0.443  & rad. and heat barrier                                  
+		& 1643	 & 0.443  & rad. \& barrier                                  
 		\\ \hline
-		Nextel XN513      & 0.148                                                 & 1151                                       & 1090                                            & 1673	 & 0.443           & rad. and heat barrier                               \\ \hline
-		Refrasil C1554-48 & 0.865                                                 & 924                                        & 1172                                            & 1533	 & 0.7     & rad. and heat barrier                                       \\ \hline
-		Refrasil UC100-28 & 0.865                                                 & 890                                        & 1172                                            & 1255  & 0.2       & rad. and heat barrier                                    \\ \hline
-		Hexcel 282 Carbon & 0.5                                                   & 891                                        & 1000                                            & N/A 	 & 0.9      & rad. and heat barrier                                     \\ \hline
+		Nextel XN513      & 0.148                                                 & 1151                                       & 1090                                            & 1673	 & 0.443           & rad. \& barrier                               \\ \hline
+		Refrasil C1554-48 & 0.865                                                 & 924                                        & 1172                                            & 1533	 & 0.7     & rad. \& barrier                                       \\ \hline
+		Refrasil UC100-28 & 0.865                                                 & 890                                        & 1172                                            & 1255  & 0.2       & rad. \& barrier                                    \\ \hline
+		Hexcel 282 Carbon & 0.5                                                   & 891                                        & 1000                                            & N/A 	 & 0.9      & rad. \& barrier \\ \hline
 		Pyrogel 6650      & 0.030                                                 & 110                                        & 1046                                            & 923    & ~        & insulator                                  \\ \hline
 		Pyrogel 5401      & 0.0248                                                & 170                                        & 1046                                            & N/A  	 & ~          & insulator                                 \\ \hline
 		Refrasil 1800      & 0.085                                                 & 156                                        & 1172                                            & 1255 	 & ~           & insulator                                \\ \hline
@@ -34,7 +34,7 @@ Table \ref{tab:tpsmatprop} shows some promising materials that can be used in th
 	\label{tab:tpsmatprop}
 \end{table}
 
-Using the same reference a selection can be made for the most promising thermal protection and insulation layers. These are Nextel BF-20 and Nicalon for the thermal protection layers. For the insulation layers these are Pyrogel 3350 and Pyrogel 6650. Using this three lay-ups are constructed in Figure \ref{fig:layersensthermal} that are tested for different heat fluxes and radii.
+Using the same reference a selection is made for the most promising thermal protection and insulation layers. These are Nextel BF-20 and Nicalon for the thermal protection layers. For the insulation layers these are Pyrogel 3350 and Pyrogel 6650. With those materials three layups are created. A scemetical view is shown in Figure \ref{fig:layersensthermal}. These layups will be tested for different heatfluxes as well as different radii.
 
 
 \begin{figure}[h]
@@ -45,11 +45,26 @@ Using the same reference a selection can be made for the most promising thermal 
 \end{figure}
 
 \paragraph{Effect of heat flux}
-To test the effect of varying heat flux, the heat flux of an arbitrary trajectory have been multiplied to find relative values. The trajectory is found using a diameter of 12 $[m]$ and the relative factors are 0.25, 0.5, 0.75, 0.9, 1.0, 1.1, 1.4, 1.5, 2.0, 2.5 and 3.0. 
+In order to analyse layup mass changes due to variable atmospheric conditions a heat flux sensitivity is performed To test the effect of varying heat flux. The heat flux of a possible trajectory have been multiplied to find relative values. The trajectory is found using a diameter of 12 $[m]$ and the relative factors are 0.25, 0.5, 0.75, 0.9, 1.0, 1.1, 1.4, 1.5, 2.0, 2.5 and 3.0. The results are shown in Figure \ref(fig:sensiticvityq).
 
 \textcolor{red}{EXTRA TEXT EN PLOTS}
+\begin{figure}[h]
+	\centering
+	\includegraphics{./Figure/Thermal/Sensitivityq.pdf}
+	\caption{Tested lay-ups for the sensitivity analysis}
+	\label{fig:sensitivityq}
+\end{figure}
 
 \paragraph{Effect of radius}
-The three lay-ups have also been tested for different radii. The aerodynamic analysis has provided heat fluxes for diameters of 6, 9, 12, 15 and 18 $[m]$. Optimising the thickness of the lay-ups for these heat flux result in Figure XX. 
+The three lay-ups have also been tested for different radii. The aerodynamic analysis has provided heat fluxes for diameters of 6, 9, 12, 15 and 18 $[m]$. Optimising the thickness of the lay-ups for these heat flux result in Figure \ref(fig:sensitivityA). 
 
 \textcolor{red}{EXTRA TEXT EN PLOTS}
+\begin{figure}[h]
+	\centering
+	\includegraphics{./Figure/Thermal/SensitivityA.pdf}
+	\caption{Tested lay-ups for the sensitivity analysis}
+	\label{fig:sensitivityA}
+\end{figure}
+
+\paragraph{|Effect of time}
+If the vehicle is changing its descend rate, the total disipated energy is still the same. However, the energy rate profiles will have a different distribution over time, changing the temperature throughout the \gls{tps}. Therefore, the effect of descent time is also analysed. The results are also shown in Figure \
