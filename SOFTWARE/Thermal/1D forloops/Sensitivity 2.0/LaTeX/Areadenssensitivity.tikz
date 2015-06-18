@@ -22,7 +22,7 @@ ylabel={Frontal TPS-mass $\left[ kg \right]$},
 ymajorgrids,
 axis x line*=bottom,
 axis y line*=left,
-legend style={at={(0.97,0.03)},anchor=south east,legend cell align=left,align=left,draw=white!15!black}
+legend style={at={(0.5,1)},anchor=south east,legend cell align=left,legend columns=3,align=left,draw=white!15!black}
 ]
 \addplot [color=mycolor1,solid,mark=diamond,mark options={solid}]
   table[row sep=crcr]{%
@@ -89,35 +89,30 @@ ylabel={Areal density $\left[ kg \cdot m^{-2} \right]$},
 ymajorgrids,
 axis x line*=bottom,
 axis y line*=left,
-legend style={legend cell align=left,align=left,draw=white!15!black}
 ]
 \addplot [color=mycolor1,solid,mark=diamond,mark options={solid}]
   table[row sep=crcr]{%
 15	1.3654\\
 18	1.2313\\
 };
-\addlegendentry{Layup 1 orbit};
 
 \addplot [color=mycolor1,dashed,mark=diamond,mark options={solid}]
   table[row sep=crcr]{%
 15	1.5219\\
 18	1.3654\\
 };
-\addlegendentry{Layup 1 direct};
 
 \addplot [color=mycolor2,solid,mark=+,mark options={solid}]
   table[row sep=crcr]{%
 15	3.0322\\
 18	2.8767\\
 };
-\addlegendentry{Layup 2 orbit};
 
 \addplot [color=mycolor2,dashed,mark=+,mark options={solid}]
   table[row sep=crcr]{%
 15	3.1617\\
 18	3.0753\\
 };
-\addlegendentry{Layup 2 direct};
 
 \addplot [color=mycolor3,solid,mark=square,mark options={solid}]
   table[row sep=crcr]{%
@@ -127,7 +122,6 @@ legend style={legend cell align=left,align=left,draw=white!15!black}
 15	1.8759\\
 18	1.7982\\
 };
-\addlegendentry{Layup 3 orbit};
 
 \addplot [color=mycolor3,dashed,mark=square,mark options={solid}]
   table[row sep=crcr]{%
@@ -137,7 +131,6 @@ legend style={legend cell align=left,align=left,draw=white!15!black}
 15	1.945\\
 18	1.85\\
 };
-\addlegendentry{Layup 3 direct};
 
 \end{axis}
 \end{tikzpicture}%
