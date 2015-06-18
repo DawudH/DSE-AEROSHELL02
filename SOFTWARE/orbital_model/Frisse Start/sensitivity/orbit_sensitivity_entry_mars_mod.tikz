@@ -25,8 +25,22 @@ hide axis,
 axis x line*=bottom,
 axis y line*=left,
 axis z line*=left,
-legend style={at={(0.5,0.03)},anchor=south,legend columns=5,legend cell align=left,align=left,draw=white!15!black}
+legend style={at={(0.5,-0.5)},anchor=south,legend columns=3,legend cell align=left,align=left,draw=white!15!black},
+legend entries={Nominal trajectory,
+                Trajectory with 10\% more density,
+                Trajectory with 10\% less density,
+				Surface of Mars,
+				Boundary of the atmosphere}
 ]
+\addlegendimage{mycolor3,mark=asterisk}
+\addlegendimage{mycolor4,mark=o}
+\addlegendimage{mycolor2,mark=square}
+\addlegendimage{mycolor1}
+\addlegendimage{mycolor2,dash pattern=on 1pt off 3pt on 3pt off 3pt}
+
+% dash pattern=on 1pt off 3pt on 3pt off 3pt
+
+
 \addplot [color=mycolor1,solid]
   table[row sep=crcr]{%
 3389945.94521127	0\\
@@ -659,7 +673,7 @@ legend style={at={(0.5,0.03)},anchor=south,legend columns=5,legend cell align=le
 3389651.2744876	-44696.1834942945\\
 3389928.74772184	-10798.0008979223\\
 };
-\addlegendentry{Surface of Mars};
+
 
 \addplot [color=mycolor2,dash pattern=on 1pt off 3pt on 3pt off 3pt]
   table[row sep=crcr]{%
@@ -1293,7 +1307,7 @@ legend style={at={(0.5,0.03)},anchor=south,legend columns=5,legend cell align=le
 3789616.50452625	-49970.153547703\\
 3789926.71848719	-12072.1216151775\\
 };
-\addlegendentry{Boundary of the atmosphere};
+
 
 \addplot3 [color=mycolor3,solid]
  table[row sep=crcr] {%
@@ -2073,7 +2087,7 @@ legend style={at={(0.5,0.03)},anchor=south,legend columns=5,legend cell align=le
 -1146218.75448243	3206727.06355046	0\\
 -1147198.02714046	3205904.41296056	0\\
 };
- \addlegendentry{Nominal trajectory};
+
 
 \addplot3 [color=mycolor4,solid]
  table[row sep=crcr] {%
@@ -2978,7 +2992,7 @@ legend style={at={(0.5,0.03)},anchor=south,legend columns=5,legend cell align=le
 -1417296.75414415	3096801.46737387	0\\
 -1418314.44197214	3095818.97787496	0\\
 };
- \addlegendentry{Trajectory with 10\% more density};
+
 
 \addplot3 [color=mycolor2,solid]
  table[row sep=crcr] {%
@@ -3672,7 +3686,6 @@ legend style={at={(0.5,0.03)},anchor=south,legend columns=5,legend cell align=le
 -1077992.22136815	3230658.16065617	0\\
 -1079147.59580644	3229737.57497741	0\\
 };
- \addlegendentry{Trajectory with 10\% less density};
 
 \addplot3 [color=mycolor3,only marks,mark=asterisk,mark options={solid}]
  table[row sep=crcr] {%
