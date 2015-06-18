@@ -8,7 +8,7 @@ clc
 %% Define input
 
 % lay-up (t[mm], k[w/m/K], rho[kg/m3], cp[J/kg/K], emis[-], allowT[K])
-filename   = 'layup3.txt';
+filename   = 'layup1.txt';
 layupin    = dlmread(filename);
 % SI units
 layup      = zeros(size(layupin));
@@ -18,7 +18,7 @@ layup(:,2:6) = layupin(:,2:6);
 
 % Aero input, qsdot
 A_whetted = 12;
-load('./SensitivityData/heatflux_out_d18_just_orbit.mat','T','t','qmax_array','A_whetted')
+load('./SensitivityData/heatflux_out_d15_just_orbit.mat','T','t','qmax_array','A_whetted')
 tq = find(not(qmax_array<0.01));
 fluxfactor = 1.0;
 qaero = fluxfactor*qmax_array(tq(1):tq(end));
@@ -35,9 +35,9 @@ q0 = qaero*10000;
 nmax = int32(ttot/dt);  % number of time steps
 t = (0:double(nmax-1))*dt;
 fact    = 1;           % multiplication factor of number of space steps
-% K9 = [9.0e-6 ; 1.0 ; 1.0 ; 1.0 ; 1.0];
-% K4 = [2.5e-4 ; 1.0 ; 1.0];
-kfact = [9.0e-6 ; 1.0 ; 1.0 ; 1.0 ; 1.0 ];
+% K3 = [9.0e-6 ; 1.0 ; 1.0 ; 1.0 ; 1.0];
+% K2 = [2.5e-4 ; 1.0 ; 1.0];
+kfact = [2.5e-5 ; 2.5e-6 ; 2.5e-2  ];
 
 % spacing
 L = int32(round(L*10000000));
@@ -187,3 +187,6 @@ Tallow = layup(:,6);
 
   disp('the manual thicknisses are: ')
   disp([L(1)/2 L(1)/2 L(2) L(3)/2 L(3)/2]*1000)
+             
+            disp(['m/A = ',num2str(sum(layup(:,1).*layup(:,3))),' [kg/m2]'])  
+            disp(['m = ', num2str(sum(layup(:,1).*layup(:,3))*A_whetted), ' [kg]'])
