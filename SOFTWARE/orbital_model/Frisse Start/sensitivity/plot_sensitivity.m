@@ -350,7 +350,7 @@ end
 figure('name','Entry orbit')
 axis equal
 hold on
-axis([-(R_m + h_atm)*1.2 (R_m + h_atm)*1.2 -(R_m + h_atm)*1.2 (R_m + h_atm)*1.2])
+%
 
 % planet and atmosphere
     theta_plot = 0:0.01:2*pi;
@@ -369,6 +369,10 @@ axis([-(R_m + h_atm)*1.2 (R_m + h_atm)*1.2 -(R_m + h_atm)*1.2 (R_m + h_atm)*1.2]
 L1 = plot(out_1.out.R(index1o,1),out_1.out.R(index1o,2),'color',c1);
 L2 = plot(out_1_1.out.R(index2o,1),out_1_1.out.R(index2o,2),'color',c2);
 L3 = plot(out_0_9.out.R(index3o,1),out_0_9.out.R(index3o,2),'color',c3);
+    % markers
+    L1m = plot(out_1.out.R(markerspace1,1),out_1.out.R(markerspace1,2),'*','color',c1);
+    L2m = plot(out_1_1.out.R(markerspace2,1),out_1_1.out.R(markerspace2,2),'o','color',c2);
+    L3m = plot(out_0_9.out.R(markerspace3,1),out_0_9.out.R(markerspace3,2),'d','color',c3);
 
 % determine the three landing locations
 point1 = out_1.out.R(end,:);
@@ -377,10 +381,20 @@ dt3 = (out_0_9_c.out.tp(end) + out_0_9.out.tp(end)) - (out_1_c.out.tp(end) + out
 point2 = rotz(dt2*omega_m*180/pi)*point1';
 point3 = rotz(dt3*omega_m*180/pi)*point1';
 
-plot(point1(1),point1(2),'x','color',c1,'markers',12)
-plot(point2(1),point2(2),'x','color',c2,'markers',12)
-plot(point3(1),point3(2),'x','color',c3,'markers',12)
-
+L4 = plot(point1(1),point1(2),'x','color',c1,'markers',12);
+L5 = plot(point2(1),point2(2),'x','color',c2,'markers',12);
+L6 = plot(point3(1),point3(2),'x','color',c3,'markers',12);
+rotate(L1,[0, 0, 1],-75);
+rotate(L2,[0, 0, 1],-75);
+rotate(L3,[0, 0, 1],-75);
+rotate(L1m,[0, 0, 1],-75);
+rotate(L2m,[0, 0, 1],-75);
+rotate(L3m,[0, 0, 1],-75);
+rotate(L4,[0, 0, 1],-75);
+rotate(L5,[0, 0, 1],-75);
+rotate(L6,[0, 0, 1],-75);
+axis([-(R_m + h_atm)*0.7 (R_m + h_atm)*0.7 (R_m + h_atm)*0.75 (R_m + h_atm)*1])
+legend([L1, L2, L3, h3, h4],'Nominal trajectory','Trajectory with 10% more density','Trajectory with 10% less density','Surface of Mars', 'Boundary of the atmosphere','location','south','orientation','horizontal')
 if (export_figures)
     matlab2tikz('.\orbit_sensitivity_entry_mars.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
 end
@@ -441,5 +455,5 @@ L2 = plot(out_1.out.R(index2,1),out_1.out.R(index2,2),'color',c1);
 
 
 if (export_figures)
-    matlab2tikz('.\orbit_sensitivity_entry_mars.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
+    matlab2tikz('.\total_orbit.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
 end
