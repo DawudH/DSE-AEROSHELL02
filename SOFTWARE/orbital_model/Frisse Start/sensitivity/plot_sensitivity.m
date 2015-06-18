@@ -64,15 +64,16 @@ subplot(3,3,4)
 xlim(xlimits)
 grid on
 hold on
-Vm = sqrt(out_1.out.V(:,1).^2 + out_1.out.V(:,3).^2 + out_1.out.V(:,2).^2);
+Vm = sqrt(out_1.out.V(:,1).^2 + out_1.out.V(:,3).^2 + out_1.out.V(:,2).^2) /1000;
 plot(t_1(index1),Vm((index1)),'color',c1)
 plot(t_1(markerspace1),Vm(markerspace1),linespec{1},'color',c1)
-Vm = sqrt(out_1_1.out.V(:,1).^2 + out_1_1.out.V(:,3).^2 + out_1_1.out.V(:,2).^2);
+Vm = sqrt(out_1_1.out.V(:,1).^2 + out_1_1.out.V(:,3).^2 + out_1_1.out.V(:,2).^2) /1000;
 plot(t_1_1(index2),Vm(index2),'color',c2)
 plot(t_1_1(markerspace2),Vm(markerspace2),linespec{2},'color',c2)
-Vm = sqrt(out_0_9.out.V(:,1).^2 + out_0_9.out.V(:,3).^2 + out_0_9.out.V(:,2).^2);
+Vm = sqrt(out_0_9.out.V(:,1).^2 + out_0_9.out.V(:,3).^2 + out_0_9.out.V(:,2).^2) /1000;
 plot(t_0_9(index3),Vm(index3),'color',c3)
 plot(t_0_9(markerspace3),Vm(markerspace3),linespec{3},'color',c3)
+ylabel('$V$ $\left[km s^{-1}\right]$','interpreter','latex')
 
 subplot(3,3,7)
 xlim(xlimits)
@@ -84,7 +85,7 @@ plot(t_0_9(index3),out_0_9.out.a_human_mag(index3)/g_earth,'color',c3)
 plot(t_1(markerspace1),out_1.out.a_human_mag(markerspace1)/g_earth,linespec{1},'color',c1)
 plot(t_1_1(markerspace2),out_1_1.out.a_human_mag(markerspace2)/g_earth,linespec{2},'color',c2)
 plot(t_0_9(markerspace3),out_0_9.out.a_human_mag(markerspace3)/g_earth,linespec{3},'color',c3)
-ylabel('$a_{astronaut}$ $\left[g_e\right]$','interpreter','latex')
+ylabel('$a_{aero}$ $\left[g_e\right]$','interpreter','latex')
 xlabel('$t$ $\left[s\right]$','interpreter','latex')
 plot(xlim,[3,3],'-.','color',cc(5,:),'LineWidth',1.4);
 
@@ -234,15 +235,16 @@ subplot(3,3,4)
 xlim(xlimits)
 grid on
 hold on
-Vm = sqrt(out_1.out.V(:,1).^2 + out_1.out.V(:,3).^2 + out_1.out.V(:,2).^2);
+Vm = sqrt(out_1.out.V(:,1).^2 + out_1.out.V(:,3).^2 + out_1.out.V(:,2).^2) /1000;
 plot(t_1(index1),Vm((index1)),'color',c1)
 plot(t_1(markerspace1),Vm(markerspace1),linespec{1},'color',c1)
-Vm = sqrt(out_1_1.out.V(:,1).^2 + out_1_1.out.V(:,3).^2 + out_1_1.out.V(:,2).^2);
+Vm = sqrt(out_1_1.out.V(:,1).^2 + out_1_1.out.V(:,3).^2 + out_1_1.out.V(:,2).^2) /1000;
 plot(t_1_1(index2),Vm(index2),'color',c2)
 plot(t_1_1(markerspace2),Vm(markerspace2),linespec{2},'color',c2)
-Vm = sqrt(out_0_9.out.V(:,1).^2 + out_0_9.out.V(:,3).^2 + out_0_9.out.V(:,2).^2);
+Vm = sqrt(out_0_9.out.V(:,1).^2 + out_0_9.out.V(:,3).^2 + out_0_9.out.V(:,2).^2) /1000;
 plot(t_0_9(index3),Vm(index3),'color',c3)
 plot(t_0_9(markerspace3),Vm(markerspace3),linespec{3},'color',c3)
+ylabel('$V$ $\left[km s^{-1}\right]$','interpreter','latex')
 
 subplot(3,3,7)
 xlim(xlimits)
@@ -254,7 +256,7 @@ plot(t_0_9(index3),out_0_9.out.a_human_mag(index3)/g_earth,'color',c3)
 plot(t_1(markerspace1),out_1.out.a_human_mag(markerspace1)/g_earth,linespec{1},'color',c1)
 plot(t_1_1(markerspace2),out_1_1.out.a_human_mag(markerspace2)/g_earth,linespec{2},'color',c2)
 plot(t_0_9(markerspace3),out_0_9.out.a_human_mag(markerspace3)/g_earth,linespec{3},'color',c3)
-ylabel('$a_{astronaut}$ $\left[g_e\right]$','interpreter','latex')
+ylabel('$a_{aero}$ $\left[g_e\right]$','interpreter','latex')
 xlabel('$t$ $\left[s\right]$','interpreter','latex')
 plot(xlim,[3,3],'-.','color',cc(5,:),'LineWidth',1.4);
 
