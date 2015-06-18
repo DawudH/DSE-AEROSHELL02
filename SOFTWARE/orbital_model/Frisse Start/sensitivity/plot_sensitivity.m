@@ -127,7 +127,7 @@ plot(t_0_9(index3),out_0_9.out.theta(index3),'color',c3)
 plot(t_1(markerspace1),out_1.out.theta(markerspace1),linespec{1},'color',c1)
 plot(t_1_1(markerspace2),out_1_1.out.theta(markerspace2),linespec{2},'color',c2)
 plot(t_0_9(markerspace3),out_0_9.out.theta(markerspace3),linespec{3},'color',c3)
-ylabel('$\theta$  $\left[deg\right]$','interpreter','latex')
+ylabel('$\tau$  $\left[deg\right]$','interpreter','latex')
 h = legend('Nominal trajectory','Trajectory with 10% more density','Trajectory with 10% less density','location','north','orientation','horizontal');
 h.Position = [0.243115519562129 0.955832322216614 0.533872688020616 0.0198986978848316];
 
@@ -298,7 +298,7 @@ plot(t_0_9(index3),out_0_9.out.theta(index3),'color',c3)
 plot(t_1(markerspace1),out_1.out.theta(markerspace1),linespec{1},'color',c1)
 plot(t_1_1(markerspace2),out_1_1.out.theta(markerspace2),linespec{2},'color',c2)
 plot(t_0_9(markerspace3),out_0_9.out.theta(markerspace3),linespec{3},'color',c3)
-ylabel('$\theta$  $\left[deg\right]$','interpreter','latex')
+ylabel('$\tau$  $\left[deg\right]$','interpreter','latex')
 h = legend('Nominal trajectory','Trajectory with 10% more density','Trajectory with 10% less density','location','north','orientation','horizontal');
 h.Position = [0.243115519562129 0.955832322216614 0.533872688020616 0.0198986978848316];
 
