@@ -76,7 +76,7 @@ ylabel={Frontal TPS-mass $\left[ kg \right]$},
 ymajorgrids,
 axis x line*=bottom,
 axis y line*=left,
-legend style={legend columns=6,legend cell align=left,align=left,draw=white!15!black}
+legend style={at={(0.75,1.3)},legend columns=3,legend cell align=left,align=left,draw=white!15!black}
 ]
 \addplot [color=mycolor1,solid,mark=diamond,mark options={solid}]
   table[row sep=crcr]{%
