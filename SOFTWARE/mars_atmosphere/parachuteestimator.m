@@ -90,7 +90,6 @@ for i = 1:length(narray);
 %     plot(t,a_gnothrust);
 %     ylabel('g-force without thrust');
 
-    SFC = 0.225e-3; %kg/N/s http://en.wikipedia.org/wiki/Specific_impulse
     thrustermass = sum(dt*mdot);
     thrusterdensity = 1; %kg/m3
     thrustervolume = thrustermass/thrusterdensity; %m^3
