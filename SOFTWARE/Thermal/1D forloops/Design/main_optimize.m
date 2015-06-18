@@ -40,6 +40,7 @@ fact    = 1;           % multiplication factor of number of space steps
 % K3 = [9.0e-6 ; 1.0 ; 1.0 ];
 kfact = [9.0e-6 ; 1.0 ; 1.0];
 
+
 % spacing
 L = int32(round(L*10000000));
 
