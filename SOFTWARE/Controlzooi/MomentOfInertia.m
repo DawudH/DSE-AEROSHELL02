@@ -15,7 +15,7 @@ Ds_cb=4;
 m_cb=9000;
 
 m_h=1000;
-m_inf=150;
+m_inf=540;
 
 %Thruster parameters
 Isp=234;
@@ -57,7 +57,7 @@ m_cbh=m_h-m_inf;
 t_cb=Di-Ds_cb;
 
 % %Compute MMOI
-Ixx=1/4 * (0.5*m_cb*((Ds_cb+t_cb)^2+(Ds_cb-t_cb)^2) + 0.5*m_cbh*Di^2  +  0.5*m_inf+Do^2);
+Ixx=1/4 * (0.5*m_cb*((Ds_cb+t_cb)^2+(Ds_cb-t_cb)^2) + 0.5*m_cbh*Di^2  +  0.5*m_inf*Do^2);
 Iyy=1/12*(m_cb+m_h)*(3/4*((Ds_cb+t_cb)^2+(Ds_cb-t_cb)^2) +L^2);
 
 %Rotational moment
