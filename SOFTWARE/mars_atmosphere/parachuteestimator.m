@@ -71,16 +71,18 @@ for i = 1:length(narray);
     M = V./aer.getCheapSpeedofsound(h);
     
     figure;
+    cc = parula(4);
     hold on;
     skipframes = 30;
-    plot(t(1:skipframes:end), (n*g0*m0+m0*aer.getg(h(1:skipframes:end)))/1000, '-o');
-    plot(t(1:skipframes:end), D(1:skipframes:end)/1000, '-d');
-    plot(t(1:skipframes:end), F_thrust(1:skipframes:end)/1000, '-s');
+    plot(t(1:skipframes:end), (n*g0*m0+m0*aer.getg(h(1:skipframes:end)))/1000, '-o','color',cc(1,:));
+    plot(t(1:skipframes:end), D(1:skipframes:end)/1000, '-d', 'color', cc(2,:));
+    plot(t(1:skipframes:end), F_thrust(1:skipframes:end)/1000, '-s', 'color', cc(3,:));
     xlabel('$t [s]$', 'interpreter', 'latex');
     ylabel('$F [kN]$', 'interpreter', 'latex');
     legend('Required force', 'Drag', 'Thrust', 'Location', 'east');
     axis([0, max(t), 0, 1.05*(max([D, F_thrust])/1000)]);
     grid on;
+    
     matlab2tikz('plots/TDthrust.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
     
 %     figure;
