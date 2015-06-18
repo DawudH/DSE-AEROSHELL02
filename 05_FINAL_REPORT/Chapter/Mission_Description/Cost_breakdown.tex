@@ -1,5 +1,6 @@
 Cost can be split up into two sections: Development cost and production cost. Whereas the development-related costs consist of non-recurring expenses, the production cost is dependent on the number of mission to be carried out. Reference \cite{Wertz2011} will be used to determine the costs associated with these components. Since these are determined in constant 2010 US dollars a factor accounting for inflation is used. This factor was found by looking at the \gls{cpi} ratio between April of 2010 and 2015. From Reference \cite{Crawford2015} this factor was found to be $1.075$, corresponding to an inflation of $7.5\%$.\\
-For the development and production cost a \gls{hiad} propellant mass of $153$ kilograms was used, conform to the final design presented in Chapter \ref{cha:finaldesign}. A total \gls{hiad} mass (including propellant) of $1000$ kilograms was assumed, in order to take into account the maximum allowable \gls{hiad} mass growth. For the crew capsule a total mass of $9000$ kilograms was assumed from which $700$ kilograms of propellant mass was subtracted. This propellant mass will be covered in further detail in chapter \ref{ch:crewmod}. In addition to the propellant mass the crew mass was also subtracted in order to arrive at the spacecraft dry mass.
+For the development and production cost a \gls{hiad} propellant mass of $153$ kilograms was used, conform to the final design presented in Chapter \ref{cha:finaldesign}. A total \gls{hiad} mass (including propellant) of $1000$ kilograms was assumed, in order to take into account the maximum allowable \gls{hiad} mass growth. For the crew capsule a total mass of $9000$ kilograms was assumed from which $700$ kilograms of propellant mass was subtracted. The origin of this propellant mass will be covered in further detail in chapter \ref{ch:crewmod}. In addition to the propellant mass the crew mass was also subtracted in order to arrive at the spacecraft dry mass.\\
+Next to the \gls{hiad} and accompanying crew module a \acrlong{mav} and an \acrlong{erv} are also needed to complete the mission. These vehicles fall outside of the scope of this report, but in order to estimate their impact on mission cost they will be taken into account in this section. A dry mass of $5000$ and $10000$ kilograms was assumed for these vehicles respectively.
 
 \subsubsection{Development costs}
 In contrast to the total mission the development costs consist of those incurred by aeroshell and capsule development. From Reference \cite{Wertz2011} the development cost per kilogram of dry mass can be found for various vehicles. These values, together with the total development cost are shown in table \ref{tab:devcosts}.
@@ -11,8 +12,10 @@ In contrast to the total mission the development costs consist of those incurred
 		\hline
 		\textbf{Cost component} & \textbf{Development cost per kg dry weight $\mathbf{[2015}$ $\mathbf{US\$]}$} & \textbf{Total development cost $\mathbf{[2015}$ $\mathbf{US\$]}$} \\ \hline \hline
 		Aeroshell & 2 569 000 & 2 176 154 000 \\
-		Crew capsule & 1 255 000 & 10 215 700 000 \\ \hline
-		\textbf{Total} & - & 12 391 854 000 \\
+		Crew module & 1 255 000 & 10 215 700 000 \\
+		\acrlong{mav} & 2 569 000 & 12 845 000 000 \\
+		\acrlong{erv} & 1 255 000 & 12 550 000 000 \\ \hline
+		\textbf{Total} & - & 37 786 854 000 \\
 		\hline
 	\end{tabular}
 	\label{tab:devcosts}
@@ -28,12 +31,29 @@ The production costs were determined in similar fashion to the development costs
 		\textbf{Cost component} & \textbf{Production cost per kg dry weight $\mathbf{[2015}$ $\mathbf{US\$]}$} & \textbf{Total production cost $\mathbf{[2015}$ $\mathbf{US\$]}$} \\
 		\hline \hline
 		Aeroshell & 341 000 & 288 827 000 \\
-		Crew capsule & 173 000 & 1 408 220 000 \\ \hline
-		\textbf{Total} & - & 1 697 047 000 \\
+		Crew module & 173 000 & 1 408 220 000 \\ 
+		\acrlong{mav} & 341 000 & 1 705 000 000 \\
+		\acrlong{erv} & 173 000 & 1 730 000 000 \\ \hline
+		\textbf{Total} & - & 5 132 047 000 \\
 		\hline
 	\end{tabular}
 	\label{tab:productioncosts}
 \end{table}
 
 \subsubsection{Mission costs}
-In addition to the costs incurred by the spacecraft itself the overall mission architecture requires the use of additional resources such as launch vehicles. 
+In addition to the costs incurred by the spacecraft themselves the overall mission architecture requires the use of additional resources such as launch vehicles. Assuming that two \glspl{sls} are needed to position all required vehicles mentioned in section \ref{sec:missionoutline} around Mars (including the mission carrying the \gls{hiad} and associated crew module) the mission item cost can be determined by summing these launch costs with the aforementioned production costs. For the launch of the \gls{sls} no official cost figure exists, though \gls{nasa} officials have been quoted as mentioning a goal of $500$ million US dollars per launch.\footnote{URL: \url{http://www.nbcnews.com/id/49019843/ns/technology_and_science-space} Accessed: 18-06-2015}\\
+\begin{table}[h]
+	\centering
+	\caption{Overview of total costs for one mission}
+	\begin{tabular}{|c|c|}
+		\hline
+		\textbf{Cost component} & \textbf{Cost $\mathbf{[2015}$ $\mathbf{US\$]}$} \\ \hline 
+		\hline
+		Vehicle development & 37 786 854 000 \\
+		Vehicle production & 5 132 047 000\\
+		Launch & 1 000 000 000\\ \hline
+		\textbf{Total} & 43 918 901 000\\ \hline
+	\end{tabular}
+	\label{tab:missioncosts}
+\end{table}
+By combining the cost figures presented here the results presented in table \ref{tab:missioncosts} were obtained. If more than one mission using these spacecraft is to be conducted the average cost per mission will be considerably lower than the total cost presented in table \ref{tab:missioncosts} since the development costs are non-recurring expenses. This would also increase the cost-effectiveness of manned spaceflight to Mars.
