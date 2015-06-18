@@ -5,11 +5,11 @@ The first phase of the trajectory is aerocapture, in this phase the objective is
 
 Furthermore the trajectory was chosen as high through the atosphere as possible to facilitate \gls{tps} and structural masses. A pass higher through the atomsphere deacreases both the heat flux and peak dynamic pressure which are used to design the \gls{tps} and inflatable structure respectively.
 
-These two objectives are conflicting as the deceleration high in the atmosphere is often too low to achieve the required velocity change. In order to still reach the required velocity than either the duration of the aerocapture, the drag coefficient or the area of the decelerator has to be increased. A longer aerocapture can be achieved by improved control over the vehicle, which is accomplished by a higher lift coefficent. With a higher drag coefficient or area the vehicle can obtain a larger deceleration higher in the atmosphere, thus at a lower dynamic pressure. In order to facilitate both our objectives it is thus important that the aerodynamic shape created has a high lift coefficient as well as a high drag coefficient.
+These two objectives are conflicting as the deceleration high in the atmosphere is often too low to achieve the required velocity change. In order to still reach the required velocity than either the duration of the aerocapture, the drag coefficient or the area of the decelerator has to be increased. A longer aerocapture can be achieved by improved control over the vehicle, which is accomplished by a higher lift coefficent.  A longer aerocapture, however increases the heat flux. With a higher drag coefficient or area the vehicle can obtain a larger deceleration higher in the atmosphere, thus at a lower dynamic pressure. In order to facilitate both our objectives it is thus important that the aerodynamic shape created has a high lift coefficient as well as a high drag coefficient.
 
-In figure \ref{fig:orbit_aerocapture_data} the parameters that were recorded during the simulation are shown for the planned trajectory and two trajectories created for a 10 \% increase and decrease in atmospheric density. This change in density is based on the maximum estimated error in the ESA mars climate database v5.2 \cite{Lewis2015}.
+In figure \ref{fig:orbit_aerocapture_data} the parameters that were recorded during the simulation are shown for the nominal trajectory and two trajectories created for a 10 \% increase and decrease in atmospheric density. This change in density is based on the maximum estimated error in the ESA mars climate database v5.2 \cite{Lewis2015}.
 
-***Sensitivity to density change +-10\% and possibility to correct for it***\\
+The bank control for the trajectories is changed to attain the same exit velocity. This velocity is needed to get into a mars synchronous orbit. With this results it is proven that a density change of $\pm 10\%$ can be accounted for by changing the bank control. However, some other parameters do change. The peak acceleration and dynamic pressure increase for a higher density. The \gls{tps} and inflatable structure should be sized on the worst case. Also the time passed and the position of exit (defined by $\theta$) are different for the different trajectories. These changes have a significant effect on the entry and descent phase.
 \begin{sidewaysfigure}
 	\centering
 	\includegraphics[width=0.99\textwidth]{Figure/Orbit/sensitivity_aerocapture.pdf}
@@ -18,7 +18,7 @@ In figure \ref{fig:orbit_aerocapture_data} the parameters that were recorded dur
 \end{sidewaysfigure}
 
 \paragraph{Parking orbit}
-***Use of orbit, extrension of time***\\
+***Use of orbit, extension of time***\\
 ***Orbital period, 1 sol***\\
 
 \paragraph{Entry and descent}
