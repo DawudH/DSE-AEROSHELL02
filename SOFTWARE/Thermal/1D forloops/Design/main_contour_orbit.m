@@ -159,8 +159,7 @@ if contourplot
     for j = 1:length(L)-1
         xcont(indexx(j+1)+j-1:indexx(j+1)+j) = [x(indexx(j+1)+j-1)-dx/100,x(indexx(j+1)+j)+dx/100];
     end
-    figure(1)
-    h1 = subplot(1,2,1);    
+    figure(2)   
     hold on
     contourf(t(1:100:end),xcont.*1000,T(:,1:100:end)) %(1:20:end),(:,1:20:end)
     colormap parula
@@ -390,7 +389,7 @@ if contourplot
     for j = 1:length(L)-1
         xcont(indexx(j+1)+j-1:indexx(j+1)+j) = [x(indexx(j+1)+j-1)-dx/100,x(indexx(j+1)+j)+dx/100];
     end
-    h2 = subplot(1,2,2);
+    figure(3)
     hold on
     contourf(t(1:100:end),xcont.*1000,T(:,1:100:end)) %(1:20:end),(:,1:20:end)
     colormap parula
