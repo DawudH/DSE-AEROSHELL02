@@ -15,7 +15,7 @@ Here the assumptions are stated that are used to simplify the problem.
 
 
 \paragraph{Analysis method}
-Figure \ref{fig:1dmodelthermal} is used to model the problem. It start with a given lay-up consisting of thermal protection, insulation and structural layers. The heat transfer is modeled by an incoming heat flux due to the convective aerodynamic heating at the surface and an outgoing radiation at the surface and back. In between the surface and the back the different layers are separated by a layer with varying conductivity that models the contact resistance. Within the layers heat is transferred by conduction.
+Figure \ref{fig:1dmodelthermal} is used to model the problem. Smith et al have modeled the problem in approximately the same way and therefore used as reference for the to be developed model \cite{Smith2011}. It start with a given lay-up consisting of thermal protection, insulation and structural layers. The heat transfer is modeled by an incoming heat flux due to the convective aerodynamic heating at the surface and an outgoing radiation at the surface and back. In between the surface and the back the different layers are separated by a layer with varying conductivity that models the contact resistance. Within the layers heat is transferred by conduction.
 
 \begin{figure}[h]
 	\centering
@@ -47,7 +47,7 @@ Simplifying the problem introduces some limitations to the design tool. One of t
 
 The assumption that material properties do not vary with temperature is made as the influence of this is relatively small on the required thicknesses of different lay-ups. Note that this will not lead to a more conservative design as the thermal resistance decreases as temperature increases. 
 
-The paper by Del Corso et al states that it is difficult to analytically determine the contact resistance \cite{Corso2009}. The paper used their own data for this, however arbitrary multiplication factors had to be applied to match their model with validation data. Also analytically calculating the contact resistance introduces more unknowns that have to be determined. Therefore varying conductivities have been empirically assigned to the thin layers of air between the layers. Disadvantage is that multiple layers had to be tested to find correct conductivities such that the developed tool matches experimental data. Experimental data is provided in paper by Del Corso et al \cite{Corso2009,Corso2011}.
+The paper by Del Corso et al states that it is difficult to analytically determine the contact resistance \cite{Corso2009}. The paper used their own data for this, however arbitrary multiplication factors had to be applied to match their model with validation data. Also analytically calculating the contact resistance introduces more unknowns that have to be determined. Therefore varying conductivities have been empirically assigned to the thin layers of air between the layers. Disadvantage is that multiple layers had to be tested to find correct conductivities such that the developed tool matches experimental data. Experimental data is provided in paper by Del Corso et al \cite{Corso2009,Corso2011}. Before the actual design can be conducted, the thermal model must be verified and validated as is done in Appendix \ref{sec:VandVthermo}.
 
 
 
