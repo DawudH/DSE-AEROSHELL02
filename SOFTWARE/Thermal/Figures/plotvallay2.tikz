@@ -20,43 +20,60 @@ ymax=1000,
 ylabel={T $\left[ K \right]$},
 axis x line*=bottom,
 axis y line*=left,
-legend style={legend cell align=left,align=left,draw=white!15!black}
+legend style={at={(1.2,1.05)},anchor=south,legend columns=3,legend cell align=left,align=left,draw=white!15!black},
+legend entries={TC1 Experimental,
+                TC2 Experimental,
+                TC3 Experimental,
+				TC1 Model,
+				TC2 Model,
+				TC3 Model,
+				TC1 Error,
+				TC2 Error,
+				TC3 Error}
 ]
+\addlegendimage{mycolor1,mark=+}
+\addlegendimage{mycolor2,mark=diamond}
+\addlegendimage{mycolor3,mark=square}
+\addlegendimage{mycolor1,dashed,mark=+,mark options={solid}}
+\addlegendimage{mycolor2,dashed,mark=diamond,mark options={solid}}
+\addlegendimage{mycolor3,dashed,mark=square,mark options={solid}}
+\addlegendimage{mycolor1,mark=x}
+\addlegendimage{mycolor2,mark=o}
+\addlegendimage{mycolor3,mark=asterisk}
+
+
+
+
 \addplot [color=mycolor1,solid,mark=+,mark options={solid}]
   table[row sep=crcr]{%
 0	333\\
 };
-\addlegendentry{TC1 Experimental};
 
 \addplot [color=mycolor2,solid,mark=diamond,mark options={solid}]
   table[row sep=crcr]{%
 0	313\\
 };
-\addlegendentry{TC2 Experimental};
 
 \addplot [color=mycolor3,solid,mark=square,mark options={solid}]
   table[row sep=crcr]{%
 0	303\\
 };
-\addlegendentry{TC3 Experimental};
 
 \addplot [color=mycolor1,dashed,mark=+,mark options={solid}]
   table[row sep=crcr]{%
 0	293\\
 };
-\addlegendentry{TC1 Model};
 
 \addplot [color=mycolor2,dashed,mark=diamond,mark options={solid}]
   table[row sep=crcr]{%
 0	293\\
 };
-\addlegendentry{TC2 Model};
 
 \addplot [color=mycolor3,dashed,mark=square,mark options={solid}]
   table[row sep=crcr]{%
 0	293\\
 };
-\addlegendentry{TC3 Model};
+
 
 \addplot [color=mycolor1,solid,forget plot]
   table[row sep=crcr]{%
@@ -470,15 +487,15 @@ ylabel={Error $\left[ \% \right]$},
 axis x line*=bottom,
 axis y line*=left
 ]
-\addplot [color=mycolor1,solid,mark=+,mark options={solid},forget plot]
+\addplot [color=mycolor1,solid,mark=x,mark options={solid},forget plot]
   table[row sep=crcr]{%
 0	12.012012012012\\
 };
-\addplot [color=mycolor2,solid,mark=diamond,mark options={solid},forget plot]
+\addplot [color=mycolor2,solid,mark=o,mark options={solid},forget plot]
   table[row sep=crcr]{%
 0	6.38977635782748\\
 };
-\addplot [color=mycolor3,solid,mark=square,mark options={solid},forget plot]
+\addplot [color=mycolor3,solid,mark=asterisk,mark options={solid},forget plot]
   table[row sep=crcr]{%
 0	3.3003300330033\\
 };
@@ -641,7 +658,7 @@ axis y line*=left
 192	68.0895866776353\\
 196	68.4941469108051\\
 };
-\addplot [color=mycolor1,only marks,mark=+,mark options={solid},forget plot]
+\addplot [color=mycolor1,only marks,mark=x,mark options={solid},forget plot]
   table[row sep=crcr]{%
 0	12.012012012012\\
 20	0.995699253819352\\
@@ -654,7 +671,7 @@ axis y line*=left
 160	30.8207259639246\\
 180	48.1932814417967\\
 };
-\addplot [color=mycolor2,only marks,mark=diamond,mark options={solid},forget plot]
+\addplot [color=mycolor2,only marks,mark=o,mark options={solid},forget plot]
   table[row sep=crcr]{%
 0	6.38977635782748\\
 20	6.49352568050336\\
@@ -667,7 +684,7 @@ axis y line*=left
 160	34.9213288025961\\
 180	55.8262725641627\\
 };
-\addplot [color=mycolor3,only marks,mark=square,mark options={solid},forget plot]
+\addplot [color=mycolor3,only marks,mark=asterisk,mark options={solid},forget plot]
   table[row sep=crcr]{%
 0	3.3003300330033\\
 20	5.32278043485581\\

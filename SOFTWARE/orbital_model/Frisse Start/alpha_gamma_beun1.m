@@ -21,7 +21,7 @@ accellimit = false;
 alpha = -5:2.5:25;
 gamma_range = [17, 21];
 
-gamma_accuracy = 0.0005;
+gamma_accuracy = 0.00025;
 load('alpha_gamma_final.mat');
 k = length(results.GAMMA) + 1;
 

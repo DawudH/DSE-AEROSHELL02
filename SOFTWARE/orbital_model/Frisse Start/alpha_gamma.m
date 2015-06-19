@@ -22,7 +22,7 @@ alpha = -5:2.5:25;
 gamma_range = [17, 21];
 
 
-gamma_accuracy = 0.0005;
+gamma_accuracy = 0.00025;
 load('alpha_gamma_final.mat');
 k = length(results.GAMMA) + 1;
 
@@ -42,6 +42,8 @@ for j = 1:length(alpha)
                 
         %%function
         [out] = full_orbit(R, V, A, G, M_mars, R_m, h_atm, atm, dt_kep_init, dt_atmos, m, omega_m, S, control, tend, crash_margin, g_earth, aero_coef, use_control, multiple_orbits, use_alpha_profile,r,v,theta0,gamma,hypkep,Crho,control.alpha_init,control.dalphadt);
+            %   full_orbit(R, V, A, G, M_mars, R_m, h_atm, atm, dt_kep_init, dt_atmos, m, omega_m, S, control, tend, crash_margin, g_earth, aero_coef, use_control, multiple_orbits, use_alpha_profile,r,v,theta0,gamma,hypkep,Crho,alpha_init        ,dalphadt)
+            %   full_orbit(1, 2, 3, 4, 5     , 6  , 7    , 8  , 9          , 10      ,11, 12     ,13, 14     , 15  , 16          , 17     , 18       , 19         , 20             , 21              ,22,23,24   ,25   ,26    ,27  ,28                ,29              )
         
         results.ALPHA(k) = control.alpha_init;
         results.GAMMA(k) = gamma;
@@ -98,11 +100,11 @@ save('alpha_gamma_final.mat','results')
 figure(1)
 hold on
 grid on
-xlim([19.0 22.5])
+xlim([21.6 22.1])
 plot(results.GAMMA(find(results.flyby == true)),results.ALPHA(find(results.flyby == true))*180/pi,'o','color','c')
 plot(results.GAMMA(find(results.orbit == true)),results.ALPHA(find(results.orbit == true))*180/pi,'x','color','b')
 plot(results.GAMMA(find(results.crash == true)),results.ALPHA(find(results.crash == true))*180/pi,'x','color','g')
-plot(results.GAMMA(find(results.A > g_earth*3)),results.ALPHA(find(results.A > g_earth*3))*180/pi,'o','color','r')
+plot(results.GAMMA(find(results.A > g_earth*3)),results.ALPHA(find(results.A > g_earth*3))*180/pi,'s','color','r')
 
 
     
