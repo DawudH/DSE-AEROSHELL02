@@ -40,9 +40,9 @@ hypkep = false;
 % plot(results.GAMMA,results.ALPHA*180/pi,'x')
 
 %%
-flybylimit = false;
+flybylimit = true;
 orbitlimit = false;
-accellimit = true;
+accellimit = false;
 
 gamma_accuracy = 0.00025;
 

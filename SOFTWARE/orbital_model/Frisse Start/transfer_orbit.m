@@ -103,10 +103,10 @@ legend('Sun','Earth','Mars','Earth trajectory','Mars trajectory','Interplanetary
 Te = 365.25636;
 % orbital period Mars
 Tm = 686.971;
-
-t = 0:1:2000;
+t_launch = (1/(1/Tm - 1/Te)) * (81.8254 / (360) - 89.2/Tm)
+t = -80:0.1:2000;
 Ye = sin(2*pi/Te * t);
-Ym = sin(2*pi/Tm * t);
+Ym = sin(2*pi/Tm * (t));
 figure('name','launch windows')
 hold on
 plot(t,Ye)

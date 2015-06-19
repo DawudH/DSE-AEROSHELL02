@@ -41,8 +41,8 @@ hypkep = false;
 
 %%
 flybylimit = false;
-orbitlimit = false;
-accellimit = true;
+orbitlimit = true;
+accellimit = false;
 
 gamma_accuracy = 0.00025;
 
