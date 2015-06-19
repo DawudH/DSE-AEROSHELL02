@@ -3,7 +3,7 @@ close all
 clc
 
 % open the file
-load('v_gamma.mat');
+load('v_gamma_final.mat');
 
 variables
 
@@ -82,6 +82,7 @@ variables
 %% make plot
 figure('name','fitted to datapoints')
 hold on
+%plot([flyby.gamma; accel.gamma; crash.gamma],[flyby.v; accel.v; crash.v],'o')
 plot(flyby.gamma,polyval(flyby.polyfit,flyby.gamma))
 plot(accel.gamma,polyval(accel.polyfit,accel.gamma))
 plot(crash.gamma,polyval(crash.polyfit,crash.gamma))
@@ -91,8 +92,9 @@ grid on
 figure('name','fitted to datapoints and extrapolated')
 hold on
 %plot([flyby.gamma; accel.gamma; crash.gamma],[flyby.v; accel.v; crash.v],'o')
-gamma = 21.5:0.001:22.5;
-plot(gamma,polyval(flyby.polyfit,gamma))
-plot(gamma,polyval(accel.polyfit,gamma))
-plot(gamma,polyval(crash.polyfit,gamma))
+gamma = 21.5:0.025:21.9;
+cc = parula(5);
+plot(gamma,polyval(flyby.polyfit,gamma),'o-','color',cc(1,:))
+plot(gamma,polyval(accel.polyfit,gamma),'*-','color',cc(3,:))
+legend('Flyby limit','Acceleration limit','location','northwest')
 grid on
