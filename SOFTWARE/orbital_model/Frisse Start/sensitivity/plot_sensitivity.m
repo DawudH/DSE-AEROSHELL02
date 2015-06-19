@@ -6,7 +6,7 @@ addpath('../')
 addpath('../../../matlab2tikz')
 constants 
 
-export_figures = true;
+export_figures = false;
 
  out_1   = load('aerocapture_rho_1.mat');
  out_1_1 = load('aerocapture_rho_1_1.mat');

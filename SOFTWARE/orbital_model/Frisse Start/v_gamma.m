@@ -44,7 +44,7 @@ flybylimit = false;
 orbitlimit = false;
 accellimit = true;
 
-gamma_accuracy = 0.005;
+gamma_accuracy = 0.00025;
 
 load('v_gamma_final.mat');
 
@@ -52,10 +52,10 @@ V_esc = sqrt(G*M_mars * 2 / r);
 
 v_range = 6500:250:7500;
 k = length(results.GAMMA) + 1;
-k = 1;
+
 for j = 1:length(v_range)
     notdone = true;
-    gamma_range = [21.5, 22.5];
+    gamma_range = [19, 22];
     n = 1;
     while notdone
         
