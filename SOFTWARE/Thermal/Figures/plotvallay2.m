@@ -208,19 +208,73 @@ if valid
     for j = 2:4
         plotVALex(:,j-1) = interp1(valres(1:end-1,1),valres(1:end-1,j),t).';
     end
-    figure;
-    hold on   
-    
-    plot(t,plotS,'--')
-    ax = gca;
-    ax.ColorOrderIndex = 1;
-    plot(t,plotVAL)
-    figure;
-    plot(t,abs(plotS-plotVAL)./plotVAL)
-    max(abs(plotS-plotVAL)./plotVAL)
+%     figure;
+%     hold on   
+%     
+%     plot(t,plotS,'--')
+%     ax = gca;
+%     ax.ColorOrderIndex = 1;
+%     plot(t,plotVAL)
+%     figure;
+%     plot(t,abs(plotS-plotVAL)./plotVAL)
+%     max(abs(plotS-plotVAL)./plotVAL)
 end
 %o,x,*,s,d,+
-  
-    
+figure;
+
+
+subplot(1,2,1)
+hold on
+cc = parula(4);
+
+plot(t(1),plotVALex(1,1),'+-','color',cc(1,:))
+plot(t(1),plotVALex(1,2),'d-','color',cc(2,:))
+plot(t(1),plotVALex(1,3),'s-','color',cc(3,:))
+plot(t(1),(plotS(1,1)+plotS(1,2))/2,'+--','color',cc(1,:))
+plot(t(1),(plotS(1,3)+plotS(1,4))/2,'d--','color',cc(2,:))
+plot(t(1),(plotS(1,5)+plotS(1,6))/2,'s--','color',cc(3,:))
+d = 200;
+e = 40;
+plot(t(1:e:end),plotVALex(1:e:end,1),'-','color',cc(1,:))
+plot(t(1:e:end),(plotS(1:e:end,1)+plotS(1:e:end,2))/2,'--','color',cc(1,:))
+plot(t(1:e:end),plotVALex(1:e:end,2),'-','color',cc(2,:))
+plot(t(1:e:end),(plotS(1:e:end,3)+plotS(1:e:end,4))/2,'--','color',cc(2,:))
+plot(t(1:e:end),plotVALex(1:e:end,3),'-','color',cc(3,:))
+plot(t(1:e:end),(plotS(1:e:end,5)+plotS(1:e:end,6))/2,'--','color',cc(3,:))
+
+plot(t(1:d:end),plotVALex(1:d:end,1),'+','color',cc(1,:))
+plot(t(1:d:end),(plotS(1:d:end,1)+plotS(1:d:end,2))/2,'+','color',cc(1,:))
+plot(t(1:d:end),plotVALex(1:d:end,2),'d','color',cc(2,:))
+plot(t(1:d:end),(plotS(1:d:end,3)+plotS(1:d:end,4))/2,'d','color',cc(2,:))
+plot(t(1:d:end),plotVALex(1:d:end,3),'s','color',cc(3,:))
+plot(t(1:d:end),(plotS(1:d:end,5)+plotS(1:d:end,6))/2,'s','color',cc(3,:))
+ylabel('T $\left[ K \right]$','Interpreter','LaTeX')
+xlabel('t $\left[ s \right]$','interpreter','LaTeX')
+legend('TC1 Experimental','TC2 Experimental','TC3 Experimental','TC1 Model','TC2 Model','TC3 Model','Location','northeast')
+
+
+
+subplot(1,2,2)
+hold on
+plot(t(1),100*abs((plotS(1,1)+plotS(1,2))/2-plotVALex(1,1))./plotVALex(1,1),'+-','color',cc(1,:))
+plot(t(1),100*abs((plotS(1,3)+plotS(1,4))/2-plotVALex(1,2))./plotVALex(1,2),'d-','color',cc(2,:))
+plot(t(1),100*abs((plotS(1,5)+plotS(1,6))/2-plotVALex(1,3))./plotVALex(1,3),'s-','color',cc(3,:))
+
+
+plot(t(1:e:end),100*abs((plotS(1:e:end,1)+plotS(1:e:end,2))/2-plotVALex(1:e:end,1))./plotVALex(1:e:end,1),'-','color',cc(1,:))
+plot(t(1:e:end),100*abs((plotS(1:e:end,3)+plotS(1:e:end,4))/2-plotVALex(1:e:end,2))./plotVALex(1:e:end,2),'-','color',cc(2,:))
+plot(t(1:e:end),100*abs((plotS(1:e:end,5)+plotS(1:e:end,6))/2-plotVALex(1:e:end,3))./plotVALex(1:e:end,3),'-','color',cc(3,:))
+
+
+plot(t(1:d:end),100*abs((plotS(1:d:end,1)+plotS(1:d:end,2))/2-plotVALex(1:d:end,1))./plotVALex(1:d:end,1),'+','color',cc(1,:))
+plot(t(1:d:end),100*abs((plotS(1:d:end,3)+plotS(1:d:end,4))/2-plotVALex(1:d:end,2))./plotVALex(1:d:end,2),'d','color',cc(2,:))
+plot(t(1:d:end),100*abs((plotS(1:d:end,5)+plotS(1:d:end,6))/2-plotVALex(1:d:end,3))./plotVALex(1:d:end,3),'s','color',cc(3,:))
+
+ylabel('Error $\left[ \% \right]$','Interpreter','LaTeX')
+xlabel('t $\left[ s \right]$','interpreter','LaTeX')
+%legend('TC1','TC2','TC3','Location','northwest')    
+addpath('..\matlab2tikz')
+
+matlab2tikz('.\Figures\plotvallay2.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
     
     
