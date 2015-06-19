@@ -15,9 +15,11 @@ scale only axis,
 xmin=0,
 xmax=200,
 xlabel={t $\left[ s \right]$},
+xmajorgrids,
 ymin=200,
 ymax=1000,
 ylabel={T $\left[ K \right]$},
+ymajorgrids,
 axis x line*=bottom,
 axis y line*=left,
 legend style={at={(1.2,1.05)},anchor=south,legend columns=3,legend cell align=left,align=left,draw=white!15!black},
@@ -42,32 +44,35 @@ legend entries={TC1 Experimental,
 \addlegendimage{mycolor3,mark=asterisk}
 
 
-
-
 \addplot [color=mycolor1,solid,mark=+,mark options={solid}]
   table[row sep=crcr]{%
 0	333\\
 };
+
 
 \addplot [color=mycolor2,solid,mark=diamond,mark options={solid}]
   table[row sep=crcr]{%
 0	313\\
 };
 
+
 \addplot [color=mycolor3,solid,mark=square,mark options={solid}]
   table[row sep=crcr]{%
 0	303\\
 };
+
 
 \addplot [color=mycolor1,dashed,mark=+,mark options={solid}]
   table[row sep=crcr]{%
 0	293\\
 };
 
+
 \addplot [color=mycolor2,dashed,mark=diamond,mark options={solid}]
   table[row sep=crcr]{%
 0	293\\
 };
+
 
 \addplot [color=mycolor3,dashed,mark=square,mark options={solid}]
   table[row sep=crcr]{%
@@ -481,9 +486,11 @@ scale only axis,
 xmin=0,
 xmax=200,
 xlabel={t $\left[ s \right]$},
+xmajorgrids,
 ymin=0,
 ymax=70,
 ylabel={Error $\left[ \% \right]$},
+ymajorgrids,
 axis x line*=bottom,
 axis y line*=left
 ]
