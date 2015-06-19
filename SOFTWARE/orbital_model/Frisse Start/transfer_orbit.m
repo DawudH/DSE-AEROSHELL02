@@ -70,7 +70,7 @@ ax2.YLabel.String = 'V_{s/c} [km/s]';
 %         'location','north')
 %plotyy((delta_V+V_esc_earth)/1000,t,(delta_V(index)+V_esc_earth)/1000,V_sc_m_atmos(index)/1000)
 grid on
-matlab2tikz('.\LaTeX\transfer_time.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
+% matlab2tikz('.\LaTeX\transfer_time.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
 
 figure('name','transfer orbit')
 hold on
@@ -95,4 +95,20 @@ hsc.Color = 'k';
 set(gca,'Visible','off')
 set(gcf,'color',[1 1 1])
 legend('Sun','Earth','Mars','Earth trajectory','Mars trajectory','Interplanetary trajectory','location','westoutside')
-matlab2tikz('.\LaTeX\transfer_orbit.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
+% matlab2tikz('.\LaTeX\transfer_orbit.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
+
+%% plot the sin waves of the orbits
+% last allignment 8 april 2014
+% orbital period earth
+Te = 365.25636;
+% orbital period Mars
+Tm = 686.971;
+
+t = 0:1:2000;
+Ye = sin(2*pi/Te * t);
+Ym = sin(2*pi/Tm * t);
+figure('name','launch windows')
+hold on
+plot(t,Ye)
+plot(t,Ym)
+grid on
