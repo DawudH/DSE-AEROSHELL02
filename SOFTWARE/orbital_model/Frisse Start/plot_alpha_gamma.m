@@ -91,10 +91,10 @@ grid on
 % extrapolated
 figure('name','fitted to datapoints and extrapolated')
 hold on
-plot([flyby.gamma; accel.gamma; crash.gamma],[flyby.alpha; accel.alpha; crash.alpha]*180/pi,'o')
-plot(21.74:0.001:22,polyval(flyby.polyfit,21.74:0.001:22)*180/pi)
-plot(21.85:0.001:22,polyval(accel.polyfit,21.85:0.001:22)*180/pi)
-plot(21.74:0.001:21.93,polyval(crash.polyfit,21.74:0.001:21.93)*180/pi)
+%plot([flyby.gamma; accel.gamma; crash.gamma],[flyby.alpha; accel.alpha; crash.alpha]*180/pi,'o')
+plot(21.64:0.001:22,polyval(flyby.polyfit,21.64:0.001:22)*180/pi)
+plot(21.64:0.001:22,polyval(accel.polyfit,21.64:0.001:22)*180/pi)
+plot(21.64:0.001:21.93,polyval(crash.polyfit,21.64:0.001:21.93)*180/pi)
 grid on
 
 phi_0_CL_15.crash.polyfit = crash.polyfit;

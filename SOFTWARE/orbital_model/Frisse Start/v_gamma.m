@@ -55,7 +55,7 @@ k = length(results.GAMMA) + 1;
 
 for j = 1:length(v_range)
     notdone = true;
-    gamma_range = [21.5, 22.5];
+    gamma_range = [19, 22];
     n = 1;
     while notdone
         
