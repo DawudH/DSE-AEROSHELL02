@@ -2,7 +2,7 @@
 
 Based on the mass estimation model outlined in subsection \ref{subsec:structool}, the effect of changing design parameters on inflatable structural mass is investigated hereafter. To this end, the following design parameters have been investigated: centre body and inflated diameter, half-cone angle, the number of toroids and aerodynamic loading. The drag coefficient has not been investigated separately, for it appears exclusively multiplied by dynamic pressure and a percentual increase in drag coefficient therefore has the same effect as an equal percentual change in dynamic pressure. The product of these two terms gives the aerodynamic force working over the decelerator frontal surface area.
 
-\begin{figure}[ht]
+\begin{figure}[h]
 	\centering
 
 	\begin{subfigure}[b]{0.49\textwidth}
@@ -43,11 +43,11 @@ Material selection has a significant effect on flexible material mass, as illust
 
 For higher dynamic pressures, materials with a higher specific strength perform better in terms of structural mass. Flexible material is fully loaded in tension by the inflation pressure is required not to fail under tension, dictated by ultimate strength. To this end, a certain thickness with a corresponding mass is required. Mass performance is then directly linked to specific strength and this is confirmed by Figure \ref{fig:mat}. Aramid fibres Kevlar and Technora have the lowest specific strengths, approximately 2 [$MNm \cdot kg^{-1}$]. A notably higher specific strength of 3.44 and 3.77 [$MNm \cdot kg^{-1}$] is attained by Spectra 2000 and PBO Zylon respectively. This confirms the choice for PBO Zylon for its mass advantages over Kevlar in \gls{irve}-3 \cite{Dillman2012a}. Spectra 2000 is capable of achieving a lower mass than PBO Zylon despite its lower specific strength, due to its low density. 
 
-Mass differences between materials remain limited, up to 30 [$kg$] over a range of half-cone angles and diameters.
+Mass differences between materials remain limited, up to 30 $[kg]$ over a range of half-cone angles and diameters.
 
 All materials have been selected based on their operating temperature since these are required to operate in an environment with significant thermal loading. As an example, Spectra 2000 fibres are not deemed suitable for their allowable temperature of 150 degrees Celsius, which would incur significant extra \acrfull{tps} mass. Dyneema would similarly be unsuitable by its temperature limit of 145 degrees Celsius\footnote{URL:\url{http://eurofibers.com/fibers/dyneema/}. Accessed: 17-06-2015} A summary of material properties is given in the Mid-Term Report \cite[p.64]{Balasooriyan2015b}. 
 
-\begin{figure}[ht]
+\begin{figure}[h]
 	\centering
 	\includegraphics[width=1.0\textwidth]{./Figure/Structure/material_test2.eps}
 	\caption{Flexible material structural mass estimation for different materials}
@@ -56,19 +56,19 @@ All materials have been selected based on their operating temperature since thes
 
 \paragraph{Forces}
 
-Using the force estimation tool for the inflatable structure the sensitivity for the scaling of loads can be determined. Figure \ref{fig:forces} displays the estimated structural loads throughout the inflatable for a total of 9 toroids and a set outer diameter of 12 and 18 [$m$]. The loads as displayed in Figure \ref{fig:forces} feature solely the loads induced by aerodynamic pressure. The internal pressure loads follow separately. This sensitivity analysis is performed to evaluate the scalability of the \gls{hiad} design. Previous \gls{hiad} designs, most predominantly the \gls{irve} missions, feature smaller mission payloads and corresponding smaller diameters. Up to this point the highest diameter stacked toroid design flown is featured in the second and third \gls{irve} missions, namely an outer diameter of 2.93 [$m$]. 
+Using the force estimation tool for the inflatable structure the sensitivity for the scaling of loads can be determined. Figure \ref{fig:forces} displays the estimated structural loads throughout the inflatable for a total of 9 toroids and a set outer diameter of 12 and 18 $[m]$. The loads as displayed in Figure \ref{fig:forces} feature solely the loads induced by aerodynamic pressure. The internal pressure loads follow separately. This sensitivity analysis is performed to evaluate the scalability of the \gls{hiad} design. Previous \gls{hiad} designs, most predominantly the \gls{irve} missions, feature smaller mission payloads and corresponding smaller diameters. Up to this point the highest diameter stacked toroid design flown is featured in the second and third \gls{irve} missions, namely an outer diameter of 2.93 $[m]$. 
 
-\begin{figure}[ht]
+\begin{figure}[h]
 	\centering
 	\includegraphics[width=0.9\textwidth]{./Figure/Structure/forces_nopress_test.eps}
-	\caption[{Internal force estimation for dynamic pressure 3750 [$Pa$], no inflation pressure applied}]{Internal force estimation for dynamic pressure 3750 [$Pa$], no inflation pressure applied. Black bars are for a diameter of 18 [$m$]; white bars for a diameter of 12 [$m$]}
+	\caption[{Internal force estimation for dynamic pressure 3750 [$Pa$], no inflation pressure applied}]{Internal force estimation for dynamic pressure 3750 [$Pa$], no inflation pressure applied. Black bars are for a diameter of 18 [$m$]; white bars for a diameter of 12 $[m]$}
 	\label{fig:forces}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}[h]
 	\centering
 	\includegraphics[width=0.9\textwidth]{./Figure/Structure/forces_test.eps}
-	\caption[{Internal force estimation for dynamic pressure 3750 [$Pa$], with inflation pressure applied}]{Internal force estimation for dynamic pressure 3750 [$Pa$], with inflation pressure applied. Black bars are for a diameter of 18 [$m$]; white bars for a diameter of 12 [$m$]}
+	\caption[{Internal force estimation for dynamic pressure 3750 [$Pa$], with inflation pressure applied}]{Internal force estimation for dynamic pressure 3750 [$Pa$], with inflation pressure applied. Black bars are for a diameter of 18 [$m$]; white bars for a diameter of 12 $[m]$}
 	\label{fig:forcesp}
 \end{figure}
 
@@ -78,4 +78,4 @@ Secondly the loads do not increase linearly over the diameter. This is the resul
 
 Thirdly the dynamic pressure loads of Figure \ref{fig:forces} are found to be of a similar order as the internal pressure loads induced per Equation \ref{eq:Q} at the root of the inflatable. Moving towards the tip of the inflatable these differences increase as the internal pressure loads are maintained whereas the loads induce by the dynamic pressure reduce towards the tip. This is further expanded upon in Figure \ref{fig:forcesp} in which pressure loads are included.
 
-The final conclusion with regards to scalability of the inflatable can be made on the basis of Figure \ref{fig:forcesp}. If the internal and external pressure loads are combined a minimum required thickness can be computed on the basis of requiring the structure not to yield. This parameter is relevant as foldability of the inflatable has to be considered as well. Foldability is an important parameter as the inflatable has to be stowed away during launch and the transfer towards Mars. From this yielding criterion and a typical material such as Kevlar 49 a minimum required thickness of below 0.01 [$mm$] is found. Since this value is rather small the thickness of the inflatable is not a consideration from a folding perspective even for large diameters.
+The final conclusion with regards to scalability of the inflatable can be made on the basis of Figure \ref{fig:forcesp}. If the internal and external pressure loads are combined a minimum required thickness can be computed on the basis of requiring the structure not to yield. This parameter is relevant as foldability of the inflatable has to be considered as well. Foldability is an important parameter as the inflatable has to be stowed away during launch and the transfer towards Mars. From this yielding criterion and a typical material such as Kevlar 49 a minimum required thickness of below 0.01 $[mm]$ is found. Since this value is rather small the thickness of the inflatable is not a consideration from a folding perspective even for large diameters.
