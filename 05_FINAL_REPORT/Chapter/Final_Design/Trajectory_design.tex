@@ -28,13 +28,6 @@ In this section the design of the trajectory followed by the spacecraft during t
 	\label{fig:trajectory}
 \end{figure}
 
-\begin{figure}[ht]
-	\centering
-	\includegraphics[width=0.7\textwidth]{Figure/Orbit/angles.pdf}
-	\caption{The angles used in the simulation of the trajectory}
-	\label{fig:angles}
-\end{figure}
-
 \subsubsection{Aerocapture} \label{sec:aerocapture}
 The first phase of the trajectory is aerocapture, in this phase the objective is to loose enough energy to get in a Mars synchronous orbit. The velocity that has to be obtained at the end of aerocapture in order to get in such an orbit is $4.53 \left[km \cdot s^{-1}\right]$. In Figure \ref{fig:orbit_aerocapture_data} it can be seen from the velocity profiles that they all end at this velocity.
 
@@ -50,7 +43,7 @@ In order to facilitate both objectives for aerocapture it is thus important that
 
 In figure \ref{fig:orbit_aerocapture_data} the parameters that were recorded during the simulation are shown for the nominal trajectory and two trajectories created for a 10 \% increase and decrease in atmospheric density. This change in density is based on the maximum estimated error in the ESA mars climate database v5.2 \cite{Lewis2015}.
 
-The bank control for the trajectories is changed to attain the same exit velocity. This velocity is needed to get into a Mars synchronous orbit. With this results it is proven that a density change of $\pm 10\%$ can be accounted for by changing the bank control. However, some other parameters do change. The peak acceleration and dynamic pressure increase for a higher density. The \gls{tps} and inflatable structure should be sized on the worst case. Also the time passed and the position of exit (defined by $\tau$) are different for each trajectory. These changes have a significant effect on the entry and descent phase. This effect will be explained in Section \ref{sec:entry_descent}.
+The bank control for the trajectories is changed to attain the same exit velocity. This velocity is needed to get into a Mars synchronous orbit. With this results it is proven that a density change of $\pm 10\%$ can be accounted for by changing the bank control. However, some other parameters do change. The peak acceleration and dynamic pressure increase for a higher density. The \gls{tps} and inflatable structure should be sized on the worst case. Also the time passed and the position of exit (defined by $\tau$ in Figure \ref{fig:angles}) are different for each trajectory. These changes have a significant effect on the entry and descent phase. This effect will be explained in Section \ref{sec:entry_descent}.
 \begin{sidewaysfigure}
 	\centering
 	\includegraphics[width=0.99\textwidth]{Figure/Orbit/sensitivity_aerocapture.pdf}
@@ -61,12 +54,19 @@ The bank control for the trajectories is changed to attain the same exit velocit
 \subsubsection{Parking orbit}\label{sec:parking_orbit}
 After aerocapture the spacecraft goes into an elliptic orbit. In the apoareion (apocenter of an orbit around Mars) a boost is given to raise the periareion to $200 \left[km\right]$ above \gls{mola}. In this parking orbit the vehicle can wait for dust storms to vanish and can observe the entry conditions it will be subjected to. Because the parking orbit is Mars synchronous the point observed is the same and changes can be accurately observed at the entry location. 
 
-The first entry opportunity is after approximately two earth days from the start of the mission. From that moment every sol an opportunity for entry arises. This gives in total eight opportunities for entry in little over nine earth days. This is the maximum that can be achieved within the ten days that are available for the mission. In principle the spacecraft could stay in the parking orbit much longer if it would be necessary. However the current mission is fully designed for an entry of at most 10 days. i.e. crew operational items are insufficient to sustain a longer mission.
+The first entry opportunity is after approximately one earth day from the start of the mission. From that moment every sol an opportunity for entry arises. This gives in total nine opportunities for entry in little over nine earth days. This is the maximum that can be achieved within the ten days that are available for the mission. In principle the spacecraft could stay in the parking orbit much longer if it would be necessary. However the current mission is fully designed for an entry of at most 10 days. i.e. crew operational items are insufficient to sustain a longer mission.
 
-For every entry opportunity the decision to start entry has to be made approximately half a sol before the entry. In the apoareion a boost opposite to the flight direction should be given to lower periareion of the orbit.  When the vehicle reaches the atmosphere in this lower orbit the entry and descent phase begins. 
+For every entry opportunity the decision to start entry has to be made approximately half a sol before the entry. In the apoareion a boost opposite to the flight direction should be given to lower periareion of the orbit.  When the vehicle reaches the atmosphere in this lower orbit the entry and descent phase begins.
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.7\textwidth]{Figure/Orbit/angles.pdf}
+	\caption{The angles used in the simulation of the trajectory}
+	\label{fig:angles}
+\end{figure}
 
 \subsubsection{Entry and descent}\label{sec:entry_descent}
-The boost given in the apoareion before entry is determined such that the initial flight path angle of the entry is $17.2 \left[deg\right]$. Corresponding to this flight path angle an entry location (defined by $\tau$) is dictated by the exit location of the aerocapture. With this location, flight path angle and the control as shown in Figure \ref{fig:orbit_entry_data} the entry trajectory and final position are attained as shown in Figure \ref{fig:entry_mars}.
+The boost given in the apoareion before entry is determined such that the initial flight path angle ($\gamma$ as in Figure \ref{fig:angles}) of the entry is $17.2 \left[deg\right]$. Corresponding to this flight path angle an entry location (defined by $\tau$ in Figure \ref{fig:angles}) is dictated by the exit location of the aerocapture. With this location, flight path angle and the control as shown in Figure \ref{fig:orbit_entry_data} the entry trajectory and final position are attained as shown in Figure \ref{fig:entry_mars}.
 
 The objective of the entry and descent phase is to get to a height of $15 \left[km\right]$ with a velocity of $M = 5 \left[-\right]$ while keeping the deceleration under $3 \gls{sym:g}_{earth}$.
 
@@ -74,13 +74,13 @@ In order to keep the deceleration low, especially at the end of the descent, a l
 
 In the last part of the descent also a high dynamic pressure is attained, which is the parameter that is the main input for inflatable structure design. The highest dynamic pressure is reached by the trajectory for a 10\% lower density.
 
-***Sensitivity to density change +-10\% and possibility to correct for it***\\
-\begin{sidewaysfigure}
-	\centering
-	\includegraphics[width=0.99\textwidth]{Figure/Orbit/sensitivity_entry.pdf}
-	\caption{Results of the re-entry trajectory for three different density profiles. The trajectories with modified density are corrected (changed \gls{sym:mu} profile) to show the ability to reach the desired landing location. The horizontal dashed lines are design limits (for the \gls{sym:M} and \gls{sym:acc} plots)}
-	\label{fig:orbit_entry_data}
-\end{sidewaysfigure}
+In Figure \ref{fig:entry_mars} next to the nominal trajectory also two trajectories with a 10\% higher or lower density are plotted. The trajectory in the higher density atmosphere would land at a location before the nominal landing location if no change to the control is done. The trajectory that is shown for 10 \% higher density is one with control that allows the vehicle to fly on further (increased \gls{sym:mu}). This control causes the vehicle to overshoot the nominal landing location. Any point between these two margins is a possible landing location. It is thus proven that the nominal landing location can be achieved with 10\% higher density.
+
+The trajectory for a 10\% lower density would normally overshoot the nominal landing location. The control is thus changed in order to push it towards the surface faster (lower \gls{sym:mu}). This control causes the vehicle to land before the nominal landing location. Again any point between these two margins is a possible landing location. This proves that the nominal landing location can be attained with 10\% lower density.
+
+In Figure \ref{fig:entry_mars} it can also be seen that the entry locations for each trajectory is different. This flows down from the aerocapture where the exit location for these trajectories where different as well.
+
+The time passed during both the aerocapture and the entry and descent phases are also different for each trajectory. During this time the landing location has rotated with Mars in the same direction as the flight direction of the vehicle. If you look closely to Figure \ref{fig:entry_mars} you can see three points for the nominal landing location. Each point for the time one of the trajectories would arrive.
 
 \begin{figure}[ht]
 	\centering
@@ -89,5 +89,17 @@ In the last part of the descent also a high dynamic pressure is attained, which 
 	\label{fig:entry_mars}
 \end{figure}
 
+In Figure \ref{fig:orbit_entry_data} it can be seen that the Mach number at a height of $15 \left[km\right]$ is approximately $5$ for all orbits. The entry trajectory with a lower density is the shortest, however it also decelerates fastest overshooting the $3 \gls{sym:g}_{earth}$ requirement by ??\%. This higher deceleration is needed to reach the required velocity of $M=5$.
+
+The entry trajectory with a higher density is the longest. The deceleration is also faster than for the nominal trajectory and it also overshoots the $3 \gls{sym:g}_{earth}$ requirement by ??\%. This higher deceleration is caused by the denser atmosphere at a height of $15 \left[km\right]$.
+
+\begin{sidewaysfigure}
+	\centering
+	\includegraphics[width=0.99\textwidth]{Figure/Orbit/sensitivity_entry.pdf}
+	\caption{Results of the re-entry trajectory for three different density profiles. The trajectories with modified density are corrected (changed \gls{sym:mu} profile) to show the ability to reach the desired landing location. The horizontal dashed lines are design limits (for the \gls{sym:M} and \gls{sym:acc} plots)}
+	\label{fig:orbit_entry_data}
+\end{sidewaysfigure}
+
 \subsubsection{Needed properties for aerodynamic shape design} \label{sec:trajectory_summary}
+The required aerodynamic properties for the different phases are different
 ***Conclusion on CD and CL required***
