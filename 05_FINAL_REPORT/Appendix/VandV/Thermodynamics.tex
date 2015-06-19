@@ -16,7 +16,7 @@ Figure \ref{fig:valcop} shows a semi-infinite 0.5 $\left[m\right]$ thick copper 
 \end{figure}
 
 \subsubsection{Validation against experimental data}
-As mentioned earlier two papers by Del Corso provide the experimental data \cite{Corso2009,Corso2011}. The four lay-ups shown in Figure \ref{fig:vallayup} have been tested to validate the thermal model.
+As mentioned earlier two papers by Del Corso et al provide the experimental data \cite{Corso2009,Corso2011}. The four lay-ups shown in Figure \ref{fig:vallayup} have been tested to validate the thermal model. Note that the references do not provide the experimental data for lay-up 1, but give the result of the thermal model they have used. For lay-up 2 and 3 data from both \gls{nasa}'s model and experiments have been provided. 
 
 \begin{figure}[H]
 	\centering
@@ -25,7 +25,39 @@ As mentioned earlier two papers by Del Corso provide the experimental data \cite
 	\label{fig:vallayup}
 \end{figure}
 
+All lay-ups have been compared and validated. Before the model is validated all the contact resistances had to be adjusted such that they match the experimental data as was already mentioned in Section \ref{subsec:thermaltool}. The reason for this is that it is not possible to determine this value analytically. Lay-up 2 is used to serve as an example of this validation and has been subjected to a heat flux of 6.2 $\left[W\cdot cm^{-2}\right]$ for 90 $\left[s\right]$. Between every layer a thermocouple was placed during the experiment. With four layers that means that there were three thermocouples. Figure XX shows the result of this validation. It is clear that the model works very well during the application of the heat flux in the first 90 $\left[s\right]$. The average error for thermocouples TC1, TC2 and TC3 are 3.9 \%, 3.0 \% and 4.8 \% respectively. However, during the cooling down of the lay-up the error rapidly increases to 60.1 \%, 66.0 \% and 68.9 \%.
+
+%Figure
+
+Table \ref{tab:valerrorthermo} shows the result of all the lay-ups. The thermal model has been compared to \gls{nasa}'s model, the experimental data where possible. For reference NASA's model has been compared to the experimental data to show the performance of the developed thermal model. Note that the maximum error is the average of the maximum errors of the thermocouples. Also for every lay-up the contact resistance must be tweaked in order to match the experimental data. The number used in tweaking is characteristic for the two layers it seperates. The table shows that the thermal model is accurate to about 15-20 \%. \gls{nasa}'s model performs better with an accuracy of about 10-15 \%. Not visible in the table, but visible in Figure XX is that larger errors are overestimates of the temperatures. \textcolor{red}{BLABLABAL, layup 4 nog ingevuld worden}
+
+\begin{table}[h]
+	\centering
+	\caption{Comparison of thermal model, \gls{nasa}'s model and experimental data}
+	\begin{tabular}{|p{5.6cm}|rrrr|}
+		\hline
+		\textbf{} & \textbf{Lay-up 1} & \textbf{Lay-up 2} & \textbf{Lay-up 3} & \textbf{Lay-up 4} \\ \hline \hline
+		\multicolumn{5}{|l|}{\textbf{Thermal model vs. experimental data}}			\\ \hline	
+		Avg. error											&        - & 18.28 \% & 16.45 \% & 00.00 \% \\
+		Max. error											&        - & 65.03 \% & 70.90 \% & 00.00 \% \\
+		Avg. error during heat flux							&        - &  3.91 \% & 17.75 \% & 00.00 \% \\
+		Avg. error during cooling down						&        - & 30.05 \% &  8.67 \% & 00.00 \% \\ \hline
+		\multicolumn{5}{|l|}{\textbf{Thermal model vs. \gls{nasa}'s model}}			\\ \hline		
+		Avg. error											&  6.72 \% & 10.88 \% & 17.85 \% & 00.00 \% \\
+		Max. error											& 22.54 \% & 22.42 \% & 55.56 \% & 00.00 \% \\
+		Avg. error during heat flux							&  7.26 \% & 10.48 \% & 18.19 \% & 00.00 \% \\
+		Avg. error during cooling down						&  6.62 \% & 11.20 \% & 15.84 \% & 00.00 \% \\ \hline
+		\multicolumn{5}{|l|}{\textbf{\gls{nasa}'s model vs. experimental data}}			\\ \hline		
+		Avg. error											&        - & 13.79 \% & 10.69 \% & 00.00 \% \\
+		Max. error											&        - & 43.37 \% & 34.22 \% & 00.00 \% \\
+		Avg. error during heat flux							&        - &  8.43 \% & 10.28 \% & 00.00 \% \\
+		Avg. error during cooling down						&        - & 18.18 \% & 13.15 \% & 00.00 \% \\ \hline
+	\end{tabular}
+	\label{tab:valerrorthermo}
+\end{table}
+
 
 \subsubsection{Conclusions after the verification and validation procedure}
-The verification showed that the numerical solution starts to diverge as the error increases with time and depth. It is expected that this is a result of rounding errors that get multiplied every timestep in the discretisation scheme. The reason for this is that refining the mesh produces the same errors. There are two reasons why this is not a significant problem for the design problem. The first is that the \gls{tps} shall be a hunderd times thinner. The second is that the length of the aerocapture and entry phases are approximately 400 $\left[s\right]$, which is lower than the 1000 $\left[s\right]$ in the verification. 
+The verification showed that the numerical solution starts to diverge as the error increases with time and depth. It is expected that this is a result of rounding errors that get multiplied every timestep in the discretisation scheme. The reason for this is that refining the mesh produces the same errors. There are two reasons why this is not a significant problem for the design problem. The first is that the \gls{tps} shall be a hundred times thinner. The second is that the length of the aerocapture and entry phases are approximately 400 $\left[s\right]$, which is lower than the 1000 $\left[s\right]$ in the verification. 
  
+The validation shows that the thermal model, with an accuracy of 15-20 \%, performs slightly worse than \gls{nasa}'s model with an accuracy of 10-15 \%. Also the larger errors are overestimated temperatures, which makes designing with the model safe as it results in more conservative designs. It is assumed that errors under 10 \% should be completely acceptable for a low fidelity model. Larger error should be contributed to the difficulties in contact resistance modeling. When increasing the amount of layers it is increasingly difficult to predict the contact resistance, something Del Corso also experienced in \gls{nasa}'s model \cite{Corso2009}. This especially gets worse when there is no heat applied and the lay-up converges to an equilibrium state. For the purpose of the design of the lay-up for an inflatable heat shield this is not a problem, as the heat shield has enough time to cool down in the parking orbit after the aerocapture before it starts its final entry. For these reasons the thermal model is considered validated and safe to use for design while keeping its accuracy in mind.

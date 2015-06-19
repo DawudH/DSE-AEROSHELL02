@@ -297,7 +297,9 @@ end
 %     
 %% Determine the errors for the different layes
 
+errorres = zeros(12,1);
 
-    
-    
-    
+errorres(5)  = mean(mean(abs(plotS-plotVAL)./plotVAL))*100;
+errorres(6)  = mean(max(abs(plotS-plotVAL)./plotVAL))*100;
+errorres(7)  = mean(mean(abs(plotS(1:901,:)-plotVAL(1:901,:))./plotVAL(1:901,:)))*100;
+errorres(8)  = mean(mean(abs(plotS(902:end,:)-plotVAL(902:end,:))./plotVAL(902:end,:)))*100;
