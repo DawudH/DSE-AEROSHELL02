@@ -195,8 +195,7 @@ valid = 1;
 % end
 if valid
     valres = dlmread('layup2res.txt');
-    figure;
-    hold on
+
     plotS = zeros(nmax,6);
     for j = 2:length(indexx)-1
         plotS(:,2*j-3:2*j-2) = [S(indexx(j)+j-3,:).',S(indexx(j)+j-1,:).'];
@@ -205,7 +204,12 @@ if valid
     for j = 5:length(valres(1,:))
         plotVAL(:,j-4) = interp1(valres(1:end-1,1),valres(1:end-1,j),t).';
     end
-    
+    plotVALex = zeros(nmax,3);
+    for j = 2:4
+        plotVALex(:,j-1) = interp1(valres(1:end-1,1),valres(1:end-1,j),t).';
+    end
+    figure;
+    hold on   
     
     plot(t,plotS,'--')
     ax = gca;
@@ -215,8 +219,8 @@ if valid
     plot(t,abs(plotS-plotVAL)./plotVAL)
     max(abs(plotS-plotVAL)./plotVAL)
 end
-    
-    
+%o,x,*,s,d,+
+  
     
     
     

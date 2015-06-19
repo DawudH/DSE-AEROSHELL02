@@ -1,7 +1,7 @@
 
 \paragraph{Control system selection}
 Based on the arguments for and against certain control system concepts given in Chapter \ref{subsec:controltool} a selection of suitable control system solutions was made. Figure \ref{fig:cgoffset} shows the \gls{cg} offset required along the Z-axis to trim the spacecraft at certain angles of attack for various \gls{cg} locations on the X-axis. 
-\begin{figure}[h]
+\begin{figure}[ht]
 	\centering
 	\includegraphics[width=0.95\textwidth]{./Figure/control/moment}
 	\caption{\gls{cg} offset along Z-axis required for a trimmed condition at various angles of attack}
@@ -24,7 +24,7 @@ Accuracies using bank control where obtained using dispersions of $\pm 0.03 $ \g
 
 It is argued that with an increasing amount of bank reversals, complemented with additional control measures such as extra sensors, higher accuracies can be obtained. The trajectories are budgeted for a total of six bank reversals, three for both the initial aero-capture and the final \gls{edl}. Three bank reversals are typical values for single orbit \cite{Lu2007, Cianciolo2010}. A very qualitative definition of three bank reversals as defined within the control system analysis is displayed in Figure \ref{fig:bankdef}.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 	\centering
 	\includegraphics[width=0.6\textwidth]{./Figure/control/Cont.pdf}
 	\caption{Qualitative figure displaying three bank reversals}
@@ -62,7 +62,7 @@ Additionally thrusters for the velocity increments in the apocenter are required
 
 A thruster suitable for such a purpose is the Apogee kick engine by IHI Japan at a mass of $15.7$ $[kg]$ and a specific impulse of $321.4$ $[s]$. As secondary propellant \gls{nto} is required \cite[p.538]{Wertz2011}. This thruster can only be used if placed aft of the re-entry vehicle, since the front is covered by the \gls{hiad} additional pointing by the crew module \gls{adcs} system may be required. To ensure sufficient control system reliability two of these thrusters will be employed so that no \acrfull{spf} can occur. 
 
-\begin{table}[h]
+\begin{table}[ht]
 	\centering
 \caption{Overview of thruster properties}
 \label{tab:thrusters}
@@ -89,7 +89,7 @@ The tank mass is estimated via the empirical Equation \ref{eq:tankmass} \cite[p.
 
 Table \ref{tab:controlmassbreakdown} provides an overview of the individual mass components discussed above. Mass estimates exclude the final contingency factor of $20\%$ applicable for all the \gls{hiad} components.
 
-\begin{table}[h]
+\begin{table}[ht]
 \centering
 \caption{Control system mass components}
 \label{tab:controlmassbreakdown}
@@ -114,11 +114,18 @@ Similar to the mass estimates the control system can  also be subdivided into pa
 
 Control within the atmosphere is required in two phases of the mission. The initial aero capture phase and the final \gls{edl}. Due to small uncertainties in the \glspl{hiad} performance, but more importantly atmospheric disturbances, deviations from the nominal trajectory can be observed. These deviations are accounted for in the trajectory discussed in Section \ref{sec:trajectorydesign} but also need to be recognized during mission operations such that they can be acted upon. 
 
-Typical implementations for a control system involve a \gls{npc} or \gls{apc} method and use sensed accelerations to determine the atmospheric properties \cite{Davis2010}. These values are used to update the control models such that the same terminal point is reached each time. For this purpose a set of three gyroscopes and three accelerators is required \cite{Dutta2013}. The former is already included in the \gls{adcs} as discussed in Chapter \ref{subsec:adcs}. Recent advances in accelerometers make even the high accuracy sensors a low mass component. The accelerometers are included in the \gls{adcs} mass budget as they are also required for the terminal descent phase. 
+Typical implementations for a control system involve a \gls{npc} or \gls{apc} method and use sensed accelerations to determine the atmospheric properties \cite{Davis2010}. These values are used to update the control models such that the same terminal point is reached each time. For this purpose a set of three gyroscopes and three accelerators as \gls{imu} is required \cite{Dutta2013}. The former is already included in the \gls{adcs} as discussed in Chapter \ref{subsec:adcs}. Recent advances in accelerometers make even the high accuracy sensors a low mass component. The accelerometers are included in the \gls{adcs} mass budget as they are also required for the terminal descent phase. 
 
-For achieving the high required landing accuracy it is advised that next to sensed accelerations to determine the control model parameters pressure sensors are included as well.  \gls{npc} and \gls{apc} methods for bank control on Mars do normally not include these sensors and merely rely on sensed acceleration data \cite{Lu2007, Davis2010}. 
+For achieving the high required landing accuracy it is advised that next to sensed accelerations to determine the control model parameters pressure sensors are included as well.  \gls{npc} and \gls{apc} methods for bank control on Mars do normally not include these sensors and merely rely on sensed acceleration data \cite{Lu2007, Davis2010}. Since pressure can not be measured directly during the hypersonic flight use is made of flush atmospheric data \cite{Dutta2013}. 
  
-Such sensors are demonstrated in hypersonic flight in the \gls{msl} in 2012 \cite{Dutta2013}. The use of separate sensors for determining the atmospheric properties will allow for easier determination of the atmospheric properties and allow for a higher landing accuracy on order to meet the set requirements.
+Such sensors are demonstrated in hypersonic flight in the \gls{msl} in 2012 \cite{Dutta2013}. The use of separate sensors for determining the atmospheric properties will allow for easier determination of the atmospheric properties and allow for a higher landing accuracy on order to meet the set requirements. A very schematic overview of the functioning of the control system within the atmosphere is given in Figure \ref{fig:Contsys}.
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.95\textwidth]{./Figure/control/Contsys.pdf}
+	\caption{A schematic overview of the control system functioning}
+	\label{fig:Contsys}
+\end{figure}
 
 \subparagraph{Control outside the atmosphere}
 
