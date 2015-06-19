@@ -114,11 +114,18 @@ Similar to the mass estimates the control system can  also be subdivided into pa
 
 Control within the atmosphere is required in two phases of the mission. The initial aero capture phase and the final \gls{edl}. Due to small uncertainties in the \glspl{hiad} performance, but more importantly atmospheric disturbances, deviations from the nominal trajectory can be observed. These deviations are accounted for in the trajectory discussed in Section \ref{sec:trajectorydesign} but also need to be recognized during mission operations such that they can be acted upon. 
 
-Typical implementations for a control system involve a \gls{npc} or \gls{apc} method and use sensed accelerations to determine the atmospheric properties \cite{Davis2010}. These values are used to update the control models such that the same terminal point is reached each time. For this purpose a set of three gyroscopes and three accelerators is required \cite{Dutta2013}. The former is already included in the \gls{adcs} as discussed in Chapter \ref{subsec:adcs}. Recent advances in accelerometers make even the high accuracy sensors a low mass component. The accelerometers are included in the \gls{adcs} mass budget as they are also required for the terminal descent phase. 
+Typical implementations for a control system involve a \gls{npc} or \gls{apc} method and use sensed accelerations to determine the atmospheric properties \cite{Davis2010}. These values are used to update the control models such that the same terminal point is reached each time. For this purpose a set of three gyroscopes and three accelerators as \gls{imu} is required \cite{Dutta2013}. The former is already included in the \gls{adcs} as discussed in Chapter \ref{subsec:adcs}. Recent advances in accelerometers make even the high accuracy sensors a low mass component. The accelerometers are included in the \gls{adcs} mass budget as they are also required for the terminal descent phase. 
 
-For achieving the high required landing accuracy it is advised that next to sensed accelerations to determine the control model parameters pressure sensors are included as well.  \gls{npc} and \gls{apc} methods for bank control on Mars do normally not include these sensors and merely rely on sensed acceleration data \cite{Lu2007, Davis2010}. 
+For achieving the high required landing accuracy it is advised that next to sensed accelerations to determine the control model parameters pressure sensors are included as well.  \gls{npc} and \gls{apc} methods for bank control on Mars do normally not include these sensors and merely rely on sensed acceleration data \cite{Lu2007, Davis2010}. Since pressure can not be measured directly during the hypersonic flight use is made of flush atmospheric data \cite{Dutta2013}. 
  
-Such sensors are demonstrated in hypersonic flight in the \gls{msl} in 2012 \cite{Dutta2013}. The use of separate sensors for determining the atmospheric properties will allow for easier determination of the atmospheric properties and allow for a higher landing accuracy on order to meet the set requirements.
+Such sensors are demonstrated in hypersonic flight in the \gls{msl} in 2012 \cite{Dutta2013}. The use of separate sensors for determining the atmospheric properties will allow for easier determination of the atmospheric properties and allow for a higher landing accuracy on order to meet the set requirements. A very schematic overview of the functioning of the control system within the atmosphere is given in Figure \ref{fig:Contsys}.
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.95\textwidth]{./Figure/control/Contsys.pdf}
+	\caption{A schematic overview of the control system functioning}
+	\label{fig:Contsys}
+\end{figure}
 
 \subparagraph{Control outside the atmosphere}
 
