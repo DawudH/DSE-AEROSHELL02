@@ -160,7 +160,7 @@ end
 
 % 
 %% Contour-Plot
-contourplot = 0;
+contourplot = 1;
 if contourplot
     % t = [0:double(nmax-1)]*dt;
     x = [0:double(imax-1)]*dx;
@@ -187,7 +187,7 @@ end
 % output = table(L*1000,results,layup(:,2),layup(:,3),layup(:,4),'RowNames',layernames,'VariableNames',{'Thickness','maxT','k','rho','cp'});
 %     
 %% Validation
-valid = 1;
+valid = 0;
 % if valid
 %     valres = dlmread('layup1res.txt');
 %     figure;
@@ -212,6 +212,14 @@ if valid
     for j = 6:length(valres(1,:))
         plotVAL(:,j-5) = interp1(valres(:,1),valres(:,j),t).';
     end
+    valres = dlmread('layup4res.txt');
+    plotSex = zeros(nmax,4);
+    plotVex = zeros(nmax,4);
+    plotVex = interp1(valres(:,1),valres(:,2),t).';
+    for j = 2:4
+        plot
+        
+        
     
     figure(1)
     %subplot(1,2,1)

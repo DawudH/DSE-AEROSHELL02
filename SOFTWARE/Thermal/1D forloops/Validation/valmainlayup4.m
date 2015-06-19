@@ -31,14 +31,9 @@ nmax = int32(ttot/dt);  % number of time steps
 t = [0:double(nmax-1)]*dt;
 fact    = 1;           % multiplication factor of number of space steps.
 % %kfact = [2.5e-5/fact;2.5e-5/fact;2.5e-4/fact];
-     kfact = [2.5e-4 ;
-              1.0 ;
-              1.0 ;
-              1.0 ;
-              1.0];
+kfact = [2.5e-4;2.5e-4;2.5e-5;2.5e-5;2.5e-5];
 
 %kfact = [2.5e-3/fact;2.5e-5/fact;2.5e-2/fact;2.5e-2/fact;2.5e-2/fact];
-kfact'
 
 % spaceing
 L = int32(round(L*10000000));
@@ -214,9 +209,12 @@ if valid
     for j = 6:length(valres(1,:))
         plotVAL(:,j-5) = interp1(valres(:,1),valres(:,j),t).';
     end
+    plotVALex = zeros(nmax,4);
+    for j = 2:5
+        plotVALex(:,j-1) = interp1(valres(1:end-1,1),valres(1:end-1,j),t).';
+    end    
     
-    figure(1)
-    subplot(1,2,1)
+    figure
     plot(t,plotS,'--')
     hold on
     grid minor
@@ -224,15 +222,24 @@ if valid
     ax = gca;
     ax.ColorOrderIndex = 1;
     plot(t,plotVAL)
-    subplot(1,2,2)
+    figure
     plot(t,abs(plotS-plotVAL)./plotVAL)
     max(abs(plotS-plotVAL)./plotVAL)
     grid minor
     grid on
     
 end
-    
-    
-    
-    
-    
+
+errorres = zeros(12,1);
+errorres(1)  = mean(mean(abs(plotS(1:1051,:)-plotVALex(1:1051,:))./plotVALex(1:1051,:)))*100;
+errorres(2)  = mean(max(abs(plotS(1:1051,:)-plotVALex(1:1051,:))./plotVALex(1:1051,:)))*100;
+errorres(3)  = mean(mean(abs(plotS(1:900,:)-plotVALex(1:900,:))./plotVALex(1:900,:)))*100;
+errorres(4)  = mean(mean(abs(plotS(901:1051,:)-plotVALex(901:1051,:))./plotVALex(901:1051,:)))*100;
+errorres(5)  = mean(mean(abs(plotS(1:1051,:)-plotVAL(1:1051,:))./plotVAL(1:1051,:)))*100;
+errorres(6)  = mean(max(abs(plotS(1:1051,:)-plotVAL(1:1051,:))./plotVAL(1:1051,:)))*100;
+errorres(7)  = mean(mean(abs(plotS(1:900,:)-plotVAL(1:900,:))./plotVAL(1:900,:)))*100;
+errorres(8)  = mean(mean(abs(plotS(901:1051,:)-plotVAL(901:1051,:))./plotVAL(901:1051,:)))*100;
+errorres(9)  = mean(mean(abs(plotVAL(1:1051,:)-plotVALex(1:1051,:))./plotVALex(1:1051,:)))*100;
+errorres(10) = mean(max(abs(plotVAL(1:1051,:)-plotVALex(1:1051,:))./plotVALex(1:1051,:)))*100;
+errorres(11) = mean(mean(abs(plotVAL(1:900,:)-plotVALex(1:900,:))./plotVALex(1:900,:)))*100;
+errorres(12) = mean(mean(abs(plotVAL(901:1051,:)-plotVALex(901:1051,:))./plotVALex(901:1051,:)))*100;
