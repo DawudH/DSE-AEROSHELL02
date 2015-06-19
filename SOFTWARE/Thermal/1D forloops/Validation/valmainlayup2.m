@@ -195,8 +195,7 @@ valid = 1;
 % end
 if valid
     valres = dlmread('layup2res.txt');
-    figure;
-    hold on
+
     plotS = zeros(nmax,6);
     for j = 2:length(indexx)-1
         plotS(:,2*j-3:2*j-2) = [S(indexx(j)+j-3,:).',S(indexx(j)+j-1,:).'];
@@ -205,7 +204,12 @@ if valid
     for j = 5:length(valres(1,:))
         plotVAL(:,j-4) = interp1(valres(1:end-1,1),valres(1:end-1,j),t).';
     end
-    
+    plotVALex = zeros(nmax,3);
+    for j = 2:4
+        plotVALex(:,j-1) = interp1(valres(1:end-1,1),valres(1:end-1,j),t).';
+    end
+    figure;
+    hold on   
     
     plot(t,plotS,'--')
     ax = gca;
@@ -215,8 +219,22 @@ if valid
     plot(t,abs(plotS-plotVAL)./plotVAL)
     max(abs(plotS-plotVAL)./plotVAL)
 end
+%o,x,*,s,d,+
+  
     
+errorres = zeros(12,1);
+
+errorres(1)  = mean(mean(abs((plotS(:,1:2:5)+plotS(:,2:2:6))/2-plotVALex(:,1:3))./plotVALex(:,1:3)))*100;
+errorres(2)  = mean(max(abs((plotS(:,1:2:5)+plotS(:,2:2:6))/2-plotVALex(:,1:3))./plotVALex(:,1:3)))*100;
+errorres(3)  = mean(mean(abs((plotS(1:901,1:2:5)+plotS(1:901,2:2:6))/2-plotVALex(1:901,1:3))./plotVALex(1:901,1:3)))*100;
+errorres(4)  = mean(mean(abs((plotS(902:end,1:2:5)+plotS(902:end,2:2:6))/2-plotVALex(902:end,1:3))./plotVALex(902:end,1:3)))*100;
+errorres(5)  = mean(mean(abs(plotS-plotVAL)./plotVAL))*100;
+errorres(6)  = mean(max(abs(plotS-plotVAL)./plotVAL))*100;
+errorres(7)  = mean(mean(abs(plotS(1:901,:)-plotVAL(1:901,:))./plotVAL(1:901,:)))*100;
+errorres(8)  = mean(mean(abs(plotS(902:end,:)-plotVAL(902:end,:))./plotVAL(902:end,:)))*100;
+errorres(9)  = mean(mean(abs((plotVAL(:,1:2:5)+plotVAL(:,2:2:6))/2-plotVALex(:,1:3))./plotVALex(:,1:3)))*100;
+errorres(10) = mean(max(abs((plotVAL(:,1:2:5)+plotVAL(:,2:2:6))/2-plotVALex(:,1:3))./plotVALex(:,1:3)))*100;
+errorres(11) = mean(mean(abs((plotVAL(1:901,1:2:5)+plotVAL(1:901,2:2:6))/2-plotVALex(1:901,1:3))./plotVALex(1:901,1:3)))*100;
+errorres(12) = mean(mean(abs((plotVAL(902:end,1:2:5)+plotVAL(902:end,2:2:6))/2-plotVALex(902:end,1:3))./plotVALex(902:end,1:3)))*100;
     
-    
-    
-    
+errorres

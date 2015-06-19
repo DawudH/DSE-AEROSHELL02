@@ -165,35 +165,35 @@ for n=1:nmax-1
 end
 
 %% Implement Cranck-Nickelson with spaceairvoids
-
-% i is space, n is time
-% space is rows, time is columns
-U = zeros(imax+sum(xfact),nmax);
-U(:,1) = T0;
-Tamb = ones(nmax,1)*T0;
-qs = ones(nmax,1)*q0;
-qs(tdur/dt:end) = 0;
-
-
-wv = zeros(imax+sum(xfact),1);
-wv(1:end-1) = vv/2;
-wv(2:end) = wv(2:end) + vv/2;
-C = diag(1+wv) - diag(0.5*vv,1) - diag(0.5*vv,-1);
-N = diag(1-wv) + diag(0.5*vv,1) + diag(0.5*vv,-1);
-
-%define matrices
-A = zeros(imax+sum(xfact),1); 
-Cinv = inv(sparse(C));
-G = full(Cinv*sparse(N));
-
-for n=1:nmax-1
-    qrs = -emiss*sig*(U(1,n)^4-Tamb(n)^4);
-    qrb = -emiss*sig*(U(end,n)^4-Tamb(n)^4);
-    A(1) = ((qs(n)+qrs)/kv(1))*vv(1)*dx;
-    A(end) = (qrb/kv(end))*vv(end)*dx;
-    H = full(Cinv*sparse(A));
-    U(:,n+1) = G*U(:,n) + H;
-end
+% % 
+% % % i is space, n is time
+% % % space is rows, time is columns
+% % U = zeros(imax+sum(xfact),nmax);
+% % U(:,1) = T0;
+% % Tamb = ones(nmax,1)*T0;
+% % qs = ones(nmax,1)*q0;
+% % qs(tdur/dt:end) = 0;
+% % 
+% % 
+% % wv = zeros(imax+sum(xfact),1);
+% % wv(1:end-1) = vv/2;
+% % wv(2:end) = wv(2:end) + vv/2;
+% % C = diag(1+wv) - diag(0.5*vv,1) - diag(0.5*vv,-1);
+% % N = diag(1-wv) + diag(0.5*vv,1) + diag(0.5*vv,-1);
+% % 
+% % %define matrices
+% % A = zeros(imax+sum(xfact),1); 
+% % Cinv = inv(sparse(C));
+% % G = full(Cinv*sparse(N));
+% % 
+% % for n=1:nmax-1
+% %     qrs = -emiss*sig*(U(1,n)^4-Tamb(n)^4);
+% %     qrb = -emiss*sig*(U(end,n)^4-Tamb(n)^4);
+% %     A(1) = ((qs(n)+qrs)/kv(1))*vv(1)*dx;
+% %     A(end) = (qrb/kv(end))*vv(end)*dx;
+% %     H = full(Cinv*sparse(A));
+% %     U(:,n+1) = G*U(:,n) + H;
+% % end
 
 % 
 % %% Contour-Plot
@@ -237,10 +237,12 @@ valid = 1;
 %     plot(t,T(1,:),'b--')
 %     plot(t,T(3,:),'r--')
 % end
-V = zeros(imax+voidlayers,nmax);
-for j=1:voidlayers
-    V(indexx(j)+j-1:indexx(j+1)+j-1,:) = U(indexx(j)+sum(xfact(1:j)):indexx(j+1)+sum(xfact(1:j)),:);
-end
+
+
+% % V = zeros(imax+voidlayers,nmax);
+% % for j=1:voidlayers
+% %     V(indexx(j)+j-1:indexx(j+1)+j-1,:) = U(indexx(j)+sum(xfact(1:j)):indexx(j+1)+sum(xfact(1:j)),:);
+% % end
 
 
 if valid
@@ -267,35 +269,37 @@ if valid
     plot(t,abs(plotS-plotVAL)./plotVAL)
     mean(abs(plotS-plotVAL)./plotVAL)
 end
-S=V;
-if valid
-    valres = dlmread('layup1res.txt');
-    figure;
-    hold on
-    plotS = zeros(nmax,8);
-    plotS(:,1) = S(1,:).';
-    for j = 2:length(indexx)-1
-        plotS(:,2*j-2:2*j-1) = [S(indexx(j)+j-3,:).',S(indexx(j)+j-1,:).'];
-    end
-    plotS(:,8) = S(end,:).';
-    plotVAL = zeros(nmax,8);
-    for j = 2:length(valres(1,:))
-        plotVAL(:,j-1) = interp1(valres(:,1),valres(:,j),t).';
-    end
-    
-    
-    plot(t,plotS,'--')
-    ax = gca;
-    ax.ColorOrderIndex = 1;
-    plot(t,plotVAL)
-    figure;
-    plot(t,abs(plotS-plotVAL)./plotVAL)
-    mean(abs(plotS-plotVAL)./plotVAL)
-end
-    
+% % S=V;
+% % if valid
+% %     valres = dlmread('layup1res.txt');
+% %     figure;
+% %     hold on
+% %     plotS = zeros(nmax,8);
+% %     plotS(:,1) = S(1,:).';
+% %     for j = 2:length(indexx)-1
+% %         plotS(:,2*j-2:2*j-1) = [S(indexx(j)+j-3,:).',S(indexx(j)+j-1,:).'];
+% %     end
+% %     plotS(:,8) = S(end,:).';
+% %     plotVAL = zeros(nmax,8);
+% %     for j = 2:length(valres(1,:))
+% %         plotVAL(:,j-1) = interp1(valres(:,1),valres(:,j),t).';
+% %     end
+% %     
+% %     
+% %     plot(t,plotS,'--')
+% %     ax = gca;
+% %     ax.ColorOrderIndex = 1;
+% %     plot(t,plotVAL)
+% %     figure;
+% %     plot(t,abs(plotS-plotVAL)./plotVAL)
+% %     mean(abs(plotS-plotVAL)./plotVAL)
+% % end
+%     
 %% Determine the errors for the different layes
 
+errorres = zeros(12,1);
 
-    
-    
-    
+errorres(5)  = mean(mean(abs(plotS-plotVAL)./plotVAL))*100;
+errorres(6)  = mean(max(abs(plotS-plotVAL)./plotVAL))*100;
+errorres(7)  = mean(mean(abs(plotS(1:901,:)-plotVAL(1:901,:))./plotVAL(1:901,:)))*100;
+errorres(8)  = mean(mean(abs(plotS(902:end,:)-plotVAL(902:end,:))./plotVAL(902:end,:)))*100;

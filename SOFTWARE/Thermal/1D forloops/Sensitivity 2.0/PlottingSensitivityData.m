@@ -39,7 +39,7 @@ plot(Lay2qj(:,1),Lay2qj(:,2),'+-','color',cc(2,:))
 plot(Lay3qj(:,1),Lay3qj(:,2),'s-','color',cc(3,:))
 grid on
 xlabel('Heat flux ratio $\left[-\right]$','Interpreter','LaTeX')
-ylabel('Area density $\left[ kg \cdot m^{-2}\right]$','interpreter','latex')
+ylabel('Areal density $\left[ kg \cdot m^{-2}\right]$','interpreter','latex')
 legend('Layup 1','Layup 2','Layup 3','Location','northeast')
 matlab2tikz('.\LaTeX\fluxsensitivity.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
 
