@@ -10,13 +10,13 @@ Here the assumptions are stated that are used to simplify the problem.
 	\item The sizing can be done in one point with a one dimensional lay-up since the one dimensional analysis is very comparable to the three dimensional analysis at the centre of the heat shield according to Del Corso et al \cite{Corso2009}.
 	\item It is assumed that used materials have constant properties as the temperature changes. 
 	\item The heat equation used to model the problem can be discretised. The Crank-Nicolson scheme is used as discretisation scheme, which has as advantage that it is unconditionally stable.
-	\item The contact resistance between the layers can be modeled as a thin layer of air with varying thermal conductivity.
-	\item The incoming heat flux only consists of the aerodynamic heating. Influences such as the solar flux, Mars' albedo and Mars' infrared radiation are considered negligible with respect to the aerodynamic heating.
+	\item The contact resistance between the layers can be modelled as a thin layer of air with varying thermal conductivity.
+	\item The incoming heat flux only consists of the aerodynamic heating. Influences such as the solar flux, Mars' albedo and Mars' infra-red radiation are considered negligible with respect to the aerodynamic heating.
 \end{itemize}
 
 
 \paragraph{Analysis method}
-Figure \ref{fig:1dmodelthermal} is used to model the problem. Smith et al have modeled the problem in approximately the same way and therefore used as reference for the to be developed model \cite{Smith2011}. It start with a given lay-up consisting of thermal protection, insulation and structural layers. The heat transfer is modeled by an incoming heat flux due to the convective aerodynamic heating at the surface and an outgoing radiation at the surface and back. In between the surface and the back the different layers are separated by a layer with varying conductivity that models the contact resistance. Within the layers heat is transferred by conduction.
+Figure \ref{fig:1dmodelthermal} is used to model the problem. Smith et al have modelled the problem in approximately the same way and therefore used as reference for the to be developed model \cite{Smith2011}. It start with a given lay-up consisting of thermal protection, insulation and structural layers. The heat transfer is modelled by an incoming heat flux due to the convective aerodynamic heating at the surface and an outgoing radiation at the surface and back. In between the surface and the back the different layers are separated by a layer with varying conductivity that models the contact resistance. Within the layers heat is transferred by conduction.
 
 \begin{figure}[h]
 	\centering

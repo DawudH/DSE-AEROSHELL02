@@ -1,9 +1,9 @@
 \subsubsection{Discretisation error}
 \label{sec:astrodisc}
 
-Due to the use of a discrete time step an error relative to the real solution is induced. By testing the tool with the same initial conditions using different time meshes the difference between the solutions can be analysed. When the smallest time step is assumed to be exact, the error of the larger time steps can be expressed relative to that. This relative error is shown in Figure \ref{fig:atmos_disc}. Please also note these errors are calculated running the tool without active control.
+Due to the use of a discrete timestep an error relative to the real solution is induced. By testing the tool with the same initial conditions using different time meshes the difference between the solutions can be analysed. When the smallest timestep is assumed to be exact, the error of the larger timesteps can be expressed relative to that. This relative error is shown in Figure \ref{fig:atmos_disc}. Please also note these errors are calculated running the tool without active control.
 
-Two conclusions can be drawn from this. First the error decreases quadratically with decreasing time step. This means that the system converges. Secondly the error is smaller than 1 $\left[m\right]$ for a time step smaller than $0.3 \left[s\right]$. This error is negligible compared to the error that will be induced by the assumptions that were made in Section \ref{sec:astroassumption}.
+Two conclusions can be drawn from this. First the error decreases quadratically with decreasing timestep. This means that the system converges. Secondly the error is smaller than 1 $\left[m\right]$ for a timestep smaller than $0.3 \left[s\right]$. This error is negligible compared to the error that will be induced by the assumptions that were made in subsection \ref{sec:astroassumption}.
 
 %Initial Position
 %rx = -4143775;
@@ -17,7 +17,7 @@ Two conclusions can be drawn from this. First the error decreases quadratically 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=0.8\textwidth]{Figure/orbit/dicretization.pdf}
-	\caption[Discretisation error in radius $\left(\gls{sym:R}\right)$ after one pass through the atmosphere for the rigid shape.]{Discretisation error in radius $\left(\gls{sym:R}\right)$ after one pass through the atmosphere for initial position $\left[-4143775,10\cdot\gls{con:rm}\right]$ $\left[m\right]$ and initial velocity $\left[0,-7167.9\right]$ $\left[\frac{m}{s}\right]$ at $\gls{sym:alpha}=-10\left[^\circ\right]$ for the rigid shape}
+	\caption[Discretisation error in radius $\left(\gls{sym:R}\right)$ after one pass through the atmosphere for the rigid shape]{Discretisation error in radius $\left(\gls{sym:R}\right)$ after one pass through the atmosphere for initial position $\left[-4143775,10\cdot\gls{con:rm}\right]$ $\left[m\right]$ and initial velocity $\left[0,-7167.9\right]$ $\left[\frac{m}{s}\right]$ at $\gls{sym:alpha}=-10\left[^\circ\right]$ for the rigid shape}
 	\label{fig:atmos_disc}
 \end{figure}
 
@@ -29,7 +29,7 @@ In this section the results from the numerical simulation, which is usually only
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=0.8\textwidth]{Figure/orbit/num_kep.pdf}
-	\caption[Error compared to a Kepler orbit.]{Error compared to a Kepler orbit after 50005 seconds for initial position $\left[-4143775,10\cdot\gls{con:rm}\right]$ $\left[m\right]$ and initial velocity $\left[0,-7167.9\right]$ $\left[\frac{m}{s}\right]$ at $\gls{sym:alpha}=-10\left[^\circ\right]$ for the shape of the rigid concept}
+	\caption[Error compared to a Kepler orbit]{Error compared to a Kepler orbit after 50 005 seconds for initial position $\left[-4143775,10\cdot\gls{con:rm}\right]$ $\left[m\right]$ and initial velocity $\left[0,-7167.9\right]$ $\left[\frac{m}{s}\right]$ at $\gls{sym:alpha}=-10\left[^\circ\right]$ for the shape of the rigid concept}
 	\label{fig:kep_error}
 \end{figure}
 
