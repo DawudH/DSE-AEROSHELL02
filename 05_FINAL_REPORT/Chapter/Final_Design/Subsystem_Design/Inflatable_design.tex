@@ -3,7 +3,7 @@
  
  Figures \ref{fig:aeroshape.frontview} through \ref{fig:aeroshape.isoview} show the final \gls{oml} of the aeroshell. The final shape is composed of circular cross sections stacked on top of each other, with an offset in the $z$-direction. The aeroshell is $1.8$ $\left[m\right]$ high and has a maximum offset of $0.9$ $\left[m\right]$.
  
-\begin{figure}[ht]
+\begin{figure}[h]
 	\centering
 	
 	\begin{subfigure}[b]{0.49\textwidth}
@@ -31,7 +31,7 @@
  
  Figures \ref{fig:CLCDCSAlpha} through \ref{fig:CGOAlpha} display the aerodynamic characteristics of the vehicle through an angle of attack range of $0<\alpha<30$. As can be seen from these plots, the behaviour of the lift to drag ratio and the moment coefficient in pitch is near linear. This linearity ensures predictable vehicle behaviour over the entire angle of attack range.
  
- \begin{figure}[ht]
+ \begin{figure}[h]
  	\centering
  	
  	\begin{subfigure}[b]{0.49\textwidth}
@@ -82,7 +82,7 @@ PBO Zylon offers a weight advantage of approximately 5 [$kg$] with respect to Te
 
 The structural feasibility of the configuration is ascertained by the truss-based analysis model. The truss-based analysis model uses the representation in Figure \ref{fig:strucreps}. Cross-sections that displayed the most extreme loading are the short side, defined at the inflatable minimum diameter, and the long side, defined at the inflatable maximum diameter. Due to the skewness, load asymmetry is introduced which is thereby evaluated by some extent through evaluation of multiple cross-sections.
 
-\begin{figure}[ht]
+\begin{figure}[h]
 	\centering
 
 	\begin{subfigure}[b]{0.45\textwidth}
@@ -104,7 +104,7 @@ The structural feasibility of the configuration is ascertained by the truss-base
 \label{fig:strucreps}
 \end{figure}
 
-\begin{figure}[ht]
+\begin{figure}[h]
 		\hspace{-16mm}
 		\includegraphics[width=1.2\textwidth]{./Figure/Structure/loads_long.eps}
 		\caption{Cross-sectional running loads inflatable at maximum diameter}
@@ -149,22 +149,39 @@ To prevent Nitrogen gas from leaking, the structural PBO Zylon layers are coated
 %Structural integrity is provided by PBO Zylon AS, capable of retaining its strength at high temperature and able to withstand the required loads\footnote{URL:\url{http://www.toyobo-global.com/seihin/kc/pbo/zylon-p/bussei-p/technical.pdf}. Accessed: 15-06-2015}}. It has high specific properties, leading to a low structural mass, as follows from Figure \ref{fig:mat}. It performs only slightly worse than Spectra 2000 in the parametric mass model, but differences are slight (below 5 $\%$) and 
 
 \paragraph{\acrlong{tps} design}
-For a given trajectory and lay-up it is possible to check the temperature distribution for failure. From the sensitivity analysis in Section \ref{subsec:thermalsens} it is deducted that a Nextel BF-20 layer with Pyrogel 6650 as insulator is preferable for weight reduction purposes. However, due to the relatively low emissivity of Nextel the wall temperature exceeds the limit as high aerodynamic heating can not be radiated away efficiently. For this reason a slightly heavier alternative, Nicalon, is needed. Nicalon is a type of silicon continuous fibre that can withstand temperatures up to 2073 $\left[K\right]$. Furthermore it has a much higher emissivity, which greatly reduces the wall temperature. It performs comparable or even better on its ability fold and impact toughness compared with Nextel BF-20 \textcolor{red}{Verify impact toughness?} \cite{Corso2011}. The sensitivity analysis has shown that for a diameter of 12 $\left[m\right]$ it was not possible to find a viable thickness for the Nextel lay-ups. Several iterations have been performed to reduce the heat flux such that Nextel BF-20 became viable, however these attempts resulted only in an approximate mass of 500 $\left[kg\right]$. Therefore Nicalon is chosen as \gls{tps}-layer and Pyrogel 6650 as insulation layer for the lay-up in the final design. In addition to the Upilex coating on the inside of the PBO Zylon layer, two thin impermeable layers of kapton are placed between the Pyrogel and Zylon to prevent hot gasses reaching the Zylon layer \cite{Hughes2005,Litton2011}.
+For a given trajectory and lay-up it is possible to check the temperature distribution for failure. From the sensitivity analysis in Section \ref{subsec:thermalsens} it is deducted that a Nextel BF-20 layer with Pyrogel 6650 as insulator is preferable for weight reduction purposes. However, due to the relatively low emissivity of Nextel the wall temperature exceeds the limit as high aerodynamic heating can not be radiated away efficiently. For this reason a slightly heavier alternative, Nicalon, is needed. Nicalon is a type of silicon continuous fiber that can withstand temperatures up to 2073 $\left[K\right]$. Furthermore it has a much higher emissivity, which greatly reduces the wall temperature. It performs comparable or even better on its ability fold and impact toughness compared with Nextel BF-20 \textcolor{red}{Verify impacttoughness?} \cite{Corso2011}. The sensitivity analysis has shown that for a diameter of 12 $\left[m\right]$ it was not possible to find a viable thickness for the Nextel lay-ups. Several iterations have been performed to reduce the heat flux such that Nextel BF-20 became viable, however these attempts resulted only in an approximate mass of 500 $\left[kg\right]$. Therefore Nicalon is chosen as \gls{tps}-layer and Pyrogel 6650 as insulation layer for the lay-up in the final design. In addition to the Upilex coating on the inside of the PBO Zylon layer, two thin impermeable layers of kapton are placed between the Pyrogel and Zylon to prevent hot gasses reaching the Zylon layer \cite{Hughes2005,Litton2011}.
 
-The incoming heat flux, or aerodynamic heating of the chosen trajectory is shown in Figure \ref{fig:heatfluxes}. In the figure three fluxes are shown, which represent the change in heat flux when the atmospheric density is over- or underestimated by 10 \%. This 10 \% comes from the uncertainties in the density as explained in Section \ref{sec:trajectorydesign}. Surprisingly, when the density is underestimated by 10 \%, the heat load becomes slightly higher as the duration of the trajectory is longer and this results in a higher required thickness. This case is used as reference heat flux for which the lay-up is optimised.
+The incoming heat flux, or aerodynamic heating of the chosen trajectory is shown in Figure \ref{fig:heatfluxes}. The heat maximum heat flux is approximately 21 $\left[W\cdot cm^{-2}\right]$. The maximum heat flux for the entry phase is 7.3 $\left[W\cdot cm^{-2}\right]$. It is expected that this entry phase is not leading for the design and therefore it is not shown. In the figure three fluxes are shown for the aerocapture phase, which represent the change in heat flux when the atmospheric density is over- or underestimated by 10 \%. This 10 \% comes from the uncertainties in the density as explained in Section \ref{sec:trajectorydesign}. Surprisingly, when the density is underestimated by 10 \%, the heat load becomes slightly higher as the duration of the trajectory is longer and this results in a higher required thickness. This case is used as reference heat flux for which the lay-up is optimised.
 
-\begin{figure}[ht]
+\begin{figure}[h]
 	\centering
 	\includegraphics{./Figure/Thermal/heatfluxes.pdf}
 	\caption{Heat flux of the aerocapture for different density levels}
 	\label{fig:heatfluxes}
 \end{figure}
 
-Figure XX shows how the heat propagates though the material during the aerocapture and entry phase of the chosen trajectory. It is clear that the aerocapture is leading for the design as the heat load during this phase is higher. The figure can also be used to understand the required thicknesses. The Nicalon and Pyrogel layers remain far below their maximum temperatures, 2073 $\left[K\right]$ and 923 $\left[K\right]$ respectively. Therefore the Nicalon layer is as thin as possible, which is 0.508 $\left[mm\right]$. For the kapton and PBO Zylon layers the maximum temperature is set at 473 $\left[K\right]$ to remain their structural integrity. This is why the insulation layer is needed such that the temperature drops to this maximum through the Pyrogel 6650. The required thickness for this is 2.439 $\left[mm\right]$. Each kapton layer is also very thin which comes down to 0.025 $\left[mm\right]$.
+Figures \ref{fig:thermoaero} and \ref{fig:thermoentry} show how the heat propegates though the material during the aerocapture and entry phase of the chosen trajectory. It is clear that the aerocapture is indeed leading for the design as the heat load during this phase and resulting temperatures are higher. The figure can also be used to understand the required thicknesses. The Nicalon and Pyrogel layers remain far below their maximum temperatures, 2073 $\left[K\right]$ and 923 $\left[K\right]$ respectively. Therefore the Nicalon layer is as thin as possible, which is 0.508 $\left[mm\right]$. For the kapton and PBO Zylon layers the maximum temperature is set at 473 $\left[K\right]$ to remain their structural integrity. This is why the insulation layer is needed such that the temperature drops to this maximum through the Pyrogel 6650. The required thickness for this is 2.439 $\left[mm\right]$. Each kapton layer is also very thin which comes down to 0.025 $\left[mm\right]$.
 
-The area density of this lay-up is 1.816 $\left[kg\cdot m^{-2}\right]$. The frontal surface area or wetted area is 120.9 $\left[m^2\right]$, as is obtained from the aerodynamic analysis. Multiplying the surface area with the area density results in a frontal \gls{tps}-mass of 219.6 $\left[kg\right]$. Note that the frontal \gls{tps} covers the rigid centre body of the vehicle. For the protection on the other side of the inflatable very thin layers of kapton and Nextel AF-14 are assumed to be sufficient. The resulting area density is 0.342 $\left[kg\cdot m^{-2}\right]$. The area onto which it is applied is assumed to be the frontal surface area minus the centre body area, which equals to 105.0 $\left[m^2\right]$. The resulting mass is 35.96 $\left[kg\right]$. The total \gls{tps}-mass for the lay-up shown in Figure \ref{fig:finallayup} yields 255.6 $\left[kg\right]$. 
+\begin{figure}
+	\centering
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\textwidth]{./Figure/Thermal/Thermal_contour_capture}
+		\caption{Aerocapture}
+		\label{fig:thermoaero}
+	\end{subfigure}
+	~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc.
+	%(or a blank line to force the subfigure onto a new line)
+	\begin{subfigure}[b]{0.45\textwidth}
+		\includegraphics[width=\textwidth]{./Figure/Thermal/Thermal_contour_entry}
+		\caption{Entry}
+		\label{fig:thermoentry}
+	\end{subfigure}
+	\caption{Heat propegation during both decelarations}\label{fig:heatprop}
+\end{figure}
 
-\begin{figure}[ht]
+The area density of this lay-up is 1.816 $\left[kg\cdot m^{-2}\right]$. The frontal surface area or wetted area is 120.9 $\left[m^2\right]$, as is obtained from the aerodynamic analysis. Multiplying the surface area with the area density results in a frontal \gls{tps}-mass of 219.6 $\left[kg\right]$. Note that the frontal \gls{tps} covers the rigid centrebody of the vehicle. For the protection on the other side of the inflatable very thin layers of kapton and Nextel AF-14 are assumed to be sufficient. The resulting area density is 0.342 $\left[kg\cdot m^{-2}\right]$. The area onto which it is applied is assumed to be the frontal surface area minus the centrebody area, which equals to 105.0 $\left[m^2\right]$. The resulting mass is 35.96 $\left[kg\right]$. The total \gls{tps}-mass for the lay-up shown in Figure \ref{fig:finallayup} yields 255.6 $\left[kg\right]$. 
+
+\begin{figure}[h]
 	\centering
 	\includegraphics{./Figure/Thermal/finallayup.pdf}
 	\caption{Final design for the lay-ups}

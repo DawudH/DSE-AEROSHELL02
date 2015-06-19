@@ -36,6 +36,7 @@
 \usepackage{array}
 \usepackage{chngcntr}
 \usepackage{footnote}
+
 \usepackage{enumitem}
 
 \counterwithin{figure}{section}
@@ -63,7 +64,7 @@
 \newcommand{\HRule}{\rule{\linewidth}{0.04cm}}
 \renewcommand{\abstractname}{{\Large Summary}}
 \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
-\setlength{\parskip}{6pt plus4pt minus2pt}
+\setlength{\parskip}{6pt plus4pt minus4pt}
 \setcounter{tocdepth}{3}
 % ENVIRONMENTS
 \newenvironment{drawing}
@@ -71,12 +72,11 @@
 
 
 
-% Paragrap is now a extra subsection
 
 
 
 \begin{document}
-\titlespacing*{\subparagraph}{0.5cm}{3.25ex plus 1ex minus .2ex}{1em}
+\titlespacing*{\subparagraph}{0.5cm}{3.25ex plus 1ex minus 1ex}{1em}
 
 % Titlepage
 \include{./Titlepage/Titlepage}
