@@ -1,3 +1,72 @@
+\section{Risk assessment}
+\label{ch:riskestimation}
+In order to identify which areas and components might present a risk to the technical performance of the system or cause schedule overruns a risk map is made. This risk map is presented in section \ref{subsec:riskmap} along with its elements. Following the concept-independent risk assessment section \ref{subsec:developrisk} will discuss the concept-specific development risks, based on the technology maturity of each concept. The assessment of these development risks will be used in Chapter \ref{ch:tfsum} as one of the criteria used during the trade-off process.\\
+
+\subsection{Concept-independent risk assessment} \label{subsec:riskmap}
+Before the concept-specific development risks are discussed the concept-independent risks were analysed in order to determine how to allocate the resources available for the concept selection and trade-off process. To do this the concept-independent elements are first listed in Table \ref{tab:riskmapelements}, after which they are placed inside a risk map. Each of these elements gets assigned a \acrfull{trl} \cite{NASA2007} based on the maturity of the technology that will be used in said element. The \gls{trl}-classification is shown in Table \ref{tab:trls}.\\
+
+The concept-independent risk elements shown in Table \ref{tab:riskmapelements} have been used as input to construct the risk map, shown in Table \ref{tab:riskmap}.\\
+
+\begin{table}[h]
+	\caption[\acrfull{nasa} \acrfullpl{trl}]{\acrfull{nasa} \acrfull{trl} \cite{NASA2007}}
+	\begin{tabular}{|p{0.2\textwidth}|p{0.75\textwidth}|}
+		\hline
+		\textbf{\acrfull{trl}} & \textbf{Description} \\ \hline \hline
+		\gls{trl} 9& Actual system "flight proven" through successful mission operations\\
+		\gls{trl} 8& Actual system completed and "flight qualified" through test and demonstration (ground or space)\\
+		\gls{trl} 7& System prototype demonstration in a space environment\\
+		\gls{trl} 6& System/subsystem model or prototype demonstration in a relevant environment (ground or space)\\
+		\gls{trl} 5& Component and/or breadboard validation in relevant environment\\
+		\gls{trl} 4& Component and/or breadboard validation in laboratory environment\\
+		\gls{trl} 3& Analytical \& experimental critical function and/or characteristic proof-of-concept\\
+		\gls{trl} 2& Technology concept and/or application formulated\\
+		\gls{trl} 1& Basic principles observed \& reported \\
+		\hline
+	\end{tabular}
+	\label{tab:trls}
+\end{table}
+
+\begin{table}[h]
+	\centering
+	\caption{Risk map elements}
+	\label{tab:riskmapelements}
+	\begin{tabular}{|c|c|}
+		\hline 
+		\textbf{Number} & \textbf{Element} \\ \hline \hline
+		1 & \acrlong{tps}-material \\
+		2 & \acrlong{tps}-conections\\
+		3 & Structural materials\\
+		4 & Structural conections\\
+		5 & Inflation system	\\	
+		6 & Deployment mechanism\\
+		7 & Descellerator-capsule-joints\\
+		8 & Aerodynamic shape\\
+		9 & Pressure sensors\\
+		10 & Bank-control thrusters\\
+		11 & \gls{adcs} thrusters\\
+		12 & \gls{adcs} reaction wheels\\
+		\hline
+	\end{tabular}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\caption{Risk map}
+	\label{tab:riskmap}
+	\begin{tabular}{|c|c|c|c|c|} % MAKE SURE THAT THE TOTAL WIDTH IS 0.95\textwidth!! (that way its exactly the textwidth.... haha) 
+		\hline
+		\textbf{\gls{trl} 1} & \cellcolor{green!70} & \cellcolor{yellow!75} 3, 4 & \cellcolor{red!60} & \cellcolor{red!60} 10 \\ \hline
+		\textbf{\gls{trl} 2} & \cellcolor{green!70} & \cellcolor{yellow!75} 6, 9 & \cellcolor{red!60} & \cellcolor{red!60} \\ \hline
+		\textbf{\gls{trl} 3} & \cellcolor{green!70} & \cellcolor{yellow!75} & \cellcolor{red!60} 8 & \cellcolor{red!60} 7, 11 \\ \hline
+		\textbf{\gls{trl} 4} & \cellcolor{green!70} & \cellcolor{yellow!75} & \cellcolor{yellow!75} & \cellcolor{yellow!75} \\ \hline
+		\textbf{\gls{trl} 5} & \cellcolor{green!70} & \cellcolor{green!70} & \cellcolor{yellow!75} 2 & \cellcolor{yellow!75} \\ \hline
+		\textbf{\gls{trl} 6} & \cellcolor{green!70} & \cellcolor{green!70} & \cellcolor{green!70} & \cellcolor{green!70} 1, 5 \\ \hline
+		\textbf{\gls{trl} 7} & \cellcolor{green!70} & \cellcolor{green!70} & \cellcolor{green!70} & \cellcolor{green!70} \\ \hline
+		\textbf{\gls{trl} 8} & \cellcolor{green!70} & \cellcolor{green!70} & \cellcolor{green!70} & \cellcolor{green!70} \\ \hline
+		\textbf{\gls{trl} 9} & \cellcolor{green!70} & \cellcolor{green!70} & \cellcolor{green!70} & \cellcolor{green!70} \\ \hline
+		 & \textbf{Negligible} & \textbf{Marginal} & \textbf{Critical} & \textbf{Catastrophical} \\ \hline
+	\end{tabular}
+\end{table}
 
 
 

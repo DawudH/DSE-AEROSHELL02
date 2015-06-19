@@ -21,7 +21,7 @@ hypkep = false;
 
 %%function
 %[out] = full_orbit(R, V, A, G, M_mars, R_m, h_atm, atm, dt_kep_init, dt_atmos, m, omega_m, S, control, tend, crash_margin, g_earth, aero_coef, use_control, multiple_orbits, use_alpha_profile,r,v,theta0,gamma,hypkep,Crho,control.alpha_init,control.dalphadt);
-load('../../Aero model/orbits/aerocapture_rho_1.mat')
+load('../../Aero model/orbits/entry_rho_0_9.mat')
 mu = G*M_mars;
 ra = out.okep.ra;
 v = sqrt(mu*(2/ra-1/out.okep.a));
