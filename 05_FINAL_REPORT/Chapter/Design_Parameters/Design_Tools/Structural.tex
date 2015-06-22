@@ -8,7 +8,7 @@ Structural assessment of the inflatable configuration has been performed by an e
 \end{itemize}
 Forces are estimated for an inflatable structure that is aerodynamically loaded, as follows from vehicle trajectory analysis in its deployed condition. An interface with the aerodynamic analysis yields the optimised aeroshell shape as a baseline for the structural model used. 
 
-Moreover, it is essential that mass contributions of centre body, inflatable structure and connections are estimated in order to verify that decelerator mass is below the 1000 [kg] limit imposed as discussed in Chapter \ref{sec:missionreq}. Moreover, the parametric mass model for the inflatable structure allows identification of design venues to minimise structural mass of the decelerator, such that decelerator mass can be minimised and thereby payload mass maximised. 
+Moreover, it is essential that mass contributions of centre body, inflatable structure and connections are estimated in order to verify that decelerator mass is below the 1000 [kg] limit imposed as discussed in Section \ref{sec:missionreq}. Moreover, the parametric mass model for the inflatable structure allows identification of design venues to minimise structural mass of the decelerator, such that decelerator mass can be minimised and thereby payload mass maximised. 
 
 \paragraph{Force estimation method}
 
@@ -41,9 +41,9 @@ Force estimation is performed in a two-dimensional plane representing a cross-se
 
 %In addition to the aerodynamic pressure acting on the inflatable forward surface, movables (e.g. flaps) at the edge of the aeroshell are taken into account, where present, as a point load directed perpendicular to the flap deployed surface.
 
-As input forces are in Newtons per meter, being the product of a pressure over a length, forces should technically be designated as forces per unit length or running loads. Hereafter, all references to forces in this section are in fact references to running loads. To calculate forces from running loads, these should be multiplied with the circumference over which they act. [EDIT]
+As input forces are in Newtons per meter, being the product of a pressure over a length, forces should technically be designated as forces per unit length or running loads. Hereafter, all references to forces in this section are in fact references to running loads. To calculate forces from running loads, these are multiplied with the circumference over which they act. [EDIT]
 
-On the basis of these external forces, estimation is performed by a truss analysis. By requiring force equilibrium in two orthogonal directions within the plane, internal forces in each of the members 1 to 6 for the \gls{sym:N} toroids are determined. This system of equations is solved from the free end (outboard) to the pinned end (inboard) where the inflatable is connected to the centre body. At this location, reaction forces are determined at the two attachment points, forward and aft.
+On the basis of these external forces, estimation is performed by a truss analysis. By requiring force equilibrium in two orthogonal directions within the plane, internal forces in each of the members 1 to 6 (as defined in Figure \ref{fig:TC2}) for the \gls{sym:N} toroids are determined. This system of equations is solved from the free end (outboard) to the pinned end (inboard) where the inflatable is connected to the centre body. At this location, reaction forces are determined at the two attachment points, forward and aft.
 
 The decreasing circumference over which forces act going from outboard to inboard in each two-dimensional slice, inherent to the sphere cone design, effects a proportional increase in running loads. This increase is proportional to the decrease in diameter, via the circumference, and thereby member forces are scaled by the ratio of radial distances, with respect to the centre body longitudinal axis, of the nodes they connect.
 
@@ -89,7 +89,7 @@ The approach is based on the following assumptions:
 
 \begin{itemize}
 \item Small deformations. In reality deformations can be significant changing the orientation and magnitude of forces in the structure.
-\item Three-dimensional effects are taken into account by setting the lateral loads to zero. See the previous discussion.
+\item Three-dimensional effects are partially taken into account by setting the lateral loads to zero. See the previous discussion.
 \item Constant dynamic pressure. A constant dynamic pressure is not in line with the actual loading. Based on the discussion in Appendix \ref{sec:VandVstruc}, errors introduced are deemed acceptable.
 \item The aerodynamic loading is applied discretely at the outer nodes. The effects of a continuous distribution are neglected since they do not fit within the truss model. This assumptions neglects a bending load within the forward radial strap. 
 \item Structural mass is neglected. Neglecting the structural mass causes a small error within the computed loads, varying with the ratio of structural mass and dynamic pressure.
