@@ -1,14 +1,14 @@
-
+This section will discuss the control system selection procedure and control system design. First the control system downselect will be discussed, after which the resultant control system will be sized to the mission requirements.
 \paragraph{Control system selection}
 Based on the arguments for and against certain control system concepts given in Chapter \ref{subsec:controltool} a selection of suitable control system solutions was made. Figure \ref{fig:cgoffset} shows the \gls{cg} offset required along the Z-axis to trim the spacecraft at certain angles of attack for various \gls{cg} locations on the X-axis. 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=0.95\textwidth]{./Figure/control/moment}
-	\caption{\acrlong{cg} offset along Z-axis required for a trimmed condition at various angles of attack}
+	\caption[\acrlong{cg} offset along Z-axis required for a trimmed condition at various angles of attack]{\gls{cg} offset along Z-axis required for a trimmed condition at various angles of attack}
 	\label{fig:cgoffset}
 \end{figure}
 From Figure \ref{fig:cgoffset} it can be seen that the required \gls{cg} Z-offset grows as the X-offset grows. For an angle of attack change of $2$ degrees corresponding to an X-\gls{cg} located at $-5$ meters a \gls{cg} shift of $0.2$ meters is required. Angle of attack-based trajectory control was found to require trimmed \gls{sym:alpha}-shifts of $5$ degrees that have to be adjusted with a rate of $1$ $[deg \cdot s^{-1}]$. To pull this off would require the actuation system to produce a \gls{cg} displacement of $0.5$ meters with a required rate of $0.1$ $[m \cdot s^{-1}]$. This would require excessively heavy actuators that would also have to be able to operate under 3-g loads. Not only has this never been done before in space at such scale, the reliability of such a system would be questionable as a \gls{spf} would be introduced. Based on these arguments a decision was made against active \gls{cg} control.\\
-Following the decision to discontinue the consideration of active \gls{cg} control a selection had to be made between the other two control system design options: Body flaps and thrusters. Regarding body flaps some of the same arguments can be made as were used against active \gls{cg} control. Body flaps can require excessively large actuators that are very heavy. In addition to this the dynamic behaviour of the inflatable structure is difficult to compute and can be very unpredictable. Furthermore the use of body flaps on inflatable structures has a very low \acrlong{trl}, which poses an additional development risk. Based on these and other downsides pertaining to aerodynamic control surfaces mentioned in Chapter \ref{subsec:controltool} it was decided to employ thrusters as control system.
+Following the decision to discontinue the consideration of active \gls{cg} control a selection had to be made between the other two control system design options: Body flaps and thrusters. Regarding body flaps some of the same arguments can be made as were used against active \gls{cg} control. Body flaps can require excessively large actuators that are very heavy. In addition to this the dynamic behaviour of the inflatable structure is difficult to compute and can be very unpredictable. Furthermore the use of body flaps on inflatable structures has a very low \gls{trl}, which poses an additional development risk. Based on these and other downsides pertaining to aerodynamic control surfaces mentioned in Chapter \ref{subsec:controltool} it was decided to employ thrusters as control system.
 
 \paragraph{Control system actuation}
 
@@ -29,7 +29,7 @@ It is argued that with an increasing amount of bank reversals, complemented with
 	\includegraphics[width=0.6\textwidth]{./Figure/control/Cont.pdf}
 	\caption{Qualitative figure displaying three bank reversals}
 	\label{fig:bankdef}
-\end{figure}s
+\end{figure}
 
 The mass estimates of the propellant required within the Martian atmosphere are based on peak rotational rates of $20$ $[deg\cdot s^{-1}]$ and $5$ $[deg \cdot s^{-2}]$ as used by Davis et al. \cite{Davis2010}.
 
@@ -60,11 +60,11 @@ Specific preference lies in the use of hydrazine as propellant such that it is i
 
 Additionally thrusters for the velocity increments in the apocenter are required. Again hydrazine thrusters are considered for interchangeability throughout the various mission stages. This is however combined with a second propellent as bi-propellant thrusters yield significant performance increases (in terms of \gls{sym:Isp}) \cite{Wertz2011}. 
 
-A thruster suitable for such a purpose is the Apogee kick engine by IHI Japan at a mass of $15.7$ $[kg]$ and a specific impulse of $321.4$ $[s]$. As secondary propellant \gls{nto} is required \cite[p.538]{Wertz2011}. This thruster can only be used if placed aft of the re-entry vehicle, since the front is covered by the \gls{hiad} additional pointing by the crew module \gls{adcs} system may be required. To ensure sufficient control system reliability two of these thrusters will be employed so that no \acrfull{spf} can occur. 
+A thruster suitable for such a purpose is the Apogee kick engine by IHI Japan at a mass of $15.7$ $[kg]$ and a specific impulse of $321.4$ $[s]$. As secondary propellant \gls{nto} is required \cite[p.538]{Wertz2011}. This thruster can only be used if placed aft of the re-entry vehicle, since the front is covered by the \gls{hiad} additional pointing by the crew module \gls{adcs} system may be required. To ensure sufficient control system reliability two of these thrusters will be employed such that no \gls{spf} can occur. 
 
 \begin{table}[h]
 	\centering
-\caption{Overview of thruster properties}
+\caption{Overview of thruster properties \cite[p.538]{Wertz2011}
 \label{tab:thrusters}
 \hspace{-5mm}
 \begin{tabular}{|p{0.12\textwidth}|p{0.16\textwidth}|p{0.04\textwidth}|p{0.06\textwidth}|p{0.08\textwidth}|p{0.14\textwidth}|p{0.13\textwidth}|l|} \hline 
