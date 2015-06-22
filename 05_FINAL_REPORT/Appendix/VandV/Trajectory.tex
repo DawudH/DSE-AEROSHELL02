@@ -1,9 +1,9 @@
 \subsubsection{Discretisation error}
 \label{sec:astrodisc}
 
-Due to the use of a discrete timestep an error relative to the real solution is induced. By testing the tool with the same initial conditions using different time meshes the difference between the solutions can be analysed. When the smallest timestep is assumed to be exact, the error of the larger timesteps can be expressed relative to that. This relative error is shown in Figure \ref{fig:atmos_disc}. Please also note these errors are calculated running the tool without active control.
+Due to the use of a discrete time step an error relative to the real solution is induced. By testing the tool with the same initial conditions using different time meshes the difference between the solutions can be analysed. When the smallest time step is assumed to be exact, the error of the larger time steps can be expressed relative to that. This relative error is shown in Figure \ref{fig:atmos_disc}. Please also note these errors are calculated running the tool without active control.
 
-Two conclusions can be drawn from this. First the error decreases quadratically with decreasing timestep. This means that the system converges. Secondly the error is smaller than 1 $\left[m\right]$ for a timestep smaller than $0.3 \left[s\right]$. This error is negligible compared to the error that will be induced by the assumptions that were made in subsection \ref{sec:astroassumption}.
+Two conclusions can be drawn from this. First the error decreases quadratically with decreasing time step. This means that the system converges. Secondly the error is smaller than 1 $\left[m\right]$ for a time step smaller than $0.3 \left[s\right]$. This error is negligible compared to the error that will be induced by the assumptions that were made in section \ref{sec:astroassumption}.
 
 %Initial Position
 %rx = -4143775;
