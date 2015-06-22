@@ -7,7 +7,7 @@ Based on the arguments for and against certain control system concepts given in 
 	\caption[\acrlong{cg} offset along Z-axis required for a trimmed condition at various angles of attack]{\gls{cg} offset along Z-axis required for a trimmed condition at various angles of attack}
 	\label{fig:cgoffset}
 \end{figure}
-From Figure \ref{fig:cgoffset} it can be seen that the required \gls{cg} Z-offset grows as the X-offset grows. For an angle of attack change of $2$ degrees corresponding to an X-\gls{cg} located at $-5$ meters a \gls{cg} shift of $0.2$ meters is required. Angle of attack-based trajectory control was found to require trimmed \gls{sym:alpha}-shifts of $5$ degrees that have to be adjusted with a rate of $1$ $[deg \cdot s^{-1}]$. To pull this off would require the actuation system to produce a \gls{cg} displacement of $0.5$ meters with a required rate of $0.1$ $[m \cdot s^{-1}]$. This would require excessively heavy actuators that would also have to be able to operate under 3-g loads. Not only has this never been done before in space at such scale, the reliability of such a system would be questionable as a \gls{spf} would be introduced. Based on these arguments a decision was made against active \gls{cg} control.\\
+From Figure \ref{fig:cgoffset} it can be seen that the required \gls{cg} Z-offset grows as the X-offset grows. For an angle of attack change of $2$ degrees corresponding to an X-\gls{cg} located at $-5$ meters a \gls{cg} shift of $0.2$ $[m]$ is required. Angle of attack-based trajectory control was found to require trimmed \gls{sym:alpha}-shifts of $5$ degrees that have to be adjusted with a rate of $1$ $[deg \cdot s^{-1}]$. To pull this off would require the actuation system to produce a \gls{cg} displacement of $0.5$ meters with a required rate of $0.1$ $[m \cdot s^{-1}]$. This would require excessively heavy actuators that would also have to be able to operate under 3-g loads. Not only has this never been done before in space at such scale, the reliability of such a system would be questionable as a \gls{spf} would be introduced. Based on these arguments a decision was made against active \gls{cg} control.\\
 Following the decision to discontinue the consideration of active \gls{cg} control a selection had to be made between the other two control system design options: Body flaps and thrusters. Regarding body flaps some of the same arguments can be made as were used against active \gls{cg} control. Body flaps can require excessively large actuators that are very heavy. In addition to this the dynamic behaviour of the inflatable structure is difficult to compute and can be very unpredictable. Furthermore the use of body flaps on inflatable structures has a very low \gls{trl}, which poses an additional development risk. Based on these and other downsides pertaining to aerodynamic control surfaces mentioned in Chapter \ref{subsec:controltool} it was decided to employ thrusters as control system.
 
 \paragraph{Control system actuation}
@@ -64,7 +64,7 @@ A thruster suitable for such a purpose is the Apogee kick engine by IHI Japan at
 
 \begin{table}[h]
 	\centering
-\caption{Overview of thruster properties \cite[p.538]{Wertz2011}}
+\caption[Overview of thruster properties]{Overview of thruster properties \cite[p.538]{Wertz2011}}
 \label{tab:thrusters}
 \hspace{-5mm}
 \begin{tabular}{|p{0.12\textwidth}|p{0.16\textwidth}|p{0.04\textwidth}|p{0.06\textwidth}|p{0.08\textwidth}|p{0.14\textwidth}|p{0.13\textwidth}|l|} \hline 
@@ -119,7 +119,7 @@ Typical implementations for a control system involve a \gls{npc} or \gls{apc} me
 For achieving the high required landing accuracy it is advised that next to sensed accelerations to determine the control model parameters pressure sensors are included as well.  \gls{npc} and \gls{apc} methods for bank control on Mars do normally not include these sensors and merely rely on sensed acceleration data \cite{Lu2007, Davis2010}. Since pressure can not be measured directly during the hypersonic flight use is made of flush atmospheric data \cite{Dutta2013}. 
  
 Such sensors are demonstrated in hypersonic flight in the \gls{msl} in 2012 \cite{Dutta2013}. The use of separate sensors for determining the atmospheric properties will allow for easier determination of the atmospheric properties and allow for a higher landing accuracy on order to meet the set requirements.
-Pressure sensors are included in a redundant manner in the rigid section of the heatshield. This allows for a fault tolerant design even if one sensor fails \cite{Whitmore1995}. 
+Pressure sensors are included in a redundant manner in the rigid section of the heat shield. This allows for a fault tolerant design even if one sensor fails \cite{Whitmore1995}. 
 
  A very schematic overview of the functioning of the control system within the atmosphere is given in Figure \ref{fig:Contsys}. Normal model update frequencies, using only sensed accelerations, are in the order of 10 seconds \cite{Davis2010}. The usage of the additional pressure sensors allow for more frequent model updates as changes are more easily observed again benefiting the accuracy of the control system.
 
