@@ -96,5 +96,8 @@ gamma = 21.5:0.025:21.9;
 cc = parula(5);
 plot(gamma,polyval(flyby.polyfit,gamma),'o-','color',cc(1,:))
 plot(gamma,polyval(accel.polyfit,gamma),'*-','color',cc(3,:))
+ylabel('$V$  $\left[m s^{-1}\right]$','interpreter','latex')
+xlabel('$\gamma$  $\left[deg\right]$','interpreter','latex')
 legend('Flyby limit','Acceleration limit','location','northwest')
 grid on
+matlab2tikz('.\LaTeX\v_gamma.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
