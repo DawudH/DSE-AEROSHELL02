@@ -24,7 +24,7 @@ Two conclusions can be drawn from this. First the error decreases quadratically 
 \subsubsection{Verification through comparison with Kepler orbit}
 \label{sec:astroverf}
 
-In this section the results from the numerical simulation, which is usually only used in atmosphere, is compared to a Kepler orbit. For this comparison the density is assumed to be zero, or in other words, it is assumed that there is no atmosphere. This comparison is done for different values of \gls{sym:Dt}. The error for each \gls{sym:Dt} is shown in Figure \ref{fig:kep_error}.
+In this section the results from the numerical simulation, which is usually only used in atmosphere, is compared to a Kepler orbit. For this comparison the density is assumed to be zero, or in other words, it is assumed that there is no atmosphere. This comparison is done for different values of $\Delta t$. The error for each $\Delta t$ is shown in Figure \ref{fig:kep_error}.
 
 \begin{figure}[ht]
 	\centering
@@ -33,7 +33,7 @@ In this section the results from the numerical simulation, which is usually only
 	\label{fig:kep_error}
 \end{figure}
 
-The figure shows the error is between 15 and 5 for \gls{sym:Dt} between 1 and 0.01. The error decreases, but seems to tend to a non-zero constant value. The method used for numerical simulation is thus convergent, but has a small offset from the exact solution. This error is however so small it can easily be accepted. It should also be noted that the numerical simulation is never ran longer than 2000 seconds during the entire mission trajectory calculation. The error calculated here is thus much larger than the error in the actual calculations will be.
+The figure shows the error is between 15 and 5 for $\Delta t$ between 1 and 0.01. The error decreases, but seems to tend to a non-zero constant value. The method used for numerical simulation is thus convergent, but has a small offset from the exact solution. This error is however so small it can easily be accepted. It should also be noted that the numerical simulation is never ran longer than 2000 seconds during the entire mission trajectory calculation. The error calculated here is thus much larger than the error in the actual calculations will be.
 
 \subsubsection{Validation}
 \label{sec:astroval}

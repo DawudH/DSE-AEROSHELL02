@@ -35,7 +35,7 @@ The aerodynamic shape required for static stability can be argued based on the l
 In order to trim the aeroshell at a certain angle of attack, a \gls{cg} offset is used: the \gls{cg} does not lie directly on the most forward point of the spacecraft. In order to minimise the impact, the required \gls{cg} offset is calculated using Equation \ref{eq:reqcgoffset}. A large offset may be unrealistic and more difficult to implement.
 
 \begin{equation} \label{eq:reqcgoffset}
-z_{\gls{cg}} = \frac{\gls{sym:CML}}{\gls{sym:CL}}
+z_{\gls{cg}} = \frac{\gls{sym:CM}\gls{sym:lref}}{\gls{sym:CL}}
 \end{equation}
 In general the relation between required \gls{cg} offset for a certain lift over drag ratio is a good indicator for the performance of a design, since this relates the performance to the cost of the performance.
 
