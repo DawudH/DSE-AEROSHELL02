@@ -251,7 +251,7 @@ plot(t(1:d:end),(plotS(1:d:end,5)+plotS(1:d:end,6))/2,'s','color',cc(3,:))
 ylabel('T $\left[ K \right]$','Interpreter','LaTeX')
 xlabel('t $\left[ s \right]$','interpreter','LaTeX')
 legend('TC1 Experimental','TC2 Experimental','TC3 Experimental','TC1 Model','TC2 Model','TC3 Model','Location','northeast')
-
+grid on
 
 
 subplot(1,2,2)
@@ -272,6 +272,7 @@ plot(t(1:d:end),100*abs((plotS(1:d:end,5)+plotS(1:d:end,6))/2-plotVALex(1:d:end,
 
 ylabel('Error $\left[ \% \right]$','Interpreter','LaTeX')
 xlabel('t $\left[ s \right]$','interpreter','LaTeX')
+grid on
 %legend('TC1','TC2','TC3','Location','northwest')    
 addpath('..\matlab2tikz')
 

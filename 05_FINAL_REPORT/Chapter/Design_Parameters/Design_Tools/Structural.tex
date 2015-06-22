@@ -10,7 +10,7 @@ Forces are estimated for an inflatable structure that is aerodynamically loaded,
 
 Moreover, it is essential that mass contributions of centre body, inflatable structure and connections are estimated in order to verify that decelerator mass is below the 1000 [kg] limit imposed as discussed in Chapter \ref{sec:missionreq}. Moreover, the parametric mass model for the inflatable structure allows identification of design venues to minimise structural mass of the decelerator, such that decelerator mass can be minimised and thereby payload mass maximised. 
 
-\subsubsection{Force estimation method}
+\paragraph{Force estimation method}
 
 To meet the purposes of structural assessment of the inflatable configuration, force estimation is performed by a two-dimensional truss analysis on a simplified geometry. This geometry relies on the aerodynamic aeroshell shape as its outer shape. This shape is effected by a number of toroids \gls{sym:N}, held together by radial straps, running along the surface of the inflatable. 
 
@@ -18,7 +18,7 @@ Adjoining toroids are connected at three locations: by a radial strap along the 
 
 Simplification was performed to realise a structurally determinate problem results by modelling toroids as diamonds. The orientation of the diamonds is defined by the half-cone angle \gls{sym:theta}, allowed to vary over its radius and circumference per toroid, and their shape by a fixed width \gls{sym:w} and varying height \gls{sym:h}, to allow for a tapered structure. Nodes are designated as the corners of each diamond and connecting members have been numbered. The numbering convention and dimensions are illustrated in Figure \ref{fig:TC}. 
 
-\begin{figure}[ht]
+\begin{figure}[h]
 	\centering
 	\begin{subfigure}[b]{0.45\textwidth}
 	\centering
@@ -36,12 +36,12 @@ Simplification was performed to realise a structurally determinate problem resul
 	\label{fig:TC}
 \end{figure}
 
-Force estimation is performed in a two-dimensional plane representing a cross-sectional slice, of an infinitesimal angle, of the sphere cone. Each toroid is loaded externally by an aerodynamic force applied perpendicular to its width \gls{sym:w} at its forward node. The aerodynamic force is the resultant of the limit aerodynamic pressure $\gls{sym:q}_{limit}$, assumed constant for each toroid, multiplied by toroid width \gls{sym:w} to represent its working area. 
+Force estimation is performed in a two-dimensional plane representing a cross-sectional slice, of an infinitesimal angle, of the sphere cone. Each toroid is loaded externally by an aerodynamic force applied perpendicular to its width \gls{sym:w} at its forward node. The aerodynamic force is the resultant of the aerodynamic pressure $\gls{sym:q}$, assumed constant for each toroid, multiplied by toroid width \gls{sym:w} to represent its working area. 
 %The limit aerodynamic pressure is determined from the peak dynamic pressure by multiplying with a \acrfull{fos}, thereby taking into account a contingency for structural design. For composite structures, NASA dictates a \gls{fos} of 1.5 for uniform material and 2.0 for a discontinuity area \cite{Technical2014}. As the inflatable comprises a large amount of component interaction and discontinuity, the ultimate load is calculated as twice the limit aerodynamic pressure that follows from the trajectory analysis in Chapter \ref{ch:XXX}.
 
 %In addition to the aerodynamic pressure acting on the inflatable forward surface, movables (e.g. flaps) at the edge of the aeroshell are taken into account, where present, as a point load directed perpendicular to the flap deployed surface.
 
-As input forces are in Newtons per meter, being the product of a pressure over a length, forces should technically be designated as forces per unit length or running loads. Hereafter, all references to forces in this section are in fact references to running loads. To calculate forces from running loads, these should be multiplied with the circumference over which they act.
+As input forces are in Newtons per meter, being the product of a pressure over a length, forces should technically be designated as forces per unit length or running loads. Hereafter, all references to forces in this section are in fact references to running loads. To calculate forces from running loads, these should be multiplied with the circumference over which they act. [EDIT]
 
 On the basis of these external forces, estimation is performed by a truss analysis. By requiring force equilibrium in two orthogonal directions within the plane, internal forces in each of the members 1 to 6 for the \gls{sym:N} toroids are determined. This system of equations is solved from the free end (outboard) to the pinned end (inboard) where the inflatable is connected to the centre body. At this location, reaction forces are determined at the two attachment points, forward and aft.
 
@@ -67,10 +67,10 @@ This pressure induces a tensile running load $\gls{sym:Q}_{infl}$ in the members
 \label{eq:Q}
 \gls{sym:Q}_{infl} =\frac{\gls{sym:pinfl}_{,min}w}{2}
 \end{equation}
-Dimension \gls{sym:w} rather than \gls{sym:h} is used as it is the smaller dimension, hence an overestimation of the inflation pressure results. As the pressure calculated by Equation \ref{eq:Pmin} is an approximate minimum inflation pressure for a general stacked toroid case, this value is not necessarily sufficient to bring all members into tension. To this end, inflation pressure is increased to a value that effects tension in all flexible material.
+Dimension \gls{sym:w} rather than \gls{sym:h} is used as it is the smaller dimension, hence an overestimation of the inflation pressure results. As the pressure calculated by Equation \ref{eq:Pmin} is an approximate minimum inflation pressure for a general stacked toroid case, it is used as an initial guess. Inflation pressure is iteratively increased from this value to effect tension in all flexible material.
 
 The inputs and outputs of the structural model are tabulated in Table \ref{tab:infl}.
-\begin{table}[ht]
+\begin{table}[h]
 \caption{Inflatable structural analysis tool in- and output}
 \centering
 \begin{tabular}{|l||l|}
@@ -80,7 +80,7 @@ Toroid inclination                & Internal forces                   \\ \hline
 Number of toroids                 & Reaction forces                   \\ \hline
 Toroid dimensions                 & Inflation pressure                \\ \hline
 Aerodynamic loading               &                                   \\ \hline
-Centerbody and deployed diameter  &                                   \\ \hline
+Centre body and deployed diameter  &                                   \\ \hline
 \end{tabular}
 \label{tab:infl}
 \end{table}
@@ -102,7 +102,7 @@ The consequence of these assumptions and their impact, primarily the first two, 
 %The significance of the second assumption is illustrated in Appendix \ref{sec:VandVstruc} discussing the verification and validation of the model. Validation is performed on the basis of \gls{fem} results presented by Lindell et al.. A modified two dimensional method taking into account some of the three dimensional effects yields acceptable results for initial force estimations with a maximum error of 15.4\%. The full verification and validation results can be found in Appendix \ref{sec:VandVstruc}.
 
 
-\subsubsection{Inflatable mass estimation method}
+\paragraph{Inflatable mass estimation method}
 
 Mass estimation for the inflatable structure is performed on the basis of a parametric mass model proposed by Samareh \cite{Samareh2011}. The mass model is based on a number of stress equations and cone deformation to compute outputs listed in Table \ref{tab:inflmass}.
 \begin{table}[ht]
@@ -112,7 +112,7 @@ Mass estimation for the inflatable structure is performed on the basis of a para
 \hline
 \multicolumn{1}{|c||}{{\bf Input}} & \multicolumn{1}{c|}{{\bf Output}} \\ \hline \hline
 Toroid inclination         & Flexible material mass            \\ \hline
-Centerbody and deployed diameter        & Inflation gas mass                 \\ \hline
+Centre body and deployed diameter        & Inflation gas mass                 \\ \hline
 Number of toroids                 & Inflation system mass                \\ \hline
 Inflation gas properties              &              \\ \hline
 Aerodynamic loading               &                                   \\ \hline

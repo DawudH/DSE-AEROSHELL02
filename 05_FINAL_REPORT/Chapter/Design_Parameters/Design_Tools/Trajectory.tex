@@ -26,12 +26,7 @@ The orbit can be divided into two different parts, the first part is the pass th
 
 The atmospheric properties are determined using the NASA software \gls{marsgram}. The software generates data based on equations for atmosphere properties and incorporates the high amount of dust on Mars, which has a big effect on the absorbed radiation heat from the sun. From this model the average atmospheric properties are used to determine the aerodynamic forces.
 
-% % SOMETHING ABOUT HOW THE IN ATMOS PHASE IS DONE
+Using the aerodynamic forces combined with the gravitational pull from Mars the accelerations are calculated. These accelerations are integrated twice to obtain the velocity and the location.
 
 \paragraph{Limitations}
-***no variations is weather***\\
-***ref to V\&V \ref{sec:VandVtraj}***
-
-\paragraph{Concluding remarks}
-
-
+The tool is mainly limited by the 1D implementation of the atmospheric properties. This means that no variations of the atmosphere over longitude, latitude or time are considered. The use of a numerical simulation only introduces a small error. The full Verification and Validation are done in Section \ref{sec:VandVtraj}.

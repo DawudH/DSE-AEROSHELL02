@@ -36,6 +36,7 @@
 \usepackage{array}
 \usepackage{chngcntr}
 \usepackage{footnote}
+
 \usepackage{enumitem}
 
 \counterwithin{figure}{section}
@@ -63,7 +64,7 @@
 \newcommand{\HRule}{\rule{\linewidth}{0.04cm}}
 \renewcommand{\abstractname}{{\Large Summary}}
 \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
-\setlength{\parskip}{6pt plus4pt minus2pt}
+\setlength{\parskip}{6pt plus4pt minus4pt}
 \setcounter{tocdepth}{3}
 % ENVIRONMENTS
 \newenvironment{drawing}
@@ -71,12 +72,11 @@
 
 
 
-% Paragrap is now a extra subsection
 
 
 
 \begin{document}
-\titlespacing*{\subparagraph}{0.5cm}{3.25ex plus 1ex minus .2ex}{1em}
+\titlespacing*{\subparagraph}{0.5cm}{3.25ex plus 1ex minus 1ex}{1em}
 
 % Titlepage
 \include{./Titlepage/Titlepage}
@@ -95,9 +95,10 @@
 \newpage
 \tableofcontents
 \addtocontents{toc}{\protect\contentsline {section}{Acronyms}{vi}{}}
-\addtocontents{toc}{\protect\contentsline {section}{List of symbols}{vii}{}}
-\addtocontents{toc}{\protect\contentsline {section}{List of Figures}{ix}{}}
-\addtocontents{toc}{\protect\contentsline {section}{List of Tables}{xi}{}}
+\addtocontents{toc}{\protect\contentsline {section}{List of symbols}{viii}{}}
+\addtocontents{toc}{\protect\contentsline {section}{List of constants}{ix}{}}
+\addtocontents{toc}{\protect\contentsline {section}{List of figures}{x}{}}
+\addtocontents{toc}{\protect\contentsline {section}{List of tables}{xii}{}}
 
 \newpage
 \printnoidxglossary[type=\acronymtype,nonumberlist]

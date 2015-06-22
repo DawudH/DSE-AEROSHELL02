@@ -1,7 +1,7 @@
-The inflation gas is key to providing the structural stiffness for the inflatable: it is required to bring all members into tension to prevent skin wrinkling under compressive loading. To this end, the aeroshell will require an inflation system that is reliable, lightweight and fitting within mass and volume constraints. This subsection details the selection of an inflation gas and design of the inflation system upon which aeroshell deceleration capability hinges.
+The inflation gas is key to providing the structural stiffness for the inflatable: it is required to bring all members into tension to prevent skin wrinkling under compressive loading. To this end, the aeroshell will require an inflation system that is reliable, lightweight and fitting within mass and volume constraints. This section details the selection of an inflation gas and design of the inflation system upon which aeroshell deceleration capability hinges.
 
 \paragraph{Gas generator selection}
-Inflation systems can be categorized as tanked-gas systems, phase-change systems and chemical gas-generation systems \cite{Jenkins2001}. These systems have each been considered for their respective advantages, yielding a tanked nitrogen inflation system as outcome. 
+Inflation systems can be categorised as tanked-gas systems, phase-change systems and chemical gas-generation systems \cite{Jenkins2001}. These systems have each been considered for their respective advantages, yielding a tanked nitrogen inflation system as outcome. 
 
 %\paragraph{Phase-change system}
 Phase-change systems have the potential to provide significant mass reductions. The most promising option is a liquid hydrogen inflation system, while other phase-change systems involve subliming powders, although these are incapable of achieving high pressures \cite{Freeland1998}.  On the basis of system mass fractions investigated by Brown et al. \cite{Brown2009} and the mass estimation tool detailed in section \ref{subsec:structool}, a structural mass reduction of nearly 20 [$kg$] is deemed feasible with a cryogenic liquid hydrogen inflation system following from the mass estimation tool formulated in section \ref{subsec:structool}. 
@@ -33,7 +33,7 @@ For this reason a minimum operational temperature is considered. Figure \ref{fig
 \item Thermal loading will cause an increase in temperature even after the heat shield of the inflatable.
 \end{itemize}
 
-\begin{figure}[ht]
+\begin{figure}[h]
 		\centering
 		\includegraphics[width=0.7\textwidth]{./Figure/Structure/Temp.pdf}
 		\caption{Temperature range for a cylinder at Mars as function of the absorptivity over emissivity}
@@ -57,13 +57,13 @@ m_{tank} = 0.7266 \cdot (P_{tank} \cdot \gls{sym:vol}_{tank})^{2} + 2.5119 \cdot
 
 \paragraph{Inflation system integration}
 
-Figure \ref{fig:infsys} shows a schematic representation of the inflation system. The inflation gas is stored in a nitrogen tank. Pressure and temperature sensors are included to monitor the storage conditions. A separate valve is included for filling purposes of the tank, and a release valve is included for emptying the tank outside normal mission operations. A electromechanical valve releases the pressure. A electromechanical valve is used since it allows for multiple uses as opposed to one-time use pyrotechnical valves, used in early \gls{irve} installments \cite{Hughes2005}. From the high pressure within the storage tank the controlled the pressure is reduced and more precisely controlled by a set of two pressure regulators (including internal release valves). One of the pressure regulators is located in the high-pressure part of the inflation system in the centerbody, the other in the low-pressure part. Duality of pressure regulators accounts for flow adjustment while also taking into account feed losses. A set of check valves, allowing flow only in one direction, connects to the toroid. Purpose thereof is to prevent flow from exiting the bladder volumes. 
+Figure \ref{fig:infsys} shows a schematic representation of the inflation system. The inflation gas is stored in a nitrogen tank. Pressure and temperature sensors are included to monitor the storage conditions. A separate valve is included for filling purposes of the tank, and a release valve is included for emptying the tank outside normal mission operations. A electromechanical valve releases the pressure. A electromechanical valve is used since it allows for multiple uses as opposed to one-time use pyrotechnical valves, used in early \gls{irve} instalments \cite{Hughes2005}. From the high pressure within the storage tank the controlled the pressure is reduced and more precisely controlled by a set of two pressure regulators (including internal release valves). One of the pressure regulators is located in the high-pressure part of the inflation system in the centre body, the other in the low-pressure part. Duality of pressure regulators accounts for flow adjustment while also taking into account feed losses. A set of check valves, allowing flow only in one direction, connects to the toroid. Purpose thereof is to prevent flow from exiting the bladder volumes. 
 
 The toroids are grouped together and inflated with separate bladder volumes.  The number of bladder volumes is preferably higher to provide redundancy. A single bladder volume puncture or failure would then be less catastrophic, as part of its function can be taken over by other bladders. Increasing the number of bladder volumes does, however, add additional system complexity and mass. The \gls{irve} missions feature three bladder volumes, taken as a reference number. The current mission features a significantly larger area, however, and since puncture probability is thereby increased due to the larger exposed surface area. To this end five inflatable bladder volumes are selected. The check valves prevent the flow from equilibrating over the toroids in this case.
 
 A final set of check valves is included to connect the toroids to the vent. This allows for reducing the pressure in case it becomes to high. The conditions within the tank are measured by a set of pressure and temperature transducers. If the pressure becomes to high, for example due to the thermal heating, the vent functions to lower the pressure. Pressure transducer however are also important for making sure the minimum pressure is maintained since the pressure can drop due to leakage. 
 
-\begin{figure}[ht]
+\begin{figure}[h]
 		\centering
 		\includegraphics[width=0.95\textwidth]{./Figure/Structure/infsys.pdf}
 		\caption[Schematic view of the inflation system]{Schematic view of the inflation system}% (adapted from \cite{Hughes2005})}
@@ -71,10 +71,4 @@ A final set of check valves is included to connect the toroids to the vent. This
 \end{figure}
 
 
-A contingency of $25\%$ of tank mass is included to account for the blow-down system that transfers gas from the tank to the inflatable volumes. For a tank mass of 61 [$kg$], total inflation system mass is 76 [$kg$] to support a gas mass of 90 [$kg$].
-
-
-
-
-
-
+A contingency of $25\%$ of tank mass is included to account for the blow-down system that transfers gas from the tank to the inflatable volumes. For a tank mass of 61 $[kg]$, total inflation system mass is 76 $[kg]$ to support a gas mass of 90 $[kg]$.

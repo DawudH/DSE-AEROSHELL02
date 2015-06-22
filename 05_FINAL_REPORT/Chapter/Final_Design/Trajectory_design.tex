@@ -7,7 +7,7 @@ In this section the design of the trajectory followed by the spacecraft during t
 		\vspace{-22mm}
 		\includegraphics[width=\textwidth]{./Figure/Orbit/aerocapture_trajectory.pdf}
 		\vspace{-25mm}
-		\caption{The aerocapture trajectory visualized.}
+		\caption{The aerocapture trajectory visualised}
 		\label{fig:capture_trajectory}
 	\end{subfigure}
 	\begin{subfigure}[b]{0.7\textwidth}
@@ -21,10 +21,10 @@ In this section the design of the trajectory followed by the spacecraft during t
 		\vspace{-22mm}
 		\includegraphics[width=\textwidth]{./Figure/Orbit/re-entry_trajectory.pdf}
 		\vspace{-25mm}
-		\caption{The re-entry trajectory after lowering the orbit.}
+		\caption{The re-entry trajectory after lowering the orbit}
 		\label{fig:re_entry_trajectory}
 	\end{subfigure}
-	\caption{The trajectory of the spacecraft visualized. The apoareion is shown with a black dot.}
+	\caption[Visualisation of the spacecraft trajectory]{Visualisation of the spacecraft trajectory. The apoareion is shown with a black dot}
 	\label{fig:trajectory}
 \end{figure}
 
@@ -47,7 +47,7 @@ The bank control for the trajectories is changed to attain the same exit velocit
 \begin{sidewaysfigure}
 	\centering
 	\includegraphics[width=0.99\textwidth]{Figure/Orbit/sensitivity_aerocapture.pdf}
-	\caption{Results of the aerocapture trajectory for three different density profiles. The trajectories with modified density are corrected (changed \gls{sym:mu} profile) to maintain the same exit velocity. The horizontal dashed lines are design limits (for the \gls{sym:M} and \gls{sym:acc} plots) }
+	\caption[Results of the aerocapture trajectory for three different density profiles.]{Results of the aerocapture trajectory for three different density profiles. The trajectories with modified density are corrected (changed \gls{sym:mu} profile) to maintain the same exit velocity. The horizontal dashed lines are design limits (for the \gls{sym:M} and \gls{sym:acc} plots) }
 	\label{fig:orbit_aerocapture_data}
 \end{sidewaysfigure}
 
@@ -58,7 +58,7 @@ The first entry opportunity is after approximately one earth day from the start 
 
 For every entry opportunity the decision to start entry has to be made approximately half a sol before the entry. In the apoareion a boost opposite to the flight direction should be given to lower periareion of the orbit.  When the vehicle reaches the atmosphere in this lower orbit the entry and descent phase begins.
 
-\begin{figure}[ht]
+\begin{figure}[h]
 	\centering
 	\includegraphics[width=0.7\textwidth]{Figure/Orbit/angles.pdf}
 	\caption{The angles used in the simulation of the trajectory}
@@ -82,24 +82,25 @@ In Figure \ref{fig:entry_mars} it can also be seen that the entry locations for 
 
 The time passed during both the aerocapture and the entry and descent phases are also different for each trajectory. During this time the landing location has rotated with Mars in the same direction as the flight direction of the vehicle. If you look closely to Figure \ref{fig:entry_mars} you can see three points for the nominal landing location. Each point for the time one of the trajectories would arrive.
 
-\begin{figure}[ht]
+\begin{figure}[h]
 	\centering
 	\includegraphics[width=0.99\textwidth]{Figure/Orbit/entry_mars.pdf}
-	\caption{The re-entry trajectory for three different density profiles. The trajectories with modified density are corrected (changed \gls{sym:mu} profile) to show the ability to reach the desired landing location.}
+	\caption[The re-entry trajectory for three different density profiles.]{The re-entry trajectory for three different density profiles. The trajectories with modified density are corrected (changed \gls{sym:mu} profile) to show the ability to reach the desired landing location.}
 	\label{fig:entry_mars}
 \end{figure}
 
-In Figure \ref{fig:orbit_entry_data} it can be seen that the Mach number at a height of $15 \left[km\right]$ is approximately $5$ for all orbits. The entry trajectory with a lower density is the shortest, however it also decelerates fastest overshooting the $3 \gls{sym:g}_{earth}$ requirement by ??\%. This higher deceleration is needed to reach the required velocity of $M=5$.
+In Figure \ref{fig:orbit_entry_data} it can be seen that the Mach number at a height of $15 \left[km\right]$ is approximately $5$ for all orbits. The entry trajectory with a lower density is the shortest, however it also decelerates fastest overshooting the $3 \gls{sym:g}_{earth}$ requirement by 23\%. This higher deceleration is needed to reach the required velocity of $M=5$.
 
-The entry trajectory with a higher density is the longest. The deceleration is also faster than for the nominal trajectory and it also overshoots the $3 \gls{sym:g}_{earth}$ requirement by ??\%. This higher deceleration is caused by the denser atmosphere at a height of $15 \left[km\right]$.
+The entry trajectory with a higher density is the longest. The deceleration is also faster than for the nominal trajectory and it also overshoots the $3 \gls{sym:g}_{earth}$ requirement by 11\%. This higher deceleration is caused by the denser atmosphere at a height of $15 \left[km\right]$.
 
 \begin{sidewaysfigure}
 	\centering
 	\includegraphics[width=0.99\textwidth]{Figure/Orbit/sensitivity_entry.pdf}
-	\caption{Results of the re-entry trajectory for three different density profiles. The trajectories with modified density are corrected (changed \gls{sym:mu} profile) to show the ability to reach the desired landing location. The horizontal dashed lines are design limits (for the \gls{sym:M} and \gls{sym:acc} plots)}
+	\caption[Results of the re-entry trajectory for three different density profiles.]{Results of the re-entry trajectory for three different density profiles. The trajectories with modified density are corrected (changed \gls{sym:mu} profile) to show the ability to reach the desired landing location. The horizontal dashed lines are design limits (for the \gls{sym:M} and \gls{sym:acc} plots)}
 	\label{fig:orbit_entry_data}
 \end{sidewaysfigure}
 
 \subsubsection{Needed properties for aerodynamic shape design} \label{sec:trajectory_summary}
-The required aerodynamic properties for the different phases are different
-***Conclusion on CD and CL required***
+The required aerodynamic properties for the different phases of the mission are conflicting. For the aerocapture phase a high drag coefficient as well as a high lift coefficient is needed. For the entry phase still a high lift coefficient, however also a low drag coefficient are needed.
+
+Compromising between these requirements an angle of attack has been chosen at which the $\gls{sym:L}\cdot\gls{sym:D}^{-1}$ is maximal in order to maximise the lift for certain drag. The aerodynamic shape should be designed in such a way that the drag at maximum $\gls{sym:L}\cdot\gls{sym:D}^{-1}$ is a perfect compromise between the objectives for the aerocapture and entry \& descent phases.
