@@ -25,14 +25,34 @@ sort=eccentricity, % for correct sorting type the full name of the symbol here
 parent=romanletter % for sorting purposes, use romanletter or greekletter
 }
 
-\newglossaryentry{sym:gamma}
+\newglossaryentry{sym:tau}
+{
+	type=symbol, % entry should be in the list of symbols!
+	name={\ensuremath{\tau}}, % Put the symbol here in dollar signs
+	description={Longitude}, % A brief description of this entry (to appear in the glossary).
+	symbol={$\left[rad\right]$}, % put the unit here.... kind of weird, i know 
+	sort=tau, % for correct sorting type the full name of the symbol here
+	parent=greekletter % for sorting purposes, use romanletter or greekletter
+}
+
+\newglossaryentry{sym:kappa}
 {
 type=symbol, % entry should be in the list of symbols!
-name={\ensuremath{\gamma}}, % Put the symbol here in dollar signs
+name={\ensuremath{\kappa}}, % Put the symbol here in dollar signs
 description={Ratio of specific heats}, % A brief description of this entry (to appear in the glossary).
 symbol={$\left[-\right]$}, % put the unit here.... kind of weird, i know 
-sort=gamma, % for correct sorting type the full name of the symbol here
+sort=kappa, % for correct sorting type the full name of the symbol here
 parent=greekletter % for sorting purposes, use romanletter or greekletter
+}
+
+\newglossaryentry{sym:gamma}
+{
+	type=symbol, % entry should be in the list of symbols!
+	name={\ensuremath{\gamma}}, % Put the symbol here in dollar signs
+	description={Flight path angle}, % A brief description of this entry (to appear in the glossary).
+	symbol={$\left[rad\right]$}, % put the unit here.... kind of weird, i know 
+	sort=gamma, % for correct sorting type the full name of the symbol here
+	parent=greekletter % for sorting purposes, use romanletter or greekletter
 }
 
 \newglossaryentry{sym:M}
@@ -50,7 +70,7 @@ parent=romanletter % for sorting purposes, use romanletter or greekletter
 	type=symbol, % entry should be in the list of symbols!
 	name={\ensuremath{M_{aero}}}, % Put the symbol here in dollar signs
 	description={Moment due to aerodynamic forces}, % A brief description of this entry (to appear in the glossary).
-	symbol={$\left[Nm\right]$}, % put the unit here.... kind of weird, i know 
+	symbol={$\left[N\cdot m\right]$}, % put the unit here.... kind of weird, i know 
 	sort=Maero, % for correct sorting type the full name of the symbol here
 	parent=romanletter % for sorting purposes, use romanletter or greekletter
 }
@@ -129,8 +149,8 @@ parent=romanletter % for sorting purposes, use romanletter or greekletter
 {
 type=symbol, % entry should be in the list of symbols!
 name={\ensuremath{V}}, % Put the symbol here in dollar signs
-description={Velocity (magnitude)}, % A brief description of this entry (to appear in the glossary).
-symbol={$\left[\frac{m}{s}\right]$}, % put the unit here.... kind of weird, i know 
+description={Velocity}, % A brief description of this entry (to appear in the glossary).
+symbol={$\left[m\cdot s^{-1}\right]$}, % put the unit here.... kind of weird, i know 
 sort=Vm, % for correct sorting type the full name of the symbol here
 parent=romanletter % for sorting purposes, use romanletter or greekletter
 }
@@ -140,7 +160,7 @@ parent=romanletter % for sorting purposes, use romanletter or greekletter
 type=symbol, % entry should be in the list of symbols!
 name={\ensuremath{V_e}}, % Put the symbol here in dollar signs
 description={Escape velocity}, % A brief description of this entry (to appear in the glossary).
-symbol={$\left[\frac{m}{s}\right]$}, % put the unit here.... kind of weird, i know 
+symbol={$\left[m\cdot s^{-1}\right]$}, % put the unit here.... kind of weird, i know 
 sort=Ve, % for correct sorting type the full name of the symbol here
 parent=romanletter % for sorting purposes, use romanletter or greekletter
 }
@@ -150,7 +170,7 @@ parent=romanletter % for sorting purposes, use romanletter or greekletter
 	type=symbol, % entry should be in the list of symbols!
 	name={\ensuremath{\hat{V}}}, % Put the symbol here in dollar signs
 	description={Velocity unit vector}, % A brief description of this entry (to appear in the glossary).
-	symbol={$\left[\frac{m}{s}\right]$}, % put the unit here.... kind of weird, i know 
+	symbol={$\left[m\cdot s^{-1}\right]$}, % put the unit here.... kind of weird, i know 
 	sort=Vhat, % for correct sorting type the full name of the symbol here
 	parent=romanletter % for sorting purposes, use romanletter or greekletter
 }
@@ -160,7 +180,7 @@ parent=romanletter % for sorting purposes, use romanletter or greekletter
 type=symbol, % entry should be in the list of symbols!
 name={\ensuremath{\rho}}, % Put the symbol here in dollar signs
 description={Density}, % A brief description of this entry (to appear in the glossary).
-symbol={$\left[\frac{kg}{m^3}\right]$}, % put the unit here.... kind of weird, i know 
+symbol={$\left[kg\cdot m^{-3}\right]$}, % put the unit here.... kind of weird, i know 
 sort=rho, % for correct sorting type the full name of the symbol here
 parent=greekletter % for sorting purposes, use romanletter or greekletter
 }
@@ -170,7 +190,7 @@ parent=greekletter % for sorting purposes, use romanletter or greekletter
 type=symbol, % entry should be in the list of symbols!
 name={\ensuremath{\mathbf{V}}}, % Put the symbol here in dollar signs
 description={Velocity (vector)}, % A brief description of this entry (to appear in the glossary).
-symbol={$\left[\frac{m}{s}\right]$}, % put the unit here.... kind of weird, i know 
+symbol={$\left[m\cdot s^{-1}\right]$}, % put the unit here.... kind of weird, i know 
 sort=Vv, % for correct sorting type the full name of the symbol here
 parent=romanletter % for sorting purposes, use romanletter or greekletter
 }
@@ -210,21 +230,21 @@ parent=romanletter % for sorting purposes, use romanletter or greekletter
 {
 type=symbol, % entry should be in the list of symbols!
 name={\ensuremath{C_M}}, % Put the symbol here in dollar signs
-description={Moment coefficient in pitch}, % A brief description of this entry (to appear in the glossary).
+description={Moment coefficient around pitch axis}, % A brief description of this entry (to appear in the glossary).
 symbol={$\left[-\right]$}, % put the unit here.... kind of weird, i know 
 sort=CM, % for correct sorting type the full name of the symbol here
 parent=romanletter % for sorting purposes, use romanletter or greekletter
 }
 
-\newglossaryentry{sym:CML}
-{
-	type=symbol, % entry should be in the list of symbols!
-	name={\ensuremath{C_ML}}, % Put the symbol here in dollar signs
-	description={Moment coefficient in pitch times reference length}, % A brief description of this entry (to appear in the glossary).
-	symbol={$\left[m\right]$}, % put the unit here.... kind of weird, i know 
-	sort=CML, % for correct sorting type the full name of the symbol here
-	parent=romanletter % for sorting purposes, use romanletter or greekletter
-}
+%\newglossaryentry{sym:CML}
+%{
+%	type=symbol, % entry should be in the list of symbols!
+%	name={\ensuremath{C_ML}}, % Put the symbol here in dollar signs
+%	description={Moment coefficient in pitch times reference length}, % A brief description of this entry (to appear in the glossary).
+%	symbol={$\left[m\right]$}, % put the unit here.... kind of weird, i know 
+%	sort=CML, % for correct sorting type the full name of the symbol here
+%	parent=romanletter % for sorting purposes, use romanletter or greekletter
+%}
 
 \newglossaryentry{sym:CP}
 {
@@ -250,10 +270,20 @@ parent=romanletter % for sorting purposes, use romanletter or greekletter
 {
 type=symbol, % entry should be in the list of symbols!
 name={\ensuremath{\mathbf{F}}}, % Put the symbol here in dollar signs
-description={Force}, % A brief description of this entry (to appear in the glossary).
+description={Force vector}, % A brief description of this entry (to appear in the glossary).
 symbol={$\left[N\right]$}, % put the unit here.... kind of weird, i know 
 sort=F, % for correct sorting type the full name of the symbol here
 parent=romanletter % for sorting purposes, use romanletter or greekletter
+}
+
+\newglossaryentry{sym:lref}
+{
+	type=symbol, % entry should be in the list of symbols!
+	name={\ensuremath{\mathbf{l}}}, % Put the symbol here in dollar signs
+	description={Force vector}, % A brief description of this entry (to appear in the glossary).
+	symbol={$\left[m\right]$}, % put the unit here.... kind of weird, i know 
+	sort=l, % for correct sorting type the full name of the symbol here
+	parent=romanletter % for sorting purposes, use romanletter or greekletter
 }
 
 \newglossaryentry{sym:Rv}
@@ -270,7 +300,7 @@ parent=romanletter % for sorting purposes, use romanletter or greekletter
 {
 type=symbol, % entry should be in the list of symbols!
 name={\ensuremath{R}}, % Put the symbol here in dollar signs
-description={Radius (magnitude)}, % A brief description of this entry (to appear in the glossary).
+description={Radius}, % A brief description of this entry (to appear in the glossary).
 symbol={$\left[m\right]$}, % put the unit here.... kind of weird, i know 
 sort=Rm, % for correct sorting type the full name of the symbol here
 parent=romanletter % for sorting purposes, use romanletter or greekletter
@@ -291,7 +321,7 @@ parent=romanletter % for sorting purposes, use romanletter or greekletter
 type=symbol, % entry should be in the list of symbols!
 name={\ensuremath{\mathbf{J}}}, % Put the symbol here in dollar signs
 description={Jerk of the spacecraft (vector)}, % A brief description of this entry (to appear in the glossary).
-symbol={$\left[\frac{m}{s^3}\right]$}, % put the unit here.... kind of weird, i know 
+symbol={$\left[m\cdot s^{-3}\right]$}, % put the unit here.... kind of weird, i know 
 sort=j, % for correct sorting type the full name of the symbol here
 parent=romanletter % for sorting purposes, use romanletter or greekletter
 }
@@ -301,7 +331,7 @@ parent=romanletter % for sorting purposes, use romanletter or greekletter
 type=symbol, % entry should be in the list of symbols!
 name={\ensuremath{\mathbf{g}}}, % Put the symbol here in dollar signs
 description={Gravitational acceleration (vector)}, % A brief description of this entry (to appear in the glossary).
-symbol={$\left[\frac{m}{s^2}\right]$}, % put the unit here.... kind of weird, i know 
+symbol={$\left[m\cdot s^{-2}\right]$}, % put the unit here.... kind of weird, i know 
 sort=g, % for correct sorting type the full name of the symbol here
 parent=romanletter % for sorting purposes, use romanletter or greekletter
 }
@@ -311,7 +341,7 @@ parent=romanletter % for sorting purposes, use romanletter or greekletter
 type=symbol, % entry should be in the list of symbols!
 name={\ensuremath{\mathbf{a}}}, % Put the symbol here in dollar signs
 description={Acceleration (vector)}, % A brief description of this entry (to appear in the glossary).
-symbol={$\left[\frac{m}{s^2}\right]$}, % put the unit here.... kind of weird, i know 
+symbol={$\left[m\cdot s^{-2}\right]$}, % put the unit here.... kind of weird, i know 
 sort=acceleration, % for correct sorting type the full name of the symbol here
 parent=romanletter % for sorting purposes, use romanletter or greekletter
 }
@@ -321,7 +351,7 @@ parent=romanletter % for sorting purposes, use romanletter or greekletter
 type=symbol, % entry should be in the list of symbols!
 name={\ensuremath{\mathbf{a_L}}}, % Put the symbol here in dollar signs
 description={Acceleration due to lift (vector)}, % A brief description of this entry (to appear in the glossary).
-symbol={$\left[\frac{m}{s^2}\right]$}, % put the unit here.... kind of weird, i know 
+symbol={$\left[m\cdot s^{-2}\right]$}, % put the unit here.... kind of weird, i know 
 sort=aL, % for correct sorting type the full name of the symbol here
 parent=romanletter % for sorting purposes, use romanletter or greekletter
 }
@@ -331,7 +361,7 @@ parent=romanletter % for sorting purposes, use romanletter or greekletter
 type=symbol, % entry should be in the list of symbols!
 name={\ensuremath{\mathbf{a_D}}}, % Put the symbol here in dollar signs
 description={Acceleration due to drag (vector)}, % A brief description of this entry (to appear in the glossary).
-symbol={$\left[\frac{m}{s^2}\right]$}, % put the unit here.... kind of weird, i know 
+symbol={$\left[m\cdot s^{-2}\right]$}, % put the unit here.... kind of weird, i know 
 sort=aD, % for correct sorting type the full name of the symbol here
 parent=romanletter % for sorting purposes, use romanletter or greekletter
 }
@@ -351,7 +381,7 @@ parent=romanletter % for sorting purposes, use romanletter or greekletter
 type=symbol, % entry should be in the list of symbols!
 name={\ensuremath{\dot{m}}}, % Put the symbol here in dollar signs
 description={Mass flow}, % A brief description of this entry (to appear in the glossary).
-symbol={$\left[\frac{kg}{s}\right]$}, % put the unit here.... kind of weird, i know 
+symbol={$\left[kg\codt s^{-1}\right]$}, % put the unit here.... kind of weird, i know 
 sort=mdot, % for correct sorting type the full name of the symbol here
 parent=romanletter % for sorting purposes, use romanletter or greekletter
 }
@@ -366,15 +396,15 @@ sort=Isp, % for correct sorting type the full name of the symbol here
 parent=romanletter % for sorting purposes, use romanletter or greekletter
 }
 
-\newglossaryentry{sym:Dt}
-{
-type=symbol, % entry should be in the list of symbols!
-name={\ensuremath{\Delta t}}, % Put the symbol here in dollar signs
-description={Discrete time step}, % A brief description of this entry (to appear in the glossary).
-symbol={$\left[s\right]$}, % put the unit here.... kind of weird, i know 
-sort=Dt, % for correct sorting type the full name of the symbol here
-parent=romanletter % for sorting purposes, use romanletter or greekletter
-}
+%\newglossaryentry{sym:Dt}
+%{
+%type=symbol, % entry should be in the list of symbols!
+%name={\ensuremath{\Delta t}}, % Put the symbol here in dollar signs
+%description={Discrete time step}, % A brief description of this entry (to appear in the glossary).
+%symbol={$\left[s\right]$}, % put the unit here.... kind of weird, i know 
+%sort=Dt, % for correct sorting type the full name of the symbol here
+%parent=romanletter % for sorting purposes, use romanletter or greekletter
+%}
 
 \newglossaryentry{sym:q}
 {
@@ -386,15 +416,15 @@ sort=q, % for correct sorting type the full name of the symbol here
 parent=romanletter % for sorting purposes, use romanletter or greekletter
 }
 
-\newglossaryentry{sym:pinfl}
-{
-type=symbol, % entry should be in the list of symbols!
-name={\ensuremath{P_{infl}}}, % Put the symbol here in dollar signs
-description={Inflation pressure}, % A brief description of this entry (to appear in the glossary).
-symbol={$\left[Pa\right]$}, % put the unit here.... kind of weird, i know 
-sort=pinfl, % for correct sorting type the full name of the symbol here
-parent=romanletter % for sorting purposes, use romanletter or greekletter
-}
+%\newglossaryentry{sym:pinfl}
+%{
+%type=symbol, % entry should be in the list of symbols!
+%name={\ensuremath{P_{infl}}}, % Put the symbol here in dollar signs
+%description={Inflation pressure}, % A brief description of this entry (to appear in the glossary).
+%symbol={$\left[Pa\right]$}, % put the unit here.... kind of weird, i know 
+%sort=pinfl, % for correct sorting type the full name of the symbol here
+%parent=romanletter % for sorting purposes, use romanletter or greekletter
+%}
 
 \newglossaryentry{sym:p}
 {
@@ -406,13 +436,13 @@ parent=romanletter % for sorting purposes, use romanletter or greekletter
 	parent=romanletter % for sorting purposes, use romanletter or greekletter
 }
 
-\newglossaryentry{sym:G}
+\newglossaryentry{sym:f}
 {
 type=symbol, % entry should be in the list of symbols!
-name={\ensuremath{G}}, % Put the symbol here in dollar signs
+name={\ensuremath{f}}, % Put the symbol here in dollar signs
 description={Running load}, % A brief description of this entry (to appear in the glossary).
-symbol={$\left[N/m\right]$}, % put the unit here.... kind of weird, i know 
-sort=G, % for correct sorting type the full name of the symbol here
+symbol={$\left[N\cdot m^{-1}\right]$}, % put the unit here.... kind of weird, i know 
+sort=f, % for correct sorting type the full name of the symbol here
 parent=romanletter % for sorting purposes, use romanletter or greekletter
 }
 
@@ -432,7 +462,7 @@ parent=romanletter % for sorting purposes, use romanletter or greekletter
 type=symbol, % entry should be in the list of symbols!
 name={\ensuremath{D_f}}, % Put the symbol here in dollar signs
 description={Material areal density}, % A brief description of this entry (to appear in the glossary).
-symbol={$\left[\frac{kg}{m^2}\right]$}, % put the unit here.... kind of weird, i know 
+symbol={$\left[kg\cdot m^{-2}\right]$}, % put the unit here.... kind of weird, i know 
 sort=Df, % for correct sorting type the full name of the symbol here
 parent=romanletter % for sorting purposes, use romanletter or greekletter
 }
@@ -447,15 +477,15 @@ sort=mbar, % for correct sorting type the full name of the symbol here
 parent=romanletter % for sorting purposes, use romanletter or greekletter
 }
 
-\newglossaryentry{sym:ge}
-{
-type=symbol, % entry should be in the list of symbols!
-name={\ensuremath{g_{e}}}, % Put the symbol here in dollar signs
-description={Earth gravitational acceleration}, % A brief description of this entry (to appear in the glossary).
-symbol={$\left[\frac{m}{s^2} \right]$}, % put the unit here.... kind of weird, i know 
-sort=ge, % for correct sorting type the full name of the symbol here
-parent=romanletter % for sorting purposes, use romanletter or greekletter
-}
+%\newglossaryentry{sym:ge}
+%{
+%type=symbol, % entry should be in the list of symbols!
+%name={\ensuremath{g_{e}}}, % Put the symbol here in dollar signs
+%description={Earth gravitational acceleration}, % A brief description of this entry (to appear in the glossary).
+%symbol={$\left[m\cdot s^{-2} \right]$}, % put the unit here.... kind of weird, i know 
+%sort=ge, % for correct sorting type the full name of the symbol here
+%parent=romanletter % for sorting purposes, use romanletter or greekletter
+%}
 
 \newglossaryentry{sym:d}
 {
@@ -479,11 +509,21 @@ parent=romanletter % for sorting purposes, use romanletter or greekletter
 
 \newglossaryentry{sym:theta}
 {
+	type=symbol, % entry should be in the list of symbols!
+	name={\ensuremath{\theta}}, % Put the symbol here in dollar signs
+	description={Pitch angle}, % A brief description of this entry (to appear in the glossary).
+	symbol={$\left[rad \right]$}, % put the unit here.... kind of weird, i know 
+	sort=theta, % for correct sorting type the full name of the symbol here
+	parent=greekletter % for sorting purposes, use romanletter or greekletter
+}
+
+\newglossaryentry{sym:theta_cone}
+{
 type=symbol, % entry should be in the list of symbols!
-name={\ensuremath{\theta}}, % Put the symbol here in dollar signs
+name={\ensuremath{\theta_{cone}}}, % Put the symbol here in dollar signs
 description={Decelerator half-cone angle}, % A brief description of this entry (to appear in the glossary).
 symbol={$\left[rad \right]$}, % put the unit here.... kind of weird, i know 
-sort=theta, % for correct sorting type the full name of the symbol here
+sort=thetacone, % for correct sorting type the full name of the symbol here
 parent=greekletter % for sorting purposes, use romanletter or greekletter
 }
 
@@ -552,7 +592,7 @@ parent=greekletter % for sorting purposes, use romanletter or greekletter
 type=symbol, % entry should be in the list of symbols!
 name={\ensuremath{BC}}, % Put the symbol here in dollar signs
 description={Ballistic coefficient}, % A brief description of this entry (to appear in the glossary).
-symbol={$\left[\frac{kg}{m^2} \right]$}, % put the unit here.... kind of weird, i know 
+symbol={$\left[kg\cdot m^{-2} \right]$}, % put the unit here.... kind of weird, i know 
 sort=BC, % for correct sorting type the full name of the symbol here
 parent=romanletter % for sorting purposes, use romanletter or greekletter
 }
@@ -562,7 +602,7 @@ parent=romanletter % for sorting purposes, use romanletter or greekletter
 type=symbol, % entry should be in the list of symbols!
 name={\ensuremath{K_f}}, % Put the symbol here in dollar signs
 description={Strength to mass ratio}, % A brief description of this entry (to appear in the glossary).
-symbol={$\left[\frac{N \cdot m}{kg} \right]$}, % put the unit here.... kind of weird, i know 
+symbol={$\left[N \cdot m \cdot kg^{-1} \right]$}, % put the unit here.... kind of weird, i know 
 sort=kf, % for correct sorting type the full name of the symbol here
 parent=romanletter % for sorting purposes, use romanletter or greekletter
 }
@@ -592,7 +632,7 @@ parent=romanletter % for sorting purposes, use romanletter or greekletter
 type=symbol, % entry should be in the list of symbols!
 name={\ensuremath{Q}}, % Put the symbol here in dollar signs
 description={Heat load}, % A brief description of this entry (to appear in the glossary).
-symbol={$\left[\frac{J}{m^2} \right]$}, % put the unit here.... kind of weird, i know 
+symbol={$\left[J\cdot m^{-2} \right]$}, % put the unit here.... kind of weird, i know 
 sort=Q, % for correct sorting type the full name of the symbol here
 parent=romanletter % for sorting purposes, use romanletter or greekletter
 }
@@ -618,15 +658,15 @@ parent=romanletter % for sorting purposes, use romanletter or greekletter
 	parent=romanletter % for sorting purposes, use romanletter or greekletter
 }
 
-\newglossaryentry{sym:Tw}
-{
-	type=symbol, % entry should be in the list of symbols!
-	name={\ensuremath{T_w}}, % Put the symbol here in dollar signs
-	description={Wall temperature}, % A brief description of this entry (to appear in the glossary).
-	symbol={$\left[K\right]$}, % put the unit here.... kind of weird, i know 
-	sort=Tw, % for correct sorting type the full name of the symbol here
-	parent=romanletter % for sorting purposes, use romanletter or greekletter
-}
+%\newglossaryentry{sym:Tw}
+%{
+%	type=symbol, % entry should be in the list of symbols!
+%	name={\ensuremath{T_w}}, % Put the symbol here in dollar signs
+%	description={Wall temperature}, % A brief description of this entry (to appear in the glossary).
+%	symbol={$\left[K\right]$}, % put the unit here.... kind of weird, i know 
+%	sort=Tw, % for correct sorting type the full name of the symbol here
+%	parent=romanletter % for sorting purposes, use romanletter or greekletter
+%}
 
 \newglossaryentry{sym:t}
 {
@@ -642,7 +682,7 @@ parent=romanletter % for sorting purposes, use romanletter or greekletter
 {
 	type=symbol, % entry should be in the list of symbols!
 	name={\ensuremath{x}}, % Put the symbol here in dollar signs
-	description={Dimension}, % A brief description of this entry (to appear in the glossary).
+	description={Depth}, % A brief description of this entry (to appear in the glossary).
 	symbol={$\left[m\right]$}, % put the unit here.... kind of weird, i know 
 	sort=t, % for correct sorting type the full name of the symbol here
 	parent=romanletter % for sorting purposes, use romanletter or greekletter
@@ -653,7 +693,7 @@ parent=romanletter % for sorting purposes, use romanletter or greekletter
 	type=symbol, % entry should be in the list of symbols!
 	name={\ensuremath{\alpha_d}}, % Put the symbol here in dollar signs
 	description={Thermal diffusivity}, % A brief description of this entry (to appear in the glossary).
-	symbol={$\left[\frac{m^2}{s}\right]$}, % put the unit here.... kind of weird, i know 
+	symbol={$\left[m^2\cdot s^{-1}\right]$}, % put the unit here.... kind of weird, i know 
 	sort=alpha, % for correct sorting type the full name of the symbol here
 	parent=greekletter % for sorting purposes, use romanletter or greekletter
 }
@@ -663,7 +703,7 @@ parent=romanletter % for sorting purposes, use romanletter or greekletter
 	type=symbol, % entry should be in the list of symbols!
 	name={\ensuremath{k}}, % Put the symbol here in dollar signs
 	description={Thermal conductivity}, % A brief description of this entry (to appear in the glossary).
-	symbol={$\left[\frac{W}{m\cdot K}\right]$}, % put the unit here.... kind of weird, i know 
+	symbol={$\left[W\cdot m^{-1} \cdot K^{-1}\right]$}, % put the unit here.... kind of weird, i know 
 	sort=k, % for correct sorting type the full name of the symbol here
 	parent=romanletter % for sorting purposes, use romanletter or greekletter
 }
@@ -683,7 +723,7 @@ parent=romanletter % for sorting purposes, use romanletter or greekletter
 	type=symbol, % entry should be in the list of symbols!
 	name={\ensuremath{c_p}}, % Put the symbol here in dollar signs
 	description={Specific heat capacity}, % A brief description of this entry (to appear in the glossary).
-	symbol={$\left[\frac{J}{kg\cdot K}\right]$}, % put the unit here.... kind of weird, i know 
+	symbol={$\left[J\cdot kg^{-1}\cdot K^{-1}\right]$}, % put the unit here.... kind of weird, i know 
 	sort=cp, % for correct sorting type the full name of the symbol here
 	parent=romanletter % for sorting purposes, use romanletter or greekletter
 }
@@ -693,7 +733,7 @@ parent=romanletter % for sorting purposes, use romanletter or greekletter
 	type=symbol, % entry should be in the list of symbols!
 	name={\ensuremath{K}}, % Put the symbol here in dollar signs
 	description={Equivalent thermal conductivity}, % A brief description of this entry (to appear in the glossary).
-	symbol={$\left[\frac{W}{m\cdot K}\right]$}, % put the unit here.... kind of weird, i know 
+	symbol={$\left[W\cdot m^{-1}\cdot K^{-1}\right]$}, % put the unit here.... kind of weird, i know 
 	sort=K, % for correct sorting type the full name of the symbol here
 	parent=romanletter % for sorting purposes, use romanletter or greekletter
 }
@@ -723,7 +763,7 @@ parent=romanletter % for sorting purposes, use romanletter or greekletter
 	type=symbol, % entry should be in the list of symbols!
 	name={\ensuremath{\dot{q}}}, % Put the symbol here in dollar signs
 	description={Heat flux}, % A brief description of this entry (to appear in the glossary).
-	symbol={$\left[ \frac{W}{m^2} \right]$}, % put the unit here.... kind of weird, i know 
+	symbol={$\left[W\cdot m^{-2} \right]$}, % put the unit here.... kind of weird, i know 
 	sort=qdot, % for correct sorting type the full name of the symbol here
 	parent=romanletter % for sorting purposes, use romanletter or greekletter
 }
@@ -763,7 +803,7 @@ parent=greekletter % for sorting purposes, use romanletter or greekletter
 	type=symbol, % entry should be in the list of symbols!
 	name={\ensuremath{C_{L_\alpha}}}, % Put the symbol here in dollar signs
 	description={Lift gradient}, % A brief description of this entry (to appear in the glossary).
-	symbol={$\left[\frac{m^2}{rad}\right]$}, % put the unit here.... kind of weird, i know 
+	symbol={$\left[m^2\cdot rad^{-1}\right]$}, % put the unit here.... kind of weird, i know 
 	sort=CLAalpha, % for correct sorting type the full name of the symbol here
 	parent=romanletter % for sorting purposes, use romanletter or greekletter
 }
@@ -772,8 +812,8 @@ parent=greekletter % for sorting purposes, use romanletter or greekletter
 {
 	type=symbol, % entry should be in the list of symbols!
 	name={\ensuremath{C_{M_\alpha}}}, % Put the symbol here in dollar signs
-	description={Moment coefficient gradient around y-axi}, % A brief description of this entry (to appear in the glossary).
-	symbol={$\left[\frac{m^2}{rad}\right]$}, % put the unit here.... kind of weird, i know 
+	description={Moment coefficient gradient around y-axis}, % A brief description of this entry (to appear in the glossary).
+	symbol={$\left[rad^{-1}\right]$}, % put the unit here.... kind of weird, i know 
 	sort=CMAalpha, % for correct sorting type the full name of the symbol here
 	parent=romanletter % for sorting purposes, use romanletter or greekletter
 }
@@ -782,7 +822,7 @@ parent=greekletter % for sorting purposes, use romanletter or greekletter
 {
 	type=symbol, % entry should be in the list of symbols!
 	name={\ensuremath{w}}, % Put the symbol here in dollar signs
-	description={Toroid width}, % A brief description of this entry (to appear in the glossary).
+	description={Width}, % A brief description of this entry (to appear in the glossary).
 	symbol={$\left[m\right]$}, % put the unit here.... kind of weird, i know 
 	sort=w, % for correct sorting type the full name of the symbol here
 	parent=romanletter % for sorting purposes, use romanletter or greekletter
@@ -792,7 +832,7 @@ parent=greekletter % for sorting purposes, use romanletter or greekletter
 {
 	type=symbol, % entry should be in the list of symbols!
 	name={\ensuremath{h}}, % Put the symbol here in dollar signs
-	description={Toroid height}, % A brief description of this entry (to appear in the glossary).
+	description={Height}, % A brief description of this entry (to appear in the glossary).
 	symbol={$\left[m\right]$}, % put the unit here.... kind of weird, i know 
 	sort=h, % for correct sorting type the full name of the symbol here
 	parent=romanletter % for sorting purposes, use romanletter or greekletter
@@ -801,9 +841,9 @@ parent=greekletter % for sorting purposes, use romanletter or greekletter
 \newglossaryentry{sym:l}
 {
 	type=symbol, % entry should be in the list of symbols!
-	name={\ensuremath{L}}, % Put the symbol here in dollar signs
+	name={\ensuremath{H}}, % Put the symbol here in dollar signs
 	description={Angular Momentum}, % A brief description of this entry (to appear in the glossary).
-	symbol={$\left[\frac{Nm}{s}\right]$}, % put the unit here.... kind of weird, i know 
-	sort=L, % for correct sorting type the full name of the symbol here
+	symbol={$\left[N\cdot m\cdot s^{-1}\right]$}, % put the unit here.... kind of weird, i know 
+	sort=H, % for correct sorting type the full name of the symbol here
 	parent=romanletter % for sorting purposes, use romanletter or greekletter
 }
