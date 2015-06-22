@@ -1,12 +1,10 @@
-The general objective for the \gls{adcs} is to monitor the attitude of the spacecraft and perform corrections if needed. The operation period of the \gls{adcs} can be divided into two phases, the interplanetary phase and the Mars approach phase.
+The general objective for the \gls{adcs} is to monitor the attitude of the spacecraft and perform corrections if needed. The operation period of the \gls{adcs} can be divided into two phases, the interplanetary phase and the Mars approach phase:
+\begin{itemize}
+\item During the interplanetary flight the \gls{adcs} keeps the attitude as required to point the solar arrays toward the sun, points the thrusters in the desired direction and to ensure nominal trajectory is followed.
 
-During the interplanetary flight the \gls{adcs} keeps the attitude as required to point the solar arrays toward the sun, point the thrusters in the desired direction etc.
-
-During the Mars approach phase the \gls{adcs} should adjust the attitude to the entry attitude, and compensate for possible disturbances (i.e. inflation of the \gls{hiad}).
-
-
-
-\paragraph{Sensors} Sensors are needed to determine the attitude. How accurate the sensors need to be depends on the required accuracy from different subsystems, for instance a high gain antenna requires a higher accuracy. 
+\item During the Mars approach phase the \gls{adcs} should adjust the attitude to the entry attitude and compensate for possible disturbances (i.e. inflation of the \gls{hiad}) to adhere to the nominal trajectory.
+\end{itemize}
+\paragraph{Sensors} Sensors are needed to determine the attitude. How accurate the sensors need to be depends on the required accuracy from different subsystems. For instance a high gain antenna requires a higher accuracy. 
 
 \subparagraph{Star trackers}
 Star trackers work by taking pictures of the stars and comparing them to an internal catalogue. They are the most accurate for pointing \cite{CarlChristianLiebe1995}. However they do not work if the spacecraft is rotating too fast, so an additional rough estimate is needed \cite[p. 584]{Wertz2011}. 
@@ -17,4 +15,4 @@ The mass of star trackers is in the order of a 100 $\left[g\right]$. The require
 Gyroscopes can be used to provide the attitude determination for the initial stabilisation. There are different kinds of gyroscopes: Mechanical, optical and so-called \gls{mems}. The latter one is relatively new, and is widely used in mobile phones. 
 
 \paragraph{Attitude control}
-During the interplanetary flight the space craft will encounter disturbance torques. To prevent attitude changes, these disturbances must be counter acted. Although the thrusters used during the re-entry stage of the mission could be used for this, these are only capable of providing bursts of angular momentum. Instead, reaction wheels will be used. These momentum wheels continuously store the disturbance torques. Once they are spun up to their rated angular speeds, they must be unloaded using thrusters. Taking the Mars Reconnaissance Orbiter \cite{You2007} as a reference case for the required momentum storage and unloading, and scaling these values to be more representative of crew module during interplanetary flight, an angular momentum storage capacity of $\gls{sym:l} = 1000 Nm\cdot s^{-1} $ and a momentum unloading $\Delta\gls{sym:V}$ of $5 m\cdot s^{-1}$ is needed. Assuming the reaction wheels have a diameter of $0.5 m$ and spin to a maximum of $500 rads^{-1}$ each wheel will have a mass of roughly $65 kg$. For a $10,000kg$ crew module using MR-104G thrusters, a $\Delta\gls{sym:V}$ of $5 m\cdot s^{-1}$ corresponds to a propellant mass of roughly $20kg$ per Tsiolkovsky's rocket equation. 
+During the interplanetary flight the space craft will encounter disturbance torques. To prevent attitude changes, these disturbances must be counter acted. Although the thrusters used during the re-entry stage of the mission could be used for this, these are only capable of providing bursts of angular momentum. Instead, reaction wheels will be used. These momentum wheels continuously store the disturbance torques. Once they are spun up to their rated angular speeds, they must be unloaded using thrusters. Taking the Mars Reconnaissance Orbiter \cite{You2007} as a reference case for the required momentum storage and unloading, and scaling these values to be more representative of crew module during interplanetary flight, an angular momentum storage capacity of \gls{sym:l} = 1000 $[N \cdot m\cdot s^{-1}]$ and a momentum unloading $\Delta\gls{sym:V}$ of 5 $[m\cdot s^{-1}]$ is needed. Assuming the reaction wheels have a diameter of 0.5 $[m]$ and spin to a maximum of 500 $[rad \cdot s^{-1}]$ each wheel will have a mass of roughly 65 $[kg]$. For a 10 000 $[kg]$ crew module using MR-104G thrusters, a $\Delta\gls{sym:V}$ of 5 $[m\cdot s^{-1}]$ corresponds to a propellant mass of roughly 20 [$kg$] per Tsiolkovsky's rocket equation. 
