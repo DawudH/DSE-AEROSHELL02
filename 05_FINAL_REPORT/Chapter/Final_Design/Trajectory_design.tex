@@ -37,17 +37,17 @@ These two objectives are conflicting as the deceleration high in the atmosphere 
 
 A longer aerocapture can be achieved by improved control over the vehicle, which is accomplished by a higher lift coefficient.  A longer aerocapture, however increases the heat flux. 
 
-With a higher drag coefficient or area the vehicle can obtain a larger deceleration higher in the atmosphere, thus at a lower dynamic pressure.
+With a higher drag coefficient or total area the vehicle can obtain a larger deceleration higher in the atmosphere, thus at a lower dynamic pressure.
 
 In order to facilitate both objectives for aerocapture it is thus important that the aerodynamic shape created has a high lift coefficient as well as a high drag coefficient. For the entry and descent phase conflicting objectives for the shape are found. In Section \ref{sec:trajectory_summary} a conclusion is drawn on the properties needed from the design of the aerodynamic shape.
 
-In figure \ref{fig:orbit_aerocapture_data} the parameters that were recorded during the simulation are shown for the nominal trajectory and two trajectories created for a 10 \% increase and decrease in atmospheric density. This change in density is based on the maximum estimated error in the ESA mars climate database v5.2 \cite{Lewis2015}.
+In Figure \ref{fig:orbit_aerocapture_data} the parameters that were recorded during the simulation are shown for the nominal trajectory and two trajectories created for a $10\%$ increase and decrease in atmospheric density. This change in density is based on the maximum estimated error in the \gls{esa} Mars climate database v5.2 \cite{Lewis2015}.
 
 The bank control for the trajectories is changed to attain the same exit velocity. This velocity is needed to get into a Mars synchronous orbit. With this results it is proven that a density change of $\pm 10\%$ can be accounted for by changing the bank control. However, some other parameters do change. The peak acceleration and dynamic pressure increase for a higher density. The \gls{tps} and inflatable structure should be sized on the worst case. Also the time passed and the position of exit (defined by $\tau$ in Figure \ref{fig:angles}) are different for each trajectory. These changes have a significant effect on the entry and descent phase. This effect will be explained in Section \ref{sec:entry_descent}.
 \begin{sidewaysfigure}
 	\centering
 	\includegraphics[width=0.99\textwidth]{Figure/Orbit/sensitivity_aerocapture.pdf}
-	\caption[Results of the aerocapture trajectory for three different density profiles.]{Results of the aerocapture trajectory for three different density profiles. The trajectories with modified density are corrected (changed \gls{sym:mu} profile) to maintain the same exit velocity. The horizontal dashed lines are design limits (for the \gls{sym:M} and \gls{sym:acc} plots) }
+	\caption[Results of the aerocapture trajectory for three different density profiles]{Results of the aerocapture trajectory for three different density profiles. The trajectories with modified density are corrected (changed \gls{sym:mu} profile) to maintain the same exit velocity. The horizontal dashed lines are design limits (for the \gls{sym:M} and \gls{sym:acc} plots) }
 	\label{fig:orbit_aerocapture_data}
 \end{sidewaysfigure}
 
@@ -72,11 +72,11 @@ The objective of the entry and descent phase is to get to a height of $15 \left[
 
 In order to keep the deceleration low, especially at the end of the descent, a low drag coefficient is required. This objective clearly conflicts with the properties needed for the aerocapture. As can be seen in Figure \ref{fig:orbit_entry_data} the deceleration at the end of the mission is right at the $3 \gls{sym:g}_{earth}$ limit for the nominal trajectory. Meaning the drag coefficient could not have gotten any higher.
 
-In the last part of the descent also a high dynamic pressure is attained, which is the parameter that is the main input for inflatable structure design. The highest dynamic pressure is reached by the trajectory for a 10\% lower density.
+In the last part of the descent also a high dynamic pressure is attained, which is the parameter that is the main input for inflatable structure design. The highest dynamic pressure is reached by the trajectory with a $10\%$ lower density.
 
-In Figure \ref{fig:entry_mars} next to the nominal trajectory also two trajectories with a 10\% higher or lower density are plotted. The trajectory in the higher density atmosphere would land at a location before the nominal landing location if no change to the control is done. The trajectory that is shown for 10 \% higher density is one with control that allows the vehicle to fly on further (increased \gls{sym:mu}). This control causes the vehicle to overshoot the nominal landing location. Any point between these two margins is a possible landing location. It is thus proven that the nominal landing location can be achieved with 10\% higher density.
+In Figure \ref{fig:entry_mars} next to the nominal trajectory also two trajectories with a $10\%$ higher or lower density are plotted. The trajectory in the higher density atmosphere would land at a location before the nominal landing location if no change to the control is done. The trajectory that is shown for $10\%$ higher density is one with control that allows the vehicle to fly on further (increased \gls{sym:mu}). This control causes the vehicle to overshoot the nominal landing location. Any point between these two margins is a possible landing location. It is thus proven that the nominal landing location can be achieved with $10\%$ higher density.
 
-The trajectory for a 10\% lower density would normally overshoot the nominal landing location. The control is thus changed in order to push it towards the surface faster (lower \gls{sym:mu}). This control causes the vehicle to land before the nominal landing location. Again any point between these two margins is a possible landing location. This proves that the nominal landing location can be attained with 10\% lower density.
+The trajectory for a $10\%$ lower density would normally overshoot the nominal landing location. The control is thus changed in order to push it towards the surface faster (lower \gls{sym:mu}). This control causes the vehicle to land before the nominal landing location. Again any point between these two margins is a possible landing location. This proves that the nominal landing location can be attained with $10\%$ lower density.
 
 In Figure \ref{fig:entry_mars} it can also be seen that the entry locations for each trajectory is different. This flows down from the aerocapture where the exit location for these trajectories where different as well.
 
@@ -85,18 +85,18 @@ The time passed during both the aerocapture and the entry and descent phases are
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.99\textwidth]{Figure/Orbit/entry_mars.pdf}
-	\caption[The re-entry trajectory for three different density profiles.]{The re-entry trajectory for three different density profiles. The trajectories with modified density are corrected (changed \gls{sym:mu} profile) to show the ability to reach the desired landing location.}
+	\caption[The re-entry trajectory for three different density profiles]{The re-entry trajectory for three different density profiles. The trajectories with modified density are corrected (changed \gls{sym:mu} profile) to show the ability to reach the desired landing location.}
 	\label{fig:entry_mars}
 \end{figure}
 
 In Figure \ref{fig:orbit_entry_data} it can be seen that the Mach number at a height of $15 \left[km\right]$ is approximately $5$ for all orbits. The entry trajectory with a lower density is the shortest, however it also decelerates fastest overshooting the $3 \gls{sym:g}_{earth}$ requirement by 23\%. This higher deceleration is needed to reach the required velocity of $M=5$.
 
-The entry trajectory with a higher density is the longest. The deceleration is also faster than for the nominal trajectory and it also overshoots the $3 \gls{sym:g}_{earth}$ requirement by 11\%. This higher deceleration is caused by the denser atmosphere at a height of $15 \left[km\right]$.
+The entry trajectory with a higher density is the longest. The deceleration is also faster than for the nominal trajectory and it also overshoots the $3 \gls{sym:g}_{earth}$ requirement by $11\%$. This higher deceleration is caused by the denser atmosphere at a height of $15 \left[km\right]$.
 
 \begin{sidewaysfigure}
 	\centering
 	\includegraphics[width=0.99\textwidth]{Figure/Orbit/sensitivity_entry.pdf}
-	\caption[Results of the re-entry trajectory for three different density profiles.]{Results of the re-entry trajectory for three different density profiles. The trajectories with modified density are corrected (changed \gls{sym:mu} profile) to show the ability to reach the desired landing location. The horizontal dashed lines are design limits (for the \gls{sym:M} and \gls{sym:acc} plots)}
+	\caption[Results of the re-entry trajectory for three different density profiles]{Results of the re-entry trajectory for three different density profiles. The trajectories with modified density are corrected (changed \gls{sym:mu} profile) to show the ability to reach the desired landing location. The horizontal dashed lines are design limits (for the \gls{sym:M} and \gls{sym:acc} plots)}
 	\label{fig:orbit_entry_data}
 \end{sidewaysfigure}
 
