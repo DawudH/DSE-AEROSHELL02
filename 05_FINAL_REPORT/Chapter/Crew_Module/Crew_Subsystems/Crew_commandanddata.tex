@@ -1,4 +1,4 @@
-\acrfull{cdh} and telecommunications form an integral part of the avionics system. These perform four functions: flight and vehicle control, data processing, human interfacing and communications \cite{Eger2008}. This requires a direct link to the \gls{adcs} module, a link to the telecommunications network and a link to on-board display for crew members. These are illustrated in Figure \ref{fig:cdhflow}
+\acrfull{cdh} and telecommunications form an integral part of the avionics system. These perform four functions: flight and vehicle control, data processing, human interfacing and communications \cite{Eger2008}. This requires a direct link to the \gls{adcs} module, a link to the telecommunications network and a link to on-board display for crew members. These are illustrated in Figure \ref{fig:cdhflow}.
 
 \begin{figure}[h]
 		\centering
@@ -7,9 +7,11 @@
 		\label{fig:cdhflow}
 \end{figure}
 
+Critical data flows are those to and from subsystems
+
 Data processing is performed as follows. Data is first filtered, then analysed to see if reactions are required and in case reactions are required put through to the relevant effectors (subsystems) and critical system information communicated to the ground station via the Ka-band (see section \ref{sec:groundop}). Modulation is performed in the transponder by \gls{bpsk} on the carrier and sub-carrier (modulating the carrier) and \gls{qpsk} on the carrier, similar to the Mars Reconnaissance Orbiter mission \cite{Taylor2006}.
 
-For its integral part, it is key that the system is redundantly equipped to ensure adequate system reliability. To this end, cabling is redundant and safety-critical processing tasks are performed by self-checking pair processors, following their application in Orion \cite{Eger2008}. These self-checking pair processors observe and compare the activity of their partner to identify faulty behaviour. 
+For its integral part, it is key that the system is redundantly equipped to ensure adequate system reliability. To this end, cabling is redundant and safety-critical processing tasks are performed by self-checking pair processors, following their application in Orion \cite{Eger2008}. These self-checking pair processors observe and compare the activity of their partner to identify faulty behaviour. Moreover, watchdog units are applied that identify faulty components (as applied in e.g. the SeaStar Satellite\footnote{URL:\url{http://digitalcommons.usu.edu/cgi/viewcontent.cgi?article=2198&context=smallsat}. Accessed: 22-06-2015}).
 
 Antennas used can be extracted from a reference mission to Mars, for example the Mars Reconnaissance Orbiter \cite{Taylor2006}. This mission had relatively high scientific return communications and used a $3$ $[m]$ diameter high gain antenna and two low gain antennas. The communication system for this mission was remarkable because it was able to send data back to Earth more than ten times faster than previously conducted missions. Such a high return would be highly beneficial for the manned mission at hand to maximise ground surveillance possibilities and accurate monitoring. It similarly used Ka-band communication for downlink. To this end, the communication system is deemed a good reference system for use in the mission at hand.
 
