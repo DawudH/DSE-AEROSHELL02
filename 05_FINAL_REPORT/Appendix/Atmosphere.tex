@@ -1,6 +1,6 @@
 \section{Atmospheric model} \label{app:atmos}
 
-In this appendix the data from the atmospheric model is presented. The trajectory through the atmosphere is largely influenced by the densities $\left(\gls{sym:rho}\right)$, and the temperature $\left(\gls{sym:T}\right)$ plays a role in the heat flux and Mach number. \acrfull{marsgram} is used to calculate the temperature and density at different heights, longitudes and latitudes. The properties are acquired at one point in time, leading to errors since the atmosphere changes over time. However, discrepancies are covered by testing the capability of the control system to cope with a scaled density throughout the atmosphere.
+In this appendix the data from the atmospheric model is presented. The trajectory through the atmosphere is largely influenced by the densities $\left(\gls{sym:rho}\right)$, and the temperature $\left(\gls{sym:T}\right)$ plays a role in the heat flux and Mach number. \gls{marsgram} is used to calculate the temperature and density at different heights, longitudes and latitudes. The properties are acquired at one point in time, leading to errors since the atmosphere changes over time. However, discrepancies are covered by testing the capability of the control system to cope with a scaled density throughout the atmosphere.
 
 The data that is of most importance is the variation of density and temperature  with height. These relations are shown in Figure \ref{fig:atmos_height}.
 
@@ -22,7 +22,7 @@ The data that is of most importance is the variation of density and temperature 
 	\label{fig:atmos_height}
 \end{figure}
 
-Changes in atmospheric properties also occur across the different longitudes and latitudes. These changes are not used in the analysis of the trajectory through the atmosphere and should be considered in further design stages. The differences in density in lower parts of the atmosphere (lower than approximately 100 [km]) can be $30\%$ between the highest and lowest density found at a latitude of 0 $[deg]$. The density at 4 different heights is portrayed in Figure \ref{fig:atmos_density_heights}. In order to reduce the maximum error, in the trajectory calculation the latitude is used for which the density profile most closely mimics the average density over the longitudes. This longitude is chosen $180 \left[^\circ\right]$.
+Changes in atmospheric properties also occur across the different longitudes and latitudes. These changes are not used in the analysis of the trajectory through the atmosphere and should be considered in further design stages. The differences in density in lower parts of the atmosphere (lower than approximately 100 $[km]$) can be $30\%$ between the highest and lowest density found at a latitude of 0 $[deg]$. The density at 4 different heights is portrayed in Figure \ref{fig:atmos_density_heights}. In order to reduce the maximum error, in the trajectory calculation the latitude is used for which the density profile most closely mimics the average density over the longitudes. This longitude is chosen to be $180 \left[^\circ\right]$.
 
 
 \begin{figure}[h]
