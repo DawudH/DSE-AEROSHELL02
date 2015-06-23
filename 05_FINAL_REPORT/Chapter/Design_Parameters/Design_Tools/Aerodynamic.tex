@@ -1,8 +1,7 @@
 The design of the entry vehicle requires an analysis of the aerodynamic properties of the vehicle. Although high fidelity solutions which describe the entire flow field around the vehicle exist, these are prohibitively expensive in both run time and computational resources for the design study at hand. A low fidelity tool has been developed to allow for rapid design iterations. 
 
-
 \paragraph{Input and Output}
-For a given external shape, the aerodynamic analysis provides aerodynamic lift, drag and moment coefficients for ranges of angles of attack and angles of side slip. This is used in the orbital analysis and the stability and control analysis of the re-entry vehicle. It also calculates the heat flux in the stagnation point for a given flight condition and vehicle shape. The heat flux is required for the analysis of the thermal protection system. 
+For a given external shape, the aerodynamic analysis provides aerodynamic lift, drag and moment coefficients for ranges of angles of attack and angles of side slip. This is used in the orbital analysis and the stability and control analysis of the entry vehicle. It also calculates the heat flux in the stagnation point for a given flight condition and vehicle shape. The heat flux is required for the analysis of the thermal protection system. 
 
 \paragraph{Analysis method}
 The aerodynamic analysis is based on modified Newtonian flow theory. This theory relates the pressure coefficient on a given surface with the incidence angle this surface has with respect to the free stream. The equation for pressure coefficient is given in Equation \ref{eq:modnewtoniancp}, while the maximum pressure coefficient can be calculated using Equation \ref{eq:cpmaxfinal} \cite{AndersonJr.2006}.
@@ -44,10 +43,3 @@ An optimisation algorithm is implemented that allows for a single or multiple ob
 
 \paragraph{Concluding remarks}
 The aerodynamic analysis is capable of calculating the pressure distribution on the surface, the lift, drag and moment coefficients of an arbitrary body as well as their derivatives with respect to angle of attack and side slip. It is also capable of calculating the heat flux in the stagnation point. Verification and validation has been performed to ensure the consistency and accuracy of the method. Details on this can be found in Appendix \ref{sec:VandVaero}.
-
-
-
-
-
-
-
