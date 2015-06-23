@@ -41,36 +41,41 @@ for i = 1:length(delta_V)
 end
 
 t = 2*A ./ sqrt(a*G*M_sun.*(1-e.^2))/3600/24;
-
-index = V_sc_m - V_m >= 0;
 cc = parula(6);
-color1 = cc(1,:);
-color2 = cc(3,:);
+index = V_sc_m - V_m >= 0;
+V_sc_m_atmos_e = V_sc_m_atmos(index);
+delta_V_e = delta_V(index);
 figure('name','delta_v versus transfer time and SOI of Mars')
 hold on
-h1 = line((delta_V+V_esc_earth)/1000,t,'color',color1);
-xlabel('\DeltaV from earth [km/s]')
-ylabel('Transfer time [days]')
-ax1 = gca;
-ax1_pos = ax1.Position;
-ax1.YColor = color1;
-ax2 = axes('Position',ax1_pos,...
-    'YAxisLocation','right',...
-    'Color','none');
-ax2.YColor = color2;
-linkaxes([ax1,ax2],'x')
-%h2 = line((delta_V(index)+V_esc_earth)/1000,(V_sc_m(index) - V_m)/1000,'Parent',ax2,'Color','k');
-h3 = line((delta_V(index)+V_esc_earth)/1000,V_sc_m_atmos(index)/1000,'Parent',ax2,'Color',color2);
-%h4 = line([2.1061e+04 2.1061e+04]/1000, ylim,'linestyle','-.','color',[0 0.7 0.4]);
-h5 = line([1.9623e+04 1.9623e+04]/1000, ylim,'linestyle','-.','color',[0 0.4 0.7]);
-ax2.YLabel.String = 'V_{s/c} [km/s]';
-% legend([h1 h3 h5],'Transfer time',...
-%         'Vs/c at boundary of atmosphere of Mars',...
-%         '7 km/s at atmosphere boundary',...
-%         'location','north')
-%plotyy((delta_V+V_esc_earth)/1000,t,(delta_V(index)+V_esc_earth)/1000,V_sc_m_atmos(index)/1000)
+marker_index = 1:5:length(delta_V);
+marker_index2 = 1:5:length(delta_V_e);
+[AX,H1,H2] = plotyy((delta_V(marker_index)+V_esc_earth)/1000,t(marker_index),(delta_V_e(marker_index2)+V_esc_earth)/1000,V_sc_m_atmos_e(marker_index2)/1000);
+H1.Color = cc(1,:);
+H1.Marker = 'o';
+H2.Color = cc(3,:);
+H2.Marker = '*';
+H1.LineStyle = 'none';
+H2.LineStyle = 'none';
+AX(1).YColor = cc(1,:);
+AX(2).YColor = cc(3,:);
+[AX,H1,H2] = plotyy((delta_V+V_esc_earth)/1000,t,(delta_V(index)+V_esc_earth)/1000,V_sc_m_atmos(index)/1000);
+H1.Color = cc(1,:);
+H2.Color = cc(3,:);
+AX(1).YColor = cc(1,:);
+AX(2).YColor = cc(3,:);
+AX(1).YLabel.Interpreter = 'latex';
+AX(1).XLabel.Interpreter = 'latex';
+AX(2).YLabel.Interpreter = 'latex';
+AX(2).YLabel.String = '$V_{s/c}$ $\left[ km \cdot s^{-1}\right]$';
+xlabel('$\Delta V$ from earth $\left[ km \cdot s^{-1} \right]$')
+ylabel('Transfer time $\left[ days \right]$')
+h5 = line([1.9623e+04 1.9623e+04]/1000, ylim,'linestyle','-.','color',cc(4,:));
+legend([H1 H2 h5],'Transfer time',...
+        'Vs/c at boundary of atmosphere of Mars',...
+        '7 km/s at atmosphere boundary',...
+        'location','northWest')
 grid on
-% matlab2tikz('.\LaTeX\transfer_time.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
+matlab2tikz('.\LaTeX\transfer_time.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
 
 figure('name','transfer orbit')
 hold on
