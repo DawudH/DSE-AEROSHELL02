@@ -1,20 +1,21 @@
 This section will discuss the control system selection procedure and control system design. First the control system downselect will be discussed, after which the resultant control system will be sized to the mission requirements.
 \paragraph{Control system selection}
-Based on the arguments for and against certain control system concepts given in Chapter \ref{subsec:controltool} a selection of suitable control system solutions was made. Figure \ref{fig:cgoffset} shows the \gls{cg} offset required along the Z-axis to trim the spacecraft at certain angles of attack for various \gls{cg} locations on the X-axis. 
+Based on the arguments for and against certain control system concepts given in Section \ref{subsec:controltool} a selection of suitable control system solutions was made. Figure \ref{fig:cgoffset} shows the \gls{cg} offset required along the Z-axis to trim the spacecraft at certain angles of attack for various \gls{cg} locations on the X-axis. 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.95\textwidth]{./Figure/control/moment}
 	\caption[\acrlong{cg} offset along Z-axis required for a trimmed condition at various angles of attack]{\gls{cg} offset along Z-axis required for a trimmed condition at various angles of attack}
 	\label{fig:cgoffset}
 \end{figure}
-From Figure \ref{fig:cgoffset} it can be seen that the required \gls{cg} Z-offset grows as the X-offset grows. For an angle of attack change of $2$ degrees corresponding to an X-\gls{cg} located at $-5$ meters a \gls{cg} shift of $0.2$ $[m]$ is required. Angle of attack-based trajectory control was found to require trimmed \gls{sym:alpha}-shifts of $5$ degrees that have to be adjusted with a rate of $1$ $[deg \cdot s^{-1}]$. To pull this off would require the actuation system to produce a \gls{cg} displacement of $0.5$ meters with a required rate of $0.1$ $[m \cdot s^{-1}]$. This would require excessively heavy actuators that would also have to be able to operate under 3-\gls{con:ge} loads. Not only has this never been done before in space at such scale, the reliability of such a system would be questionable as a \gls{spf} would be introduced. Based on these arguments a decision was made against active \gls{cg} control.\\
-Following the decision to discontinue the consideration of active \gls{cg} control a selection had to be made between the other two control system design options: Body flaps and thrusters. Regarding body flaps some of the same arguments can be made as were used against active \gls{cg} control. Body flaps can require excessively large actuators that are very heavy. In addition to this the dynamic behaviour of the inflatable structure is difficult to compute and can be very unpredictable. Furthermore the use of body flaps on inflatable structures has a very low \gls{trl}, which poses an additional development risk. Based on these and other downsides pertaining to aerodynamic control surfaces mentioned in Chapter \ref{subsec:controltool} it was decided to employ thrusters as control system.
+From Figure \ref{fig:cgoffset} it can be seen that the required \gls{cg} Z-offset grows as the X-offset grows. For an angle of attack change of $2$ degrees corresponding to an X-\gls{cg} located at $-5$ meters a \gls{cg} shift of $0.2$ $[m]$ is required. Angle of attack-based trajectory control was found to require trimmed \gls{sym:alpha}-shifts of $5$ degrees that have to be adjusted with a rate of $1$ $[deg \cdot s^{-1}]$. To pull this off would require the actuation system to produce a \gls{cg} displacement of $0.5$ meters with a required rate of $0.1$ $[m \cdot s^{-1}]$. This would require excessively heavy actuators that would also have to be able to operate under 3-\gls{con:ge} loads. Not only has this never been done before in space at such scale, the reliability of such a system would be questionable as a \gls{spf} would be introduced. Based on these arguments a decision was made against active \gls{cg} control.
+
+Following the decision to discontinue the consideration of active \gls{cg} control a selection had to be made between the other two control system design options: Body flaps and thrusters. Regarding body flaps some of the same arguments can be made as were used against active \gls{cg} control. Body flaps can require excessively large actuators that are very heavy. In addition to this the dynamic behaviour of the inflatable structure is difficult to compute and can be very unpredictable. Furthermore the use of body flaps on inflatable structures has a very low \gls{trl}, which poses an additional development risk. Based on these and other downsides pertaining to aerodynamic control surfaces mentioned in Section \ref{subsec:controltool} it was decided to employ thrusters as control system.
 
 \paragraph{Control system actuation}
 
 The components of the control system providing the actuation can globally be subdivided into two components. The control system mass and its corresponding accuracy.
 
-Mass estimates are based on the required propellant mass, thruster mass and fuel tank mass. The propellant mass can be subdivided into a further two categories: the control within the atmosphere and the control outside of the atmosphere. General equation were previously discussed within Chapter \ref{subsec:controltool}. An overview of the mass components and their respective masses is provided in Table \ref{tab:controlmassbreakdown}.
+Mass estimates are based on the required propellant mass, thruster mass and fuel tank mass. The propellant mass can be subdivided into a further two categories: the control within the atmosphere and the control outside of the atmosphere. General equation were previously discussed within Section \ref{subsec:controltool}. An overview of the mass components and their respective masses is provided in Table \ref{tab:controlmassbreakdown}.
 
 \subparagraph{Control within the atmosphere} 
 
@@ -51,7 +52,7 @@ Inertial moments combined with rotational rates deliver the required control mom
 \item Placement of thrusters on the inflatable may induce disadvantageous vibrations or aero-elastic effects.  
 \end{itemize} 
 
-Further details on the placement are also discussed in Chapter \ref{sec:crewpackaging} discussing the packaging of the re-entry vehicle.
+Further details on the placement are also discussed in Section \ref{sec:crewpackaging} discussing the packaging of the re-entry vehicle.
 
 Thruster performance requirements are primarily based on the bank control speed. Apocentre velocity increments may take longer but are however also greater in magnitude. The thrusters used for creating the bank control moments require a peak thrust of around $900$ $[N]$. Torque is provided by multiple thrusters such that partial operations may continue if a thruster fails.
 Indicative values for a capable thruster are for example given by the  MONARC-445 hydrazine mono-propellant thruster\footnote{URL: \url{http://www.moog.com/literature/Space\_Defense/Spacecraft/Propulsion/Monopropellant\_Thrusters\_Rev\_0613.pdf} Accessed 15 June 2015}. The MONARC-445 thruster delivers a nominal thrust of $445$ $[N]$ at a mass of 1.6 $[kg]$.  A configuration with eight of these thrusters allows for control around the roll axis and moreover provides partial control in the case of failure of one such thruster.
@@ -95,12 +96,12 @@ Table \ref{tab:controlmassbreakdown} provides an overview of the individual mass
 \label{tab:controlmassbreakdown}
 \begin{tabular}{|l|l|c|} \hline
 \textbf{Component}           &\textbf{$\Delta V$}  & \textbf{Mass $\mathbf{[kg]}$} \\ \hline \hline
-Bank Control    &  - &			 66       \\ \hline
+Bank control    &  - &			 66       \\ \hline
 Clean-up         & 10.47  &		  33       \\ \hline
 Orbit (de)raising& 18.12  &		  54       \\ \hline
 Fuel tank              		 & -  &  12      \\ \hline
 Thrusters                	 & -  &  44     \\ \hline \hline
-\textbf{Total}               & -  &  212      \\ \hline
+\textbf{Total}               & 18.59  &  212      \\ \hline
 \end{tabular}
 \end{table}
 
@@ -114,7 +115,7 @@ Similar to the mass estimates the control system can  also be subdivided into pa
 
 Control within the atmosphere is required in two phases of the mission. The initial aero capture phase and the final \gls{edl}. Due to small uncertainties in the \glspl{hiad} performance, but more importantly atmospheric disturbances, deviations from the nominal trajectory can be observed. These deviations are accounted for in the trajectory discussed in Section \ref{sec:trajectorydesign} but also need to be recognised during mission operations such that they can be acted upon. 
 
-Typical implementations for a control system involve a \gls{npc} or \gls{apc} method and use sensed accelerations to determine the atmospheric properties \cite{Davis2010}. These values are used to update the control models such that the same terminal point is reached each time. For this purpose a set of three gyroscopes and three accelerators as \gls{imu} is required \cite{Dutta2013}. The former is already included in the \gls{adcs} as discussed in Chapter \ref{subsec:adcs}. Recent advances in accelerometers make even the high accuracy sensors a low mass component. The accelerometers are included in the \gls{adcs} mass budget as they are also required for the terminal descent phase. 
+Typical implementations for a control system involve a \gls{npc} or \gls{apc} method and use sensed accelerations to determine the atmospheric properties \cite{Davis2010}. These values are used to update the control models such that the same terminal point is reached each time. For this purpose a set of three gyroscopes and three accelerators as \gls{imu} is required \cite{Dutta2013}. The former is already included in the \gls{adcs} as discussed in Section \ref{subsec:adcs}. Recent advances in accelerometers make even the high accuracy sensors a low mass component. The accelerometers are included in the \gls{adcs} mass budget as they are also required for the terminal descent phase. 
 
 For achieving the high required landing accuracy it is advised that next to sensed accelerations to determine the control model parameters pressure sensors are included as well.  \gls{npc} and \gls{apc} methods for bank control on Mars do normally not include these sensors and merely rely on sensed acceleration data \cite{Lu2007, Davis2010}. Since pressure can not be measured directly during the hypersonic flight use is made of flush atmospheric data \cite{Dutta2013}. 
  
