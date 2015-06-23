@@ -1,26 +1,23 @@
-To investigate the influence of lay-up materials, heat flux variations, vehicle diameter and the trajectory approach on the \gls{tps} a sensitivity analysis is performed. First different materials are selected to form multiple lay-ups. The different lay-ups are then optimised for different loading conditions. First the influence of heat flux variations on areal density is investigated. Subsequently, variations in mass due to changing diameters are tested. Lastly, the lay-ups are tested for different trajectories, either with a direct trajectory or with a parking orbit between aerocapture and landing. This investigation is done by using the tool described in Section \ref{subsec:thermaltool} and successfully validated in Appendix \ref{sec:VandVthermo}.
+To investigate the influence of lay-up materials, heat flux variations, vehicle diameter and the trajectory approach on the \gls{tps} a sensitivity analysis is performed. First materials are selected to form multiple lay-ups. The different lay-ups are then optimised for different loading conditions. First the influence of heat flux variations on areal density is investigated. Subsequently, variations in mass due to changing diameters are tested. Lastly, the lay-ups are tested for different trajectories, either with a direct trajectory or with a parking orbit between aerocapture and landing. This investigation is done by using the tool described in Section \ref{subsec:thermaltool} and successfully validated in Appendix \ref{sec:VandVthermo}.
 
 \paragraph{\gls{tps} materials}
-Table \ref{tab:tpsmatprop} shows the materials that are used in the inflatable heat shield \cite{Corso2009,Corso2011,DuPont2011,Smith2011,Nye,Zinkle1998}. A more extensive list of possible \gls{tps} materials and their properties can be found in Appendix \ref{sec:Thermoprop}. These materials have been proposed during the design of multiple inflatable decelerator concepts. For each material the thermal conductivity, the density, the specific heat, the maximum operative temperature and if applicable, the emissivity are given. The latter is only applicable to the upper thermal protection layers, because these layers, or heat barriers, will radiate heat into the surroundings.
+Table \ref{tab:tpsmatprop} shows the materials that are used in the inflatable heat shield. A more extensive list of possible \gls{tps} materials and their properties can be found in Appendix \ref{sec:Thermoprop}. These materials have been proposed during the design of multiple inflatable decelerator concepts, such as \gls{irve} and \gls{thor} \cite{Hughes2005}. For each material the thermal conductivity, the density, the specific heat, the maximum operative temperature and if applicable, the emissivity are given. The latter is only applicable to the upper thermal protection layers, because these layers, or heat barriers, will radiate heat into the surroundings.
 \newline\newline
-Using the same references a selection is made for the most promising thermal protection and insulation layers. These are Nextel BF-20 and Nicalon for the heat barrier layers. Nextel is a material already used by \gls{nasa} in several \gls{irve}s. Nicalon is a heavier alternative made up of continuous fibers of silicon carbide (SiC) that can withstand higher temperatures than Nextel up to 2073 $\left[K\right]$. Also the emissivity of Nicalon is much higher that Nextel, which allows for more radiation. For the insulation layers these are Pyrogel 3350 and Pyrogel 6650. With those materials three lay-ups are created such that a comparison can be made between the heat barriers and insulators. A schematic view of the layers is shown in Figure \ref{fig:layersensthermal}. Lay-ups 1 and 2 can be used to compare the performance of Pyrogel 3350 and 6650. Lay-ups 2 and 3 serve as comparison for the Nextel BF-20 and Nicalon. These lay-ups will be tested for different heat fluxes as well as different diameters.
+A selection is made for the most promising thermal protection and insulation layers. These are Nextel BF-20 and Nicalon for the heat barrier layers. Nextel is a material already used by \gls{nasa} in \gls{irve}. Nicalon is a heavier alternative made up of continuous fibers of silicon carbide (SiC) that can withstand higher temperatures than Nextel up to 2073 $\left[K\right]$. Also the emissivity of Nicalon is much higher that Nextel, which allows for more radiation. For the insulation layers these are Pyrogel 3350 and Pyrogel 6650. With those materials three lay-ups are created such that a comparison can be made between the heat barriers and insulators. A schematic view of the layers is shown in Figure \ref{fig:layersensthermal}. Lay-ups 1 and 2 can be used to compare the performance of Pyrogel 3350 and 6650. Lay-ups 2 and 3 serve as comparison for the Nextel BF-20 and Nicalon. These lay-ups will be tested for different heat fluxes as well as different diameters.
 
 \begin{table}[ht]
-	\caption {Flexible \acrlong{tps} material properties}
+	\caption {Flexible \acrlong{tps} material properties \cite{Corso2009,Corso2011,DuPont2011,Smith2011,Nye,Zinkle1998}}
 	\centering
 	\begin{tabular}{|l|l|l|l|l|l|l|}
 		\hline
 		\textbf{Material}         & \textbf{ $\mathbf{k}$ $\mathbf{\left[\frac{W}{m\cdot K}\right]} $} & \textbf{ $\mathbf{ \rho }$ $\mathbf{ \left[ \frac{kg}{m^3} \right] }$} & \textbf{  $\mathbf{ c_{p} }$ $\mathbf{ \left[ \frac{J}{kg \cdot K} \right] }$ }& \textbf{ $\mathbf{ T_{max} }$ $\mathbf{ [ K ] }$} &\textbf{ $\mathbf{ \varepsilon }$ $\mathbf{ [ - ] }$} & \textbf{Function} \\[1.6ex]   \hline \hline
-		Hi-Nicalon      & 2.4       & 2900   & 1200   & 2073      & 0.93        & rad. \& barrier
-\\ \hline
-		Nextel BF20       & 0.146 
-		& 1362                                        & 1130 
-		& 1643	 & 0.443  & rad. \& barrier                                  
- \\ \hline
-		Pyrogel 6650      & 0.030                                                 & 110                                        & 1046                                            & 923    & ~        & insulator                                  \\ \hline
-		Pyrogel 3350      & 0.0248                                                & 170                                        & 1046.0                                         & 1373  	 & ~          & insulator                                 \\ \hline
-		Kapton            & 0.12                                                  & 1468                                       & 1022                                            & 673	 & ~            & gas barrier                              \\ \hline
-		Kevlar            & 0.04 & 1440                                       & 1420                                            & 443 	 & ~             & structural                            \\ \hline
+		Hi-Nicalon			& 2.4			& 2900	& 1200	& 2073	& 0.93	& rad. \& barrier	\\ \hline
+		Nextel BF20			& 0.146			& 1362	& 1130	& 1643	& 0.443	& rad. \& barrier	\\ \hline
+		Pyrogel 6650		& 0.030			& 110	& 1046	& 923	& -		& insulator			\\ \hline
+		Pyrogel 3350		& 0.0248		& 170	& 1046	& 1373	& -		& insulator			\\ \hline
+		Kapton				& 0.12			& 1468	& 1022	& 673	& -		& gas barrier		\\ \hline
+		Kevlar				& 0.04			& 1440	& 1420	& 443	& -		& structural		\\ \hline
+		PBO Zylon			& 20			& 1540	& 900	& 673	& -		& structural		\\ \hline
 
 	\end{tabular}
 	\label{tab:tpsmatprop}
@@ -34,7 +31,7 @@ Using the same references a selection is made for the most promising thermal pro
 \end{figure}
 
 \paragraph{Effect of heat flux}
-In order to analyse lay-up mass performance and changes due to varying atmospheric conditions a heat flux sensitivity is performed. In order to do so, ratios of the heat flux of a possible trajectory are used. The trajectory is found using a diameter of 12 $ \left[ m \right]$ and the used ratios are 0.25, 0.5, 0.75, 0.9, 1.0, 1.1, 1.4, 1.5, 2.0, 2.5 and 3.0. The results are shown in Figure \ref{fig:sensitivityq}. The horizontal axis shows the heat flux ratio and the areal density is shown on the vertical axis. 
+In order to analyse areal density performance of lay-ups and changes due to varying atmospheric conditions a heat flux sensitivity is performed. To achieve this, ratios of the heat flux of a possible trajectory are used. The trajectory is found using a diameter of 12 $ \left[ m \right]$ and the used ratios are 0.25, 0.5, 0.75, 0.9, 1.0, 1.1, 1.4, 1.5, 2.0, 2.5 and 3.0. The results are shown in Figure \ref{fig:sensiticvityq}. The horizontal axis shows the heat flux ratio and the areal density is shown on the vertical axis. 
 
 \begin{figure}[h]
 	\centering
