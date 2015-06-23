@@ -1,7 +1,7 @@
 \paragraph{Input and output}
-As input the tool requires the entry velocity, flight path angle at the boundary of the atmosphere, an aerodynamic model (\gls{sym:CL} and \gls{sym:CD} as a function of \gls{sym:alpha}), an \gls{sym:alpha} profile (changes in the angle of attack during the aerocapture and re-entry), and a \gls{sym:mu} profile (changes in the bank angle during the aerocapture and re-entry).
+As input the tool requires the entry velocity, flight path angle at the boundary of the atmosphere, an aerodynamic model (\gls{sym:CL} and \gls{sym:CD} as a function of \gls{sym:alpha}), an \gls{sym:alpha} profile (changes in the angle of attack during the aerocapture and entry), and a \gls{sym:mu} profile (changes in the bank angle during the aerocapture and entry).
 
-As output the trajectory tool can generate important parameters at each moment in time. The most important parameters are: acceleration $\left(\gls{sym:acc}\right)$, dynamic pressure $\left(\gls{sym:q}_{\infty}\right)$, velocity $\left(\gls{sym:Vv}\right)$, Mach number $\left(\gls{sym:M}\right)$, atmospheric temperature $\left(\gls{sym:T}_{\infty}\right)$ and atmospheric density $\left(\gls{sym:rho}_{\infty}\right)$.
+As output the trajectory tool can generate important parameters at each moment in time. The most important parameters are: location (\gls{sym:Rv}), acceleration $\left(\gls{sym:acc}\right)$, dynamic pressure $\left(\gls{sym:q}_{\infty}\right)$, velocity $\left(\gls{sym:Vv}\right)$, Mach number $\left(\gls{sym:M}\right)$, atmospheric temperature $\left(\gls{sym:T}_{\infty}\right)$ and atmospheric density $\left(\gls{sym:rho}_{\infty}\right)$.
 
 \paragraph{Assumptions}
  \label{sec:astroassumption}
@@ -9,9 +9,10 @@ As output the trajectory tool can generate important parameters at each moment i
  
  \subparagraph{primary assumptions}
  \begin{itemize}
- \item All atmospheric properties only vary with the height above \gls{mola} and not with longitude, latitude or time. 
+ \item All atmospheric properties only vary with the height above \gls{mola} and not with longitude, latitude or time. These variations are shown in Appendix \ref{app:atmos}. 
  \item All trajectories are assumed to only occur in the equatorial plane. This means that the latitude is always $0 \left[deg\right]$. Changing the latitude will have a big impact on the relative speed of the Martian atmosphere.
  \item The gravitational pull is assumed to only vary with the height above \gls{mola}. The gravitational field of Mars is however not uniform over longitude and latitude, this will induce errors in the trajectory as gravity is one of the major forces in the analysis.
+ \item The bank reversals needed for a trajectory with bank control are not considered. It is thus assumed that a control computer will control these reversals and that these reversals are instantaneous. ***Check this***
  \end{itemize}
 
  \subparagraph{secondary assumptions}
@@ -22,11 +23,13 @@ As output the trajectory tool can generate important parameters at each moment i
  \end{itemize}
 
 \paragraph{Analysis method}
-The orbit can be divided into two different parts, the first part is the pass through the atmosphere and the second part is outside of the atmosphere. In the first part, there are three forces working on the spacecraft: lift, drag and gravitation. In the second part there is only the gravitation, therefore this part is simplified to use Kepler equations of motion to determine the position of the spacecraft.
+The orbit can be divided into two different parts, one part is the pass through the atmosphere and the other is outside of the atmosphere. In the first part, there are three forces working on the spacecraft: Lift, drag and gravitation. In the second part there is only the gravitational force.
 
-The atmospheric properties are determined using the NASA software \gls{marsgram}. The software generates data based on equations for atmosphere properties and incorporates the high amount of dust on Mars, which has a big effect on the absorbed radiation heat from the sun. From this model the average atmospheric properties are used to determine the aerodynamic forces.
+The part outside the atmosphere is simplified by using the Kepler equations of orbital motion to determine the position of the spacecraft over time.
+
+The atmospheric properties are determined using the NASA software \gls{marsgram}. The software generates data based on equations for atmosphere properties and incorporates the high amount of dust on Mars, which has a big effect on the absorbed radiation heat from the sun. From this model the average atmospheric properties are used to determine the aerodynamic forces. All data from \gls{marsgram} is shown in Appendix \ref{app:atmos}. 
 
 Using the aerodynamic forces combined with the gravitational pull from Mars the accelerations are calculated. These accelerations are integrated twice to obtain the velocity and the location.
 
 \paragraph{Limitations}
-The tool is mainly limited by the 1D implementation of the atmospheric properties. This means that no variations of the atmosphere over longitude, latitude or time are considered. The use of a numerical simulation only introduces a small error. The full Verification and Validation are done in Section \ref{sec:VandVtraj}.
+The tool is mainly limited by the 1D implementation of the atmospheric properties and gravity model. This means that no variations of the atmosphere over longitude, latitude or time are considered. It is recommended to implement the full atmospheric model in later stages of the design. The use of a numerical simulation only introduces a small error. The full verification and validation are done in Appendix \ref{sec:VandVtraj}.
