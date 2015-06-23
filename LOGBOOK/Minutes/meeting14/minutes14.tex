@@ -3,7 +3,7 @@ Locatie: Fellowship Meeting room 2\\
 Aanwezig: HD, DD, J, L, G, A, B, T, D, Su, Se\\
 Verontschuldigd: \\
 Afwezig: NR \\
-Tijd: Dawud opent de vergadering om 11:09 (aanvangstijd gewijzigd)\\
+Tijd: Dawud opent de vergadering om 11:09\\
 
 \subsubsection{Agenda}
 De agenda van de vergadering bestaat oorspronkelijk uit de volgende punten:
@@ -24,37 +24,29 @@ Aan de agenda worden verder geen punten toegevoegd.
 Er waren geen op- of aanmerkingen.
 
 \subsubsection{Ontwerp}
-BEzig geweest met ontwerp/iteraties etc. 
+We zijn bezig geweest met iteraties om tot een final design te komen. Dit is als volgt tot stand gekomen:
+\newline\newline
+Begonnen met een initial design, welke geoptimaliseerd werd voor de shape. Vervolgens een orbit gekozen, waaruit de dynamic pressure en heat flux berekend konden worden. De gegevens werden door thermo, structures en control gebruikt om massa's uit te rekenen. De drie massa's bij elkaar is de totale massa van het heat shield. Er zitten wel feedback loops in. Probleem lag vaak bij thermo, voor 12m diameter werd het te heet. Oftewel, te hoge heat flux. Heat flux omlaag brengen gaf weer problemen voor control. Uiteindelijk gelukt met Nicalon, een silicon carbide. DD vraagt wel goed te letten of dat nieuwe materiaal wel toepasbaar is netzoals Nextel dat was (brittleness, impact resistance etc.). Ook is met HD overlegd dat het eindpunt op 15km hoogte met Mach 5 ligt.
+\newline\newline
+De shape is van voren rond met een 12m diameter. Van de zijkant lijkt het een beetje op een lens. Echter is de top niet precies in het midden, maar heeft het een offset van ongeveer een meter, asymmetrie dus. Er komen 10 toroids, meer dan 10 heeft structureel gezien geen zin. Minder zou kunnen en het zijn er genoeg om de shape te maken.
+\newline\newline
+De landing range margin wordt bepaald door de density te veranderen en maximaal control toe te passen. Vervolgens kun je zien of je binnen de marge kan blijven. We beginnen met banken bij 1g. HD vraagt waarom dit moment gekozen is. In principe is eerder banken geen probleem. Later banken wordt een probleem omdat je dan te diep door de atmosfeer gaat. Vooralsnog lijkt enkel bank control voldoende. Dit moeten we goed op gaan schrijven.
+\newline\newline
+Thermo is op 270kg gekomen. Aan de andere kant van het heat shield is een laagje Nextel AF-14 aangebracht. Voorkant dus van Nicalon, waarbij nog gecheckt moet worden of het netzoals Nextel goed foldable is en een goede impact toughness heeft. Het wordt opgevouwen als een soort paraplu. Door de asymmetrische vorm komen er wel vouwen/folds in, maar dit zou geen probleem moeten zijn. De structurele lagen zijn zeker goed op te vouwen. Lengte van het heat shield wordt ongeveer 3.5m in opgevouwen vorm om de crew module heen. Zou makkelijk in SLS moeten passen. De crew module zelf wordt ongeveer 6m lang. Uiteindelijk wordt de decelerator afgeworpen. Thrusters gaan door de centerbody heen d.m.v. een klep. HD vraagt hoe de asymmetrische vorm verticaal naar beneden kan vallen. Dit soort dingen zijn een beetje buiten de scope, maar er zouden vragen over kunnen komen. 
+\newline\newline
+De totale mass wordt 800kg met 20\% contingency. Voor de propellant mass gebruiken we hydrazine en meerdere thrusters. Masses van dit alles uit SMAD e.d. gehaald. Control moments geschat met estimates voor moment of inertia. Zo is de required control mass bepaald.
+\newline\newline
+HD vraagt of er single points of failure zijn? Losses worden steeds minder geaccepteerd. Failure modes mogen er best zijn, immers teveel redundancy kan niet. We moeten kijken of het veiliger kan, maar niet teveel tijd aan besteden. Verder is er nog de vraag wanneer de inflatable opgeblazen wordt. Dit moet uiteraard voordat we de atmosfeer binnenkomen, wanneer precies maakt niet uit, enkel een verlengd risico op micrometeorites. We nemen uiteindelijk twee personen mee voor onze missie.
 
-Begonnen met initial design. Daarvoor geoptimaliseerde shape. Orbit gekozen. Heatflux en dynamic pressure uitrekenen. Die gebruiken thermo, structures en control om massa's uit te rekenen. Daar zitten feedback loops in. Drie componenten geven totale massa. Ofwel temp te hoog, of massa te hoog. Dan opnieuw itereren. HD vraagt waar het probleem meestal was, dat was vaak te hoge flux, die omlaag brengen gaf problemen voor de control. Mach 5 op hogere altitude (15km), eerder met HD overlegd. 
-
-Shape: rond met 12m dia. Extreme punt van de koepel beetje geoffset (1m). 10 toroids. Meer dan 10 heeft structureel gezien geen zin. Minder kan eventueel. Is voldoende om de shape te maken.
-
-Trajectory: Zo hoog mogelijk door de atmosfeer, zo laag mogelijke heat flux. Plotjes van de trajectory worden uitgelegd. De landing range wordt bepaald door density te veranderen en maximaal control toepassen. Vervolgens kun je zien of je binnen de marge blijft. Hoe zit het met het moment wanneer je gaat banken. Wat gebeurt er als je density minder dan 15\% is? Eerder doen geen probleem, later wel een probleem omdat je dan dieper de atmosfeer in gaat. Vooralsnog getriggerd op 1g. We denken alleen bank control nodig te hebben. Zullen we goed moeten opschrijven
-
-Thermo: op 270 kg, ook aan de achterkant wat nodig. Kijken of nicalon brittle is of niet.
-
-Folding als een paraplu, wel wat folds omdat hij assymetric. Structurele lagen zijn wel goed op te vouwen. Lengte wordt ongeveer 3.5m. Zou makkelijk in SLS passen, capsule wordt ongeveer 6m. 
-
-Uiteindelijk wordt de decelerator afgeworpen. Thrusters gaan door de centerbody heen d.m.v. een klep. Asymmetric shape, hoe gaat dat verticaal naar beneden? Dingen zijn een beetje buiten de scope, maar je zou er vragen over kunnen krijgen. 
-
-
-Voor nicalon kijken of hij vouwbaar is en puncture resistant. Alternatieven? Coating voor nextel om hogere emissivity. 
-We hebben een contingency doordat de structure temperature lager wordt geeist.
-Totale mass wordt 800kg met 20\% contingency. 
-Voor propellant mass gebruiken we hydrazine en meerdere thrusters. Masses uit SMAD ed gehaald. Control moments geschat met estimates voor moment of inertia enzo. 
-
-Zijn er single points of failure? Losses minder geaccepteerd etc. Failure modes mogen er best zijn, teveel redundancy kan niet. Kijk of het veiliger kan, niet teveel tijd aan besteden. Hoeveel tijd voor de atmosfeer wordt het opgeblazen? Veel te vroeg opblazen heeft als enige nadeel micrometeorites.
-
-Twee personen met contingency, was drie zonder contingency.
 \subsubsection{Andere vragen}
 \textit{Wordt er aan het einde van het ontwerp een CAD model verwacht?}\newline
-Nu hebben we een schematische tekening. Vormen weten we bijv. nog niet. Hoeft niet geen CATIA-tekening te zijn, wel maten erbij zetten bij je huidige tekeningen. CAD-plaatjes kunnen evt. je symposium opleuken. Makkelijker om CAD-tekening te hebben, zijn ook makkelijker in 3DS te zetten. 
+Op het moment zijn er schematische tekeningen in Visio. We denken dat een CATIA-tekening weinig zal toevoegen. HD vindt dat we wel afmetingen moeten zetten bij de huidige tekeningen. CAD-plaatjes kunnen eventueel leuk zijn voor het symposium. Ook kunnen CAD-tekeningen makkelijk overgezet worden naar andere programma's.
 
 \subsubsection{W.V.T.T.K.}
-HD: Hoe gaat het met tijdsplanning? Morgen moet het design in het report staan. Vrijdag komt afraffeldag. Dan zou het tekstueel af moeten zijn, maandag/dinsdag editing. Lees iedere zin met de intentie of het iets toevoegt. Zeker in de vorige report was het een beetje wollig, kijk kritisch naar de inhoud van je tekst. Veel leesbaarder en makkelijker te beoordelen.
+\textbf{1.} HD vraagt hoe we met de tijdsplanning zitten. Donderdag zou het gehele design in het report moeten staan. Vrijdag moeten de laatste tekstuele dingen af zijn. Maandag en dinsdag zijn dan voor editing. HD raadt aan om bij het editen iedere zin te lezen met de vraag of het iets toevoegt. In het vorige report was er vaak veel tekst, weinig inhoud. Als we hier kritischer op zijn, wordt het veel leesbaarder en makkelijker te beoordelen.
 
 \subsubsection{Rondvraag}
+Er zijn verder geen vragen.
 
 \subsubsection{Sluiting}
 De volgende vergadering zal plaatsvinden op 22-06-2015 om 11:00 in Fellowship Meeting room 2.

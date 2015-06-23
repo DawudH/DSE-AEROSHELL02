@@ -12,7 +12,7 @@ The aerodynamic analysis is based on modified Newtonian flow theory. This theory
 		\label{eq:modnewtoniancp}
 	\end{equation} \break
 	\begin{equation}
-		\gls{sym:CP}_{,max} = \frac{2}{\gls{sym:gamma} \gls{sym:M}_{\infty}^{2}}\left(\frac{\gls{sym:p}_{O_{2}}}{\gls{sym:p}_{\infty}}-1\right)
+		\gls{sym:CP}_{,max} = \frac{2}{\gls{sym:kappa} \gls{sym:M}_{\infty}^{2}}\left(\frac{\gls{sym:p}_{O_{2}}}{\gls{sym:p}_{\infty}}-1\right)
 		\label{eq:cpmaxfinal}
 	\end{equation}
 \end{multicols}
@@ -22,10 +22,10 @@ The heat flux in the stagnation point is calculated using the method developed b
 
 %\begin{multicols}{2}
 	\begin{equation} \label{eq:modnewtonianqw}
-		\gls{sym:qdot}_{s} = 1.83 \times 10^{-8} \gls{sym:rho}_{\infty}^{0.5} \gls{sym:V}_{\infty}^3  \gls{sym:rcurvature}^{-0.5} \left(1-\frac{\gls{sym:Tw}}{\gls{sym:T}_0}\right)
+		\gls{sym:qdot}_{s} = 1.83 \times 10^{-8} \gls{sym:rho}_{\infty}^{0.5} \gls{sym:V}_{\infty}^3  \gls{sym:rcurvature}^{-0.5} \left(1-\frac{\gls{sym:T}_{w}}{\gls{sym:T}_0}\right)
 	\end{equation} \break
 	\begin{equation}
-		\gls{sym:T}_0 = \gls{sym:T}_\infty \frac{\gls{sym:gamma}-1}{2}\gls{sym:M}_\infty
+		\gls{sym:T}_0 = \gls{sym:T}_\infty \frac{\gls{sym:kappa}-1}{2}\gls{sym:M}_\infty
 		\label{eq:stagnationtemperature}
 	\end{equation}
 %\end{multicols}
