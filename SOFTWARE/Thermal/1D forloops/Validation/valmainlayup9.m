@@ -22,11 +22,11 @@ L = layup(:,1);
 
 % time and aeroheat
 %ttot = t(end);  % end time of the orbit [s]
-ttot = 110;  % end time of the orbit [s]
-tdur = 90;
+ttot = 230;  % end time of the orbit [s]
+tdur = 200;
 dt   = 0.1;    % time step, chooseable
 T0 = 293;
-q0 = 1000000;
+q0 = 500000;
 nmax = int32(ttot/dt);  % number of time steps
 t = [0:double(nmax-1)]*dt;
 fact    = 1;           % multiplication factor of number of space steps.
@@ -160,7 +160,7 @@ end
 
 % 
 %% Contour-Plot
-contourplot = 1;
+contourplot = 0;
 if contourplot
     % t = [0:double(nmax-1)]*dt;
     x = [0:double(imax-1)]*dx;
@@ -187,7 +187,7 @@ end
 % output = table(L*1000,results,layup(:,2),layup(:,3),layup(:,4),'RowNames',layernames,'VariableNames',{'Thickness','maxT','k','rho','cp'});
 %     
 %% Validation
-valid = 0;
+valid = 1;
 % if valid
 %     valres = dlmread('layup1res.txt');
 %     figure;
@@ -201,43 +201,49 @@ valid = 0;
 %     plot(t,T(3,:),'r--')
 % end
 if valid
-    valres = dlmread('layup4res.txt');
-    figure;
+    valres = dlmread('layup9res.txt');
     hold on
     plotS = zeros(nmax,4);
     for j = 2:length(indexx)-2
         plotS(:,j-1) = (S(indexx(j)+j-3,:).'+S(indexx(j)+j-1,:).')/2;
     end
-    plotVAL = zeros(nmax,4);
-    for j = 6:length(valres(1,:))
-        plotVAL(:,j-5) = interp1(valres(:,1),valres(:,j),t).';
-    end
-    valres = dlmread('layup4res.txt');
+%     plotVAL = zeros(nmax,4);
+%     for j = 6:length(valres(1,:))
+%         plotVAL(:,j-5) = interp1(valres(:,1),valres(:,j),t).';
+%     end
+    valres = dlmread('layup9res.txt');
     plotSex = zeros(nmax,4);
     plotVex = zeros(nmax,4);
-    plotVex = interp1(valres(:,1),valres(:,2),t).';
-    for j = 2:4
-        plot
-        
+    plotSex(:,1) = S(1,:).';
+    plotVex = interp1(valres(:,1),valres(:,2:5),t);
+    plotSex(:,2) = (S(41,:).'+S(42,:).')/2;
+    plotSex(:,3) = S(160,:).';
+    plotSex(:,4) = (S(278,:).'+S(279,:).')/2;  
         
     
-    figure(1)
-    %subplot(1,2,1)
-    plot(t,plotS,'--')
+    figure
     hold on
-    grid minor
-    grid on
+    plot(t,plotSex,'--')
+    
     ax = gca;
     ax.ColorOrderIndex = 1;
-    axis([0 120 -50 2200])
-    plot(t,T(1,:),'k')
+    plot(t,plotVex,'-')
+    grid minor
+    grid on
+    
+    axis([0 230 273 2200])
+    %plot(t,T(1,:),'k')
     %plot(t,plotVAL)
     %subplot(1,2,2)
     %plot(t,abs(plotS-plotVAL)./plotVAL)
     %max(abs(plotS-plotVAL)./plotVAL)
     %grid minor
     %grid on
-    
+    errorres = zeros(12,1);
+    errorres(1)  = mean(mean(abs(plotSex(1:2300,:)-plotVex(1:2300,:))./plotVex(1:2300,:)))*100;
+    errorres(2)  = mean(max(abs(plotSex(1:2300,:)-plotVex(1:2300,:))./plotVex(1:2300,:)))*100;
+    errorres(3)  = mean(mean(abs(plotSex(1:2001,:)-plotVex(1:2001,:))./plotVex(1:2001,:)))*100;
+    errorres(4)  = mean(mean(abs(plotSex(2001:2300,:)-plotVex(2001:2300,:))./plotVex(2001:2300,:)))*100;
 end
     
     
