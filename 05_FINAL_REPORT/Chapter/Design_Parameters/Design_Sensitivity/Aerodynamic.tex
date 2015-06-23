@@ -50,12 +50,6 @@ Finally, the heat flux is given in Equation \ref{eq:modnewtonianqw} and is direc
 	\caption{Lift, drag and lift over drag ratio for a flat plate versus incidence angle}
 	\label{fig:CLCD-incidence}
 \end{figure}
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.9\textwidth]{./Figure/Aerodynamics/skewness.eps}
-	\caption[Side-view of a skewed aerodynamic shape]{Side-view of a skewed aerodynamic shape. The lower part generates a moment around the frontal part of the aeroshell when under an angle of attack}
-	\label{fig:skewnessplot}
-\end{figure}
 
 To illustrate the characteristics of different aerodynamic shapes, an optimisation has been performed towards certain aerodynamic coefficients, as explained in Section \ref{par:Optimisation}. These shapes serve to enlarge understanding of how certain shape aspects correspond to certain aerodynamic properties. For the following parameters has been optimised:
 \begin{itemize}
@@ -66,11 +60,22 @@ To illustrate the characteristics of different aerodynamic shapes, an optimisati
 	\item \gls{cg} shift $\frac{\gls{sym:CM}}{\gls{sym:CX}}$: The minimum \gls{cg} shift for a given angle of attack is achieved by a flat plate since it generates very little moment. However, if static stability is required, the contours of the aeroshell can be inclined inwards.
 \end{itemize}
 
-
 \begin{figure}[h]
-	\includegraphics[width=0.9\textwidth]{./Figure/Aerodynamics/cmalphamax.eps}
-	\caption{Optimised shape resulting in high static stability}
-	\label{fig:highcmalphashape}
+	\begin{subfigure}[t]{0.45\textwidth}
+		\centering
+		\includegraphics[width=1\textwidth]{./Figure/Aerodynamics/sideview_skewness.pdf}
+		\captionsetup{width=0.9\textwidth,skip=-8pt}
+		\caption[Side-view of a skewed aerodynamic shape]{Side-view of a skewed aerodynamic shape. The lower part generates a moment around the frontal part of the aeroshell when under an angle of attack}
+		\label{fig:skewnessplot}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.45\textwidth}
+		\centering
+		\captionsetup{width=0.9\textwidth}		
+		\includegraphics[width=1\textwidth]{./Figure/Aerodynamics/sideview_cmalpha.pdf}
+		\caption{Optimised shape resulting in high static stability}
+		\label{fig:highcmalphashape}
+	\end{subfigure}	
+	\caption{Skewed and statically stable aerodynamic shapes}
 \end{figure}
 	
 
