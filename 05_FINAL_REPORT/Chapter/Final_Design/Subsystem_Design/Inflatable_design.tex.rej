@@ -1,0 +1,10 @@
+diff a/05_FINAL_REPORT/Chapter/Final_Design/Subsystem_Design/Inflatable_design.tex b/05_FINAL_REPORT/Chapter/Final_Design/Subsystem_Design/Inflatable_design.tex	(rejected hunks)
+@@ -29,7 +29,7 @@
+ 	\caption{Front, side, top and 3D view of the inflatable shape}
+ \end{figure}
+  
+- Figures \ref{fig:CLCDCSAlpha} through \ref{fig:CGOAlpha} display the aerodynamic characteristics of the vehicle through an angle of attack range of $0<\alpha<30$. As can be seen from these plots, the behaviour of the lift to drag ratio and the moment coefficient in pitch is near linear. This linearity ensures predictable vehicle behaviour over the entire angle of attack range.
++ Figures \ref{fig:CLCDCSAlpha} through \ref{fig:CGOAlpha} display the aerodynamic characteristics of the vehicle through an angle of attack range of $0<\alpha<30$. As can be seen from these plots, the behaviour of the lift-to-drag ratio and the moment coefficient in pitch is near linear. This linearity ensures predictable vehicle behaviour over the entire angle of attack range.
+  
+  \begin{figure}[h]
+  	\centering
