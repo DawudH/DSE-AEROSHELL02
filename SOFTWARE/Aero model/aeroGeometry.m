@@ -275,7 +275,7 @@ classdef aeroGeometry
                 save = false;
             end
             xvalues = unique(obj.coords(1,:));            
-            sifted = xvalues(int16(linspace(1, length(xvalues), 10)));
+            sifted = xvalues(int16(linspace(1, length(xvalues), 15)));
             
             % Side view
             sideviewpoints = obj.getPointsOnXZPlane(0);
@@ -293,6 +293,7 @@ classdef aeroGeometry
             ylabel('$z$ [m]', 'interpreter', 'latex');
             grid on;
             axis equal;
+            xlim([-17.5, 0.5]);
             if save
                 matlab2tikz('plots/sideview.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
             end
