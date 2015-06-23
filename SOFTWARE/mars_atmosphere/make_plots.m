@@ -6,7 +6,7 @@ addpath('.\..\matlab2tikz')
 
 % generate atmos model output plots
 
-atm = marsatmosphere();
+atm = marsatmosphere(); 
 
 lat = 0;
 lon = 0:1:350;
@@ -14,8 +14,8 @@ lat2 = -80:1:80;
 lon_fixed = 180;
 
 h = 0:1000:400e3;
-h_fixed = 30e3;
-h_fixed2 = 50e3;
+h_fixed = 200e3;
+h_fixed2 = 100e3;
 
 rho = atm.getDensity(lat,lon,h_fixed);
 T = atm.getTemperature(lat,lon,h_fixed);
