@@ -9,35 +9,35 @@ Table \ref{tab:compm} and \ref{tab:compv} present the compliance matrix for the 
 \begin{tabular}{|p{0.12\textwidth}|p{0.65\textwidth}|c|}
     \hline
     ID          & Description   &                                                                                    \\ \hline \hline
-    CIA-M01& The re-entry vehicle shall decelerate from a velocity of 7 $[km\cdot s ^{-1}]$ to Mach 5 $[-]$   & \cmark \\ \hline
-    CIA-M02 & The re-entry vehicle shall not exert an acceleration greater than 29.4 $[m \cdot s^{-2}]$ on any crew member for the duration of the mission	& \cmark \footnote{Under non-nominal trajectories temporarily higher loads may be experienced}		\\ \hline
-    	CIA-M03 & The re-entry vehicle shall attain its final velocity at an altitude of 15 000 $[m]$ \gls{mola}  & \cmark \\ \hline
-    	CIA-M04 & The re-entry vehicle shall reach its final position with a precision of 500 $[m]$  & \cmark \\ \hline
-    	CIA-M05 & The re-entry vehicle shall attain its final velocity within 10 days of mission start & \cmark \\ \hline
+    CIA-M01& The entry vehicle shall decelerate from a velocity of 7 $[km\cdot s ^{-1}]$ to Mach 5 $[-]$   & \cmark \\ \hline
+    CIA-M02 & The entry vehicle shall not exert an acceleration greater than 29.4 $[m \cdot s^{-2}]$ on any crew member for the duration of the mission	& \cmark \footnote{Under non-nominal trajectories temporarily higher loads may be experienced}		\\ \hline
+    	CIA-M03 & The entry vehicle shall attain its final velocity at an altitude of 15 000 $[m]$ \gls{mola}  & \cmark \\ \hline
+    	CIA-M04 & The entry vehicle shall reach its final position with a precision of 500 $[m]$  & \cmark \\ \hline
+    	CIA-M05 & The entry vehicle shall attain its final velocity within 10 days of mission start & \cmark \\ \hline
 
     \end{tabular}
 \end{table}
 \end{savenotes}
 \begin{table}[H]
 \centering
-	\caption{Re-entry vehicle requirements compliance matrix} 
+	\caption{Entry vehicle requirements compliance matrix} 
 	\label{tab:compv}
 	\begin{tabular}{|p{0.12\textwidth}|p{0.65\textwidth}|c|c|}
 	    \hline
 	    ID          & Description   & Value &                                                                                           \\ \hline \hline
-	CIA-R01 & The re-entry vehicle shall have an undeployed diameter smaller than 5 [m]                   & 4.5-5.0 $[m]$  & \cmark     				            \\ \hline
-	CIA-R02 & The re-entry vehicle shall have a deployed diameter smaller than 12 [m]                     & 12 $[m]$ &  \cmark 				            \\ \hline	
-	CIA-R03 & The re-entry vehicle shall have a mass of $10 000$ $[kg]$ at the start of the re-entry           & 10 000 $[kg]$ &  \cmark          				            \\ \hline
+	CIA-R01 & The entry vehicle shall have an undeployed diameter smaller than 5 [m]                   & 4.5-5.0 $[m]$  & \cmark     				            \\ \hline
+	CIA-R02 & The entry vehicle shall have a deployed diameter smaller than 12 [m]                     & 12 $[m]$ &  \cmark 				            \\ \hline	
+	CIA-R03 & The entry vehicle shall have a mass of $10 000$ $[kg]$ at the start of the entry           & 10 000 $[kg]$ &  \cmark          				            \\ \hline
 	CIA-R04 & The hypersonic decelerator shall have a mass fraction of no greater than $10\%$ of the vehicle mass	& 928 $[kg]$ & \cmark \\ \hline 
-	CIA-R05 &  The re-entry vehicle shall adhere to the \gls{cospar} regulations  & - & \cmark \\ \hline
-	CIA-R06 &  The re-entry vehicle shall have control system accuracy of at least $5\cdot 10^{-4}$ & - & \cmark \\ \hline
+	CIA-R05 &  The entry vehicle shall adhere to the \gls{cospar} regulations  & - & \cmark \\ \hline
+	CIA-R06 &  The entry vehicle shall have control system accuracy of at least $5\cdot 10^{-4}$ & - & \cmark \\ \hline
     \end{tabular}
 \end{table}
 
 \newpage
 \paragraph{Mission requirements}
 \begin{itemize}[leftmargin=+20mm]
-\item[CIA-M01]	The re-entry vehicle has been sized for a entry velocity of 7 [$km \cdot s^{-1}$] and final Mach number of 5. No adjustments were required to these values to meet the other requirements and as such these values has been adhered to. 
+\item[CIA-M01]	The entry vehicle has been sized for a entry velocity of 7 [$km \cdot s^{-1}$] and final Mach number of 5. No adjustments were required to these values to meet the other requirements and as such these values has been adhered to. 
 \item[CIA-M02]	The trajectories have been sized for peak accelerations of 29.4 $[m \cdot s^{-2}]$. For a nominal trajectory this value is not exceeded. Under non-nominal conditions slightly higher accelerations may be observed (up to +7 [$m \cdot s ^{-2}$]). 
 \item[CIA-M03]  The trajectories have been sized for achieving the final velocity at an altitude of 15 000[m] under both nominal and non-nominal conditions.
 \item[CIA-M04]	Using bank control, if all state variables are known, the required control accuracy can be achieved under nominal and non-nominal trajectory conditions. Discrepancy in the final position follow from estimation of state variables. Bank control using only sensed accelerations may not deliver this accuracy under non-nominal conditions. However, the addition of additional pressure sensors can improve this accuracy which is also further discussed in Section \ref{subsec:controlsys}. Taking this into account the required accuracy can probably be achieved under non-nominal conditions as well.
@@ -45,7 +45,7 @@ Table \ref{tab:compm} and \ref{tab:compv} present the compliance matrix for the 
 
 \end{itemize}
 
-\paragraph{Re-entry vehicle requirements}
+\paragraph{Entry vehicle requirements}
 
 
 \begin{itemize}[leftmargin=+20mm]
@@ -53,7 +53,7 @@ Table \ref{tab:compm} and \ref{tab:compv} present the compliance matrix for the 
 \item[CIA-R02] The outer diameter is sized at 12 $[m]$. No additional components will extend this size in the future as it is merely the size of the inflated structure.
 \item[CIA-R03] The structure has been sized with total mass of 10 000 $[kg]$. A crew module analysis discussed in Chapter \ref{ch:crewmod} showed feasibility for such a design with crew count of two.
 \item[CIA-R04] The decelerator mass is sized at 928 $[kg]$. This value includes a $20\%$ contingency factor applicable for this phase of the design. As such feasibility of the \gls{hiad} design within the 1000 $[kg]$ limit is deemed possible.
-\item[CIA-R05] The \gls{cospar} regulations have been taken into account in the re-entry vehicle and mission design where applicable.
+\item[CIA-R05] The \gls{cospar} regulations have been taken into account in the entry vehicle and mission design where applicable.
 \item[CIA-R06] The control system reliability has not been explicitly computed as a value. However, the focus was on reliable design throughout the various design phases. Bank control using thrusters is applied commonly, and thrusters feature a relatively high reliability as compared to more unproven technologies. Moreover redundancies have been used where possible such that possible \glspl{spf} are prevented. 
 \end{itemize}
 
