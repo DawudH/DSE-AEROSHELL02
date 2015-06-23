@@ -156,7 +156,7 @@ axis y line*=right
 20.3047589042183	7.67165819969178\\
 20.3547589042183	7.72229043534552\\
 };
-\addlegendentry{Vs/c at boundary of atmosphere of Mars};
+
 
 \end{axis}
 
@@ -179,6 +179,14 @@ ylabel={Transfer time $\left[ days \right]$},
 ymajorgrids,
 legend style={at={(0.03,0.97)},anchor=north west,legend cell align=left,align=left,draw=white!15!black}
 ]
+
+\addlegendimage{mycolor2,mark=o};
+\addlegendentry{Transfer time};
+\addlegendimage{mycolor1,mark=asterisk};
+\addlegendentry{Vs/c at boundary of atmosphere of Mars};
+\addlegendimage{mycolor3,dash pattern=on 1pt off 3pt on 3pt off 3pt};
+\addlegendentry{7 km/s at atmosphere boundary};
+
 \addplot [color=mycolor2,only marks,mark=o,mark options={solid},forget plot]
   table[row sep=crcr]{%
 14.0547589042183	261.857171552881\\
@@ -338,14 +346,14 @@ legend style={at={(0.03,0.97)},anchor=north west,legend cell align=left,align=le
 20.3047589042183	84.7692153993567\\
 20.3547589042183	84.4690402270929\\
 };
-\addlegendentry{Transfer time};
+
 
 \addplot [color=mycolor3,dash pattern=on 1pt off 3pt on 3pt off 3pt]
   table[row sep=crcr]{%
 19.623	0\\
 19.623	400\\
 };
-\addlegendentry{7 km/s at atmosphere boundary};
+
 
 \end{axis}
 \end{tikzpicture}%
