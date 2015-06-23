@@ -37,22 +37,20 @@ In Figure \ref{fig:inflpress_strucmass} inflation gas pressure is observed to in
 %The thickness required increases with decreasing material ultimate strength, which explains the differences in structural mass observed between different materials at low dynamic pressures. These differences carry through as loading is increased, where materials with a higher specific strength require less mass to withstand the loading. The material used in \gls{irve}-3, PBO Zylon, is observed to offer notable mass advantages over heritage aramid fibers, such as Kevlar. Mass reduction beyond this level is possible by using Technora and Spectra 2000. All materials are selected based on their operating temperature since these are required to operate in an environment with significant thermal loading. A summary of material properties is given in the Mid-Term Report \cite{Balasooriyan2015b}.
 The number of toroids was observed to have no significant effect on structural mass beyond ten toroids, after which mass reductions were found to be within two percent. An increase in the number of toroids from two to ten yields significant mass advantages of up to ten percent. 
 
-
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{./Figure/Structure/material_test2.eps}
+	\caption{Flexible material structural mass estimation for different materials}
+	\label{fig:mat}
+\end{figure}
+\vspace{-4mm}
 
 Material selection has a significant effect on flexible material mass, as illustrated by Figure \ref{fig:mat}. It can be observed that, for peak dynamic pressures below 2 [$kPa$], minimum gage thickness is leading for all selected fibres. Below this pressure, density is the leading parameter and a less dense material will perform better. Due to the significantly lower density of Spectra 2000, 970 [$kg \cdot m^{-3}$], versus that of for example PBO Zylon, 1540 [$kg \cdot m^{-3}$], Spectra 2000 offers mass advantages at low dynamic pressures. Therefore it can be concluded that for low dynamic pressures materials should be selected based on minimum gage thickness, but thickness rapidly increases as loading is increased and the minimum gage thickness is exceeded. For PBO Zylon, this occurs at a relatively high peak dynamic pressure of 3.5 [$kPa$].
 
 For higher dynamic pressures, materials with a higher specific strength perform better in terms of structural mass. Flexible material is fully loaded in tension by the inflation pressure is required not to fail under tension, dictated by ultimate strength. To this end, a certain thickness with a corresponding mass is required. Mass performance is then directly linked to specific strength and this is confirmed by Figure \ref{fig:mat}. Aramid fibres Kevlar and Technora have the lowest specific strengths, approximately 2 [$MNm \cdot kg^{-1}$]. A notably higher specific strength of 3.44 and 3.77 [$MNm \cdot kg^{-1}$] is attained by Spectra 2000 and PBO Zylon respectively. This confirms the choice for PBO Zylon for its mass advantages over Kevlar in \gls{irve}-3 \cite{Dillman2012a}. Spectra 2000 is capable of achieving a lower mass than PBO Zylon despite its lower specific strength, due to its low density. 
-
-Mass differences between materials remain limited, up to 30 $[kg]$ over a range of half-cone angles and diameters.
+%Mass differences between materials remain limited, up to 30 $[kg]$ over a range of half-cone angles and diameters.
 
 All materials have been selected based on their operating temperature since these are required to operate in an environment with significant thermal loading. As an example, Spectra 2000 fibres are not deemed suitable for their allowable temperature of 150 degrees Celsius, which would incur significant extra \acrfull{tps} mass. Dyneema would similarly be unsuitable by its temperature limit of 145 degrees Celsius\footnote{URL: \url{http://eurofibers.com/fibers/dyneema/}. Accessed: 17-06-2015}. A summary of material properties is given in the Mid-Term Report \cite[p.64]{Balasooriyan2015b}. 
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=1.0\textwidth]{./Figure/Structure/material_test2.eps}
-	\caption{Flexible material structural mass estimation for different materials}
-	\label{fig:mat}
-\end{figure}
 
 \paragraph{Forces}
 
@@ -60,16 +58,18 @@ Using the force estimation tool for the inflatable structure the sensitivity for
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.9\textwidth]{./Figure/Structure/forces_nopress_test.eps}
-	\caption[{Internal force estimation for dynamic pressure 3750 $[Pa]$, no inflation pressure applied}]{Internal force estimation for dynamic pressure 3750 $[Pa]$, no inflation pressure applied. Black bars are for a diameter of 18 $[m]$; white bars for a diameter of 12 $[m]$}
+	\includegraphics[width=0.89\textwidth]{./Figure/Structure/forces_nopress_test.eps}
+	\caption[{Internal force estimation for dynamic pressure 3750 $[Pa]$, no inflation pressure applied}]{Internal force estimation for dynamic pressure 3750 $[Pa]$, no inflation pressure applied. Black bars are for a diameter of 18 $[m]$; white bars for 12 $[m]$}
 	\label{fig:forces}
+\vspace{-4mm}
 \end{figure}
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.9\textwidth]{./Figure/Structure/forces_test.eps}
-	\caption[{Internal force estimation for dynamic pressure 3750 $[Pa]$, with inflation pressure applied}]{Internal force estimation for dynamic pressure 3750 $[Pa]$, with inflation pressure applied. Black bars are for a diameter of 18 $[m]$; white bars for a diameter of 12 $[m]$}
+	\includegraphics[width=0.89\textwidth]{./Figure/Structure/forces_test.eps}
+	\caption[{Internal force estimation for dynamic pressure 3750 $[Pa]$, with inflation pressure applied}]{Internal force estimation for dynamic pressure 3750 $[Pa]$, with inflation pressure applied. Black bars are for a diameter of 18 $[m]$; white bars for 12 $[m]$}
 	\label{fig:forcesp}
+\vspace{-2mm}
 \end{figure}
 
 From the results of Figure \ref{fig:forces} several conclusions can be made. Most importantly it shows that scaling of the inflatable is possible. Although a load increase can be observed for increasing diameter, this follows only from the additional axial loads. The induced bending moment is not represented in Figure \ref{fig:forces} as this is carried circumferentially. This followed from the verification and validation procedures explained in more detail in Appendix \ref{sec:VandVstruc}. Moreover, loads are found to be within material capabilities.
