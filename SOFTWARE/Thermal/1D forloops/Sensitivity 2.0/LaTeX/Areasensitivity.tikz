@@ -10,73 +10,6 @@
 \begin{axis}[%
 width=0.410625\figurewidth,
 height=\figureheight,
-at={(0.540296\figurewidth,0\figureheight)},
-scale only axis,
-xmin=0,
-xmax=20,
-xlabel={Diameter $\left[ m \right]$},
-xmajorgrids,
-ymin=0,
-ymax=1000,
-ylabel={Frontal TPS-mass $\left[ kg \right]$},
-ymajorgrids,
-axis x line*=bottom,
-axis y line*=left,
-legend style={legend columns=6,legend cell align=left,align=left,draw=white!15!black}
-]
-\addplot [color=mycolor1,solid,mark=diamond,mark options={solid}]
-  table[row sep=crcr]{%
-15	257.9305\\
-18	334.8874\\
-};
-\addlegendentry{Layup 1 orbit};
-
-\addplot [color=mycolor1,dashed,mark=diamond,mark options={solid}]
-  table[row sep=crcr]{%
-15	287.4872\\
-18	371.3633\\
-};
-\addlegendentry{Layup 1 direct};
-
-\addplot [color=mycolor2,solid,mark=+,mark options={solid}]
-  table[row sep=crcr]{%
-15	572.7865\\
-18	782.408\\
-};
-\addlegendentry{Layup 2 orbit};
-
-\addplot [color=mycolor2,dashed,mark=+,mark options={solid}]
-  table[row sep=crcr]{%
-15	597.2572\\
-18	836.431\\
-};
-\addlegendentry{Layup 2 direct};
-
-\addplot [color=mycolor3,solid,mark=square,mark options={solid}]
-  table[row sep=crcr]{%
-6	526.9782\\
-9	146.5003\\
-12	256.1059\\
-15	354.3738\\
-18	489.081\\
-};
-\addlegendentry{Layup 3 orbit};
-
-\addplot [color=mycolor3,dashed,mark=square,mark options={solid}]
-  table[row sep=crcr]{%
-6	585.3384\\
-9	157.669\\
-12	250.884\\
-15	367.4248\\
-18	503.1739\\
-};
-\addlegendentry{Layup 3 direct};
-
-\end{axis}
-
-\begin{axis}[%
-width=0.410625\figurewidth,
-height=\figureheight,
 at={(0\figurewidth,0\figureheight)},
 scale only axis,
 xmin=7,
@@ -126,5 +59,76 @@ axis y line*=left
 15	1.945\\
 18	1.85\\
 };
+\end{axis}
+
+\begin{axis}[%
+width=0.410625\figurewidth,
+height=\figureheight,
+at={(0.540296\figurewidth,0\figureheight)},
+scale only axis,
+xmin=0,
+xmax=20,
+xlabel={Diameter $\left[ m \right]$},
+xmajorgrids,
+ymin=0,
+ymax=1000,
+ylabel={Frontal TPS-mass $\left[ kg \right]$},
+ymajorgrids,
+axis x line*=bottom,
+axis y line*=left,
+legend style={at={(0.75,1.3)},legend columns=3,legend cell align=left,align=left,draw=white!15!black}
+]
+\addplot [color=mycolor1,solid,mark=diamond,mark options={solid}]
+  table[row sep=crcr]{%
+15	257.9305\\
+18	334.8874\\
+};
+\addlegendentry{Lay-up 1 orbit};
+
+\addplot [color=mycolor2,solid,mark=+,mark options={solid}]
+  table[row sep=crcr]{%
+15	572.7865\\
+18	782.408\\
+};
+\addlegendentry{Lay-up 2 orbit};
+
+\addplot [color=mycolor3,solid,mark=square,mark options={solid}]
+  table[row sep=crcr]{%
+6	526.9782\\
+9	146.5003\\
+12	256.1059\\
+15	354.3738\\
+18	489.081\\
+};
+\addlegendentry{Lay-up 3 orbit};
+
+\addplot [color=mycolor1,dashed,mark=diamond,mark options={solid}]
+  table[row sep=crcr]{%
+15	287.4872\\
+18	371.3633\\
+};
+\addlegendentry{Lay-up 1 direct};
+
+
+
+\addplot [color=mycolor2,dashed,mark=+,mark options={solid}]
+  table[row sep=crcr]{%
+15	597.2572\\
+18	836.431\\
+};
+\addlegendentry{Lay-up 2 direct};
+
+
+
+\addplot [color=mycolor3,dashed,mark=square,mark options={solid}]
+  table[row sep=crcr]{%
+6	585.3384\\
+9	157.669\\
+12	250.884\\
+15	367.4248\\
+18	503.1739\\
+};
+\addlegendentry{Lay-up 3 direct};
+
 \end{axis}
 \end{tikzpicture}%
