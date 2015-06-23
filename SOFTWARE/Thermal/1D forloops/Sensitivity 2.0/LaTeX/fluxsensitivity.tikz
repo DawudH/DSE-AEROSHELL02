@@ -31,7 +31,7 @@ legend style={legend cell align=left,align=left,draw=white!15!black}
 1	1.5666\\
 1.1	1.7633\\
 };
-\addlegendentry{Layup 1};
+\addlegendentry{Lay-up 1};
 
 \addplot [color=mycolor2,solid,mark=+,mark options={solid}]
   table[row sep=crcr]{%
@@ -42,7 +42,7 @@ legend style={legend cell align=left,align=left,draw=white!15!black}
 1	3.378\\
 1.1	3.561\\
 };
-\addlegendentry{Layup 2};
+\addlegendentry{Lay-up 2};
 
 \addplot [color=mycolor3,solid,mark=square,mark options={solid}]
   table[row sep=crcr]{%
@@ -59,7 +59,7 @@ legend style={legend cell align=left,align=left,draw=white!15!black}
 2.5	2.2905\\
 3	2.3596\\
 };
-\addlegendentry{Layup 3};
+\addlegendentry{Lay-up 3};
 
 \end{axis}
 \end{tikzpicture}%
