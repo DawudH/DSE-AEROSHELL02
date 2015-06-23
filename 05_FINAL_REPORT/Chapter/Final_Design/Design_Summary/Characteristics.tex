@@ -1,11 +1,11 @@
-The mission starts at launch from Earth. A $10 000$ $[kg]$ crew module carrying two crew members will be injected into a $89$ day high energy transfer orbit to Mars, where it will arrive with a velocity of $7$ $[km\cdot s^{-1}]$. Before entering the Martian atmosphere, a Nitrogen inflation system will deploy a stacked toroid inflatable heat shield. This heat shield will be supported by ten toroids made out Zylon fibres and will feature a \gls{tps} consisting of a silicon carbide heat barrier protecting a pyrogel insulator. The vehicle will enter the Martian atmosphere twice. The first entry into the atmosphere will decelerate the vehicle to $4.53$ $[km\cdot s^{-1}]$ to enter an elliptic orbit around Mars. At the apoareion of this orbit, the vehicle will perform an orbit raising burn to place itself in a parking orbit around Mars. Once final landing checks have been completed in orbit, the vehicle will perform a de-orbit burn and enter the atmosphere for landing. During both atmospheric manoeuvres, the vehicle will control its trajectory using bank angle adjustments. These adjustments allow the vehicle to ensure the terminal descent stage starts within $500$ $[m]$ of its intended location. After landing using a retro propulsion system and carrying out the mission on Mars, the crew will return to Mars orbit using a pre-placed \gls{mav} and rendezvous with an \gls{erv} already waiting in orbit to take the crew back to Earth. The mission and design parameters are summarized in Tables \ref{tab:MissionPar} through \ref{tab:PropMass}.
+The mission starts at launch from Earth. A $10 000$ $[kg]$ crew module carrying two crew members will be injected into a $89$ day high energy transfer orbit to Mars, where it will arrive with a velocity of $7$ $[km\cdot s^{-1}]$. Before entering the Martian atmosphere, a Nitrogen inflation system will deploy a stacked toroid inflatable heat shield. This heat shield will be supported by ten toroids made out Zylon fibres and will feature a \gls{tps} consisting of a silicon carbide heat barrier protecting a pyrogel insulator. The vehicle will enter the Martian atmosphere twice. The first entry into the atmosphere will decelerate the vehicle to $4.53$ $[km\cdot s^{-1}]$ to enter an elliptic orbit around Mars. At the apoareion of this orbit, the vehicle will perform an orbit raising burn to place itself in a parking orbit around Mars. Once final landing checks have been completed in orbit, the vehicle will perform a de-orbit burn and enter the atmosphere for landing. During both atmospheric manoeuvres, the vehicle will control its trajectory using bank angle adjustments. These adjustments allow the vehicle to ensure the terminal descent stage starts within $500$ $[m]$ of its intended location. After landing using a retro propulsion system and carrying out the mission on Mars, the crew will return to Mars orbit using a pre-placed \gls{mav} and rendezvous with an \gls{erv} already waiting in orbit to take the crew back to Earth. The mission and design parameters are summarised in Tables \ref{tab:MissionPar} through \ref{tab:PropMass}.
 
 
-\begin{table}
+\begin{table}[H]
 	\centering
 	\caption{Global Mission parameters}
 	\label{tab:MissionPar}
-	\begin{tabular}{|l|l|} \hline
+	\begin{tabular}{|p{0.65\textwidth}|p{0.30\textwidth}|} \hline
 		Mission Duration				             	& 	3.75 Years						\\ \hline 
 		Total Launches       							&	2  		   	  					\\ \hline
 		Crew size				 						&	2     	  						\\ \hline
@@ -14,64 +14,65 @@ The mission starts at launch from Earth. A $10 000$ $[kg]$ crew module carrying 
 	\end{tabular}
 \end{table}
 
-\begin{table}
+\begin{table}[H]
 	\centering
 	\caption{Hypersonic decelerator parameters}
 	\label{tab:DeceleratorPar}
-	\begin{tabular}{|l|l|} \hline
+	\begin{tabular}{|p{0.65\textwidth}|p{0.30\textwidth}|} \hline
 		\textbf{Orbital characteristics}             	& 			\\ \hline \hline
-		Aerocapture entry velocity       				&	  		\\ \hline
-		Aerocapture exit velocity				 		&     	  	\\ \hline
-		Aerocapture bank reversals				        &  	   		\\ \hline
-		Aerobraking entry velocity					 	&  			\\ \hline
-		Aerobraking exit velocity					 	&  			\\ \hline
-		Aerobraking bank reversals					 	&  			\\ \hline
-		Parking orbit period						 	&  			\\ \hline
-		Parking orbit apoareion			 				&  			\\ \hline
-		Parking orbit periareion			 			&  			\\ \hline
+		Aerocapture entry velocity       				&	 7 [$km^{-1}$] 		\\ \hline
+		Aerocapture exit velocity				 		&    4.53 [$km^{-1}$]  	  	\\ \hline
+		Aerocapture bank reversals				        &  	 3 		\\ \hline
+		\gls{edl} entry velocity					 	&  	 4.53 [$km^{-1}$]	\\ \hline
+		\gls{edl} bank reversals					 	&  	 3	\\ \hline
+		Parking orbit period						 	&  	 1 [$sol$]		\\ \hline
+		Parking orbit apoareion			 				&  	37300 [$km$]		\\ \hline
+		Parking orbit periareion			 			&  	3590 [$km$]		\\ \hline
 		\textbf{Aerodynamic Characteristics}			&			\\ \hline \hline
-		Trim angle of attack				 			&  			\\ \hline
-		Trim \gls{cg} offset							&			\\ \hline
-		Lift to Drag ratio at trim			 			&  			\\ \hline
-		Drag coefficient at trim			 			&  			\\ \hline
-		Moment derivative w.r.t. $\gls{sym:alpha}$		&  			\\ \hline
-		Aeroshell Outer diameter						&  			\\ \hline
-		Aeroshell Height								&  			\\ \hline
-		Aeroshell lengthwise offset						&  			\\ \hline
-		\textbf{Structural characteristics}				&			\\ \hline
-		Number of toroids					 			&  			\\ \hline \hline
-		Toroid material						 			&  			\\ \hline
-		Toroid wall thickness (excluding \gls{tps})		&			\\ \hline
-		Toroid wall thickness (including \gls{tps})		&			\\ \hline
+		Trim angle of attack				 			&  22.5 [$deg$]			\\ \hline
+		Trim \gls{cg} offset							&  0.5 [$m$]		\\ \hline
+		Lift to Drag ratio at trim			 			&  	0.35	\\ \hline
+		Drag coefficient at trim			 			&  	1.3	\\ \hline
+		Moment derivative w.r.t. $\gls{sym:alpha}$		&  	-0.21		\\ \hline
+		Aeroshell Outer diameter						&  	12 [$m$]		\\ \hline
+		Aeroshell Height								&  	1.9 [$m$]		\\ \hline
+		Aeroshell lengthwise offset						&  	0.98 [$m$]		\\ \hline
+		\textbf{Structural characteristics}				&			\\ \hline \hline
+		Number of toroids					 			&   10			\\ \hline 
+		Toroid structural materials						 			&  	PBO Zylon, Upilex		\\ \hline
+		Toroid gas barrier material		&	0.050 [$mm$]		\\ \hline
+		Toroid wall thickness (excluding \gls{tps})		&	0.125 [$mm$]		\\ \hline
+		Toroid wall thickness (including \gls{tps})		&	3.121 [$mm$]		\\ \hline
 		\textbf{Thermal protection system characteristics}	&		\\ \hline \hline
-		Heat barrier material							&			\\ \hline
-		Heat barrier thickness							&			\\ \hline
-		Insulator material								&			\\ \hline
-		Insulator thickness								&			\\ \hline
+		Peak temperature							&	 1376 [$k$]		\\ \hline
+		Heat barrier material							&	Nicalon		\\ \hline
+		Heat barrier thickness							&	0.508 [$mm$]		\\ \hline
+		Insulator material								&	Pyrogel 6650		\\ \hline
+		Insulator thickness								&	2.438 [$mm$]		\\ \hline
 			
 		
 	\end{tabular}
 \end{table}
 
-\begin{table}[ht]
+\begin{table}[H]
 	\centering
 	\caption{Hypersonic decelerator mass breakdown}
 	\label{tab:DeceleratorMass}
-	\begin{tabular}{|l|l|} \hline
+	\begin{tabular}{|p{0.65\textwidth}|p{0.30\textwidth}|} \hline
 		\textbf {Hypersonic Decelerator}             & \textbf{Mass $\mathbf{[kg]}$ } \\ \hline \hline
 		Structure          &		 275       \\ \hline
-		\acrlong{tps} &		  270      \\ \hline
+		\acrlong{tps} &		  255      \\ \hline
 		Control System (including propellant) 		   &  212      \\ \hline \hline
-		Total excluding contingency              	   &  757     \\ \hline
-		\textbf {Total including contingency}                 &  957      \\ \hline
+		Total excluding contingency              	   &  742     \\ \hline
+		\textbf {Total including contingency}                 &  927      \\ \hline
 	\end{tabular}
 \end{table}
 
-\begin{table}[ht]
+\begin{table}[H]
 	\centering
 	\caption{Crew module mass breakdown}
 	\label{tab:CrewModuleMass}
-	\begin{tabular}{|l|l|} \hline
+	\begin{tabular}{|p{0.65\textwidth}|p{0.30\textwidth}|} \hline
 		\textbf {Crew module}             & \textbf{Mass $\mathbf{[kg]}$ } \\ \hline \hline
 		Power        &		 280       \\ \hline
 		\gls{adcs} &		  225      \\ \hline
@@ -80,17 +81,18 @@ The mission starts at launch from Earth. A $10 000$ $[kg]$ crew module carrying 
 		Operational items & 3140\\ \hline
 		\acrlong{cdh} & 585 \\ \hline
 		Crew & 160 \\ \hline
-		Terminal descent system           		   &  1500      \\ \hline \hline
-		Total excluding contingency              	   &  7790     \\ \hline
-		\textbf {Total including contingency}                 &  9590      \\ \hline
+		Terminal descent system           		   &  1445      \\ \hline \hline
+		\textbf{Total}             	   &  8550     \\ \hline
+		Margin (5\%) & 450							\\ \hline
+		\textbf {Total including contingency}                 &  9000      \\ \hline
 	\end{tabular}
 \end{table}
 
-\begin{table}[ht]
+\begin{table}[H]
 	\centering
 	\caption{Propellant mass breakdown}
 	\label{tab:PropMass}
-	\begin{tabular}{|l|l|} \hline
+	\begin{tabular}{|p{0.65\textwidth}|p{0.30\textwidth}|} \hline
 		\textbf {Manoeuvre}             & \textbf{Mass $\mathbf{[kg]}$ } \\ \hline \hline
 		Momentum unloading       &		 20       \\ \hline
 		Orbit clean up &		  33      \\ \hline
