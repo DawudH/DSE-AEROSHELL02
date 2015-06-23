@@ -40,12 +40,11 @@ Force estimation is performed in a two-dimensional plane representing a cross-se
 %The limit aerodynamic pressure is determined from the peak dynamic pressure by multiplying with a \acrfull{fos}, thereby taking into account a contingency for structural design. For composite structures, NASA dictates a \gls{fos} of 1.5 for uniform material and 2.0 for a discontinuity area \cite{Technical2014}. As the inflatable comprises a large amount of component interaction and discontinuity, the ultimate load is calculated as twice the limit aerodynamic pressure that follows from the trajectory analysis in Chapter \ref{ch:XXX}.
 
 %In addition to the aerodynamic pressure acting on the inflatable forward surface, movables (e.g. flaps) at the edge of the aeroshell are taken into account, where present, as a point load directed perpendicular to the flap deployed surface.
-
-As input forces are in Newtons per meter, being the product of a pressure over a length, forces should technically be designated as forces per unit length or running loads. Hereafter, all references to forces in this section are in fact references to running loads. To calculate forces from running loads, these are multiplied with the circumference over which they act. [EDIT]
-
 On the basis of these external forces, estimation is performed by a truss analysis. By requiring force equilibrium in two orthogonal directions within the plane, internal forces in each of the members 1 to 6 (as defined in Figure \ref{fig:TC2}) for the \gls{sym:N} toroids are determined. This system of equations is solved from the free end (outboard) to the pinned end (inboard) where the inflatable is connected to the centre body. At this location, reaction forces are determined at the two attachment points, forward and aft.
 
-The decreasing circumference over which forces act going from outboard to inboard in each two-dimensional slice, inherent to the sphere cone design, effects a proportional increase in running loads. This increase is proportional to the decrease in diameter, via the circumference, and thereby member forces are scaled by the ratio of radial distances, with respect to the centre body longitudinal axis, of the nodes they connect.
+As input forces are in Newtons per meter, being the product of a pressure over a length, forces should technically be designated as forces per unit length or running loads. Hereafter, all references to forces in this section are in fact references to running loads. To calculate forces from running loads, these are multiplied with the local circumference since running loads act over the circumference.
+
+The decreasing circumference over which forces act going from outboard to inboard in each two-dimensional slice, inherent to the sphere cone design, effects a proportional increase in running loads. This increase is proportional to the decrease in diameter, via the circumference, and thereby member running loads are scaled by the ratio of radial distances, with respect to the centre body longitudinal axis, of the nodes they connect. Force transfer namely requires tip and root forces to be equal, where forces are the product of running load and circumference.
 
 %Internal pressure is taken into account as follows. It is calculated as the pressure that brings all members into tension, based on the following reasoning. In case members are in compression, buckling will reduce the load-carrying capability of the structure. For the inflatable structure, buckling occurs at low loads due to its flexible and foldable nature. Therefore, the flexible material of the inflatable is not to be loaded into compression and required to be in tension. The latter is effected by the inflation pressure, which is estimated as follows. The first iteration, without inflation pressure, yields internal forces in all members. The requirement for internal pressure is that its induced force $\gls{sym:f}_{infl}$ (or running load), calculated via Equation \ref{eq:pressureforce} \cite{XXX}, brings all members into tension.
 %\begin{equation}
@@ -57,10 +56,10 @@ The three-dimensional effects are partially taken into account by assuming that 
 
 The validity of this adjustment is expanded upon in Appendix \ref{sec:VandVstruc} where the verification and validation of the model is discussed. Validation is performed on the basis of \gls{fem} results presented by Lindell et al. \cite{Lindell2006}. The modified two-dimensional method yields acceptable results for force estimations on \gls{irve}-II with a maximum error of 15.4\%, rather than the severe errors induced by not taking into account the three-dimensional bending stiffness. The full verification and validation results can be found in Appendix \ref{sec:VandVstruc}.
 
-The minimum internal pressure required to prevent wrinkling is approximated by Equation \ref{eq:Pmin} \cite{Brown2009, Samareh2011}, based on the premise that the work done by the aerodynamic force $F_{aerodynamic}$ is counteracted by the internal inflation pressure. In this approximation \gls{sym:theta} denotes the mean half-cone angle.
+The minimum internal pressure required to prevent wrinkling is approximated by Equation \ref{eq:Pmin} \cite{Brown2009, Samareh2011}, based on the premise that the work done by the aerodynamic force $F_{aero}$ is counteracted by the internal inflation pressure. In this approximation \gls{sym:theta} denotes the mean half-cone angle.
 \begin{equation}
 \label{eq:Pmin}
-\gls{sym:p}_{{infl}_{,min}} = F_{aerodynamic} \frac{4}{3 \pi} \frac{tan(\gls{sym:theta})sin(\gls{sym:theta}) }{\gls{sym:Do}\gls{sym:h}}
+\gls{sym:p}_{{infl}_{,min}} = F_{aero} \frac{4}{3 \pi} \frac{tan(\gls{sym:theta})sin(\gls{sym:theta}) }{\gls{sym:Do}\gls{sym:h}}
 \end{equation}
 This pressure induces a tensile running load $\gls{sym:f}_{infl}$ in the members of magnitude \cite{Megson2012}
 \begin{equation}
@@ -104,7 +103,7 @@ The consequence of these assumptions and their impact, primarily the first two, 
 
 \paragraph{Inflatable mass estimation method}
 
-Mass estimation for the inflatable structure is performed on the basis of a parametric mass model proposed by Samareh \cite{Samareh2011}. The mass model is based on a number of stress equations and cone deformation to compute outputs listed in Table \ref{tab:inflmass}.
+Mass estimation for the inflatable structure is performed on the basis of a parametric mass model \cite{Samareh2011}. The mass model is based on a number of stress equations and cone deformation to compute outputs listed in Table \ref{tab:inflmass}.
 \begin{table}[ht]
 \caption{Inflatable mass analysis tool in- and output}
 \centering
