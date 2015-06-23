@@ -1,7 +1,7 @@
 To investigate the influence of lay-up materials, heat flux variations, vehicle diameter and the trajectory approach on the \gls{tps} a sensitivity analysis is performed. First different materials are selected to form multiple lay-ups. The different lay-ups are then optimised for different loading conditions: the influence of heat flux variations on areal density is investigated. Subsequently, variations in mass due to changing diameters are tested. Lastly, the lay-ups are tested for different trajectories, either with a direct trajectory or with an orbit between aerocapture and landing. This investigation is done by using the tool described in Section \ref{subsec:thermaltool}.
 
 \paragraph{\gls{tps} materials}
-Table \ref{tab:tpsmatprop} shows some promising materials that can be used in the inflatable heat shield \cite{Corso2009,Corso2011,DuPont2011,Smith2011}. These materials have been proposed during the design of multiple inflatable decelerator concepts. For each material the thermal conductivity, the density, the specific heat, the maximum operative temperature and if applicable, the emissivity are given. The latter is only applicable to the top  thermal protection layers, because these layers will radiate heat into the surroundings.\\
+Table \ref{tab:tpsmatprop} shows the materials that are used in the inflatable heat shield \cite{Corso2009,Corso2011,DuPont2011,Smith2011,Nye,Zinkle1998}. A more extensive list can be seen in Appendix \ref{sec:VandVthermoprop} . These materials have been proposed during the design of multiple inflatable decelerator concepts. For each material the thermal conductivity, the density, the specific heat, the maximum operative temperature and if applicable, the emissivity are given. The latter is only applicable to the top  thermal protection layers, because these layers will radiate heat into the surroundings.\\
 
 Using the same reference a selection is made for the most promising thermal protection and insulation layers. These are Nextel BF-20 and Nicalon for the thermal protection layers. Nextel is a material already used by \gls{nasa} in several \gls{irve}s. Nicalon are continuous fibers of silicon carbide (SiC) that can withstand higher temperatures than Nextel up to 2073 $\left[K\right]$. For the insulation layers these are Pyrogel 3350 and Pyrogel 6650. With those materials three lay-ups are created whom are validated in Appendix \ref{sec:VandVthermo}. A schematic view of the layers is shown in Figure \ref{fig:layersensthermal}. These lay-ups will be tested for different heat fluxes as well as different diameters.
 
@@ -11,27 +11,17 @@ Using the same reference a selection is made for the most promising thermal prot
 	\begin{tabular}{|l|l|l|l|l|l|l|}
 		\hline
 		\textbf{Material}         & \textbf{ $\mathbf{k}$ $\mathbf{\left[\frac{W}{m\cdot K}\right]} $} & \textbf{ $\mathbf{ \rho }$ $\mathbf{ \left[ \frac{kg}{m^3} \right] }$} & \textbf{  $\mathbf{ c_{p} }$ $\mathbf{ \left[ \frac{J}{kg \cdot K} \right] }$ }& \textbf{ $\mathbf{ T_{max} }$ $\mathbf{ [ K ] }$} &\textbf{ $\mathbf{ \varepsilon }$ $\mathbf{ [ - ] }$} & \textbf{Function} \\[1.6ex]   \hline \hline
-		Viton       & 0.202 & 1842 & 1654 & N/A	 & 0.85 & rad. coating
-		\\ \hline
-		Nextel AF14       & 0.150                                                 & 858                                        & 1050                                            & 1373	 & 0.443    & rad. \& barrier                                 \\ \hline
+		Hi-Nicalon      & 2.4       & 2900   & 1200   & 2073      & 0.93        & rad. \& barrier
+\\ \hline
 		Nextel BF20       & 0.146 
 		& 1362                                        & 1130 
 		& 1643	 & 0.443  & rad. \& barrier                                  
-		\\ \hline
-		Nextel XN513      & 0.148                                                 & 1151                                       & 1090                                            & 1673	 & 0.443           & rad. \& barrier                               \\ \hline
-		Refrasil C1554-48 & 0.865                                                 & 924                                        & 1172                                            & 1533	 & 0.7     & rad. \& barrier                                       \\ \hline
-		Refrasil UC100-28 & 0.865                                                 & 890                                        & 1172                                            & 1255  & 0.2       & rad. \& barrier                                    \\ \hline
-		Hexcel 282 Carbon & 0.5                                                   & 891                                        & 1000                                            & N/A 	 & 0.9      & rad. \& barrier \\ \hline
+\\ \hline                                          & N/A 	 & 0.9      & rad. \& barrier \\ \hline
 		Pyrogel 6650      & 0.030                                                 & 110                                        & 1046                                            & 923    & ~        & insulator                                  \\ \hline
-		Pyrogel 5401      & 0.0248                                                & 170                                        & 1046                                            & N/A  	 & ~          & insulator                                 \\ \hline
-		Refrasil 1800      & 0.085                                                 & 156                                        & 1172                                            & 1255 	 & ~           & insulator                                \\ \hline
-		Refrasil 2000      & 0.095                                                 & 180                                        & 1172                                            & 1366 	 & ~            & insulator                               \\ \hline
-		KFA 5             & 0.25                                                  & 98                                         & 1250                                            & 1473 	 & ~        & insulator                                   \\ \hline
-		Nomex             & 0.035                                                  & 384                                         & 1465                                            & N/A 	 & ~        & insulator                                   \\ \hline
+		Pyrogel 3350      & 0.0248                                                & 170                                        & 1046                                            & N/A  	 & ~          & insulator                                 \\ \hline
 		Kapton            & 0.12                                                  & 1468                                       & 1022                                            & 673	 & ~            & gas barrier                              \\ \hline
-		Upilex            & 0.29                                                  & 1470                                       & 1130                                            & 773 	 & ~             & structural                            \\ \hline
 		Kevlar            & 0.04 & 1440                                       & 1420                                            & 443 	 & ~             & structural                            \\ \hline
-		Vectran            & 0.37 & 1400 & 1259 & N/A 	 &  & structural                            \\ \hline
+
 	\end{tabular}
 	\label{tab:tpsmatprop}
 \end{table}
