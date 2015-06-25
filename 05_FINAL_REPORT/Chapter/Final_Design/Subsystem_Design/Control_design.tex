@@ -23,7 +23,7 @@ Within the Martian atmosphere control is performed on the basis of banking. A co
 
 Accuracies using bank control where obtained using dispersions of $\pm 0.03 $ \gls{sym:CL}, $\pm 0.06 $ \gls{sym:CD} and mass and atmospheric dispersion of $5\%$ and $30\%$ respectively \cite{Lu2007}. Accuracies of up to $10$ $[m]$ can be achieved if the staging and final descent are included \cite{Davis2010}. These control accuracies were obtained on the basis of sensed accelerations.
 
-It is argued that with an increasing amount of bank reversals, complemented with additional control measures such as extra sensors, higher accuracies can be obtained. The trajectories are budgeted for a total of six bank reversals, three for both the initial aero-capture and the final \gls{edl}. Three bank reversals are typical values for single orbit \cite{Lu2007, Cianciolo2010}. A very qualitative definition of three bank reversals as defined within the control system analysis is displayed in Figure \ref{fig:bankdef}.
+It is argued that with an increasing amount of bank reversals, complemented with additional control measures such as extra sensors, higher accuracies can be obtained. The trajectories are budgeted for a total of six bank reversals, three for both the initial aerocapture and the final \gls{edl}. Three bank reversals are typical values for single orbit \cite{Lu2007, Cianciolo2010}. A very qualitative definition of three bank reversals as defined within the control system analysis is displayed in Figure \ref{fig:bankdef}.
 
 \begin{figure}[h]
 	\centering
@@ -49,7 +49,7 @@ Inertial moments combined with rotational rates deliver the required control mom
 \begin{itemize}
 \item Thruster placed on the inflatable will difficult the deployment
 \item Deformation of the inflatable, and thus thruster performance, is difficult to predict.
-\item Placement of thrusters on the inflatable may induce disadvantageous vibrations or aero-elastic effects.  
+\item Placement of thrusters on the inflatable may induce disadvantageous vibrations or aeroelastic effects.  
 \end{itemize} 
 
 Further details on the placement are also discussed in Section \ref{sec:crewpackaging} discussing the packaging of the entry vehicle.
@@ -101,7 +101,7 @@ Clean-up         & 10.47  &		  33       \\ \hline
 Orbit (de)raising& 18.12  &		  54       \\ \hline
 Fuel tank              		 & -  &  12      \\ \hline
 Thrusters                	 & -  &  44     \\ \hline \hline
-\textbf{Total}               & 18.59  &  212      \\ \hline
+\textbf{Total}               & 28.59  &  212      \\ \hline
 \end{tabular}
 \end{table}
 
@@ -113,7 +113,7 @@ Similar to the mass estimates the control system can  also be subdivided into pa
 
 \subparagraph{Control within the atmosphere}
 
-Control within the atmosphere is required in two phases of the mission. The initial aero capture phase and the final \gls{edl}. Due to small uncertainties in the \glspl{hiad} performance, but more importantly atmospheric disturbances, deviations from the nominal trajectory can be observed. These deviations are accounted for in the trajectory discussed in Section \ref{sec:trajectorydesign} but also need to be recognised during mission operations such that they can be acted upon. 
+Control within the atmosphere is required in two phases of the mission. The initial aerocapture phase and the final \gls{edl}. Due to small uncertainties in the \glspl{hiad} performance, but more importantly atmospheric disturbances, deviations from the nominal trajectory can be observed. These deviations are accounted for in the trajectory discussed in Section \ref{sec:trajectorydesign} but also need to be recognised during mission operations such that they can be acted upon. 
 
 Typical implementations for a control system involve a \gls{npc} or \gls{apc} method and use sensed accelerations to determine the atmospheric properties \cite{Davis2010}. These values are used to update the control models such that the same terminal point is reached each time. For this purpose a set of three gyroscopes and three accelerators as \gls{imu} is required \cite{Dutta2013}. The former is already included in the \gls{adcs} as discussed in Section \ref{subsec:adcs}. Recent advances in accelerometers make even the high accuracy sensors a low mass component. The accelerometers are included in the \gls{adcs} mass budget as they are also required for the terminal descent phase. 
 
