@@ -75,7 +75,7 @@ legend([H1 H2 h5],'Transfer time',...
         '7 km/s at atmosphere boundary',...
         'location','northWest')
 grid on
-matlab2tikz('.\LaTeX\transfer_time.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
+%matlab2tikz('.\LaTeX\transfer_time.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
 
 figure('name','transfer orbit')
 hold on
@@ -102,18 +102,27 @@ set(gcf,'color',[1 1 1])
 legend('Sun','Earth','Mars','Earth trajectory','Mars trajectory','Interplanetary trajectory','location','westoutside')
 % matlab2tikz('.\LaTeX\transfer_orbit.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
 
-%% plot the sin waves of the orbits
-% last allignment 8 april 2014
-% orbital period earth
-Te = 365.25636;
-% orbital period Mars
-Tm = 686.971;
-t_launch = (1/(1/Tm - 1/Te)) * (81.8254 / (360) - 89.2/Tm);
-t = -80:0.1:2000;
-Ye = sin(2*pi/Te * t);
-Ym = sin(2*pi/Tm * (t));
-figure('name','launch windows')
+figure('name','transfer orbit black back')
 hold on
-plot(t,Ye)
-plot(t,Ym)
-grid on
+axis equal
+theta_plot = 0:0.01:2*pi;
+index_orbit = 112;
+theta_mars = acos(a(index_orbit)* (1-e(index_orbit)^2) / (e(index_orbit) * r_m) - 1/e(index_orbit));
+theta_plot_sc = 0:0.01:theta_mars;
+r_sc = a(index_orbit) * (1-e(index_orbit)^2) ./ (1 + e(index_orbit) * cos(theta_plot_sc) );
+r_mars = ones(1,length(theta_plot)) * r_m;
+r_earth = ones(1,length(theta_plot)) * r_e;
+R_sun = ones(1,length(theta_plot)) * 10e9;
+plot(0,0,'o','markerfacecolor',[1 0.8 0],'markersize',19,'markeredgecolor','none')
+plot(r_e,0,'o','markerfacecolor',[30 144 255]/255,'markersize',11,'markeredgecolor','none')
+plot(cos(theta_mars)*r_m,sin(theta_mars)*r_m,'o','markerfacecolor',[229 52 39]/255,'markersize',9,'markeredgecolor','none')
+hsc = polar(theta_plot_sc,r_sc,'-.'); 
+hsc.Color = 'w';
+hre = polar(theta_plot,r_earth,'--'); 
+hre.Color = [30 144 255]/255;
+hrm = polar(theta_plot,r_mars,'--');
+hrm.Color = [229 52 39]/255;
+set(gca,'Visible','off')
+set(gcf,'color',[0 0 0])
+matlab2tikz('.\LaTeX\transfer_orbit_black.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
+
