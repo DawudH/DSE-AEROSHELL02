@@ -1,5 +1,5 @@
 \subsubsection{Opening}
-Locatie: Fellowship Meeting room 2\\
+Locatie: LR Meeting room 3\\
 Aanwezig: HD, NR, DD, J, L, G, A, B, T, D, Su, Se\\
 Verontschuldigd: \\
 Afwezig: \\
@@ -20,38 +20,42 @@ De agenda van de vergadering bestaat oorspronkelijk uit de volgende punten:
 Aan de agenda worden verder geen punten toegevoegd.
 
 \subsubsection{Goedkeuring van de notulen}
-Er waren geen op- of aanmerkingen.
+NR had een paar vragen/opmerking over onduidelijkheden in het vorige report.
 
-Nicalon max. temp 1100C volgens Niels. Onze sources zeggen hoger. Spaceshuttle gebruikt doeken pas bij 1000 graden. Verschil tussen smelt temp en max use temp, zonder/met loading. 
-Vatten het ontwerp samen. Eerste aerocapture tot 50km alt. Parking orbit en dan final entry. Density aanpassen is dus 0.9 en 1.1 verhaal. Dan controlen om op initiele positie te komen. 
-L/D 0.35 en maximale CD geoptimaliseerd. Maximale cg offset .5m voor het trimmen. Asymmetrisch. 
-Nicalon redt het vooralsnog. Eventueel nextel met coating voor hogere emissivity. NR zegt dat er coatings zijn die dat aan zouden moeten kunnen, maar coating is ook weer mass. Ook zou het duur zijn, waarschijnlijk negligible t.o.v. totale kosten. Coatings kunnen heel dun zijn (tot nano).
-Structural, met zylon kun je de dunst mogelijke laag pakken, kevlar wordt dikker. Inflation zorgt voor 65kPa in de inflatable. Drukverschil neemt in atmosfeer niet af, doordat de temperatuur toeneemt. IRVE pompte desondanks bij, dat komt door leakages. Inflatable wordt niet meer afgeworpen, maar deflaten. Thruster in de centerbody die vrij fors is. Geen alternatieven, parachute werkt niet. Wat met bijv. een grote parachute en dan een soyuzboost. Parachute weegt al meer dan brandstofwinst. 
-
-Voordeel van onze aeroshell. 7km req was driving. Langere orbits zorgen voor lagere entry velocities. Wel of geen return, kost veel massa.
-
-Iteraties in design. Sturen op orbit en aero. Hoge CD was in eerste instantie niet goed voor dde 10km mach 5 req. Die was dus veranderd naar 15km mach5. Toroids leeg laten lopen zorgt ook voor lift verlies, wat niet mag. 
+NR had opgezocht dat de maximum usable temperature van Nicalon op 1100C lag. Onze sources gaven 1800C aan. NR zegt dat het belangrijk is te weten dat er dus een verschil is tussen melting temperature en maximum use temperature. Voor de duidelijkheid wordt het ontwerp alsnog snel samengevat voor NR.
+\newline\newline
+Voor de orbit eerst is er een aerocapture tot ongeveer 50km altitude, vervolgens een parking orbit om een goed moment te vinden voor de final entry. Om aan te tonen dat we binnen de 500m range kunnen eindigen is de density profile aangepast naar een 0.9 en 1.1 ratio om eventuele onzekerheden in de atmosfeermodellen mee te nemen. Vervolgens wordt maximaal gecontroleerd om terug op de initiele positie te komen.
+\newline\newline
+Voor de shape is er een L/D van 0.35 en is voor een maximale CD geoptimaliseerd. De fixed c.g. offset is 0.5m om alpha te trimmen. Verder is de aero-shape asymmetrisch.
+\newline\newline
+We gebruiken dus Nicalon. Alternatief zou zijn Nextel met een coating wat een hogere emissivity zou hebben. Volgens NR zijn hier wel coatings voor, maar coatings zorgen ook weer voor extra mass. Verder zou Nicalon redelijk duur zijn, maar dit is verwaarloosbaar voor spacemissions. Overigens kunnen coatings heel dun zijn volgens DD.
+\newline\newline
+Voor structural wordt een zo dun mogelijke laag Zylon gebruikt. Kevlar zou duurder worden. Inflation system zorgt voor 65kPa in de inflatables. Drukverschil neemt overigens in de atmosfeer niet af, aangezien de temperatuur toeneemt. IRVE pomp desondanks steeds bij, door de leakages. Inflatable zal niet meer afgeworpen worden, maar we gaan deflaten. Verder gebruiken we een vrij forse thruster in de centerbody. Hiervoor hadden we geen alternatieven. Parachute wordt te zwaar. De parachute zelf weegt al meer dan de brandstofwinst en de thruster heb je sowieso nodig.
+\newline\newline
+Uiteindelijk was de 7 km/s requirement was driving, omdat in de aerocapture geremd moet worden tot onder de escape velocity, wat vrij moeilijk wordt. Deze 7 km/s komt door de snelle transfer orbit (89 dagen). Langere orbits zorgen voor lagere entry velocities. Het hebben van een returnmogelijkheid zorgt voor onredelijk veel extra mass.
+\newline\newline
+Voor de design-iteraties wordt er gestuurd in orbit en aero. Een hoge CD was benodigd, maar was niet goed voor de 10km mach 5 requirement. Die is veranderd naar 15km op mach 5. Eventueel toroids leeg laten lopen om $C_DA$ te verlagen zorgt ook voor vermindering in lift-force wat je echt niet wil.
 
 \subsubsection{Andere vragen}
-\textit{In welke mate moeten wij de eisen verder uitwerken?} Sub-eisen zijn niet opgelegd door HD, top-level lijkt voldoende naast: radiation, spacedebris.
+\textit{In welke mate moeten wij de eisen verder uitwerken?} Sub-eisen zijn niet opgelegd door HD, top-level lijkt voldoende naast bijvoorbeeld radiation en space debris.
+\newline\newline
+Onvoorspelbaarheid van de leeggelopen inflatable. Het is namelijk onzeker wat er precies gebeurt en wat voor effect dit heeft op de stabiliteit. Alle failure modes moeten besproken worden voordat je een echte aanbeveling kan doen. Dingen als asymmetrie, inflatable mid-air deflaten, niet werkende inflatable etc. moeten aangestipt worden.
+\newline\newline
+\textit{C\&DH diagram} Er waren twee deliverables: data handling block diagram. En communication flow diagram. HD weet ook niet precies wat ze willen zien. Bij ons is communicatie vooral intern door de delay tussen Mars en Aarde. Misschien moet het interne wat beter uitgewerkt worden. Bij de communicatie tussen vehicle en aarde is de vehicle goed behandeld, maar de aarde (ground station) is een beetje achtergebleven volgens DD. Voor wat we tot nu toe hebben is het fijn om te weten hoe snel moeten we bepaalde info nodig hebben en hoevaak. Sommige info wil je namelijk elke 0.1s weten en andere misschien maar per minuut. Ook kan redundancy bekeken worden. Hoe check je of een sensor nog goede informatie doorgeeft.
 
-Onvoorspelbaarheid van de leeggelopen inflatable. Alle failure modes moeten besproken worden voordat je een echte aanbeveling kan doen. Asymmetrie, inflatable mid-air deflaten, niet werkende inflatable etc.
-
-\textit{C\&DH diagram} Twee dingen: data handling block diagram. En communication flow diagram. HD weet ook niet precies wat ze willen zien. Bij ons is communicatie vooral intern. Misschien dit interne wat beter uitwerken. Communications tussen vehicle en aarde, vehicle is gecovered, aarde (ground station) beetje achtergebleven volgens DD. Voor wat we tot nu toe hebben: hoe snel moeten we dingen hebben, hoevaak heb je info nodig. Redundancy bekijken. Hoe check je of een sensor nog goede informatie doorgeeft. Focus op aeroshell.
-
-\textit{Wie zitten er bij de final review?} Meestal beperkt. Leg DSE heel kort uit, wel duidelijk uitleggen wat ons probleem is.
+\textit{Wie zitten er bij de final review?} Meestal beperkt. Leg het DSE heel kort uit, wel duidelijk uitleggen wat ons probleem is.
 
 \subsubsection{W.V.T.T.K.}
-\textbf{1.} L: Poster ook in jip-en-janneke taal? Symposium en poster gaat om winnen, verkoop het verhaal.
+\textbf{1.} L: Moet de poster ook in jip-en-janneke taal? HD: Symposium en poster gaat om winnen, verkoop het verhaal.
 
-\textbf{2.} A: FR met zn allen, symposium 2 of 3. 
+\textbf{2.} A: Klopt het dat FR met zn allen gepresenteerd moet worden en het symposium met met 2 of 3?
 
-\textbf{3.} HD: Hoeveel meetings hebben we nog? FR, poster, symposium voorbereidingen? Dinsdag verslag, woensdag/donderdag een poster. Vrijdag een meeting voor laatste report dingetjes. Dinsdag meeting om symposium door te spreken. Probleempje om vrijdag te graden. 
+\textbf{3.} HD: Hoeveel meetings hebben we nog? De belangrijke dagen zijn als volgt: dinsdag komt het verslag, woensdag/donderdag een poster. Vrijdag een meeting om final report te bespreken. Dinsdag een meeting om symposium door te spreken. HD geeft wel aan dat het moeilijk wordt om vrijdag te graden. 
 
 \subsubsection{Rondvraag}
 Er zijn verder geen vragen.
 
 \subsubsection{Sluiting}
-De volgende vergadering zal plaatsvinden op 22-06-2015 om 11:00 in Fellowship Meeting room 2.
+De volgende vergadering zal plaatsvinden op 26-06-2015 om 11:00 in Fellowship Meeting room 2.
 \newline\newline
 Dawud sluit de vergadering om 12:34.
