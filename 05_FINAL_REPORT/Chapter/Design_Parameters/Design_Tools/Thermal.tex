@@ -27,20 +27,31 @@ The thermal problem is modeled as is shown in Figure \ref{fig:1dmodelthermal}. S
 
 Since a one-dimensional thermal model is used to analyse the problem, Equation \ref{eq:thermheat}, also known as the one-dimensional heat equation, can be used to relate the required temperature, space and time using the thermal diffusivity ($\gls{sym:alphat}$). The thermal diffusivity is a function of the thermal conductivity ($\gls{sym:k}$), density ($\gls{sym:rho}$) and specific heat capacity ($\gls{sym:cp}$) as shown in Equation \ref{eq:thermdif} \cite{Holman2002}. A Crank-Nicolson scheme is used to implement the heat equation. This will model the conduction within the layers. The convective heating is obtained from the aerodynamic analysis and the radiation is calculated using Equation \ref{eq:thermrad} \cite{Holman2002}. It is assumed that the temperature ($\gls{sym:T}_\infty$) into which the heat shield radiates is equal to the atmospheric temperature of Mars, which is obtained from the chosen trajectory.
 
-\begin{multicols}{3}
+\vspace{-12px}
+\begin{tabular}{lll}
+	\begin{minipage}{0.24\linewidth}
 	\begin{equation}
 	\frac{\partial \gls{sym:T}}{\partial \gls{sym:t}} = \gls{sym:alphat}\frac{\partial^2\gls{sym:T}}{\partial \gls{sym:x}^2}
 	\label{eq:thermheat}
-	\end{equation}\break
+	\end{equation}
+	\end{minipage}
+	&
+	\begin{minipage}{0.26\linewidth}
+	\vspace{16.5px}
 	\begin{equation}
 	\gls{sym:alphat} = \frac{\gls{sym:k}}{\gls{sym:rho}\gls{sym:cp}}
 	\label{eq:thermdif}
-	\end{equation}\break
+	\end{equation}
+	\end{minipage}
+	&
+	\begin{minipage}{0.4\linewidth}
+	\vspace{12px}
 	\begin{equation}
 	\gls{sym:qdot}_r = \gls{sym:eps}\gls{con:stefanboltzmann}\left(\gls{sym:T}_w^4-\gls{sym:T}_\infty^4\right)
 	\label{eq:thermrad}
 	\end{equation}
-\end{multicols}
+	\end{minipage}
+\end{tabular}
 
 \paragraph{Limitations}
 Simplifying the problem introduces some limitations to the design tool. One of the drawbacks of a one-dimensional analysis is that the complete \gls{tps} is sized according to the conditions at the stagnation point. Furthermore it does not account for heat flowing across the other plane that is not being analysed. These drawbacks will decrease the estimated heat through the lay-up and therefore the current analysis method provides a conservative estimate for the \gls{tps}. 
