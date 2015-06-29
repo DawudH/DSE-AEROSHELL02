@@ -1,4 +1,5 @@
 This section will discuss the control system selection procedure and control system design. First the control system downselect is discussed, after which the resultant control system is sized to the mission requirements.
+
 \paragraph{Control actuation selection}
 Based on the arguments for and against certain control actuation concepts given in Section \ref{subsec:controltool} a selection of suitable control actuation solutions was made. Figure \ref{fig:cgoffset} shows the \gls{cg} offset required along the Z-axis to trim the spacecraft at certain angles of attack for various \gls{cg} locations on the X-axis. 
 \begin{figure}[h]
@@ -9,16 +10,14 @@ Based on the arguments for and against certain control actuation concepts given 
 \end{figure}
 From Figure \ref{fig:cgoffset} it can be seen that the required \gls{cg} Z-offset grows as the X-offset grows. For an angle of attack change of $2$ degrees corresponding to an X-\gls{cg} located at $-5$ meters a \gls{cg} shift of $0.2$ $[m]$ is required. Angle of attack-based trajectory control was found to require trimmed \gls{sym:alpha}-shifts of $5$ degrees that have to be adjusted with a rate of $1$ $[deg \cdot s^{-1}]$. To pull this off would require the actuation system to produce a \gls{cg} displacement of $0.5$ meters with a required rate of $0.1$ $[m \cdot s^{-1}]$. This would require excessively heavy actuators that would also have to be able to operate under 3\gls{con:ge} loads. Not only has this never been done before in space at such scale, the reliability of such a system would be questionable as a \gls{spf} would be introduced. Based on these arguments a decision was made against active \gls{cg} control.
 
-Following the decision to discontinue the consideration of active \gls{cg} control a selection had to be made between the other two control actuation design options: Body flaps and thrusters. Regarding body flaps some of the same arguments can be made as were used against active \gls{cg} control. Body flaps can require excessively large actuators that are very heavy. In addition to this the dynamic behaviour of the inflatable structure is difficult to compute and can be very unpredictable. Furthermore the use of body flaps on inflatable structures has a very low \gls{trl}, which poses an additional development risk. Based on these and other downsides pertaining to aerodynamic control surfaces mentioned in Section \ref{subsec:controltool} thrusters are used as control actuators.
+Following the decision to discontinue the consideration of active \gls{cg} control a selection had to be made between the other two control actuation design options: Body flaps and thrusters. Regarding body flaps some of the same arguments can be made as were used against active \gls{cg} control. Body flaps can require excessively large actuators that are very heavy. In addition to this the dynamic behaviour of the inflatable structure is difficult to compute and can be very unpredictable. Furthermore the use of body flaps on inflatable structures has a very low \gls{trl}, which poses an additional development risk. Based on these and other downsides pertaining to aerodynamic control surfaces mentioned in Section \ref{subsec:controltool} thrusters are used as control actuators. These thrusters will be located on the edge of the crew capsule in order to maximise their moment arm without resorting to placing them on the inflatable structure.
 
 \paragraph{Control actuation sizing and design}
-
 The components of the control system providing the actuation can globally be subdivided into two components. The control system mass and its corresponding accuracy.
 
 Mass estimates are based on the required propellant mass, thruster mass and fuel tank mass. The propellant mass can be subdivided into a further two categories: the control within the atmosphere and the control outside of the atmosphere. General equation were previously discussed within Section \ref{subsec:controltool}. An overview of the mass components and their respective masses is provided in Table \ref{tab:controlmassbreakdown}.
 
 \subparagraph{Control within the atmosphere} 
-
 Within the Martian atmosphere control is performed on the basis of banking. A control system featuring a single bank control reversal manoeuvre is always able to arrive at the landing site with a average accuracy of $1.009$ $[km]$ at Mars \cite{Lu2007}. The control system accuracy can further be significantly reduced by using multiple bank reversals. Reductions are primarily found in the observed dispersions.
 
 Accuracies using bank control where obtained using dispersions of $\pm 0.03 $ \gls{sym:CL}, $\pm 0.06 $ \gls{sym:CD} and mass and atmospheric dispersion of $5\%$ and $30\%$ respectively \cite{Lu2007}. Accuracies of up to $10$ $[m]$ can be achieved if the staging and final descent are included \cite{Davis2010}. These control accuracies were obtained on the basis of sensed accelerations.
@@ -48,7 +47,7 @@ Inertial moments combined with rotational rates deliver the required control mom
 \begin{itemize}
 \item Thrusters placed on the inflatable will discommode stowage deployment.
 \item Deformation of the inflatable, and thus thruster performance, is difficult to predict.
-\item Placement of thrusters on the inflatable may induce undesired vibrations or aeroelastic effects.  
+\item Placement of thrusters on the inflatable may induce undesired vibrations or aero-elastic effects.  
 \end{itemize} 
 
 Further details on the placement are also discussed in Section \ref{sec:crewpackaging} discussing the packaging of the entry vehicle.
@@ -83,12 +82,11 @@ The tank mass is estimated via the empirical Equation \ref{eq:tankmass} \cite[p.
 
 \begin{equation}
 \label{eq:tankmass} 
-\gls{sym:m}_{tank}=2.7086 \cdot 10^{-8} \cdot \gls{sym:vol}^3 -6.1703 \cdot 10^{-5} \cdot \gls{sym:vol}^2 +6.66290 \cdot 10^{-2}  \cdot \gls{sym:vol} +1.3192;
+\gls{sym:m}_{tank}=2.7086 \cdot 10^{-8} \cdot \gls{sym:vol}^3 -6.1703 \cdot 10^{-5} \cdot \gls{sym:vol}^2 +6.66290 \cdot 10^{-2}  \cdot \gls{sym:vol} +1.3192
 \end{equation}
 
 \subparagraph{Component mass overview}
-
-Table \ref{tab:controlmassbreakdown} provides an overview of the individual mass components discussed above. Mass estimates exclude the final contingency factor of $20\%$ applicable for all the \gls{hiad} components.
+Table \ref{tab:controlmassbreakdown} provides an overview of the individual mass components discussed above. The propellant masses are given for the bank control, orbit clean-up and apocenter boost manoeuvres. Mass estimates exclude the final contingency factor of $20\%$ applicable for all the \gls{hiad} components.
 
 \begin{table}[h]
 \centering
@@ -106,13 +104,11 @@ Thrusters                	 & -  &  44     \\ \hline \hline
 \end{table}
 
 \paragraph{Control system method}
-
 For achieving mission success it is essential that required accuracy can be obtained even under non-nominal conditions. For this purpose a control system is required such that the bank reversal angles and timing can be properly chosen allowing for a reference trajectory to be followed and ensuring mission success.
 
 Similar to the mass estimates the control system can  also be subdivided into part within and a part outside of the Martian atmosphere.
 
 \subparagraph{Control within the atmosphere}
-
 Control within the atmosphere is required in two phases of the mission: the initial aerocapture phase and the final \gls{edl}. Due to small uncertainties in the \glspl{hiad} performance, but more importantly due to atmospheric disturbances, deviations from the nominal trajectory can be observed. These deviations are accounted for in the trajectory discussed in Section \ref{sec:trajectorydesign} but also need to be recognised during mission operations such that they can be acted upon. 
 
 Typical implementations for a control system involve a \gls{npc} or \gls{apc} method and use sensed accelerations to determine the atmospheric properties \cite{Davis2010}. These values are used to update the control models such that the same terminal point is reached each time. For this purpose a set of three gyroscopes and three accelerators as \gls{imu} is required \cite{Dutta2013}. The former is already included in the \gls{adcs} as discussed in Section \ref{subsec:adcs}. Recent advances in accelerometers make even the high-accuracy sensors a low mass component. The accelerometers are included in the \gls{adcs} mass budget as they are also required for the terminal descent phase. 
@@ -132,7 +128,6 @@ A very schematic overview of the functioning of the control system within the at
 \end{figure}
 
 \subparagraph{Control outside the atmosphere}
-
 Outside the Martian atmosphere no additional sensors are required apart form those provided by the \gls{adcs}. The period outside the Martian atmosphere however serves as an aid for the final \gls{edl}. Unlike the initial aerocapture phase, for which no timing is possible, the period outside the Martian atmosphere in between the two entries allows for additional measurements and control model updates. Moreover the timing of the second re-entry in the Martian atmosphere can be controlled in intervals of single Martian days.
 
 Controlling this entry allows for entries at favourable atmospheric conditions and reduces the risk of the mission. Atmospheric conditions can for example be transmitted via pre-existing base stations. Controlling the timing of the mission allows for much more certainty on the atmospheric conditions which is crucial for the precision of the re-entry. High variations in the atmospheric properties, such as may be the case due to dust storms, can thus be anticipated \cite{Justh2012}.
