@@ -1,4 +1,4 @@
-The control systems should be able to keep the spacecraft on the trajectory as defined by the astrodynamics tool in Section \ref{subsec:orbittool}.
+The control systems should be able to keep the spacecraft on the trajectory as defined by the trajectory tool in Section \ref{subsec:orbittool}.
 
 %\paragraph{Assumptions}
 %\label{control:assumptions}
@@ -9,18 +9,19 @@ The control systems should be able to keep the spacecraft on the trajectory as d
 \paragraph{Stability}
 \label{control:stab}
 
-The aerodynamic tool determines the static stability around all axis in the aerodynamic frame. If the spacecraft is stable around a certain axis all perturbations around that axis are automatically counteracted. However if an attitude change around that axis is required a larger moment has to be counteracted to control the spacecraft.  If the spacecraft is unstable around a certain axis perturbations around that axis have to be counteracted by active control. However if an attitude change around that axis is required a smaller moment has to be counteracted to control the spacecraft. It is thus preferred to perform control about the axis that are neutrally stable, or even unstable, and axis about which no control is needed are preferred to be stable.
+The aerodynamic tool determines the static stability around all axes in the aerodynamic frame. If the spacecraft is stable around a certain axis all perturbations around said axis are automatically counteracted. However, if an attitude change around that axis is required a larger moment has to be counteracted to control the spacecraft. 
+If the spacecraft is unstable around a certain axis perturbations around that axis have to be counteracted by active control. However, if an attitude change around that axis is required a smaller moment has to be counteracted to control the spacecraft. It is thus preferable to perform control about the axes that are neutrally stable, or even unstable, and axes about which no control is needed are preferred to be stable. Following from the aerodynamic analysis the stability around all three axis can be considered. For pitch and sideslip the entry vehicle was found to be stable whereas for roll the vehicle is neutrally stable. 
 
 \paragraph{Available control systems}
 \label{control:system}
 
-The control systems that are considered are \gls{cg} offset, thrusters and aerodynamic surfaces respectively.
+The control systems that are considered are active \gls{cg}-offset control, thrusters and aerodynamic surfaces respectively.
 
-\subparagraph{\acrlong{cg} offset}
+\subparagraph{Active \acrlong{cg}-offset control}
 
-In order to be able to trim the spacecraft at a certain angle of attack (\gls{sym:alpha}) a constant control moment has to be delivered by the combined control systems. To achieve this an active \gls{cg} offset control system is considered. By changing the location of the capsule \gls{cg} with respect to the aeroshell the magnitude of the resultant moments changes \cite{Mulqueen1991}. 
+In order to be able to trim the spacecraft at a certain angle of attack (\gls{sym:alpha}) a constant control moment has to be delivered by the combined control systems. To achieve this an active \gls{cg}-offset control system is considered. By changing the location of the capsule \gls{cg} with respect to the aeroshell the magnitude of the resultant moments changes \cite{Mulqueen1991}. 
 
-The aerodynamic forces acting on the spacecraft work on the centre of pressure of the aeroshell. The \gls{cg} of the spacecraft has a certain offset in x, y and z direction with respect to this centre of pressure. Thus moments are induced around the \gls{cg}. Knowing these moments a line in three-dimensional space can be found on which all moments are zero. This line varies for different combinations of forces which follow from different combinations of angle of attack, sideslip and bank angle.
+The aerodynamic forces acting on the spacecraft work on the centre of pressure of the aeroshell. The \gls{cg} of the spacecraft has a certain offset in the X, Y and Z-directions with respect to this centre of pressure. Thus moments are induced around the \gls{cg}. Knowing these moments a line in three-dimensional space can be found on which all moments are zero. This line varies for different combinations of forces which follow from different combinations of angle of attack, sideslip and bank angle.
 
 \subparagraph{Thrusters}
 \label{subpar:thrusters}
@@ -47,31 +48,29 @@ Since a constant mass flow is needed to be able to deliver a continuous control 
 
 To arrive at a thruster design the specific impulse and maximum mass flow of available thrusters can be taken from literature. From this also follows the dry mass per thruster, which can be added to the propellant mass to arrive at the total thruster control system mass.
 
-Thruster allow for very versatile operations but with varying efficiency. The effectiveness of attitude changes depends on the stability of the vehicle. If the entry vehicle is stable around a certain axis than large amounts of propellant are required to maintain a certain attitude. Again, any trimming around such a axis is not feasible.
+Thrusters allow for very versatile operations but with varying efficiency. The effectiveness of attitude changes depends on the stability of the vehicle. If the entry vehicle is stable around a certain axis large amounts of propellant are required to maintain a certain attitude. Again, any trimming around such an axis is not feasible.
 
-Following from the aerodynamic analysis the stability around all three axis can be considered. For pitch and sideslip the entry vehicle was found to be stable whereas for roll the vehicle is neutrally stable. 
+The neutral stability of the entry vehicle can be used relatively efficiently for bank control. This is the conventional solution for guidance \& control during entry. The use of thrusters implies a high control system reliability as they are not only frequently employed but also allow for redundant placement with a minimal mass increase. As such a high control system reliability can be achieved in line with the mission requirements. Moreover the use of thrusters allows for a relatively fast control system. Peak rotational rates are in the order of 20 $[deg\cdot s^{-1}]$ and 5 $[deg \cdot s^{-2}]$ \cite{Davis2010}.
 
-This neutral stability can be used relatively efficiently for bank control. Bank control is the conventional solution for entry and is commonly employed. The use of thrusters implies a high control system reliability as they are not only frequently employed but also allow for redundant placement. As such a high control system reliability can be achieved in line with the mission requirements. Moreover the use of thrusters allows for a relatively fast control system. Peak rotational rates are in the order of 20 $[deg\cdot s^{-1}]$ and 5 $[deg \cdot s^{-2}]$ \cite{Davis2010}.
+The use of bank control for Martian landings has previously been found \cite{Davis2010} to achieve accuracies of up to 10 $[m]$ at final landing featuring \gls{hiad} with a combined mass of over $10 000$ $\left[kg\right]$.
 
-The use of bank control for a Martian landings have previously been investigated \cite{Davis2010} to achieve accuracies of up to 10 $[m]$ at final landing featuring \gls{hiad} with a combined mass of over $10 000$ $\left[kg\right]$.
+Outside the Martian atmosphere thrusters feature the additional advantage that unlike an active \gls{cg}-offset control system or body flaps control is system possible since the presence of an atmosphere is not a perquisite.
 
-Outside the Martian atmosphere thruster feature the additional advantage that unlike a \gls{cg}-offset control system or body flaps control is system possible since the presence of an atmosphere is not a perquisite.
-
-The main disadvantage of thrusters over body flaps or a \gls{cg}-offset control system is a increasing mass fraction over usage. If the thrusters are employed frequently mass fraction can become significant, negating the aforementioned advantages.
+The main disadvantage of thrusters over body flaps or an active \gls{cg}-offset control system is an increasing control system mass as the thruster usage increases. If the thrusters are employed frequently the propellant mass increase can become significant, negating the aforementioned advantages.
 
 
 \subparagraph{Aerodynamic surfaces}
 
-Using the modified Newtonian flow theory discussed in Section \ref{subsec:aerotool} the force and moment contributions of a surface with a certain orientation to the freestream flow can be computed. For an aerodynamic surface (essentially a flap) the freestream inclination angle can be varied by using rotational actuators. Alternatively the flap area exposed to the freestream flow can be varied by using linear actuation. Both of these options directly influence the pressure distribution over the aeroshell surface. This induces a moment around the required axis thereby allowing active control.
+Using the modified Newtonian flow theory discussed in Section \ref{subsec:aerotool} the force and moment contributions of a surface with a certain orientation to the freestream flow can be computed. For an aerodynamic surface (essentially a flap) the freestream inclination angle can be varied by using rotational actuators. Alternatively the flap area exposed to the freestream flow can be varied by using linear actuation. Both of these options directly influence the pressure distribution over the aeroshell surface. This induces a moment around the required axis, thereby allowing for active control.
 
-The required control moments can be determined in a manner similar to as was done for thrusters. By comparing the required and delivered control moments the required force per flap can be computed. From this required force follows a \gls{sym:CD}\gls{sym:A} for the flaps. This depends on the flap area and on the flap inclination angle. Using this \gls{sym:CD}\gls{sym:A} then forms the basis for computing the resultant control moment corresponding to the aforementioned inclination angle.
+The required control moments can be determined in a manner similar to as was done for thrusters. By comparing the required and delivered control moments the required force per flap can be computed. From this force a required \gls{sym:CD}\gls{sym:A} for the flaps follows. This depends on the flap area and on the flap inclination angle. Using this \gls{sym:CD}\gls{sym:A} then forms the basis for computing the resulting control moment corresponding to the aforementioned inclination angle.
 
-An advantage of flaps is the possibility of having a low control system mass. This is possible because of the option to lock each flap in a certain orientation. This would not require constant power as it would use the aerodynamic forces exerted on it.
+An advantage of flaps is the possibility of having a low control system mass. This is possible because of the option to mechanically lock each flap in a certain orientation. This would not require constant power, as the control forces would be produced by the aerodynamic forces exerted on the flaps.
 
 This advantage poses a major disadvantage at the same time: No control force actuation is possible outside of the Martian atmosphere. Each time the spacecraft is not flying through the atmosphere and needs control actuation usage of the flaps is not possible. Thus thrusters would need to be used during these times, requiring additional mass.
 
 A second disadvantage to using flaps comes from the option to lock the flap orientations. By doing this the mass can be kept low, but this also means a limited number of discrete flap settings would be available. This would make it hard to properly control the spacecraft by using these flaps, especially under the influence of disturbances.
 
-A third complication of using flaps is the coupling between the force exerted by the flaps and the local structural deflection angle. The control force delivered by the flap causes the inflatable structure to deflect rearward, which causes the flap force to decrease. This in turn commences a decrease in structural deflection angle which will again increase the force exerted by the flaps. One can see from this that using flaps on the inflatable structure would induce oscillations in the spacecraft, whose effects on its stability and controllability are unknown at this point in the design process.
+A third complication of using flaps is the coupling between the force exerted by the flaps and the local structural deflection angle. The control force delivered by the flap causes the inflatable structure to deflect rearward, which causes the flap force to decrease. This in turn commences a decrease in structural deflection angle which will again increase the force exerted by the flaps. One can see from this that using flaps on the inflatable structure would induce oscillations in the spacecraft. The effects of these vibrations on the stability and controllability of the aeroshell are unknown at this point in the design process.
 
-Lastly, using body flaps on a non-winged entry vehicle has not yet been proven in flight. This poses a performance risk during concept development. This is in sharp contrast with the option of using thrusters which have a high reliability. Thrusters have been used extensively and are the go-to option for \gls{adcs} and as main propulsion system.
+Lastly, using body flaps on a non-winged entry vehicle has not yet been proven in flight. This poses a performance risk during concept development. This is in sharp contrast with the option of using thrusters, which features high reliability. Thrusters have been used extensively and are the go-to option for \gls{adcs}' and as main propulsion system.
