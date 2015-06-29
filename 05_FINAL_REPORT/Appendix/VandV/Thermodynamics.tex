@@ -1,7 +1,7 @@
 The thermal model has been built as described in Section \ref{subsec:thermaltool} according to the method explained by Smith et al. \cite{Smith2011}. Before the model can be used for the design it has to undergo the verification and validation process. In the first part the verification is done by comparing the analytical and numerical solutions of a copper block. In the second part two papers by Del Corso et al. are used to validate the developed model with experimental data \cite{Corso2009,Corso2011}. The last part will explain the differences that were found in the verification and validation.
 
 \subsubsection{Verification of the model using a solid copper block}
-For the verification of the thermal model the analytical solution (Equation \eqref{eq:thermver}) provided by both Smith and Holman is used \cite{Smith2011,Holman2002}. Here $\gls{sym:T}_1$ is the wall temperature at $\gls{sym:t}=0$ and $\gls{sym:T}_2$ the temperature at a certain $\gls{sym:t}$ and $\gls{sym:x}$.
+For the verification of the thermal model the analytical solution (Equation \eqref{eq:thermver}) provided by both Smith and Holman is used \cite{Smith2011,Holman2002}. Here $\gls{sym:T}_1$ is the wall temperature at $\gls{sym:t}=0$ and $\gls{sym:T}_2$ the temperature at a certain $\gls{sym:t} \left[s\right]$ and $\gls{sym:x}$.
 \begin{equation}
 \gls{sym:T}_2-\gls{sym:T}_1 = \frac{2q\sqrt{\gls{sym:alphat}\gls{sym:t}/\pi}}{\gls{sym:k}\gls{sym:A}}\exp\left(\frac{-\gls{sym:x}^2}{4\gls{sym:alphat}\gls{sym:t}}\right)-\frac{q\gls{sym:x}}{\gls{sym:k}\gls{sym:A}}\left(1-erf\frac{\gls{sym:x}}{2\sqrt{\gls{sym:alphat}\gls{sym:t}}}\right)
 \label{eq:thermver}
