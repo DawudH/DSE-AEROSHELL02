@@ -41,7 +41,8 @@ In order to facilitate both objectives for aerocapture it is thus important that
 
 In Figure \ref{fig:orbit_aerocapture_data} the parameters that were recorded during the simulation are shown for the nominal trajectory and two trajectories created for a $10\%$ increase and decrease in atmospheric density. This change in density is based on the maximum estimated error in the \gls{esa} Mars climate database v5.2 \cite{Lewis2015}.
 
-The bank control profile for the trajectories can be changed to attain the same exit velocity for each atmospheric density. This exit velocity is needed to get into a Mars synchronous orbit. The fact that a bank control profile is available for each density proves that a density change of $\pm 10\%$ can be accounted for. However, some other parameters of the trajectory do change. The peak acceleration and dynamic pressure increase for a higher density. The \gls{tps} and inflatable structure should be sized on the worst case. Also the time passed and the position of exit (defined by $\tau$ in Figure \ref{fig:angles}) are different for each trajectory. These changes have a significant effect on the entry and descent phase. This effect will be explained in Section \ref{sec:entry_descent}.
+The bank control profile for the trajectories can be changed, by varying bank angle and timing, to attain the same exit velocity for each atmospheric density. This exit velocity is needed to get into a Mars synchronous orbit. The fact that a bank control profile is available for each density proves that a density change of $\pm 10\%$ can be accounted for. However, some other parameters of the trajectory do change. The peak acceleration and dynamic pressure increase for a higher density. The \gls{tps} and inflatable structure should be sized on the worst case. Also the time passed and the position of exit (defined by $\tau$ in Figure \ref{fig:angles}) are different for each trajectory. These changes have a significant effect on the entry and descent phase. This effect will be explained in Section \ref{sec:entry_descent}.
+
 \begin{sidewaysfigure}
 	\centering
 	\includegraphics[width=0.99\textwidth]{Figure/Orbit/sensitivity_aerocapture.pdf}
@@ -78,7 +79,7 @@ The trajectory for a $10\%$ lower density would normally overshoot the nominal l
 
 In Figure \ref{fig:entry_mars} it can also be seen that the entry locations for each trajectory is different. This flows down from the aerocapture where the exit location for these trajectories where different as well.
 
-The time passed during both the aerocapture and the entry and descent phases are also different for each trajectory. During this time the landing location has rotated with Mars in the same direction as the flight direction of the vehicle. If you look closely to Figure \ref{fig:entry_mars} you can see three points for the nominal landing location. Each point for the time one of the trajectories would arrive.
+The time passed during both the aerocapture and the entry and descent phases are also different for each trajectory. During this time the landing location has rotated with Mars in the same direction as the flight direction of the vehicle. Three points for the nominal landing location can be distinguished in Figure \ref{fig:entry_mars}. Each point for the time one of the trajectories would arrive.
 
 \begin{figure}[h]
 	\centering
