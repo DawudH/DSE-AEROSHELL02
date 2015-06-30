@@ -29,10 +29,10 @@ Maximum drag is created by having large parts of the shape perpendicular to the 
 A high lift-to-drag ratio is achieved by having the highest angle of attack for every part of the spacecraft. This entails having a flat plate at the maximum angle of attack for maximum lift-to-drag ratio. If a non-flat body is chosen, large parts of the area should be nearly under a high inclination, which can be realised by having a very long body at a small angle of attack.
 
 \paragraph{Static stability}
-The aerodynamic shape required for static stability can be argued based on the local inclination angle. The pressure force always acts normal to the surface. A large moment arm can be created by inclining the outer edges of the aeroshell. At a positive angle of attack, the lower edge of the aeroshell is turned more perpendicular to the flow such that its pressure force is increased. An example of a shape that features this is given in Figure \ref{fig:skewnessplot}. Depending on the location of the \acrfull{cg}, at an angle of attack the lower part pressure is increased while the pressure on the upper part is decreased, generating a moment. This means that for an increase in angle of attack, the restoring moment is also increased.
+The aerodynamic shape required for static stability can be argued based on the local inclination angle. The pressure force always acts normal to the surface. A large moment arm can be created by inclining the outer edges of the \gls{cia}. At a positive angle of attack, the lower edge of the \gls{cia} is turned more perpendicular to the flow such that its pressure force is increased. An example of a shape that features this is given in Figure \ref{fig:skewnessplot}. Depending on the location of the \acrfull{cg}, at an angle of attack the lower part pressure is increased while the pressure on the upper part is decreased, generating a moment. This means that for an increase in angle of attack, the restoring moment is also increased.
 
 \paragraph{Centre of Gravity shift}
-In order to trim the aeroshell at a certain angle of attack, a \gls{cg}-offset is used: the \gls{cg} does not lie directly on the most forward point of the spacecraft. In order to minimise the impact, the required \gls{cg}-offset is calculated using Equation \ref{eq:reqcgoffset}. A large offset may be unrealistic and more difficult to implement.
+In order to trim the \gls{cia} at a certain angle of attack, a \gls{cg}-offset is used: the \gls{cg} does not lie directly on the most forward point of the spacecraft. In order to minimise the impact, the required \gls{cg}-offset is calculated using Equation \ref{eq:reqcgoffset}. A large offset may be unrealistic and more difficult to implement.
 
 \begin{equation} \label{eq:reqcgoffset}
 Z_{\gls{cg}} = \frac{\gls{sym:CM}\gls{sym:lref}}{\gls{sym:CL}}
@@ -56,7 +56,7 @@ To illustrate the characteristics of different aerodynamic shapes, an optimisati
 	\item Lift coefficient \gls{sym:CL}: As per the analysis in this Section, the maximum lift coefficient is achieved by a flat plate at an angle of attack of 35 $\left[deg\right]$. This is confirmed by the optimisation algorithm, which produces the same flat plate as for maximum drag, but at an angle of attack.
 	\item Lift over Drag $\gls{sym:L}\cdot \gls{sym:D}^{-1}$: The maximum lift-to-drag ratio is found for a flat plate at an angle of attack as high as possible. This result was achieved at an angle of attack of $40 \left[deg\right]$, which is limited to keep the design in the range where the shockwaves do not hit the payload module.
 	\item Static stability \gls{sym:cm-alpha}: For this parameter, it is necessary to have large parts of the aerodynamic shape inclined with respect to the flow. The optimisation confirms this and creates a shape as portrayed in Figure \ref{fig:highcmalphashape}. This optimisation was constrained by a maximum length.
-	\item \gls{cg} shift $\gls{sym:CM}\cdot\gls{sym:CX}^{-1}$: The minimum \gls{cg} shift for a given angle of attack is achieved by a flat plate since it generates very little moment. However, if static stability is required, the contours of the aeroshell can be inclined inwards.
+	\item \gls{cg} shift $\gls{sym:CM}\cdot\gls{sym:CX}^{-1}$: The minimum \gls{cg} shift for a given angle of attack is achieved by a flat plate since it generates very little moment. However, if static stability is required, the contours of the \gls{cia} can be inclined inwards.
 \end{itemize}
 
 \begin{figure}[h]
@@ -64,7 +64,7 @@ To illustrate the characteristics of different aerodynamic shapes, an optimisati
 		\centering
 		\includegraphics[width=1\textwidth]{./Figure/Aerodynamics/sideview_skewness.pdf}
 		\captionsetup{width=0.9\textwidth,skip=-8pt}
-		\caption[Side-view of a skewed aerodynamic shape]{Side-view of a skewed aerodynamic shape. The lower part generates a moment around the frontal part of the aeroshell when under an angle of attack}
+		\caption[Side-view of a skewed aerodynamic shape]{Side-view of a skewed aerodynamic shape. The lower part generates a moment around the frontal part of the \gls{cia} when under an angle of attack}
 		\label{fig:skewnessplot}
 	\end{subfigure}
 	\begin{subfigure}[t]{0.45\textwidth}
