@@ -3,7 +3,7 @@ The thermal model has been built as described in Section \ref{subsec:thermaltool
 \subsubsection{Verification of the model using a solid copper block}
 For the verification of the thermal model the analytical solution (Equation \eqref{eq:thermver}) provided by both Smith and Holman is used \cite{Smith2011,Holman2002}. Here $\gls{sym:T}_1$ is the wall temperature at $\gls{sym:t}=0$ and $\gls{sym:T}_2$ the temperature at a certain $\gls{sym:t} \left[s\right]$ and $\gls{sym:x}$.
 \begin{equation}
-\gls{sym:T}_2-\gls{sym:T}_1 = \frac{2q\sqrt{\gls{sym:alphat}\gls{sym:t}/\pi}}{\gls{sym:k}\gls{sym:A}}\exp\left(\frac{-\gls{sym:x}^2}{4\gls{sym:alphat}\gls{sym:t}}\right)-\frac{q\gls{sym:x}}{\gls{sym:k}\gls{sym:A}}\left(1-erf\frac{\gls{sym:x}}{2\sqrt{\gls{sym:alphat}\gls{sym:t}}}\right)
+\gls{sym:T}_2-\gls{sym:T}_1 = \frac{2\dot{q}\sqrt{\gls{sym:alphat}\gls{sym:t}/\pi}}{\gls{sym:k}\gls{sym:A}}\exp\left(\frac{-\gls{sym:x}^2}{4\gls{sym:alphat}\gls{sym:t}}\right)-\frac{\dot{q}\gls{sym:x}}{\gls{sym:k}\gls{sym:A}}\left(1-erf\frac{\gls{sym:x}}{2\sqrt{\gls{sym:alphat}\gls{sym:t}}}\right)
 \label{eq:thermver}
 \end{equation}
 Figure \ref{fig:valcop} shows a semi-infinite $0.5 \left[m\right]$ thick copper block subjected to a constant heat flux of $30 \left[W\cdot cm^{-2}\right]$. The block initially has a uniform temperature of $20 \left[^{\circ}C\right]$. The error at the surface ($x = 0.00 \left[m\right]$), in the middle ($x = 0.25 \left[m\right]$) and at the back ($x = 0.50 \left[m\right]$) between the analytical and numerical solution are $1.55\%$, $4.32\%$ and $15.92\%$ respectively.
