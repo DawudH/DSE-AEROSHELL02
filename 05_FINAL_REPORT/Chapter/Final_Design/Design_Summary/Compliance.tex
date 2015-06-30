@@ -9,10 +9,10 @@ Table \ref{tab:compm} and \ref{tab:compv} present the compliance matrix for the 
 \begin{tabular}{|p{0.12\textwidth}|p{0.65\textwidth}|c|}
     \hline
     ID          & Description   &                                                                                    \\ \hline \hline
-    CIA-M01& The entry vehicle shall decelerate from a velocity of 7 $[km\cdot s ^{-1}]$ to Mach 5 $[-]$   & \cmark \\ \hline
-    CIA-M02 & The entry vehicle shall not exert an acceleration greater than 29.4 $[m \cdot s^{-2}]$ on any crew member for the duration of the mission	& \cmark \footnote{Under non-nominal trajectories temporarily higher loads may be experienced}		\\ \hline
-    	CIA-M03 & The entry vehicle shall attain its final velocity at an altitude of 15 000 $[m]$ \gls{mola}  & \cmark \\ \hline
-    	CIA-M04 & The entry vehicle shall reach its final position with a precision of 500 $[m]$  & \cmark \\ \hline
+    CIA-M01& The entry vehicle shall decelerate from a velocity of $7 \left[km\cdot s ^{-1}\right]$ at $400 \left[km\right]$   & \cmark \\ \hline
+    CIA-M02 & The entry vehicle shall not exert an acceleration greater than $29.4 \left[m \cdot s^{-2}\right]$ on any crew member for the duration of the mission	& \cmark \footnote{Under non-nominal trajectories temporarily higher loads may be experienced}		\\ \hline
+    	CIA-M03 & The entry vehicle shall attain reach Mach $5 \left[-\right]$ at an altitude of $15\mbox{ }000 \left[m\right]$ \gls{mola}  & \cmark \\ \hline
+    	CIA-M04 & The entry vehicle shall reach its final position with a precision of $500 \left[m\right]$  & \cmark \\ \hline
     	CIA-M05 & The entry vehicle shall attain its final velocity within 10 days of mission start & \cmark \\ \hline
 
     \end{tabular}
@@ -25,36 +25,35 @@ Table \ref{tab:compm} and \ref{tab:compv} present the compliance matrix for the 
 	\begin{tabular}{|p{0.12\textwidth}|p{0.65\textwidth}|c|c|}
 	    \hline
 	    ID          & Description   & Value &                                                                                           \\ \hline \hline
-	CIA-R01 & The entry vehicle shall have an undeployed diameter smaller than 5 [m]                   & 4.5-5.0 $[m]$  & \cmark     				            \\ \hline
-	CIA-R02 & The entry vehicle shall have a deployed diameter smaller than 12 [m]                     & 12 $[m]$ &  \cmark 				            \\ \hline	
-	CIA-R03 & The entry vehicle shall have a mass of $10 000$ $[kg]$ at the start of the entry           & 10 000 $[kg]$ &  \cmark          				            \\ \hline
-	CIA-R04 & The hypersonic decelerator shall have a mass fraction of no greater than $10\%$ of the vehicle mass	& 928 $[kg]$ & \cmark \\ \hline 
+	CIA-R01 & The entry vehicle shall have an undeployed diameter smaller than $5 \left[m\right]$                   & $4.5\mbox{-}5.0 \left[m\right]$  & \cmark     				            \\ \hline
+	CIA-R02 & The entry vehicle shall have a deployed diameter smaller than $12 \left[m\right]$                     & $12 \left[m\right]$ &  \cmark 				            \\ \hline	
+	CIA-R03 & The entry vehicle shall have a mass of $10\mbox{ }000 \left[kg\right]$ at the start of the entry           & $10\mbox{ }000 \left[kg\right]$ &  \cmark          				            \\ \hline
+	CIA-R04 & The hypersonic decelerator shall have a mass fraction of no greater than $10\%$ of the vehicle mass	& $928 \left[kg\right]$ & \cmark \\ \hline 
 	CIA-R05 &  The entry vehicle shall adhere to the \gls{cospar} regulations  & - & \cmark \\ \hline
-	CIA-R06 &  The entry vehicle shall have control system accuracy of at least $5\cdot 10^{-4}$ & - & \cmark \\ \hline
+	CIA-R06 &  The entry vehicle shall have control system reliability of at least $0.9995$ & - & \cmark /\xmark\\ \hline
     \end{tabular}
 \end{table}
 
 \newpage
 \paragraph{Mission requirements}
 \begin{itemize}[leftmargin=+20mm]
-\item[CIA-M01]	The entry vehicle has been sized for a entry velocity of 7 [$km \cdot s^{-1}$] and final Mach number of 5. No adjustments were required to these values to meet the other requirements and as such these values has been adhered to. 
-\item[CIA-M02]	The trajectories have been sized for peak accelerations of 29.4 $[m \cdot s^{-2}]$. For a nominal trajectory this value is not exceeded. Under non-nominal conditions slightly higher accelerations may be observed (up to +7 [$m \cdot s ^{-2}$]). 
-\item[CIA-M03]  The trajectories have been sized for achieving the final velocity at an altitude of 15 000[m] under both nominal and non-nominal conditions.
+\item[CIA-M01]	The entry vehicle has been sized for a entry velocity of $7 \left[km \cdot s^{-1}\right]$ at $400 \left[km\right]$ and final Mach number of  No adjustments were required to these values to meet the other requirements and as such these values has been adhered to. 
+\item[CIA-M02]	The trajectories have been sized for peak accelerations of $29.4 \left[m \cdot s^{-2}\right]$. For a nominal trajectory this value is not exceeded. Under non-nominal conditions slightly higher accelerations may be observed (up to $+7 \left[m \cdot s ^{-2}\right]$). 
+\item[CIA-M03]  The trajectories have been sized for achieving Mach $5 \left[-\right]$ at an altitude of $15\mbox{ }000 \left[m\right]$ under both nominal and non-nominal conditions.
 \item[CIA-M04]	Using bank control, if all state variables are known, the required control accuracy can be achieved under nominal and non-nominal trajectory conditions. Discrepancy in the final position follow from estimation of state variables. Bank control using only sensed accelerations may not deliver this accuracy under non-nominal conditions. However, the addition of additional pressure sensors can improve this accuracy which is also further discussed in Section \ref{subsec:controlsys}. Taking this into account the required accuracy can probably be achieved under non-nominal conditions as well.
-\item[CIA-M05] The initial entry into the Martian atmosphere is timed at around 800 seconds as well as the final \gls{edl}. A parking orbit in multiples of single Martian days in between the aero braking and final \gls{edl} extends the total mission duration. At least one full orbit is required, but this can be extended further for more favourable atmospheric conditions. As such nine additional windows entries are possible within the ten day limit. This is also further discussed  in Section \ref{sec:trajectorydesign}.
+\item[CIA-M05] The initial entry into the Martian atmosphere is timed at around $800$ seconds as well as the final \gls{edl}. A parking orbit in multiples of single Martian days in between the aerobraking and final \gls{edl} extends the total mission duration. At least one full orbit is required, but this can be extended further for more favourable atmospheric conditions. As such nine additional windows entries are possible within the ten day limit. This is also further discussed  in Section \ref{sec:trajectorydesign}.
 
 \end{itemize}
 
+
 \paragraph{Entry vehicle requirements}
-
-
 \begin{itemize}[leftmargin=+20mm]
-\item[CIA-R01] Special care has been taken that the deployed diameter remains below the 5 $[m]$ limit. As such the undeployed outer diameter was constraint to 4.5 $[m]$. The sole exception hereupon is the inflatable structure with the accompanying hold down and release system. This will add slightly in diameter but is merely constraint by how tight the inflatable is folded. This should fit easily within the 0.25 $[m]$ remaining margin on either side considering the thinness of the inflatable structure. 
-\item[CIA-R02] The outer diameter is sized at 12 $[m]$. No additional components will extend this size in the future as it is merely the size of the inflated structure.
-\item[CIA-R03] The structure has been sized with total mass of 10 000 $[kg]$. A crew module analysis discussed in Chapter \ref{ch:crewmod} showed feasibility for such a design with crew count of two.
-\item[CIA-R04] The decelerator mass is sized at 928 $[kg]$. This value includes a $20\%$ contingency factor applicable for this phase of the design. As such feasibility of the \gls{hiad} design within the 1000 $[kg]$ limit is deemed possible.
+\item[CIA-R01] Special care has been taken that the deployed diameter remains below the $5 \left[m\right]$ limit. As such the undeployed outer diameter was constraint to $4.5 \left[m\right]$. The sole exception hereupon is the inflatable structure with the accompanying hold down and release system. This will add slightly in diameter but is merely constraint by how tight the inflatable is folded. This should fit easily within the $0.25 \left[m\right]$ remaining margin on either side considering the thinness of the inflatable structure. 
+\item[CIA-R02] The outer diameter is sized at $12 \left[m\right]$. No additional components will extend this size in the future as it is merely the size of the inflated structure.
+\item[CIA-R03] The structure has been sized with total mass of $10\mbox{ }000 \left[kg\right]$. A crew module analysis discussed in Chapter \ref{ch:crewmod} showed feasibility for such a design with crew count of two.
+\item[CIA-R04] The decelerator mass is sized at $928 \left[kg\right]$. This value includes a $20\%$ contingency factor applicable for this phase of the design. As such feasibility of the \gls{hiad} design within the $1000 \left[kg\right]$ limit is deemed possible.
 \item[CIA-R05] The \gls{cospar} regulations have been taken into account in the entry vehicle and mission design where applicable.
-\item[CIA-R06] The control system reliability has not been explicitly computed as a value. However, the focus was on reliable design throughout the various design phases. Bank control using thrusters is applied commonly, and thrusters feature a relatively high reliability as compared to more unproven technologies. Moreover redundancies have been used where possible such that possible \glspl{spf} are prevented. 
+\item[CIA-R06] The control system reliability has not been explicitly computed as a value. However, the focus was on reliable design throughout the various design phases. Bank control using thrusters is applied commonly, and thrusters feature a relatively high reliability as compared to more unproven technologies. Moreover redundancies have been used where possible such that possible \gls{spf}'s are prevented. 
 \end{itemize}
 
 

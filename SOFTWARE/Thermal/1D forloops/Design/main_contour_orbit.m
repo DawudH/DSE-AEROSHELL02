@@ -161,8 +161,12 @@ if contourplot
     end
     figure(2)   
     hold on
-    contourf(t(1:100:end),xcont.*1000,T(:,1:100:end)) %(1:20:end),(:,1:20:end)
-    colormap parula
+    contourf(t(1:100:end),xcont.*1000,T(:,1:100:end),30) %(1:20:end),(:,1:20:end)
+    
+    colormap(parula(64))
+    beta = .4;
+    brighten(beta)
+    %brighten(-0.5)
     caxis([250 1300])
     colorbar
     xlabel('Time $ \left[ s \right] $','Interpreter','LaTeX')
@@ -391,8 +395,10 @@ if contourplot
     end
     figure(3)
     hold on
-    contourf(t(1:100:end),xcont.*1000,T(:,1:100:end)) %(1:20:end),(:,1:20:end)
-    colormap parula
+    contourf(t(1:100:end),xcont.*1000,T(:,1:100:end),30) %(1:20:end),(:,1:20:end)
+    colormap(parula(40))
+    beta = .4;
+    brighten(beta)
     caxis([250 1300])
     colorbar
     xlabel('Time $ \left[ s \right] $','Interpreter','LaTeX')

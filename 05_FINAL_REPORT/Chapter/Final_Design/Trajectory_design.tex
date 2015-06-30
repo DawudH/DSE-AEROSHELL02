@@ -14,7 +14,7 @@ In this section the design of the trajectory followed by the spacecraft during t
 		\vspace{-10mm}
 		\includegraphics[width=\textwidth]{./Figure/Orbit/parking_trajectory.pdf}
 		\vspace{-15mm}
-		\caption{The parking orbit after the orbit raise}
+		\caption{The parking orbit after the pericentre raise}
 		\label{fig:parking_trajectory}
 	\end{subfigure}
 	\begin{subfigure}[b]{0.7\textwidth}
@@ -24,26 +24,25 @@ In this section the design of the trajectory followed by the spacecraft during t
 		\caption{The re-entry trajectory after lowering the orbit}
 		\label{fig:re_entry_trajectory}
 	\end{subfigure}
-	\caption[Visualisation of the spacecraft trajectory]{Visualisation of the spacecraft trajectory. The apoareion is shown with a black dot}
+	\caption[Visualisation of the spacecraft trajectory]{Visualisation of the spacecraft trajectory. The apocentre is shown with a black dot}
 	\label{fig:trajectory}
 \end{figure}
 
 \subsubsection{Aerocapture} \label{sec:aerocapture}
-The first phase of the trajectory is aerocapture, in this phase the objective is to loose enough energy to get in a Mars synchronous orbit. The velocity that has to be obtained at the end of aerocapture in order to get in such an orbit is $4.53 \left[km \cdot s^{-1}\right]$. In Figure \ref{fig:orbit_aerocapture_data} it can be seen from the velocity profiles that they all end at this velocity.
+The first phase of the trajectory is aerocapture, in which the objective is to lose enough energy to get in a Mars-synchronous orbit. The velocity that has to be obtained at the end of aerocapture in order to get in such an orbit is $4.53$ $\left[km \cdot s^{-1}\right]$. In Figure \ref{fig:orbit_aerocapture_data} it can be seen from the velocity profiles that they all end at this velocity.
 
-Furthermore the trajectory was chosen as high through the atmosphere as possible to facilitate \gls{tps} and structural masses. A pass higher through the atmosphere decreases both the heat flux and peak dynamic pressure which are used to design the \gls{tps} and inflatable structure respectively.
+Furthermore the trajectory was chosen as high through the atmosphere as possible to lower the required \gls{tps} and structural masses. A pass higher through the atmosphere decreases both the heat flux and peak dynamic pressure which are used to design the \gls{tps} and inflatable structure respectively.
 
-These two objectives are conflicting as the deceleration high in the atmosphere is often too low to achieve the required velocity change. In order to still reach the desired velocity, the duration of the aerocapture, the drag coefficient or the area of the decelerator has to be increased. 
+These two objectives are conflicting since a higher altitude corresponds to a lower density, which makes it harder to achieve the required velocity change. In order to still reach the desired velocity, two options are available: with a longer aerocapture, the lower deceleration at higher altitudes is applied for enough time to reach the final velocity, and with a higher drag coefficient or frontal area the aerodynamic deceleration is increased for equal dynamic pressures.
 
-A longer aerocapture can be achieved by improved control over the vehicle, which is accomplished by a higher lift coefficient. A longer aerocapture, however increases the heat flux.
+A longer aerocapture can be achieved by improved control over the vehicle, which is accomplished by a higher lift coefficient. A longer aerocapture however, increases the total heat load, which may lead to a higher \gls{tps} mass.
 
-With a higher drag coefficient or total area the vehicle can obtain a larger deceleration higher in the atmosphere, thus at a lower dynamic pressure.
-
-In order to facilitate both objectives for aerocapture it is thus important that the aerodynamic shape created has a high lift coefficient as well as a high drag coefficient. For the entry and descent phase conflicting objectives for the shape are found. In Section \ref{sec:trajectory_summary} a conclusion is drawn on the properties needed from the design of the aerodynamic shape.
+In order to facilitate both objectives for aerocapture it is thus important that the aerodynamic shape has a high lift-to-drag ratio as well as a high drag coefficient. For the entry and descent phase conflicting objectives for the shape are found since a lower drag coefficient is required such that more time is available in this phase to manoeuvre. In Section \ref{sec:trajectory_summary} a conclusion is drawn on the properties needed from the design of the aerodynamic shape.
 
 In Figure \ref{fig:orbit_aerocapture_data} the parameters that were recorded during the simulation are shown for the nominal trajectory and two trajectories created for a $10\%$ increase and decrease in atmospheric density. This change in density is based on the maximum estimated error in the \gls{esa} Mars climate database v5.2 \cite{Lewis2015}.
 
-The bank control for the trajectories is changed to attain the same exit velocity. This velocity is needed to get into a Mars synchronous orbit. With this results it is proven that a density change of $\pm 10\%$ can be accounted for by changing the bank control. However, some other parameters do change. The peak acceleration and dynamic pressure increase for a higher density. The \gls{tps} and inflatable structure should be sized on the worst case. Also the time passed and the position of exit (defined by $\tau$ in Figure \ref{fig:angles}) are different for each trajectory. These changes have a significant effect on the entry and descent phase. This effect will be explained in Section \ref{sec:entry_descent}.
+The bank control profile for the trajectories can be changed, by varying bank angle and timing, to attain the same exit velocity for each atmospheric density. This exit velocity is needed to get into a Mars-synchronous orbit. The fact that a bank control profile is available for each density proves that a density change of $\pm 10\%$ can be accounted for. However, some other parameters of the trajectory do change. The peak acceleration and dynamic pressure increase for a higher density. The \gls{tps} and inflatable structure should be sized on the worst case. Also the time passed and the position of exit (defined by $\tau$ in Figure \ref{fig:angles}) are different for each trajectory. These changes have a significant effect on the entry and descent phase. This effect will be explained in Section \ref{sec:entry_descent}.
+
 \begin{sidewaysfigure}
 	\centering
 	\includegraphics[width=0.99\textwidth]{Figure/Orbit/sensitivity_aerocapture.pdf}
@@ -52,11 +51,11 @@ The bank control for the trajectories is changed to attain the same exit velocit
 \end{sidewaysfigure}
 
 \subsubsection{Parking orbit}\label{sec:parking_orbit}
-After aerocapture the spacecraft goes into an elliptic orbit. In the apoareion (apocentre of an orbit around Mars) a boost is given to raise the periareion to $200 \left[km\right]$ above \gls{mola}. In this parking orbit the vehicle can wait for dust storms to vanish and can observe the entry conditions it will be subjected to. Because the parking orbit is Mars synchronous the point observed is the same and changes can be accurately observed at the entry location. 
+After aerocapture the spacecraft goes into an elliptic orbit. In the apocentre a boost is given to raise the periareion to $200 \left[km\right]$ above \gls{mola}. In this parking orbit the vehicle can wait for dust storms to vanish and can observe the entry conditions it will be subjected to. Because the parking orbit is Mars-synchronous the periareion is over the same point on the Mars surface so entry conditions can be monitored for the actual entry point.
 
-The first entry opportunity is after approximately one earth day from the start of the mission. From that moment every sol an opportunity for entry arises. This gives in total nine opportunities for entry in little over nine earth days. This is the maximum that can be achieved within the ten days that are available for the mission. In principle the spacecraft could stay in the parking orbit much longer if it would be necessary. However the current mission is fully designed for an entry of at most 10 days. i.e. crew operational items are insufficient to sustain a longer mission.
+The first entry opportunity is after approximately one day from the start of the mission. From that moment every sol (Martian day) an opportunity for entry arises. This gives in total nine opportunities for entry in little over nine days. This is the maximum that can be achieved within the ten days that are available for the mission. In principle the spacecraft could stay in the parking orbit much longer if it would be necessary. However the current mission is fully designed for an entry of at most 10 days. i.e. crew operational items are insufficient to sustain a longer mission.
 
-For every entry opportunity the decision to start entry has to be made approximately half a sol before the entry. In the apoareion a boost opposite to the flight direction should be given to lower periareion of the orbit.  When the vehicle reaches the atmosphere in this lower orbit the entry and descent phase begins.
+For every entry opportunity the decision to start entry has to be made half a sol before the entry. In the apocentre a boost opposite to the flight direction should be given to lower the periareion.  When the vehicle reaches the atmosphere in this lower orbit the entry and descent phase begins.
 
 \begin{figure}[h]
 	\centering
@@ -66,11 +65,11 @@ For every entry opportunity the decision to start entry has to be made approxima
 \end{figure}
 
 \subsubsection{Entry and descent}\label{sec:entry_descent}
-The boost given in the apoareion before entry is determined such that the initial flight path angle ($\gamma$ as in Figure \ref{fig:angles}) of the entry is $17.2 \left[deg\right]$. Corresponding to this flight path angle an entry location (defined by $\tau$ in Figure \ref{fig:angles}) is dictated by the exit location of the aerocapture. With this location, flight path angle and the control as shown in Figure \ref{fig:orbit_entry_data} the entry trajectory and final position are attained as shown in Figure \ref{fig:entry_mars}.
+The boost given in the apocenter before entry is determined such that the initial flight path angle ($\gamma$ as in Figure \ref{fig:angles}) of the entry is $17.2 \left[deg\right]$. Corresponding to this flight path angle an entry location (defined by $\tau$ in Figure \ref{fig:angles}) is dictated by the exit location of the aerocapture. With this location, flight path angle and the control as shown in Figure \ref{fig:orbit_entry_data}, the entry trajectory and final position are attained as shown in Figure \ref{fig:entry_mars}.
 
-The objective of the entry and descent phase is to get to a height of $15 \left[km\right]$ with a velocity of $M = 5 \left[-\right]$ while keeping the deceleration under $3 \gls{sym:g}_{earth}$.
+The objective of the entry and descent phase is to get to a height of $15 \left[km\right]$ with a velocity of $M = 5\left[-\right]$ while keeping the deceleration under 3\gls{con:ge}.
 
-In order to keep the deceleration low, especially at the end of the descent, a low drag coefficient is required. This objective clearly conflicts with the properties needed for the aerocapture. As can be seen in Figure \ref{fig:orbit_entry_data} the deceleration at the end of the mission is right at the $3 \gls{sym:g}_{earth}$ limit for the nominal trajectory. Meaning the drag coefficient could not have gotten any higher.
+In order to keep the deceleration low, especially at the end of the descent, a low drag coefficient is required. This objective clearly conflicts with the properties needed for the aerocapture. As can be seen in Figure \ref{fig:orbit_entry_data} the deceleration at the end of the mission is right at the $3\gls{con:ge}$ limit for the nominal trajectory. Meaning the drag coefficient could not have gotten any higher.
 
 In the last part of the descent also a high dynamic pressure is attained, which is the parameter that is the main input for inflatable structure design. The highest dynamic pressure is reached by the trajectory with a $10\%$ lower density.
 
@@ -80,7 +79,7 @@ The trajectory for a $10\%$ lower density would normally overshoot the nominal l
 
 In Figure \ref{fig:entry_mars} it can also be seen that the entry locations for each trajectory is different. This flows down from the aerocapture where the exit location for these trajectories where different as well.
 
-The time passed during both the aerocapture and the entry and descent phases are also different for each trajectory. During this time the landing location has rotated with Mars in the same direction as the flight direction of the vehicle. If you look closely to Figure \ref{fig:entry_mars} you can see three points for the nominal landing location. Each point for the time one of the trajectories would arrive.
+The time passed during both the aerocapture and the entry and descent phases are also different for each trajectory. During this time the landing location has rotated with Mars in the same direction as the flight direction of the vehicle. Three points for the nominal landing location can be distinguished in Figure \ref{fig:entry_mars}. Each point for the time one of the trajectories would arrive.
 
 \begin{figure}[h]
 	\centering
@@ -89,9 +88,9 @@ The time passed during both the aerocapture and the entry and descent phases are
 	\label{fig:entry_mars}
 \end{figure}
 
-In Figure \ref{fig:orbit_entry_data} it can be seen that the Mach number at a height of $15 \left[km\right]$ is approximately $5$ for all orbits. The entry trajectory with a lower density is the shortest, however it also decelerates fastest overshooting the $3 \gls{sym:g}_{earth}$ requirement by 23\%. This higher deceleration is needed to reach the required velocity of $M=5$.
+In Figure \ref{fig:orbit_entry_data} it can be seen that the Mach number at a height of $15 \left[km\right]$ is approximately $5$ for all orbits. The entry trajectory with a lower density is the shortest, however it also decelerates fastest overshooting the $3\gls{con:ge}$ requirement by $23\%$. This higher deceleration is needed to reach the required velocity of $M=5 \left[-\right]$.
 
-The entry trajectory with a higher density is the longest. The deceleration is also faster than for the nominal trajectory and it also overshoots the $3 \gls{sym:g}_{earth}$ requirement by $11\%$. This higher deceleration is caused by the denser atmosphere at a height of $15 \left[km\right]$.
+The entry trajectory with a higher density is the longest. The deceleration is also faster than for the nominal trajectory and it also overshoots the $3\gls{con:ge}$ requirement by $11\%$. This higher deceleration is caused by the denser atmosphere at a height of $15 \left[km\right]$.
 
 \begin{sidewaysfigure}
 	\centering
@@ -101,6 +100,6 @@ The entry trajectory with a higher density is the longest. The deceleration is a
 \end{sidewaysfigure}
 
 \subsubsection{Required properties for aerodynamic shape design} \label{sec:trajectory_summary}
-The required aerodynamic properties for the different phases of the mission are conflicting. For the aerocapture phase a high drag coefficient as well as a high lift coefficient is needed. For the entry phase still a high lift coefficient, however also a low drag coefficient are needed.
+The required aerodynamic properties for the different phases of the mission are conflicting. For the aerocapture phase a high drag coefficient as well as a high lift coefficient is needed. For the entry phase still a high lift coefficient is needed, however also a low drag coefficient is required.
 
 Compromising between these requirements an angle of attack has been chosen at which the $\gls{sym:L}\cdot\gls{sym:D}^{-1}$ is maximal in order to maximise the lift for certain drag. The aerodynamic shape should be designed in such a way that the drag at maximum $\gls{sym:L}\cdot\gls{sym:D}^{-1}$ is a perfect compromise between the objectives for the aerocapture and entry \& descent phases.

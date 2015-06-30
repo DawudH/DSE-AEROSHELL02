@@ -5,17 +5,29 @@
 	\label{fig:iterativedesignflowchart}		
 \end{wrapfigure}
 
-In order to structure the design process, several design aspects were separated to facilitate  iterating over the design. The goal is to find a design that complies with the requirements as given in Section \ref{sec:missionreq}. This is done by choosing a design concept containing a combination of an aerodynamic shape, trajectory, \gls{tps}, inflation structure and control system and analysing its performance. After that, the analysis of the concept is used to assess possible points of improvement if the requirements are not yet met. This is repeated until all requirements are complied with. The design process is started with an initial design which is assessed for its performance. This initial design is then used as a baseline for all following designs.
+
+In order to structure the design process, several design aspects were separated to facilitate  iterating over the design. The goal is to find a design that complies with the requirements as given in Section \ref{sec:missionreq}. This is done by choosing a design concept containing a combination of an aerodynamic shape, trajectory, \gls{tps}, inflation structure and control system and analysing its performance. If the requirements are not yet met, the analysis of the concept is used to assess possible points of improvement if the requirements are not yet met. This is repeated until all requirements are complied with. The design process is started with an initial design which is assessed for its performance and used as a baseline for all following iterations. In the following paragraph, the steps composing an iteration are detailed.
+
 
 The aerodynamic shape is chosen such that certain aerodynamic properties are achieved. This is largely done by optimisation since this allows a high fidelity in design optimisation objectives and constraints. These aerodynamic properties are chosen based on the previous design analysis. 
-When a suitable design is chosen, the resulting aerodynamic characteristics are used in determining a trajectory that complies with the initial and final velocity and height requirements. This is done by choosing a bank angle profile, choosing the bank angle as a function of time to arrive at the required location and velocity. 
-The trajectory data containing velocity, density, Mach number and dynamic pressure is used for the inflation structure sizing, \gls{tps} lay-up and control system mass estimation. The shape and maximum dynamic pressure in the trajectory is used in determining the inflation structure, for which a parametric mass model is used to estimate the decelerator mass. 
-Also, a representative truss structure is used to determine whether the loads don't exceed the material maximum loads. The heat flux into the system, which in turn amounts to a temperature distribution through the structure and through time, is calculated with the trajectory data. Numerically integrating the 1D heat equation with as input the heat flux data yields a temperature distribution for a given lay-up. The lay-up is then iterated until no layer temperature exceeds its maximum temperature while having the smallest thickness possible such that the \gls{tps} has the lowest possible mass. 
-The control system mass is finally estimated using the required bank angle through the trajectory, moments of inertia and required velocity increments.
+When a suitable aerodynamic shape is chosen, the resulting aerodynamic characteristics are used in determining a trajectory that complies with the initial and final velocity and height requirements. This is done by choosing a bank angle profile, defining the bank angle as a function of time to arrive at the required location and velocity. The aerodynamic shape and trajectory data containing velocity, density, Mach number and dynamic pressure is used for the inflation structure sizing, \gls{tps} lay-up and control system mass estimation:
 
-When the technical analysis of the concept is done, the iteration is completed by analysing the results and assessing points where improvement can be made. When not all requirements are met, changes have to be made tot he design. Several problems have been identified during the design phase:
+
 \begin{itemize}
-	\item In the case the temperature in the different \gls{tps} layers become too high, even for high thicknesses, the orbit needs to be changed to facilitate a lower maximum dynamic pressure. This can be done by choosing the lowest point of atmospheric entry higher such that the density is lower. If achieving orbit at this higher point is not possible with the current aerodynamic design, the drag coefficient is to be increased to allow the same deceleration at lower dynamic pressures.
+	\item The shape and maximum dynamic pressure in the trajectory is used in determining the inflation structure, for which a parametric mass model is used to estimate the decelerator mass. Also, a representative truss structure is used to determine whether the loads do not exceed the material maximum loads.
+	
+	\item The heat flux into the system is calculated with the trajectory data. Numerically integrating the 1D heat equation with as input the heat flux data yields a temperature distribution for a given lay-up. The lay-up  thickness and composition is then iterated until no layer temperature exceeds its maximum temperature while having the smallest thickness possible such that the \gls{tps} has the lowest possible mass.
+	
+	\item The control system mass is finally estimated using the required bank angle through the trajectory, moments of inertia and required velocity increments. These data are then used to estimate the control thruster fuel mass.
+\end{itemize}
+
+
+
+When the technical analysis of the concept is done, the design iteration is completed by analysing the results and assessing points where improvement can be made. When not all requirements are met, changes have to be made to the design. Several problems have been identified during the design phase:
+
+
+\begin{itemize}
+	\item In case the temperature in the different \gls{tps} layers is calculated to be too high, irrespective of the thicknesses of the layers, the orbit needs to be changed to facilitate a lower maximum dynamic pressure. This can be done by making the lowest point of atmospheric entry higher such that the density is lower. If achieving the required deceleration at this higher point is not possible with the current aerodynamic design, the drag coefficient is to be increased to allow the same deceleration at lower dynamic pressures.
 	
 	\item If the thermal protection system mass or inflation structure mass makes the total design exceed the mass requirement, also the maximum dynamic pressure is to be decreased such that physical loads on the structure and thermal loads on the \gls{tps} are decreased.
 	
@@ -23,6 +35,7 @@ When the technical analysis of the concept is done, the iteration is completed b
 	
 	
 \end{itemize}
+
 
 
 The iteration strategy is visualised as a flow-chart in Figure \ref{fig:iterativedesignflowchart}. In this figure the solid lines represent design information flowing towards the areas that still need analysis. In the `Design within requirements?' decision box, the check is made whether the mass is within budget and the temperature does not exceed the maximum temperature of the material. If this is the case, the design meets the requirements and is thus the acceptable choice.

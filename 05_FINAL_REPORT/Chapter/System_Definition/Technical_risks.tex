@@ -1,26 +1,25 @@
-A risk map, as can be seen in Table \ref{tab:riskmap}, is made in order to identify which elements and components might pose a risk to the mission. Those risks may cause a decrease in technical performance, scheduling overruns or unpredicted changes in mission costs. The risk elements are first listed in Table \ref{tab:riskmapelements}, after which they are placed inside a risk map. Each of these elements gets assigned a \gls{trl} based on the maturity of the technology that will be used in the corresponding element \cite{NASA2007}. On the horizontal axis the consequence of failure is displayed. The \gls{trl}-classification is shown in Table \ref{tab:trls}.
+A risk map, as can be seen in Table \ref{tab:riskmap}, is made in order to identify which elements and components might pose a risk to the mission. Those risks may cause a decrease in technical performance, scheduling overruns or unpredicted changes in mission costs. The risk elements are first listed in Table \ref{tab:riskmapelements}, after which they are placed inside a risk map. Each of these elements gets assigned a \gls{trl} based on the maturity of the technology that will be used in the corresponding element \cite{NASA2007}. On the horizontal axis the consequence of failure is displayed. The \gls{trl}-classification is shown in Table \ref{tab:trls}. The elements of this risk map are discussed in the subsequent chapters. 
 
 Next to the risk map, precautions have been taken to prevent an increase in design mass over time. To do so contingency factors are introduced to predict mass increments during the design process. \gls{nasa} has proposed guidelines for contingency factors \ref{tab:riskmap}. As result, in this preliminary design a mass contingency factor of 20\% is taken into account.
 
 \begin{table}[h]
-	\caption[\acrshort{nasa} \acrlong{trl}]{\acrshort{nasa} \acrlong{trl} \cite{NASA2007}}
-	\begin{tabular}{|p{0.2\textwidth}|p{0.75\textwidth}|}
+	\centering
+	\caption{Risk map}
+	\label{tab:riskmap}
+	\begin{tabular}{|c|c|c|c|c|} % MAKE SURE THAT THE TOTAL WIDTH IS 0.95\textwidth!! (that way its exactly the textwidth.... haha) 
 		\hline
-		\textbf{\acrfull{trl}} & \textbf{Description} \\ \hline \hline
-		\gls{trl} 9& Actual system "flight proven" through successful mission operations\\
-		\gls{trl} 8& Actual system completed and "flight qualified" through test and demonstration (ground or space)\\
-		\gls{trl} 7& System prototype demonstration in a space environment\\
-		\gls{trl} 6& System/subsystem model or prototype demonstration in a relevant environment (ground or space)\\
-		\gls{trl} 5& Component and/or breadboard validation in relevant environment\\
-		\gls{trl} 4& Component and/or breadboard validation in laboratory environment\\
-		\gls{trl} 3& Analytical \& experimental critical function and/or characteristic proof-of-concept\\
-		\gls{trl} 2& Technology concept and/or application formulated\\
-		\gls{trl} 1& Basic principles observed \& reported \\
-		\hline
+		\textbf{\gls{trl} 1} & \cellcolor{green!70} & \cellcolor{yellow!75}  & \cellcolor{red!60} & \cellcolor{red!60}  \\ \hline
+		\textbf{\gls{trl} 2} & \cellcolor{green!70} & \cellcolor{yellow!75}  & \cellcolor{red!60} & \cellcolor{red!60} \\ \hline
+		\textbf{\gls{trl} 3} & \cellcolor{green!70} & \cellcolor{yellow!75} & \cellcolor{yellow!75} 8 & \cellcolor{red!60}  \\ \hline
+		\textbf{\gls{trl} 4} & \cellcolor{green!70} & \cellcolor{yellow!75} & \cellcolor{yellow!75} & \cellcolor{yellow!75} 3 \\ \hline
+		\textbf{\gls{trl} 5} & \cellcolor{green!70} & \cellcolor{green!70} & \cellcolor{yellow!75} 2 & \cellcolor{yellow!75} 1, 6 \\ \hline
+		\textbf{\gls{trl} 6} & \cellcolor{green!70} & \cellcolor{green!70} & \cellcolor{green!70} & \cellcolor{green!70}\\ \hline
+		\textbf{\gls{trl} 7} & \cellcolor{green!70} & \cellcolor{green!70} & \cellcolor{green!70} & \cellcolor{green!70} 4, 5, 7 \\ \hline
+		\textbf{\gls{trl} 8} & \cellcolor{green!70} & \cellcolor{green!70} & \cellcolor{green!70} & \cellcolor{green!70} \\ \hline
+		\textbf{\gls{trl} 9} & \cellcolor{green!70} & \cellcolor{green!70} 9, 12 & \cellcolor{green!70} 11 & \cellcolor{green!70} 10  \\ \hline
+		& \textbf{Negligible} & \textbf{Marginal} & \textbf{Critical} & \textbf{Catastrophical} \\ \hline
 	\end{tabular}
-	\label{tab:trls}
 \end{table}
-
 
 \begin{table}[h]
 	\centering
@@ -45,27 +44,21 @@ Next to the risk map, precautions have been taken to prevent an increase in desi
 	\end{tabular}
 \end{table}
 
-\begin{table}[H]
-	\centering
-	\caption{Risk map}
-	\label{tab:riskmap}
-	\begin{tabular}{|c|c|c|c|c|} % MAKE SURE THAT THE TOTAL WIDTH IS 0.95\textwidth!! (that way its exactly the textwidth.... haha) 
+\begin{table}[h]
+	\caption[\acrshort{nasa} \acrlong{trl}]{\acrshort{nasa} \acrlong{trl} \cite{NASA2007}}
+	\begin{tabular}{|p{0.2\textwidth}|p{0.75\textwidth}|}
 		\hline
-		\textbf{\gls{trl} 1} & \cellcolor{green!70} & \cellcolor{yellow!75}  & \cellcolor{red!60} & \cellcolor{red!60}  \\ \hline
-		\textbf{\gls{trl} 2} & \cellcolor{green!70} & \cellcolor{yellow!75}  & \cellcolor{red!60} & \cellcolor{red!60} \\ \hline
-		\textbf{\gls{trl} 3} & \cellcolor{green!70} & \cellcolor{yellow!75} & \cellcolor{yellow!75} 8 & \cellcolor{red!60}  \\ \hline
-		\textbf{\gls{trl} 4} & \cellcolor{green!70} & \cellcolor{yellow!75} & \cellcolor{yellow!75} & \cellcolor{yellow!75} 3 \\ \hline
-		\textbf{\gls{trl} 5} & \cellcolor{green!70} & \cellcolor{green!70} & \cellcolor{yellow!75} 2 & \cellcolor{yellow!75} 1, 6 \\ \hline
-		\textbf{\gls{trl} 6} & \cellcolor{green!70} & \cellcolor{green!70} & \cellcolor{green!70} & \cellcolor{green!70}\\ \hline
-		\textbf{\gls{trl} 7} & \cellcolor{green!70} & \cellcolor{green!70} & \cellcolor{green!70} & \cellcolor{green!70} 4, 5, 7 \\ \hline
-		\textbf{\gls{trl} 8} & \cellcolor{green!70} & \cellcolor{green!70} & \cellcolor{green!70} & \cellcolor{green!70} \\ \hline
-		\textbf{\gls{trl} 9} & \cellcolor{green!70} & \cellcolor{green!70} 9, 12 & \cellcolor{green!70} 11 & \cellcolor{green!70} 10  \\ \hline
-		& \textbf{Negligible} & \textbf{Marginal} & \textbf{Critical} & \textbf{Catastrophical} \\ \hline
+		\textbf{\acrfull{trl}} & \textbf{Description} \\ \hline \hline
+		\gls{trl} 9& Actual system ``flight proven" through successful mission operations\\
+		\gls{trl} 8& Actual system completed and ``flight qualified" through test and demonstration (ground or space)\\
+		\gls{trl} 7& System prototype demonstration in a space environment\\
+		\gls{trl} 6& System/subsystem model or prototype demonstration in a relevant environment (ground or space)\\
+		\gls{trl} 5& Component and/or breadboard validation in relevant environment\\
+		\gls{trl} 4& Component and/or breadboard validation in laboratory environment\\
+		\gls{trl} 3& Analytical \& experimental critical function and/or characteristic proof-of-concept\\
+		\gls{trl} 2& Technology concept and/or application formulated\\
+		\gls{trl} 1& Basic principles observed \& reported \\
+		\hline
 	\end{tabular}
+	\label{tab:trls}
 \end{table}
-
-
-
-
-
-

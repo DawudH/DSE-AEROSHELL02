@@ -165,6 +165,8 @@ if contourplot
     contourf(t(1:100:end),xcont.*1000,T(:,1:100:end)) %(1:20:end),(:,1:20:end)
     colormap parula
     colorbar
+    beta = 0;
+    brighten(beta)
     xlabel('Time $ \left[ s \right] $','Interpreter','LaTeX')
     ylabel('Depth $ \left[ mm \right] $','Interpreter','LaTeX')
     for j = 1:length(L)-1
