@@ -59,7 +59,7 @@ Specific preference lies in the use of hydrazine as propellant such that it is i
 
 Additionally thrusters for the velocity increments in the apocentre are required. Again hydrazine thrusters are considered for interchangeability throughout the various mission stages. This is however combined with a second propellent as bi-propellant thrusters yield significant performance increases (in terms of \gls{sym:Isp}) \cite{Wertz2011}. 
 
-A thruster suitable for such a purpose is the Apogee kick engine by IHI Japan at a mass of $15.7 \left[kg\right]$ and a specific impulse of $321.4 \left[s\right]$. As secondary propellant \gls{nto} is required \cite[p.538]{Wertz2011}. To ensure sufficient control system reliability two of these thrusters will be employed such that no \gls{spf} can occur.  %This thruster can only be used if placed aft of the entry vehicle, since the front is covered by the \gls{hiad} additional pointing by the crew module \gls{adcs} system may be required. 
+A thruster suitable for such a purpose is the Apogee kick engine by IHI Japan at a mass of $15.7 \left[kg\right]$ and a specific impulse of $321.4 \left[s\right]$. As secondary propellant \gls{nto} is required \cite[p.538]{Wertz2011}. To ensure sufficient control system reliability two of these thrusters will be employed such that no \gls{spf} can occur.  %This thruster can only be used if placed aft of the entry vehicle, since the front is covered by the \gls{cia} additional pointing by the crew module \gls{adcs} system may be required. 
 
 
 \begin{table}[h]
@@ -76,7 +76,7 @@ Apogee kick engine & IHI Japan Company Ltd. & 2        & 15.7 & 1.03 & \gls{nto}
 
 
 \subparagraph{Propellant tanks}
-One of the main arguments for the use of hydrazine as the primary propellant is the ability to combine the propellant budgets for multiple mission phases as previously mentioned. This allows for a lower control system mass fractions as well as an equal control system reliability. Nevertheless a mass estimate for the propellant tank is provided to yield a fair mass estimate for the \gls{hiad} design. 
+One of the main arguments for the use of hydrazine as the primary propellant is the ability to combine the propellant budgets for multiple mission phases as previously mentioned. This allows for a lower control system mass fractions as well as an equal control system reliability. Nevertheless a mass estimate for the propellant tank is provided to yield a fair mass estimate for the \gls{cia} design. 
 
 The tank mass is estimated via the empirical Equation \ref{eq:tankmass} \cite[p.543]{Wertz2011}.
 
@@ -86,7 +86,7 @@ The tank mass is estimated via the empirical Equation \ref{eq:tankmass} \cite[p.
 \end{equation}
 
 \subparagraph{Component mass overview}
-Table \ref{tab:controlmassbreakdown} provides an overview of the individual mass components discussed above. The propellant masses are given for the bank control, orbit clean-up and apocenter boost manoeuvres. Mass estimates exclude the final contingency factor of $20\%$ applicable for all the \gls{hiad} components.
+Table \ref{tab:controlmassbreakdown} provides an overview of the individual mass components discussed above. The propellant masses are given for the bank control, orbit clean-up and apocenter boost manoeuvres. Mass estimates exclude the final contingency factor of $20\%$ applicable for all the \gls{cia} components.
 
 \begin{table}[h]
 \centering
@@ -109,7 +109,7 @@ For achieving mission success it is essential that required accuracy can be obta
 Similar to the mass estimates the control system can  also be subdivided into part within and a part outside of the Martian atmosphere.
 
 \subparagraph{Control within the atmosphere}
-Control within the atmosphere is required in two phases of the mission: the initial aerocapture phase and the final \gls{edl}. Due to small uncertainties in the \glspl{hiad} performance, but more importantly due to atmospheric disturbances, deviations from the nominal trajectory can be observed. These deviations are accounted for in the trajectory discussed in Section \ref{sec:trajectorydesign} but also need to be recognised during mission operations such that they can be acted upon. 
+Control within the atmosphere is required in two phases of the mission: the initial aerocapture phase and the final \gls{edl}. Due to small uncertainties in the \gls{cia}'s performance, but more importantly due to atmospheric disturbances, deviations from the nominal trajectory can be observed. These deviations are accounted for in the trajectory discussed in Section \ref{sec:trajectorydesign} but also need to be recognised during mission operations such that they can be acted upon. 
 
 Typical implementations for a control system involve a \gls{npc} or \gls{apc} method and use sensed accelerations to determine the atmospheric properties \cite{Davis2010}. These values are used to update the control models such that the same terminal point is reached each time. For this purpose a set of three gyroscopes and three accelerators as \gls{imu} is required \cite{Dutta2013}. The former is already included in the \gls{adcs} as discussed in Section \ref{subsec:adcs}. Recent advances in accelerometers make even the high-accuracy sensors a low mass component. The accelerometers are included in the \gls{adcs} mass budget as they are also required for the terminal descent phase. 
 
@@ -118,7 +118,7 @@ For achieving the high required landing accuracy it is advised that next to sens
 Such sensors are demonstrated in hypersonic flight in the \gls{msl} in 2012 \cite{Dutta2013}. The use of separate sensors for determining the atmospheric properties will allow for easier determination of the atmospheric properties and allow for a higher landing accuracy in order to meet the set requirements.
 Pressure sensors are included in a redundant manner in the rigid section of the heat shield. This allows for a fault tolerant design \cite{Whitmore1995}. 
 
-A very schematic overview of the functioning of the control system within the atmosphere is given in Figure \ref{fig:Contsys}. Conventionalmodel update frequencies, using only sensed accelerations, are in the order of 10 seconds \cite{Davis2010}. The usage of the additional pressure sensors allow for more frequent model updates as changes are more easily observed, benefiting the accuracy of the control system.
+A very schematic overview of the control system within the atmosphere is given in Figure \ref{fig:Contsys}. Conventional models update frequencies, using only sensed accelerations, are in the order of 10 seconds \cite{Davis2010}. The usage of additional pressure sensors allow for more frequent model updates as changes are more easily observed, benefiting the accuracy of the control system.
 
 \begin{figure}[h]
 	\centering

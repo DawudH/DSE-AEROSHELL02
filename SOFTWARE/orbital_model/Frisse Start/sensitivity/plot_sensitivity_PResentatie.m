@@ -600,8 +600,8 @@ ap.MarkerEdgeColor = 'k';
 
 % plot entry trajcetories
 L2 = plot(out_1.out.R(index2,1),out_1.out.R(index2,2),'color',c3);
-
+matlab2tikz('.\complete_trajectory.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
 
 if (export_figures)
-    matlab2tikz('.\aerocapture_trajectory.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
+    matlab2tikz('.\complete_trajectory.tikz','height','\figureheight','width','\figurewidth','showInfo', false,'checkForUpdates',false);
 end
