@@ -18,7 +18,7 @@ The components of the control system providing the actuation can globally be sub
 Mass estimates are based on the required propellant mass, thruster mass and fuel tank mass. The propellant mass can be subdivided into a further two categories: the control within the atmosphere and the control outside of the atmosphere. General equation were previously discussed within Section \ref{subsec:controltool}. An overview of the mass components and their respective masses is provided in Table \ref{tab:controlmassbreakdown}.
 
 \subparagraph{Control within the atmosphere} 
-Within the Martian atmosphere control is performed on the basis of banking. A control system featuring a single bank control reversal manoeuvre is always able to arrive at the landing site with a average accuracy of $1.009 \left[km\right]$ at Mars \cite{Lu2007}. The control system accuracy can further be significantly reduced by using multiple bank reversals. Reductions are primarily found in the observed dispersions.
+Within the Martian atmosphere control is performed on the basis of banking. A control system featuring a single bank control reversal manoeuvre is always able to arrive at the landing site with an average accuracy of $1.009 \left[km\right]$ at Mars \cite{Lu2007}. The control system accuracy can further be significantly reduced by using multiple bank reversals. Reductions are primarily found in the observed dispersions.
 
 Accuracies using bank control where obtained using dispersions of $\pm 0.03 $ \gls{sym:CL}, $\pm 0.06 $ \gls{sym:CD} and mass and atmospheric dispersion of $5\%$ and $30\%$ respectively \cite{Lu2007}. Accuracies of up to $10 \left[m\right]$ can be achieved if the staging and final descent are included \cite{Davis2010}. These control accuracies were obtained on the basis of sensed accelerations.
 
@@ -33,7 +33,7 @@ It is argued that with an increasing amount of bank reversals, complemented with
 
 The mass estimates of the propellant required within the Martian atmosphere are based on peak rotational rates of $20 \left[deg\cdot s^{-1}\right]$ and $5\left[deg \cdot s^{-2}\right]$ as used by Davis et al. \cite{Davis2010}.
 
-The inertial moments are based on a homogeneous mass distribution and a simplified geometric shape. The crew module is assumed to be a hollow cylinder with the structural components attached to the in- and outside of this cylinder. The inflatable structure is assumed to be of a circular disk shape, with a homogeneous mass distribution. Within this shape the mass is assumed to be primarily situated on the outside of the spacecraft such that a conservative mass estimates will be achieved.
+The inertial moments are based on a homogeneous mass distribution and a simplified geometric shape. The crew module is assumed to be a hollow cylinder with the structural components attached to the in- and outside of this cylinder. The inflatable structure is assumed to be of a circular disc shape, with a homogeneous mass distribution. Within this shape the mass is assumed to be primarily situated on the outside of the spacecraft such that a conservative mass estimates will be achieved.
 
 \subparagraph{Control outside the atmosphere}
 Control outside of the Martian atmosphere is required for two purposes: clean-up corrections and orbit (de)-raising. The latter allows for a controlled entry time into the Martian atmosphere for the final \gls{edl} operations. The former makes sure that the desired parking orbit can be reached after the aerobraking.
@@ -57,9 +57,9 @@ Indicative values for a capable thruster are for example given by the  MONARC-44
  
 Specific preference lies in the use of hydrazine as propellant such that it is interchangeable with the remaining propellent requiring systems. The use of a single propellant allows for lower fuel fractions as propellants margins required for the different mission phases can be combined.
 
-Additionally thrusters for the velocity increments in the apocentre are required. Again hydrazine thrusters are considered for interchangeability throughout the various mission stages. This is however combined with a second propellent as bi-propellant thrusters yield significant performance increases (in terms of \gls{sym:Isp}) \cite{Wertz2011}. 
+Additionally thrusters for the velocity increments in the apocentre are required. Again hydrazine thrusters are considered for interchangeability throughout the various mission phases. This is however combined with a second propellent as bi-propellant thrusters yield significant performance increases (in terms of \gls{sym:Isp}) \cite{Wertz2011}. 
 
-A thruster suitable for such a purpose is the Apogee kick engine by IHI Japan at a mass of $15.7 \left[kg\right]$ and a specific impulse of $321.4 \left[s\right]$. As secondary propellant \gls{nto} is required \cite[p.538]{Wertz2011}. To ensure sufficient control system reliability two of these thrusters will be employed such that no \gls{spf} can occur.  %This thruster can only be used if placed aft of the entry vehicle, since the front is covered by the \gls{hiad} additional pointing by the crew module \gls{adcs} system may be required. 
+A thruster suitable for such a purpose is the Apogee kick engine by IHI Japan at a mass of $15.7 \left[kg\right]$ and a specific impulse of $321.4 \left[s\right]$. As secondary propellant \gls{nto} is required \cite[p.538]{Wertz2011}. To ensure sufficient control system reliability two of these thrusters will be employed such that no \gls{spf} can occur.  %This thruster can only be used if placed aft of the entry vehicle, since the front is covered by the \gls{cia} additional pointing by the crew module \gls{adcs} system may be required. 
 
 
 \begin{table}[h]
@@ -76,7 +76,7 @@ Apogee kick engine & IHI Japan Company Ltd. & 2        & 15.7 & 1.03 & \gls{nto}
 
 
 \subparagraph{Propellant tanks}
-One of the main arguments for the use of hydrazine as the primary propellant is the ability to combine the propellant budgets for multiple mission phases as previously mentioned. This allows for a lower control system mass fractions as well as an equal control system reliability. Nevertheless a mass estimate for the propellant tank is provided to yield a fair mass estimate for the \gls{hiad} design. 
+One of the main arguments for the use of hydrazine as the primary propellant is the ability to combine the propellant budgets for multiple mission phases as previously mentioned. This allows for a lower control system mass fractions as well as an equal control system reliability. Nevertheless a mass estimate for the propellant tank is provided to yield a fair mass estimate for the \gls{cia} design. 
 
 The tank mass is estimated via the empirical Equation \ref{eq:tankmass} \cite[p.543]{Wertz2011}.
 
@@ -86,7 +86,7 @@ The tank mass is estimated via the empirical Equation \ref{eq:tankmass} \cite[p.
 \end{equation}
 
 \subparagraph{Component mass overview}
-Table \ref{tab:controlmassbreakdown} provides an overview of the individual mass components discussed above. The propellant masses are given for the bank control, orbit clean-up and apocenter boost manoeuvres. Mass estimates exclude the final contingency factor of $20\%$ applicable for all the \gls{hiad} components.
+Table \ref{tab:controlmassbreakdown} provides an overview of the individual mass components discussed above. The propellant masses are given for the bank control, orbit clean-up and apocentre boost manoeuvres. Mass estimates exclude the final contingency factor of $20\%$ applicable for all the \gls{cia} components.
 
 \begin{table}[h]
 \centering
@@ -109,16 +109,16 @@ For achieving mission success it is essential that required accuracy can be obta
 Similar to the mass estimates the control system can  also be subdivided into part within and a part outside of the Martian atmosphere.
 
 \subparagraph{Control within the atmosphere}
-Control within the atmosphere is required in two phases of the mission: the initial aerocapture phase and the final \gls{edl}. Due to small uncertainties in the \glspl{hiad} performance, but more importantly due to atmospheric disturbances, deviations from the nominal trajectory can be observed. These deviations are accounted for in the trajectory discussed in Section \ref{sec:trajectorydesign} but also need to be recognised during mission operations such that they can be acted upon. 
+Control within the atmosphere is required in two phases of the mission: the initial aerocapture phase and the final \gls{edl}. Due to small uncertainties in the \gls{cia}'s performance, but more importantly due to atmospheric disturbances, deviations from the nominal trajectory can be observed. These deviations are accounted for in the trajectory discussed in Section \ref{sec:trajectorydesign} but also need to be recognised during mission operations such that they can be acted upon. 
 
 Typical implementations for a control system involve a \gls{npc} or \gls{apc} method and use sensed accelerations to determine the atmospheric properties \cite{Davis2010}. These values are used to update the control models such that the same terminal point is reached each time. For this purpose a set of three gyroscopes and three accelerators as \gls{imu} is required \cite{Dutta2013}. The former is already included in the \gls{adcs} as discussed in Section \ref{subsec:adcs}. Recent advances in accelerometers make even the high-accuracy sensors a low mass component. The accelerometers are included in the \gls{adcs} mass budget as they are also required for the terminal descent phase. 
 
 For achieving the high required landing accuracy it is advised that next to sensed accelerations to determine the control model parameters pressure sensors are included.  \gls{npc} and \gls{apc} methods for bank control on Mars do normally not include these sensors and merely rely on sensed acceleration data \cite{Lu2007, Davis2010}. Since pressure can not be measured directly during the hypersonic flight, use is made of flush atmospheric data \cite{Dutta2013}. 
  
-Such sensors are demonstrated in hypersonic flight in the \gls{msl} in 2012 \cite{Dutta2013}. The use of separate sensors for determining the atmospheric properties will allow for easier determination of the atmospheric properties and allow for a higher landing accuracy in order to meet the set requirements.
+Such sensors are demonstrated in hypersonic flight in the Mars science laboratory in 2012 \cite{Dutta2013}. The use of separate sensors for determining the atmospheric properties will allow for easier determination of the atmospheric properties and allow for a higher landing accuracy in order to meet the set requirements.
 Pressure sensors are included in a redundant manner in the rigid section of the heat shield. This allows for a fault tolerant design \cite{Whitmore1995}. 
 
-A very schematic overview of the functioning of the control system within the atmosphere is given in Figure \ref{fig:Contsys}. Conventionalmodel update frequencies, using only sensed accelerations, are in the order of 10 seconds \cite{Davis2010}. The usage of the additional pressure sensors allow for more frequent model updates as changes are more easily observed, benefiting the accuracy of the control system.
+A very schematic overview of the control system within the atmosphere is given in Figure \ref{fig:Contsys}. Conventional models update frequencies, using only sensed accelerations, are in the order of 10 seconds \cite{Davis2010}. The usage of additional pressure sensors allow for more frequent model updates as changes are more easily observed, benefiting the accuracy of the control system.
 
 \begin{figure}[h]
 	\centering

@@ -21,7 +21,7 @@ The control systems that are considered are active \gls{cg}-offset control, thru
 
 In order to be able to trim the spacecraft at a certain angle of attack (\gls{sym:alpha}) a constant control moment has to be delivered by the combined control systems. To achieve this an active \gls{cg}-offset control system is considered. By changing the location of the capsule \gls{cg} with respect to the aeroshell the magnitude of the resultant moments changes \cite{Mulqueen1991}. 
 
-The aerodynamic forces acting on the spacecraft work on the centre of pressure of the aeroshell. The \gls{cg} of the spacecraft has a certain offset in the X, Y and Z-directions with respect to this centre of pressure. Thus moments are induced around the \gls{cg}. Knowing these moments a line in three-dimensional space can be found on which all moments are zero. This line varies for different combinations of forces which follow from different combinations of angle of attack, sideslip and bank angle.
+The aerodynamic forces acting on the spacecraft work on the centre of pressure of the aeroshell. The \gls{cg} of the spacecraft has a certain offset in the X, Y and Z-directions with respect to this centre of pressure. Thus moments are induced around the \gls{cg}. Knowing these moments a line in 3D space can be found on which all moments are zero. This line varies for different combinations of forces which follow from different combinations of angle of attack, sideslip and bank angle.
 
 \subparagraph{Thrusters}
 \label{subpar:thrusters}
@@ -36,7 +36,7 @@ By dividing the required reaction control moment around a certain axis (\gls{sym
 \gls{sym:F}_{thrust}=\frac{M_{control}}{\gls{sym:d}}
 \end{equation}
 \end{multicols}
-Where \gls{con:ge} is the gravitational acceleration on earth. Solving the preceding for $\gls{sym:F}_{req}=\gls{sym:F}_{thrust}$ and by summing the mass flow over time the total propellant mass can be obtained. This relation is shown in Equation \ref{eq:mprop}.
+Where \gls{con:ge} is the gravitational acceleration on Earth. Solving the preceding for $\gls{sym:F}_{req}=\gls{sym:F}_{thrust}$ and by summing the mass flow over time the total propellant mass can be obtained. This relation is shown in Equation \ref{eq:mprop}.
 
 \begin{equation}
 m_{prop} = \int_{0}^{t} \frac{M_{control}}{\gls{sym:Isp}\gls{con:ge}\gls{sym:d}} dt
@@ -52,7 +52,7 @@ Thrusters allow for very versatile operations but with varying efficiency. The e
 
 The neutral stability of the entry vehicle can be used relatively efficiently for bank control. This is the conventional solution for guidance \& control during entry. The use of thrusters implies a high control system reliability as they are not only frequently employed but also allow for redundant placement with a minimal mass increase. As such a high control system reliability can be achieved in line with the mission requirements. Moreover the use of thrusters allows for a relatively fast control system. Peak rotational rates are in the order of $20 \left[deg\cdot s^{-1}\right]$ and $5 \left[deg \cdot s^{-2}\right]$ \cite{Davis2010}.
 
-The use of bank control for Martian landings has previously been found \cite{Davis2010} to achieve accuracies of up to $10 \left[m\right]$ at final landing featuring \gls{hiad} with a combined mass of over $10\mbox{ }000 \left[kg\right]$.
+The use of bank control for Martian landings has previously been found \cite{Davis2010} to achieve accuracies of up to $10 \left[m\right]$ at final landing featuring a \gls{hiad} with a combined mass of over $10\mbox{ }000 \left[kg\right]$.
 
 Outside the Martian atmosphere thrusters feature the additional advantage that unlike an active \gls{cg}-offset control system or body flaps control is system possible since the presence of an atmosphere is not a perquisite.
 
@@ -61,7 +61,7 @@ The main disadvantage of thrusters over body flaps or an active \gls{cg}-offset 
 
 \subparagraph{Aerodynamic surfaces}
 
-Using the modified Newtonian flow theory discussed in Section \ref{subsec:aerotool} the force and moment contributions of a surface with a certain orientation to the freestream flow can be computed. For an aerodynamic surface (essentially a flap) the freestream inclination angle can be varied by using rotational actuators. Alternatively the flap area exposed to the freestream flow can be varied by using linear actuation. Both of these options directly influence the pressure distribution over the aeroshell surface. This induces a moment around the required axis, thereby allowing for active control.
+Using the modified Newtonian flow theory discussed in Section \ref{subsec:aerotool} the force and moment contributions of a surface with a certain orientation to the freestream flow can be computed. For an aerodynamic surface (essentially a flap) the freestream inclination angle can be varied by using rotational actuators. Alternatively the flap area exposed to the freestream flow can be varied by using linear actuation. Both of these options directly influence the pressure distribution over the \gls{cia} surface. This induces a moment around the required axis, thereby allowing for active control.
 
 The required control moments can be determined in a manner similar to as was done for thrusters. By comparing the required and delivered control moments the required force per flap can be computed. From this force a required \gls{sym:CD}\gls{sym:A} for the flaps follows. This depends on the flap area and on the flap inclination angle. Using this \gls{sym:CD}\gls{sym:A} then forms the basis for computing the resulting control moment corresponding to the aforementioned inclination angle.
 
@@ -71,6 +71,6 @@ This advantage poses a major disadvantage at the same time: No control force act
 
 A second disadvantage to using flaps comes from the option to lock the flap orientations. By doing this the mass can be kept low, but this also means a limited number of discrete flap settings would be available. This would make it hard to properly control the spacecraft by using these flaps, especially under the influence of disturbances.
 
-A third complication of using flaps is the coupling between the force exerted by the flaps and the local structural deflection angle. The control force delivered by the flap causes the inflatable structure to deflect rearward, which causes the flap force to decrease. This in turn commences a decrease in structural deflection angle which will again increase the force exerted by the flaps. One can see from this that using flaps on the inflatable structure would induce oscillations in the spacecraft. The effects of these vibrations on the stability and controllability of the aeroshell are unknown at this point in the design process.
+A third complication of using flaps is the coupling between the force exerted by the flaps and the local structural deflection angle. The control force delivered by the flap causes the inflatable structure to deflect rearward, which causes the flap force to decrease. This in turn commences a decrease in structural deflection angle which will again increase the force exerted by the flaps. One can see from this that using flaps on the inflatable structure would induce oscillations in the spacecraft. The effects of these vibrations on the stability and controllability of the \gls{cia} are unknown at this point in the design process.
 
 Lastly, using body flaps on a non-winged entry vehicle has not yet been proven in flight. This poses a performance risk during concept development. This is in sharp contrast with the option of using thrusters, which features high reliability. Thrusters have been used extensively and are the go-to option for \gls{adcs}' and as main propulsion system.
